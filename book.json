@@ -1,0 +1,83 @@
+{
+    "plugins": [
+        "expandable-chapters-small",
+        "sidebar-style",
+        "anchor-navigation-ex",
+        "-lunr",
+        "-search",
+        "-sharing",
+        "search-pro",
+        "versions-select",
+        "-favicon",
+        "favicon-absolute",
+        "fontsettings",
+        "prism",
+        "splitter",
+        "code",
+        "flexible-alerts",
+        "auto-scroll-table",
+        "popup",
+        "tbfed-pagefooter",
+        "-theme-hqbook"
+    ],
+    "pluginsConfig": {
+        "prism": {
+            "css": [
+                "prismjs/themes/prism-solarizedlight.css"
+            ],
+            "lang": {
+                "flow": "typescript"
+            },
+            "ignore": [
+                "mermaid",
+                "eval-js"
+            ]
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright ©Layabox 2025",
+            "modify_label": "更新时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "favicon-absolute": {
+            "favicon": "./style/favicon-32.ico",
+            "bookmark": "./style/favicon-32.ico",
+            "appleTouchIconPrecomposed152": "./style/layabox-152.png"
+        },
+        "anchor-navigation-ex": {
+            "showLevel": false,
+            "multipleH1": false,
+            "printLog": false
+        },
+        "sidebar-style": {
+            "title": "",
+            "author": ""
+        },
+        "versions": {
+            "options": [
+                {
+                    "value": "https://layaAir.com/3.3/doc/",
+                    "text": "v3.3"
+                },
+                {
+                    "value": "https://layaAir.com/3.2/doc/",
+                    "text": "v3.2"
+                },
+                {
+                    "value": "https://layaAir.com/3.1/doc/",
+                    "text": "v3.1"
+                },
+                {
+                    "value": "https://layaAir.com/3.0/doc/",
+                    "text": "v3.0"
+                }
+            ]
+        }
+    },
+    "style": {
+        "website": "style/website.css"
+    },
+    "structure": {
+        "readme": "services.md"
+    },
+    "title": "LayaAir3.3 · 引擎文档 · LAYABOX"
+}
