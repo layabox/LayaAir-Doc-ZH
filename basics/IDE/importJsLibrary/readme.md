@@ -237,8 +237,6 @@ export class Main extends Laya.Script {
 
 并在release\web\index.html中被引入，如图2-8所示，
 
-> 这里index.html中的代码是IDE发布时自动加入的，开发者在实际开发时，除非是没别的方案了，尽量不要修改index.html。
-
 ![2-8](img/2-8.png)
 
 （图2-8）

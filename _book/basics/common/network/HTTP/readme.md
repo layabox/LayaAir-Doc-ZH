@@ -221,8 +221,6 @@ export class Network_GET extends Laya.Script {
 
 > POST请求与响应除了在send的时候传参不同，其它流程是完全一样的。就不再重复举例了，如果不能理解，可以使用LayaAir3-IDE创建API示例模板项目，模板项目中分别针对GET与POST提供了示例代码。
 
-在游戏交互的通信过程中，请求完成和请求出错的事件响应必须要使用，而进度更新的事件响应在绝大多数情况不需要使用。
-
 ### 2.3  使用原生的XMLHttpRequest
 
 由于我们封装的`HttpRequest`类方法，主要针对游戏互动应用场景的通用需求，并没有包括XMLHttpRequest对象的全部功能。如果有超出引擎内置功能的需求，也可以直接通过`HttpRequest`类的`http`属性直接使用原生的XMLHttpRequest对象能力。

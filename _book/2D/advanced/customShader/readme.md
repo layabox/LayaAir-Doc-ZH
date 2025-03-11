@@ -458,28 +458,7 @@ GLSL End
 
 
 
-## 八、LayaAir-IDE内置2D着色器
 
-在LayaAir-IDE中，可以创建三种内置的2D着色器，如图8-1所示，
-
-![8-1](img/8-1.png)
-
-（图8-1）
-
-这三种着色器是为开发者提供的模版，可以在此基础上进行更改。但需要注意，它们是三个类型的着色器，各不通用：
-
-- Texture（uv）类型，也就是2D纹理类型。可用于Sprite的材质赋值，如图8-2所示。不能用在BaseRenderNode2D类型上（例如，Mesh2DRender、Line2DRender、Trail2DRender）。
-
-![8-2](img/8-2.png)
-
-（图8-2）
-
-- Primitive（mesh）类型，也就是2D图形类型。可用于Sprite的材质赋值，与图8-2所示使用位置相同。与第一个类型的区别是，Primitive类型不能使用默认贴图，也就是Sprite不能给texture赋值。
-- BaseRender2D类型，也就是2D基础渲染类型。可用于Sprite的渲染组件赋值材质，不能用在图8-2中Sprite的材质。BaseRender2D可以接收2D光照类型，一般用在BaseRenderNode2D为基类的2D渲染组件（例如，Mesh2DRender、Line2DRender、Trail2DRender）上面，如图8-3所示。
-
-<img src="img/8-3.png" alt="8-3" style="zoom:50%;" />
-
-（图8-3）
 
 
 

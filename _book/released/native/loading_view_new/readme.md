@@ -125,14 +125,8 @@ if(window.loadingView)
 所有代码公开，因此开发者可以根据需要修改代码实现任何所需自定义功能。
 
 ## 5.特别说明
-对于APP启动画面，可以更改，但必须要保留LayaAir引擎标识。
+启动画面，Android版本使用原生Java开发，iOS版本使用Object-C开发，代码都是开源的，开发者如果需要自定义界面，可自行修改。
 
-如果开发者需要完全去除LayaAir引擎标识，则需要联系商务购买去标识授权。
+后续LayaBox会有白名单机制，如果开发者购买了授权，便可以去掉LayaBox的Logo，如果没有购买，则需要强制增加LayaBox的logo，引擎内部会有检测机制，随机检测，如果检测不通过，会强制Crash应用程序。
 
-内购产品，需要按产品授权，费用为每产品一年1万元，3万终身/产品。
-
-非内购产品，可以按企业授权，具体视情况可以洽谈。
-
-授权合作的商务微信为：LayaAir_Engine，欢迎扫码添加。
-
-![](https://ask.layaair.com/static/css/default/img/cooperate.jpg) 
+LayaNative不是开源引擎，但免费给开发者使用，如果想要去掉LayaBox的Logo需要付费。开发者可以通过LayaBox公众号、官网等联系LayaBox商务进行购买。

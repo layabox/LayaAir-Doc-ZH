@@ -1,8 +1,4 @@
-# LayaAir3-IDE插件开发说明
-
-> Author: 谷主、Charley
-
-插件系统是引擎集成开发环境（LayaAir3-IDE）中一个至关重要的组成部分，它使开发者能够通过添加和使用引擎资源商店的第三方插件，或自定义插件来极大地扩展和增强IDE的核心功能。这种扩展性不仅允许开发者针对特定项目需求定制工作环境，还能提高开发效率和代码质量。插件可以涵盖各种功能，从语言支持、代码编辑和格式化工具，到高级代码分析、性能优化工具和新的编译器技术。除此之外，插件还支持更紧密的集成其他软件开发工具和服务，如数据库管理、版本控制系统以及云服务接入等，从而为开发者提供一个无缝协作的全面开发环境。社区贡献的插件库进一步丰富了开发者的选择，使他们可以利用广泛的资源来适应不断变化的技术需求，并在全球范围内与其他开发者共享知识和解决方案。因此，引擎的插件系统不仅仅是一个功能扩展工具，它也是推动创新，促进学习与合作的平台。
+# 插件开发说明
 
 ## 一、插件能力
 
@@ -1227,7 +1223,7 @@ Editor.typeRegistry.addTypes([
 class AssetHelper {
     @IEditor.onLoad
     onLoad() {
-        //为扩展名为abc的文件设置图标为abc.svg，editorResources是指位于assets目录下的目录名
+        //为扩展名为abc的文件设置图标为abc.svg
         Editor.extensionManager.setFileIcon(["abc"], "editorResources/abc.svg");
     }
 }
@@ -1265,8 +1261,8 @@ class AssetHelper {
     @IEditor.onLoad
     onLoad() {
         //双击abc类型文件时打开VSCode
-        Editor.extensionManager.addFileActions(["abc"], {
-            onOpen: async (asset) => IEditor.utils.openCodeEditor(Editor.assetDb.getFullPath(asset))
+        Editor.extensionManager.setFileAtions(["abc"], {
+            onOpen : asset=> IEditor.utils.openCodeEditor(Editor.assetDb.getFullPath(asset))
         });
     }
 }
@@ -1278,19 +1274,8 @@ class AssetHelper {
 - onCreateNode 如果资源支持实例化为节点，那么在这里实现。例如：
 
 ```typescript
-const sharp = IEditor.require("sharp");
-
-class AssetHelper {
-    @IEditor.onLoad
-    onLoad() {
-        console.log("AssetHelper onLoad");
-        Editor.extensionManager.addFileActions(["png"], {
-            onCreateNode: async (asset) => {
-                let imageMeta = await sharp(Editor.assetDb.getFullPath(asset)).metadata();
-                return Editor.scene.createNode("Sprite", { texture: { _$uuid: asset.id }, width: imageMeta.width, height: imageMeta.height });
-            }
-        });
-    }
+onCreateNode: asset => {
+    return Editor.scene.createNode("Image");
 }
 ```
 
