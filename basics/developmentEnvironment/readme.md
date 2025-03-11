@@ -8,7 +8,3 @@
 
 ### [《IDE开发流程界面概述》](../IDE/GUI/readme.md)
 
-### [《开发流程: Hello World》](../IDE/helloWorld/readme.md)
-
-
-

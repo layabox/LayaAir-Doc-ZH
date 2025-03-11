@@ -11,12 +11,12 @@ mac
 ```   
 $ sudo npm install -g layanative3 
 ```
-### 2.查看SDK版本信息
+### 1.查看SDK版本信息
 SDK就是native项目的模板。listversion命令会列出当前所有可用的SDK版本信息，在下面创建native项目的时候可以通过参数指定需要的版本。    
 ```   
 $ layanative3 listversions  
 ```
-### 3.创建native项目
+### 2.创建native项目
 createapp命令用于创建native项目  
 可以先用下面的命令查看下命令createapp的帮助信息
 ```
@@ -55,7 +55,7 @@ $ layanative3 createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.
 ```
 $ layanative3 createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.js -s D:/v2.0
 ```
-### 4.刷新native项目资源包
+### 3.刷新native项目资源包
 refreshres命令用于刷新native项目的资源包  
 项目迭代过程中，h5项目有了修改，可以用refreshres命令，重新打包刷新资源和代码到native项目中。
 #### 用法:
@@ -75,7 +75,7 @@ refreshres命令用于刷新native项目的资源包
 手动切换单机版和网络版相关，参考 [LayaBox 构建工具](../build_Tool/readme.md)。
 
 createapp时把资源路径写在了生成的native项目目录下的native.json文件中。如果后来资源移到了别的地方，会报错找不到资源目录。createapp时，如果-t参数指定为0时，不打资源，可以不指定资源路径参数，native.json中写的资源路径为空，这种项目refreshres时会报资源路径为空的错误。上述两种情况可以手动修改native.json文件，指定正确的资源路径。
-### 5.删除native项目资源包
+### 4.删除native项目资源包
 removeres命令用于删除native项目的资源包  
 #### 用法:
     layanative3 removeres [--path path] 
@@ -85,7 +85,7 @@ removeres命令用于删除native项目的资源包
 | ------------ | ------------ 
 | `--path` |       native项目路径 [默认值: "."]
 
-## 2.应用实例
+## 3.应用实例
 1.首先建立下图所示的目录结构。jellyfish是html5项目目录
 
 ![图1](img/1.jpg)  

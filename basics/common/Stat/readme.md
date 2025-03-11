@@ -127,7 +127,7 @@ Sprite3D的数量是影响游戏性能的重要因素之一。Sprite3D数量过�
 
 TriangleFace是性能统计面板中的一个指标，表示当前场景中渲染的三角形面数。TriangleFace的值越大，表示场景中需要渲染的三角形面数越多，对于性能的影响也越大。
 
-在3D渲染中，每个MeshRenderer都由多个三角形面组成。因此，在开发中应尽量减少需要渲染的三角形面数，以提高游戏的性能表现。如图6-1所示。
+在3D渲染中，每个MeshRenderer（MeshSprite3D、SkinnedMeshSprite3D）都由多个三角形面组成。因此，在开发中应尽量减少需要渲染的三角形面数，以提高游戏的性能表现。如图6-1所示。
 
 ![6-1](img/6-1.png)
 
@@ -144,7 +144,7 @@ TriangleFace是性能统计面板中的一个指标，表示当前场景中渲�
 
 ## 7、RenderNode数值说明
 
-RenderNode是性能统计面板中的一个指标，表示当前场景中渲染节点的数量。渲染节点是指需要进行渲染的节点，包括2D节点和3D节点。
+RenderNode是性能统计面板中的一个指标，表示当前场景中渲染节点的数量。渲染节点是指需要进行渲染的节点，包括Sprite、MeshSprite3D、SkinnedMeshSprite3D等。
 
 RenderNode的数量是影响游戏性能的重要因素之一。RenderNode数量过多，会导致渲染次数增加，从而影响游戏的帧率和性能表现。如图7-1所示 。
 
@@ -154,7 +154,7 @@ RenderNode的数量是影响游戏性能的重要因素之一。RenderNode数量
 
 ## 8、SkinRenderNode数值说明
 
-SkinRenderNode是性能统计面板中的一个指标，表示当前场景中骨骼动画渲染节点的数量。骨骼动画渲染节点是指需要进行骨骼动画渲染的节点。如图8-1所示 。
+SkinRenderNode是性能统计面板中的一个指标，表示当前场景中骨骼动画渲染节点的数量。骨骼动画渲染节点是指需要进行骨骼动画渲染的节点，包括SkinnedMeshSprite3D等。如图8-1所示 。
 
 SkinRenderNode的数量是影响游戏性能的重要因素之一。SkinRenderNode数量过多，会导致渲染次数增加，从而影响游戏的帧率和性能表现。 
 
@@ -174,13 +174,9 @@ ParticleRenderNode是LayaAir引擎3.0版本中性能统计面板中的一个指�
 
 ## 10、FrustumCulling数值说明
 
-如图10-1所示，Frustum Culling是性能统计面板中的一个指标，表示当前场景中判断渲染节点是否在视锥里面的次数，判断一次就加1，有几次判断，这个参数就是几。
-
-视锥体裁剪是指，只对在视锥体内的物体进行渲染，超出视锥体的物体不进行渲染，从而减少不必要的渲染，提高游戏的性能表现。
+Frustum Culling是性能统计面板中的一个指标，表示当前场景中开启视锥体裁剪的渲染节点数量。视锥体裁剪是指只对在视锥体内的物体进行渲染，超出视锥体的物体不进行渲染，从而减少不必要的渲染，提高游戏的性能表现。如图10-1所示。
 
 Frustum Culling的数量越大，表示场景中开启视锥体裁剪的渲染节点数量越多，对于性能的影响也越大。
-
-> FrustumCulling有时会等于RenderNode，但一般多于RenderNode，例如，阴影会产生一些cull，就会让FrustumCulling大于RenderNode。
 
 ![10-1](img/10-1.png)
 

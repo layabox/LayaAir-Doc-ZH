@@ -1,20 +1,20 @@
 # 用反射机制实现二次开发
 
-LayaNative通过提供反射机制来帮助开发者可以方便的进行二次开发, 下面通过示例来了解一下如何进行二次开发。  
-HarmonyOS、Linux和Window平台不支持反射机制，后续建议优先使用[原生平台通信](../platform_communication/readme.md)实现二次开发
+    LayaNative通过提供反射机制来帮助开发者可以方便的进行二次开发, 下面通过示例来了解一下如何进行二次开发.
 
 ## 1. 调用静态函数
 
-使用LayaNative, 可以在JavaScript层调用移动端的原生开发语言(Android下Java, iOS下Objective-C)编写的静态函数。
+    使用LayaNative, 可以在JavaScript层调用移动端的原生开发语言(Android下Java, iOS下Objective-C)编写的静态函数。
 
-###    1.1 JavaScript层
+####    1.1 JavaScript层:
 
-JavaScript层的调用方式：在构建发布前，使用LayaAir-IDE在脚本中添加如下代码，发布后会将TS编译为JS：
+    JavaScript层的调用方式:
 
-```typescript
+```javascript
+
   var os = conchConfig.getOS();
   var bridge;
-  var obj = {} as any;
+  var obj = {};
   if (os == "Conch-ios") {
       bridge = PlatformClass.createClass("JSBridge");//创建脚步代理
   }
@@ -29,7 +29,7 @@ JavaScript层的调用方式：在构建发布前，使用LayaAir-IDE在脚本�
     alert(bridge.call("testNumber:",256.0));
     alert(bridge.call("testBool:",false));
     obj.value = "Hello OC!";
-    bridge.callWithBack(function(value: any) {
+    bridge.callWithBack(function(value) {
       var obj = JSON.parse(value)
       alert(obj.value);
       },"testAsyncCallback:", JSON.stringify(obj));
@@ -39,7 +39,7 @@ JavaScript层的调用方式：在构建发布前，使用LayaAir-IDE在脚本�
     alert(bridge.call("testNumber",256.0));
     alert(bridge.call("testBool",false));
     obj.value = "Hello Java!";
-    bridge.callWithBack(function(value: any) {
+    bridge.callWithBack(function(value) {
       var obj = JSON.parse(value)
       alert(obj.value);
     },"testAsyncCallback",JSON.stringify(obj));
@@ -47,13 +47,10 @@ JavaScript层的调用方式：在构建发布前，使用LayaAir-IDE在脚本�
 
 ```
 
->添加上述代码时，如果某些native中的方法没有定义，可以这样写：`(window as any).xxxx`，例如，`(window as any).conchConfig.getOS()`。
 
+####     1.2 Android/Java层
 
-
-###     1.2 Android/Java层
-
-发布后，使用Android Studio打开项目，在类`JSBridge`中添加下列函数:
+    在类JSBridge中添加下列函数:
 
 ```javascript
     public static String testString(String value) {
@@ -92,9 +89,9 @@ JavaScript层的调用方式：在构建发布前，使用LayaAir-IDE在脚本�
     }
 ```
 
-###     1.3 iOS/OC层
+####     2.1.4 iOS/OC层
 
-发布后，使用XCode打开项目，在类`JSBridge`中添加下列函数:
+    在类JSBridge中添加下列函数:
 
 ```javascript
     +(NSString*)testString:(NSString*)value
@@ -131,23 +128,22 @@ JavaScript层的调用方式：在构建发布前，使用LayaAir-IDE在脚本�
 
 ```
 注意：
-
-（1）函数参数只支持布尔、浮点、字符串等基本类型，支持返回值。原生函数运行在脚本线程，更新UI需要转到UI线程，支持异步回调函数。
-
-（2）OC源文件后缀要改成.mm，OC的方法是静态的类方法要用+。
+    函数参数只支持布尔、浮点、字符串等基本类型，支持返回值。原生函数运行在脚本线程，更新UI需要转到UI线程，支持异步回调函数。
+OC源文件后缀要改成.mm，OC的方法是静态的类方法要用+。
 
 
+  通过上述方法可以很方便的进行原生代码相关的二次开发。
 
 
-##  2. 平台代码（Android/iOS）主动执行js脚本
+##  3.平台代码（android/ios）主动执行js脚本
 
-iOS/OC执行JS脚本：
+###     3.1 IOS/OC执行JS脚本
 
 ```javascript
   [[conchRuntime GetIOSConchRuntime] runJS:@"alert('hello')"];
 ```
 
-Android/Java执行JS脚本：
+###     3.2 Android/Java执行JS脚本
 
 ```javascript
   ConchJNI.RunJS("alert('hello world')");

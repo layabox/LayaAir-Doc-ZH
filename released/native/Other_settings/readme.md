@@ -10,42 +10,25 @@ LayaNative底层渲染使用openGLES渲染，使用android的GLSurfaceView控件
 
 **项目中的文本格式文件（例如:ini、xml、html、json、js等）都必须是utf8编码格式，因为iOS设备不支持非utf8格式编码的文件。**
 
-## 3. 日志级别
+## 3. debug模式和release模式
 
-LayaNative底层LOG分为五种：
+LayaNative底层LOG分为三种：
 
-```c
-enum class LogType
-{
-    Debug,
-    Info,
-    Warn,
-    Error,
-    Fatal,
-};
+```java
+LOGI 普通流程log
+LOGW 警告log
+LOGE 错误log
 ```
-每种日志对应的日志级别如下：
-```c
-enum class LogLevel
-{
-    Debug = 5,
-    Info = 4,
-    Warn = 3,
-    Error = 2,
-    Fatal = 1,
-    Close = 0,
-};
-```
-在js脚本中，开发者可以通过以下函数设置日志级别,默认值为5：
+
+在js脚本中，开发者可以通过以下函数设置Debug模式：
 
 ```javascript
 if( window.conch )
 {
 	//值为0：表示关闭所有日志输出
-    //值为1：表示只有Fatal日志输出
-    //值为2：表示只有Fatal和Error日志输出
-    //值为n：表示只有LogLevel <= n的日志输出
-    window.conch.config.setLogLevel(2);
+    //值为1：表示所有LOGE全部弹出alert
+    //值为2：表示所有LOGE和LOGW全部弹出alert
+    window.conch.config.setDebugLevel(1);
 }
 ```
 

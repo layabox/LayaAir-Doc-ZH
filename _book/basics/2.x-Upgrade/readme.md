@@ -282,7 +282,7 @@ Laya.Script 里相关的输入处理函数有：
 
 4.1 LayaAir2的组件系统中有3种组件的基类，Component、Script和Script3D。
 
-1.  LayaAir3.0合并了Script和Script3D，也就是只使用Script即可。Script3D仍然可以使用，但它只是Script的别名。Script可以挂载到2D对象，也可以挂载到3D对象。
+1.  LayaAir3.0合并了Scirpt和Script3D，也就是只使用Script即可。Script3D仍然可以使用，但它只是Script的别名。Script可以挂载到2D对象，也可以挂载到3D对象。
 
 4.2 LayaAir2中，Component与Script的区别，是Component主要通过继承方式写逻辑，Script则是比较纯正的组件机制。
 

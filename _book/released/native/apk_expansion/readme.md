@@ -1,65 +1,46 @@
-# Android文件扩展机制
+# android文件扩展机制
 LayaNative不仅支持把资源打包在assets目录下，还支持把资源打包成zip文件，放到任意文件路径下。LayaNative文件系统会先在assets目录下查找文件是否存在，如果没有找到，再去指定的zip路径下查找。通过这种zip机制便可以解决GooglePlay规定APK的size超过100MB，要求增加扩展包的问题。  
 
-## 1. 机制详解
-### 1.1 打包资源
-在LayaAir-IDE中，构建发布时，发布为原生包，并勾选`打包资源`，不同发布平台对应的资源路径如下：
-
-**windows**: release\windows\windows_project\resource\cache\dcc2.0\
-
-**android**: release\android\android_project\app\src\main\assets\cache\dcc2.0\
-
-**ios**: release\ios\ios_project\resource\cache\dcc2.0\
-
-> 参考[LayaDCC文档](../LayaDcc_Tool/readme.md)2.1节。
-
-
-
-### 1.2 压缩文件
-
-把资源包制作为扩展文件：压缩cache文件，要求zip格式，文件结构必须保持与IDE发布生成的结构相同。即要让打包资源有效，结构就是“cache/dcc2.0/xxx”。
-
-![1-1](img/1-1.png)
-
-（图1-1）
-
-
-
-### 1.3 将zip文件拷贝到设备目录
-
-将zip文件拷贝到Android手机目录`/storage/emulated/0/Android/test/com.layabox.game`，上传test.zip到这个目录下。
-
-
-
-### 1.4 修改代码中的扩展路径
-修改“RuntimeProxy.java”中的`getExpansionMainPath`函数，设置正确的zip路径。
+## 1.机制详解
+### 1.生成DCC
+测试项目用DCC工具打包资源  
+![图1](img/1.jpg)    
+### 2.压缩文件
+把资源包放到扩展文件中，压缩cache文件，文件要求zip格式，文件结构必须保持DCC工具生成的结构相同，如下图：
+![图1](img/2.jpg)  
+### 3.将zip文件拷贝到设备目录
+在Android手机上建立目录/storage/emulated/0/Android/test/com.layabox.conch6，上传test.zip到这个目录下
+### 4.修改代码中的扩展路径
+修改RuntimeProxy.java中的`getExpansionMainPath`函数，设置正确的zip路径。
 ```   typescript
     public String getExpansionMainPath()
     {
-        return "/storage/emulated/0/Android/test/com.layabox.game/test.zip";
+        return "/storage/emulated/0/Android/test/com.layabox.conch6/test.zip";
     }
     public String getExpansionPatchPath()
     {
         return "";
     } 
 ```
-> LayaNative中最多支持两个zip文件，第二个zip修改`getExpansionPatchPath`这个函数。
+### 5.开启外部存储权限
+安卓6.0以上的机器可能不能读取外部存储，需要主动请求权限。请加上如下代码或者Google相关解决方案。
+```typescript
+    public static boolean isGrantExternalRW(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && activity.checkSelfPermission(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            activity.requestPermissions(new String[]{
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, 1);
+            return false;
+        }
+        return true;
+    }
+```
+**TIPS:LayaNative中最多支持两个zip文件，第二个zip修改·getExpansionPatchPath·这个函数**
 
-
-
-### 1.5 运行测试
-
-运行APP，看见下面的日志说明从主扩展包读取资源文件成功。
-
-![1-2](img/1-2.png)
-
-（图1-2）
-
-
-
+### 5.运行测试
+运行APP，看见下面的日志说明从主扩展包读取资源文件成功
+![图1](img/3.png)  
 ## 2. Google Play APK扩展文件机制
-
-参考：https://developer.android.com/google/play/expansion-files.html
-
-
-
+(https://developer.android.com/google/play/expansion-files.html)

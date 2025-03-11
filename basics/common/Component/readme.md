@@ -141,122 +141,77 @@ export default class Bullet extends Laya.Script {
 
 在游戏中，将子弹添加到舞台上时，每次添加到舞台都得有初速度，但如果将onEnable()换成onAwake()，那么这个初速度就会失效。onUpdate()是每帧执行一次，子弹超出屏幕，则移除子弹，此处的 if 条件判断是每一帧都会判断一次。onDisable()是节点从舞台移除后触发，当子弹超出屏幕被移除时，就触发这个方法，这里是回收子弹到对象池了。
 
+
+
 ### 2.2 组件的事件方法
 
-事件方法是指在某些特定的情况下，会根据条件自动触发的方法。当使用自定义的组件脚本时，可以通过事件方法方便快速开发业务逻辑。
+事件方法是指在某些特定的情况下，会根据条件自动触发的方法，例如碰撞事件只有在物体发生碰撞时才会触发。当使用自定义的组件脚本时，可以实现如下事件方法，方便快速开发业务逻辑。
 
 #### 2.2.1 物理事件
 
-使用物理引擎时，我们有时候需要根据物理的碰撞事件在代码中实现逻辑交互。为此，LayaAir引擎在物理碰撞的首次发生时、持续碰撞时以及退出碰撞时，均会触发这些特定的物理事件方法。这些方法在引擎中默认不包含具体实现，可以视为待开发者重写的方法。开发者只需继承`Laya.Script`类，并在其中重写这些方法，就可以实现自定义的逻辑响应，替代默认的空W实现。
+| 名称             | 条件           |
+| ---------------- | -------------- |
+| onTriggerEnter   | 开始触发时执行 |
+| onTriggerStay    | 持续触发时执行 |
+| onTriggerExit    | 结束触发时执行 |
+| onCollisionEnter | 开始碰撞时执行 |
+| onCollisionStay  | 持续碰撞时执行 |
+| onCollisionExit  | 结束碰撞时执行 |
 
-这样，通过重写这些特定方法，开发者可以根据物理碰撞的具体阶段执行相应的游戏逻辑或者交互效果，从而使得游戏或应用能够在遇到物理碰撞时，有更自然、更真实的响应。下面表格罗列了全部的物理事件方法：
-
-| 名称             | 条件                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| onTriggerEnter   | 3D物理触发器事件与2D物理碰撞事件，开始碰撞时执行，仅执行一次 |
-| onTriggerStay    | 3D物理触发器事件与2D物理碰撞事件(不支持传感器)，持续碰撞时执行，每帧都执行 |
-| onTriggerExit    | 3D物理触发器事件与2D物理碰撞事件，结束碰撞时执行，仅执行一次 |
-| onCollisionEnter | 3D物理碰撞器事件（不适用2D），开始碰撞时执行，仅执行一次     |
-| onCollisionStay  | 3D物理碰撞器事件（不适用2D），持续碰撞时执行，每帧都执行     |
-| onCollisionExit  | 3D物理碰撞器事件（不适用2D），结束碰撞时执行，仅执行一次     |
-
-通过以上表格可以看出，2D物理事件只有三个事件方法，而3D物理事件，则分为触发器事件和碰撞器事件两类，有六个事件方法。
-
-碰撞器事件是指反生物理反馈的事件，触发器事件是只有物理事件的触发，但没有实际物理碰撞反馈的一种事件，这与2D碰撞体启用了传感器的效果是一样的，只不过2D物理无论是碰撞反馈事件还是启用了传感器的无反馈物体事件，都是只用onTrigger事件。
-
-特别提醒的是，2D物理启用传感器之后，onTriggerStay事件是不被触发的，这一点需要新手开发者注意。
-
-在脚本中的事件使用示例如下：
+在代码中的使用如下：
 
 ```typescript
-class DemoScript extends Laya.Script {
-    
-    /**
-     * 3D物理触发器事件与2D物理碰撞事件, 在每一次发生物理碰撞的开始时，引擎都会调用一次的事件方法。
-     * @param other 碰撞目标对象的碰撞体以及所属节点对象等信息
-     * @param self  自身的碰撞体以及所属节点对象等信息（该参数只有2D物理有，3D物理只有other）
-     * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了。（该参数只有2D物理有，3D物理只有other）
-     */
+	//开始触发时执行
      onTriggerEnter(other: Laya.PhysicsComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {
-        // 假如碰到了炸弹
-        if (other.label == "bomb") {
-            // 此处省略爆炸伤害的逻辑
+    }
 
-            console.log("碰到炸弹：" + self.label + "受到伤害，生命值减少xx");
-
-        } else if (other.label == "Medicine") {  // 假如碰到了药箱
-            // 此处省略恢复生命值的逻辑
-
-            console.log("碰到药箱：" + self.label + "接受治疗，生命值恢复xx");
-            
-        }
-        console.log("onTriggerEnter:", other, self);
-    }	
-
-    /**
-    * 3D物理触发器事件与2D物理碰撞事件(不支持传感器), 发生持续的物理碰撞时，也就是碰撞生命周期内的第二次碰撞到碰撞结束前，每帧都在触发调用的事件方法。
-    * 尽量不要在该事件方法中执行复杂的逻辑和函数调用，尤其是运算等消耗性能的代码，否则会对性能有明显的影响。
-    * @param other 碰撞目标对象的碰撞体以及所属节点对象等信息
-    * @param self  自身的碰撞体以及所属节点对象等信息（该参数只有2D物理有，3D物理只有other）
-    * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了（该参数只有2D物理有，3D物理只有other）
-    */
+    //持续触发时执行
     onTriggerStay(other: Laya.PhysicsComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {
-        //持续碰撞时，打印日志，尽量不使用该事件方法，如果使用不当对性能的消耗会影响较大。
-        console.log("onTriggerStay====", other, self);
     }
 
-    /**
-    * 在每一次的物理碰撞结束时，引擎都会调用一次的事件方法。
-    * @param other 碰撞目标对象的碰撞体以及所属节点对象等信息
-    * @param self  自身的碰撞体以及所属节点对象等信息（该参数只有2D物理有，3D物理只有other）
-    * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了（该参数只有2D物理有，3D物理只有other）
-    */
-    onTriggerExit(other: Laya.PhysicsComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {   
-        //模拟角色离开毒气区域，触发逃脱奖励
-        if (other.label == "poison") {
-            // 此处省略逃脱奖励的逻辑
-
-            console.log("离开毒气区域：" + self.label + "获得逃脱奖励，生命值+10");
-        }
-
-        console.log("onTriggerExit========", other, self);
+    //结束触发时执行
+    onTriggerExit(other: Laya.PhysicsComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {     
     }
 
-    /**
-     * 3D物理碰撞器事件（不适用2D），在每一次发生物理碰撞的开始时，引擎都会调用一次的事件方法。
-     * @param other 碰撞目标对象
-     */
-    onCollisionEnter(other:Laya.Collision): void {
-        //碰撞开始后，物体改变颜色
-        (this.owner.getComponent(Laya.MeshRenderer).material as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(0.0, 1.0, 0.0, 1.0);//绿色
+    //开始碰撞时执行
+    onCollisionEnter(collision: Laya.Collision): void {
     }
 
-    /**
-    * 发生持续物理碰撞时的3D物理碰撞器事件（不适用2D），也就是碰撞生命周期内的第二次碰撞到碰撞结束前，每帧都在触发调用的事件方法。
-    * 尽量不要在该事件方法中执行复杂的逻辑和函数调用，尤其是运算等消耗性能的代码，否则会对性能有明显的影响。
-    * @param other 碰撞目标对象
-    */
-    onCollisionStay(other:Laya.Collision): void {
-    	//持续碰撞时，打印日志，尽量不使用该事件方法，如果使用不当对性能的消耗会影响较大。
-        console.log("peng");
+    //持续碰撞时执行
+    onCollisionStay(collision: Laya.Collision): void {
     }
 
-   /**
-    * 3D物理碰撞器事件（不适用2D），在每一次的物理碰撞结束时，引擎都会调用一次的事件方法。
-    * @param other 碰撞目标对象
-    */
-    onCollisionExit(other:Laya.Collision): void {
-        ////碰撞离开后，物体变回原本颜色
-		(this.owner.getComponent(Laya.MeshRenderer).material as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(1.0, 1.0, 1.0, 1.0);//白色
+    //结束碰撞时执行
+    onCollisionExit(collision: Laya.Collision): void {
     }
-}
 ```
 
-基于上面的代码示例，为3D模型添加脚本。如动图2-2所示。
+下面以一个小球碰撞的例子，演示物理事件。以下是程序中碰撞部分的代码片段：
+
+```typescript
+	//碰撞进入后，物体改变颜色
+    public onTriggerEnter(other:Laya.PhysicsComponent):void {
+		(this.owner.getComponent(Laya.MeshRenderer).material as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(0.0, 1.0, 0.0, 1.0);//绿色
+	}
+	
+    //持续碰撞时，打印日志
+	public onTriggerStay(other:Laya.PhysicsComponent):void {
+        console.log("peng");
+	}
+	
+    //碰撞离开后，物体变回原本颜色
+	public onTriggerExit(other:Laya.PhysicsComponent):void {
+		(this.owner.getComponent(Laya.MeshRenderer).material as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(1.0, 1.0, 1.0, 1.0);//白色
+	}
+```
+
+如动图2-2所示，开始碰撞时执行onTriggerEnter，小球和立方体进入碰撞，小球变为绿色；持续碰撞时执行onTriggerStay，打印日志“peng”；碰撞离开后执行onTriggerExit，小球变为原来的颜色，立方体变为白色。
 
 ![2-2](images/2-2.gif)
 
 （动图2-2）
+
+
 
 #### 2.2.2 鼠标事件
 
@@ -448,6 +403,8 @@ export class NewScript1 extends Laya.Script {
 如果我们不需要给属性写一个tips说明，也不需要给属性重新定义一个在IDE里显示的别名，等需求。那按上面示例的简写方式即可。
 
 > 如果简写方式有语法警告，请用新版本IDE，并通过IDE的`开发者 -> 更新引擎d.ts文件`功能来解决，或者使用标准写法来解决。
+
+
 
 #### 3.2.2 属性访问器的装饰器使用
 

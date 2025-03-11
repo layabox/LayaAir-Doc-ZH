@@ -130,7 +130,7 @@ new LayaUISample;
 下面通过简单的例子来演示下用法。我们可以把教程开头的js脚本移植过来。
 
 ```typescript
-var worker:any = new Laya.Browser.window.Worker("js/my_task.js");
+var worker:any = Laya.Browser.window.Worker("js/my_task.js");
 worker.onmessage = function(oEvent):void{
     console.log("Called back by the worker!\n");
 };

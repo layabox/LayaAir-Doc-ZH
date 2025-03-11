@@ -1,20 +1,16 @@
 # 缓动
 
+
+
 ## 一、概述
 
-缓动的最大用处就是应用在设计的运动表现上，可以结合物理、数学等原理真实地模拟显示生活中的运动现象，更加符合自然规律及人类认知，并使对象按照用户期望的行为交互，提供连续性体验。游戏开发中缓动动画比较常见，它是提升游戏UI体验的重要因素之一，例如对话框弹出、关闭，按钮的动效出现与消失，道具飞入背包等。
+缓动的最大用处就是应用在设计的运动表现上，可以结合物理、数学等原理真实地模拟显示生活中的运动现象，更加符合自然规律及人类认知，并使对象按照用户期望的行为交互，提供连续性体验。游戏开发中缓动动画比较常见，它是提升游戏UI体验的重要因素之一，例如对话框弹出、关闭，按钮的动效出现与消失，道具飞入背包等，我们可以直接使用LayaAir引擎提供的Tween缓动类与Ease类来快捷实现。
 
-在历史的版本中，LayaAir引擎提供的Tween缓动类与Ease类来实现缓动的效果。
-
-从LayaAir3.3版本开始，对Tween系统进行了全面优化升级。这些变化包括兼容常用用法如Laya.Tween.to和Laya.Tween.from，保持大部分API不变，但不再支持非主流的new Tween()用法。
-
-缓动属性的类型支持不仅限于number，还新增了对Vector2、Vector3、Vector4、Color、Point以及字符串形式颜色值的支持。新的Tween对象设计得非常轻量，因此默认不重用，以避免因对象重用而引发的问题。此外，新系统不再使用Handler，从而杜绝了Handler重用带来的混乱。同时，改进后的Tween系统支持更丰富的选项以及串行和并行任务功能，为开发者提供更灵活强大的工具来实现理想的动画效果。
+接下来我们分别介绍 Tween 和 Ease 类
 
 
 
 ## 二、Ease
-
-
 
 `Ease` 类定义了大量的缓动函数，以便实现 `Tween` 动画的具体缓动效果。LayaAir引擎的Tween类与Ease类结合使用，能基本满足游戏开发的缓动效果需求。
 
@@ -24,31 +20,25 @@
 
 ### 2.1 匀速运动（linearIn）
 
-
-
 比较少的情况下，会用匀速运动，会显得比较僵硬。不符合物理世界的规律，真实的运动状态下，物体的速度是会随着运动状态发生变化的。
 
-![2-1-1](img/2-1-1.gif)
+<img src="images/1.gif" style="zoom: 33%;" /> 
 
 
 
 ### 2.2 加速运动（expoIn）
 
-
-
 以零速率开始运动，然后在执行时加快运动速度。
 
-![2-2-1](img/2-2-1.gif)
+<img src="images/2.gif" style="zoom:33%;" /> 
 
 
 
 ### 2.3 快速加速运动（strongIn）
 
-
-
 以零速率开始运动，然后在执行时加快运动速度
 
-![2-3-1](img/2-3-1.gif)
+<img src="images/3.gif" style="zoom:33%;" /> 
 
 
 
@@ -56,372 +46,293 @@
 
 开始时往后运动，然后反向朝目标移动
 
-![2-4-1](img/2-4-1.gif)
+<img src="images/4.gif" style="zoom:33%;" />  
+
+更多的效果可以通过示例查看
 
 
 
 ## 三、Tween
 
-### 3.1 基础用法
+`Tween` 缓动类用以实现目标对象属性的缓动，例如目标对象的x或y轴的缓动距离等目标值设置，以及缓动开始、停止、清理等设置。
 
-在使用新版的Tween系统时，开发者不再需要在一个方法内传入复杂的参数，只需要根据程序设计的需求，向代码中添加或删除对应的方法即可。这种设计使代码简洁明了，并且易于修改。
 
-下面，我们来看一段代码，这段代码提供了一个基础的Tween使用示例：
 
-```typescript
-   /**
-    * 创建一个基础的缓动
-    * aSprite为一个2D精灵
-    */
-	Laya.Tween.create(aSprite).duration(1000).to("x", 500).to("y", 300);
-```
+### 3.1 常用API介绍
 
-将这段代码添加在节点上的脚本中，运行查看效果，如图3-1-1所示：
-
-![3-1-1](img/3-1-1.gif)
-
-（图3-1-1）
-
-下面我们来讲解一下这段代码：
-
-**1.** 使用`create()`方法创建一个缓动，此方法可以传入缓动的目标对象作为参数：
+缓动类 `Tween` 提供了较多的方法，而我们常用的是两种，分别为`from()`与`to()`方法，这两个方法的参数设置完全一样，但效果有所不同，from是从缓动目标点向初始位置产生运动（从缓动目标位置来），to是从初始位置向缓动目标的位置产生运动（到缓动目标位置去），后面会结合实例详细说明，开发者可以先了解一下这两个方法的基础说明：
 
 ```typescript
-        /**
-         * @zh 创建一个新的缓动对象。使用返回的对象可以设置缓动的属性和其他选项。
-         * 缓动会自动开始，无需额外API调用。如果不想tween被立刻执行，可以调用pause，后续再调用resume。
-         * @param target 缓动的目标对象。可以为空。
-         * @param lifecycleOwner 生命周期对象，当销毁时，缓动会自动停止。一般情况下，如果任务的目标对象有 destroyed 属性，则不需要设置此属性。如果任务的目标对象没有 destroyed 属性，则可以设置此属性。
-         * @returns 返回一个Tween对象。
-         */
-         static create(target?: any, lifecycleOwner?: { destroyed: boolean; }): Tween;
-```
+    /**
+     * 从props属性，缓动到当前状态。
+     * @param	target 目标对象(即将更改属性值的对象)。
+     * @param	props 变化的属性列表，比如{x:100,y:20,ease:Ease.backOut,complete:Handler.create(this,onComplete),update:new Handler(this,onComplete)}。
+     * @param	duration 花费的时间，单位毫秒。
+     * @param	ease 缓动类型，默认为匀速运动。
+     * @param	complete 结束回调函数。
+     * @param	delay 延迟执行时间。
+     * @param	coverBefore 是否覆盖之前的缓动。
+     * @param	autoRecover 是否自动回收，默认为true，缓动结束之后自动回收到对象池。
+     * @return	返回Tween对象。
+     */
+    static from(target: any, props: any, duration: number, ease: Function = null, complete: Handler = null, delay: number = 0, coverBefore: boolean = false, autoRecover: boolean = true): Tween {
+        return Pool.getItemByClass("tween", Tween)._create(target, props, duration, ease, complete, delay, coverBefore, false, autoRecover, true);
+    }
+    
+    /**
+     * 缓动对象的props属性到目标值。
+     * @param	target 目标对象(即将更改属性值的对象)。
+     * @param	props 变化的属性列表，比如{x:100,y:20,ease:Ease.backOut,complete:Handler.create(this,onComplete),update:new Handler(this,onComplete)}。
+     * @param	duration 花费的时间，单位毫秒。
+     * @param	ease 缓动类型，默认为匀速运动。
+     * @param	complete 结束回调函数。
+     * @param	delay 延迟执行时间。
+     * @param	coverBefore 是否覆盖之前的缓动。
+     * @param	autoRecover 是否自动回收，默认为true，缓动结束之后自动回收到对象池。
+     * @return	返回Tween对象。
+     */
+    static to(target: any, props: any, duration: number, ease: Function|null = null, complete: Handler|null = null, delay: number = 0, coverBefore: boolean = false, autoRecover: boolean = true): Tween {
+        return Pool.getItemByClass("tween", Tween)._create(target, props, duration, ease, complete, delay, coverBefore, true, autoRecover, true);
+    }
 
-如果缓动的目标对象不是具有生命周期的对象，例如一个Transform3D，我们可以额外传递一个参数告诉底层其关联的生命周期对象。
-
-
-
-**2.** 使用`duration()`方法设置缓动的持续时间，单位为毫秒(ms)：
-
-```typescript
-        /**
-         * @zh 设置当前任务的持续时间。
-         * @param value 持续时间，以毫秒为单位。
-         * @return Tween对象。
-         */
-        duration(value: number): this;
 ```
 
 
 
-**3. **使用`to()`方法设置缓动的属性：
+### 3.2 参数说明
+
+`to()`和`from() `这两种方法都支持静态方法，因此我们不需要去实例化Tween类就可以使用。
+
+`to()`和`from()`它们的参数理解起来都较简单，这里我们重点强调一下props、duration、ease、complete、delay参数。
+
+**props**
+
+props 是目标对象需要改变，从而产生缓动效果的属性。对象的公共属性都可以进行设置，比如最常用的x、y位置属性，及alpha透明属性，以及旋转、轴心、大小等其他属性。属性的设置是采用对象数据的形式，比如 {x:100,y:20,ease:Ease.backOut,complete:Handler.create(this,onComplete),update:new Handler(this,onComplete)}
+
+**duration**
+
+duration 是执行缓动效果花费的时间，单位是豪秒，时间越多，缓动效果越慢。
+
+**ease**
+
+ease 为缓动类型，它可以使用Ease类下定义的各种函数来改变动画的变化过程。
+
+**complete**
+
+complete 为缓动完成后回调方法。比如按钮出现的缓动，在缓动过程中我们不能让用户点击，这时就可以用到缓动完成回调，在回调函数中再加入按钮监听。
+
+**delay**
+
+delay 是延迟执行的时间，稍后会通过实例中的延迟执行制作出文本缓动的波动效果。
+
+
+
+### 3.3 缓动实例
+
+下列代码中，我们先通过 Tween.from() 方法，实现 “LayaBox” 字符的文本缓动动画。
+
+`from()` ：
 
 ```typescript
-        /**
-         * @zh 缓动对象的属性到指定值。
-         * 属性类型可以是数字，字符串，布尔值，Vector2, Vector3, Vector4, Color。如果是字符串，则隐含为颜色值。
-         * @param propName 属性名称。
-         * @param value 属性目标值。
-         * @return Tween对象。
-         */
-        to(propName: string, value: any): this;
+    //创建缓动文本
+    private createTween():void{
+        //"LayaBox字符串总宽度"
+        var w:number = 800;
+        //文本创建的起始位置(>>在此使用右移运算符，相当于/2 用>>效率更高)
+        var offsetX:number = Laya.stage.width - w >> 1;
+        //显示的字符串
+        var demoString:string = "LayaBox";
+        var letterText:Laya.Text;
+        //根据"LayaBox"字符串长度创建单个字符，并对每个单独字符使用缓动动画
+        for(var i:number = 0,len:number = demoString.length;i<len;++i){
+            //从"LayaBox"字符串中逐个提出单个字符创建文本
+            letterText = this.createLetter(demoString.charAt(i));
+            letterText.x = w/len*i+offsetX;
+            //文本的初始y属性
+            letterText.y = 300;
+            //对象letterText属性y从缓动目标的100向初始的y属性300运动，每次执行缓动效果需要3000毫秒，缓类型采用elasticOut函数方式，延迟间隔i*100毫秒执行。
+            Laya.Tween.from(letterText,{y:100},3000,Laya.Ease.elasticOut,null,i*1000);
+        }
+    }
+    //创建单个字符文本，并加载到舞台
+    private createLetter(char:string):Laya.Text{
+        var letter:Laya.Text = new Laya.Text();
+        letter.text = char;
+        letter.color = "#ffffff";
+        letter.font = "Impact";
+        letter.fontSize = 180;
+        this.owner.addChild(letter);
+        return letter;
+    }
 ```
 
-除了`to()`方法，还有`from()`和`go()`两种方法可以用于设置缓动的属性：
+<img src="images/3-1.gif" style="zoom:50%;" /> 
+
+（动图3-1）
+
+结合实例代码，然后通过动图3-1的运动效果，我们可以看出，文本”Layabox”在初始位置（*y轴300*）出现之后，瞬间消失，然后从缓动方法 Tween.from 设置的目标`{ y : 100 }`（*y轴100*）向初始位置发生运动（从上到下的缓动效果）。
+
+由于这个方法是先在初始位置显示，再瞬间消失从缓动的目标位置向初始位置运动。会产生一个视觉差，感觉更像反弹效果。所以我们继续了解 Tween.to 的效果，开发者可以根据需要选择到底使用哪种缓动方法。
+
+`to()` ：我们可以继续采用上面的实例，只是将 Tween.from 改变为 Tween.to
 
 ```typescript
-        /**
-         * @zh 缓动对象的属性从指定值到当前值。
-         * @param propName 属性名称。
-         * 属性类型可以是数字，字符串，布尔值，Vector2, Vector3, Vector4, Color。如果是字符串，则隐含为颜色值。
-         * @param value 属性目标值。
-         * @return Tween对象。
-         */
-        from(propName: string, value: any): this;
-
-        /**
-         * @zh 缓动对象的属性从指定的起始值到指定的结束值。
-         * @param propName 属性名称。
-         * 属性类型可以是数字，字符串，布尔值，Vector2, Vector3, Vector4, Color。如果是字符串，则隐含为颜色值。
-         * @param startValue 属性起始值。
-         * @param endValue 属性结束值。
-         * @return Tween对象。
-         */
-        go<T>(propName: string, startValue: T, endValue: T): this;
+//对象letterText属性y从初始的y属性向缓动目标的y的100属性运动，缓动效果需要3000毫秒，缓类型采用elasticOut函数方式，延迟间隔1000毫秒执行。
+Laya.Tween.to( letterText , {y:100}, 3000, Laya.Ease.elasticOut, null, 1000 );
 ```
 
-Tween中还有许多方法用于实现各种效果，这里不再列举，有需要的开发者可以参考API文档。
+运行效果如动图3-2所示
+
+<img src="images/3-2.gif" style="zoom:50%;" /> 
+
+（动图3-2）
 
 
 
-### 3.2 生命周期
+### 3.4 理解Props参数
 
-开发者可以调用缓动的`kill()`方法提前结束缓动。如果保存了`create()`方法返回的Tween对象，那直接调用Tween上的`kill()`方法即可。此外，也可以通过`Laya.Tween.getTween()`或是`Laya.Tween.getTweens()`方法查询对象关联的缓动。
+无论 Tween.from 还是 Tween.to，第二个参数Props（属性）可以影响缓动效果的运动轨迹等。
+
+由于 Tween.from 与 Tween.to 的缓动效果本来就是相反的，所以 Tween.from 有一种向下落的感觉，而动图3-2的 Tween.to 有一种向上弹起的感觉。
+
+如果我们将初始y的属性值 与缓动目标的y属性值对调一下，再来看看，用 Tween.to 实现的落下效果与 Tween.from 有什么不同。
+
+继续延续之前的示例，修改代码如下。
 
 ```typescript
-        //获取对象上的第一个缓动
-		let tween = Tween.getTween(aSprite);
-        if (tween != null)
-            tween.kill();
-
-		//获取对象上的全部缓动
-        let tweens = Tween.getTweens(sSprite);
-        tweens.forEach(tween => tween.kill());
+//文本的初始y属性
+letterText.y = 100;
+//Laya.Tween.from(letterText,{y:100},3000,Laya.Ease.elasticOut,null,i*1000);//注释本行改为将Laya.Tween.from改变为Laya.Tween.to
+Laya.Tween.to(letterText, { y : 300 }, 3000, Laya.Ease.elasticOut, null, i * 1000);
 ```
 
-`kill()`方法有一个可选参数complete，这个参数表示当调用`kill()`方法提前结束缓动时，是否需要将各个属性设置到最终状态。例如，如果有一个将x坐标缓动到500的缓动，当运行到x=250时调用`kill()`，则x坐标将保持在250；如果调用`kill(true)`，则x坐标将立刻设置为500。
+运行效果如动图3-3所示
 
-调用`kill(true)`:
+ <img src="images/3-3.gif" style="zoom:50%;" />
 
-![3-2-2](img/3-2-2.gif)
+（动图3-3）
 
-调用`kill(false)`:
-
-![3-2-1](img/3-2-1.gif)
-
-如果缓动的目标对象被销毁，那么缓动会立刻结束。
-
-```typescript
-        Laya.Tween.create(aSprite).duration(1000).to("x", 100)
-
-        aSprite.destroy(); //上面的缓动会立刻结束
-```
-
-如果缓动的目标对象不是具有生命周期的对象，例如一个Transform3D，我们可以额外传递一个参数告诉底层其关联的生命周期对象。
-
-```typescript
-        Laya.Tween.create(aCube.transform, aCube).duration(1000).to("x", 100)
-
-        aCube.destroy(); //上面的缓动也会立刻结束
-```
+由于动图3-3中，是初始y属性在100，Tween.to 的效果是从初始属性向缓动目标的属性进行运动。所以缓动目标的y属性在300时，就会产生出从初始y轴的100向y轴300进行运动，也就是落下的效果。与 Tween.from 实现落下效果会有明显的不同。所以开发者在运用时要注意两者的效果区别。
 
 
 
-### 3.3 回调函数
+### 3.5 理解缓动持续时间（*duration*）与延迟执行（*delay*）参数
 
-Tween系统支持三种回调：启动回调、更新回调和结束回调。
+继续沿用前面的示例，我们将第三个参数duration修改为1000毫秒，将第六个参数delay修改为100毫秒，效果如动图3-4所示。无论是缓动的速度还是下落间隔的速度都会产生较明显的变化。因此可以看出，通过持续时间或延迟时间的调整也可以实现不同的动画效果目标。这里不再深入，开发者可以自行调节体验。
 
-**启动回调**：在缓动开始时，`onStart()`会被调用，需要注意的是，`delay()`方法会使缓动延迟开始执行，如果开发者调用了`delay()`方法，那缓动的启动回调会在延迟结束后执行。
+<img src="images/3-4.gif" style="zoom:50%;" /> 
+
+（动图3-4）
+
+动图3-4效果所修改代码如下：
 
 ```typescript
-        Laya.Tween.create(aSprite).duration(1000).to("x", 100)
-			//2000毫秒后，onStart方法才会被调用
-			.delay(2000)
-			//启动回调
-            .onStart(tweener => {
-            	//在启动回调中设置了x的终值为200
-                tweener.endValue.set("x", 200);
-            });
-```
-
-**更新回调**：在每次更新缓动时，`onUpdata()`会被调用。下面这段代码，开启了一个纯计算的缓动，具体效果将由开发者在onUpdate中实现。
-
-```typescript
-        //创建纯计算的缓动
-		Laya.Tween.create(null).duration(1000).go(null, 0, 1000)
-			//更新回调
-            .onUpdate(tweener => {
-                let value = tweener.get(null);
-                //开发者可在此实现具体的效果
-            });
-```
-
-**结束回调**：在缓动结束时，`then()`会被调用，开发者可以在其中设置相应的逻辑。需要注意的是，在调用`kill()`方法时，如果设置参数值为true，也会调用结束回调。
-
-```typescript
-        //创建缓动
-		let tween = Laya.Tween.create(aSprite).duration(1000).to("x", 0)
-			//结束回调
-            .then(this.onComplete, this);
-
-		//也会执行then()方法
-        if (tween != null)
-            tween.kill(true);
-```
-
-
-
-### 3.4 缓动函数
-
-开发者可以通过`ease()`方法设置一个缓动函数，实现调整数值变化的速度。
-
-```typescript
-    //使用ease()方法时，可以传入缓动函数作为参数
-	Laya.Tween.create(aSprite).duration(1000).to("x", 600).ease(Laya.Ease.cubicOut);
-
-
-	//也可以直接用函数名称
-	Laya.Tween.create(aSprite).duration(1000).to("x", 600).ease("cubicOut");
-```
-
-运行效果如图，可以看到物体以较快的速度开始运动，在运动过程中速度逐渐变慢：
-
-![3-4-1](img/3-4-1.gif)
-
-
-
-有些缓动函数可能带有额外参数。开发者可以在`ease()`方法中传入这些参数。例如`elasticOut()`方法可以额外设置弹性的幅度和生效时间。
-
-```typescript
-    //为缓动函数传递参数
-	Laya.Tween.create(aSprite).duration(1000).to("x", 600).ease("elasticOut", 5);
+//文本的初始y属性
+letterText.y = 100;
+//Laya.Tween.from(letterText,{y:100},3000,Laya.Ease.elasticOut,null,i*1000);//注释本行改为将Laya.Tween.from改变为Laya.Tween.to
+Laya.Tween.to(letterText, { y : 300 }, 1000, Laya.Ease.elasticOut, null, i * 100);
 ```
 
 
 
-开发者也可以自定义缓动函数
+### 3.6 理解ease参数
+
+第四个参数ease对应`laya.utils.Ease`类的各个方法，本节中我们改为`Ease.bounceIn`效果，如动图3-5所示。
+
+<img src="images/3-5.gif" style="zoom:50%;" /> 
+
+（动图3-5）
+
+动图3-5效果所修改代码如下：
 
 ```typescript
-	//调用开发者自定义的缓动函数
-	Laya.Tween.create(aSprite).duration(1000).to("x", 600).ease(myEase);
-
-	//开发者自定义的缓动函数
-	function myEase(t: number, b: number, c: number, d: number) : number {
-    	//...
-	}
+//文本的初始y属性
+letterText.y = 100;
+//Laya.Tween.from(letterText,{y:100},3000,Laya.Ease.elasticOut,null,i*1000);//注释本行改为将Laya.Tween.from改变为Laya.Tween.to
+Laya.Tween.to(letterText, { y : 300 }, 1000, Laya.Ease.bounceIn, null, i * 100);
 ```
 
 
 
-### 3.5 串行和并行
+### 3.7 理解完成回调（*complete*）参数
 
-本节主要介绍两个方法：`chain()`和`parallel()`。
+第五个参数complete用于执行完缓动效果后的回调。我们继续沿用之前的示例，在缓动结束后，增加一个让字体颜色变红的回调方法。
 
-`chain()`：当开发者想要顺序执行多个缓动效果时，就可以使用`chain()`方法，此方法会将多个缓动效果串行在一起，并依次执行这些缓动效果。例如，开发者想要将aSprite的x在1秒内移动到600，然后在两秒内将y移动到400，就可以这样设置代码：
-
-```typescript
-	//将两个缓动效果串行在一起
-	Laya.Tween.create(aSprite).duration(1000).to("x", 600)
-    	.chain().duration(2000).to("y", 400);
-```
-
-运行效果如图： 
-
-![3-5-1](img/3-5-1.gif)
-
-
-
-`chain()`方法会默认继承前一个缓动的目标对象，开发者也可以自行更改目标对象，例如：
+使用示例：
 
 ```typescript
-	//在1秒内将aSprite的x移动到600，然后再在2秒内将bSprite的y移动到400
-	Laya.Tween.create(aSprite).duration(1000).to("x", 600)
-    	.chain(bSprite).duration(2000).to("y", 400);
+Laya.Tween.to(letterText, { y : 300 }, 1000, Laya.Ease.bounceIn, Laya.Handler.create(this,this.changeColor,[letterText]), i * 100);
 ```
 
-![3-5-2](img/3-5-2.gif)
-
-
-
-`parallel()`：一般来说，我们如果需要同时缓动多个属性，只需连续调用`to()`、`from()`或`go()`即可。但是，这些方法都共享同一个目标对象、持续时间、缓动函数等选项，比如我们调用`duration(1000)`，那所有缓动的持续时间都是一秒；如果此时我们希望一个缓动的持续时间为2秒，就需要使用`parallel()`方法。`parallel()`方法可以让多个缓动并行执行，且每个缓动可以设置不同的选项。示例代码如下：
+增加的 changeColor 方法如下
 
 ```typescript
-        //这段代码使用了串行与并行的方法
-        Laya.Tween.create(aSprite).duration(1000).to("x", 600)
-            .parallel().duration(2000).to("y", 400)
-            .chain().duration(1000).to("visible", false);
+    /**
+     * 缓动完成后的回调方法
+     * txt  缓动对象
+     */    
+    private changeColor(txt:Laya.Text):void{
+        //将文本字体改变成红色
+        txt.color = "#ff0000";
+    }
 ```
 
-上例实现了在1秒内移动x到600，并且同时在2秒内移到y到400。这两个缓动完成后，延迟1秒执行visible = false。
+代码运行效果如动图3-6所示
 
-![3-5-3](img/3-5-3.gif)
+<img src="images/3-6.gif" style="zoom:50%;" /> 
+
+（动图3-6）
 
 
 
-注意，使用`kill()`方法将终止整个缓动，包括所有串行和并行任务。如果需要终止单一任务，可以使用findTweener获得其中一段任务对象。
+### 3.8 通过Props参数实现过程回调
+
+complete（*完成回调*）参数，不仅可以在第五个参数中实现，也可以在第二个参数Props中实现。但是，为了代码更加清晰易读，我们并不建议将完成回调放在Props中实现。
+
+这里我们只介绍一下在Props中实现update更新回调。也就是说如果我们想在缓动过程中就执行回调方法，那第五个参数中是不可能实现的，因为第五个参数一定是缓动结束后才执行。所以，我们继续沿用之前的示例，在Props参数里增加一个字体颜色的更新回调。
+
+使用示例：
 
 ```typescript
-        //创建缓动，并为缓动添加名称
-		Laya.Tween.create(aSprite).name("first").duration(1000).to("x", 100)
-            .chain().duration(2000).to("y", 100);
-
-		//根据名称找到缓动
-        let tweener = Laya.Tween.findTweener("first");
-        if (tweener != null) //需要判空，因为如果这段缓动已经执行完毕，会返回null
-            tweener.kill(); //会终止这段缓动，并立刻执行下一段
+/**
+* 对象letterText属性y从100缓动到300的位置，每一帧都通过回调方法更新颜色
+* 用1000毫秒完成缓动效果
+* 缓动类型采用bounceIn
+* 单个字符的缓动效果结束后，使用changeColor回调函数将字符改变为红色
+* 延迟间隔i*100毫秒执行
+*/
+Laya.Tween.to(letterText, { y : 300, update: new Laya.Handler(this, this.updateColor,[letterText])}, 1000, Laya.Ease.bounceIn, Laya.Handler.create(this,this.changeColor,[letterText]), i * 100);
 ```
 
-
-
-### 3.6 自定义插值函数
-
-开发者可以通过`interp()`方法设置自定义的插值函数。引擎内置了几个特别的插值函数实现了一些常见的需求。
-
-#### 3.6.1 震动效果
-
-使用`Laya.Tween.shake`这个插值函数可以实现将物体在一段时间内震动的效果。震动效果不使用终值，所以`to()`方法里的x的终值参数传入0即可。
+增加的 changeColor 方法如下
 
 ```typescript
-        //创建缓动
-        Laya.Tween.create(aSprite).duration(1000).to("x", 0)
-            //通过插值函数实现震动效果
-            .interp(Laya.Tween.shake, 10);
+    /**
+     * 缓动进行时的回调更新方法
+     * txt  缓动对象
+     */
+    private updateColor(txt:Laya.Text):void{
+        var c:number = Math.floor(Math.random()*3);
+        switch (c) {
+            case 0:
+                txt.color = "#eee000";
+                break;
+            case 1:
+                txt.color = "#ffffff";
+                break;
+            case 2:
+                txt.color = "#ff0000";
+                break;
+            default:
+                txt.color = "#eee000";
+                break;
+        }
+    }
 ```
 
-运行效果如图：
+代码运行时，由于update回调是每一帧都在执行，所以在缓动的过程中，有一种闪光字的效果。如动图3-7所示
 
-![3-6-1-1](img/3-6-1-1.gif)
+<img src="images/3-7.gif" style="zoom:50%;" /> 
 
-#### 3.6.2 分离颜色通道插值
-
-当对整数类型或者字符串类型的颜色色值进行缓动时，可能得不到需要的效果，例如从0x000000到0xFF0000，并不会和预想的那样红色逐渐加深，而是中间会出现各种颜色，如图所示：
-
-![3-6-2-1](img/3-6-2-1.gif)
-
-
-
-这种情况下，就需要分离颜色通道，针对每个通道进行计算；引擎中内置的插值函数`Laya.Tween.sperateChannel`可以实现这个需求。
-
-```typescript
-        //创建缓动
-        Laya.Tween.create(aImage).duration(1000).go("color", "#000000", "#FF0000")
-            //通过插值函数分离颜色通道
-            .interp(Laya.Tween.seperateChannel);
-```
-
-运行效果如图：
-
-![3-6-2-2](img/3-6-2-2.gif)
-
-#### 3.6.3 曲线路径
-
-开发者可以通过引擎内置的插值函数`Laya.Tween.useCurvePath`来实现让物体沿路径运动的功能。路径可以由一段或多段直线、二次贝塞尔曲线、三次贝塞尔曲线和B样条曲线所组成。当使用这个插值时，to/from/go传入的初值和终值都会忽略，坐标值完全从曲线上取样。
-
-```typescript
-        //创建一条路径
-		let path = new Laya.CurvePath();
-        path.create(
-            //设置路径上的点
-            Laya.PathPoint.create(0, 0, 0),
-            Laya.PathPoint.create(-6, 1, 1),
-            Laya.PathPoint.create(3, 3, 3),
-        );
-
-		//创建缓动
-        Laya.Tween.create(aCube.transform, aCube)
-            .duration(2000)
-            .to("localPosition", Laya.Vector3.ZERO)
-			//设置插值函数，让物体沿曲线路径行动
-            .interp(Laya.Tween.useCurvePath, path)
-```
-
-运行效果如图：
-
-![3-6-3-1](img/3-6-3-1.gif)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（动图3-7）
 

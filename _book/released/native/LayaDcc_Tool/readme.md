@@ -1,509 +1,210 @@
-# LayaDCC 2.0工具
+# LayaDCC工具
 
-> Version >= LayaAir 3.2
+## 介绍
+LayaDCC：Laya-Dynamic Content Check，是LayaPlayer提供的一种热更新解决方案。其优点是运行时差异更新，能有效减少网络流量。他的主要数据是DCC文件，DCC文件用来描述项目中所有文件的校验值。DCC文件是通过工具 layadcc 来产生的。
 
-LayaDCC 2.0（Laya-Dynamic Content Check）是为LayaNative提供的资源热更新方案，是LayaDCC的升级版，主要特点：
+layadcc会遍历所有的项目文件，生成一个包含所有文件校验值的二进制文件filetable.bin。LayaPlayer在启动的时候，会从服务器获取这个文件（如果需要的话）来确定需要更新什么文件。  
 
-> DCC2.0是完全重构的，与1.0完全不同了。
+layadcc 还可以用来把生成资源包，用来把资源打包到App中。
 
-1、更新文件的时候不再使用原始目录，文件名字变成了文件内容的hash，确保不会被CDN缓存。
+## LayaPlayer资源包的类型
+目前的资源打包方案有三种。
+1. #### App联网包：  
 
-2、支持App打包资源。
+   App本身不带任何资源，体积最小。  
+   LayaPlayer第一次运行时，所有用到的资源都会从服务器端下载，并缓存在本地。第二次及以后运行时，会先从服务器获取dcc文件，然后在需要下载某个文件的时候，检查本地的资源是否需要更新，只有需要更新的时候才真正下载，未更新的资源则直接从本地缓存读取。   
+   本地缓存会逐渐增大。
 
-3、支持通过zip提供差异更新。
+2. #### 带资源的App联网包：  
 
-4、支持清理缓存。
+   App包本身包含了部分或者全部的游戏资源，包体积较大。  
+   数据依然能更新，即每次运行依然会从服务器取dcc文件进行校验，如果发现包中的某个文件已经老了，就会下载新的文件，缓存在本地，以后再运行的时候，只要缓存的文件没改，就依然使用缓存的。  
+   在多次更新后，App包的文件可能大部分都无效了，每次都是取的本地缓存，这时候建议重新更新App包，用新的资源来打包。
 
-5、保证版本一致性，客户端只会使用一个版本，不会出现不同版本资源混用的情况。
+3. #### App离线包（单机包）：  
 
-6、通过扩展可以支持网页、小游戏等其他平台。
+   直接把所有的资源都打包到App中，完全不需要网络下载，甚至不需要联网。体积最大。  
+   因为是单机版本，没有url，所以无法进行资源动态更新，想要更新资源的话，只能更新App。
 
-
-
-## 一、概念
-
-### 1.1 DCC服务器
-
-DCC服务器是一个静态文件服务器，保存了所有的DCC对象。DCC客户端在需要获得某个对象的时候，就是到这里下载相应的文件。
-
-在使用DCC的情况下，游戏资源都是通过DCC服务器获得的，原始的游戏资源服务器很少被访问（只有不在DCC目录树下的资源才会到原始资源服务器下载）。
-
-### 1.2 DCC根文件
-
-DCC根文件又称为DCC头文件，指定了某一版的资源树，从这里可以遍历所有的这一版的资源。
-
-在LayaAir中，使用IDE发布后的dcc目录下就有一个head.json，就是一个根文件。
-
-### 1.3 映射地址
-
-当LayaNative发起一个下载请求的时候，会被DCC拦截，DCC根据设置的映射地址过滤这个地址，如果符合映射地址，则会走DCC流程。
-
-例如，设置的映射地址是`dcc.pathMapToDCC='http://layabox.com/game'`, 当请求`http://layabox.com/game/res/skin1.png`的时候，就会走DCC流程，在DCC内部会先转成相对地址`res/skin1.png`，然后查找到这个相对地址对应的对象id，下载指定id的对象。
-
-如果请求下载的地址不符合映射地址，则会直接下载原始地址的内容。
-
-
-
-## 二、界面
-LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如图2-2），Android（如图2-3）项目的时候，会有DCC相关选项。在勾选`使用DCC`后可以设置`根文件`的加载地址和`DCC服务器`的地址；勾选更新DCC后可设置`版本`和`版本描述`。
-
-![2-1](img/2-1.png)
-
-（图2-1）
-
-![2-2](img/2-2.png)
-
-（图2-2）
-
-![2-3](img/2-3.png)
-
-（图2-3）
-
-下面是各参数的介绍：
-
-### 2.1 打包资源
-
-是否把为当前平台导出的资源（resource目录）打包到native项目中。打包的资源会放到特定的目录中，以供后续生成不同平台的App。 
-
-如果希望提供单机版，则必须选择打包资源。如果是联网包，勾选打包资源会是包体较大，但是可以减少网络下载，加快资源载入速度。
-
-打包资源的本质是生成一个完整的DCC目录，放到项目的特定目录下。
-
-如果发布的是原生包（VS、XCode、Android Studio项目），不同发布平台对应的路径如下：
-
-**windows**: release\windows\windows_project\resource\cache\dcc2.0\
-
-**android**: release\android\android_project\app\src\main\assets\cache\dcc2.0\
-
-**ios**: release\ios\ios_project\resource\cache\dcc2.0\
-
-
-
-### 2.2 混淆资源
-
-如果勾选，在打包资源的时候，会随机混淆资源，主要作用是避免在上架的时候被平台扫描到某些敏感函数。
-
-
-
-### 2.3 资源服务器URL
-
-此设置决定native启动时访问的入口脚本。所以，在填写地址时，需要把入口脚本文件也写在地址内。
-
-例如：http://192.168.31.109:9000/index.js
-
-
-
-### 2.4 热更新(DCC)
-
-#### 2.4.1 使用DCC
-
-`根文件`：设置DCC系统的根文件地址, 根文件维护一个完整的目录树，决定了一个版本的具体内容。
-
-例如：http://192.168.31.109:8000/head.json
-
-`DCC服务器`：设置DCC服务器的地址。如果为空，则使用根文件所在的地址为DCC服务器地址。
-
-例如：http://192.168.31.109:8000/
-
-#### 2.4.2 更新DCC
-
-勾选后，在构建的时候同时生成DCC资源，生成的DCC资源可以放到DCC服务器上，提供热更新内容。
-
-这个目录在release/平台/dcc目录下，结构如图2-4所示，
-
-![2-4](img/2-4.png)
-
-（图2-4）
-
-然后可以配置以下参数：
-
-`版本`：生成DCC资源的版本号，这个会影响生成的DCC根文件。例如，设置为1.0.1，则DCC的输出目录会生成一个“version.1.0.1.json”的根文件，参见图2-4。
-
-> 注意，在生成DCC的时候，会更新两个根文件。
->
-> 一个是指定版本号的，例如，“version.1.0.1.json”。另一个是指向最新版本的 “head.json”。
->
-> 所以如果选择head.json，就是指向最新的DCC。
-
-`版本描述`：当前版本的描述。这个信息会保存到DCC的根文件中。
-
-
-
-## 三、在LayaAir-IDE中使用
-
-### 3.1 构建单机版APP
-
-在构建发布中，勾选`打包资源`，并且保留`资源服务器URL`为空。
-
-![3-1](img/3-1.png)
-
-（图3-1）
-
-这样构建出的纯单机版应用无法实现资源动态更新，当资源发生变化时，必须更新APP。
-
-
-
-### 3.2 使用DCC更新流程
-
-构建发布时，设置资源服务器URL后，可以打包资源，也可以不打包。
-
-![3-2](img/3-2.png)
-
-（图3-2）
-
-如图3-2所示，设置`根文件`为指定的url，例如， "http://192.168.31.109:8000/head.json"。
-
-发布后，有一个resources目录，如图3-3所示，
-
-![3-3](img/3-3.png)
-
-（图3-3）
-
-其中，`.dcc`目录需要放在DCC服务器上，地址为发布前指定的url（http://192.168.31.109:8000/head.json）；其余文件是资源，需要放在资源服务器上，地址为发布前设定的"http://192.168.31.109:9000/index.js"。
-
-这样就完成了项目的首次发布，如果发布后需要更新，
-
-选中`更新DCC`，以生成DCC数据。更改`更新DCC`下的`版本`后（1.0.1），点击构建发布，发布后，resource目录下的`.dcc`目录如图3-4所示，
-
-![3-4](img/3-4.png)
-
-（图3-4）
-
-把`.dcc`目录放到DCC服务器上，地址为发布前指定的url（http://192.168.31.109:8000/），即与上面的`根文件`一致。
-
-这样发布的App就能根据指定根文件进行资源热更。之前发布的App，如果指定的是同一个根文件，也会在启动后触发热更。
-
-> 注意：如果使用固定名称的根文件，可能会由于CDN缓存导致无法获取最新的文件内容，导致热更错误。
->
-> 解决方法一般是给根文件一个非cdn地址，或者给一个动态页面地址。这时候根文件通常与DCC服务器不在一起，就不能把DCC服务器的地址设置为空了。
-
-
-
-
-## 四、命令行工具
-除了可以在构建发布中生成DCC，还可以通过命令行来更灵活的实现相同功能。
-
-首先进行安装（管理员）：
-
+## 安装和使用layadcc
+layadcc基于Node.js，所以需要Node.js的环境。
+### 1. 安装Node.js 
+到nodejs[官网](https://nodejs.org/en/)下载。  
+node.js不能太老，不支持 0.xx的版本，可以用命令查看node版本
+例如:  
 ```bash
-npm install -g layadcc2
+$ node -v
+v4.2.0
 ```
-安装完以后，可以直接使用`layadcc2`命令。用法如下：
-
+这个版本就可以。
+### 2. 安装 layadcc
 ```bash
-Usage:  [options] [command] <dir>
-
-layadcc2命令工具
-
-Arguments:
-  dir                                         输入目录
-
-Options:
-  -V, --version                               output the version number
-  -o, --output <outDir>                       指定输出目录,如果是相对目录，则是相对于当前目录 (default: "dccout")
-  -m, --merge                                 是否合并小文件
-  -y, --overwrite                             是否覆盖输出目录（保留历史记录需要覆盖）
-  -h, --help                                  display help for command
-
-Commands:
-  genpatch [options] <inputDir1> <inputDir2>  生成补丁文件
-  checkout [options] <inputDir>               把dcc目录恢复成原始结构
+npm install -g layadcc
 ```
+如果顺利安装完，就可以在命令行中直接执行layadcc。 
 
-例如，
-
-- 生成DCC资源：
-
-```bash
-layadcc2 ./resource -o ./dccout
-```
-这个会给resource目录生成DCC，输出到dccout下面。
-
-> 目前没有做详细的参数，如果要保存多个版本，可以自行在dccout下面修改json文件的名字，然后把整个目录合并到之前的dccout目录下。
-
-
-
-- 把DCC资源恢复成原始资源：
-
-```bash
-layadcc2 checkout ./dcc1
-```
-这个把dcc1目录下的head.json指向的版本展开成原始目录，放到checkout目录下
-
-
-
-## 五、通过代码的使用方法
-
-> 源码地址：https://github.com/layabox/layadcc2.git
->
-> 分支：dccplugin
-
-`LayaDCCClient`的接口定义：
-
-```typescript
-export class LayaDCCClient{
-    
-    onlyTransUrl:boolean;
-    //映射到dcc目录的地址头，如果没有，则按照http://*/算，所有的请求都裁掉主机地址
-    pathMapToDCC:string;
-    
-    /**
-     * 
-     * @param frw 文件访问接口，不同的平台需要不同的实现。如果为null，则自动选择网页或者native两个平台
-     * @param dccurl dcc的服务器地址
-     */
-    constructor(dccurl:string, frw:new ()=>IGitFSFileIO|null, logger:ICheckLog=null)
-
-    enableLog(b:boolean)
-    
-    /**
-     * 初始化，下载必须信息 
-     * @param headfile dcc根文件，这个文件作为入口，用来同步本地缓存。如果为null则仅仅使用本地缓存
-     * @param cachePath 这个暂时设置为null即可 
-     * @returns 
-     */
-    async init(headfile:string|null,cachePath:string):Promise<boolean>;
-    
-    /**
-     * 当前缓存中是否缓存了某个文件
-     *
-     */
-    async hasFile(url: string):Promise<boolean>;
-
-    /**
-     *  读取缓存中的一个文件，url是相对地址
-     * @param url 用户认识的地址。如果是绝对地址，并且设置是映射地址，则计算一个相对地址。如果是相对地址，则直接使用
-     * @returns 
-     */
-    async readFile(url:string):Promise<ArrayBuffer|null>
-
-    /**
-     * 把一个原始地址转换成cache服务器对象地址
-     * @param url 原始资源地址
-     * @returns 
-     */
-    async transUrl(url:string)
-
-    /**
-     * 与DCC服务器同步本版本的所有文件。
-     * 可以用这个函数来实现集中下载。
-     * 
-     * @param progress 进度回调，从0到1
-     * 注意：在开始同步之前可能会有一定的延迟，这期间会进行目录节点的下载。不过目前的实现这一步在init的时候就完成了
-     * 
-     */
-    async updateAll(progress:(p:number)=>void);
-        
-    /**
-     * 根据指定的zip文件更新本地缓存。
-     * 这个zip文件可以通过DCC插件的补丁生成工具来生成。
-     * 
-     * 这个会修改本地保存的root
-     * @param zipfile 打补丁的zip文件，注意这里必须是本地目录，所以需要自己实现下载zip到本地之后才能调用这个函数。
-     * @param progress 进度提示，暂时没有实现。
-     */
-    async updateByZip(zipfile:string,zipClass:new()=>IZip, progress:(p:number)=>void);
-
-    /**
-     * 利用一个pack文件更新，这个pack包含idx,文件内容。
-     * @param pack :一个url或者buffer
-     * @param unpacker :解包类。把包文件内容解开成一个列表
-     */
-    async updateByPack(pack: string | ArrayBuffer, unpacker?: new () => IDCCPackR);
-
-    /**
-     * 遍历所有的节点。
-     * 包括没有下载的
-     */
-    async visitAll(treecb: (cnode: TreeNode,entry:TreeEntry) => Promise<void>, blobcb: (entry: TreeEntry) => Promise<void>)；
-
-    /**
-     * 清理缓存。
-     * 根据根文件遍历所有本版本依赖的文件，删除不属于本版本的缓存文件
-     */
-     async clean()
-     
-    //插入到laya引擎的下载流程，实现下载的接管
-    injectToLaya();
-    //取消对laya下载引擎的插入
-    removeFromLaya();
-}
-```
-
-常见用法如下：
-
-### 5.1 生成DCC
-
-```typescript
-    let srcPath = '资源的绝对路径'
-    let dcc = new LayaDCC();
-    //配置参数
-    let param = new Params();
-    param.version = '1.0.0';
-    param.dccout = '输出的绝对路径'
-    dcc.params = param;
-    //开始生成dcc数据
-    await dcc.genDCC(srcPath);
-```
-
-### 5.2 使用dcc
-
-对于使用dcc，基本流程是根据根文件初始化，然后插入laya引擎的downloader，之后下载就会被dcc接管
-```typescript
-//创建DCC客户端，参数是DCC服务器地址
-let dcc = new DCCClient('http://localhost:7788/' );
-//设置这个地址下的资源加载走DCC模式
-dcc.pathMapToDCC= 'http://localhost:8899/';
-//通过DCC的根文件初始化dcc客户端
-let initok = await dcc.init('http://localhost:7788/version.3.0.0.json',null);
-//把dcc功能插入laya引擎
-dcc.injectToLaya();
-```
-
-### 5.3 native端使用dcc
-
-```javascript
-var appUrl = "http://stand.alone.version/index.js";
-var dccHead = "http://10.10.20.26:6666/head.json";
-var dccUrl = null;
-var mapToDCC = null;
-let layadcc = require('layadcc.js').layadcc;
-let dcc = new layadcc.LayaDCCClient(dccUrl || getBaseUrl(dccHead));
-dcc.pathMapToDCC = mapToDCC || getBaseUrl(appUrl);
-dcc.init(dccHead, null).then((ok) => {
-    if (ok) {
-        //如果初始化成功，接管native的下载流程
-        dcc.injectToNative3();
-    }
-    window.layadcc = layadcc;
-    window.dcc = dcc;
-    loadApp(conch.presetUrl || appUrl);
-});
-```
-现在native中已经包含这段代码（index.js中），可以通过layadcc访问dcc库导出的对象，通过dcc访问native创建的LayaDCCClient
-
-### 5.4 集中更新所有资源，避免边运行边下载
-
-```typescript
-let dcc = new DCCClient('http://localhost:7788/' );
-dcc.pathMapToDCC= 'http://localhost:8899/';
-let initok = await dcc.init('http://localhost:7788/version.3.0.0.json',null);
-await dcc.updateAll((p)=>{/*进度提示*/})
-```
-
-### 5.5 使用zip更新
-
-```typescript
-    async function downloadBigZip(url:string):Promise<string|null>{
-        let cachePath = conch.getCachePath();
-        let localfile =  cachePath+url.substring(url.lastIndexOf('/'));
-    
-        return new Promise((resolve,reject)=>{
-                downloadBigFile(url, localfile, (total, now, speed) => {
-                    console.log(`downloading:${Math.floor((now / total) * 100)}`)
-                    return false;0
-                }, (curlret, httpret) => {
-                    if (curlret != 0 || httpret < 200 || httpret >= 300) {
-                        resolve(null);
-                    }
-                    else {
-                        resolve(localfile);
-                    }
-                }, 10, 100000000);        
-            }
-        );
-    }
-
-    let zipfile = await downloadBigZip('http://10.10.20.26:8899/update/dccout1.zip')
-    let client = new DCCClient('http://101.10.20.26:6677/dccout2');
-    let iniok = await client.init(dccurl+'/head.json', null);
-    
-    await client.updateByZip(zipfile, Zip_Native,null);
-```
-注意，zip是通过dcc插件生成的zip文件，有特定的文件组织形式。
-
-> 详细参考[zip更新](../zipUpdate/readme.md)。
-
-### 5.6 清理本地缓存
-
-```typescript
-let dcc = new DCCClient(null);
-await dcc.clean();
-```
-
-### 5.7 生成版本之间的差异zip
-
-```typescript
-    let zipfile = await LayaDCCTools.genZipByComparePath(老的dcc目录, 新的dcc目录, 输出目录);
-    //zipfile是返回的输出的zip文件路径
+### 3.使用方法
 
 ```
-zip中包含根root，可以通过updateByZip更新。
-具体的LayaDCCTools的接口见源码。
-
-### 5.8 根据文件列表生成pack包
-
-```typescript
-import {layadcctools} from './dist/layadcctools.js'
-const {LayaDCCTools,LayaDCC,Params,PackRaw} = layadcctools;
-
-layadcctools.LayaDCCTools.genPackByFileList( [
-    'D:/work/ideproj/DCCPlugin/release/web/internal/sky.jpg',
-    ],
-    'd:/temp/ddd1.pack', layadcctools.PackRaw)
-
+layadcc 资源目录 [options]
+options:
+    -cache 生成资源包.
+    -lwr 文件路径全部转为小写。（一般不需要）
+    -url url 如果要打包资源的话，对应的url.
+    -cout outpath 打包资源的输出目录，如果不设置的话，就是在资源目录下。
+例如:
+   layadcc d:/game/wow -cache -url www.game.com
 ```
-这里的PackRaw是一个默认打包器，具体见源码。
+### 4. 实战操作 
+#### 4.1 运行环境
+确保正确安装了Node.js，npm，layadcc  
+验证方法：  
+![](img/2.png)  
+图1  
+只要执行layadcc没有报错就可以了。
 
-更新可以通过：
+#### 4.2 html5项目环境
+假设有一个游戏项目，放在F:/work/test/bestgame/目录下(启动页index.html在这个目录下)，他的目录结构为：
+![](img/3.png)  
+图2   
+这个项目发布后对应的url地址是： `http://www.layabox.com/bestgame/index.html`  
+（如果单机版不需要url地址）
 
-```typescript
-    dcc.updateByPack(buffer, DCCPackR);
+#### 4.3 打包资源
+现在要把这个html5项目打包，放到App项目中。
 ```
-这里的DCCPackR是PackRaw对应的解码器。
+ layadcc F:/work/test/bestgame -cache -url http://www.layabox.com/bestgame/index.html
+```
+如果是单机包的话，输入:
+```
+ layadcc F:/work/test/bestgame -cache -url http://stand.alone.version/index.html
+```
 
-### 5.9 其他功能
-`enableLog:boolean` ：是否打印日志，设置为true之后，会有更多打印信息，有助于调试。
+如下图:  
+![](img/2.gif)  
+图3  
 
-`onlyTransUrl:boolean`：只做地址转换功能，即把一个url请求转换成对缓存对象的请求，不会在本地存储这个对象。例如，在网页端，只是希望保证文件资源是正确的，可以设置为这个true。
+加了`-cache`参数后，就会遍历所有的资源文件，输出到`-cout`指定的目录下，如果没有`-cout`参数，就在工作目录下创建一个layadccout目录（如上图），输出目录下的cache目录就是打包App的时候需要使用的资源。  
+然后把这个目录拷贝到构建的项目的对应的目录中，就可以编译打包生成App。  
+在不同的开发环境下，需要放到不同的目录中（如果使用LayaAirIDE或者layabox命令行工具，可以自动完成这一步）。  
 
-适配其他平台：用户可以自己实现一个`IGitFSFileIO`接口，并传给`DCCClient`的构造函数，就可以支持新的平台，主要是提供本地文件的读写功能。
+**Android Eclipse:**  
+![1](img/1.jpg) <br />
+（图4） android的资源目录是项目下的assets目录   
+
+**Android Studio:**  
+![](img/5.png)  
+（图5）  
+
+**iOS XCode:**  
+![2](img/2.jpg) <br />
+（图6）IOS是resource目录
+
+#### 4.4 更新服务器
+这是App发布后最常见的操作。每当更新了html5项目的内容，需要提交到服务器或者本地测试的时候，都要生成新的dcc，以便客户端能更新到最新资源。操作过程如下图：   
+![](img/1.gif)  
+图7   
+
+可以看到执行完layadcc后，在指定目录（现在是当前路径 . ）下面会生成一个update目录。然后把这个update目录拷贝到本地或者远程服务器的相同目录即可。  
+**Tips:**   
+为了方便和不出错误，建议直接在服务器所在目录下执行layadcc。
+
+**update目录介绍：**   
+![](img/4.png)  
+图8  
+
+allfiles.txt 所有的资源文件的相对路径。  
+assetsid.txt 本次dcc统计的整个资源包的校验码。  
+filetable.bin dcc主文件，里面是每个文件的校验值。  
+filetable.txt 文本格式的dcc文件，除了前三行，每一行代表一个文件和对应的校验值，与allfiles.txt正好对应起来，即第4行对应的文件是allfiles.txt的第一行。  
+filetable1.txt 这个文件不再使用。  
+
+**注意:**  
+1. 如果web服务器上的目录里面没有update目录，或者update目录里面没有内容，则客户端的dcc更新机制就会关闭，这样所有的资源每次都会重新下载。在开发期间建议用这种方式。
+2. 上面的例子是在当前目录下，实际也可以指定其他路径，相对或绝对都可以，例如:  
+   `layadcc d:/game/bin/h5` 或者 `layadcc ../bin/h5`
 
 
+#### 4.5 测试
+1. 资源打包成功的测试  
+   先说包中没有资源的情况，这种情况下所有的资源都会从网上下载，日志如下:   
+   ![](img/7.png)  
+   图9  可以看到有很多的Download   
+   **打印信息说明：**  
+    这里面的url后面跟着的 @127.0.0.1是调试用的，表示这个文件对应的服务器地址。s=0表示这个文件没有dcc信息， l=xxx表示下载的文件的长度。
 
-## 七、常见问题
+    如果打了资源包，即cache目录下的东西拷贝到上面指定的目录了，这时候最直观的变化是包变大了。然后运行app，会有从资源包读取资源的打印，如下：
+    ![](img/8.png)    
+    图10  
+   **打印信息说明**  
+   打印 `found the file in the package:` 就表示对应的资源是从包中获取的，没有去网络下载，看到这个日志就表示打包资源成功。如果打的单机版，则所有资源都应该有这个打印，不应该有任何下载。
 
-- **DCC是否能读取apk中打包的资源，需要特殊设置吗？**
+2. 服务是否有dcc的测试：  
+   在浏览器里打开地址： http://www.layabox.com/bestgame/update/filetable.txt  
+   注意要改成自己的地址，如果文件存在，表示打过dcc。如下图：  
+   ![](img/6.png)  
+   图11 
 
-  能读取，不需要特殊设置，直接可用。
-
-
-
-- **网页端可以使用layadcc2吗？**
-
-  可以把layadcc项目包含到自己的项目中，或者加载layadcc.js，然后在网页中使用。
-
-  网页使用会通过indexdb来缓存资源。缺点是只能接管laya的downloader，所以无法接管系统的xhr，且必须在laya初始化完成之后才能起作用。
-
-
-
-- **是否支持微信小游戏？**
-
-  这个可以通过自己扩展来实现。
-
-
-
-- **是否可以在以前版本的native中使用dcc2？**
-
-  不可以，layadcc2依赖native的新的接口。
-
+3. 更新机制起作用的测试  
+   直观的测试就是更新了资源，App产生了对应的改变，例如修改了的图片，能在app上看到。从日志看的话，就是资源获取的时候，凡是没有改变的都是打印 `found the file in the package:`， 而改变了的都是打印  `download [ ] xxxurl `。   
+   **注意**  
+     1 Download只执行一次，第二次再进入app，这个资源如果没改，就会直接从缓存取。
+     2 DCC的机制是运行时更新，所以只有执行到需要这个资源的时候才会下载，而不是一启动就下载所有更新。
 
 
-- **在网页端是否可以接管开始的js的下载？**
-
-  目前还不能，在网页端的dcc目前依赖laya引擎。native端可以不依赖。
-
-
+**总结**  
+* 凡是有 `download [ ] url `就表示下载，说明没有dcc或者资源更新了  
+* 凡是有`found the file in the package:`，说明打包资源成功，dcc起作用了。
 
 
+**注意:**  
+* layadcc执行的时候会修改所有文件的修改时间，目的是为了防止cdn在回源的时候以为文件没有被修改。 
+* 上面的地址是虚构的，不存在一个 http://www.layabox.com/bestgame/index.html 的地址。
 
+
+## 常见问题
+1. 打包资源以后，没感觉速度变快，怀疑所有的资源还是都在下载。
+    1. 确定是否真的都是在下载，看日志是不是有上面提到的Download和find，如果既有读缓存，也有下载，则没有问题，只是真的下载慢。
+    2. 如果全部都是Download，没有读缓存  
+        1. 是不是忘了打dcc了，通过浏览器检查服务器是否有dcc信息。
+        2. 检查打包资源路径是否正确。
+
+2. App发布后，修改了部分资源，但是没有被App更新到。  
+    1. 是不是忘了打dcc了？
+    2. 打了dcc了，但是忘了提交到服务器上（建议在服务器打dcc）？
+    3. 打了dcc了，也提交到服务器了，但是由于有cdn，还没有把这个变化分发到你所在的节点。
+
+3. 我确认dcc流程都对了，但是某个资源每次都会重新下载，不走缓存。
+    1. 确认这个资源是否在打包资源中，即dcc列表中，可以在 update/allfiles.txt中搜索这个文件。
+    2. 如果在。确认请求这个资源的url是否有search部分，即?xxx, 如果加了的话，是无法走dcc流程的。    
+    3. 如果也没有search，那有可能是这个文件的实际内容与校验值不匹配，dcc会以为是错误的文件，就不缓存了。可能的原因：
+        1. 打完dcc以后，有人把这个文件的内容又给改了，导致dcc校验值与实际文件内容不匹配。解决方法：重新打dcc
+        2. 没人改文件内容，但是dcc是在客户端打的，文件在上传到服务器以后，被上传软件修改内容了。这种情况一般发生在文本文件上，例如有的版本管理工具和ftp工具会把windows下的回车换行变成unix的回车。解决方法：用zip的方式传文件，或者在服务器上打dcc。 
+        3. 没有上面的问题，而且错误的是图片。可能原因是有的系统会全局截获http请求，在请求图片的时候，通过自己的服务器来缓存一个被压缩过的图片，来达到所谓的节省流量。这个压缩过的图片的校验值肯定与dcc记录的不一样。解决方法：关掉节省流量功能。
+        4. 如果没有开流量节省。但是使用了cdn，则还可能是cdn的问题，例如dcc文件被刷新了，但是对应的资源文件没有刷新。确认方法：通过curl命令下载本节点上的资源文件（方法见附录），与源站的资源文件比较，如果不同，即确认。解决方法：强制刷新cdn节点，或者找cdn客服。
+
+4. 开发期间，每次更新都打dcc太麻烦。  
+    不要用layadcc来打dcc，如果已经打了，
+    把update目录删掉，然后重新安装一下app，以去掉内部的缓存，这样dcc机制就关掉了，每个文件每次请求都会重新下载。  
+    如果某次又打了一下dcc，在服务器端生成了update目录，则缓存又会起作用，想关掉的话，再来一遍上面的操作。
+
+5. 为了减少包的体积，希望只是打包部分资源，正确的姿势是什么？    
+    无论是初次安装，还是以后升级app，如果只打部分资源的话，要保证资源里的dcc信息是基于完整数据生成的。例如共有100个资源，只想打包50个到app中，需要先在完整资源状态下打dcc，保存生成的dcc信息（主要是filetable.txt），然后删掉50个资源，用layadcc生成cache文件，这时候cache目录下生成dcc信息是不完整的，所以要用上一步生成的文件来覆盖他。   
+    如果使用了不完整的dcc会导致的问题：更新app的时候，native会优先使用app中缓存的dcc文件，导致丢失部分缓存信息，这样不在filetable.txt中的文件会被认为不需要缓存，从而一直下载，直到下次服务器dcc更新。
+
+## 附录
+1. LayaDCC的流程  
+   ![](img/1.png)  
+   图12  
+   对应的代码在 index.js 中。
+
+2. 下载某个cdn节点上的文件。
+```sh
+curl -H "Host:www.layabox.com" http://182.110.238.110/bestgame/index.html >a.html
+```
+表示把 182.110.238.110 节点上的 `http://www.layabox.com/bestgame/index.html`的文件下载下来，保存到 a.html中。
+其中的 Host：后面的内容改成自己的域名， `http://`后面的ip地址改成节点服务器的地址，那怎么获得节点服务器地址呢？在LayaPlayer中，节点服务器通常不会改变，所以可以通过任意一个Download的打印来得到地址，例如:  
+```
+Downloaded http://www.layabox.com/bestgame/bestgame.min.js@182.110.238.110 s=44216b56 l=422
+```
+就知道节点地址是182.110.238.110。 

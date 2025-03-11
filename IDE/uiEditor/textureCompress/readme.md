@@ -340,30 +340,4 @@ export class Main extends Laya.Script {
 
 那纹理压缩的显存占用，怎么计算呢，除了统计面板上的信息外，也有一种比较简单的统计方案。直接查看纹理压缩文件的大小就好了，比如纹理压缩文件是170k，那显存占用也是170k。
 
-## 五、各平台纹理压缩支持情况
 
-### 5.1 测试设备及版本
-
-​	测试使用设备如下：
-
-* IPhone12、IOS 15.7.1
-* OPPO R17、ColorOS 7.1、Android 10
-* IQOO Z3、OriginOS 3、Android 13
-* 测试引擎版本使用LayaAir3.2.1版本。
-
-### 5.2 各平台支持情况
-
-​	以抖音小游戏平台支持情况为例：
-
-|  抖音小游戏平台端   | ASTC格式                                                     | ETC1格式 | ETC2格式                                                     | PVR格式                                                      | DXT格式                                   |
-| :-----------------: | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------- |
-| 抖音小游戏开发者IDE | 不支持                                                       | 不支持   | 不支持                                                       | 不支持                                                       | RGB_DXT1、RGBA_DXT1、RGBA_DXT3、RGBA_DXT5 |
-|   抖音小游戏IOS端   | RGBA_ASTC4x4、RGBA_ASTC6x6、RGBA_ASTC8x8、RGBA_ASTC10x10、RGBA_ASTC12x12、SRGB8_A8_ASTC4x4、SRGB8_A8_ASTC6x6、SRGB8_A8_ASTC8x8、SRGB8_A8_ASTC10x10、SRGB8_A8_ASTC12x12、 | RGB_ETC1 | COMPRESSED_RGBA8_ETC2_EAC、COMPRESSED_RGB8_ETC2、COMPRESSED_SRGB8_ETC2、COMPRESSED_SRGB8_ALPHA8_ETC2_EAC、COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2、COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2 | 可以获取到WEBGL_compressed_texture_pvrtc对象，但获取不到pvr类型的值(IOS15以上不再支持) | 不支持                                    |
-| 抖音小游戏Android端 | RGBA_ASTC4x4、RGBA_ASTC6x6、RGBA_ASTC8x8、RGBA_ASTC10x10、RGBA_ASTC12x12、SRGB8_A8_ASTC4x4、SRGB8_A8_ASTC6x6、SRGB8_A8_ASTC8x8、SRGB8_A8_ASTC10x10、SRGB8_A8_ASTC12x12、 | RGB_ETC1 | COMPRESSED_RGBA8_ETC2_EAC、COMPRESSED_RGB8_ETC2、COMPRESSED_SRGB8_ETC2、COMPRESSED_SRGB8_ALPHA8_ETC2_EAC、COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2、COMPRESSED_SRGB8_PUNCHTHROUGH_ALPHA1_ETC2 | 不支持                                                       | 不支持                                    |
-
-测试版本为：
-
-* 抖音开发者IDE v4.2.1
-
-* 抖音IOS端v31.8.0、小游戏v3.5.1.1
-* 抖音Android端v27.3.0与v31.6.0、小游戏v3.5.1.1

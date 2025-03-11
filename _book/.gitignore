@@ -1,2 +1,8 @@
 .DS_Store
-node_modules
+/node_modules
+/package-lock.json
+/SUMMAR.md
+/_SUMMARY-.md
+/SUMMARY - 2.md
+/_bak
+/video
