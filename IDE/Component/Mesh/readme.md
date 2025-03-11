@@ -1,14 +1,16 @@
 # 组件系统之Mesh
 
-## 一、概述
+## 1.Mesh
+
+### 1.1 Mesh 概述
 
 Mesh是指模型的网格数据，3D模型是由多边形拼接而成，而一个复杂的多边形，实际上是由多个三角形拼接而成。所以一个3D模型的表面是由多个彼此相连的三角面构成。三维空间中，构成这些三角形的顶点的数据以及三角形的索引数据的集合就是Mesh。
 
-![1-1](img/1-1.png)
+ ![img](https://official.layabox.com/laya_data/LayaAir_TS/3D/Model_and_Mesh/Overview_of_Mesh/img/1.png)
 
-（图1-1）
+图1.1
 
-Mesh数据:
+#### 1.2 Mesh数据
 
 一个网格数据中包含了很多的数据信息，Shader中常见的顶点，法线等数据都是从Mesh数据中获取而来
 
@@ -67,33 +69,31 @@ LayaAir支持以下网格拓扑:
 
 如果网格具有三角形拓扑，那么前三个元素(0,1,2)识别一个三角形，而后三个元素(3,4,5)识别另一个三角形。顶点可以贡献的面的数量没有限制。这意味着同一个顶点可以多次出现在索引数组中。
 
+## 2.Mesh组件--MeshRenderer
 
-
-## 二、MeshRenderer组件
-
-Mesh Renderer 组件用于渲染网格。该组件与同一个对象上的 Mesh Filter组件配合使用；Mesh Renderer 组件渲染 Mesh Filter 组件引用的网格
+Mesh Renderer 组件用于渲染网格。该组件与同一个游戏对象上的 Mesh Filter组件配合使用；Mesh Renderer 组件渲染 Mesh Filter 组件引用的网格
 
 在引擎代码中MeshRenderer类继承自BaseRender组件类
 
 ### 2.1 Mesh Renderer Inspector
 
-![2-1](img/2-1.png)
+ ![image-20221125105532578](img/image-20221125105532578.png)
 
-（图2-1）
+图2-1
 
-RecevieShadow：指定该Render是否显示投射阴影
+A：指定该Render是否显示投射阴影
 
-CastShadow：指定当一个合适的光照射到Render上时，该渲染器是否投射阴影以及如何投射阴影
+B：指定当一个合适的光照射到Render上时，该渲染器是否投射阴影以及如何投射阴影
 
-ScaleInLightmap：LightMap缩放大小
+C：LightMap缩放大小
 
-LightmapIndex：LightMap索引号
+D：LightMap索引号
 
-Materials：Render材质列表
+E：Render材质列表
 
 ### 2.2 MeshRenderer的Material
 
-**Material与Share Material的区别**
+**Material与Share Material的区别**‘
 
 > Material
 
@@ -119,15 +119,13 @@ Materials：Render材质列表
 
 如果是主角这一类gameobject身上需要修改材质的属性或者shader属性比较多的时候，可以第一次使用material，这样可以动态的生成一个material实例，然后再使用sharedmaterial，动态的修改这个新生成的material，而且不会创建新的material
 
-
-
-## 三、MeshFilter组件
+## 3.Mesh组件--MeshFilter
 
 Mesh Filter 组件包含对网格的引用。该组件与同一个游戏对象上的 Mesh Renderer组件配合使用；Mesh Renderer 组件渲染 Mesh Filter 组件引用的网格。
 
-![3-1](img/3-1.png)
+### 3.1 MeshFilter Inspector 引用
 
-（图3-1）
+图3-1
 
 **Mesh属性**
 
@@ -135,7 +133,37 @@ Mesh Filter 组件包含对网格的引用。该组件与同一个游戏对象�
 
 **注意**：当更改 Mesh Filter 组件引用的网格时，此游戏对象上其他组件的设置不会改变。例如，MeshRenderer 组件不会更新其设置，这可能会导致引擎使用非预期的属性渲染网格。如果发生这种情况，请根据需要调整其他组件的设置
 
+## 4.通过PrimitiveMesh创建简单Mesh
 
+ 在快速开启3D之旅的课程中，我们已用到了**PrimitiveMesh**的**createBox**方法创建一个盒子模型，本节课中介绍该类来创建其他的基础模型，并且使用transform来调整位置。更详细的使用情况可以[查看API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.resource.models.PrimitiveMesh)。
 
-> 创建基础模型请参考[3D基础显示对象](../../../3D/displayObject/readme.md)
+创建时需注意的是，加载到场景中的引擎自带模型，轴心点在模型正中心，因此我们是以模型中心点为参考进行移动、旋转、缩放。加载到场景中时，模型默认会放置到场景的世界座标原点上。
+
+```typescript
+//创建一个空节点用来放置各模型
+sprite3D = scene.addChild(new Laya.Sprite3D());
+//正方体
+var box = sprite3D.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(0.5, 0.5, 0.5)));
+box.transform.position = new Laya.Vector3(2.0, 0.25, 0.6);
+box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
+//球体
+var sphere = sprite3D.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createSphere(0.25, 20, 20)));
+sphere.transform.position = new Laya.Vector3(1.0, 0.25, 0.6);
+//圆柱体
+var cylinder = sprite3D.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createCylinder(0.25, 1, 20)));
+cylinder.transform.position = new Laya.Vector3(0, 0.5, 0.6);
+//胶囊体
+var capsule = sprite3D.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createCapsule(0.25, 1, 10, 20)));
+capsule.transform.position = new Laya.Vector3(-1.0, 0.5, 0.6);
+//圆锥体
+var cone = sprite3D.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createCone(0.25, 0.75)));
+cone.transform.position = new Laya.Vector3(-2.0, 0.375, 0.6);
+//平面
+var plane = sprite3D.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createPlane(6, 6, 10, 10)));
+```
+
+效果如图2-2:
+
+![img](img/2.png)
+图2-2
 

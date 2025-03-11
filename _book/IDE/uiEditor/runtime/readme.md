@@ -56,13 +56,11 @@ UI组件脚本只能添加在Scene2D节点或2D预制体根节点的属性设置
 
 ### 2.1 IDE自动生成代码
 
-如动图2-1所示，在`UI运行时`属性输入框进行**鼠标双击**操作，IDE会弹窗提示创建UI组件脚本文件，默认是`RuntimeScript.ts`，开发者可以对其进行重命名，最后点击`保存`即可创建脚本。
+如图2-1所示，创建UI组件脚本以后，除了生成`RuntimeScript.ts`之外，在项目工程中看到还多了一个 `RuntimeScript.generated.ts`。
 
-![2-1](img/2-1.gif)
+![2-1](img/2-1.png)
 
-（动图2-1）
-
-可以看到，创建以后，除了生成`RuntimeScript.ts`之外，在项目工程中看到还多了一个 `RuntimeScript.generated.ts`。
+（图2-1）
 
 图2-2展示了`RuntimeScript.ts`默认生成的代码，其类名RuntimeScript就是创建时的文件名，它在生成时自动继承于RuntimeScriptBase 类。
 
@@ -136,7 +134,7 @@ UI组件脚本就已经介绍完了，再复杂的UI都可以通过勾选组件�
 
 ### 3.1 继承类不同
 
-UI组件脚本如果添加在Scene2D上，它的父类就继承于Laya.Scene（如图3-1）；如果添加在2D预制体的根节点，它的父类就继承于UI小部件的类，例如Laya.Box（如图3-2）。而自定义的组件脚本继承于Laya.Script（如图3-3）。
+UI组件脚本如果添加在Scene2D上，它的父类就继承于Laya.Scene（如图3-1）；如果添加在2D预制体的根节点，它的父类就继承于UI小部件的类，例如Laya.Box（如图3-2）。而自定义的组件脚本继承于Laya.Scirpt（如图3-3）。
 
 ![3-1](img/3-1.png)
 

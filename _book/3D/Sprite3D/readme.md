@@ -501,11 +501,9 @@ export class CameraMoveScript extends Laya.Script3D {
 
 ## 七、各种渲染精灵简介
 
-> 这里的渲染精灵都是通过组件实现
+### 7.1 MeshSprite3D精灵
 
-### 7.1 Mesh精灵
-
-Mesh精灵是引擎中最常用的 **静态网格精灵**，可根据于美术软件预制作或自定义的网格数据渲染模型。例如图7-1场景中的各种建筑模型、山体岩石一般均为Mesh精灵。
+`MeshSprite3D` 是引擎中最常用的 **静态网格精灵**，可根据于美术软件预制作或自定义的网格数据渲染模型。例如图7-1场景中的各种建筑模型、山体岩石一般均为`MeshSprite3D` 
 
 <img src="img/7-1.png" alt="7-1" style="zoom:80%;" />
 
@@ -517,11 +515,45 @@ Mesh精灵是引擎中最常用的 **静态网格精灵**，可根据于美术�
 
 （图7-2）
 
+也可以通过代码添加这些Mesh网格
+
+```typescript
+//正方体
+var box = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(0.5, 0.5, 0.5));
+this.scene.addChild(box);
+box.transform.position = new Laya.Vector3(2.0, 0.25, 0.6);
+box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
+
+//球体
+var sphere = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createSphere(0.25, 20, 20));
+this.scene.addChild(sphere);
+sphere.transform.position = new Laya.Vector3(1.0, 0.25, 0.6);
+
+//圆柱体
+var cylinder = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createCylinder(0.25, 1, 20));
+this.scene.addChild(cylinder);
+cylinder.transform.position = new Laya.Vector3(0, 0.5, 0.6);
+
+//胶囊体
+var capsule = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createCapsule(0.25, 1, 10, 20));
+this.scene.addChild(capsule);
+capsule.transform.position = new Laya.Vector3(-1.0, 0.5, 0.6);
+
+//圆锥体
+var cone = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createCone(0.25, 0.75));
+this.scene.addChild(cone);
+cone.transform.position = new Laya.Vector3(-2.0, 0.375, 0.6);
+
+//平面
+var plane = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createPlane(6, 6, 10, 10));
+this.scene.addChild(plane);
+```
 
 
-### 7.2 SkinnedMesh精灵
 
-SkinnedMesh精灵是引擎中的 **蒙皮动画网格精灵**，可根据美术软件预制作的网格数据和Animator组件的动画数据产生动作形变。常用于带蒙皮动画的角色、怪物等。和Mesh精灵相比具产生网格形变的能力。
+### 7.2 SkinnedMeshSprite3D精灵
+
+`SkinnedMeshSprite3D` 是引擎中的 **蒙皮动画网格精灵**，可根据美术软件预制作的网格数据和Animator组件的动画数据产生动作形变。常用于带蒙皮动画的角色、怪物等。和`MeshSprite3D `相比具产生网格形变的能力。 
 
 <img src="img/7-3.png" alt="7-3" style="zoom:80%;" />
 

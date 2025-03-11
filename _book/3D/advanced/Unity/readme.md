@@ -3,13 +3,8 @@
 ## 一、关于插件
 采用Unity插件方案的主要原因，主要是为了支持开发者在Unity资源商城中购买的资源可以无感的迁移到LayaAir IDE中进行相关的开发工作，Unity资源商城拥有一定数量的精美且高质量的美术资源，采用Untiy资源导出插件能将这些精美的美术资源迁移到LayaAir引擎的IDE中进行开发，对一些小而美的项目来说无疑是一种无形的帮助，更可以让有Unity经验的优质开发者可以更低学习成本进入HTML5和小游戏产业中来。
 
-插件的下载地址：https://github.com/layabox/LayaAir3.0UnityPlugin/releases
+插件的项目地址：https://github.com/layabox/LayaAir3.0UnityPlugin.git
 
-![1-1](img/1-1.png)
-
-（图1-1）
-
-> 开发者下载最新版的插件即可。
 
 
 
@@ -17,47 +12,33 @@
 
 Unity里有一个导入自定义包的功能，通过这个功能，可以在Unity里导入LayaAir引擎提供的专属功能包，用来导出Unity里编辑好的场景和资源，然后再用以LayaAir引擎3D的开发。在Unity里导入这个自定义的LayaAir功能包的过程，我们可以视为安装了一个LayaAir引擎资源导出的Unity插件。本小节会针对这个过程进行详细介绍。
 
-### 2.1 创建一个空项目
+### 2.1 项目中首次安装插件
 
-除非是在已经安装过LayaAir3D插件的Unity项目上进行升级安装，否则，我们建议去创建一个新的空项目。
-
-因为直接打开一个Unity已有项目进行插件的安装，可能会有冲突，会导致插件安装不成功。
-
-如果想使用已有Unity项目的场景资源和编辑好的场景，建议先在一个Unity空项目里安装好LayaAir引擎的插件后，再把旧项目的资源目录（也就是Unity项目中的Assets目录）复制到新建的项目里。
-
-> Tips: 旧项目中的其他文件对于导出插件而言都用不上，只复制Assets目录即可
-
-
-
-### 2.2 两种插件导入方式（项目中首次安装）
-
-#### 2.2.1 菜单式导入
-
-在Unity的资源菜单Assets（如图2-1）或者资源面板的Assets（如图2-2），右键`import Package-> custom Package`。
+打开一个Unity项目后，如果还没有安装插件，那么需要在Unity菜单栏下打开`Window->Package Manager`窗口，如图2-1所示。
 
 <img src="img/2-1.png" alt="2-1" style="zoom:80%;" />
 
-（图2-1）从菜单导入
+（图2-1）
 
-<img src="img/2-2.png" alt="2-2" style="zoom:80%;" />
+然后，如图2-2所示，在打开的窗口中，点击左上角的`+`按钮，选择`Add package from git URL`。
 
-（图2-2）从资源面板导入
+![2-2](img/2-2.png)
 
-以上的两种导入方式，任选一种点开后，选择之前下载好的LayaAir引擎unity插件（xx.unitypackage）打开，如图2-3所示。
+（图2-2）
 
-<img src="img/2-3.png" alt="2-3" style="zoom: 50%;" />
+将插件的Git地址（`https://github.com/layabox/LayaAir3.0UnityPlugin.git`）填入后点击`Add`，如图2-3所示。
+
+![2-3](img/2-3.png)
 
 （图2-3）
 
-点击`打开`后，如图2-4所示，会有插件包含的内容列表展示，如果有不想要的功能，比如在Unity里直接预览这个功能不想要，也可以把相关默认的勾选去掉，但是建议全部导入（默认是全选）。
+点击后，插件会自动进行安装，安装完成后的效果如图2-4所示。
 
-所以，直接点击`Import`按钮，开始全部导入，即可。
-
-<img src="img/2-4.png" alt="2-4" style="zoom:80%;" />
+<img src="img/2-4.png" alt="2-4" style="zoom: 67%;" />
 
 （图2-4）
 
-导入完成后，可以看到菜单栏多出一个`LayaAir3D`，如图2-5所示。此时说明，已经导入成功。
+插件安装完成后，可以看到菜单栏多出一个`LayaAir3D`，如图2-5所示。此时说明，已经导入成功。
 
 ![2-5](img/2-5.png)
 
@@ -65,13 +46,15 @@ Unity里有一个导入自定义包的功能，通过这个功能，可以在Uni
 
 
 
-#### 2.2.2 拖拽式导入
+### 2.2 已有插件更新
 
-拖拽式安装的操作方式是把下载好的插件（xx.unitypackage）直接拖拽到Assets面板下，如图2-6所示。其他后续操作与菜单式安装一样。就不重复介绍了。
+如果LayaAir官方更新了插件，而开发者的Unity项目中已经安装过资源导出插件了，那么开发者只需要进行更新即可。如图2-6所示，在`Package Manager`窗口中找到`LayaAir 3.0 Export Tool`插件，点击`Update`即可更新。
 
-<img src="img/2-6.png" alt="2-6" style="zoom:70%;" />
+<img src="img/2-6.png" alt="2-6" style="zoom: 67%;" />
 
 （图2-6）
+
+> 如果要删除插件，只需点击`Remove`即可。
 
 
 
@@ -422,158 +405,6 @@ Unity的法线贴图经过了压缩，在导出的时候可能会存在LayaAir I
 
 
 
-### 4.8 着色器Shader
-
-#### 4.8.1 unity内置的Shader
-
-插件只支持了部分unity内置shader的导出，支持的shader如下：
-
-- Skybox："Skybox/6 Sided"、"Skybox/Procedural"、"Skybox/Panoramic"、"SkyBox/Cubemap"
-
-- Particles："Particles/Standard Surface"、"Particles/Standard Unlit"
-- Unlit："Unlit/Texture"、"Unlit/Transparent Cutout"、"Unlit/Transparent"、"Unlit/Color"
-- "Standard"
-
-- Legacy："Legacy Shaders/Diffuse Fast"、"Legacy Shaders/Diffuse"、"Legacy Shaders/Diffuse Detail"、"Legacy Shaders/Bumped Diffuse"、"Legacy Shaders/Bumped Specular"
-
-
-
-#### 4.8.2 自定义的unityshader
-
-这里要注意，插件导出的shader并不是将unity的.shader文件转化为LayaAir可用的.shader文件，它只是导出了shader在材质上的参数配置。因此，对于在unity中的自定义shader，在导出前，需要先把unityshader手动写成一个layashader，然后才能导出配置。
-
-> layashader的格式参考[自定义Shader](../customShader/readme.md)。
-
-  > [!Tip]
-  >
-  > Unity中的“Properties”对应LayaAir中的“uniformMap”；Unity中的“SubShader”对应LayaAir中的“shaderPass”。
-
-导出自定义unityshader需要在插件里面找到`MetarialPropData.json`文件，在里面添加自定义的shader的配置。
-
-打开这个文件可以看到，里面已经有很多的shader配置了，这些就是上一节中提到的内置shader。如果想添加自定义的导出配置，需要按照以下格式：
-
-```json
-"GAPH Custom Shader/Shader_IntegradedEffect": {
-        "targeName": "Shader_IntegradedEffect",
-        "textures": [
-            {
-                "uName": "_MainTex",
-                "layaName": "u_AlbedoTexture",
-                "defind": "ALBEDOTEXTURE"
-            },
-            ......
-        ],
-        "tillOffset": [
-            {
-                "uName": "_MainTex_ST",
-                "layaName": "u_TilingOffset"
-            },
-            ......
-        ],
-        "colors": [
-            {
-                "uName": "_TintColor",
-                "layaName": "u_TintColor",
-                "hdrName": "u_TintColorIntensity"
-            },
-            ......
-        ],
-        "floats": [
-            {
-                "uName": "_MaskOffsetFactor",
-                "layaName": "u_MaskOffsetFactor"
-            },
-            ......
-        ],
-        "defineds": [
-            {
-                "uName": "_SecondColor",
-                "layaName": "IS_USE_SECOND_COLOR",
-                "from": 0,
-                "deflat": 1.0
-            },
-            ......
-        ]
-    }
-```
-
-其中，
-
-- "GAPH Custom Shader/Shader_IntegradedEffect"是定义unityshader的路径，如图4-14所示。
-
-![4-14](img/4-14.png)
-
-（图4-14）
-
-- "targeName"：对应layaShader中定义的名称，如图4-15所示。
-
-![4-15](img/4-15.png)
-
-（图4-15）
-
-- "textures"：需要导出的贴图配置。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-    "defind": defind
-}
-```
-
-- "tillOffset"：材质球贴图的参数。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-}
-```
-
-- "colors"：颜色。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-    "hdrName": unity 中是hdr颜色则laya会生成这个参数，否则不需要。
-}
-```
-
-- floats：浮点数。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-}
-```
-
-- defineds
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-    "from": 0:浮点数，1：keyWorld，2：材质是否有属性，3：是否有贴图,
-    "deflat": 对应属性检查
-}
-```
-
-- ......（开发者可以导出更多自定义的配置）
-
-
-
-### 4.9 粒子
-
-为实现快速将unity粒子资源导出到LayaAir-IDE场景，插件做了对unity粒子系统导出的支持。但是，导出的粒子在LayaAir内置的粒子系统中并不支持。
-
-因此，LayaAir推出了CPU粒子系统，在这个版本的粒子系统上，支持unity粒子的参数导出。
-
-说明：”CPU粒子系统“属于[企业会员的功能](https://layaair.com/3.2/doc/IDE/layapackage/enterprise/readme.html)。
-
-
-
 ## 五、模型的导出文件与加载显示
 
 当了解完插件的功能和使用规则后，我们就可以在Unity中进行编辑并导出了，但是导出后的文件名分别代表着什么，又是怎么进行加载使用的。本小节开始为大家介绍。
@@ -618,4 +449,18 @@ Unity的法线贴图经过了压缩，在导出的时候可能会存在LayaAir I
 （图5-3）
 
 
+
+## 六、常见问题
+
+如果遇到下图的报错，原因是缺少一些包。
+
+![6-1](img/6-1.png)
+
+（图6-1）
+
+这时需要在`Window`菜单中，打开包管理器`Package Manager`。打开后，如图6-2所示，搜索editor，然后选择”Editor Coroutines“和”Version Control“这两个包，添加即可。
+
+![6-2](img/6-2.png)
+
+（图6-2）
 

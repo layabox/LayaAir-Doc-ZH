@@ -124,123 +124,93 @@
 static createBox(long: number = 1, height: number = 1, width: number = 1): Mesh
 ```
 
-可以看到，通过 `createBox` 方法，可以创建Box网格，而且还可以创建不同的垂直和水平高度。
+可以看到，通过 `createBox` 方法，可以创建Box网格，而且还可以创建不同的垂直和水平高度
 
 因此，可以通过代码创建不同类型的Mesh网格：
 
 ```typescript
 //正方体
-Laya.PrimitiveMesh.createBox(0.5, 0.5, 0.5);
+let box = Laya.PrimitiveMesh.createBox(0.5, 0.5, 0.5);
 //球体
-Laya.PrimitiveMesh.createSphere(0.25, 20, 20);
+let sphere = Laya.PrimitiveMesh.createSphere(0.25, 20, 20);
 //圆柱体
-Laya.PrimitiveMesh.createCylinder(0.25, 1, 20);
+let cylinder = Laya.PrimitiveMesh.createCylinder(0.25, 1, 20);
 //胶囊体
-Laya.PrimitiveMesh.createCapsule(0.25, 1, 10, 20);
+let capsule = Laya.PrimitiveMesh.createCapsule(0.25, 1, 10, 20);
 //圆锥体
-Laya.PrimitiveMesh.createCone(0.25, 0.75);
+let cone = Laya.PrimitiveMesh.createCone(0.25, 0.75);
 //平面
-Laya.PrimitiveMesh.createPlane(6, 6, 10, 1));
+let plane = Laya.PrimitiveMesh.createPlane(6, 6, 10, 1));
 ```
 
-创建好的对象是Mesh网格，如果想要创建出场景中能看到的Sprite3D对象，我们还需要为其添加组件。
+创建好的对象是Mesh网格，如果想要创建出场景中能看到的Sprite3D对象，我们还需要使用 `Laya.MeshSprite3D` 类
 
 
 
-#### 3.1.2 `MeshFilter & MeshRenderer`
+#### 3.1.2 `MeshSprite3D`
 
-添加 `MeshFilter` （网格过滤器）和 `MeshRenderer` （网格渲染器）组件，创建出场景能看到的 `Sprite3D` 对象，同时是带有 Mesh 形状的 `Sprite3D`。
+使用 `MeshSprite3D` 类，可以通过构造方法，传入 Mesh 对象，创建出场景能看到的 `Sprite3D` 对象，同时是带有 Mesh 形状的 `Sprite3D`
 
-也就是通过 `Sprite3D + MeshFilter + MeshRenderer` 的方式创建3D对象并添加到场景中，代码如下：
+构造方法如下：
 
 ```typescript
-/* 立方体 */
-let box = new Laya.Sprite3D;
-let boxMesh = box.addComponent(Laya.MeshFilter);
-let boxRender = box.addComponent(Laya.MeshRenderer);
-// 创建网格
-boxMesh.sharedMesh = Laya.PrimitiveMesh.createBox(0.5, 0.5, 0.5);
-// 创建材质
-let boxMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-boxRender.sharedMaterial = boxMaterial;
-// 添加到场景
-this.scene.addChild(box);
-// 设置位置
-box.transform.position = new Laya.Vector3(2.0, 0.25, 0.6);
-box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
+/**
+* 创建一个 <code>MeshSprite3D</code> 实例。
+* @param mesh 网格,同时会加载网格所用默认材质。
+* @param name 名字。
+*/
+constructor(mesh: Mesh = null, name: string = null) {
+    super(name);
+    this._meshFilter = this.addComponent(MeshFilter);
+    this._render = this.addComponent(MeshRenderer);
+    (mesh) && (this._meshFilter.sharedMesh = mesh);
+}
+```
 
+`MeshSprite3D` 对象是会创建 `MeshFilter` （网格过滤器）和 `MeshRenderer` （网格渲染器）组件的。
 
-/* 球体 */
-let sphere = new Laya.Sprite3D;
-let sphereMesh = sphere.addComponent(Laya.MeshFilter);
-let sphereRender = sphere.addComponent(Laya.MeshRenderer);
-// 创建网格
-sphereMesh.sharedMesh = Laya.PrimitiveMesh.createSphere(0.25, 20, 20);
-// 创建材质
-let sphereMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-sphereRender.sharedMaterial = sphereMaterial;
-// 添加到场景
-this.scene.addChild(sphere);
-// 设置位置
-sphere.transform.position = new Laya.Vector3(1.0, 0.25, 0.6);
+最后，我们通过 `MeshSprite3D` 来创建并添加到场景中，代码如下：
 
+```typescript
+//正方体
+//创建Box网络
+let box: Laya.Mesh = Laya.PrimitiveMesh.createBox(0.5, 0.5, 0.5);
+//创建MeshSprite3D网络
+let boxMeshSprite3D: Laya.MeshSprite3D = new Laya.MeshSprite3D(box);
+//添加到场景中
+this.scene.addChild(boxMeshSprite3D);
+// 三维变换
+boxMeshSprite3D.transform.position = new Laya.Vector3(2.0, 0.25, 0.6);
+boxMeshSprite3D.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
 
-/* 圆柱体 */
-let cylinder = new Laya.Sprite3D;
-let cylinderMesh = cylinder.addComponent(Laya.MeshFilter);
-let cylinderRender = cylinder.addComponent(Laya.MeshRenderer);
-// 创建网格
-cylinderMesh.sharedMesh = Laya.PrimitiveMesh.createCylinder(0.25, 1, 20);
-// 创建材质
-let cylinderMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-cylinderRender.sharedMaterial = cylinderMaterial;
-// 添加到场景
-this.scene.addChild(cylinder);
-// 设置位置
-cylinder.transform.position = new Laya.Vector3(0, 0.5, 0.6);
+//球体
+let sphere: Laya.Mesh = Laya.PrimitiveMesh.createSphere(0.25, 20, 20);
+let sphereMeshSprite3D: Laya.MeshSprite3D = new Laya.MeshSprite3D(sphere);
+this.scene.addChild(sphereMeshSprite3D);
+sphereMeshSprite3D.transform.position = new Laya.Vector3(1.0, 0.25, 0.6);
 
+//圆柱体
+let cylinder:Laya.Mesh = Laya.PrimitiveMesh.createCylinder(0.25, 1, 20);
+let cylinderMeshSprite3D: Laya.MeshSprite3D = new Laya.MeshSprite3D(cylinder);
+this.scene.addChild(cylinderMeshSprite3D);
+cylinderMeshSprite3D.transform.position = new Laya.Vector3(0, 0.5, 0.6);
 
-/* 胶囊体 */
-let capsule = new Laya.Sprite3D;
-let capsuleMesh = capsule.addComponent(Laya.MeshFilter);
-let capsuleRender = capsule.addComponent(Laya.MeshRenderer);
-// 创建网格
-capsuleMesh.sharedMesh = Laya.PrimitiveMesh.createCapsule(0.25, 1, 10, 20);
-// 创建材质
-let capsuleMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-capsuleRender.sharedMaterial = capsuleMaterial;
-// 添加到场景
-this.scene.addChild(capsule);
-// 设置位置
-capsule.transform.position = new Laya.Vector3(-1.0, 0.5, 0.6);
+//胶囊体
+let capsule:Laya.Mesh = Laya.PrimitiveMesh.createCapsule(0.25, 1, 10, 20);
+let capsuleMeshSprite3D: Laya.MeshSprite3D = new Laya.MeshSprite3D(capsule);
+this.scene.addChild(capsuleMeshSprite3D);
+capsuleMeshSprite3D.transform.position = new Laya.Vector3(-1.0, 0.5, 0.6);
 
+//圆锥体
+let cone:Laya.Mesh = Laya.PrimitiveMesh.createCone(0.25, 0.75);
+let coneMeshSprite3D: Laya.MeshSprite3D = new Laya.MeshSprite3D(cone);
+this.scene.addChild(coneMeshSprite3D);
+coneMeshSprite3D.transform.position = new Laya.Vector3(-2.0, 0.375, 0.6);
 
-/* 圆锥体 */
-let cone = new Laya.Sprite3D;
-let coneMesh = cone.addComponent(Laya.MeshFilter);
-let coneRender = cone.addComponent(Laya.MeshRenderer);
-// 创建网格
-coneMesh.sharedMesh = Laya.PrimitiveMesh.createCone(0.25, 0.75);
-// 创建材质
-let coneMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-coneRender.sharedMaterial = coneMaterial;
-// 添加到场景
-this.scene.addChild(cone);
-// 设置位置
-cone.transform.position = new Laya.Vector3(-2.0, 0.375, 0.6);
-
-
-/* 平面 */
-let plane = new Laya.Sprite3D;
-let planeMesh = plane.addComponent(Laya.MeshFilter);
-let planeRender = plane.addComponent(Laya.MeshRenderer);
-// 创建网格
-planeMesh.sharedMesh = Laya.PrimitiveMesh.createPlane(6, 6, 10, 10);
-// 创建材质
-let planeMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-planeRender.sharedMaterial = planeMaterial;
-// 添加到场景
-this.scene.addChild(plane);
+//平面
+let plane:Laya.Mesh = Laya.PrimitiveMesh.createPlane(6, 6, 10, 10);
+let planeMeshSprite3D: Laya.MeshSprite3D = new Laya.MeshSprite3D(plane);
+this.scene.addChild(planeMeshSprite3D);
 ```
 
 运行时效果如下：
@@ -255,15 +225,17 @@ this.scene.addChild(plane);
 
 使用 `Transform3D` 类，可以对3D基础对象做基础变换，代码示例如下：
 
+> 代码中的cube就是3.1.2节中的boxMeshSprite3D。
+
 ```typescript
 //改变立方体的世界坐标
-box.transform.position = new Laya.Vector3(0, 0, 0);
+cube.transform.position = new Laya.Vector3(0, 0, 0);
 //立方体的平移
-box.transform.translate(new Laya.Vector3(1, 1, 1));
+cube.transform.translate( new Laya.Vector3(1, 1, 1));
 //立方体的旋转
-box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
+cube.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
 //立方体的缩放
-box.transform.setWorldLossyScale(new Laya.Vector3(2, 2, 2));
+cube.transform.setWorldLossyScale( new Laya.Vector3(2, 2, 2));
 ```
 
 
@@ -274,9 +246,11 @@ box.transform.setWorldLossyScale(new Laya.Vector3(2, 2, 2));
 
 ```typescript
 //立方体产生阴影
-boxRender.castShadow = true;
+cube.meshRenderer.castShadow = true;
+//创建平面
+let plane = this.scene.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createPlane(6, 6, 10, 10)));
 //平面接收阴影
-planeRender.receiveShadow = true;
+plane.meshRenderer.receiveShadow = true;
 ```
 
 > 需要保证Direction Light的Shadow Mode不为None。
@@ -289,13 +263,13 @@ planeRender.receiveShadow = true;
 
 ```typescript
 //添加Rigidbody3D组件
-let boxRigidbody3D: Laya.Rigidbody3D = box.addComponent(Laya.Rigidbody3D);
+let rigidbody3D : Laya.Rigidbody3D = cube.addComponent(Laya.Rigidbody3D);
 //设置重力
-boxRigidbody3D.gravity = new Laya.Vector3(0, -9.8, 0);
+rigidbody3D.overrideGravity = true;
 //创建盒子形状碰撞器
 let boxShape: Laya.BoxColliderShape = new Laya.BoxColliderShape(1, 1, 1);
 //设置盒子的碰撞形状
-boxRigidbody3D.colliderShape = boxShape;
+rigidbody3D.colliderShape = boxShape;
 ```
 
 > 运行物理组件需要在项目设置面板中勾选相应的引擎模块。
@@ -307,17 +281,17 @@ boxRigidbody3D.colliderShape = boxShape;
 每个3D基础对象，都可以通过代码添加材质和纹理，代码示例如下：
 
 ```typescript
-// 创建材质
-let boxMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
 //预加载纹理资源
-let resource: string = "resources/layabox.png";
-Laya.loader.load(resource).then(() => {
+let resource: string = "layabox.png";
+Laya.loader.load(resource).then( ()=>{
+    //创建BlinnPhong材质
+    let materialBill: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial;
+    cube.meshRenderer.material = materialBill;
     //为材质加载纹理
-    let tex = Laya.Loader.getTexture2D(resource);
+    let tex = Laya.Loader.getTexture2D("layabox.png");
     //设置贴图
-    boxMaterial.albedoTexture = tex;
-});
-boxRender.sharedMaterial = boxMaterial;
+    materialBill.albedoTexture = tex;
+} );
 ```
 
 运行时效果如下：

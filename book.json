@@ -55,15 +55,15 @@
         "versions": {
             "options": [
                 {
-                    "value": "https://layaAir.com/3.3/doc/",
+                    "value": "https://layaAir.com/3.1/doc/",
                     "text": "v3.3"
                 },
                 {
-                    "value": "https://layaAir.com/3.2/doc/",
+                    "value": "https://layaAir.com/3.3/doc/",
                     "text": "v3.2"
                 },
                 {
-                    "value": "https://layaAir.com/3.1/doc/",
+                    "value": "https://layaAir.com/3.2/doc/",
                     "text": "v3.1"
                 },
                 {
@@ -79,5 +79,5 @@
     "structure": {
         "readme": "services.md"
     },
-    "title": "LayaAir3.3 · 引擎文档 · LAYABOX"
+    "title": "LayaAir3.1 · 引擎文档 · LAYABOX"
 }

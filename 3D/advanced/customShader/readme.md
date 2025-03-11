@@ -683,12 +683,12 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 在图形学中常常有围绕着变换进行的一些用法：例如世界矩阵、投影矩阵、裁剪空间，UV变换等等，在LayaAir的.glsl头文件中存在了这样一些用法，如下：
 
-- getWorldMatrix() 返回一个mat4类型的世界矩阵( ) ，模型空间坐标 * 世界矩阵 = 世界空间坐标。[ Sprite3DVertex.glsl ]
-- getVertexParams() 返回一个Vertex结构体，结构体中包含Mesh的原始数据：顶点坐标、法线、UV（UV宏）、切线（NEEDTBN宏）、副切线（NEEDTBN宏）、顶点颜色（COLOR宏）。[ VertexCommon.glsl ]
-- transfromUV() 返回一个vec2的新UV坐标，按照函数第二参数进行放缩和偏移的操作，实际的算法为：newUV = (oldUV.x · x + tilloffset.z,  oldUV.y · y + tilloffset.w) tilloffset的xy对应xy的放缩值，zw对应xy的偏移值。 [ Sprite3DCommon.glsl ]
-- 结构体PixelParams定义了一些世界空间下的顶点属性：顶点坐标、法线、UV（UV宏）、切线（NEEDTBN宏）、副切线（NEEDTBN宏）。结构体PixelParams只是定义了这些世界的顶点属性，并没有初始化，InitPixelParams() 返回初始化后的PixelPaams变量。[ BlinnPhongCommon.glsl ]
-- getPositionCS() 传入世界坐标返回的是裁剪空间的坐标。[ Camera.glsl ]
-- remapPositionZ() 对裁剪空间的坐标Z进行重映射。[ Camera.glsl ]
+- getWorldMatrix() 返回一个mat4类型的世界矩阵( ) ，模型空间坐标 * 世界矩阵 = 世界空间坐标。**[ Sprite3DVertex.glsl ]**
+- getVertexParams() 返回一个Vertex结构体，结构体中包含Mesh的原始数据：顶点坐标、法线、UV（UV宏）、切线（NEEDTBN宏）、副切线（NEEDTBN宏）、顶点颜色（COLOR宏）。**[ VertexCommon.glsl ]**
+- transfromUV() 返回一个vec2的新UV坐标，按照函数第二参数进行放缩和偏移的操作，实际的算法为：newUV = (oldUV.x * x + tilloffset.z,  oldUV.y * y + tilloffset.w) tilloffset的xy对应xy的放缩值，zw对应xy的偏移值。 **[ Sprite3DCommon.glsl ]**
+- 结构体PixelParams定义了一些世界空间下的顶点属性：顶点坐标、法线、UV（UV宏）、切线（NEEDTBN宏）、副切线（NEEDTBN宏）。结构体PixelParams只是定义了这些世界的顶点属性，并没有初始化，InitPixelParams() 返回初始化后的PixelPaams变量。**[ BlinnPhongCommon.glsl ]**
+- getPositionCS() 传入世界坐标返回的是裁剪空间的坐标。**[ Camera.glsl ]**
+- remapPositionZ() 对裁剪空间的坐标Z进行重映射。**[ Camera.glsl ]**
 
 
 

@@ -153,37 +153,38 @@ Pixel Lines Datas：像素线数据
 ```typescript
 //Tool工具类
 export class Tool {
-    private static transVertex0: Laya.Vector3 = new Laya.Vector3();
-    private static transVertex1: Laya.Vector3 = new Laya.Vector3();
-    private static transVertex2: Laya.Vector3 = new Laya.Vector3();
-    private static corners: Laya.Vector3[] = [];
-    static linearModel(sprite3D: Laya.Sprite3D, lineSprite3D: Laya.PixelLineSprite3D, color: Laya.Color): void {
-        if (sprite3D.getComponent(Laya.MeshFilter)) {
-            var mesh: Laya.Mesh = sprite3D.getComponent(Laya.MeshFilter).sharedMesh;
-            var positions: Array<Laya.Vector3> = [];
-            mesh.getPositions(positions);
-            var indices = mesh.getSubMesh(0).getIndices();
-
-            for (var i: number = 0; i < indices.length; i += 3) {
-                var vertex0: Laya.Vector3 = positions[indices[i]];
-                var vertex1: Laya.Vector3 = positions[indices[i + 1]];
-                var vertex2: Laya.Vector3 = positions[indices[i + 2]];
-                Laya.Vector3.transformCoordinate(vertex0, sprite3D.transform.worldMatrix, this.transVertex0);
-                Laya.Vector3.transformCoordinate(vertex1, sprite3D.transform.worldMatrix, this.transVertex1);
-                Laya.Vector3.transformCoordinate(vertex2, sprite3D.transform.worldMatrix, this.transVertex2);
-                lineSprite3D.addLine(this.transVertex0, this.transVertex1, color, color);
-                lineSprite3D.addLine(this.transVertex1, this.transVertex2, color, color);
-                lineSprite3D.addLine(this.transVertex2, this.transVertex0, color, color);
-            }
-        }
-
-        for (var i: number = 0, n: number = sprite3D.numChildren; i < n; i++)
-            Tool.linearModel((<Laya.Sprite3D>sprite3D.getChildAt(i)), lineSprite3D, color);
-    }
-
-    constructor() {
-    }
-
+	private static transVertex0: Vector3 = new Vector3();
+	private static transVertex1: Vector3 = new Vector3();
+	private static transVertex2: Vector3 = new Vector3();
+	private static corners: Vector3[] = [];
+	//线性模型转换方法
+	static linearModel(sprite3D: Sprite3D, lineSprite3D: PixelLineSprite3D, color: Color): void {
+		if (sprite3D instanceof MeshSprite3D) {
+			var meshSprite3D: MeshSprite3D = <MeshSprite3D>sprite3D;
+			//获得Sprite3D对象的网格数据
+			var mesh: Mesh = meshSprite3D.meshFilter.sharedMesh;
+			var positions: Array<Vector3> = [];
+			//拷贝并填充位置数据至数组
+			mesh.getPositions(positions);
+			//拷贝并获取网格索引的副本
+			var indices = mesh.getSubMesh(0).getIndices();
+			
+			for (var i: number = 0; i < indices.length; i += 3) {
+				//每此拿3个位置数据
+				var vertex0: Vector3 = positions[indices[i]];
+				var vertex1: Vector3 = positions[indices[i + 1]];
+				var vertex2: Vector3 = positions[indices[i + 2]];
+				//通过矩阵转换一个三维向量到另外一个归一化的三维向量
+				Vector3.transformCoordinate(vertex0, meshSprite3D.transform.worldMatrix, this.transVertex0);
+				Vector3.transformCoordinate(vertex1, meshSprite3D.transform.worldMatrix, this.transVertex1);
+				Vector3.transformCoordinate(vertex2, meshSprite3D.transform.worldMatrix, this.transVertex2);
+				//绘制3条像素线
+				lineSprite3D.addLine(this.transVertex0, this.transVertex1, color, color);
+				lineSprite3D.addLine(this.transVertex1, this.transVertex2, color, color);
+				lineSprite3D.addLine(this.transVertex2, this.transVertex0, color, color);
+			}
+		}
+	}
 }
 ```
 
@@ -194,18 +195,13 @@ export class Tool {
 通过如下代码对工具类 Tool.linearModel 的使用，可以把一个 PixelLineSprite3D 对象的网格数据设置成像素线数据：
 
 ```typescript
-onAwake(): void {
-    /* 创建球体 */
-    let sphere = new Laya.Sprite3D;
-    let sphereMesh = sphere.addComponent(Laya.MeshFilter);
-    sphereMesh.sharedMesh = Laya.PrimitiveMesh.createSphere(0.25, 20, 20);
-    let sphereRender = sphere.addComponent(Laya.MeshRenderer);
-    // 为球体添加像素线渲染精灵
-    let sphereLineSprite3D: Laya.PixelLineSprite3D = new Laya.PixelLineSprite3D(3500);
-    this.scene.addChild(sphereLineSprite3D);
-    //设置像素线渲染精灵线模式
-    Tool.linearModel(sphere, sphereLineSprite3D, Laya.Color.GREEN);
-}
+		//创建一个球体
+		var sphere: MeshSprite3D = (<MeshSprite3D>this.sprite3D.addChild(new MeshSprite3D(PrimitiveMesh.createSphere(0.25, 20, 20))));
+		sphere.transform.position = new Vector3(0.0, 0.75, 2);
+		//创建一个像素线3D精灵
+		var sphereLineSprite3D: PixelLineSprite3D = (<PixelLineSprite3D>this.lineSprite3D.addChild(new PixelLineSprite3D(3500)));
+		//转换球体的网格数据为像素线数据
+		Tool.linearModel(sphere, sphereLineSprite3D, Color.GREEN);
 ```
 
 

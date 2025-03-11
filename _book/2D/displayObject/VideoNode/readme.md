@@ -55,31 +55,6 @@ export class NewScript extends Laya.Script {
 
 如果是在LayaAir IDE中运行，则VideoNode无需通过事件触发播放。但是在Chrome中，自动播放只允许**静音自动播放**。只有用户进行交互（单击、双击等）后，才允许自动播放声音。
 
-并且，不同的浏览器对视频播放的协议要求不同，开发者可以通过代码设置视频纹理更新帧率：
-
-```typescript
-const { regClass, property } = Laya;
-
-@regClass()
-export class NewScript extends Laya.Script {
-
-    @property({type: Laya.VideoNode})
-    public video: Laya.VideoNode;
-
-    //组件被启用后执行，例如节点被添加到舞台后
-    onEnable(): void {
-        // 鼠标点击触发播放
-        Laya.stage.on(Laya.Event.MOUSE_DOWN, () => {
-            // 视频纹理更新帧率
-            this.video.videoTexture.useFrame = true;
-            this.video.videoTexture.updateFrame = 30;
-
-            this.video.play();
-        });
-    }
-}
-```
-
 
 
 # 2. 代码创建VideoNode

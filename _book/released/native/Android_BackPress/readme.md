@@ -1,9 +1,6 @@
 
 
 # 接管android的后退按钮
-
-> 从3.2版本后删除
-
 在LayaNative中可以使用这两个函数， conch.setOnBackPressedFunction(onBack) 和conch.exit(), 接管按下“后退键”的处理方式。接管setOnBackPressedFunction后，当用户按下后退键时便会执行此函数。
 
 一旦调用了这个函数，就屏蔽了引擎中默认按下两次退出的功能，这时候，如果想要退出应用的话，可以通过调用exit()函数来实现。

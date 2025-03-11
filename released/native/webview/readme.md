@@ -1,6 +1,5 @@
-# webview
 
-> 从LayaAir3.2后删除
+# webview
 
 ## 一、介绍
 

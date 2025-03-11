@@ -1,5 +1,7 @@
 ## LayaAir3-IDE可视化3D物理编辑详解
 
+> Author : Charley     Version >= LayaAir 3.1
+
 LayaAir3.1引擎版本中，我们对于物理引擎的接口架构进行了重构，使得3D物理不仅仅完善了物理组件的功能，还彻底满足了自由接入第三方的物理库的需求。
 
 也就是说，除了本身就集成好的Bullet物理引擎与PhysX物理引擎，开发者也可以轻松的自行接入其它的物理引擎。
@@ -386,32 +388,25 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
     ……省略若干代码
    */
 
-    /**增加圆锥形刚体碰撞器 */
-    private addCone(): void {
+/**增加圆锥形刚体碰撞器 */
+	private addCone(): void {
         //生成随机值半径和高
-        let raidius = Math.random() * 0.2 + 0.2;
-        let height = Math.random() * 0.5 + 0.8;
-        //创建圆锥形3D模型节点对象
-        let cone = new Laya.Sprite3D;
-        let coneMesh = cone.addComponent(Laya.MeshFilter);
-        let coneRender = cone.addComponent(Laya.MeshRenderer);
-        // 创建网格
-        coneMesh.sharedMesh = Laya.PrimitiveMesh.createCone(0.25, 0.75);
-        // 创建材质
-        let coneMaterial: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-        coneRender.sharedMaterial = coneMaterial;
-        //把圆锥形3D节点对象添加到3D场景节点下
-        this.scene.addChild(cone);
-        //设置随机位置
-        this.tmpVector.setValue(Math.random() * 6 - 2, 6, Math.random() * 6 - 2);
-        cone.transform.position = this.tmpVector;
-        //为圆锥形3D节点对象创建刚体碰撞器
-        let _rigidBody = <Laya.Rigidbody3D>(cone.addComponent(Laya.Rigidbody3D));
-        //创建圆锥形碰撞器形状（使用节点对象的值，保持一致性）
-        let coneShape = new Laya.ConeColliderShape(raidius, height);
-        //为刚体碰撞器添加碰撞器形状
-        _rigidBody.colliderShape = coneShape;
-    }
+		let raidius = Math.random() * 0.2 + 0.2;
+		let height = Math.random() * 0.5 + 0.8;
+		//创建圆锥形3D模型节点对象
+		let cone = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createCone(raidius, height));
+		//把圆锥形3D节点对象添加到3D场景节点下
+		this.newScene.addChild(cone);
+		//设置随机位置
+		this.tmpVector.setValue(Math.random() * 6 - 2, 6, Math.random() * 6 - 2);
+		cone.transform.position = this.tmpVector;
+		//为圆锥形3D节点对象创建刚体碰撞器
+		let _rigidBody = <Laya.Rigidbody3D>(cone.addComponent(Laya.Rigidbody3D));
+		//创建圆锥形碰撞器形状（使用节点对象的值，保持一致性）
+		let coneShape = new Laya.ConeColliderShape(raidius, height);
+		//为刚体碰撞器添加碰撞器形状
+		_rigidBody.colliderShape = coneShape;
+	}
     
     /*
     ……省略若干代码
@@ -440,7 +435,7 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
    */
 Laya.Mesh.load("res/threeDimen/Physics/table.lm", Laya.Handler.create(this, function(mesh:Laya.Mesh) {
     //读取桌子模型节点对象，添加到3D场景节点下，
-    var table: Sprite3D = this.scene.addChild(new Laya.Sprite3D(res));
+    var table = scene.addChild(new Laya.MeshSprite3D(mesh)) as Laya.MeshSprite3D;
     //给桌子节点对象添加刚体碰撞器
     var rigidBody = table.addComponent(Laya.Rigidbody3D) as Laya.Rigidbody3D;
     //实例化一个复合碰撞形状对象
@@ -594,27 +589,22 @@ export default class GameUI extends GameUIBase {
     ……省略若干代码
     */
     private addBox(): void {
-        //创建盒型体
-        let box = new Laya.Sprite3D;
-        let boxMesh = box.addComponent(Laya.MeshFilter);
-        let boxRender = box.addComponent(Laya.MeshRenderer);
-        // 创建网格
-        boxMesh.sharedMesh = Laya.PrimitiveMesh.createBox(0.75, 0.5, 0.5);
-        //设置材质
-        boxRender.sharedMaterial = this.mat1;
-        this.newScene.addChild(box);
+		//创建盒型MeshSprite3D
+		let box = this.newScene.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(0.75, 0.5, 0.5))) as Laya.MeshSprite3D;
+		//设置材质
+		box.meshRenderer.material = this.mat1;
         //设置空间位置
-        let transform = box.transform;
-        let pos = transform.position;
-        pos.setValue(1, 6, 0);
-        transform.position = pos;
-        //创建刚体碰撞器
-        let _rigidBody = box.addComponent(Laya.Rigidbody3D) as Laya.Rigidbody3D;
-        //创建盒子形状碰撞器
-        let boxShape = new Laya.BoxColliderShape(0.75, 0.5, 0.5);
-        //设置盒子的碰撞形状
-        _rigidBody.colliderShape = boxShape;
-
+		let transform = box.transform;
+		let pos = transform.position;
+		pos.setValue(1, 6, 0);
+		transform.position = pos;
+		//创建刚体碰撞器
+		let _rigidBody = box.addComponent(Laya.Rigidbody3D) as Laya.Rigidbody3D;
+		//创建盒子形状碰撞器
+		let boxShape = new Laya.BoxColliderShape(0.75, 0.5, 0.5);
+		//设置盒子的碰撞形状
+		_rigidBody.colliderShape = boxShape;
+        
         //添加自定义脚本组件TSDemo
         box.addComponent(TSDemo);
     }
@@ -990,7 +980,7 @@ if (this.outs.length !== 0) {
 //进行射线检测,检测第一个碰撞物体
 _scene3D.physicsSimulation.raycastFromTo(this.from, this.to, this.out);
 //将射线碰撞到的物体设置为红色
-((this.out.collider.owner).getComponent(Laya.MeshRenderer).sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(0.0, 1.0, 0.0, 1.0);
+((this.out.collider.owner as Laya.MeshSprite3D).meshRenderer.sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Vector4(1.0, 0.0, 0.0, 1.0);
 /*
 ……省略若干代码
 */
@@ -1017,11 +1007,11 @@ if (this.castAll) {
     //采用球形碰撞器进行形状检测,检测所有碰撞的物体
     this.scene.physicsSimulation.shapeCastAll(sphereCollider, this.from, this.to, this.outs);
     for (let i = 0; i < this.outs.length; i++){
-        ((this.outs[i].collider.owner).getComponent(Laya.MeshRenderer).sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(1.0, 0.0, 0.0, 1.0);
+        ((this.outs[i].collider.owner as Laya.MeshSprite3D).meshRenderer.sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Vector4(1.0, 0.0, 0.0, 1.0);
 } else {
     //采用球形碰撞器进行形状检测,检测第一个碰撞物体
     if (this.scene.physicsSimulation.shapeCast(sphereCollider, this.from, this.to, this.out))
-        ((this.out.collider.owner).getComponent(Laya.MeshRenderer).sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(1.0, 0.0, 0.0, 1.0);
+        ((this.out.collider.owner as Laya.MeshSprite3D).meshRenderer.sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Vector4(1.0, 0.0, 0.0, 1.0);
 }
 ```
 

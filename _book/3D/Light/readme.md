@@ -117,14 +117,14 @@ PointLight（点光源）是向四面八方发射光线的光源，又称全向�
 
 ```typescript
 //创建点光源
-let pointLight = new Laya.Sprite3D();
-let pointCom = pointLight.addComponent(Laya.PointLightCom);
-this.scene.addChild(pointLight);
+var pointLight: PointLight = (<PointLight>this.scene.addChild(new PointLight()));
 //点光源的颜色
-pointCom.color = new Laya.Color(1.0, 0.5, 0.0, 1);
+pointLight.color = new Color(1.0, 0.5, 0.0, 1);
+pointLight.transform.position = new Vector3(0.4, 0.4, 0.0);
 //设置点光源的范围
-pointCom.range = 3.0;
-pointLight.transform.position = new Laya.Vector3(0.0, 1, 0.0);
+pointLight.range = 3.0;
+//设置点光源的强度
+pointLight.intensity = 2;
 ```
 
 
@@ -205,17 +205,13 @@ Direction Light（平行光）与点光区别较大，它有固定的一个方�
 
 ### 3.3 使用代码设置
 
-```typescript
-//创建方向光
-let directlightSprite = new Laya.Sprite3D();
-let dircom = directlightSprite.addComponent(Laya.DirectionLightCom);
-this.scene.addChild(directlightSprite);
+```
 //方向光的颜色
-dircom.color.setValue(1.0, 0.5, 0.0, 1);
+this.directionLight.getComponent(Laya.DirectionLightCom).color.setValue(1, 1, 1, 1);
 //设置平行光的方向
-var mat: Laya.Matrix4x4 = directlightSprite.transform.worldMatrix;
-mat.setForward(new Laya.Vector3(-1.0, -1.0, -1.0));
-directlightSprite.transform.worldMatrix = mat;
+var mat: Matrix4x4 = this.directionLight.transform.worldMatrix;
+mat.setForward(new Vector3(-1.0, -1.0, -1.0));
+this.directionLight.transform.worldMatrix = mat;
 ```
 
  **setForward** 平行光的方向，分别代表x、y、z轴上的方向，负数为负轴，正数为正轴，值的范围为-1—0—1，超过范围后为-1或1，初学者们可以在这个范围内设值观察方向的变化。
@@ -304,21 +300,19 @@ SpotLight 聚光指的是从特定光源方向射出的光，比如手电筒，�
 
 ```typescript
 //聚光灯
-let spotlightSprite = new Laya.Sprite3D();
-let spotcom = spotlightSprite.addComponent(Laya.SpotLightCom);
-this.scene.addChild(spotlightSprite);
+var spotLight = scene.addChild(new Laya.SpotLight()) as Laya.SpotLight;
 //设置聚光灯颜色
-spotcom.color = new Laya.Color(1, 1, 0, 1);
-spotlightSprite.transform.position = new Laya.Vector3(0.0, 1.2, 0.0);
-//设置聚光灯的方向
-var mat: Laya.Matrix4x4 = spotlightSprite.transform.worldMatrix;
+spotLight.color = new Laya.Vector3(1, 1, 0);
+//设置聚光灯位置
+spotLight.transform.position = new Laya.Vector3(0.0, 1.2, 0.0);
+//设置聚光灯方向
+var mat = spotLight.transform.worldMatrix;
 mat.setForward(new Laya.Vector3(0.15, -1.0, 0.0));
-spotlightSprite.transform.worldMatrix = mat;
+spotLight.transform.worldMatrix = mat;
 //设置聚光灯范围
-spotcom.range = 1.6;
-spotcom.intensity = 8.0;
+spotLight.range = 6.0;
 //设置聚光灯锥形角度
-spotcom.spotAngle = 32;
+spotLight.spotAngle = 32;
 ```
 
  **setForward** 平行光的方向，分别代表x、y、z轴上的方向，负数为负轴，正数为正轴，值的范围为-1—0—1，超过范围后为-1或1，初学者们可以在这个范围内设值观察方向的变化。
@@ -515,18 +509,28 @@ AreaLight（区域光）可以通过空间中的两个形状之一定义区域�
 
 ```typescript
 // Use soft shadow.
-dircom.shadowMode = Laya.ShadowMode.SoftLow;
+directionLight.shadowMode = ShadowMode.SoftLow;
 // Set shadow max distance from camera.
-dircom.shadowDistance = 50;
+directionLight.shadowDistance = 3;
 // Set shadow resolution.
-dircom.shadowResolution = 1024;
+directionLight.shadowResolution = 1024;
 // Set shadow cascade mode.
-dircom.shadowCascadesMode = Laya.ShadowCascadesMode.NoCascades;
+directionLight.shadowCascadesMode = ShadowCascadesMode.NoCascades;
 // Set shadow normal bias.
-dircom.shadowNormalBias = 1;
+directionLight.shadowNormalBias = 4;
 ```
 
-> 注：需要开启对应地面的接收阴影和模型的产生阴影。
+开启地面接收阴影和模型产生阴影：
+
+```typescript
+// A plane receive shadow.
+var grid: Sprite3D = <Sprite3D>scene.addChild(Loader.getRes("res/threeDimen/staticModel/grid/plane.lh"));
+(<MeshSprite3D>grid.getChildAt(0)).meshRenderer.receiveShadow = true;
+
+// A sphere cast/receive shadow.
+var sphereSprite: MeshSprite3D = this.addPBRSphere(PrimitiveMesh.createSphere(0.1), new Vector3(0, 0.2, 0.5), scene);
+sphereSprite.meshRenderer.castShadow = true;
+```
 
 
 
@@ -552,8 +556,6 @@ X、Y、Z轴的光照集群数量，Z值会影响Cluster接受区域光(点光�
 
 动图7-2，为多光源的示例，下面为创建多光源的代码
 
-> 代码参考“引擎API使用示例”
-
 ```typescript
 export class MultiLight extends BaseScript {
 
@@ -561,31 +563,53 @@ export class MultiLight extends BaseScript {
         super();
     }
 
-	onAwake(): void {
+    onAwake(): void {
+    
 		var moveScript: LightMoveScript = this.camera.addComponent(LightMoveScript);
-		var moverLights: Laya.Sprite3D[] = moveScript.lights;
+		var moverLights: LightSprite[] = moveScript.lights;
 		var offsets: Vector3[] = moveScript.offsets;
 		var moveRanges: Vector3[] = moveScript.moveRanges;
 		moverLights.length = 15;
+		//添加15个点光源
 		for (var i: number = 0; i < 15; i++) {
-			var pointLight: Laya.Sprite3D = (<Laya.Sprite3D>this.scene.addChild(new Laya.Sprite3D()));
-			var pointLightCom: Laya.PointLightCom = pointLight.addComponent(Laya.PointLightCom);
-			pointLightCom.range = 2.0 + Math.random() * 8.0;
-			pointLightCom.color.setValue(Math.random(), Math.random(), Math.random(), 1);
-			pointLightCom.intensity = 6.0 + Math.random() * 8;
+			var pointLight: PointLight = (<PointLight>this.scene.addChild(new PointLight()));
+			pointLight.range = 2.0 + Math.random() * 8.0;
+			pointLight.color.setValue(Math.random(), Math.random(), Math.random(), 1);
+			pointLight.intensity = 6.0 + Math.random() * 8;
 			moverLights[i] = pointLight;
-			offsets[i] = new Vector3((Math.random() - 0.5) * 10, pointLightCom.range * 0.75, (Math.random() - 0.5) * 10);
+			offsets[i] = new Vector3((Math.random() - 0.5) * 10, pointLight.range * 0.75, (Math.random() - 0.5) * 10);
 			moveRanges[i] = new Vector3((Math.random() - 0.5) * 40, 0, (Math.random() - 0.5) * 40);
 		}
-
-		var spotLight: Laya.Sprite3D = (<Laya.Sprite3D>this.scene.addChild(new Laya.Sprite3D()));
-		var spotLightCom: Laya.SpotLightCom = spotLight.addComponent(Laya.SpotLightCom);
+		//添加一个聚光灯
+		var spotLight: SpotLight = (<SpotLight>this.scene.addChild(new SpotLight()));
 		spotLight.transform.localPosition = new Vector3(0.0, 9.0, -35.0);
 		spotLight.transform.localRotationEuler = new Vector3(-15.0, 180.0, 0.0);
-		spotLightCom.color.setValue(Math.random(), Math.random(), Math.random(), 1);
-		spotLightCom.range = 50;
-		spotLightCom.intensity = 15;
-		spotLightCom.spotAngle = 60;
+		spotLight.color.setValue(Math.random(), Math.random(), Math.random(), 1);
+		spotLight.range = 50;
+		spotLight.intensity = 15;
+		spotLight.spotAngle = 60;
+	}
+}
+
+//光源移动脚本
+class LightMoveScript extends Laya.Script {
+	forward: Vector3 = new Vector3();
+	lights: LightSprite[] = [];
+	offsets: Vector3[] = [];
+	moveRanges: Vector3[] = [];
+
+	onUpdate(): void {
+		var seed: number = Laya.timer.currTimer * 0.002;
+		for (var i: number = 0, n: number = this.lights.length; i < n; i++) {
+			var transform: Transform3D = this.lights[i].transform;
+			var pos: Vector3 = transform.localPosition;
+			var off: Vector3 = this.offsets[i];
+			var ran: Vector3 = this.moveRanges[i];
+			pos.x = off.x + Math.sin(seed) * ran.x;
+			pos.y = off.y + Math.sin(seed) * ran.y;
+			pos.z = off.z + Math.sin(seed) * ran.z;
+			transform.localPosition = pos;
+		}
 	}
 }
 ```

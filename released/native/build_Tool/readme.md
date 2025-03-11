@@ -1,161 +1,102 @@
-# Android/iOS构建
-
+# LayaBox 构建工具
+　　构建工具用来生成LayaPlayer的移动端App项目，相当于App项目向导。目前支持Android（Eclipse项目、Android studio项目）和iOS(XCode项目)。  
 **注意：**
 **LayaNative3.0-Android，要求系统最低版本为4.3**
 **LayaNative3.0-iOS，要求系统最低版本为10.0**
+## 1. 运行需求
+#### 1.1 基础开发环境
 
-## 一、概述
+​	构建项目必须要准备好开发环境。比如：构建iOS项目需要准备好Mac电脑和XCode，android需要准备好Android studio。
 
-从LayaAir3.2版本开始，支持自动打包成apk或ipa。而对于资深的开发者，如果更习惯使用传统的开发环境来打安装包，也保留了发布为原生包工程的方案。
+## 2. 面向用户
+　无论是构建Android还是iOS项目，则必须要有相应的Android或iOS的App开发基础。  如果不具备，请先去学习了解相关的基础知识。
 
 
+## 3. 在IDE中构建项目
 
-## 二、构建发布
+使用IDE 发布项目，开发者首先在文件菜单中，打开“构建项目”选项，如动图1所示
 
-使用LayaAir-IDE发布项目，开发者首先在文件菜单中，打开“构建发布”选项，如图2-1所示，
+<img src="img/1.gif" alt="image-20230103180521572" style="zoom:50%;" /> 
 
-<img src="img/2-1.png" alt="2-1" style="zoom:80%;" />
+（动图1）
 
-（图2-1）
 
-### 2.1 参数
 
-- 应用ID
+　目标平台选择iOS或者Adroid, 由于构建工具需的库文件比较大，因此并没有直接包含在LayaAirIDE中，在第一次使用这个工具的时候，会先下载SDK包，如下图：
 
-应用的包名，这个正常情况下是不可见的。一般采用反域名命名规则（有利于分辨和避免与系统中已经有的APP冲突)。
+![](img/2.gif)  
 
-例如 : com.layabox.runtime.demo
+​  (图2)
 
-包名必须是 xxx.yyy.zzz 的格式，至少要有两级，即xxx.yyy 。否则打包会失败。  
+**注意**
 
-- 构建版本号
+这个文件比较大，所以下载的时候需要耐心等待。
 
-Native工程的版本。
+## 4. 项目构建界面参数
 
-- 打包资源
+在LayaAirIDE中打开项目构建的界面，如图3所示：
 
-是否把为当前平台导出的资源（resource目录）打包到native项目中。打包的资源会放到特定的目录中，以供后续生成不同平台的App。
+![2](img/3.png)
+(图3)
 
-如果希望提供单机版，则必须选择打包资源，即勾选“打包资源”，并且保留“资源服务器URL”为空。把资源直接打进App包中，可以避免网络下载，加快资源载入速度。
+* 目标平台
 
-> 把资源打包的缺点是会增加包体的大小。
->
-> 如果想发布勾选“打包资源”的在线游戏，必须在server端打dcc，否则就会失去打包的优势。
+   构建生成的项目工程的类型，有Android studio项目、iOS 项目 两种选项，如果需要生成Android项目，可以选择Android-studio。 如果需要生成XCode(iOS)项目，则选择iOS选项。 
 
-- 混淆资源
+* 版本  
+   Native工程的版本，尽量与LayaAir引擎版本一致，否则可能存在版本兼容性问题
 
-如果勾选，在打包资源的时候，会随机混淆资源，主要作用是避免在上架的时候被平台扫描到某些敏感函数。
+* 单机  
 
-- 资源服务器URL
+   如果勾选此选项，则构建的项目打包的App是单机版，否则就是在线版。单机版不需要联网，没有对应的url，不用提供url。但是必须提供游戏资源，否则打包之后无法运行。单机版的地址固定为 http://stand.alone.version/index.js
 
-填写服务器地址即可，注意要在地址后加上index.js。
+* 打包资源
 
-例如：http://192.168.31.109:8000/index.js
+   资源是脚本、图片、声音等资源。对于在线游戏，只要有游戏的url就能正常运行，但是把资源直接打进App包中的话，可以避免网络下载，加快资源载入速度。如果是单机游戏，由于没有提供游戏url，就必须给资源目录，把所需的资源全部打包进App。
 
-- 热更新（DCC）
+   打包进App的资源依然可以通过我们的dcc工具（资源缓存管理）进行更新。
+   如果这时候没有设置资源路径，在构建完项目以后，依然可以手动添加资源，添加方法参考 [LayaDcc工具](../LayaDcc_Tool/readme.md)。  
 
-启用DCC后，可以打包资源，也可以不打包。
+   **注意：**  
 
-> 参考[DCC文档](../LayaDcc_Tool/readme.md)。
+   　　把资源打包的缺点是会增加包体的大小。  
 
-- 屏幕方向
+   　　打包资源的在线游戏，必须在server端打dcc，否则就会失去打包的优势，依然会下载所有的资源。如何打dcc，参考 [LayaDcc工具](../LayaDcc_Tool/readme.md)。
 
-> 参考[横竖屏设置](../screen_orientation/readme.md)。
+* App名称
 
-- 应用图标
+   App的名称。同时也是构建项目的输出目录。
 
-可以设置APP的图标。
+* 应用ID 
 
-- 密钥库
+   应用的包名，这个正常情况下是不可见的。一般采用反域名命名规则（有利于分辨和避免与系统中已经有的APP冲突)。     
+   例如 : com.layabox.runtime.demo     
+　　包名必须是 xxx.yyy.zzz 的格式，至少要有两级，即xxx.yyy 。否则打包会失败。  
 
-分为调试版本和发行版本，用于为应用程序生成数字签名。签名证明了应用的作者身份，并确保应用内容没有被篡改。
+* URL
 
-- 目标架构（CPU）
+   如果要打包的应用是一个在线项目，则需要提供一个启动url，指向一个js或json文件，是应用的入口。而通过LayaAir生成的项目，会输出一个启动页面，一般是index.js。 在测试的时候，为了方便，通常是使用的本地URL地址在浏览器中测试，当打成Android App的时候，必须有一个真正的webserver的地址，
 
-ARMv7: ARM处理器的32位版本。覆盖大部分旧设备和一些中低端设备。
+   例如：  
 
-ARM64: 也称为AArch64或ARMv8，是ARM处理器的64位版本。覆盖大多数现代中高端设备。
+　　*局域网地址：*  
 
-x86: 基于Intel的32位处理器架构。主要用于一些较旧的Intel处理器Android设备，在Android设备中使用相对较少。
+``` 
+    http://10.10.20.19:8888/index.js
+```
+　　*实际地址:*  
+``` 
+    http://nativetest.layabox.com/layaplayer/index.js
+```
 
-x86-64: 也称为x64或AMD64，是Intel处理器的64位版本。用于较新的Intel处理器Android设备，在Android设备中使用较少。
 
-- 应用程序格式
+## ５. 构建好的项目工程的使用
 
-可以选择APK或AAB格式。
+构建好的 App工程，可以用对应的开发工具打开进行二次开发和打包等操作。
+- Android-studio（android）项目可以使用 android-studio软件进行导入和开发。
+- XCode（ios）项目可以使用 xcode 软件进行导入和开发。打开XCode(ios)项目后需要选择真正的ios设备进行build。（注意：真正的设备是 armv7、armv7s、arm64 架构。而如果使用ios Simulator 则是 X86 架构，目前 LayaNative 在 ios 设备上尚未支持 X86 架构，如果使用模拟器编译是无法通过的。
 
-- Min Sdk Version
 
-定义应用可以运行的最低 Android 版本，低于此版本的设备将无法安装该应用。
-
-- Target Sdk Version
-
-声明应用设计运行的目标 Android 版本，影响应用在更高版本 Android 上的行为。
-
-- 渲染模式
-
-有OpenGL和WebGL两种渲染模式，一般默认选择OpenGL即可。
-
-- 导出Android Studio 项目
-
-勾选后，构建发布的项目将不会自动打包成apk或ipa包，而是发布为原生包工程。
-
-- 纹理选项
-
-`压缩纹理`：一般需要勾选“允许使用压缩纹理格式”，如果不勾选，则忽略所有图片对于压缩格式的设置。
-
-`纹理源文件`：可以不勾选“始终包含纹理源文件”，如果勾选，则即使图片使用了压缩格式，仍然把源文件（png/jpg)打包。目的是遇到不支持压缩格式的系统时，fallback到源文件。
-
-
-
-### 2.2 下载模块
-
-设置好参数后，如果是第一次构建Android/iOS，会先下载模块，如图2-2所示，
-
-![2-2](img/2-2.png)
-
-（图2-2）
-
-目标平台选择iOS或者Android，由于构建工具需的库文件比较大，因此并没有直接包含在LayaAirIDE中，在第一次使用这个工具的时候，会先下载相应的支持模块。
-
-> 文件较大，下载时需要耐心等待。
-
-
-
-## 三、直接打包为apk
-
-> 如果是iOS，则会直接生成ipa包。
-
-如图3-1所示，如果不勾选`导出Android Studio项目`，则导出的项目会直接生成apk包。
-
-![3-1](img/3-1.png)
-
-（图3-1）
-
-图3-1的导出方式是一个纯单机版的应用，导出后的目录如图3-2所示，直接将apk包安装到手机即可。但是，这样的纯单机版应用无法实现资源动态更新，当资源发生变化时，必须更新APP。
-
-![3-2](img/3-2.png)
-
-（图3-2）
-
-如果是联网包，则需要填写`资源服务器URL`，填写后可以不勾选`打包资源`。发布后需要将resource目录放在服务器中，地址就是发布时填写的url，这样发布的应用就会从服务器加载资源。
-
-如果填写了`资源服务器URL`，并且勾选了`打包资源`，那么最终发布的就是一个带资源的联网包。apk中本身包含了资源，但是相比于纯单机的应用，它可以通过DCC更新资源。
-
-
-
-## 四、发布为原生包
-
-构建Android和iOS项目需要基础的开发环境，比如：构建iOS项目需要准备好Mac电脑和XCode，Android需要准备好Android studio。
-
-无论是构建Android还是iOS项目，必须要有相应的Android或iOS的App开发基础。如果不具备，请先去学习了解相关的基础知识。
-
-构建发布时，如果勾选`导出Android Studio项目`，则最终构建好的 App 工程，可以用对应的开发工具打开进行二次开发和打包等操作。
-
-### 4.1 构建好的项目工程的使用
-
-- Android项目可以使用Android Studio软件进行导入和开发。
-- iOS项目可以使用 xcode 软件进行导入和开发。打开XCode(ios)项目后需要选择真正的ios设备进行build。
 
 **参考资源：**
 
@@ -163,54 +104,52 @@ x86-64: 也称为x64或AMD64，是Intel处理器的64位版本。用于较新的
 
 - [IOS打包发布App详细流程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/packagingReleases_IOS)
 
+  ​
 
-
-### 4.2 手动切换单机版和网络版
+## 6. 手动切换单机版和网络版
 
 构建完成之后，可以通过直接在项目中修改代码来切换单机版和网络版。
 
-**Android 项目**  
+1. Android 项目  
 
-在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`  
-
-单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`  
-
-如果要设置为网络版，就要修改为：`mPlugin.game_plugin_set_option("localize","false");`
-
-并且设置正确的地址：`mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.js");`
-
-**iOS 项目**
-
-iOS项目构建完成后，项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.js`。
-
-例如，一开始是网络版，地址为：  
-
- `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.js");`   
-
-要改成单机版的话，修改这里：  
-
- `loadUrl(conch.presetUrl||"http://stand.alone.version/runtime.json");`  
-
-反之亦然。  
-
-> 一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[LayaDCC工具](../LayaDcc_Tool/readme.md)。
-
-### 4.3 资源
-
-通过IDE构建好工程，
-
-- 如果选择的是单机版（打包资源）版本，会把所有的h5项目的资源（包括：脚本、图片、html、声音等）全部打包到了这个目录下：
-
-`android的目录`：release\android\android_project\app\src\main\assets\cache
-
-`iOS的目录`：release\ios\ios_project\resource\cache
+     在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`  
+     单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`  
+     如果要设置为网络版，就要修改为：`mPlugin.game_plugin_set_option("localize","false");`， 并且设置正确的地址：  
+     `mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.js");`
 
 
+2. iOS 项目
 
-- 如果是联网且不打包资源的版本，资源则使用发布目录下的resource目录（release\resource）。
+   iOS项目构建完成后，项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.js`。
+
+   例如一开始是网络版，地址为：  
+
+    `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.js");`   
+   要改成单机版的话，修改这句话：  
+    `loadUrl(conch.presetUrl||"http://stand.alone.version/runtime.json");`  
+   反之亦然。  
+
+   **注意**   
+   一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[LayaDCC工具](../LayaDcc_Tool/readme.md)。
+
+## 7. 资源刷新
+
+通过IDE构建好工程，如果选择的是单机版和打包资源版本。会在resource/cache目录下，把所有h5项目的资源（包括：脚本、图片、html、声音等）全部打包到了这个目录下。  
+``android的目录： assets/cache/  ``  
+``iOS的目录：  resource/cache/  ``  
+
+但是在开发过程中，h5的项目一直在变化，为了避免每次都重新构建工程，可以通过命令行进行刷新。
+
+资源包版本调用命令：``layanative3 refreshres -u http://testgame.layabox.com/index.js``    
+单机版本调用命令：``layanative3 refreshres`` 
+
+***Tips***  
+**1、必须在构建的app工程目录下，执行命令。最明显的标志就是要在navtie.json的目录下，如下图所示：**  
+![](3.jpg)    
+
+关于layanative命令行如何安装使用，请参考[layanative命令行工具使用](../build_Cmd/readme.md)
 
 
-
-## 五、其他注意问题
-
-Android Studio构建完成后，需要根据自己的环境修改android sdk的版本号，需要修改的文件是 app/build.gradle。
+## 8. 其他注意问题
+　　android studio构建完成后，需要根据自己的环境修改android sdk的版本号，现在设置的是23，需要修改的
+文件是 app/build.gradle。
