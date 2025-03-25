@@ -14,13 +14,13 @@
 
 在LayaAir-IDE中，创建一个sprite，在sprite上添加2D网格渲染器组件，如动图2-1所示。
 
-<img src="img/2-1.gif" alt="2-1" style="zoom:70%;" />
+<img src="img/2-1.gif" alt="2-1" style="zoom:70%;" /> 
 
 （动图2-1）
 
 添加后的组件属性如图2-2所示，
 
-![2-2](img/2-2.png)
+![2-2](img/2-2.png) 
 
 （图2-2）
 

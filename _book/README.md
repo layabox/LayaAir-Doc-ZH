@@ -2,7 +2,7 @@
 
 # LayaAir引擎中文文档
 
-**[Layabox](https://www.layabox.com/) 旗下的 [LayaAir](https://layaair.com/) 引擎是全平台引擎，**可一键发布到多个游戏平台，除HTML5 WEB外，还同时支持发布Native APP（安卓、iOS、鸿蒙NEXT、Windows、Mac、Linux），小游戏（微信小游戏、字节跳动小游戏、支付宝小游戏、OPPO小游戏、vivo小游戏、小米快游戏、淘宝小游戏等）。
+**[Layabox](https://www.layabox.com/) 旗下的 [LayaAir](https://layaair.com/) 引擎是全平台引擎**，可一键发布到多个游戏平台，除HTML5 WEB外，还同时支持发布Native APP（安卓、iOS、鸿蒙NEXT、Windows、Mac、Linux），小游戏（微信小游戏、字节跳动小游戏、支付宝小游戏、OPPO小游戏、vivo小游戏、小米快游戏、淘宝小游戏等）。
 
 支持2D与3D开发，应用于游戏、教育、广告、营销、数字孪生、元宇宙、AR导游、VR场景、建筑设计、工业设计等众多领域。
 
@@ -48,13 +48,13 @@ LayaAir的文档基于MarkDown语法编写，如果语法较为熟悉，可以�
 
 ## 如何把MarkDown编为静态网站
 
-通常，我们直接去引擎官网阅读编译后的网站文档（https://layaair.com/3.x/doc/）即可，如果我们需要在本地建立文档或预览效果。可以参照以下指南：
+通常，我们直接去引擎官网阅读编译后的网站文档（[https://layaair.com/3.x/doc/](https://layaair.com/3.x/doc/)）即可，如果我们需要在本地建立文档或预览效果。可以参照以下指南：
 
 ### 1、安装环境
 
 LayaAir3的文档基于GitBook编译，但需要注意的是，**GitBook环境实测在Node 10.24.x的版本才是可用的。**
 
-如果您本地的node环境不是这个版本的，为了后续管理多个node版本，推荐先安装nvm管理工具，https://github.com/coreybutler/nvm-windows/releases
+如果您本地的node环境不是这个版本的，为了后续管理多个node版本，推荐先安装nvm管理工具，[https://github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
 
 #### nvm常用命令
 
