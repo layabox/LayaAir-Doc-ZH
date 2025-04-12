@@ -145,3 +145,300 @@ Static Batch Volume组件的使用: 上面的Volume框选到合适的大小后�
 
 
 
+## 7.基于节点的材质合批功能
+
+### 7.1表现效果
+
+基于节点的材质合批功能可以通过图7-1和图7-2来展示其表现，本测试案例的场景中一共有200个小球和1个平板。经过合批处理后， 最终场景内的**不透明绘制批次**
+
+![1](D:\Work\github\LayaAirDoc\LayaAir-Doc-ZH\3D\advanced\performanceOptimization\img\1.png)
+
+图7-1 场景截图
+
+![2](D:\Work\github\LayaAirDoc\LayaAir-Doc-ZH\3D\advanced\performanceOptimization\img\2.png)
+
+图7-2 Stat面板
+
+
+
+### 7.2 使用示例
+
+该示例使用脚本实现了一个基于节点的材质合批功能，主要通过为多个 3D 节点分配共享的材质和网格，并利用自定义的 UniformBuffer 来优化渲染性能。
+
+脚本代码如下：
+
+```typescript
+const { regClass, property } = Laya;
+
+@regClass()
+export class Script extends Laya.Script {
+    //共享材质，用于合批
+    public batchMat: Laya.Material;
+    //颜色数目
+    private _colorNums = 20;
+    //精灵数目
+    private _spriteNums = 200;
+
+    private _createColorBufferData() {
+        //随机给20个颜色值
+        let colorBuffer = new Float32Array(20 * 4);
+        for (var i = 0; i < this._colorNums; i++) {
+            let offset = i * 4;
+            colorBuffer[offset] = Math.random();
+            colorBuffer[offset + 1] = Math.random();
+            colorBuffer[offset + 2] = Math.random();
+            colorBuffer[offset + 3] = 1;
+        }
+        //设置uniformbuffer
+        this.batchMat.setBuffer("colormap", colorBuffer);
+    }
+
+    //随机生成_spriteNums数目个的小球，使用随机颜色
+    private _createMeshSpriteRender() {
+        let mesh = Laya.PrimitiveMesh.createSphere(0.5);
+        let ownerSprite = this.owner;
+        let positionRanvge = 30;
+        for (var i = 0; i < this._spriteNums; i++) {
+            let sprite = ownerSprite.addChild(new Laya.Sprite3D());
+            let filter = sprite.addComponent(Laya.MeshFilter);
+            let render = sprite.addComponent(Laya.MeshRenderer);
+            // 设置相同的材质与网格
+            filter.sharedMesh = mesh;
+            render.sharedMaterial = this.batchMat;
+            //随机位置
+            sprite.transform.localPosition = this._getRandomPosition(positionRanvge);
+            //随机一个颜色索引
+            let colorIndex = Math.floor(Math.random() * this._colorNums);
+            //设置节点的 Laya.ENodeCustomData.custom_0 为对应的颜色索引
+            render.setNodeCustomData(Laya.ENodeCustomData.custom_0, colorIndex);
+        }
+    }
+    
+    private _getRandomPosition(positionRanvge: number): Laya.Vector3 {
+        let getRangeRandom = () => {
+            return (Math.random() - 0.5) * positionRanvge;
+        }
+        return new Laya.Vector3(getRangeRandom(), 0.3, getRangeRandom());
+    }
+
+}
+```
+
+
+
+
+shader代码如下：
+
+```glsl
+Shader3D Start
+{
+    type:Shader3D
+    name:PBRColorBatchShader
+    enableInstancing:true,
+    supportReflectionProbe:true,
+    uniformMap:{
+        u_AlphaTestValue: { type: Float, default: 0.5, range: [0.0, 1.0] },
+
+        u_TilingOffset: { type: Vector4, default: [1, 1, 0, 0] },
+
+        u_AlbedoColor: { type: Color, default: [1, 1, 1, 1] },
+        u_AlbedoTexture: { type: Texture2D, options: { define: "ALBEDOTEXTURE" } },
+
+        u_NormalTexture: { type: Texture2D, options: { define: "NORMALTEXTURE" } },
+        u_NormalScale: { type: Float, default: 1.0, range: [0.0, 2.0] },
+
+        u_Metallic: { type: Float, default: 0.0, range: [0.0, 1.0] },
+        u_Smoothness: { type: Float, default: 0.0, range: [0.0, 1.0] },
+        u_MetallicGlossTexture: { type: Texture2D, options: { define: "METALLICGLOSSTEXTURE" } },
+
+        u_OcclusionTexture: { type: Texture2D, options: { define: "OCCLUSIONTEXTURE" } },
+        u_OcclusionStrength: { type: Float, default: 1.0 },
+
+        u_EmissionColor: { type: Color, default: [0, 0, 0, 0] },
+        u_EmissionIntensity: { type: Float, default: 1.0 },
+        u_EmissionTexture: { type: Texture2D, options: { define: "EMISSIONTEXTURE" } },
+    },
+    defines: {
+        EMISSION: { type: bool, default: false },
+        ENABLEVERTEXCOLOR: { type: bool, default: false }
+    }
+    shaderPass:[
+        {
+            pipeline:Forward,
+            VS:LitVS,
+            FS:LitFS
+        }
+    ]
+}
+Shader3D End
+
+GLSL Start
+#defineGLSL LitVS
+    #define SHADER_NAME PBRColorBatchShader
+
+    #include "Math.glsl";
+
+    #include "Scene.glsl";
+    #include "SceneFogInput.glsl"
+
+    #include "Camera.glsl";
+    #include "Sprite3DVertex.glsl";
+
+    #include "VertexCommon.glsl";
+
+    #include "PBRVertex.glsl";
+
+    varying float spriteCustomData;
+
+    void main()
+    {
+        Vertex vertex;
+        getVertexParams(vertex);
+
+        PixelParams pixel;
+        initPixelParams(pixel, vertex);
+
+        gl_Position = getPositionCS(pixel.positionWS);
+
+        gl_Position = remapPositionZ(gl_Position);
+        
+        spriteCustomData = NodeCustomData0;
+
+    #ifdef FOG
+        FogHandle(gl_Position.z);
+    #endif // FOG 
+    }
+#endGLSL
+
+#defineGLSL LitFS
+    #define SHADER_NAME PBRColorBatchShader
+
+    #include "Color.glsl";
+
+    #include "Scene.glsl";
+    #include "SceneFog.glsl";
+
+    #include "Camera.glsl";
+    #include "Sprite3DFrag.glsl";
+
+    #include "PBRMetallicFrag.glsl";
+
+    uniform vec4 colormap[20];
+    varying float spriteCustomData;
+
+    void initSurfaceInputs(inout SurfaceInputs inputs, inout PixelParams pixel)
+    {
+        inputs.alphaTest = u_AlphaTestValue;
+
+    #ifdef UV
+        vec2 uv = transformUV(pixel.uv0, u_TilingOffset);
+    #else // UV
+        vec2 uv = vec2(0.0);
+    #endif // UV
+
+        inputs.diffuseColor = colormap[int(spriteCustomData)].rgb;
+        inputs.alpha = colormap[int(spriteCustomData)].a;
+
+    #ifdef COLOR
+        #ifdef ENABLEVERTEXCOLOR
+        inputs.diffuseColor *= pixel.vertexColor.xyz;
+        inputs.alpha *= pixel.vertexColor.a;
+        #endif // ENABLEVERTEXCOLOR
+    #endif // COLOR
+
+    #ifdef ALBEDOTEXTURE
+        vec4 albedoSampler = texture2D(u_AlbedoTexture, uv);
+        #ifdef Gamma_u_AlbedoTexture
+        albedoSampler = gammaToLinear(albedoSampler);
+        #endif // Gamma_u_AlbedoTexture
+        inputs.diffuseColor *= albedoSampler.rgb;
+        inputs.alpha *= albedoSampler.a;
+    #endif // ALBEDOTEXTURE
+
+        inputs.normalTS = vec3(0.0, 0.0, 1.0);
+    #ifdef NORMALTEXTURE
+         vec3 normalSampler = texture2D(u_NormalTexture, uv).rgb;
+        normalSampler = normalize(normalSampler * 2.0 - 1.0);
+        normalSampler.y *= -1.0;
+        inputs.normalTS = normalScale(normalSampler, u_NormalScale);
+    #endif
+
+        inputs.metallic = u_Metallic;
+        inputs.smoothness = u_Smoothness;
+
+    #ifdef METALLICGLOSSTEXTURE
+        vec4 metallicSampler = texture2D(u_MetallicGlossTexture, uv);
+        inputs.metallic = metallicSampler.x;
+        inputs.smoothness = (metallicSampler.a * u_Smoothness);
+    #endif // METALLICGLOSSTEXTURE
+
+        inputs.occlusion = 1.0;
+    #ifdef OCCLUSIONTEXTURE
+        vec4 occlusionSampler = texture2D(u_OcclusionTexture, uv);
+        float occlusion = occlusionSampler.g;
+        inputs.occlusion = (1.0 - u_OcclusionStrength) + occlusion * u_OcclusionStrength;
+    #endif // OCCLUSIONTEXTURE
+
+        inputs.emissionColor = vec3(0.0);
+    #ifdef EMISSION
+        inputs.emissionColor = u_EmissionColor.rgb * u_EmissionIntensity;
+        #ifdef EMISSIONTEXTURE
+        vec4 emissionSampler = texture2D(u_EmissionTexture, uv);
+        #ifdef Gamma_u_EmissionTexture
+        emissionSampler = gammaToLinear(emissionSampler);
+        #endif // Gamma_u_EmissionTexture
+        inputs.emissionColor *= emissionSampler.rgb;
+        #endif // EMISSIONTEXTURE
+    #endif // EMISSION
+    }
+
+    void main()
+    {
+        PixelParams pixel;
+        getPixelParams(pixel);
+
+        SurfaceInputs inputs;
+        initSurfaceInputs(inputs, pixel);
+
+        vec4 surfaceColor = PBR_Metallic_Flow(inputs, pixel);
+        
+    #ifdef FOG
+        surfaceColor.rgb = sceneLitFog(surfaceColor.rgb);
+    #endif // FOG
+
+        gl_FragColor = surfaceColor;
+
+        gl_FragColor = outputTransform(gl_FragColor);
+    }
+#endGLSL
+
+GLSL End
+
+```
+
+
+
+#### 7.2.1原理介绍
+
+ 开发者可通过材质(Material)的`setBuffer`方法设置对应的uniform缓冲区。
+
+ 在示例中，我们创建了一个长度为 4 * 20 的Float32Array（即`colorBuffer`），作为`uniform vec4 colormap[20]`的数据源，包含20种不同的颜色信息。 
+
+ 在实现过程中，我们为每个节点生成随机颜色索引(colorIndex)，并通过 *BaseRender.setNodeCustomData* 方法将这些索引值存储在节点的自定义数据区域 *ENodeCustomData.custom_0* 位置上。需要注意的是：该接口仅支持设置数字类型数据。
+
+ 在渲染阶段，引擎检测到200个使用相同材质与网格的球体，会自动进行批次合并优化。不同节点的CustomData数据会以InstanceBuffer的形式被合并提交，最终这200个球体只需一个渲染批次即可完成绘制，大幅提升了渲染效率。
+
+
+
+#### 7.2.2注意事项
+
+1. 目前 *BaseRender.setNodeCustomData* 方法仅有 custom_0 , custom_1 , custom_2 可选项。
+2. 材质在切换到在Instance渲染时，这三个槽位占用了顶点 VertexMesh.MESH_CUSTOME0，VertexMeshMESH_CUSTOME1，VertexMesh.MESH_CUSTOME2。
+3. uniform缓冲区使用时需要注意，在低端手机上过大的数据可能存在uniform超出的风险。
+
+
+
+
+
+
+
