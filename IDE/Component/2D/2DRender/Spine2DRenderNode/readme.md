@@ -179,6 +179,8 @@ export class NewScript extends Laya.Script {
 
 `外部皮肤`的主要功能就是可以引入其它的Spine资源，用于替换当前Spine插槽上的不同皮肤下的附件。
 
+> 外部皮肤的功能，不支持使用快速渲染模式(useFastRender)
+
 ### 3.1 引入外部皮肤资源
 
 `外部皮肤 `右侧 `+` 号每次点击，都会创建了一个包含了`源文件` 和 `部件列表`的 子级对象属性。如图3-1所示。
@@ -307,3 +309,23 @@ export class NewScript extends Laya.Script {
 ![](img/3-7.gif) 
 
 (动图3-7)
+
+## 4、常见注意事项
+
+### 4.1 异步加载导致的播放问题
+
+有的时候由于Spine资源稍大，以及用户的网速较慢等综合原因，会导致代码在控制Spine组件的时候失效或报错。这是由于onAwake、onEnable等生命周期执行的时候，其实资源还处于异步加载中，并没有加载完。所以会出现使用问题。
+
+解决方案是把稍大的Spine资源放到预加载的队列中，提前进行加载。
+
+或者帧听`Laya.Event.READY`事件，再进行逻辑处理。
+
+### 4.2 加载Spine的Json，必须指定类型
+
+开发者如果加载二进制的Spine资源可以省略类型，因为Spine的二进制后缀比较特别，可以被直接引擎内部指定类型。但是JSON类型，是一种通用的资源类型，引擎无法内部指定类型，所以，开发者必须要在加载的时候指定Spine的类型为`Laya.Loader.SPINE`类型，示例如下：
+
+```typescript
+// 加载Spine动画数据资源（json文件），注意一定要设置为Laya.Loader.SPINE类型，否则不会把json认为是SPINE资源
+Laya.loader.load(["aa.json", "bb.json"], Laya.Loader.SPINE);
+```
+
