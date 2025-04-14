@@ -34,15 +34,13 @@ Unity是移动端的3D引擎龙头。LayaAir是小游戏与HTML5市场的主流3
 
 LayaAir支持[自定义布局](../IDE/layouts/readme.md)，可以拖放面板、弹出悬浮显示等。在使用时，还可以点击面板右上角的“？”图标，查看相关文档说明。下表左侧是Unity中常见术语，右侧则是对应的（或近似的）LayaAir-IDE的术语。
 
-| Unity                | LayaAir                                                      |
-| -------------------- | ------------------------------------------------------------ |
-| Toolbar              | 菜单栏                                                       |
-| Hierarchy            | [层级](../IDE/Hierarchy/readme.md)                           |
-| Project              | [项目资源](../IDE/assets/readme.md) / [小部件](../../IDE/uiEditor/widgets/readme.md) |
-| Play/Pause/Step      | [IDE中预览 / 浏览器中预览 / 移动端预览 / PC端预览 / 预览选项](../IDE/Game/readme.md) |
-| Scene View/Game View | [场景](../IDE/shortcutKeyCombinations/readme.md) / [动画状态机](../../IDE/animationEditor/aniController/readme.md) / [预览运行](../IDE/Game/readme.md) / [项目设置](../IDE/projectSettings/readme.md) |
-| Console              | 控制台 / [时间轴动画](../../IDE/animationEditor/timelineGUI/readme.md) |
-| Inspector            | [属性设置](../IDE/Inspector/readme.md)                       |
+| Unity        | LayaAir英文                                | LayaAir中文                                                  |
+| ------------ | ------------------------------------------ | ------------------------------------------------------------ |
+| Hierarchy    | Hierarchy                                  | [层级](../IDE/Hierarchy/readme.md)                           |
+| Project      | Project / Widgets                          | [项目资源](../IDE/assets/readme.md) / [小部件](../../IDE/uiEditor/widgets/readme.md) |
+| Scene / Game | Scene / Animator / Game / Project Settings | [场景](../IDE/shortcutKeyCombinations/readme.md) / [动画状态机](../../IDE/animationEditor/aniController/readme.md) / [预览运行](../IDE/Game/readme.md) / [项目设置](../IDE/projectSettings/readme.md) |
+| Console      | Console / Animation                        | [控制台]() / [时间轴动画](../../IDE/animationEditor/timelineGUI/readme.md) |
+| Inspector    | Inspector                                  | [属性设置](../IDE/Inspector/readme.md)                       |
 
 
 
@@ -56,13 +54,15 @@ LayaAir项目与Unity项目一样，也保存在专门的目录结构中，并�
 
 LayaAir里支持一些最常见的文件类型：
 
-| 资产类型 | 支持的格式                                 |
-| -------- | ------------------------------------------ |
-| 3D       | .fbx、.obj、.gltf、.glb                    |
-| 纹理     | .png、.jpg、.tiff、.tif、.tga、.dds、.webp |
-| 音频     | .mp3、.wav                                 |
-| 视频     | .mp4                                       |
-| 字体     | .ttf                                       |
+| 资源类型 | 支持的格式                                       |
+| -------- | ------------------------------------------------ |
+| 3D       | .fbx、.obj、.gltf、.glb                          |
+| 纹理     | .png、.jpg、jpeg、.tiff、.tif、.tga、.dds、.webp |
+| 音频     | .mp3、.wav                                       |
+| 视频     | .mp4、.webm                                      |
+| 字体     | .ttf、.fnt                                       |
+| Spine    | .json、atlas、.skel                              |
+| TiledMap | .tsx、.tmx、.tx                                  |
 
 
 
@@ -72,27 +72,28 @@ LayaAir里支持一些最常见的文件类型：
 
 LayaAir中常见的资源如下：
 
-| 文件的后缀         | 文件类型说明           |
-| :----------------- | :--------------------- |
-| **.ls**            | 场景文件。             |
-| **.lh**            | 预制体文件。           |
-| **.shader**        | 着色器文件。           |
-| **.bps**           | 着色器蓝图文件。       |
-| **.bpsf**          | 着色器蓝图函数文件。   |
-| **.bp**            | 程序蓝图文件。         |
-| **.lmat**          | 材质数据文件。         |
-| **.bundledef**     | 脚本集定义文件。       |
-| **.cubemap**       | 立方体纹理文件。       |
-| **.rendertexture** | 渲染纹理文件。         |
-| **.tex2darray**    | 2D纹理集文件。         |
-| **.lavm**          | 动画遮罩文件。         |
-| **.mcc**           | 2D动画状态机文件。     |
-| **.mc**            | 2D动画数据文件。       |
-| **.controller**    | 3D动画状态机文件。     |
-| **.lani**          | 3D动画数据文件。       |
-| **.atlascfg**      | 自动图集配置文件。     |
-| **.lighting**      | 光照贴图烘焙配置文件。 |
-| **.fnt**           | 位图字体文件。         |
+| 文件的后缀         | 文件类型说明                                      |
+| :----------------- | :------------------------------------------------ |
+| **.laya**          | 项目工程文件，位于项目根目录。例如，"项目名.laya" |
+| **.ls**            | 场景文件。                                        |
+| **.lh**            | 预制体文件。                                      |
+| **.shader**        | 着色器文件。                                      |
+| **.bps**           | 着色器蓝图文件。                                  |
+| **.bpsf**          | 着色器蓝图函数文件。                              |
+| **.bp**            | 程序蓝图文件。                                    |
+| **.lmat**          | 材质数据文件。                                    |
+| **.bundledef**     | 脚本集定义文件。                                  |
+| **.cubemap**       | 立方体纹理文件。                                  |
+| **.rendertexture** | 渲染纹理文件。                                    |
+| **.tex2darray**    | 2D纹理集文件。                                    |
+| **.lavm**          | 动画遮罩文件。                                    |
+| **.mcc**           | 2D动画状态机文件。                                |
+| **.mc**            | 2D动画数据文件。                                  |
+| **.controller**    | 3D动画状态机文件。                                |
+| **.lani**          | 3D动画数据文件。                                  |
+| **.atlascfg**      | 自动图集配置文件。                                |
+| **.lighting**      | 光照贴图烘焙配置文件。                            |
+| **.fnt**           | 位图字体文件。                                    |
 
 
 
