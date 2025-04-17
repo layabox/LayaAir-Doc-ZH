@@ -354,3 +354,14 @@ Laya.loader.load(["aa.json", "bb.json"], Laya.Loader.SPINE);
 注意：如果应用后效果不对，刷新一下IDE即可。
 另外，如果有多个Spine，可以多选纹理，一次性设置好。或者开发者通过编写IDE插件自动处理以上操作。
 
+### 4.4 不要主动加载Spine的atlas和png
+
+当开发者在代码加载或IDE的Scene2D中预加载了Spine的atlas之后，运行的时候会出现类似以下提示的警告。
+
+```sh
+Failed to load 'http://localhost:18094/resources/ddlx_02/ddlx_02.atlas' Unexpected token 'd', "ddlx_02.pn"... is not valid JSON
+```
+
+这是由于，虽然spine的atlas和我们引擎的图集文件atlas同名，但不是同样的东西。我们的图集信息是Json格式，而Spine的不是，所以加载的时候，发现atlas不是JSON，就报了`"... load 'xxx.atlas'....is not valid JSON"`的警告。
+
+开发者在加载Spine时，只需要加载Spine的主文件（`.skel`或`.json`）即可。atlas和png都不需要开发者主动加载，引擎会自动根据Spine主文件加载关联资源。
