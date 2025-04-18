@@ -19,7 +19,6 @@
 - 开发者必学基础
   * [TS语言基础](basics/language/readme.md)
   * [DevTools调试工具](basics/DevTools/readme.md)
-  * [LayaTree调试工具](basics/LayaTree/readme.md)
   * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
 - 引擎核心功能
   * [资源加载](basics/common/Loader/readme.md)
