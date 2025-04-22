@@ -2,7 +2,7 @@
 
 > Author：Charley 、谷主、孟星煜
 
-## 1、 什么是ECS
+## 一、 什么是ECS
 
 ECS是Entity-Component-System（实体-组件-系统）的简写，这是一种基于数据驱动的游戏设计模式。
 
@@ -16,7 +16,7 @@ LayaAir的ECS，将场景中每一个有着唯一ID的显示对象节点都被�
 
 
 
-## 2、组件脚本的内置方法
+## 二、组件脚本的内置方法
 
 继承引擎的组件脚本类`Laya.Script`之后，就可以直接使用引擎为组件脚本提供内置的生命周期方法与事件方法，这些方法可以用于组件脚本逻辑的执行入口。如下图所示：
 
@@ -391,15 +391,11 @@ export class Script extends Laya.Script {
 
 
 
-## 3、组件在IDE的暴露方式
+## 三、组件在IDE的暴露方式
 
-在LayaAir3-IDE中，如果想在IDE内展示组件脚本的属性，需要通过装饰器的规则来实现。
+在LayaAir 3.0 IDE中，如果想在IDE内展示组件脚本的属性，需要通过装饰器的规则来实现。
 
-### 3.1 识别组件的装饰器标识
-
-只有通过装饰器标识，才会被IDE识别为组件，主要的标识有两种，分别是用于识别组件脚本的`@regClass()`和识别为组件属性的`@property()`
-
-#### 3.1.1 组件脚本的识别`@regClass()`
+### 3.1 组件脚本的识别`@regClass()`
 
 开发者编写的组件脚本，需要在类定义之前使用装饰器的标识`@regClass()`，示例代码如下所示：
 
@@ -421,7 +417,11 @@ export class Script extends Laya.Script {
 >
 > 标记了@regClass()的类，在IDE环境内都会被编译，但最终发布时，如果这个类没有被其他类引用，也没有被添加到节点上，或者所在的预制体/场景没有发布，则这个类会被裁剪。
 
-#### 3.1.2  组件属性的识别`@property()`
+
+
+### 3.2 组件属性的识别`@property()`
+
+#### 3.2.1 组件属性的常规使用
 
 当开发者想将组件的属性，通过IDE暴露给外界编辑来传入数据。需要在类属性定义之前使用装饰器的标识`@property()`，示例代码如下所示：
 
@@ -429,7 +429,7 @@ export class Script extends Laya.Script {
 const { regClass, property } = Laya;
 
 @regClass()
-export class NewScript extends Laya.Script {
+export class NewScript1 extends Laya.Script {
     //装饰器属性的标准写法，适用于IDE的需要显示Tips或属性的中文别名等完整功能需求
     @property({ type: String, caption: "IDE显示用的别名", tips: "这是一个文本对象，只能输入文本哦" }) 
     public text1: string = "";
@@ -437,29 +437,25 @@ export class NewScript extends Laya.Script {
     //装饰器属性类型的简写方式，适用于只定义类型的需求
     @property(String)   
     public text2: string = "";
+
+    constructor() {
+        super();
     }
 }
 ```
-
 `@property()`是IDE识别组件属性并显示到IDE属性面板上的装饰器标识，类型是装饰器属性标识必须携带的参数。
 
-示例代码在IDE中被识别后的效果如图3-2所示：
-
-![](images/3-2.png) 
-
-(图3-2)
-
-如果我们不需要给属性写一个tips说明，也不需要给属性重新定义一个在IDE里显示的别名，那按上面示例代码的简写方式即可。
+如果我们不需要给属性写一个tips说明，也不需要给属性重新定义一个在IDE里显示的别名，等需求。那按上面示例的简写方式即可。
 
 > 如果简写方式有语法警告，请用新版本IDE，并通过IDE的`开发者 -> 更新引擎d.ts文件`功能来解决，或者使用标准写法来解决。
 
-### 3.2  访问器的使用
+#### 3.2.2 属性访问器的装饰器使用
 
-除了常规的数据属性，有的时候，开发者会通过访问器（Getter 和 Setter）来控制组件属性的读写行为。
+有的时候，开发者会通过属性访问器(getter)和属性设置器(setter)来控制属性的读写行为。
 
-当 Getter 和 Setter 同时存在时，装饰器的属性标识`@property()`直接用于 Getter 之前即可，此时的组件属性与上一小节中介绍的常规使用方式一样，都是可读写的。
+当属性访问器和属性设置器同时存在时，装饰器的属性标识`@property()`直接用于属性访问器之前即可，此时的组件属性与上一小节中介绍的常规使用方式一样，都是可读写的。
 
-如果，该脚本**只有 Getter ，那这个属性则是只读的**，仅可以在IDE中显示，但不能编辑。
+如果，该脚本只有属性访问器，那这个属性则是只读的，仅可以在IDE中显示，但不能编辑。
 
 getter和setter同时存在的装饰器使用示例代码如下：
 
@@ -474,7 +470,7 @@ class Animal {
     get weight() : number {
         return this._weight;
     }
-    //如果没有 Setter，则 weight 为只读属性
+    
     set weight(value: number) {
         this._weight = value;
     }
@@ -482,13 +478,13 @@ class Animal {
 ```
 
 
-### 3.3 属性是否序列化保存 serializable
+#### 3.2.3 是否序列化保存
 
-通过装饰器定义为组件属性后，默认状态下，属性名与值都会被序列化保存到组件被添加的场景文件或预制体文件里。例如，scene.ls里添加完自定义组件，通过vscode打开这个scene.ls，可以找到序列化保存后的组件属性名称与值，效果如动图3-3所示。
+通过装饰器定义为组件属性后，默认状态下，属性名与值都会被序列化保存到组件被添加的场景文件或预制体文件里。例如，scene.ls里添加完自定义组件，通过vscode打开这个scene.ls，可以找到序列化保存后的组件属性名称与值，效果如动图3-2所示。
 
-![3-3](images/3-2.gif)
+![3-2](images/3-2.gif)
 
-（动图3-3）
+（动图3-2）
 
 序列化保存后，不仅方便在IDE中直观查看与编辑组件属性值。在运行阶段，也可以直接使用序列化存储的值，对于结构复杂的数据，直接使用序列化的值还可以节省数据结构生成带来的开销。所以，有些时候，即便是不需要在属性面板上显示与编辑，也可以通过装饰器设置为组件属性，将值序列化存储在场景或预制体文件中。
 
@@ -520,19 +516,15 @@ export class Main extends Laya.Script {
 
 
 
-### 3.4 是否为私有属性（影响面板可见）
+#### 3.2.4 组件属性是否在IDE中显示
 
-除了前文中提到的`hidden`这个属性标识参数会影响属性在面板上是否可见之外。`private`参数也会影响属性在面板的可见性。
+在默认情况下，装饰器属性规则只会对非下划线的类属性标记为IDE的组件属性。
 
-与`hidden`不同，`private`主要是用于控制带下划线的属性是否显示在面板上。
-
-默认情况下，装饰器属性只会对非下划线的类属性标记为IDE的组件属性。带下划线的，默认为私有属性，相当于，默认private为true。
-
-**对于有下划线的属性，默认是不会被显示到IDE里**，此时该组件属性的价值只剩下将值保存到场景文件中了，这一点上文有所提及，示例也有应用。
+对于有下划线的属性，其实是不会被显示到IDE里，此时该组件属性的价值只剩下将值保存到场景文件中了，这一点上文有所提及，示例也有应用。
 
 > 带下划线的属性如果没有序列化保存到场景文件的需求，那就不必使用装饰器了。
 
-假如，开发者**想对有下划线的属性，也要显示到IDE上**，也可以做到。将修饰器属性标识的传入对象中，**设置参数private为false**即可。
+假如，开发者想对有下划线的属性，也要显示到IDE上，也可以做到。将修饰器属性标识的传入对象中，设置参数private为false即可。
 
 示例代码如下：
 
@@ -541,7 +533,7 @@ export class Main extends Laya.Script {
 _velocity: number = 0;
 ```
 
-private参数不仅可以使得下划线属性显示，也可以**通过将private设置为true，使得不带下划线的属性，不在IDE的属性面板出现。**
+private参数不仅可以使得下划线属性显示，也可以通过将private设置为true，使得不带下划线的属性，不在IDE的属性面板出现。
 
 这里，我们将前文的弧度转换示例稍作修改，代码如下：
 
@@ -569,11 +561,11 @@ export class Main extends Laya.Script {
 
 
 
-### 3.5 装饰器属性标识的类型
+#### 3.2.5 装饰器属性标识的类型
 
 装饰器属性标识的类型支持引擎对象类型（例如：Laya.Vector3、Laya.Sprite3D、Laya.Camera等）、自定义的对象类型（需要标记`＠regClass()`）、以及TS语言的基本类型。
 
-#### 3.5.1 引擎对象类型
+##### 3.2.5.1 引擎对象类型
 
 引擎对象类型的理解比较简单，暴露组件属性之后，直接传入对应类型的值就可以。例如Laya.Sprite3D就只能传入3D节点，试图拖入2D节点或拖入资源都是禁止的。
 
@@ -585,7 +577,7 @@ const { regClass, property } = Laya;
 @regClass()
 export class Main extends Laya.Script {
 
-    @property( { type:Laya.Camera } ) //摄像机节点类型
+    @property( { type:Laya.Camera } ) //摄像机类型
     private camera: Laya.Camera;  
 
     @property( { type:Laya.Scene3D } ) //3D场景根节点类型
@@ -597,50 +589,50 @@ export class Main extends Laya.Script {
     @property( { type:Laya.Sprite3D } ) //Sprite3D节点类型
     private cube: Laya.Sprite3D;  
 
-    @property( { type:Laya.Prefab } ) //2D预制体资源 
+    @property( { type:Laya.Prefab } ) //加载 Prefab 拿到的对象
     private prefabFromResource: Laya.Prefab;    
 
-    @property( { type:Laya.ShurikenParticleRenderer } ) //3D粒子渲染器
+    @property( { type:Laya.ShurikenParticleRenderer } ) //ShurikenParticleRenderer组件类型
     private particle3D: Laya.ShurikenParticleRenderer;  
 
     @property( { type:Laya.Node } ) //节点类型
     private scnen2D: Laya.Node; 
 
-    @property( { type:Laya.Box } ) //Box 节点类型
+    @property( { type:Laya.Box } ) //拿到 Box 组件
     private box: Laya.Box; 
 
-    @property( { type:Laya.List } ) //List 节点类型
+    @property( { type:Laya.List } ) //拿到 List 组件
     private list: Laya.List; 
 
-    @property( { type:Laya.Image } ) //Image 节点类型
+    @property( { type:Laya.Image } ) //拿到 Image 组件
     private image: Laya.Image; 
 
-    @property( { type:Laya.Label } ) //Label 节点类型
+    @property( { type:Laya.Label } ) //拿到 Label 组件
     private label: Laya.Label; 
 
-    @property( { type:Laya.Button } ) //Button 节点类型
+    @property( { type:Laya.Button } ) //拿到 Button 组件
     private button: Laya.Button; 
 
-    @property( { type:Laya.Sprite } ) //Sprite 节点类型
+    @property( { type:Laya.Sprite } ) //拿到 Sprite 组件
     private sprite: Laya.Sprite; 
 
-    @property( { type:Laya.Animation } ) //2D动画 节点类型
+    @property( { type:Laya.Animation } ) //拿到 Animation 组件
     private anmation: Laya.Animation; 
 
-    @property( { type:Laya.Vector3 } ) //Laya.Vector3 对象类型
+    @property( { type:Laya.Vector3 } ) //Laya.Vector3类型
     private vector3 : Laya.Vector3;
 }
 ```
 
-如动图3-4所示，将场景中已经添加好的Image拖入到@property暴露的Image属性入口中，这样就获取到了此节点，然后可以在脚本中使用代码控制Image的属性了。
+如动图3-3所示，将场景中已经添加好的Image拖入到@property暴露的Image属性入口中，这样就获取到了此节点，然后可以在脚本中使用代码控制Image的属性了（参考4.1节）。
 
 ![3-3](images/3-3.gif)
 
-（动图3-4）
+（动图3-3）
 
 
 
-#### 3.5.2 自定义对象类型
+##### 3.2.5.2 自定义对象类型
 
 自定义对象类型，就是设置一个自定义的引入对象。按该对象的装饰器属性标识来暴露组件属性。
 
@@ -670,19 +662,11 @@ export default class Animal {
 }
 ```
 
-上面的示例中，组件脚本MyScript中引用了自定义的Animal对象 ，并将装饰器属性标识的类型设置为Animal，
+组件脚本MyScript中引用了Animal对象 ，并将装饰器属性标识的类型设置为Animal，尽管Animal不是继承于Laya.Script的组件脚本，但由于被组件脚本MyScript所引用并暴露给IDE，所以Animal类定义之前也需要标记`＠regClass()`，该类下使用了`@property()`标识的属性，也可以出现在IDE属性面板中。
 
-尽管Animal不是继承于Laya.Script的组件脚本，但由于被组件脚本MyScript所引用并需要让IDE识别，
 
-所以Animal类定义之前也需要使用装饰器标识`＠regClass()`，并在Animal类中，需要暴露的属性上使用了`@property()`装饰器标识。
 
-示例代码在IDE的效果如图3-5所示：
-
-![](images/3-5.png) 
-
-（图3-5）
-
-#### 3.5.3 TS语言基本类型
+##### 3.2.5.3 TS语言基本类型
 
 最后就是常用的TS语言基本类型，不过需要注意的是，基本类型需要使用字符串的方式来描述，只有数字、字符串、布尔类型，可以用其对象类型来标记。
 
@@ -765,15 +749,15 @@ export class Script extends Laya.Script {
 }
 ```
 
-示例效果如动图3-6所示：
+示例效果如动图3-4所示：
 
-![3-6](images/3-4.gif) 
+![3-4](images/3-4.gif)
 
-（动图3-6）
+（动图3-4）
 
 
 
-### 3.6 组件属性值的输入控件inspector
+#### 3.2.6 组件属性值的输入控件
 
 IDE内置了number（数字输入）、string（字符串输入）、boolean（多选框）、color（颜色框+调色盘+拾色器）、vec2（XY输入组合）、vec3（XYZ输入组合）、vec4（XYZW输入组合）、asset（选择资源），这些输入控件。
 
@@ -788,15 +772,13 @@ color: string;
 ```
 > 注意：按照以上方法得到的颜色，是2D组件的颜色值，例如：rgba(217, 232, 0, 1) 
 
-效果如动图3-7所示：
+效果如动图3-5所示：
 
-![3-7](images/3-5.gif)
+![3-5](images/3-5.gif)
 
-（动图3-7）
+（动图3-5）
 
-[!Tip]
-
-如果inspector参数为null，则不会为属性构造属性输入控件，这与hidden参数设置为true不同。**hidden为true是创建但不可见，inspector为null则是完全不创建。**
+如果inspector参数为null，则不会为属性构造属性输入控件，这与hidden参数设置为true不同。hidden为true是创建但不可见，inspector为null则是完全不创建。
 
 
 

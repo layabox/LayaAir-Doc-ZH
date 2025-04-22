@@ -179,6 +179,8 @@ export class NewScript extends Laya.Script {
 
 `外部皮肤`的主要功能就是可以引入其它的Spine资源，用于替换当前Spine插槽上的不同皮肤下的附件。
 
+> 外部皮肤的功能，不支持使用快速渲染模式(useFastRender)
+
 ### 3.1 引入外部皮肤资源
 
 `外部皮肤 `右侧 `+` 号每次点击，都会创建了一个包含了`源文件` 和 `部件列表`的 子级对象属性。如图3-1所示。
@@ -307,3 +309,59 @@ export class NewScript extends Laya.Script {
 ![](img/3-7.gif) 
 
 (动图3-7)
+
+## 4、常见注意事项（必读）
+
+### 4.1 异步加载导致的播放问题
+
+有的时候由于Spine资源稍大，以及用户的网速较慢等综合原因，会导致代码在控制Spine组件的时候失效或报错。这是由于onAwake、onEnable等生命周期执行的时候，其实资源还处于异步加载中，并没有加载完。所以会出现使用问题。
+
+解决方案是把稍大的Spine资源放到预加载的队列中，提前进行加载。
+
+或者帧听`Laya.Event.READY`事件，再进行逻辑处理。
+
+### 4.2 加载Spine的Json，必须指定类型
+
+开发者如果加载二进制的Spine资源可以省略类型，因为Spine的二进制后缀比较特别，可以被直接引擎内部指定类型。但是JSON类型，是一种通用的资源类型，引擎无法内部指定类型，所以，开发者必须要在加载的时候指定Spine的类型为`Laya.Loader.SPINE`类型，示例如下：
+
+```typescript
+// 加载Spine动画数据资源（json文件），注意一定要设置为Laya.Loader.SPINE类型，否则不会把json认为是SPINE资源
+Laya.loader.load(["aa.json", "bb.json"], Laya.Loader.SPINE);
+```
+
+### 4.3 存在透明混合的显示差异问题
+
+一些开发者反馈，Spine上看到的效果与引擎效果有差异，常见的表现为亮度不够、半透明区域不明显等问题。
+
+其实以上问题几乎都是透明混合的纹理配置导致的。尤其是3.1版本可能还正常，3.2开始就产生差异了。
+
+由于LayaAir3.2开始，对spine预乘与不预乘的混合方式做了区分。
+
+如果Spine存在透明混合的需求，则不能使用精灵纹理的纹理类型。需要对IDE项目的Spine资源需要做出如下的改动：
+
+- 在项目资源面板中，选中Spine资源中的纹理。
+- Spine纹理的属性面板上，把纹理类型改为默认值类型。
+- 勾选sRGB颜色空间
+- 注意不要勾选预乘Alpha（Spine导出的时候也不要勾选）
+- 点击应用
+
+以上操作如图4-1所示：
+
+![](img/4-1.png) 
+
+（图4-1）
+
+注意：如果应用后效果不对，刷新一下IDE即可。
+另外，如果有多个Spine，可以多选纹理，一次性设置好。或者开发者通过编写IDE插件自动处理以上操作。
+
+### 4.4 不要主动加载Spine的atlas和png
+
+当开发者在代码加载或IDE的Scene2D中预加载了Spine的atlas之后，运行的时候会出现类似以下提示的警告。
+
+```sh
+Failed to load 'http://localhost:18094/resources/ddlx_02/ddlx_02.atlas' Unexpected token 'd', "ddlx_02.pn"... is not valid JSON
+```
+
+这是由于，虽然spine的atlas和我们引擎的图集文件atlas同名，但不是同样的东西。我们的图集信息是Json格式，而Spine的不是，所以加载的时候，发现atlas不是JSON，就报了`"... load 'xxx.atlas'....is not valid JSON"`的警告。
+
+开发者在加载Spine时，只需要加载Spine的主文件（`.skel`或`.json`）即可。atlas和png都不需要开发者主动加载，引擎会自动根据Spine主文件加载关联资源。

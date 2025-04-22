@@ -22,7 +22,7 @@ Label组件拖放到编辑区后，设置 text 属性的值为 LayaAir IDE 后�
 
 ###  1.2 Label 属性
 
-<img src="img/1-3.png" alt="1-3" style="zoom:67%;" />
+<img src="img/1-3.png" alt="1-3" style="zoom:90%;" />
 
 （图1-3）
 
@@ -36,6 +36,7 @@ Label组件拖放到编辑区后，设置 text 属性的值为 LayaAir IDE 后�
 | style          | “**B**”(bold)是否为粗体，“***I***”(italic)是否为斜体，“<u>**U**</u>”是否有下划线 |
 | syntax         | [多样式混排](../../../../2D/displayObject/Text/readme.md)，支持部分HTML语法和UBB语法。还可以勾选模板，能够在字符串中使用变量 |
 | align          | 对齐方式，水平对齐(align)分别是left（居左对齐）、center（居中对齐）、right（居右对齐）;垂直对齐(valign)分别是top（居顶对齐）、middle（居中对齐）、bottom（居底对齐） |
+| Align ltems    | 子项对齐，图文混排时图片和文字的对齐方式，分别是top（居顶对齐）、middle（居中对齐）、bottom（居底对齐） |
 | bgColor        | 背景颜色，勾选后可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |
 | bordercolor    | 文本边框颜色，勾选后可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |
 | overflow       | 文本溢出处理，共有五种模式。visible（可见）：默认模式，不进行任何裁切。hidden（隐藏）：不显示超出文本域的字符。scroll（滚动）：不显示文本域外的字符像素，并且支持scroll接口。shrink（自动收缩）：超出文本域时，文本整体缩小以适应文本框。ellipsis（显示省略号）：超出文本域时，文本被截断，并且文本最后显示省略号 |
