@@ -140,8 +140,9 @@
   * [3D性能优化](3D/advanced/performanceOptimization/readme.md)
 - 引擎组件
   * [实体组件系统](basics/common/Component/readme.md)
-  * [组件装饰器说明](IDE/customComponent/decorators/readme.md)
-  * [组件属性的代码使用](IDE/customComponent/componentProperties/readme.md)
+    - [组件脚本的内置方法](IDE/customComponent/system/readme.md)
+    - [组件装饰器说明](IDE/customComponent/decorators/readme.md)
+    - [组件属性的代码使用](IDE/customComponent/componentProperties/readme.md)
   - [2D内置组件](IDE/Component/2D/readme.md)
     - [2D渲染组件](IDE/Component/2D/2DRender/readme.md)
       * [2D网格渲染器](IDE/Component/2D/2DRender/Mesh2DRender/readme.md)
