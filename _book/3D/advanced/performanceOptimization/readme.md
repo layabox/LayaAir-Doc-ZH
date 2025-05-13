@@ -151,11 +151,11 @@ Static Batch Volume组件的使用: 上面的Volume框选到合适的大小后�
 
 基于节点的材质合批功能可以通过图7-1和图7-2来展示其表现，本测试案例的场景中一共有200个小球和1个平板。经过合批处理后， 最终场景内的**不透明绘制批次**
 
-![1](D:\Work\github\LayaAirDoc\LayaAir-Doc-ZH\3D\advanced\performanceOptimization\img\1.png)
+![1](img/1.png)
 
 图7-1 场景截图
 
-![2](D:\Work\github\LayaAirDoc\LayaAir-Doc-ZH\3D\advanced\performanceOptimization\img\2.png)
+![2](img/2.png)
 
 图7-2 Stat面板
 
