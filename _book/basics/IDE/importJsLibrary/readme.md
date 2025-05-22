@@ -104,8 +104,7 @@ license：发行项目需要的证书（这里就不写了）；
 接下来在我们的代码中可以使用 import AstarFinder 了，示例代码如下：
 
 ```typescript
-import { AStarFinder } from "../node_modules/astar-typescript/dist/astar";
-
+import { AStarFinder } from "astar-typescript";
 
 const { regClass, property } = Laya;
 
