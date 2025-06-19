@@ -121,7 +121,7 @@
 
 - 图片：可以设置导入的图片属性，详细内容参考[《项目资源面板说明》](../../../basics/IDE/assets/readme.md)的1.4节。
 - 位图字体：可以自定义位图字体，详细内容参考[《文本进阶使用》](../../../2D/advanced/useText/readme.md)的2.2节。
-- 自动图集：发布后可以自动生成图集，详细内容参考[《Web发布》](../../../released/web/readme.md)的3.3.1节。
+- 自动图集：发布后可以自动生成图集，详细内容参考[《通用发布设置》](../../../released/generalSetting/readme.md)中关于图集打包的详细讲解
 - 材质：可以创建自定义材质，详细内容参考[《材质编辑模块》](../../../IDE/materialEditor/readme.md)。
 - 动画：有2D动画文件和3D动画文件，详细内容参考[《时间轴动画编辑详解》](../../../IDE/animationEditor/timelineGUI/readme.md)。
 - 光照贴图烘焙：可以设置光照属性，详细内容参考[《3D场景环境设置》](../../../IDE/sceneEditor/environment/readme.md)的第六节。

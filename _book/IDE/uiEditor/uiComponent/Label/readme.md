@@ -22,7 +22,7 @@ Label组件拖放到编辑区后，设置 text 属性的值为 LayaAir IDE 后�
 
 ###  1.2 Label 属性
 
-<img src="img/1-3.png" alt="1-3" style="zoom:90%;" />
+<img src="img/1-3.png" alt="1-3" style="zoom:100%;" />
 
 （图1-3）
 

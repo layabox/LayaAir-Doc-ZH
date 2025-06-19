@@ -238,7 +238,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 （图2-11）
 
-> 自动生成图集的使用方法请参考[《Web发布》](../../../released/web/readme.md)。
+> 自动生成图集的使用方法请参考[《通用发布设置》](../../../released/generalSetting/readme.md)。
 
 以Android平台为例，在LayaAir IDE中，对自动图集设置进行纹理压缩配置，然后在场景中将图像作为Image组件的皮肤。发布后可以看到图集也可以使用纹理压缩格式了，如图2-12所示，`@1.ktx`是Android平台的纹理压缩格式，.atlas是图集文件，.png是其它平台默认的纹理格式。
 

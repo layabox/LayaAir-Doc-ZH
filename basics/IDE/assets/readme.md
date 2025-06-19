@@ -371,7 +371,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 通过创建AtlasConfig，开发者可以用来自动打包图集
 
-具体如何使用自动打包图集，开发者请参考[《Web发布》](../../../released/web/readme.md)中关于图集打包的详细讲解
+具体如何使用自动打包图集，开发者请参考[《通用发布设置》](../../../released/generalSetting/readme.md)中关于图集打包的详细讲解
 
 
 
