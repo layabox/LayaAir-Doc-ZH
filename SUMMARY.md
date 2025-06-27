@@ -182,7 +182,8 @@
     * [3D寻路](IDE/Component/navMesh/readme.md)
 - IDE插件
   * [插件开发说明](IDE/layapackage/plug-in/readme.md)
-  * [插件导入使用说明](IDE/layapackage/pluginImport/readme.md)
+  * [包管理器与资源包导入](IDE/layapackage/pluginImport/readme.md)
+  * [资源包导出与上传至商店](IDE/layapackage/exportToStore/readme.md)
   - [官方插件](IDE/layapackage/Layabox/readme.md)
     * [LOD减面插件](IDE/layapackage/Layabox/LOD/readme.md)
     * [3D骨骼动作烘焙插件](IDE/layapackage/Layabox/BakeAnimation/readme.md)
