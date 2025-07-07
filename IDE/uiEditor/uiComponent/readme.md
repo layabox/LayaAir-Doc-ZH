@@ -1,20 +1,20 @@
-# UI组件详解
+# UI组件基础使用与构成
 
 > Author: Charley  
 
-UI组件是2D编辑中的基础组件，我们日常开发的2D UI界面的编辑，都是基于UI组件。
+**UI 组件**是经典 UI 系统的核心构成，封装了大量常用且实用的界面功能，便于开发者高效构建各类用户界面。
 
-## 一、什么是UI组件
+## 1、什么是UI组件
 
-从引擎类的结构上看，`UIComponent`类是UI组件的基类，也就是说UI组件有一个共性，都是继承于`UIComponent`类而实现的组件。
+从引擎类结构来看，`UIComponent` 是经典 UI 系统中所有 UI 组件的基类。也就是说，所有 UI 组件本质上都是继承自 `UIComponent` 的派生类，具备统一的接口和行为特征。
 
-UI组件，又分成基础UI组件和容器UI组件。比较容易理解和识别的方式为，Box和继承于Box的都属于容器类组件。其它的都是基础UI组件。
+UI 组件按照功能类型可分为**基础组件**和**容器组件**。其中，`Box` 及其所有子类被归类为容器组件，用于承载和布局其他 UI 节点；而除 `Box` 系列以外的组件，则通常属于基础组件，用于直接显示文本、图片、按钮等界面元素。
 
 ### 1.1  基础UI组件
 
 基础UI组件显示对象，一共有17个，直接或间接继承于`UIComponent`，如图1-1的高亮部分所示。
 
-![1-1](img/1-1.png)
+![1-1](img/1-1.png) 
 
 （图1-1）
 
@@ -22,7 +22,7 @@ UI组件，又分成基础UI组件和容器UI组件。比较容易理解和识�
 
 继承于Box的组件，加上Box容器本身，容器对象一共有9个。如图1-2的高亮部分所示。
 
-![1-2](img/1-2.png)
+![1-2](img/1-2.png) 
 
 (图1-2)
 
@@ -30,120 +30,119 @@ UI组件，又分成基础UI组件和容器UI组件。比较容易理解和识�
 
 例如，List必须要有基础UI组件作为列表的渲染单元，单选框组（RadioGroup）是多个单选框（Radio）组件的容器。
 
-
-
 ### 1.3 弹窗视图组件
 
-从引擎类的结构上看，弹窗视图组件Dialog并**不属于**UI组件，它的继承关系如图1-3所示。
+从引擎的类结构上看，弹窗视图组件 `Dialog` **并不继承自 `UIComponent`**，因此在严格意义上不属于 UI 组件体系中的一员，其继承关系如图 1-3 所示。
 
-![1-3](img/1-3.png)
+![1-3](img/1-3.png) 
 
 （图1-3）
 
-> 该组件一般用于弹窗面板，与场景的管理息息相关，是UI小部件的一部分，所以不再单独列出一类，只在这里做一个说明。
+但在功能上，`Dialog` 是经典 UI 系统中使用频率极高的组件之一，所在IDE创建UI组件时，也归类在其中。常用于弹窗界面、提示窗口、对话框等应用场景。
 
 
 
-## 二、UI组件的创建
+## 2、UI组件的使用
 
-UI组件的创建有三种方式：分别是从小部件（Widgets）面板里拖拽UI组件使用、从层级管理（Hierarchy）面板的右键菜单里创建、通过组件资源命名规则为资源命名，然后直接被IDE识别。
+UI组件的创建有三种方式：分别是从小部件（Widgets）面板里拖拽UI组件使用、从层级管理（Hierarchy）面板的右键菜单里创建、通过组件资源命名规则为资源命名，然后拖拽资源使用，直接被IDE识别。
 
-### 2.1  直接使用组件
+### 2.1  小部件面板中拖拽
 
 小部件（Widgets）面板里包括了基础节点，也包括了UI组件，使用时直接拖拽到层级面板或场景编辑窗口内即可。效果如动图2-1所示。
 
-![2-1](img/2-1.gif)
+![](img/2-1.gif)
 
 (动图2-1)
 
-
-
-### 2.2  右键菜单
+### 2.2  层级右键菜单中创建
 
 层级管理（Hierarchy）面板的2D节点下，右键菜单里也可以直接创建UI组件，效果如图2-2所示。
 
-<img src="img/2-2.png" alt="2-2" style="zoom: 80%;" />
+<img src="img/2-2.png" alt="2-2" style="zoom: 80%;" /> 
 
 (图2-2)
 
+### 2.3 资源面板中拖拽
 
+如果资源命名符合 UI 组件命名规则（具体规则可参见相关文档），则在将其拖拽到层级面板或场景视图时，IDE 会**自动创建对应的 UI 组件**，如图 2-3 所示。
 
-### 2.3 通过组件资源命名规则，直接被IDE识别
+![](img/2-3.png) 
 
-对于一些常用的UI组件，LayaAir引擎与IDE，提供了资源命名的规则。
+(图2-3)
 
-当图像资源文件按照LayaAir引擎UI组件命名规则命名时，会直接被IDE识别为基础UI组件。
+## 3、UI组件基类属性
 
-组件资源的命名有两类，
+在 UI 组件中，**相对布局**、**数据源绑定**、**灰化显示（变灰）以及禁用鼠标事件**等，都是 UI 系统特有的功能属性。这些能力在 2D 基础对象（如 `Sprite`）中并不具备。
 
-一类是，一个资源就对应一个UI组件的常规资源，例如，`img_layabox.png`，会被识别为Image组件。
+### 3.1 相对布局layout
 
-另一类是，多个资源对应一个UI组件的组合资源，例如，`progress_loading.png`与`progress_loading$bar.png`组合形成一个progress组件，`progress_loading.png`为组件名是进度条的背景资源，另一个在`progress_loading`后面带了一个`$bar`的是进度条的进度资源。
+如图 3-1 所示，每个 UI 组件都具备一组用于相对定位的布局属性。而基础显示对象（如 `Sprite`）仅支持**绝对布局**。
 
-总结以上，我们会发现两点规律：
-
-- 无论是哪种资源，下划线`_`之前是组件规则名称，并且必须要放到文件名的开头。
-- 组合资源，在主资源名称的后面，再通过美元符号`$`相隔，带一个辅助标识名，方便IDE与引擎识别。
-
-#### 常规资源命名规则如下：
-
-| 组件名     | 中文组件名   | 资源文件名前缀 | 资源文件名前缀缩写 |
-| ---------- | ------------ | -------------- | ------------------ |
-| Image      | 图像         | image_         | img_               |
-| Button     | 按钮         | button_        | btn_               |
-| ComboBox   | 下拉框       | comboBox_      | combo_             |
-| TextInput  | 文本输入     | textInput_     | input_             |
-| TextArea   | 文本域       | textArea_      | area_              |
-| CheckBox   | 多选框       | checkBox_      | check_             |
-| Label      | 显示文本     | label_         | 无缩写             |
-| RadioGroup | 单选框组     | radioGroup_    | 无缩写             |
-| Radio      | 单选框       | radio_         | 无缩写             |
-| Tab        | 导航标签组   | tab_           | 无缩写             |
-| Clip       | 位图切片     | clip_          | 无缩写             |
-| FontClip   | 位图字体切片 | fontClip_      | 无缩写             |
-
-> 资源前缀不区分大小写
-
-#### 组合资源命名规则如下：
-
-| 组件名      | 中文组件名 | 资源文件名前缀 | 资源文件名前缀缩写 | 辅助标识名                                            |
-| ----------- | ---------- | -------------- | ------------------ | ----------------------------------------------------- |
-| VScrollBar  | 垂直滚动条 | vscrollbar_    | vscroll_           | 垂直划动条`$bar`、上点击按钮`$up` 、下点击按钮`$down` |
-| HScrollBar  | 水平滚动条 | hscrollbar_    | hscroll_           | 水平划动条`$bar`、左点击按钮`$up` 、右点击按钮`$down` |
-| ProgressBar | 进度条     | progressbar_   | progress_          | 进度条`$bar`                                          |
-| VSlider     | 垂直划动条 | vslider_       | 无缩写             | 垂直划动按钮`$bar`、进度条资源`$progress`（可选）     |
-| HSlider     | 水平划动条 | hslider_       | 无缩写             | 水平划动按钮`$bar`、进度条资源`$progress`（可选）     |
-
-> 资源前缀不区分大小写
-
-示例说明：
-
-- 垂直滚动条aa，由四个资源文件构成。分别是`vscroll_aa.png、vscroll_aa$bar.png、vscroll_aa$up.png、vscroll_aa$down.png`。
-- 进度条bb，由两个资源文件构成。分别是`progress_bb.png、progress_bb$bar.png`。
-- 水平划动条cc，由两个或三个资源文件构成。分别是`hslider_cc.png、hslider_cc$bar.png、hslider_cc$progress.png（可选）`，若缺少了进度条资源hslider_cc$progress.png不会报错，只是不显示进度。
-
-### 2.4 容器组件的创建与解除
-
-了解完资源命名规则后发现，除了继承于UI组(UIGroup)的RadioGroup与Tab组件，是可以通过资源前缀规则命名识别的。其它的容器组件均不支持通过资源名称直接识别创建。
-
-除了采用2.1与2.2的方式创建外，还可以在IDE里将一个或多个选中的基础组件通过`Ctrl+B`快捷键转化为容器组件。如果不想要容器组件了，也可以通过`Ctrl+U`解除当前选中的容器。
-
-> 此处有个印象即可，在介绍具体的容器组件时，还会详细描述创建方法与流程。
-
-
-
-## 三、相对布局
-
-相对布局是UI组件的特有属性，如图3-1所示，每一个UI组件都有这样的相对布局属性。而基础显示对象Sprite等就没有相对布局，只有绝对布局。
-
-![3-1](img/3-1.png)
+![3-1](img/3-1.png) 
 
 （图3-1）
 
-在相对布局中，UI组件（如按钮，文本框等）的位置是相对于它们的父节点来确定的。这种布局带来了极大的灵活性，并且可以在不同的屏幕大小和方向下保证 UI 布局的一致性。
+在相对布局中，UI 组件的位置是**相对于其父节点**来计算的。这种布局方式提供了高度的灵活性，能在不同屏幕尺寸和方向下自动适配，确保界面元素在各类设备上的一致性与可用性。
 
+代码中的使用示例如下：
 
+```typescript
+this.xx.left = 0;
+this.xx.right = 0;
+this.xx.top = 0;
+this.xx.bottom = 0;
+this.xx.CenterX = 0;
+this.xx.CenterY = 0;
+```
 
-> 至此，我们对UI组件已有了基础的了解，我们将开始对全部的UI组件进行详细介绍。为避免文档的标题过长，对UI组件根据使用的特点进行分类介绍，并不按组件类的继承关系。
+### 3.2 数据源dataSource
 
-下面，通过左侧导航点开UI组件文档了解更多吧~
+在实际开发中，从网络获取的数据有时候与 UI 组件预期的数据结构不完全一致，尤其在处理列表组件时更为常见。此时可以通过设置组件的 `dataSource`，对原始数据进行结构调整，使其满足列表渲染所需的格式。
+
+示例代码如下：
+
+```typescript
+import { ItemBoxBase } from "./ItemBox.generated";
+
+const { regClass, property } = Laya;
+
+@regClass()
+export class Script extends ItemBoxBase {
+  	constructor() {
+        super();
+    }
+
+    get dataSource(): any {
+        return super.dataSource;
+    }
+    set dataSource(value: any) {
+        super.dataSource = value;
+        if (!value) return;
+
+        //把数据源里的值，给到子节点属性
+        if (value.avatar) {
+            let redHot = this.getChildByName("avatar").getChildByName("redHot") as Laya.Image;
+            redHot.visible = value.avatar.redHot.visible;
+        }
+
+        if (value.flag) {
+            let flagText = this.getChildByName("flag").getChildByName("flagText") as Laya.Text;
+            flagText.text = value.flag.flagText.text;
+        }
+    }
+}
+```
+
+### 3.3  变灰与禁用鼠标事件
+
+在 UI 组件中，设置 `gray` 属性可使组件进入**灰化状态**，将具有颜色的元素以灰色形式显示，如图3-2所示。用于提示“不可用”或“非当前状态”。
+
+![](img/3-2.png) 
+
+而设置 `disabled` 属性，则不仅会**禁用鼠标交互**（例如点击按钮无响应），还会自动将组件强制切换为灰化显示。这种视觉反馈可以让用户明显感知到该组件当前处于不可操作状态。
+
+代码使用示例如下：
+
+```typescript
+this.xx.disabled = true;
+```
