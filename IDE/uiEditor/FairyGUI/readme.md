@@ -58,3 +58,7 @@ GButton是一个行为组件，它不带显示功能。你需要制作自己的�
 - 想显示一段文字，拖入一个GLabel到舞台，为何显示不出文字？
 
 显示文字应该使用GTextField，而不是GLabel。GLabel不是文字组件，它是一个行为组件，一般用于预制体的根节点。
+
+- 关于GRoot
+GRoot是UI系统的根节点，在游戏启动时自动创建。它在整个游戏中只有一个，并且总是显示在所有场景的最前面。一般来说，我们只做的UI界面直接放在场景（Scene2D）中即可，无需添加到GRoot下。如果调用GRoot的showPopup，或者显示窗口（GWindow），这些内容会自动添加在GRoot下。
+因为GRoot只有一个实例，访问GRoot使用GRoot.inst即可。
