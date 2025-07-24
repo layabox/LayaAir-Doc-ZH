@@ -179,60 +179,7 @@ LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如
 
 
 
-
-## 四、命令行工具
-除了可以在构建发布中生成DCC，还可以通过命令行来更灵活的实现相同功能。
-
-首先进行安装（管理员）：
-
-```bash
-npm install -g layadcc2
-```
-安装完以后，可以直接使用`layadcc2`命令。用法如下：
-
-```bash
-Usage:  [options] [command] <dir>
-
-layadcc2命令工具
-
-Arguments:
-  dir                                         输入目录
-
-Options:
-  -V, --version                               output the version number
-  -o, --output <outDir>                       指定输出目录,如果是相对目录，则是相对于当前目录 (default: "dccout")
-  -m, --merge                                 是否合并小文件
-  -y, --overwrite                             是否覆盖输出目录（保留历史记录需要覆盖）
-  -h, --help                                  display help for command
-
-Commands:
-  genpatch [options] <inputDir1> <inputDir2>  生成补丁文件
-  checkout [options] <inputDir>               把dcc目录恢复成原始结构
-```
-
-例如，
-
-- 生成DCC资源：
-
-```bash
-layadcc2 ./resource -o ./dccout
-```
-这个会给resource目录生成DCC，输出到dccout下面。
-
-> 目前没有做详细的参数，如果要保存多个版本，可以自行在dccout下面修改json文件的名字，然后把整个目录合并到之前的dccout目录下。
-
-
-
-- 把DCC资源恢复成原始资源：
-
-```bash
-layadcc2 checkout ./dcc1
-```
-这个把dcc1目录下的head.json指向的版本展开成原始目录，放到checkout目录下
-
-
-
-## 五、通过代码的使用方法
+## 四、通过代码的使用方法
 
 > 源码地址：https://github.com/layabox/layadcc2.git
 >
@@ -332,7 +279,7 @@ export class LayaDCCClient{
 
 常见用法如下：
 
-### 5.1 生成DCC
+### 4.1 生成DCC
 
 ```typescript
     let srcPath = '资源的绝对路径'
@@ -346,7 +293,7 @@ export class LayaDCCClient{
     await dcc.genDCC(srcPath);
 ```
 
-### 5.2 使用dcc
+### 4.2 使用dcc
 
 对于使用dcc，基本流程是根据根文件初始化，然后插入laya引擎的downloader，之后下载就会被dcc接管
 ```typescript
@@ -360,7 +307,7 @@ let initok = await dcc.init('http://localhost:7788/version.3.0.0.json',null);
 dcc.injectToLaya();
 ```
 
-### 5.3 native端使用dcc
+### 4.3 native端使用dcc
 
 ```javascript
 var appUrl = "http://stand.alone.version/index.js";
@@ -382,7 +329,7 @@ dcc.init(dccHead, null).then((ok) => {
 ```
 现在native中已经包含这段代码（index.js中），可以通过layadcc访问dcc库导出的对象，通过dcc访问native创建的LayaDCCClient
 
-### 5.4 集中更新所有资源，避免边运行边下载
+### 4.4 集中更新所有资源，避免边运行边下载
 
 ```typescript
 let dcc = new DCCClient('http://localhost:7788/' );
@@ -391,7 +338,7 @@ let initok = await dcc.init('http://localhost:7788/version.3.0.0.json',null);
 await dcc.updateAll((p)=>{/*进度提示*/})
 ```
 
-### 5.5 使用zip更新
+### 4.5 使用zip更新
 
 ```typescript
     async function downloadBigZip(url:string):Promise<string|null>{
@@ -424,14 +371,14 @@ await dcc.updateAll((p)=>{/*进度提示*/})
 
 > 详细参考[zip更新](../zipUpdate/readme.md)。
 
-### 5.6 清理本地缓存
+### 4.6 清理本地缓存
 
 ```typescript
 let dcc = new DCCClient(null);
 await dcc.clean();
 ```
 
-### 5.7 生成版本之间的差异zip
+### 4.7 生成版本之间的差异zip
 
 ```typescript
     let zipfile = await LayaDCCTools.genZipByComparePath(老的dcc目录, 新的dcc目录, 输出目录);
@@ -441,7 +388,7 @@ await dcc.clean();
 zip中包含根root，可以通过updateByZip更新。
 具体的LayaDCCTools的接口见源码。
 
-### 5.8 根据文件列表生成pack包
+### 4.8 根据文件列表生成pack包
 
 ```typescript
 import {layadcctools} from './dist/layadcctools.js'
@@ -462,7 +409,7 @@ layadcctools.LayaDCCTools.genPackByFileList( [
 ```
 这里的DCCPackR是PackRaw对应的解码器。
 
-### 5.9 其他功能
+### 4.9 其他功能
 `enableLog:boolean` ：是否打印日志，设置为true之后，会有更多打印信息，有助于调试。
 
 `onlyTransUrl:boolean`：只做地址转换功能，即把一个url请求转换成对缓存对象的请求，不会在本地存储这个对象。例如，在网页端，只是希望保证文件资源是正确的，可以设置为这个true。
@@ -471,7 +418,7 @@ layadcctools.LayaDCCTools.genPackByFileList( [
 
 
 
-## 七、常见问题
+## 五、常见问题
 
 - **DCC是否能读取apk中打包的资源，需要特殊设置吗？**
 
