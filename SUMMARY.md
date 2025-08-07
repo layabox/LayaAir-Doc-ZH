@@ -52,7 +52,7 @@
   * [滤镜效果](IDE/uiEditor/Filter/readme.md)
   * [UI运行时](IDE/uiEditor/runtime/readme.md)
   * [2D节点使用3D](IDE/uiEditor/use3D/readme.md)
-- 新UI系统(FairyGUI) 
+- 新UI系统
   * [基础使用](IDE/uiEditor/FairyGUI/readme.md)
   * [控制器](IDE/uiEditor/FairyGUI/controller/readme.md)
   * [关联系统](IDE/uiEditor/FairyGUI/relation/readme.md)
@@ -77,7 +77,7 @@
   * [窗口组件](IDE/uiEditor/FairyGUI/GWindow/readme.md)
   * [根节点与弹窗](IDE/uiEditor/FairyGUI/Groot/readme.md)
   * [国际化](IDE/uiEditor/FairyGUI/i18n/readme.md)
-- 经典UI系统(MornUI) 
+- 经典UI系统
   * [基础使用与构成](IDE/uiEditor/uiComponent/readme.md)
   * [UI组件资源命名规则](IDE/uiEditor/uiComponent/namingRule/readme.md)
   * [图像组件](IDE/uiEditor/uiComponent/Image/readme.md)
