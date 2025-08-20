@@ -1,15 +1,20 @@
-# 原生平台通信
+# 原生语言与JavaScript通信
 
-在支持HarmonyOS、Linux和Window后新增一种和原生平台之间通信的接口。
+有的时候，我们需要在Native里扩展一些原生语言的功能，那怎么和LayaAir引擎的JS语言项目之间互相通讯呢，本篇将进行全面的介绍。
 
-## 1. 脚本接口
+# 1.JS端脚本的执行
+
+### 1.1 在 JS端向原生端发送消息
+
+ 在JS中使用的脚本接口如下：
+
 ```javascript
 //同步
 postSyncMessage(eventName: string, data: string): string;
 //异步
 postAsyncMessage(eventName: string, data: string): Promise<string>;
 ```
-简单测试案例如下：  
+JS中简单的测试案例如下：  
 ```javascript
 var ret = conch.postSyncMessage("syncMessage", "syncMessage from js");
 alert(ret);
@@ -17,7 +22,24 @@ conch.postAsyncMessage("asyncMessage", "asyncMessage from js").then(function (da
 alert(data);
 })
 ```
-## 2. 原生平台端消息处理
+### 1.2 在原生端中主动执行JS端脚本
+
+iOS/OC执行JS脚本：
+
+```javascript
+  [[conchRuntime GetIOSConchRuntime] runJS:@"alert('hello')"];
+```
+
+Android/Java执行JS脚本：
+
+```javascript
+  ConchJNI.RunJS("alert('hello world')");
+```
+
+
+
+# 2. 原生端的消息处理
+
 ### 1. HarmonyOS
 在libSysCapabilities/src/main/ets/event/HandleMessageUtils.ts添加消息处理代码
 ```typescript
@@ -83,6 +105,7 @@ alert(data);
 conchSetHandleMessageCallback函数设置处理异步和同步消息的回调  
 conchSendHandleMessageResult根据事件名称把数据传递回JS侧    
 详见Runtime/x64/include/Exports.h  
+
 ```c
 CONCH_EXPORT void CONCH_CDECL conchSetHandleMessageCallback(handleSyncMessageCallback handleSyncMessageCb,
                                                             handleAsyncMessageCallback handleAsyncMessageCb);
