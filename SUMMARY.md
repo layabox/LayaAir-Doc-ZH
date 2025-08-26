@@ -6,6 +6,7 @@
 - 开发环境
   * [搭建基础开发环境](basics/developmentEnvironment/download/readme.md)
   - [IDE开发界面](basics/IDE/GUI/readme.md)
+    * [创建新项目](basics/IDE/createNewProject/readme.md)
     * [自定义界面布局](basics/IDE/layouts/readme.md)
     * [项目工程目录说明](basics/IDE/projecFolders/readme.md)
     * [项目设置说明](basics/IDE/projectSettings/readme.md)
