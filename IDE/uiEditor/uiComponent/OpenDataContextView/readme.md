@@ -359,7 +359,7 @@ init();
 
 打开这个网页[codepen](https://codepen.io/pen?template=VwEeLKw)，这个网站是一个Layout引擎调试工具，而我们打开的网页是一个示例，其中已经设置好了[doT.js](https://olado.github.io/doT/index.html)这款模板引擎。
 
-在网页的左上角我们可以看到这个示例的“源码”，这是一段类似于XML格式的字符串，与XML格式不同的是，其标签中的 `value`属性并不是一个具体的值，而是一个以特定格式`{{= it.title }}`传入的参数（这个语法的格式为 `"{{= }}"`，用于插值），
+在网页的左上角我们可以看到这个示例的“源码”，这是一段类似于XML格式的字符串，与XML格式不同的是，其标签中的 `value`属性并不是一个具体的值，而是一个以特定格式传入的参数，
 
 <img src="img/4-2-1.png" alt="4-2-1" style="zoom: 50%;" />
 
