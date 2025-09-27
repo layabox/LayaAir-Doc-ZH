@@ -17,12 +17,12 @@
     * [属性设置面板说明](basics/IDE/Inspector/readme.md)
     * [预览运行面板说明](basics/IDE/Game/readme.md)
   * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
+  * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
   * [Unity资源导出插件](3D/advanced/Unity/readme.md)
   
 - 编程语言与调试
   * [TS语言基础](basics/language/readme.md)
   * [DevTools调试工具](basics/DevTools/readme.md)
-  * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
   
 - 引擎核心功能
   * [资源加载](basics/common/Loader/readme.md)
