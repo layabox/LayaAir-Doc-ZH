@@ -50,7 +50,6 @@
     * [2D拖尾渲染器](IDE/Component/2D/2DRender/Trail2DRender/readme.md)
     * [2D线渲染器](IDE/Component/2D/2DRender/Line2DRender/readme.md)
     * [2D粒子渲染器](IDE/particleEditor2D/readme.md)
-  * [滤镜效果](IDE/uiEditor/Filter/readme.md)
   * [后期处理](IDE/uiEditor/PostProcess/readme.md)
   * [UI运行时](IDE/uiEditor/runtime/readme.md)
   * [2D节点使用3D](IDE/uiEditor/use3D/readme.md)
