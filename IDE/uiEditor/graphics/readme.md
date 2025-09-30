@@ -55,7 +55,9 @@ LayaAir引擎中 `laya.display.Graphics` 类可以查看到API的各种矢量绘
 
 动图2-2演示了这些属性的操作过程：
 
-<img src="img/2-2.gif" style="zoom:50%;" /> 
+
+ <img src="img/2-2.gif"alt="2-2" style="zoom:50%;" /> 
+
 
 （动图2-2）
 
@@ -154,7 +156,7 @@ drawPath 第一和第二位的坐标点“20,20”是控制整体位置的起始
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令，如图2-5所示，选择 `创建 圆角矩形（DrawRoundRectCmd）` 绘制圆角矩形。
 
-<img src="img/2-5.png" alt="2-5" style="zoom: 50%;" />
+<img src="img/2-5.png" alt="2-5" style="zoom: 70%;" />
 
 （图2-5）
 
@@ -321,7 +323,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 圆形（DrawCircleCmd）` 绘制圆形，创建后如图3-1所示。 
 
-<img src="img/3-1.png" alt="3-1" style="zoom: 50%;" />
+<img src="img/3-1.png" alt="3-1" style="zoom: 70%;" />
 
 （图3-1）
 
@@ -381,7 +383,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 椭圆形（DrawEllipseCmd）` 绘制椭圆，创建后如图3-3所示。 
 
-<img src="img/3-3.png" alt="3-3" style="zoom:50%;" />
+<img src="img/3-3.png" alt="3-3" style="zoom:70%;" />
 
 （图3-3）
 
@@ -487,7 +489,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 多边形（DrawPolyCmd）` 绘制三角形、多边形，创建后如图4-1所示。
 
-<img src="img/4-1.png" alt="4-1" style="zoom:50%;" />
+<img src="img/4-1.png" alt="4-1" style="zoom:60%;" />
 
 （图4-1）
 
