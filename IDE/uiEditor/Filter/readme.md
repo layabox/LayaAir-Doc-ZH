@@ -46,7 +46,7 @@ ColorFilter是颜色滤镜，颜色滤镜是图像后期处理中非常重要的
 
 如图2-1所示，颜色滤镜有5个属性：
 
-<img src="img/2-1.png" alt="2-1" style="zoom:50%;" />
+<img src="img/2-1.png" alt="2-1" style="zoom:100%;" />
 
 （图2-1）
 
@@ -142,7 +142,7 @@ BlurFilter是模糊滤镜，能够产生模糊的效果。
 
 如图3-1所示，模糊滤镜只有1个属性：
 
-<img src="img/3-1.png" alt="3-1" style="zoom:50%;" />
+<img src="img/3-1.png" alt="3-1" style="zoom:100%;" />
 
 （图3-1）
 
@@ -187,7 +187,7 @@ GlowFilter是发光滤镜，就是创建放光效果或者阴影的效果，比�
 
 如图4-1所示，发光滤镜有3个属性：
 
-<img src="img/4-1.png" alt="4-1" style="zoom:50%;" />
+<img src="img/4-1.png" alt="4-1" style="zoom:100%;" />
 
 （图4-1）
 
