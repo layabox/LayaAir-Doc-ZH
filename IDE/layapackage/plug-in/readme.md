@@ -374,8 +374,7 @@ export class MyPanel extends IEditor.EditorPanel {
 > 类型和属性定义语法请参考[文档](../../../basics/common/Component/readme.md)。
 
 
-
-在LayaAir3.2中，可以用更直观的方式定义数据类型，以上面的例子为例，可以改写为：
+上面的例子是通过手写类型定义实现，我们也可以通过组件的方式，更直观，以上面的例子为例，可以改写为：
 
 ```typescript
 @IEditor.regClass()
@@ -728,24 +727,7 @@ createSettings的第一个参数是这个配置的名称，它是全局的，请
 
 第三个参数是类型名称，对应上面addTypes的操作。如果类型名称和配置名称一致，第三个参数也可以省略。
 
-配置创建后，UI进程可以通过Editor.getSettings访问配置数据，然后进行读写，例如：
-
-```typescript
-let data = Editor.getSettings("MyTestSettings").data;
-data.option2 = "hello";
-```
-
-配置是自动载入和保存的，无需手动操作。
-
-场景进程可以通过EditorEnv.getSettings访问配置数据，**但是是只读的，无法修改**。而且因为是跨进程，所以要获得最新的数据，要先调用sync，例如：
-
-```typescript
-let settings = EditorEnv.getSettings("MyTestSettings");
-await settings.sync();
-console.log(settings.data.option2); //hello
-```
-
-在LayaAir3.2中，我们可以用更直观的方式定义数据类型，以上面的例子为例，可以改写为：
+上面的例子是手写类型数据，也可以通过组件的方式，更直观，例如：
 
 ```typescript
 @IEditor.regClass()
@@ -763,7 +745,35 @@ static onLoad() {
 }
 ```
 
+配置创建后，UI进程可以通过Editor.getSettings访问配置数据，然后进行读写，例如：
 
+```typescript
+let data = Editor.getSettings("MyTestSettings").data;
+data.option2 = "hello";
+```
+
+配置是自动载入和保存的，无需手动操作。
+
+场景进程可以通过EditorEnv.getSettings访问配置数据，**但是是只读的，无法修改**。而且因为是跨进程，所以要获得最新的数据，要先调用sync，例如：
+
+```typescript
+let settings = EditorEnv.getSettings("MyTestSettings");
+await settings.sync();
+console.log(settings.data.option2); //hello
+```
+
+一般来说，配置文件只用在编辑器环境，如果需要在运行时（预览或发布后）也能读取到配置的数据，可以使用createSettings的另一个重载，例如：
+
+```typescript
+Editor.extensionManager.createSettings("MyTestSettings", 
+    { location: "project", contributeToPlayerConfig: true});
+```
+
+运行时可以这样访问：
+
+```typescript
+console.log(Laya.PlayerConfig["MyTestSettings"]);
+```
 
 ## 十二、扩展编辑器配置界面
 
