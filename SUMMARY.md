@@ -1,3 +1,4 @@
+* [文档首页](index.md)
 - 引擎介绍
   * [引擎历史与服务](services.md)
   * [引擎功能概述](basics/readme.md)
@@ -5,7 +6,9 @@
   * [2.x引擎项目升级说明](basics/2.x-Upgrade/readme.md)
   
 - 开发环境
-  * [搭建基础开发环境](basics/developmentEnvironment/download/readme.md)
+  - [初学者必读](basics/developmentEnvironment/readme.md)
+    * [搭建基础开发环境](basics/developmentEnvironment/download/readme.md)
+    * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
   - [IDE开发界面](basics/IDE/GUI/readme.md)
     * [创建新项目](basics/IDE/createNewProject/readme.md)
     * [自定义界面布局](basics/IDE/layouts/readme.md)
@@ -16,7 +19,6 @@
     * [项目资源面板说明](basics/IDE/assets/readme.md)
     * [属性设置面板说明](basics/IDE/Inspector/readme.md)
     * [预览运行面板说明](basics/IDE/Game/readme.md)
-  * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
   * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
   * [Unity资源导出插件](3D/advanced/Unity/readme.md)
   
