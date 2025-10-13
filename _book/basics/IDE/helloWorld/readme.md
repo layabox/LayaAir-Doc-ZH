@@ -214,21 +214,25 @@ LayaAir3引擎是基于场景运行的，无法设置一个纯粹的代码作为
 
 LayaAir3-IDE支持丰富的可视化开发模块，这里列出一些主要的功能模块文档链接，开发者可在有时间的时候逐一查看。
 
-[UI编辑模块](../../../IDE/uiEditor/readme.md)
+[UI编辑模块](../../../IDE/uiEditor/basic/readme.md)
 
-[动画编辑模块](../../../IDE/animationEditor/readme.md)
+[动画编辑模块](../../../IDE/animationEditor/timelineGUI/readme.md)
 
 [2D物理编辑](../../../IDE/physicsEditor/physics2D/readme.md)
 
 [3D物理编辑](../../../IDE/physicsEditor/physics3D/readme.md)
 
-[3D粒子编辑](../../../IDE/particleEditor/readme.md)
+[2D粒子编辑](../../../IDE/particleEditor2D/readme.md)
+
+[3D粒子编辑](../../../IDE/particleEditor3D/readme.md)
 
 [材质编辑模块](../../../IDE/materialEditor/readme.md)
 
-[蓝图编辑模块](../../../IDE/ShaderBlueprint/readme.md)
+[程序蓝图编辑模块](../../../IDE/ShaderBlueprint/blueprint/readme.md)
 
-[IDE插件系统](../../../IDE/layapackage/readme.md)
+[Shader蓝图编辑模块](../../../IDE/ShaderBlueprint/Shaderblueprint/readme.md)
+
+[IDE插件系统](../../../IDE/layapackage/plug-in/readme.md)
 
 ## 六、构建发布
 
