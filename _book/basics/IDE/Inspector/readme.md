@@ -10,8 +10,10 @@
 
 （图1-1）
 
-- 3D节点可以增加的组件有：动画（[时间轴动画](../../../IDE/animationEditor/timelineGUI/readme.md)、[动画状态机](../../../IDE/animationEditor/aniController/readme.md)）、[3D物理](../../../IDE/physicsEditor/physics3D/readme.md)、[网格](../../../IDE/Component/Mesh/readme.md)、特效（[粒子](../../../IDE/particleEditor/readme.md)、[拖尾](../../../IDE/Component/Trail/readme.md)、[像素线](../../../IDE/Component/PixelLine/readme.md)）、[灯光](../../../3D/Light/readme.md)、渲染（[UI3D](../../../IDE/uiEditor/3DUI/readme.md) 、[反射探针](../../../IDE/Component/ReflectionProbe/readme.md)、[体积全局照明](../../../IDE/Component/VolumetricGI/readme.md)、[静态合批](../../../IDE/Component/StaticBatchVolume/readme.md)、[LOD组](../../../IDE/Component/LOD/readme.md)）、[自定义组件脚本](../../../basics/IDE/entry/readme.md)、[新建组件脚本](../../../basics/common/Component/readme.md)。
-- 2D节点可以增加的组件有：动画（[时间轴动画](../../../IDE/animationEditor/timelineGUI/readme.md)、[动画状态机](../../../IDE/animationEditor/aniController/readme.md)）、[2D物理](../../../IDE/physicsEditor/physics2D/readme.md)、[自定义组件脚本](../../../basics/IDE/entry/readme.md)、[新建组件脚本](../../../basics/common/Component/readme.md)。
+- 3D节点可以增加的组件有：动画（[时间轴动画](../../../IDE/animationEditor/timelineGUI/readme.md)、[动画状态机](../../../IDE/animationEditor/aniController/readme.md)）、[3D物理](../../../IDE/physicsEditor/physics3D/readme.md)、[网格](../../../IDE/Component/Mesh/readme.md)、[灯光](../../../3D/Light/readme.md)、
+渲染（[粒子](../../../IDE/particleEditor3D/readme.md)、[拖尾](../../../IDE/Component/Trail/readme.md)、[像素线](../../../IDE/Component/PixelLine/readme.md)、[UI3D](../../../IDE/uiEditor/3DUI/readme.md) 、[反射探针](../../../IDE/Component/ReflectionProbe/readme.md)、[体积全局照明](../../../IDE/Component/VolumetricGI/readme.md)、[静态合批](../../../IDE/Component/StaticBatchVolume/readme.md)、[LOD组](../../../IDE/Component/LOD/readme.md)）、[自定义组件脚本](../../../basics/IDE/entry/readme.md)、[新建组件脚本](../../../basics/common/Component/readme.md)。
+- 2D节点可以增加的组件有：网格([网格渲染器](../../../IDE/Component/2D/2DRender/Mesh2DRender/readme.md))
+动画（[时间轴动画](../../../IDE/animationEditor/timelineGUI/readme.md)、[动画状态机](../../../IDE/animationEditor/aniController/readme.md)）、[2D物理](../../../IDE/physicsEditor/physics2D/readme.md)、[自定义组件脚本](../../../basics/IDE/entry/readme.md)、[新建组件脚本](../../../basics/common/Component/readme.md)。
 
 > “自定义组件脚本”是添加已经存在的脚本文件；“新建组件脚本”是新建一个脚本文件。
 
