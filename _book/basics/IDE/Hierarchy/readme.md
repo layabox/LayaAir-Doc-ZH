@@ -334,7 +334,7 @@ IDE提供了一个全部收缩按钮，如动图2-11所示，点击后可以收�
 
 ### 4.3 骨骼节点
 
-[Spine](../../../IDE/uiEditor/uiComponent/skeleton/spine/readme.md)通过将图片绑定到骨骼上，然后再控制骨骼实现动画。
+[Spine](../../../IDE/Component/2D/2DRender/Spine2DRenderNode/readme.md)通过将图片绑定到骨骼上，然后再控制骨骼实现动画。
 
 [Skeleton](../../../IDE/uiEditor/uiComponent/skeleton/sk/readme.md)可以将一些经常使用的骨骼动画格式转换为LayaAir引擎支持的骨骼动画格式。
 
