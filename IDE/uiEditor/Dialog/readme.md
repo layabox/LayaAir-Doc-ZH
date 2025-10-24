@@ -108,7 +108,7 @@ export class NewScript extends Laya.Script {
         //使用Prefab，需要转换根节点为Dialog
         Laya.loader.load("resources/Prefab2D.lh").then(res => {
             let dlg: Laya.Dialog = res.create();
-            dlg.show();
+            dlg.open();
         });
     }
 }
@@ -165,7 +165,7 @@ export class UI_Dialog extends Laya.Script {
 		this.dialog.addChild(button);
 
 		this.dialog.dragArea = "0,0," + this.DIALOG_WIDTH + "," + this.DIALOG_HEIGHT;
-		this.dialog.show();
+		this.dialog.open();
 	}
 
 	onDestroy(): void {
