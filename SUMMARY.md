@@ -8,6 +8,7 @@
 - 开发环境
   - [初学者必读](basics/developmentEnvironment/readme.md)
     * [搭建基础开发环境](basics/developmentEnvironment/download/readme.md)
+    * [AI协同开发环境](basics/developmentEnvironment/AIGC/readme.md)
     * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
   - [IDE开发界面](basics/IDE/GUI/readme.md)
     * [创建新项目](basics/IDE/createNewProject/readme.md)
@@ -112,8 +113,8 @@
   - [选项框](IDE/uiEditor/uiComponent/optionBox/readme.md)
     * [下拉选项框组件](IDE/uiEditor/uiComponent/ComboBox/readme.md)
     * [单选框组件](IDE/uiEditor/uiComponent/Radio/readme.md)
-    * [单选框组组件](IDE/uiEditor/uiComponent/RadioGroup/readme.md)
-    * [多选框组件](IDE/uiEditor/uiComponent/CheckBox/readme.md)
+    * [单选框组容器组件](IDE/uiEditor/uiComponent/RadioGroup/readme.md)
+    * [复选框组件](IDE/uiEditor/uiComponent/CheckBox/readme.md)
   - [导航菜单](IDE/uiEditor/uiComponent/navigationMenu/readme.md)
     * [导航标签组组件](IDE/uiEditor/uiComponent/Tab/readme.md)
     * [导航容器组件](IDE/uiEditor/uiComponent/ViewStack/readme.md)
@@ -147,9 +148,9 @@
   
 - IDE资源
   * [模型资源设置](IDE/assets/model/readme.md)
+  * [压缩纹理](IDE/uiEditor/textureCompress/readme.md)
   * [预制体](IDE/assets/prefab/readme.md)
   * [瓦片地图](IDE/assets/TileSet/readme.md)
-  * [压缩纹理](IDE/uiEditor/textureCompress/readme.md)
   * [脚本集定义](IDE/assets/bundledef/readme.md)
   * [自动图集配置](IDE/assets/atlascfg/readme.md)
   
