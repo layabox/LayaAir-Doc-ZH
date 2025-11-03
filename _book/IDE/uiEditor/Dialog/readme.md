@@ -24,7 +24,7 @@ Dialog的特有属性如下：
 
 | 属性                             | 功能                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
-| 自动销毁 **autoDestoryAtClosed** | 场景被关闭后，是否自动销毁（销毁节点和使用到的资源），默认为false |
+| 自动销毁 **autoDestoryAtClosed** | 弹窗视图被关闭后，是否自动销毁（销毁节点和使用到的资源），默认为false，此属性由场景类继承而来。 |
 | 拖动区域 **dragArea**            | 拖动区域（格式：x,y,width,height），默认值为"0,0,0,0"        |
 | 模式窗口 **isModal**             | 是否是模式窗口，默认为false。为模式窗口时，点击弹窗空白处，可自动关闭该弹窗 |
 | 显示弹窗效果 **isShowEffect**    | 是否显示弹出效果，默认为开启状态。为false时无弹出效果，直接显示弹窗 |
@@ -108,7 +108,7 @@ export class NewScript extends Laya.Script {
         //使用Prefab，需要转换根节点为Dialog
         Laya.loader.load("resources/Prefab2D.lh").then(res => {
             let dlg: Laya.Dialog = res.create();
-            dlg.show();
+            dlg.open();
         });
     }
 }
@@ -165,7 +165,7 @@ export class UI_Dialog extends Laya.Script {
 		this.dialog.addChild(button);
 
 		this.dialog.dragArea = "0,0," + this.DIALOG_WIDTH + "," + this.DIALOG_HEIGHT;
-		this.dialog.show();
+		this.dialog.open();
 	}
 
 	onDestroy(): void {
