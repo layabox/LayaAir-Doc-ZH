@@ -148,7 +148,8 @@
   
 - IDE资源
   * [模型资源设置](IDE/assets/model/readme.md)
-  * [压缩纹理](IDE/uiEditor/textureCompress/readme.md)
+  - [纹理资源](IDE/assets/texture/readme.md)
+    * [压缩纹理](IDE/uiEditor/textureCompress/readme.md)
   * [预制体](IDE/assets/prefab/readme.md)
   * [瓦片地图](IDE/assets/TileSet/readme.md)
   * [脚本集定义](IDE/assets/bundledef/readme.md)
