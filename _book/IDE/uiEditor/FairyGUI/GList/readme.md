@@ -82,6 +82,22 @@ aList.numItems = 100;
 
 使用这种方式生成的列表，如果你需要更新某个item，自行调用renderListItem(索引，getChildAt(索引))就可以了。
 
+如果要侦听点击某一个item的事件，不必每个item加上Click事件的侦听器，而是直接侦听列表的ClickItem事件：
+
+```TypeScript
+list.on(Laya.UIEvent.ClickItem, this, this.onClickItem);
+
+// 回调函数的第一个参数就是当前被点击的对象
+function onClickItem(item: GObject): void {
+    console.log("点击了对象：" + item.title);
+
+    //获得这个对象在列表中的索引的方式
+    let childIndex = list.getChildIndex(item);
+}
+```
+
+从上面的代码可以看出，事件回调里都可以方便的获得当前点击的对象。如果要获得索引，那么可以使用GetChildIndex。注意，item类型必须是按钮，即GButton，才可以触发ClickItem事件。
+
 ### 二、 虚拟列表
 
 如果列表的item数量特别多时，例如几百上千，为每一条项目创建实体的显示对象将非常消耗时间和资源。本UI系统为列表内置了虚拟机制，也就是它只为显示范围内的item创建实体对象，并通过动态设置数据的方式实现大容量列表。
@@ -180,3 +196,32 @@ aList.itemProvider = getListItemResource;
 循环列表只支持单行或者单列的布局，不支持流动布局和分页布局。
 
 因为循环列表是首尾相连的，指定一个item索引可能出现在不同的位置，所以需要指定滚定位置时，尽量避免使用item索引。例如，如果需要循环列表左/上滚一格或者右/下滚一格，最好的办法就是调用Scroller的API：scrollLeft/scrollRight/scrollUp/scrollDown。
+
+### 四、列表项Runtime
+
+列表可以通过代码动态设置item的Runtime类型，从而实现对item显示对象的逻辑的封装。例如
+
+```TypeScript
+//假设有一个自定义的组件类MyItem，注意基类必须和预制体根节点类型匹配，一般都是GButton。
+class MyItem extends Laya.GButton {
+    //注意！在onConstruct里才可以获取子对象，建议在这里做初始化，不要在构造函数里做初始化
+    onConstruct() {
+        //this.xx = this.getChild("xx");
+        //this.xx.on(Laya.Event.CLICK, this, this.onClick);
+    }
+
+    sayHello() {
+        console.log("Hello from MyItem");
+    }
+}
+
+//设置列表的item的Runtime为MyItem
+aList.itemPool.defaultRuntime = MyItem;
+//设置了item的Runtime后，itemRenderer可以直接访问到MyItem的方法和属性
+aList.itemRenderer = (index: number, item: MyItem) => {
+    item.sayHello();
+};
+```
+
+这个机制对虚拟列表非常有用，可以让itemRenderer的代码更简洁和高效。
+
