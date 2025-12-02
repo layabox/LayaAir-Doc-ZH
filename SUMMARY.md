@@ -1,4 +1,5 @@
 * [文档首页](index.md)
+
 - 引擎介绍
   * [引擎历史与服务](services.md)
   * [引擎功能概述](basics/readme.md)
@@ -9,25 +10,26 @@
   - [初学者必读](basics/developmentEnvironment/readme.md)
     * [搭建基础开发环境](basics/developmentEnvironment/download/readme.md)
     * [AI协同开发环境](basics/developmentEnvironment/AIGC/readme.md)
-    * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
-  - [IDE开发界面](basics/IDE/GUI/readme.md)
+    * [TS语言基础](basics/language/readme.md)
+  - [基础开发模块与流程](basics/IDE/readme.md)
+    * [IDE主要模块概述](basics/IDE/GUI/readme.md)
     * [创建新项目](basics/IDE/createNewProject/readme.md)
-    * [自定义界面布局](basics/IDE/layouts/readme.md)
     * [项目工程目录说明](basics/IDE/projecFolders/readme.md)
     * [项目入口说明](basics/IDE/entry/readme.md)
-    * [项目设置面板](basics/IDE/projectSettings/readme.md)
-    * [层级面板](basics/IDE/Hierarchy/readme.md)
-    * [项目资源面板](basics/IDE/assets/readme.md)
-    * [资源依赖面板](basics/IDE/AssetDependency/readme.md)
-    * [属性设置面板](basics/IDE/Inspector/readme.md)
-    * [预览运行面板](basics/IDE/Game/readme.md)
+    * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
+    * [DevTools调试工具](basics/DevTools/readme.md)
   * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
   * [Unity资源导出插件](3D/advanced/Unity/readme.md)
   
-- 编程语言与调试
-  * [TS语言基础](basics/language/readme.md)
-  * [DevTools调试工具](basics/DevTools/readme.md)
-  
+- IDE内置面板
+  * [层级面板](basics/IDE/Hierarchy/readme.md)
+  * [项目设置面板](basics/IDE/projectSettings/readme.md)
+  * [项目资源面板](basics/IDE/assets/readme.md)
+  * [资源依赖面板](basics/IDE/AssetDependency/readme.md)
+  * [属性设置面板](basics/IDE/Inspector/readme.md)
+  * [预览运行面板](basics/IDE/Game/readme.md)
+  * [自定义面板布局](basics/IDE/layouts/readme.md)
+
 - 引擎核心功能
   * [资源加载](basics/common/Loader/readme.md)
   * [场景管理](basics/common/Scene/readme.md)
