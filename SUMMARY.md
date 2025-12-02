@@ -18,6 +18,7 @@
     * [项目设置面板](basics/IDE/projectSettings/readme.md)
     * [层级面板](basics/IDE/Hierarchy/readme.md)
     * [项目资源面板](basics/IDE/assets/readme.md)
+    * [资源依赖面板](basics/IDE/AssetDependency/readme.md)
     * [属性设置面板](basics/IDE/Inspector/readme.md)
     * [预览运行面板](basics/IDE/Game/readme.md)
   * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
