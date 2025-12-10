@@ -15,7 +15,7 @@
     * [IDE主要模块概述](basics/IDE/GUI/readme.md)
     * [创建新项目](basics/IDE/createNewProject/readme.md)
     * [项目工程目录说明](basics/IDE/projecFolders/readme.md)
-    * [项目入口说明](basics/IDE/entry/readme.md)
+    * [项目启动入口说明](basics/IDE/entry/readme.md)
     * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
     * [DevTools调试工具](basics/DevTools/readme.md)
   * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
