@@ -1,5 +1,5 @@
-# IDE基础
+# 基础开发模块与流程
 
-LayaAir IDE的基础包括，对IDE各组成部分的基础认知，以及基础的交互操作。
+本部分将从 IDE 的《[主要模块概述](./GUI/readme.md)》入手，逐步讲解如何《[创建项目](./createNewProject/readme.md)》，并说明《[项目工程目录](./projecFolders/readme.md)》中各目录的作用。
 
-通过该部分的文档，开发者将会对IDE有一个全局性的了解，掌握了基础的操作方式。
+随后以实现一个 Hello World 示例为引导，完整呈现《[开发全流程](./helloWorld/readme.md)》。最后还将介绍开发环境的《[调试工具](../DevTools/readme.md)》，并提供相应的使用说明文档指引。
