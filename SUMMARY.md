@@ -242,7 +242,12 @@
   - [官方插件](IDE/layapackage/Layabox/readme.md)
     * [LOD减面插件](IDE/layapackage/Layabox/LOD/readme.md)
     * [3D骨骼动作烘焙插件](IDE/layapackage/Layabox/BakeAnimation/readme.md)
-  
+  - [VIP增值功能插件](IDE/layapackage/enterprise/readme.md)
+    * [性能分析插件](IDE/layapackage/enterprise/performanceAnalysis/readme.md)
+    * [智能资源管理插件](IDE/layapackage/enterprise/addressable/readme.md)
+    * [CPU粒子系统](IDE/layapackage/enterprise/cpuParticle/readme.md)
+    * [Spine动画烘焙插件](IDE/layapackage/enterprise/spineBake/readme.md)
+
 - 外部脚本使用
   * [引用外部脚本的方式](basics/IDE/importJsLibrary/readme.md)
   * [实战ProtocolBuffer通信](libs/Protobuf/readme.md)
