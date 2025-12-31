@@ -8,7 +8,9 @@
 
 ## 二、使用基础
 
-插件下载地址：https://github.com/layabox/CocosMigrationPlugin
+插件下载地址：https://github.com/layabox/CocosMigrationPlugin/releases
+
+![2-1](img/2-1.png)
 
 环境要求：
 
