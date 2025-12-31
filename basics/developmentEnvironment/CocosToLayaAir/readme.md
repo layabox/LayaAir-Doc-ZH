@@ -10,10 +10,6 @@
 
 插件下载地址：https://github.com/layabox/CocosMigrationPlugin
 
-//TODO插图
-
-
-
 环境要求：
 
 LayaAir 版本：3.3.6或以上版本。
