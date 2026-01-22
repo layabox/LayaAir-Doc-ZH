@@ -39,6 +39,7 @@ Android/Java执行JS脚本：
 
 
 # 2. 原生端的消息处理
+注意:原生端处理消息函数各个代码分支一定要返回相应值或者消息，以免造成卡死
 
 ### 1. HarmonyOS
 在libSysCapabilities/src/main/ets/event/HandleMessageUtils.ts添加消息处理代码
