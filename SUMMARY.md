@@ -285,6 +285,7 @@
     * [横竖屏设置](released/native/screen_orientation/readme.md)
     * [启动页设置](released/native/SplashScreenSettings/readme.md)
     * [关于网络监听](released/native/network/readme.md)
+    * [关于LocalStorage](released/native/LocalStrorage/readme.md)
     * [缓存工具-layadcc](released/native/LayaDcc_Tool/readme.md)
     * [原生语言与JS通信](released/native/platform_communication/readme.md)
     * [嵌入字体](released/native/built_in_font/readme.md)
