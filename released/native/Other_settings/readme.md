@@ -4,7 +4,7 @@
 
 ## 1. 关于第三方地图
 
-LayaNative底层渲染使用openGLES渲染，使用android的GLSurfaceView控件和iOS的GLKView控件，所以无法支持第三方地图，如百度地图。
+LayaNative底层渲染使用OpenGL ES渲染，使用android的GLSurfaceView控件和iOS的GLKView控件，所以无法支持第三方地图，如百度地图。
 
 ## 2. 关于文件格式
 
@@ -28,23 +28,34 @@ enum class LogType
 ```c
 enum class LogLevel
 {
-    Debug = 5,
-    Info = 4,
-    Warn = 3,
-    Error = 2,
-    Fatal = 1,
-    Close = 0,
+    Debug = 5,  // 最详细 - 调试信息
+    Info = 4,   // 一般信息
+    Warn = 3,   // 警告
+    Error = 2,   // 错误
+    Fatal = 1,   // 致命错误
+    Close = 0,   // 关闭所有日志
 };
 ```
+
+**日志级别说明：**
+- 数值表示"日志详细程度"，数值越大输出越详细
+- 设置 `g_nLogLevel = n` 时，输出所有 `LogLevel` 值 <= n 的日志
+- 默认值为 5（Debug），表示输出所有级别的日志
+
 在js脚本中，开发者可以通过以下函数设置日志级别,默认值为5：
 
 ```javascript
 if( window.conch )
 {
-	//值为0：表示关闭所有日志输出
-    //值为1：表示只有Fatal日志输出
-    //值为2：表示只有Fatal和Error日志输出
-    //值为n：表示只有LogLevel <= n的日志输出
+    // 日志级别设置说明：
+    // 值为0：关闭所有日志输出
+    // 值为1：只输出 Fatal（致命错误）日志
+    // 值为2：输出 Fatal + Error（错误）日志
+    // 值为3：输出 Fatal + Error + Warn（警告）日志
+    // 值为4：输出 Fatal + Error + Warn + Info（信息）日志
+    // 值为5：输出所有日志，包括 Debug（调试）日志（默认值）
+    // 
+    // 过滤规则：值为n时，输出所有 LogLevel <= n 的日志
     window.conch.config.setLogLevel(2);
 }
 ```
