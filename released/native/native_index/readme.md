@@ -30,7 +30,7 @@
 
 ## 2、LayaNative的启动文件配置说明
 
-入口文件主要确定项目运行时屏幕方向和需要加载的js文件的信息。
+入口文件主要确定项目运行时需要加载的js文件的信息。
 
 如果使用项目的index.js作为LayaNative的启动入口文件，在点击构建发布后，在resource目录下找到index.js，
 
@@ -38,25 +38,17 @@
 
 （图2-1）
 
-打开后，可以添加如下代码更改横竖屏设置：
-
-> 横竖屏的参数设置参考[这里](../screen_orientation/readme.md)。
+打开后，代码如下：
 
 ```javascript
-/**
- * 设置LayaNative屏幕方向，可设置以下值：
- * landscape：横屏
- * portrait：竖屏
- * reverseLandscape：反向横屏
- * reversePortrait：反向竖屏
- * sensorLandscape：传感器横屏旋转
- * sensorPortrait：传感器竖屏旋转
- * fullSensor：随传感器旋转
- */
-window.screenOrientation = "reversePortrait"; // 设置屏幕为竖屏
-
 //
-loadLib("libs/laya.core.js"); 
+loadLib("libs/laya.core.js");
+//
+loadLib("libs/laya.d3.js");
+//
+loadLib("libs/laya.opengl_2D.js");
+//
+loadLib("libs/laya.opengl_3D.js");  
 ......
 ```
 
