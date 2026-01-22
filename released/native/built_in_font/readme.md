@@ -43,7 +43,17 @@ function registerFont() {
     }
 }
 ```
-
+或者直接传入assets目录字体文件路径注册
+```javascript
+function registerFont() {
+    if (conch.registerFont("layabox", 'font/layabox.ttf')) {
+        log('字体注册成功');
+    }
+    else {
+        log('字体注册失败');
+    }
+}
+```
 ### 4.2 方法二
 
 通过ttfloader下载远程字体文件，注册时传入的字体名称为ttf文件名。
