@@ -131,3 +131,48 @@ if (window.conch)
     }
 }
 ```
+
+## 10. conch.getWindowInfo
+
+类似微信小游戏接口，获取窗口信息，包括屏幕尺寸、窗口尺寸、状态栏高度、安全区域等信息。
+
+### 返回值
+
+返回一个对象，包含以下属性：
+
+| 属性 | 类型 | 说明 |
+| --- | --- | --- |
+| pixelRatio | number | 设备像素比 |
+| screenWidth | number | 屏幕宽度，单位px |
+| screenHeight | number | 屏幕高度，单位px |
+| windowWidth | number | 可使用窗口宽度，单位px |
+| windowHeight | number | 可使用窗口高度，单位px |
+| statusBarHeight | number | 状态栏的高度，单位px(LayaNative中没有小游戏中的状态栏，所以返回0) |
+| safeArea | Object | 在竖屏正方向下的安全区域。部分机型没有安全区域概念，也不会返回 safeArea 字段，开发者需自行兼容。 |
+| safeArea.left | number | 安全区域左上角横坐标 |
+| safeArea.right | number | 安全区域右下角横坐标 |
+| safeArea.top | number | 安全区域左上角纵坐标 |
+| safeArea.bottom | number | 安全区域右下角纵坐标 |
+| safeArea.width | number | 安全区域的宽度，单位逻辑像素 |
+| safeArea.height | number | 安全区域的高度，单位逻辑像素 |
+| screenTop | number | 窗口上边缘的y值 |
+
+### 示例代码
+
+```javascript
+if (window.conch)
+{
+    const windowInfo = window.conch.getWindowInfo();
+    
+    console.log("设备像素比:", windowInfo.pixelRatio);
+    console.log("屏幕宽度:", windowInfo.screenWidth);
+    console.log("屏幕高度:", windowInfo.screenHeight);
+    console.log("窗口宽度:", windowInfo.windowWidth);
+    console.log("窗口高度:", windowInfo.windowHeight);
+    console.log("状态栏高度:", windowInfo.statusBarHeight);
+    console.log("窗口上边缘y值:", windowInfo.screenTop);
+    if (info.safeArea) {
+        console.log("安全区域:", JSON.stringify(windowInfo.safeArea));
+    }
+}
+```
