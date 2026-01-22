@@ -45,7 +45,7 @@ enum class LogLevel
 在js脚本中，开发者可以通过以下函数设置日志级别,默认值为5：
 
 ```javascript
-if( window.conch )
+if (window.conch)
 {
     // 日志级别设置说明：
     // 值为0：关闭所有日志输出
@@ -90,7 +90,7 @@ LayaNative支持iOS模拟器，但是由于模拟器运行效率比较低，建�
 这些函数都属于conch.config类的函数，调用实例：
 
 ```javascript
-if( window.conch )
+if (window.conch)
 {
     window.conch.config.getRuntimeVersion();
 }
@@ -101,16 +101,16 @@ if( window.conch )
 
 ## 7. 屏蔽项目中报错弹框
 
-项目运行过程中有时会弹出一些错误的提示，这些提示都是项目中有代码写错了。我们的建议是解决掉这些错误弹框里边的错，如果实在是解决不掉再去屏蔽。报错弹框代码如下所示：
+项目运行过程中有时会弹出一些错误的提示，这些提示都是项目中有代码写错了。我们的建议是解决掉这些错误弹框里边的错，如果实在是解决不掉再去屏蔽。  
+屏蔽弹框在IDE项目设置中取消勾选杂项下面的弹窗显示全局错误选项，如图2所示：
 
-```java
-window.showAlertOnJsException(false);
-```
+![2](img/2.png)
+
 
 ## 8. 引擎初始化或加载启动脚本过程中的异常处理
 在LayaNative版本中，当引擎初始化、加载启动脚本过程中，如果发生异常（如网络不稳定），引擎会自动调用到window.onLayaInitError(error)函数，该函数默认在config.js中定义，代码如下：
 ```javascript
-window.onLayaInitError=function(e)
+window.onLayaInitError = function(e)
 {
 	console.log("onLayaInitError error=" + e);
 	alert("加载游戏失败，可能由于您的网络不稳定，请退出重进");
@@ -121,7 +121,7 @@ window.onLayaInitError=function(e)
 ## 9. 获取设备型号
 在LayaNative中，iOS可以通过调用conch.config.getDeviceInfo()获取设备型号。可以用于iPhone X的头帘适配，代码如下：
 ```javascript
-if( window.conch )
+if (window.conch)
 {
     var devInfo = JSON.parse(window.conch.config.getDeviceInfo());
 
