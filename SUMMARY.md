@@ -25,7 +25,16 @@
   
 - IDE内置面板
   * [层级面板](basics/IDE/Hierarchy/readme.md)
-  * [项目设置面板](basics/IDE/projectSettings/readme.md)
+  - [项目设置面板](basics/IDE/projectSettings/readme.md)
+    * [运行配置](basics/IDE/projectSettings/runConfig/readme.md)
+    * [引擎模块](basics/IDE/projectSettings/engineModule/readme.md)
+    * [物理系统](basics/IDE/projectSettings/physicalSystem/readme.md)
+    * [WebGPU](basics/IDE/projectSettings/webGPU/readme.md)
+    * [启动页](basics/IDE/projectSettings/startPage/readme.md)
+    * [统计信息](basics/IDE/projectSettings/statistics/readme.md)
+    * [脚本编译](basics/IDE/projectSettings/scriptCompiler/readme.md)
+    * [预览服务](basics/IDE/projectSettings/previewServer/readme.md)
+    * [预设值](basics/IDE/projectSettings/preset/readme.md)
   * [项目资源面板](basics/IDE/assets/readme.md)
   * [资源依赖面板](basics/IDE/AssetDependency/readme.md)
   * [属性设置面板](basics/IDE/Inspector/readme.md)
@@ -190,7 +199,7 @@
   * [ProtocolBuffer通信](libs/Protobuf/readme.md)
   
 - 性能
-  * [性能统计与优化](basics/common/Stat/readme.md)
+  * [性能统计信息的使用](basics/IDE/projectSettings/statistics/readme.md)
   * [2D性能优化](2D/performanceOptimization/readme.md)
   * [3D性能优化](3D/advanced/performanceOptimization/readme.md)
   
