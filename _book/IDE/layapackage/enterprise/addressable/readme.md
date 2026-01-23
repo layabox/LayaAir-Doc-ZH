@@ -6,4 +6,4 @@
 
 ### [使用说明](./instruction/readme.md)
 
-### [实战操作](./apply/readme.md)
+### [实战操作](/apply/readme.md)
