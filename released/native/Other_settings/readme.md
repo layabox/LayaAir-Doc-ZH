@@ -83,7 +83,6 @@ LayaNative支持iOS模拟器，但是由于模拟器运行效率比较低，建�
 | getAvalidMem()       | 获得可用的内存            | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |
 | getNetworkType()     | 获得网络状态             | 返回int值，NET_NO = 0;NET_WIFI = 1;NET_2G = 2;NET_3G = 3;NET_4G = 4;NET_UNKNOWN=5 |                                  |
 | getRuntimeVersion()  | 获得Runtime的版本       | 返回值是一个字符串，类似ios-conch5-0.9.2、android-conch5-0.9 |                                  |
-| getOS()              | 获得当前系统             | 返回值类似“Conch-ios” “Conch-android”字符串      |                                  |
 | getAppVersion()      | 获得iOS-App的版本号      | 返回字符串 1.1                                | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 | getAppLocalVersion() | 获得iOS-App的Local版本号 | 返回字符串1.2                                 | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 
@@ -118,22 +117,8 @@ window.onLayaInitError = function(e)
 ```
 开发者可以根据自己需求，修改报错信息和报错方式。
 
-## 9. 获取设备型号
-在LayaNative中，iOS可以通过调用conch.config.getDeviceInfo()获取设备型号。可以用于iPhone X的头帘适配，代码如下：
-```javascript
-if (window.conch)
-{
-    var devInfo = JSON.parse(window.conch.config.getDeviceInfo());
-
-    if (devInfo.devicename === 'iPhone10,3' || devInfo.devicename === 'iPhone10,6')
-    {
-        // iPhone X适配
-    }
-}
-```
-
-## 10. conch.getWindowInfo
-
+## 9. conch.getWindowInfo
+> Version >= LayaAir 3.4
 类似微信小游戏接口，获取窗口信息，包括屏幕尺寸、窗口尺寸、状态栏高度、安全区域等信息。
 
 ### 返回值
@@ -174,5 +159,53 @@ if (window.conch)
     if (info.safeArea) {
         console.log("安全区域:", JSON.stringify(windowInfo.safeArea));
     }
+}
+```
+
+## 10. conch.getDeviceInfo
+> Version >= LayaAir 3.4
+
+类似微信小游戏接口，获取设备基础信息，包括设备品牌、型号、操作系统等信息。
+
+### 返回值
+
+返回一个对象，包含以下属性：
+
+| 属性 | 类型 | 说明 |
+| --- | --- | --- |
+| abi | string | 应用二进制接口类型（仅 Android HarmonyOS 支持） |
+| deviceAbi | string | 设备二进制接口类型（仅 Android HarmonyOS 支持） |
+| brand | string | 设备品牌 |
+| model | string | 设备型号。新机型刚推出一段时间会显示unknown，会尽快进行适配。 |
+| system | string | 操作系统及版本 |
+| platform | string | 客户端平台，合法值见下表 |
+| cpuType | string | 设备CPU型号（仅 Android 支持） |
+| memorySize | number | 设备内存大小，单位MB |
+
+**platform 合法值：**
+
+| 值 | 说明 |
+| --- | --- |
+| ios | iOS 平台（包含 iPhone、iPad） |
+| android | Android 平台 |
+| ohos | HarmonyOS 手机端平台 |
+| ohos_pc | HarmonyOS PC平台 |
+| windows | Windows 平台 |
+
+### 示例代码
+
+```javascript
+if (window.conch)
+{
+    const deviceInfo = window.conch.getDeviceInfo();
+    
+    console.log("应用二进制接口类型:", deviceInfo.abi);
+    console.log("设备二进制接口类型:", deviceInfo.deviceAbi);
+    console.log("设备品牌:", deviceInfo.brand);
+    console.log("设备型号:", deviceInfo.model);
+    console.log("操作系统:", deviceInfo.system);
+    console.log("客户端平台:", deviceInfo.platform);
+    console.log("CPU型号:", deviceInfo.cpuType);
+    console.log("设备内存:", deviceInfo.memorySize, "MB");
 }
 ```

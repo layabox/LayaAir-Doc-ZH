@@ -73,6 +73,7 @@ fullSensor：随传感器旋转
 ## 三、通过代码动态设置横竖屏
 
 还可以通过代码动态设置横竖屏，接口与微信小游戏接口类似：
+> Version >= LayaAir 3.4
 
 ```typescript
     /**
