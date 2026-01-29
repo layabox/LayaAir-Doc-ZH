@@ -155,6 +155,7 @@
 - 动画
   * [时间轴动画](IDE/animationEditor/timelineGUI/readme.md)
   * [动画状态机](IDE/animationEditor/aniController/readme.md)
+  * [IK动画](IDE/animationEditor/IK/readme.md)
   * [动画烘焙](IDE/animationEditor/aniBake/readme.md)
   - [骨骼动画](IDE/uiEditor/uiComponent/skeleton/readme.md)
     * [Spine骨骼动画](IDE/Component/2D/2DRender/Spine2DRenderNode/readme.md)
@@ -177,7 +178,8 @@
 - 着色器
   * [自定义2D Shader](2D/advanced/customShader/readme.md)
   * [自定义3D Shader](3D/advanced/customShader/readme.md)
-  
+  * [计算着色器](basics/WebGPU/ComputeShader/readme.md)
+
 - 蓝图
   * [程序蓝图](IDE/ShaderBlueprint/blueprint/readme.md)
   * [着色器蓝图](IDE/ShaderBlueprint/ShaderBlueprint/readme.md)
@@ -225,6 +227,10 @@
     * [2D物理](IDE/physicsEditor/physics2D/readme.md)
     * [2D寻路](IDE/Component/2D/navMesh/readme.md)
   - [3D内置组件](IDE/Component/readme.md)
+    - [3D动画](IDE/Component/3DAnimation/readme.md)
+      * [IK链](IDE/Component/3DAnimation/ChainsIK/readme.md)
+      * [骨骼约束](IDE/Component/3DAnimation/BoneConstraints/readme.md)
+      * [动画状态机](IDE/animationEditor/aniController/readme.md)
     * [网格](IDE/Component/Mesh/readme.md)
     - [3D渲染组件](IDE/Component/3DRender/readme.md)
       * [粒子渲染器](IDE/particleEditor3D/readme.md)
@@ -236,7 +242,7 @@
       * [静态合批](IDE/Component/StaticBatchVolume/readme.md)
       * [LOD组](IDE/Component/LOD/readme.md)
     * [3D灯光](3D/Light/readme.md)
-    * [3D物理](IDE/Component/physics3D/readme.md)
+    - [3D物理](IDE/Component/physics3D/readme.md)
       * [3D刚体](IDE/Component/physics3D/Rigidbody3D/readme.md)      
       * [静态碰撞器](IDE/Component/physics3D/PhysicsCollider/readme.md)
       * [角色控制器](IDE/Component/physics3D/CharacterController/readme.md)
