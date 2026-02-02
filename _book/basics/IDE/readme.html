@@ -1,0 +1,4505 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>基础开发模块与流程 · LayaAir3.4 · 引擎文档 · LAYABOX</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-solarizedlight.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="GUI/readme.html" />
+    
+    
+    <link rel="prev" href="../language/readme.html" />
+    
+
+    
+        <link rel="shortcut icon" href="./style/favicon-32.ico" type="image/x-icon">
+    
+    
+        <link rel="bookmark" href="./style/favicon-32.ico" type="image/x-icon">
+    
+    
+    
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./style/layabox-152.png">
+    
+    
+        
+    
+    
+        
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    文档首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    引擎介绍
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../services.html">
+            
+                <a href="../../services.html">
+            
+                    
+                    引擎历史与服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../readme.html">
+            
+                <a href="../readme.html">
+            
+                    
+                    引擎功能概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../UnityToLayaAir/readme.html">
+            
+                <a href="../UnityToLayaAir/readme.html">
+            
+                    
+                    Unity转LayaAir差异说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../2.x-Upgrade/readme.html">
+            
+                <a href="../2.x-Upgrade/readme.html">
+            
+                    
+                    2.x引擎项目升级说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    开发环境
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../developmentEnvironment/readme.html">
+            
+                <a href="../developmentEnvironment/readme.html">
+            
+                    
+                    初学者必读
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../developmentEnvironment/download/readme.html">
+            
+                <a href="../developmentEnvironment/download/readme.html">
+            
+                    
+                    搭建基础开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../developmentEnvironment/AIGC/readme.html">
+            
+                <a href="../developmentEnvironment/AIGC/readme.html">
+            
+                    
+                    AI协同开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../language/readme.html">
+            
+                <a href="../language/readme.html">
+            
+                    
+                    TS语言基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    基础开发模块与流程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="GUI/readme.html">
+            
+                <a href="GUI/readme.html">
+            
+                    
+                    IDE主要模块概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="createNewProject/readme.html">
+            
+                <a href="createNewProject/readme.html">
+            
+                    
+                    创建新项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="projecFolders/readme.html">
+            
+                <a href="projecFolders/readme.html">
+            
+                    
+                    项目工程目录说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="entry/readme.html">
+            
+                <a href="entry/readme.html">
+            
+                    
+                    项目启动入口说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="helloWorld/readme.html">
+            
+                <a href="helloWorld/readme.html">
+            
+                    
+                    开发流程: Hello World
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.6" data-path="../DevTools/readme.html">
+            
+                <a href="../DevTools/readme.html">
+            
+                    
+                    DevTools调试工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="shortcutKeyCombinations/readme.html">
+            
+                <a href="shortcutKeyCombinations/readme.html">
+            
+                    
+                    IDE快捷键与鼠标交互操作大全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../3D/advanced/Unity/readme.html">
+            
+                <a href="../../3D/advanced/Unity/readme.html">
+            
+                    
+                    Unity资源导出插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../developmentEnvironment/CocosToLayaAir/readme.html">
+            
+                <a href="../developmentEnvironment/CocosToLayaAir/readme.html">
+            
+                    
+                    Cocos资源导出插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../developmentEnvironment/CodingMCP/readme.html">
+            
+                <a href="../developmentEnvironment/CodingMCP/readme.html">
+            
+                    
+                    AI编码环境：CodingMCP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    IDE内置面板
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Hierarchy/readme.html">
+            
+                <a href="Hierarchy/readme.html">
+            
+                    
+                    层级面板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="projectSettings/readme.html">
+            
+                <a href="projectSettings/readme.html">
+            
+                    
+                    项目设置面板
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="projectSettings/runConfig/readme.html">
+            
+                <a href="projectSettings/runConfig/readme.html">
+            
+                    
+                    运行配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="projectSettings/engineModule/readme.html">
+            
+                <a href="projectSettings/engineModule/readme.html">
+            
+                    
+                    引擎模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="projectSettings/physicalSystem/readme.html">
+            
+                <a href="projectSettings/physicalSystem/readme.html">
+            
+                    
+                    物理系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="projectSettings/webGPU/readme.html">
+            
+                <a href="projectSettings/webGPU/readme.html">
+            
+                    
+                    WebGPU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="projectSettings/startPage/readme.html">
+            
+                <a href="projectSettings/startPage/readme.html">
+            
+                    
+                    启动页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="projectSettings/statistics/readme.html">
+            
+                <a href="projectSettings/statistics/readme.html">
+            
+                    
+                    统计信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.7" data-path="projectSettings/scriptCompiler/readme.html">
+            
+                <a href="projectSettings/scriptCompiler/readme.html">
+            
+                    
+                    脚本编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.8" data-path="projectSettings/previewServer/readme.html">
+            
+                <a href="projectSettings/previewServer/readme.html">
+            
+                    
+                    预览服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.9" data-path="projectSettings/preset/readme.html">
+            
+                <a href="projectSettings/preset/readme.html">
+            
+                    
+                    预设值
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="assets/readme.html">
+            
+                <a href="assets/readme.html">
+            
+                    
+                    项目资源面板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="AssetDependency/readme.html">
+            
+                <a href="AssetDependency/readme.html">
+            
+                    
+                    资源依赖面板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="Inspector/readme.html">
+            
+                <a href="Inspector/readme.html">
+            
+                    
+                    属性设置面板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="Game/readme.html">
+            
+                <a href="Game/readme.html">
+            
+                    
+                    预览运行面板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="layouts/readme.html">
+            
+                <a href="layouts/readme.html">
+            
+                    
+                    自定义面板布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    引擎核心功能
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../common/Loader/readme.html">
+            
+                <a href="../common/Loader/readme.html">
+            
+                    
+                    资源加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../common/Scene/readme.html">
+            
+                <a href="../common/Scene/readme.html">
+            
+                    
+                    场景管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../common/Node/readme.html">
+            
+                <a href="../common/Node/readme.html">
+            
+                    
+                    节点管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../common/Event/readme.html">
+            
+                <a href="../common/Event/readme.html">
+            
+                    
+                    事件管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../common/Timer/readme.html">
+            
+                <a href="../common/Timer/readme.html">
+            
+                    
+                    定时器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../common/Tween/readme.html">
+            
+                <a href="../common/Tween/readme.html">
+            
+                    
+                    缓动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../common/Pool/readme.html">
+            
+                <a href="../common/Pool/readme.html">
+            
+                    
+                    对象池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../common/Component/readme.html">
+            
+                <a href="../common/Component/readme.html">
+            
+                    
+                    实体组件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    2D开发基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../common/basicConcepts/readme.html">
+            
+                <a href="../common/basicConcepts/readme.html">
+            
+                    
+                    引擎基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../IDE/uiEditor/basic/readme.html">
+            
+                <a href="../../IDE/uiEditor/basic/readme.html">
+            
+                    
+                    UI编辑器基础交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../IDE/uiEditor/widgets/readme.html">
+            
+                <a href="../../IDE/uiEditor/widgets/readme.html">
+            
+                    
+                    UI小部件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../2D/displayObject/readme.html">
+            
+                <a href="../../2D/displayObject/readme.html">
+            
+                    
+                    2D基础显示对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../../2D/displayObject/Sprite/readme.html">
+            
+                <a href="../../2D/displayObject/Sprite/readme.html">
+            
+                    
+                    精灵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../../2D/displayObject/Animation/readme.html">
+            
+                <a href="../../2D/displayObject/Animation/readme.html">
+            
+                    
+                    动画节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../../2D/displayObject/Text/readme.html">
+            
+                <a href="../../2D/displayObject/Text/readme.html">
+            
+                    
+                    基础文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.4" data-path="../../2D/displayObject/SoundNode/readme.html">
+            
+                <a href="../../2D/displayObject/SoundNode/readme.html">
+            
+                    
+                    音频节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.5" data-path="../../2D/displayObject/VideoNode/readme.html">
+            
+                <a href="../../2D/displayObject/VideoNode/readme.html">
+            
+                    
+                    视频节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.6" data-path="../../IDE/uiEditor/uiComponent/OpenDataContextView/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/OpenDataContextView/readme.html">
+            
+                    
+                    开放数据域组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../IDE/uiEditor/graphics/readme.html">
+            
+                <a href="../../IDE/uiEditor/graphics/readme.html">
+            
+                    
+                    绘制能力
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../IDE/uiEditor/Area2D/readme.html">
+            
+                <a href="../../IDE/uiEditor/Area2D/readme.html">
+            
+                    
+                    2D区域
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.6.1" data-path="../../IDE/uiEditor/Area2D/Camera2D/readme.html">
+            
+                <a href="../../IDE/uiEditor/Area2D/Camera2D/readme.html">
+            
+                    
+                    2D相机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../IDE/Component/2D/2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/readme.html">
+            
+                    
+                    渲染组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.7.1" data-path="../../IDE/Component/2D/2DRender/Mesh2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Mesh2DRender/readme.html">
+            
+                    
+                    2D网格渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.2" data-path="../../IDE/Component/2D/2DRender/Spine2DRenderNode/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Spine2DRenderNode/readme.html">
+            
+                    
+                    Spine渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.3" data-path="../../IDE/Component/2D/2DRender/Trail2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Trail2DRender/readme.html">
+            
+                    
+                    2D拖尾渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.4" data-path="../../IDE/Component/2D/2DRender/Line2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Line2DRender/readme.html">
+            
+                    
+                    2D线渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.5" data-path="../../IDE/particleEditor2D/readme.html">
+            
+                <a href="../../IDE/particleEditor2D/readme.html">
+            
+                    
+                    2D粒子渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../IDE/uiEditor/PostProcess/readme.html">
+            
+                <a href="../../IDE/uiEditor/PostProcess/readme.html">
+            
+                    
+                    后期处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../2D/dynamicAtlas/readme.html">
+            
+                <a href="../../2D/dynamicAtlas/readme.html">
+            
+                    
+                    动态图集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../IDE/uiEditor/runtime/readme.html">
+            
+                <a href="../../IDE/uiEditor/runtime/readme.html">
+            
+                    
+                    UI运行时
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../IDE/uiEditor/use3D/readme.html">
+            
+                <a href="../../IDE/uiEditor/use3D/readme.html">
+            
+                    
+                    2D节点使用3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    新UI系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../IDE/uiEditor/FairyGUI/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/readme.html">
+            
+                    
+                    基础使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../IDE/uiEditor/FairyGUI/controller/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/controller/readme.html">
+            
+                    
+                    控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../IDE/uiEditor/FairyGUI/relation/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/relation/readme.html">
+            
+                    
+                    关联系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../IDE/uiEditor/FairyGUI/layout/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/layout/readme.html">
+            
+                    
+                    布局容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../IDE/uiEditor/FairyGUI/scroller/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/scroller/readme.html">
+            
+                    
+                    滚动支持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../IDE/uiEditor/FairyGUI/selection/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/selection/readme.html">
+            
+                    
+                    选择支持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../IDE/uiEditor/FairyGUI/GWidget/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GWidget/readme.html">
+            
+                    
+                    精灵组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../IDE/uiEditor/FairyGUI/GImage/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GImage/readme.html">
+            
+                    
+                    图片组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../../IDE/uiEditor/FairyGUI/GMovieClip/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GMovieClip/readme.html">
+            
+                    
+                    动画组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../../IDE/uiEditor/FairyGUI/GLoader/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GLoader/readme.html">
+            
+                    
+                    装载器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../../IDE/uiEditor/FairyGUI/GTextField/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GTextField/readme.html">
+            
+                    
+                    文本组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../../IDE/uiEditor/FairyGUI/GTextInput/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GTextInput/readme.html">
+            
+                    
+                    输入文本组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.13" data-path="../../IDE/uiEditor/FairyGUI/GBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GBox/readme.html">
+            
+                    
+                    布局容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.14" data-path="../../IDE/uiEditor/FairyGUI/GPanel/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GPanel/readme.html">
+            
+                    
+                    面板容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.15" data-path="../../IDE/uiEditor/FairyGUI/GList/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GList/readme.html">
+            
+                    
+                    列表组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.16" data-path="../../IDE/uiEditor/FairyGUI/GTree/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GTree/readme.html">
+            
+                    
+                    树组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.17" data-path="../../IDE/uiEditor/FairyGUI/GButton/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GButton/readme.html">
+            
+                    
+                    按钮组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.18" data-path="../../IDE/uiEditor/FairyGUI/GComboBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GComboBox/readme.html">
+            
+                    
+                    下拉框组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.19" data-path="../../IDE/uiEditor/FairyGUI/GProgressBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GProgressBar/readme.html">
+            
+                    
+                    进度条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.20" data-path="../../IDE/uiEditor/FairyGUI/GSlider/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GSlider/readme.html">
+            
+                    
+                    滑动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.21" data-path="../../IDE/uiEditor/FairyGUI/GScrollBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GScrollBar/readme.html">
+            
+                    
+                    滚动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.22" data-path="../../IDE/uiEditor/FairyGUI/GWindow/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/GWindow/readme.html">
+            
+                    
+                    窗口组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.23" data-path="../../IDE/uiEditor/FairyGUI/Groot/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/Groot/readme.html">
+            
+                    
+                    根节点与弹窗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.24" data-path="../../IDE/uiEditor/FairyGUI/i18n/readme.html">
+            
+                <a href="../../IDE/uiEditor/FairyGUI/i18n/readme.html">
+            
+                    
+                    国际化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    经典UI系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../IDE/uiEditor/uiComponent/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/readme.html">
+            
+                    
+                    基础使用与构成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../IDE/uiEditor/uiComponent/namingRule/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/namingRule/readme.html">
+            
+                    
+                    UI组件资源命名规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../IDE/uiEditor/uiComponent/Image/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Image/readme.html">
+            
+                    
+                    图像组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../IDE/uiEditor/uiComponent/Label/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Label/readme.html">
+            
+                    
+                    显示文本组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../IDE/uiEditor/uiComponent/TextInput/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/TextInput/readme.html">
+            
+                    
+                    输入文本组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../../IDE/uiEditor/uiComponent/TextArea/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/TextArea/readme.html">
+            
+                    
+                    多行输入文本组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../IDE/uiEditor/uiComponent/Clip/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Clip/readme.html">
+            
+                    
+                    位图切片组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../../IDE/uiEditor/uiComponent/FontClip/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/FontClip/readme.html">
+            
+                    
+                    字体切片组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../IDE/uiEditor/uiComponent/Button/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Button/readme.html">
+            
+                    
+                    按钮组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../../IDE/uiEditor/uiComponent/scroll/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/scroll/readme.html">
+            
+                    
+                    滚动条组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.8.1" data-path="../../IDE/uiEditor/uiComponent/HScrollBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/HScrollBar/readme.html">
+            
+                    
+                    水平滚动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.2" data-path="../../IDE/uiEditor/uiComponent/VScrollBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/VScrollBar/readme.html">
+            
+                    
+                    垂直滚动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../../IDE/uiEditor/uiComponent/slider/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/slider/readme.html">
+            
+                    
+                    滑动条组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.9.1" data-path="../../IDE/uiEditor/uiComponent/HSlider/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/HSlider/readme.html">
+            
+                    
+                    水平滑动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9.2" data-path="../../IDE/uiEditor/uiComponent/VSlider/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/VSlider/readme.html">
+            
+                    
+                    垂直滑动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../../IDE/uiEditor/uiComponent/ProgressBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ProgressBar/readme.html">
+            
+                    
+                    进度条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11" data-path="../../IDE/uiEditor/uiComponent/Box/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Box/readme.html">
+            
+                    
+                    容器组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.11.1" data-path="../../IDE/uiEditor/uiComponent/HBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/HBox/readme.html">
+            
+                    
+                    水平布局容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11.2" data-path="../../IDE/uiEditor/uiComponent/VBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/VBox/readme.html">
+            
+                    
+                    垂直布局容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11.3" data-path="../../IDE/uiEditor/uiComponent/Panel/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Panel/readme.html">
+            
+                    
+                    面板容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12" data-path="../../IDE/uiEditor/uiComponent/List/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/List/readme.html">
+            
+                    
+                    列表组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.12.1" data-path="../../IDE/uiEditor/uiComponent/Tree/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Tree/readme.html">
+            
+                    
+                    树状列表组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13" data-path="../../IDE/uiEditor/uiComponent/optionBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/optionBox/readme.html">
+            
+                    
+                    选项框
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.13.1" data-path="../../IDE/uiEditor/uiComponent/ComboBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ComboBox/readme.html">
+            
+                    
+                    下拉选项框组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13.2" data-path="../../IDE/uiEditor/uiComponent/Radio/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Radio/readme.html">
+            
+                    
+                    单选框组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13.3" data-path="../../IDE/uiEditor/uiComponent/RadioGroup/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/RadioGroup/readme.html">
+            
+                    
+                    单选框组容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13.4" data-path="../../IDE/uiEditor/uiComponent/CheckBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/CheckBox/readme.html">
+            
+                    
+                    复选框组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.14" data-path="../../IDE/uiEditor/uiComponent/navigationMenu/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/navigationMenu/readme.html">
+            
+                    
+                    导航菜单
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.14.1" data-path="../../IDE/uiEditor/uiComponent/Tab/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Tab/readme.html">
+            
+                    
+                    导航标签组组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.14.2" data-path="../../IDE/uiEditor/uiComponent/ViewStack/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ViewStack/readme.html">
+            
+                    
+                    导航容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.15" data-path="../../IDE/uiEditor/uiComponent/ColorPicker/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ColorPicker/readme.html">
+            
+                    
+                    取色器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.16" data-path="../../IDE/uiEditor/Dialog/readme.html">
+            
+                <a href="../../IDE/uiEditor/Dialog/readme.html">
+            
+                    
+                    弹窗视图组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    3D基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../3D/beginner/readme.html">
+            
+                <a href="../3D/beginner/readme.html">
+            
+                    
+                    3D概念入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../3D/Transform/readme.html">
+            
+                <a href="../3D/Transform/readme.html">
+            
+                    
+                    3D变换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../IDE/sceneEditor/basic/readme.html">
+            
+                <a href="../../IDE/sceneEditor/basic/readme.html">
+            
+                    
+                    3D场景编辑基础交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../IDE/sceneEditor/environment/readme.html">
+            
+                <a href="../../IDE/sceneEditor/environment/readme.html">
+            
+                    
+                    3D场景环境设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../../3D/useModel/readme.html">
+            
+                <a href="../../3D/useModel/readme.html">
+            
+                    
+                    模型与动画的导入使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../../3D/Sprite3D/readme.html">
+            
+                <a href="../../3D/Sprite3D/readme.html">
+            
+                    
+                    使用3D精灵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../../3D/displayObject/readme.html">
+            
+                <a href="../../3D/displayObject/readme.html">
+            
+                    
+                    3D基础显示对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../../3D/Camera/readme.html">
+            
+                <a href="../../3D/Camera/readme.html">
+            
+                    
+                    使用3D摄像机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../../3D/Light/readme.html">
+            
+                <a href="../../3D/Light/readme.html">
+            
+                    
+                    3D灯光与阴影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../../IDE/materialEditor/readme.html">
+            
+                <a href="../../IDE/materialEditor/readme.html">
+            
+                    
+                    3D材质编辑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../../IDE/uiEditor/3DUI/readme.html">
+            
+                <a href="../../IDE/uiEditor/3DUI/readme.html">
+            
+                    
+                    使用3D UI
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    粒子
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../IDE/particleEditor2D/readme.html">
+            
+                <a href="../../IDE/particleEditor2D/readme.html">
+            
+                    
+                    2D粒子
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../IDE/particleEditor3D/readme.html">
+            
+                <a href="../../IDE/particleEditor3D/readme.html">
+            
+                    
+                    3D粒子
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    动画
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../IDE/animationEditor/timelineGUI/readme.html">
+            
+                <a href="../../IDE/animationEditor/timelineGUI/readme.html">
+            
+                    
+                    时间轴动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../IDE/animationEditor/aniController/readme.html">
+            
+                <a href="../../IDE/animationEditor/aniController/readme.html">
+            
+                    
+                    动画状态机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../../IDE/Component/3DAnimation/ChainsIK/readme.html">
+            
+                <a href="../../IDE/Component/3DAnimation/ChainsIK/readme.html">
+            
+                    
+                    IK动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../../IDE/animationEditor/aniBake/readme.html">
+            
+                <a href="../../IDE/animationEditor/aniBake/readme.html">
+            
+                    
+                    动画烘焙
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../../IDE/uiEditor/uiComponent/skeleton/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/skeleton/readme.html">
+            
+                    
+                    骨骼动画
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.5.1" data-path="../../IDE/Component/2D/2DRender/Spine2DRenderNode/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Spine2DRenderNode/readme.html">
+            
+                    
+                    Spine骨骼动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5.2" data-path="../../IDE/Component/3DRender/Spine3DRenderer/readme.html">
+            
+                <a href="../../IDE/Component/3DRender/Spine3DRenderer/readme.html">
+            
+                    
+                    Spine3D渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5.3" data-path="../../IDE/uiEditor/uiComponent/skeleton/sk/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/skeleton/sk/readme.html">
+            
+                    
+                    内置骨骼动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    IDE资源
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../IDE/assets/model/readme.html">
+            
+                <a href="../../IDE/assets/model/readme.html">
+            
+                    
+                    模型资源设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../IDE/assets/texture/readme.html">
+            
+                <a href="../../IDE/assets/texture/readme.html">
+            
+                    
+                    纹理资源
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.2.1" data-path="../../IDE/uiEditor/textureCompress/readme.html">
+            
+                <a href="../../IDE/uiEditor/textureCompress/readme.html">
+            
+                    
+                    压缩纹理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../IDE/assets/prefab/readme.html">
+            
+                <a href="../../IDE/assets/prefab/readme.html">
+            
+                    
+                    预制体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../IDE/assets/TileSet/readme.html">
+            
+                <a href="../../IDE/assets/TileSet/readme.html">
+            
+                    
+                    瓦片地图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../IDE/assets/bundledef/readme.html">
+            
+                <a href="../../IDE/assets/bundledef/readme.html">
+            
+                    
+                    脚本集定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../IDE/assets/atlascfg/readme.html">
+            
+                <a href="../../IDE/assets/atlascfg/readme.html">
+            
+                    
+                    自动图集配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    物理引擎
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../../IDE/physicsEditor/physics2D/readme.html">
+            
+                <a href="../../IDE/physicsEditor/physics2D/readme.html">
+            
+                    
+                    2D物理系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../../IDE/physicsEditor/physics3D/readme.html">
+            
+                <a href="../../IDE/physicsEditor/physics3D/readme.html">
+            
+                    
+                    3D物理系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../../3D/advanced/customPhysicsEngine/readme.html">
+            
+                <a href="../../3D/advanced/customPhysicsEngine/readme.html">
+            
+                    
+                    自定义物理引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    着色器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../../2D/advanced/customShader/readme.html">
+            
+                <a href="../../2D/advanced/customShader/readme.html">
+            
+                    
+                    自定义2D Shader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../../3D/advanced/customShader/readme.html">
+            
+                <a href="../../3D/advanced/customShader/readme.html">
+            
+                    
+                    自定义3D Shader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../WebGPU/ComputeShader/readme.html">
+            
+                <a href="../WebGPU/ComputeShader/readme.html">
+            
+                    
+                    计算着色器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    蓝图
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../../IDE/ShaderBlueprint/blueprint/readme.html">
+            
+                <a href="../../IDE/ShaderBlueprint/blueprint/readme.html">
+            
+                    
+                    程序蓝图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../../IDE/ShaderBlueprint/ShaderBlueprint/readme.html">
+            
+                <a href="../../IDE/ShaderBlueprint/ShaderBlueprint/readme.html">
+            
+                    
+                    着色器蓝图
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" >
+            
+                <span>
+            
+                    
+                    设备接口与适配
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../common/adaptScreen/readme.html">
+            
+                <a href="../common/adaptScreen/readme.html">
+            
+                    
+                    屏幕适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="../common/Browser/readme.html">
+            
+                <a href="../common/Browser/readme.html">
+            
+                    
+                    浏览器接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="../common/device/motion/readme.html">
+            
+                <a href="../common/device/motion/readme.html">
+            
+                    
+                    陀螺仪与加速计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.4" data-path="../common/device/geolocation/readme.html">
+            
+                <a href="../common/device/geolocation/readme.html">
+            
+                    
+                    获取位置信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.5" data-path="../common/device/baiduMap/readme.html">
+            
+                <a href="../common/device/baiduMap/readme.html">
+            
+                    
+                    使用百度地图
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" >
+            
+                <span>
+            
+                    
+                    音频与视频
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../common/device/media/readme.html">
+            
+                <a href="../common/device/media/readme.html">
+            
+                    
+                    音频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../common/device/video/readme.html">
+            
+                <a href="../common/device/video/readme.html">
+            
+                    
+                    视频
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" >
+            
+                <span>
+            
+                    
+                    网络通信
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../common/network/HTTP/readme.html">
+            
+                <a href="../common/network/HTTP/readme.html">
+            
+                    
+                    HTTP通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../common/network/WebSocket/readme.html">
+            
+                <a href="../common/network/WebSocket/readme.html">
+            
+                    
+                    WebSocket通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../../libs/Protobuf/readme.html">
+            
+                <a href="../../libs/Protobuf/readme.html">
+            
+                    
+                    ProtocolBuffer通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" >
+            
+                <span>
+            
+                    
+                    性能
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="projectSettings/statistics/readme.html">
+            
+                <a href="projectSettings/statistics/readme.html">
+            
+                    
+                    性能统计信息的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19.2" data-path="../../2D/performanceOptimization/readme.html">
+            
+                <a href="../../2D/performanceOptimization/readme.html">
+            
+                    
+                    2D性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19.3" data-path="../../3D/advanced/performanceOptimization/readme.html">
+            
+                <a href="../../3D/advanced/performanceOptimization/readme.html">
+            
+                    
+                    3D性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" >
+            
+                <span>
+            
+                    
+                    引擎组件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="../common/Component/readme.html">
+            
+                <a href="../common/Component/readme.html">
+            
+                    
+                    实体组件系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1.1" data-path="../../IDE/customComponent/system/readme.html">
+            
+                <a href="../../IDE/customComponent/system/readme.html">
+            
+                    
+                    组件脚本的内置方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.1.2" data-path="../../IDE/customComponent/decorators/readme.html">
+            
+                <a href="../../IDE/customComponent/decorators/readme.html">
+            
+                    
+                    组件装饰器说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.1.3" data-path="../../IDE/customComponent/componentProperties/readme.html">
+            
+                <a href="../../IDE/customComponent/componentProperties/readme.html">
+            
+                    
+                    组件属性的代码使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2" data-path="../../IDE/Component/2D/readme.html">
+            
+                <a href="../../IDE/Component/2D/readme.html">
+            
+                    
+                    2D内置组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.2.1" data-path="../../IDE/Component/2D/2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/readme.html">
+            
+                    
+                    2D渲染组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.2.1.1" data-path="../../IDE/Component/2D/2DRender/Mesh2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Mesh2DRender/readme.html">
+            
+                    
+                    2D网格渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.1.2" data-path="../../IDE/Component/2D/2DRender/Spine2DRenderNode/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Spine2DRenderNode/readme.html">
+            
+                    
+                    Spine渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.1.3" data-path="../../IDE/Component/2D/2DRender/Trail2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Trail2DRender/readme.html">
+            
+                    
+                    2D拖尾渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.1.4" data-path="../../IDE/Component/2D/2DRender/Line2DRender/readme.html">
+            
+                <a href="../../IDE/Component/2D/2DRender/Line2DRender/readme.html">
+            
+                    
+                    2D线渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.1.5" data-path="../../IDE/Component/2D/TileMapLayer/readme.html">
+            
+                <a href="../../IDE/Component/2D/TileMapLayer/readme.html">
+            
+                    
+                    瓦片地图层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.1.6" data-path="../../IDE/particleEditor2D/readme.html">
+            
+                <a href="../../IDE/particleEditor2D/readme.html">
+            
+                    
+                    2D粒子渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.2" data-path="../../IDE/Component/2D/BaseLight2D/readme.html">
+            
+                <a href="../../IDE/Component/2D/BaseLight2D/readme.html">
+            
+                    
+                    2D灯光与网格
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.2.2.1" data-path="../../IDE/Component/2D/DirectionLight2D/readme.html">
+            
+                <a href="../../IDE/Component/2D/DirectionLight2D/readme.html">
+            
+                    
+                    2D方向光
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.2.2" data-path="../../IDE/Component/2D/SpriteLight2D/readme.html">
+            
+                <a href="../../IDE/Component/2D/SpriteLight2D/readme.html">
+            
+                    
+                    2D精灵光
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.2.3" data-path="../../IDE/Component/2D/SpotLight2D/readme.html">
+            
+                <a href="../../IDE/Component/2D/SpotLight2D/readme.html">
+            
+                    
+                    2D聚光灯
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.2.4" data-path="../../IDE/Component/2D/FreeformLight2D/readme.html">
+            
+                <a href="../../IDE/Component/2D/FreeformLight2D/readme.html">
+            
+                    
+                    2D自由形态光
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.3" data-path="../../IDE/Component/2D/LightOccluder2D/readme.html">
+            
+                <a href="../../IDE/Component/2D/LightOccluder2D/readme.html">
+            
+                    
+                    2D光遮挡器与阴影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.4" data-path="../../IDE/physicsEditor/physics2D/readme.html">
+            
+                <a href="../../IDE/physicsEditor/physics2D/readme.html">
+            
+                    
+                    2D物理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2.5" data-path="../../IDE/Component/2D/navMesh/readme.html">
+            
+                <a href="../../IDE/Component/2D/navMesh/readme.html">
+            
+                    
+                    2D寻路
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3" data-path="../../IDE/Component/readme.html">
+            
+                <a href="../../IDE/Component/readme.html">
+            
+                    
+                    3D内置组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.3.1" data-path="../../IDE/Component/3DAnimation/readme.html">
+            
+                <a href="../../IDE/Component/3DAnimation/readme.html">
+            
+                    
+                    3D动画
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.3.1.1" data-path="../../IDE/Component/3DAnimation/ChainsIK/readme.html">
+            
+                <a href="../../IDE/Component/3DAnimation/ChainsIK/readme.html">
+            
+                    
+                    IK链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.1.2" data-path="../../IDE/Component/3DAnimation/BoneConstraints/readme.html">
+            
+                <a href="../../IDE/Component/3DAnimation/BoneConstraints/readme.html">
+            
+                    
+                    骨骼约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.1.3" data-path="../../IDE/animationEditor/aniController/readme.html">
+            
+                <a href="../../IDE/animationEditor/aniController/readme.html">
+            
+                    
+                    动画状态机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.2" data-path="../../IDE/Component/Mesh/readme.html">
+            
+                <a href="../../IDE/Component/Mesh/readme.html">
+            
+                    
+                    网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3" data-path="../../IDE/Component/3DRender/readme.html">
+            
+                <a href="../../IDE/Component/3DRender/readme.html">
+            
+                    
+                    3D渲染组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.3.3.1" data-path="../../IDE/particleEditor3D/readme.html">
+            
+                <a href="../../IDE/particleEditor3D/readme.html">
+            
+                    
+                    粒子渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.2" data-path="../../IDE/Component/PixelLine/readme.html">
+            
+                <a href="../../IDE/Component/PixelLine/readme.html">
+            
+                    
+                    网格像素线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.3" data-path="../../IDE/Component/Trail/readme.html">
+            
+                <a href="../../IDE/Component/Trail/readme.html">
+            
+                    
+                    拖尾
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.4" data-path="../../IDE/uiEditor/3DUI/readme.html">
+            
+                <a href="../../IDE/uiEditor/3DUI/readme.html">
+            
+                    
+                    3D UI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.5" data-path="../../IDE/Component/ReflectionProbe/readme.html">
+            
+                <a href="../../IDE/Component/ReflectionProbe/readme.html">
+            
+                    
+                    反射探针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.6" data-path="../../IDE/Component/VolumetricGI/readme.html">
+            
+                <a href="../../IDE/Component/VolumetricGI/readme.html">
+            
+                    
+                    体积全局照明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.7" data-path="../../IDE/Component/StaticBatchVolume/readme.html">
+            
+                <a href="../../IDE/Component/StaticBatchVolume/readme.html">
+            
+                    
+                    静态合批
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.8" data-path="../../IDE/Component/LOD/readme.html">
+            
+                <a href="../../IDE/Component/LOD/readme.html">
+            
+                    
+                    LOD组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.3.9" data-path="../../IDE/Component/3DRender/Spine3DRenderer/readme.html">
+            
+                <a href="../../IDE/Component/3DRender/Spine3DRenderer/readme.html">
+            
+                    
+                    Spine3D渲染器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.4" data-path="../../3D/Light/readme.html">
+            
+                <a href="../../3D/Light/readme.html">
+            
+                    
+                    3D灯光
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.5" data-path="../../IDE/Component/physics3D/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/readme.html">
+            
+                    
+                    3D物理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.3.5.1" data-path="../../IDE/Component/physics3D/Rigidbody3D/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/Rigidbody3D/readme.html">
+            
+                    
+                    3D刚体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.5.2" data-path="../../IDE/Component/physics3D/PhysicsCollider/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/PhysicsCollider/readme.html">
+            
+                    
+                    静态碰撞器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.5.3" data-path="../../IDE/Component/physics3D/CharacterController/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/CharacterController/readme.html">
+            
+                    
+                    角色控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.5.4" data-path="../../IDE/Component/physics3D/FixedConstraint/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/FixedConstraint/readme.html">
+            
+                    
+                    固定约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.5.5" data-path="../../IDE/Component/physics3D/HingeConstraint/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/HingeConstraint/readme.html">
+            
+                    
+                    铰链约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.5.6" data-path="../../IDE/Component/physics3D/SpringConstraint/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/SpringConstraint/readme.html">
+            
+                    
+                    弹簧约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.5.7" data-path="../../IDE/Component/physics3D/ConfigurableConstraint/readme.html">
+            
+                <a href="../../IDE/Component/physics3D/ConfigurableConstraint/readme.html">
+            
+                    
+                    可配置约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3.6" data-path="../../IDE/Component/navMesh/readme.html">
+            
+                <a href="../../IDE/Component/navMesh/readme.html">
+            
+                    
+                    3D寻路
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" >
+            
+                <span>
+            
+                    
+                    IDE插件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="../../IDE/layapackage/plug-in/readme.html">
+            
+                <a href="../../IDE/layapackage/plug-in/readme.html">
+            
+                    
+                    插件开发说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.2" data-path="../../IDE/layapackage/pluginImport/readme.html">
+            
+                <a href="../../IDE/layapackage/pluginImport/readme.html">
+            
+                    
+                    包管理器与资源包导入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.3" data-path="../../IDE/layapackage/exportToStore/readme.html">
+            
+                <a href="../../IDE/layapackage/exportToStore/readme.html">
+            
+                    
+                    资源包导出与上传至商店
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.4" data-path="../../IDE/layapackage/Layabox/readme.html">
+            
+                <a href="../../IDE/layapackage/Layabox/readme.html">
+            
+                    
+                    官方插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.4.1" data-path="../../IDE/layapackage/Layabox/LOD/readme.html">
+            
+                <a href="../../IDE/layapackage/Layabox/LOD/readme.html">
+            
+                    
+                    LOD减面插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.4.2" data-path="../../IDE/layapackage/Layabox/BakeAnimation/readme.html">
+            
+                <a href="../../IDE/layapackage/Layabox/BakeAnimation/readme.html">
+            
+                    
+                    3D骨骼动作烘焙插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5" data-path="../../IDE/layapackage/enterprise/readme.html">
+            
+                <a href="../../IDE/layapackage/enterprise/readme.html">
+            
+                    
+                    VIP增值功能插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.5.1" data-path="../../IDE/layapackage/enterprise/performanceAnalysis/readme.html">
+            
+                <a href="../../IDE/layapackage/enterprise/performanceAnalysis/readme.html">
+            
+                    
+                    性能分析插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5.2" data-path="../../IDE/layapackage/enterprise/addressable/readme.html">
+            
+                <a href="../../IDE/layapackage/enterprise/addressable/readme.html">
+            
+                    
+                    智能资源管理插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5.3" data-path="../../IDE/layapackage/enterprise/cpuParticle/readme.html">
+            
+                <a href="../../IDE/layapackage/enterprise/cpuParticle/readme.html">
+            
+                    
+                    CPU粒子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5.4" data-path="../../IDE/layapackage/enterprise/spineBake/readme.html">
+            
+                <a href="../../IDE/layapackage/enterprise/spineBake/readme.html">
+            
+                    
+                    Spine动画烘焙插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" >
+            
+                <span>
+            
+                    
+                    外部脚本使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.22.1" data-path="importJsLibrary/readme.html">
+            
+                <a href="importJsLibrary/readme.html">
+            
+                    
+                    引用外部脚本的方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.2" data-path="../../libs/Protobuf/readme.html">
+            
+                <a href="../../libs/Protobuf/readme.html">
+            
+                    
+                    实战ProtocolBuffer通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" >
+            
+                <span>
+            
+                    
+                    进阶使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="../../2D/advanced/readme.html">
+            
+                <a href="../../2D/advanced/readme.html">
+            
+                    
+                    2D进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1.1" data-path="../../2D/advanced/useText/readme.html">
+            
+                <a href="../../2D/advanced/useText/readme.html">
+            
+                    
+                    文本进阶使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.1.2" data-path="../../2D/TiledMap/readme.html">
+            
+                <a href="../../2D/TiledMap/readme.html">
+            
+                    
+                    TiledMap地图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.1.3" data-path="../../2D/useWorker/readme.html">
+            
+                <a href="../../2D/useWorker/readme.html">
+            
+                    
+                    多线程Worker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.1.4" data-path="../../2D/dom/readme.html">
+            
+                <a href="../../2D/dom/readme.html">
+            
+                    
+                    和原生Dom交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.2" data-path="../../3D/advanced/readme.html">
+            
+                <a href="../../3D/advanced/readme.html">
+            
+                    
+                    3D进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.2.1" data-path="../../3D/advanced/PostProcessing/readme.html">
+            
+                <a href="../../3D/advanced/PostProcessing/readme.html">
+            
+                    
+                    后处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.2.2" data-path="../../3D/advanced/CommandBuffer/readme.html">
+            
+                <a href="../../3D/advanced/CommandBuffer/readme.html">
+            
+                    
+                    CommandBuffer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.2.3" data-path="../../3D/WebXR/readme.html">
+            
+                <a href="../../3D/WebXR/readme.html">
+            
+                    
+                    WebXR
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" >
+            
+                <span>
+            
+                    
+                    构建发布
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.1" data-path="../../released/generalSetting/readme.html">
+            
+                <a href="../../released/generalSetting/readme.html">
+            
+                    
+                    通用发布设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="../../released/commandLine/readme.html">
+            
+                <a href="../../released/commandLine/readme.html">
+            
+                    
+                    命令行发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.3" data-path="../../released/web/readme.html">
+            
+                <a href="../../released/web/readme.html">
+            
+                    
+                    Web发布
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.3.1" data-path="../../released/CrazyGames/readme.html">
+            
+                <a href="../../released/CrazyGames/readme.html">
+            
+                    
+                    CrazyGames
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.3.2" data-path="../../released/Poki/readme.html">
+            
+                <a href="../../released/Poki/readme.html">
+            
+                    
+                    Poki
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4" data-path="../../released/miniGame/readme.html">
+            
+                <a href="../../released/miniGame/readme.html">
+            
+                    
+                    小游戏发布
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.4.1" data-path="../../released/miniGame/wechat/readme.html">
+            
+                <a href="../../released/miniGame/wechat/readme.html">
+            
+                    
+                    微信小游戏
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.4.1.1" data-path="../../released/miniGame/wechat/Worker/readme.html">
+            
+                <a href="../../released/miniGame/wechat/Worker/readme.html">
+            
+                    
+                    微信小游戏Worker使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4.2" data-path="../../released/miniGame/byteDance/readme.html">
+            
+                <a href="../../released/miniGame/byteDance/readme.html">
+            
+                    
+                    抖音小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4.3" data-path="../../released/miniGame/OPPO/readme.html">
+            
+                <a href="../../released/miniGame/OPPO/readme.html">
+            
+                    
+                    OPPO小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4.4" data-path="../../released/miniGame/vivo/readme.html">
+            
+                <a href="../../released/miniGame/vivo/readme.html">
+            
+                    
+                    vivo小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4.5" data-path="../../released/miniGame/xiaomi/readme.html">
+            
+                <a href="../../released/miniGame/xiaomi/readme.html">
+            
+                    
+                    小米快游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4.6" data-path="../../released/miniGame/alipaygame/readme.html">
+            
+                <a href="../../released/miniGame/alipaygame/readme.html">
+            
+                    
+                    支付宝小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4.7" data-path="../../released/miniGame/tbgame/readme.html">
+            
+                <a href="../../released/miniGame/tbgame/readme.html">
+            
+                    
+                    淘宝小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5" data-path="../../released/native/LayaNative_Introduction/readme.html">
+            
+                <a href="../../released/native/LayaNative_Introduction/readme.html">
+            
+                    
+                    安装包开发基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.5.1" data-path="../../released/native/native_index/readme.html">
+            
+                <a href="../../released/native/native_index/readme.html">
+            
+                    
+                    LayaNative不是浏览器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.2" data-path="../../released/native/screen_orientation/readme.html">
+            
+                <a href="../../released/native/screen_orientation/readme.html">
+            
+                    
+                    横竖屏设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.3" data-path="../../released/native/SplashScreenSettings/readme.html">
+            
+                <a href="../../released/native/SplashScreenSettings/readme.html">
+            
+                    
+                    启动页设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.4" data-path="../../released/native/network/readme.html">
+            
+                <a href="../../released/native/network/readme.html">
+            
+                    
+                    关于网络监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.5" data-path="../../released/native/LayaDcc_Tool/readme.html">
+            
+                <a href="../../released/native/LayaDcc_Tool/readme.html">
+            
+                    
+                    缓存工具-layadcc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.6" data-path="../../released/native/platform_communication/readme.html">
+            
+                <a href="../../released/native/platform_communication/readme.html">
+            
+                    
+                    原生语言与JS通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.7" data-path="../../released/native/built_in_font/readme.html">
+            
+                <a href="../../released/native/built_in_font/readme.html">
+            
+                    
+                    嵌入字体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.8" data-path="../../released/native/zipUpdate/readme.html">
+            
+                <a href="../../released/native/zipUpdate/readme.html">
+            
+                    
+                    zip更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.9" data-path="../../released/native/apk_expansion/readme.html">
+            
+                <a href="../../released/native/apk_expansion/readme.html">
+            
+                    
+                    APK扩展机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.5.10" data-path="../../released/native/Other_settings/readme.html">
+            
+                <a href="../../released/native/Other_settings/readme.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.6" data-path="../../released/Windows/readme.html">
+            
+                <a href="../../released/Windows/readme.html">
+            
+                    
+                    Windows发布
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.6.1" data-path="../../released/Windows/extension/readme.html">
+            
+                <a href="../../released/Windows/extension/readme.html">
+            
+                    
+                    Windows扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.6.2" data-path="../../released/Windows/steam/readme.html">
+            
+                <a href="../../released/Windows/steam/readme.html">
+            
+                    
+                    Steam扩展实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.7" data-path="../../released/Harmony/readme.html">
+            
+                <a href="../../released/Harmony/readme.html">
+            
+                    
+                    鸿蒙NEXT构建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.7.1" data-path="../../released/Harmony/debug/readme.html">
+            
+                <a href="../../released/Harmony/debug/readme.html">
+            
+                    
+                    鸿蒙NEXT真机调试JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.8" data-path="../../released/Android/readme.html">
+            
+                <a href="../../released/Android/readme.html">
+            
+                    
+                    Android构建
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.8.1" data-path="../../released/Android/debug/readme.html">
+            
+                <a href="../../released/Android/debug/readme.html">
+            
+                    
+                    Android真机调试JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.9" data-path="../../released/iOS/readme.html">
+            
+                <a href="../../released/iOS/readme.html">
+            
+                    
+                    iOS构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.10" data-path="../../released/Linux/readme.html">
+            
+                <a href="../../released/Linux/readme.html">
+            
+                    
+                    Linux构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >基础开发模块与流程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x57FA;&#x7840;&#x5F00;&#x53D1;&#x6A21;&#x5757;&#x4E0E;&#x6D41;&#x7A0B;"><b></b>&#x57FA;&#x7840;&#x5F00;&#x53D1;&#x6A21;&#x5757;&#x4E0E;&#x6D41;&#x7A0B;</a></li></ul></div><a href="#&#x57FA;&#x7840;&#x5F00;&#x53D1;&#x6A21;&#x5757;&#x4E0E;&#x6D41;&#x7A0B;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x57FA;&#x7840;&#x5F00;&#x53D1;&#x6A21;&#x5757;&#x4E0E;&#x6D41;&#x7A0B;"><a name="&#x57FA;&#x7840;&#x5F00;&#x53D1;&#x6A21;&#x5757;&#x4E0E;&#x6D41;&#x7A0B;" class="anchor-navigation-ex-anchor" href="#&#x57FA;&#x7840;&#x5F00;&#x53D1;&#x6A21;&#x5757;&#x4E0E;&#x6D41;&#x7A0B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x7840;&#x5F00;&#x53D1;&#x6A21;&#x5757;&#x4E0E;&#x6D41;&#x7A0B;</h1>
+<p>&#x672C;&#x90E8;&#x5206;&#x5C06;&#x4ECE; IDE &#x7684;&#x300A;<a href="GUI/readme.html">&#x4E3B;&#x8981;&#x6A21;&#x5757;&#x6982;&#x8FF0;</a>&#x300B;&#x5165;&#x624B;&#xFF0C;&#x9010;&#x6B65;&#x8BB2;&#x89E3;&#x5982;&#x4F55;&#x300A;<a href="createNewProject/readme.html">&#x521B;&#x5EFA;&#x9879;&#x76EE;</a>&#x300B;&#xFF0C;&#x5E76;&#x8BF4;&#x660E;&#x300A;<a href="projecFolders/readme.html">&#x9879;&#x76EE;&#x5DE5;&#x7A0B;&#x76EE;&#x5F55;</a>&#x300B;&#x4E2D;&#x5404;&#x76EE;&#x5F55;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+<p>&#x968F;&#x540E;&#x4EE5;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A; Hello World &#x793A;&#x4F8B;&#x4E3A;&#x5F15;&#x5BFC;&#xFF0C;&#x5B8C;&#x6574;&#x5448;&#x73B0;&#x300A;<a href="helloWorld/readme.html">&#x5F00;&#x53D1;&#x5168;&#x6D41;&#x7A0B;</a>&#x300B;&#x3002;&#x6700;&#x540E;&#x8FD8;&#x5C06;&#x4ECB;&#x7ECD;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7684;&#x300A;<a href="../DevTools/readme.html">&#x8C03;&#x8BD5;&#x5DE5;&#x5177;</a>&#x300B;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x76F8;&#x5E94;&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;&#x6587;&#x6863;&#x6307;&#x5F15;&#x3002; </p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9;Layabox 2026 all right reserved&#xFF0C;powered by <a href="https://layaAir.com/" target="_blank">LayaAir</a> Engine</span><span class="footer-modification">&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2025-12-02 18:46:17
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../language/readme.html" class="navigation navigation-prev " aria-label="Previous page: TS语言基础">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="GUI/readme.html" class="navigation navigation-next " aria-label="Next page: IDE主要模块概述">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"基础开发模块与流程","level":"1.3.2","depth":2,"next":{"title":"IDE主要模块概述","level":"1.3.2.1","depth":3,"path":"basics/IDE/GUI/readme.md","ref":"basics/IDE/GUI/readme.md","articles":[]},"previous":{"title":"TS语言基础","level":"1.3.1.3","depth":3,"path":"basics/language/readme.md","ref":"basics/language/readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","sidebar-style","anchor-navigation-ex","-lunr","-search","-sharing","search-pro","versions-select","-favicon","favicon-absolute","fontsettings","prism","splitter","code","flexible-alerts","auto-scroll-table","popup","tbfed-pagefooter","-theme-hqbook"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sidebar-style":{"author":"","title":""},"tbfed-pagefooter":{"copyright":"Copyright ©Layabox 2026","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"splitter":{},"search-pro":{},"auto-scroll-table":{},"popup":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"favicon-absolute":{"appleTouchIconMore":{},"appleTouchIconPrecomposed152":"./style/layabox-152.png","appleTouchIconPrecomposedMore":{},"favicon":"./style/favicon-32.ico","bookmark":"./style/favicon-32.ico"},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":false,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"versions":{"options":[{"value":"https://layaAir.com/3.4/doc/","text":"v3.4"},{"value":"https://layaAir.com/3.3/doc/","text":"v3.3"},{"value":"https://layaAir.com/3.2/doc/","text":"v3.2"},{"value":"https://layaAir.com/3.1/doc/","text":"v3.1"},{"value":"https://layaAir.com/3.0/doc/","text":"v3.0"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","style":{"website":"style/website.css"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"index.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LayaAir3.4 · 引擎文档 · LAYABOX","gitbook":"*"},"file":{"path":"basics/IDE/readme.md","mtime":"2025-12-02T10:46:17.236Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-02-02T11:24:28.511Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
+        
+    
+
+    </body>
+</html>
+
