@@ -1,0 +1,3087 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>使用3D摄像机 · LayaAir3.1 · 引擎文档 · LAYABOX</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sidebar-style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-solarizedlight.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Light/readme.html" />
+    
+    
+    <link rel="prev" href="../displayObject/readme.html" />
+    
+
+    
+        <link rel="shortcut icon" href="./style/favicon-32.ico" type="image/x-icon">
+    
+    
+        <link rel="bookmark" href="./style/favicon-32.ico" type="image/x-icon">
+    
+    
+    
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./style/layabox-152.png">
+    
+    
+        
+    
+    
+        
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    新手入门
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    引擎介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../basics/readme.html">
+            
+                <a href="../../basics/readme.html">
+            
+                    
+                    引擎功能概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../basics/developmentEnvironment/readme.html">
+            
+                <a href="../../basics/developmentEnvironment/readme.html">
+            
+                    
+                    开发环境
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.2.1" data-path="../../basics/developmentEnvironment/download/readme.html">
+            
+                <a href="../../basics/developmentEnvironment/download/readme.html">
+            
+                    
+                    搭建基础开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2.2" data-path="../../basics/IDE/GUI/readme.html">
+            
+                <a href="../../basics/IDE/GUI/readme.html">
+            
+                    
+                    IDE开发流程界面概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../../basics/essentialSkills/readme.html">
+            
+                <a href="../../basics/essentialSkills/readme.html">
+            
+                    
+                    引擎学习必备技能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.3.1" data-path="../../basics/language/readme.html">
+            
+                <a href="../../basics/language/readme.html">
+            
+                    
+                    TS语言基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3.2" data-path="../../basics/DevTools/readme.html">
+            
+                <a href="../../basics/DevTools/readme.html">
+            
+                    
+                    DevTools调试工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3.3" data-path="../../basics/LayaTree/readme.html">
+            
+                <a href="../../basics/LayaTree/readme.html">
+            
+                    
+                    LayaTree调试工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    引擎基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../basics/IDE/readme.html">
+            
+                <a href="../../basics/IDE/readme.html">
+            
+                    
+                    IDE基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../basics/IDE/layouts/readme.html">
+            
+                <a href="../../basics/IDE/layouts/readme.html">
+            
+                    
+                    自定义界面布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../../basics/IDE/projecFolders/readme.html">
+            
+                <a href="../../basics/IDE/projecFolders/readme.html">
+            
+                    
+                    项目工程目录说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../../basics/IDE/projectSettings/readme.html">
+            
+                <a href="../../basics/IDE/projectSettings/readme.html">
+            
+                    
+                    项目设置详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../../basics/IDE/entry/readme.html">
+            
+                <a href="../../basics/IDE/entry/readme.html">
+            
+                    
+                    项目入口说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="../../basics/IDE/importJsLibrary/readme.html">
+            
+                <a href="../../basics/IDE/importJsLibrary/readme.html">
+            
+                    
+                    引用第三方JS模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6" data-path="../../basics/IDE/Hierarchy/readme.html">
+            
+                <a href="../../basics/IDE/Hierarchy/readme.html">
+            
+                    
+                    层级面板说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.7" data-path="../../basics/IDE/assets/readme.html">
+            
+                <a href="../../basics/IDE/assets/readme.html">
+            
+                    
+                    项目资源面板说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.8" data-path="../../basics/IDE/Inspector/readme.html">
+            
+                <a href="../../basics/IDE/Inspector/readme.html">
+            
+                    
+                    属性设置面板说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.9" data-path="../../basics/IDE/Game/readme.html">
+            
+                <a href="../../basics/IDE/Game/readme.html">
+            
+                    
+                    预览运行面板说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.10" data-path="../../basics/IDE/shortcutKeyCombinations/readme.html">
+            
+                <a href="../../basics/IDE/shortcutKeyCombinations/readme.html">
+            
+                    
+                    IDE快捷键与鼠标交互操作大全
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../basics/common/readme.html">
+            
+                <a href="../../basics/common/readme.html">
+            
+                    
+                    引擎通用基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../basics/common/terms/readme.html">
+            
+                <a href="../../basics/common/terms/readme.html">
+            
+                    
+                    引擎基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../../basics/common/Component/readme.html">
+            
+                <a href="../../basics/common/Component/readme.html">
+            
+                    
+                    实体组件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../../basics/common/Loader/readme.html">
+            
+                <a href="../../basics/common/Loader/readme.html">
+            
+                    
+                    资源加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../../basics/common/Scene/readme.html">
+            
+                <a href="../../basics/common/Scene/readme.html">
+            
+                    
+                    场景管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="../../basics/common/Node/readme.html">
+            
+                <a href="../../basics/common/Node/readme.html">
+            
+                    
+                    节点管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" data-path="../../basics/common/Timer/readme.html">
+            
+                <a href="../../basics/common/Timer/readme.html">
+            
+                    
+                    定时器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.7" data-path="../../basics/common/Event/readme.html">
+            
+                <a href="../../basics/common/Event/readme.html">
+            
+                    
+                    事件管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.8" data-path="../../basics/common/Tween/readme.html">
+            
+                <a href="../../basics/common/Tween/readme.html">
+            
+                    
+                    缓动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.9" data-path="../../basics/common/Pool/readme.html">
+            
+                <a href="../../basics/common/Pool/readme.html">
+            
+                    
+                    对象池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.10" data-path="../../basics/common/network/readme.html">
+            
+                <a href="../../basics/common/network/readme.html">
+            
+                    
+                    网络通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.11" data-path="../../basics/common/adaptScreen/readme.html">
+            
+                <a href="../../basics/common/adaptScreen/readme.html">
+            
+                    
+                    屏幕适配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.12" data-path="../../basics/common/Browser/readme.html">
+            
+                <a href="../../basics/common/Browser/readme.html">
+            
+                    
+                    浏览器接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.13" data-path="../../basics/common/device/readme.html">
+            
+                <a href="../../basics/common/device/readme.html">
+            
+                    
+                    设备接口
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.13.1" data-path="../../basics/common/device/media/readme.html">
+            
+                <a href="../../basics/common/device/media/readme.html">
+            
+                    
+                    使用音频
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.13.2" data-path="../../basics/common/device/motion/readme.html">
+            
+                <a href="../../basics/common/device/motion/readme.html">
+            
+                    
+                    陀螺仪与加速计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.13.3" data-path="../../basics/common/device/geolocation/readme.html">
+            
+                <a href="../../basics/common/device/geolocation/readme.html">
+            
+                    
+                    获取位置信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.13.4" data-path="../../basics/common/device/baiduMap/readme.html">
+            
+                <a href="../../basics/common/device/baiduMap/readme.html">
+            
+                    
+                    使用百度地图
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.14" data-path="../../basics/common/Stat/readme.html">
+            
+                <a href="../../basics/common/Stat/readme.html">
+            
+                    
+                    性能统计与优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../basics/3D/readme.html">
+            
+                <a href="../../basics/3D/readme.html">
+            
+                    
+                    3D引擎基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../../basics/3D/beginner/readme.html">
+            
+                <a href="../../basics/3D/beginner/readme.html">
+            
+                    
+                    3D概念入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../../basics/3D/Transform/readme.html">
+            
+                <a href="../../basics/3D/Transform/readme.html">
+            
+                    
+                    3D变换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    编辑器使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../IDE/uiEditor/readme.html">
+            
+                <a href="../../IDE/uiEditor/readme.html">
+            
+                    
+                    UI编辑模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../../IDE/uiEditor/basic/readme.html">
+            
+                <a href="../../IDE/uiEditor/basic/readme.html">
+            
+                    
+                    UI编辑器基础交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../../IDE/uiEditor/widgets/readme.html">
+            
+                <a href="../../IDE/uiEditor/widgets/readme.html">
+            
+                    
+                    UI小部件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="../../2D/displayObject/readme.html">
+            
+                <a href="../../2D/displayObject/readme.html">
+            
+                    
+                    2D基础显示对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1.1" data-path="../../2D/displayObject/Sprite/readme.html">
+            
+                <a href="../../2D/displayObject/Sprite/readme.html">
+            
+                    
+                    精灵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.1.2" data-path="../../2D/displayObject/Animation/readme.html">
+            
+                <a href="../../2D/displayObject/Animation/readme.html">
+            
+                    
+                    动画节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.1.3" data-path="../../2D/displayObject/Text/readme.html">
+            
+                <a href="../../2D/displayObject/Text/readme.html">
+            
+                    
+                    基础文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.1.4" data-path="../../2D/displayObject/SoundNode/readme.html">
+            
+                <a href="../../2D/displayObject/SoundNode/readme.html">
+            
+                    
+                    音频节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.1.5" data-path="../../2D/displayObject/VideoNode/readme.html">
+            
+                <a href="../../2D/displayObject/VideoNode/readme.html">
+            
+                    
+                    视频节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="../../IDE/uiEditor/uiComponent/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/readme.html">
+            
+                    
+                    UI组件详解
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.1" data-path="../../IDE/uiEditor/uiComponent/Image/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Image/readme.html">
+            
+                    
+                    图像组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.2" data-path="../../IDE/uiEditor/uiComponent/Label/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Label/readme.html">
+            
+                    
+                    显示文本组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.3" data-path="../../IDE/uiEditor/uiComponent/TextInput/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/TextInput/readme.html">
+            
+                    
+                    输入文本组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.3.1" data-path="../../IDE/uiEditor/uiComponent/TextArea/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/TextArea/readme.html">
+            
+                    
+                    多行输入文本组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.4" data-path="../../IDE/uiEditor/uiComponent/Clip/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Clip/readme.html">
+            
+                    
+                    位图切片组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.4.1" data-path="../../IDE/uiEditor/uiComponent/FontClip/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/FontClip/readme.html">
+            
+                    
+                    字体切片组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.5" data-path="../../IDE/uiEditor/uiComponent/Button/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Button/readme.html">
+            
+                    
+                    按钮组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.6" data-path="../../IDE/uiEditor/uiComponent/scroll/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/scroll/readme.html">
+            
+                    
+                    滚动条组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.6.1" data-path="../../IDE/uiEditor/uiComponent/HScrollBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/HScrollBar/readme.html">
+            
+                    
+                    水平滚动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.6.2" data-path="../../IDE/uiEditor/uiComponent/VScrollBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/VScrollBar/readme.html">
+            
+                    
+                    垂直滚动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.7" data-path="../../IDE/uiEditor/uiComponent/slider/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/slider/readme.html">
+            
+                    
+                    滑动条组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.7.1" data-path="../../IDE/uiEditor/uiComponent/HSlider/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/HSlider/readme.html">
+            
+                    
+                    水平滑动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.7.2" data-path="../../IDE/uiEditor/uiComponent/VSlider/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/VSlider/readme.html">
+            
+                    
+                    垂直滑动条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.8" data-path="../../IDE/uiEditor/uiComponent/ProgressBar/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ProgressBar/readme.html">
+            
+                    
+                    进度条组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.9" data-path="../../IDE/uiEditor/uiComponent/Box/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Box/readme.html">
+            
+                    
+                    容器组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.9.1" data-path="../../IDE/uiEditor/uiComponent/HBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/HBox/readme.html">
+            
+                    
+                    水平布局容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.9.2" data-path="../../IDE/uiEditor/uiComponent/VBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/VBox/readme.html">
+            
+                    
+                    垂直布局容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.9.3" data-path="../../IDE/uiEditor/uiComponent/Panel/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Panel/readme.html">
+            
+                    
+                    面板容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.10" data-path="../../IDE/uiEditor/uiComponent/List/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/List/readme.html">
+            
+                    
+                    列表组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.10.1" data-path="../../IDE/uiEditor/uiComponent/Tree/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Tree/readme.html">
+            
+                    
+                    树状列表组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.11" data-path="../../IDE/uiEditor/uiComponent/optionBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/optionBox/readme.html">
+            
+                    
+                    选项框
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.11.1" data-path="../../IDE/uiEditor/uiComponent/ComboBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ComboBox/readme.html">
+            
+                    
+                    下拉选项框组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.11.2" data-path="../../IDE/uiEditor/uiComponent/Radio/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Radio/readme.html">
+            
+                    
+                    单选框组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.11.3" data-path="../../IDE/uiEditor/uiComponent/RadioGroup/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/RadioGroup/readme.html">
+            
+                    
+                    单选框组组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.11.4" data-path="../../IDE/uiEditor/uiComponent/CheckBox/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/CheckBox/readme.html">
+            
+                    
+                    多选框组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.12" data-path="../../IDE/uiEditor/uiComponent/navigationMenu/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/navigationMenu/readme.html">
+            
+                    
+                    导航菜单组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.2.12.1" data-path="../../IDE/uiEditor/uiComponent/Tab/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/Tab/readme.html">
+            
+                    
+                    导航标签组组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.12.2" data-path="../../IDE/uiEditor/uiComponent/ViewStack/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ViewStack/readme.html">
+            
+                    
+                    导航容器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.13" data-path="../../IDE/uiEditor/uiComponent/ColorPicker/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/ColorPicker/readme.html">
+            
+                    
+                    取色器组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.14" data-path="../../IDE/uiEditor/uiComponent/OpenDataContextView/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/OpenDataContextView/readme.html">
+            
+                    
+                    开放数据域组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2.15" data-path="../../IDE/uiEditor/Dialog/readme.html">
+            
+                <a href="../../IDE/uiEditor/Dialog/readme.html">
+            
+                    
+                    弹窗视图组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="../../IDE/uiEditor/uiComponent/skeleton/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/skeleton/readme.html">
+            
+                    
+                    骨骼动画
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.3.1" data-path="../../IDE/uiEditor/uiComponent/skeleton/spine/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/skeleton/spine/readme.html">
+            
+                    
+                    Spine骨骼动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3.2" data-path="../../IDE/uiEditor/uiComponent/skeleton/sk/readme.html">
+            
+                <a href="../../IDE/uiEditor/uiComponent/skeleton/sk/readme.html">
+            
+                    
+                    内置骨骼动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../../IDE/uiEditor/graphics/readme.html">
+            
+                <a href="../../IDE/uiEditor/graphics/readme.html">
+            
+                    
+                    绘制图形
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../../IDE/uiEditor/Filter/readme.html">
+            
+                <a href="../../IDE/uiEditor/Filter/readme.html">
+            
+                    
+                    UI滤镜效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="../../IDE/uiEditor/runtime/readme.html">
+            
+                <a href="../../IDE/uiEditor/runtime/readme.html">
+            
+                    
+                    UI运行时
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.6" data-path="../../IDE/uiEditor/use3D/readme.html">
+            
+                <a href="../../IDE/uiEditor/use3D/readme.html">
+            
+                    
+                    混合使用3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.7" data-path="../../IDE/uiEditor/textureCompress/readme.html">
+            
+                <a href="../../IDE/uiEditor/textureCompress/readme.html">
+            
+                    
+                    纹理压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.8" data-path="../../IDE/uiEditor/3DUI/readme.html">
+            
+                <a href="../../IDE/uiEditor/3DUI/readme.html">
+            
+                    
+                    使用3DUI
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../IDE/sceneEditor/readme.html">
+            
+                <a href="../../IDE/sceneEditor/readme.html">
+            
+                    
+                    3D场景编辑模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../../IDE/sceneEditor/basic/readme.html">
+            
+                <a href="../../IDE/sceneEditor/basic/readme.html">
+            
+                    
+                    3D场景编辑基础交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../Sprite3D/readme.html">
+            
+                <a href="../Sprite3D/readme.html">
+            
+                    
+                    使用3D精灵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../displayObject/readme.html">
+            
+                <a href="../displayObject/readme.html">
+            
+                    
+                    3D基础显示对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2.4" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    使用3D摄像机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="../Light/readme.html">
+            
+                <a href="../Light/readme.html">
+            
+                    
+                    3D灯光与阴影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.6" data-path="../../IDE/sceneEditor/environment/readme.html">
+            
+                <a href="../../IDE/sceneEditor/environment/readme.html">
+            
+                    
+                    3D场景环境设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.7" data-path="../useModel/readme.html">
+            
+                <a href="../useModel/readme.html">
+            
+                    
+                    模型与动画的导入使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../IDE/animationEditor/readme.html">
+            
+                <a href="../../IDE/animationEditor/readme.html">
+            
+                    
+                    动画编辑模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../../IDE/animationEditor/timelineGUI/readme.html">
+            
+                <a href="../../IDE/animationEditor/timelineGUI/readme.html">
+            
+                    
+                    时间轴动画编辑详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../../IDE/animationEditor/aniController/readme.html">
+            
+                <a href="../../IDE/animationEditor/aniController/readme.html">
+            
+                    
+                    动画状态机详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../../IDE/animationEditor/aniBake/readme.html">
+            
+                <a href="../../IDE/animationEditor/aniBake/readme.html">
+            
+                    
+                    动画烘焙详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../IDE/physicsEditor/readme.html">
+            
+                <a href="../../IDE/physicsEditor/readme.html">
+            
+                    
+                    物理编辑模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../../IDE/physicsEditor/physics2D/readme.html">
+            
+                <a href="../../IDE/physicsEditor/physics2D/readme.html">
+            
+                    
+                    2D物理编辑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="../../IDE/physicsEditor/physics3D/readme.html">
+            
+                <a href="../../IDE/physicsEditor/physics3D/readme.html">
+            
+                    
+                    3D物理编辑
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../IDE/particleEditor/readme.html">
+            
+                <a href="../../IDE/particleEditor/readme.html">
+            
+                    
+                    3D粒子编辑模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../IDE/materialEditor/readme.html">
+            
+                <a href="../../IDE/materialEditor/readme.html">
+            
+                    
+                    材质编辑模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../../IDE/ShaderBlueprint/readme.html">
+            
+                <a href="../../IDE/ShaderBlueprint/readme.html">
+            
+                    
+                    蓝图编辑模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../../IDE/Component/readme.html">
+            
+                <a href="../../IDE/Component/readme.html">
+            
+                    
+                    内置组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.8.1" data-path="../../IDE/Component/Mesh/readme.html">
+            
+                <a href="../../IDE/Component/Mesh/readme.html">
+            
+                    
+                    网格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.2" data-path="../../IDE/Component/Trail/readme.html">
+            
+                <a href="../../IDE/Component/Trail/readme.html">
+            
+                    
+                    拖尾
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.3" data-path="../../IDE/Component/PixelLine/readme.html">
+            
+                <a href="../../IDE/Component/PixelLine/readme.html">
+            
+                    
+                    像素线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.4" data-path="../../IDE/Component/ReflectionProbe/readme.html">
+            
+                <a href="../../IDE/Component/ReflectionProbe/readme.html">
+            
+                    
+                    反射探针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.5" data-path="../../IDE/Component/VolumetricGI/readme.html">
+            
+                <a href="../../IDE/Component/VolumetricGI/readme.html">
+            
+                    
+                    体积全局照明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.6" data-path="../../IDE/Component/StaticBatchVolume/readme.html">
+            
+                <a href="../../IDE/Component/StaticBatchVolume/readme.html">
+            
+                    
+                    静态合批
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8.7" data-path="../../IDE/Component/LOD/readme.html">
+            
+                <a href="../../IDE/Component/LOD/readme.html">
+            
+                    
+                    LOD组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../../IDE/prefab/readme.html">
+            
+                <a href="../../IDE/prefab/readme.html">
+            
+                    
+                    预制体模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../../IDE/layapackage/readme.html">
+            
+                <a href="../../IDE/layapackage/readme.html">
+            
+                    
+                    IDE插件系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.10.1" data-path="../../IDE/layapackage/plug-in/readme.html">
+            
+                <a href="../../IDE/layapackage/plug-in/readme.html">
+            
+                    
+                    插件开发说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10.2" data-path="../../IDE/layapackage/pluginImport/readme.html">
+            
+                <a href="../../IDE/layapackage/pluginImport/readme.html">
+            
+                    
+                    插件导入使用说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10.3" data-path="../../IDE/layapackage/Layabox/readme.html">
+            
+                <a href="../../IDE/layapackage/Layabox/readme.html">
+            
+                    
+                    官方插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.10.3.1" data-path="../../IDE/layapackage/Layabox/LOD/readme.html">
+            
+                <a href="../../IDE/layapackage/Layabox/LOD/readme.html">
+            
+                    
+                    LOD减面插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10.3.2" data-path="../../IDE/layapackage/Layabox/BakeAnimation/readme.html">
+            
+                <a href="../../IDE/layapackage/Layabox/BakeAnimation/readme.html">
+            
+                    
+                    3D骨骼动作烘焙插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    进阶使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../basics/2.x-Upgrade/readme.html">
+            
+                <a href="../../basics/2.x-Upgrade/readme.html">
+            
+                    
+                    2.x引擎项目升级指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../2D/advanced/readme.html">
+            
+                <a href="../../2D/advanced/readme.html">
+            
+                    
+                    2D进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../2D/advanced/useText/readme.html">
+            
+                <a href="../../2D/advanced/useText/readme.html">
+            
+                    
+                    文本进阶使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../2D/TiledMap/readme.html">
+            
+                <a href="../../2D/TiledMap/readme.html">
+            
+                    
+                    TiledMap地图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../../2D/performanceOptimization/readme.html">
+            
+                <a href="../../2D/performanceOptimization/readme.html">
+            
+                    
+                    2D性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../../2D/useWorker/readme.html">
+            
+                <a href="../../2D/useWorker/readme.html">
+            
+                    
+                    多线程Worker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="../../2D/dom/readme.html">
+            
+                <a href="../../2D/dom/readme.html">
+            
+                    
+                    和原生Dom交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../advanced/readme.html">
+            
+                <a href="../advanced/readme.html">
+            
+                    
+                    3D进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../advanced/customShader/readme.html">
+            
+                <a href="../advanced/customShader/readme.html">
+            
+                    
+                    自定义Shader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../advanced/customPhysicsEngine/readme.html">
+            
+                <a href="../advanced/customPhysicsEngine/readme.html">
+            
+                    
+                    自定义物理引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.3" data-path="../advanced/PostProcessing/readme.html">
+            
+                <a href="../advanced/PostProcessing/readme.html">
+            
+                    
+                    后处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.4" data-path="../advanced/CommandBuffer/readme.html">
+            
+                <a href="../advanced/CommandBuffer/readme.html">
+            
+                    
+                    CommandBuffer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.5" data-path="../advanced/performanceOptimization/readme.html">
+            
+                <a href="../advanced/performanceOptimization/readme.html">
+            
+                    
+                    3D性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.6" data-path="../WebXR/readme.html">
+            
+                <a href="../WebXR/readme.html">
+            
+                    
+                    WebXR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.7" data-path="../advanced/Unity/readme.html">
+            
+                <a href="../advanced/Unity/readme.html">
+            
+                    
+                    Unity资源导出插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    项目发布
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../released/generalSetting/readme.html">
+            
+                <a href="../../released/generalSetting/readme.html">
+            
+                    
+                    通用发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../released/web/readme.html">
+            
+                <a href="../../released/web/readme.html">
+            
+                    
+                    Web发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../released/miniGame/readme.html">
+            
+                <a href="../../released/miniGame/readme.html">
+            
+                    
+                    小游戏发布
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../../released/miniGame/wechat/readme.html">
+            
+                <a href="../../released/miniGame/wechat/readme.html">
+            
+                    
+                    微信小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../../released/miniGame/byteDance/readme.html">
+            
+                <a href="../../released/miniGame/byteDance/readme.html">
+            
+                    
+                    抖音小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="../../released/miniGame/OPPO/readme.html">
+            
+                <a href="../../released/miniGame/OPPO/readme.html">
+            
+                    
+                    OPPO小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="../../released/miniGame/vivo/readme.html">
+            
+                <a href="../../released/miniGame/vivo/readme.html">
+            
+                    
+                    vivo小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.5" data-path="../../released/miniGame/xiaomi/readme.html">
+            
+                <a href="../../released/miniGame/xiaomi/readme.html">
+            
+                    
+                    小米快游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.6" data-path="../../released/miniGame/alipaygame/readme.html">
+            
+                <a href="../../released/miniGame/alipaygame/readme.html">
+            
+                    
+                    支付宝小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.7" data-path="../../released/miniGame/tbgame/readme.html">
+            
+                <a href="../../released/miniGame/tbgame/readme.html">
+            
+                    
+                    淘宝小游戏
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../released/native/LayaNative_Introduction/readme.html">
+            
+                <a href="../../released/native/LayaNative_Introduction/readme.html">
+            
+                    
+                    Native打包发布
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../../released/native/native_index/readme.html">
+            
+                <a href="../../released/native/native_index/readme.html">
+            
+                    
+                    LayaNative不是浏览器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../../released/native/build_Tool/readme.html">
+            
+                <a href="../../released/native/build_Tool/readme.html">
+            
+                    
+                    安卓/iOS构建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../../released/native/screen_orientation/readme.html">
+            
+                <a href="../../released/native/screen_orientation/readme.html">
+            
+                    
+                    横竖屏设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.4" data-path="../../released/native/loading_view_new/readme.html">
+            
+                <a href="../../released/native/loading_view_new/readme.html">
+            
+                    
+                    启动画面LoadingView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.5" data-path="../../released/native/network/readme.html">
+            
+                <a href="../../released/native/network/readme.html">
+            
+                    
+                    关于网络监听
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.6" data-path="../../released/native/LocalStrorage/readme.html">
+            
+                <a href="../../released/native/LocalStrorage/readme.html">
+            
+                    
+                    关于LocalStorage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.7" data-path="../../released/native/Android_BackPress/readme.html">
+            
+                <a href="../../released/native/Android_BackPress/readme.html">
+            
+                    
+                    处理Android后退按钮
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.8" data-path="../../released/native/real_device_debugging/readme.html">
+            
+                <a href="../../released/native/real_device_debugging/readme.html">
+            
+                    
+                    Android真机调试JavaScript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.9" data-path="../../released/native/LayaDcc_Tool/readme.html">
+            
+                <a href="../../released/native/LayaDcc_Tool/readme.html">
+            
+                    
+                    缓存工具-layadcc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.10" data-path="../../released/native/Secondary_Development/readme.html">
+            
+                <a href="../../released/native/Secondary_Development/readme.html">
+            
+                    
+                    二次开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.11" data-path="../../released/native/webview/readme.html">
+            
+                <a href="../../released/native/webview/readme.html">
+            
+                    
+                    webview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.12" data-path="../../released/native/built_in_font/readme.html">
+            
+                <a href="../../released/native/built_in_font/readme.html">
+            
+                    
+                    嵌入字体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.13" data-path="../../released/native/zipUpdate/readme.html">
+            
+                <a href="../../released/native/zipUpdate/readme.html">
+            
+                    
+                    zip更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.14" data-path="../../released/native/apk_expansion/readme.html">
+            
+                <a href="../../released/native/apk_expansion/readme.html">
+            
+                    
+                    APK扩展机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.15" data-path="../../released/native/build_Cmd/readme.html">
+            
+                <a href="../../released/native/build_Cmd/readme.html">
+            
+                    
+                    layaAirNative命令行工具使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.16" data-path="../../released/native/Other_settings/readme.html">
+            
+                <a href="../../released/native/Other_settings/readme.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >使用3D摄像机</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x4E00;&#x7BC7;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;3d&#x6444;&#x50CF;&#x673A;"><b></b>&#x4E00;&#x7BC7;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;3D&#x6444;&#x50CF;&#x673A;</a></li><ul><li><span class="title-icon "></span><a href="#&#x4E00;&#x3001;&#x6982;&#x8FF0;"><b></b>&#x4E00;&#x3001;&#x6982;&#x8FF0;</a></li><li><span class="title-icon "></span><a href="#&#x4E8C;&#x3001;ide&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;"><b></b>&#x4E8C;&#x3001;IDE&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;</a></li><li><span class="title-icon "></span><a href="#&#x4E09;&#x3001;&#x53D8;&#x6362;"><b></b>&#x4E09;&#x3001;&#x53D8;&#x6362;</a></li><ul><li><span class="title-icon "></span><a href="#31-&#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;"><b></b>3.1 &#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;</a></li><li><span class="title-icon "></span><a href="#32-&#x8DDF;&#x968F;&#x79FB;&#x52A8;"><b></b>3.2 &#x8DDF;&#x968F;&#x79FB;&#x52A8;</a></li></ul><li><span class="title-icon "></span><a href="#&#x56DB;&#x3001;projection"><b></b>&#x56DB;&#x3001;Projection</a></li><ul><li><span class="title-icon "></span><a href="#41-perspective-&#x900F;&#x89C6;&#x6A21;&#x5F0F;"><b></b>4.1 Perspective &#x900F;&#x89C6;&#x6A21;&#x5F0F;</a></li><li><span class="title-icon "></span><a href="#42-orthographic-&#x6B63;&#x4EA4;&#x6A21;&#x5F0F;"><b></b>4.2 Orthographic &#x6B63;&#x4EA4;&#x6A21;&#x5F0F;</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E94;&#x3001;render"><b></b>&#x4E94;&#x3001;Render</a></li><ul><li><span class="title-icon "></span><a href="#51-&#x6E05;&#x9664;&#x6807;&#x5FD7;"><b></b>5.1 &#x6E05;&#x9664;&#x6807;&#x5FD7;</a></li><li><span class="title-icon "></span><a href="#52-&#x9AD8;&#x52A8;&#x6001;&#x5149;&#x7167;&#x6E32;&#x67D3;"><b></b>5.2 &#x9AD8;&#x52A8;&#x6001;&#x5149;&#x7167;&#x6E32;&#x67D3;</a></li><li><span class="title-icon "></span><a href="#53-&#x6297;&#x952F;&#x9F7F;"><b></b>5.3 &#x6297;&#x952F;&#x9F7F;</a></li><li><span class="title-icon "></span><a href="#54-&#x5254;&#x9664;&#x906E;&#x7F69;"><b></b>5.4 &#x5254;&#x9664;&#x906E;&#x7F69;</a></li></ul><li><span class="title-icon "></span><a href="#&#x516D;&#x3001;output"><b></b>&#x516D;&#x3001;Output</a></li><ul><li><span class="title-icon "></span><a href="#61-&#x89C6;&#x56FE;&#x77E9;&#x5F62;"><b></b>6.1 &#x89C6;&#x56FE;&#x77E9;&#x5F62;</a></li><li><span class="title-icon "></span><a href="#62-&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;"><b></b>6.2 &#x6DF1;&#x5EA6;&#x8D34;&#x56FE;</a></li><li><span class="title-icon "></span><a href="#63-&#x76EE;&#x6807;&#x7EB9;&#x7406;"><b></b>6.3 &#x76EE;&#x6807;&#x7EB9;&#x7406;</a></li><li><span class="title-icon "></span><a href="#64-&#x5176;&#x5B83;"><b></b>6.4 &#x5176;&#x5B83;</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E03;&#x3001;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x6444;&#x50CF;&#x673A;"><b></b>&#x4E03;&#x3001;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x6444;&#x50CF;&#x673A;</a></li><ul><li><span class="title-icon "></span><a href="#71-&#x5982;&#x4F55;&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5C04;&#x7EBF;"><b></b>7.1 &#x5982;&#x4F55;&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5C04;&#x7EBF;</a></li><li><span class="title-icon "></span><a href="#72-&#x53EF;&#x89C6;&#x906E;&#x7F69;&#x5C42;layer"><b></b>7.2 &#x53EF;&#x89C6;&#x906E;&#x7F69;&#x5C42;Layer</a></li><li><span class="title-icon "></span><a href="#73-&#x6355;&#x6349;&#x76EE;&#x6807;"><b></b>7.3 &#x6355;&#x6349;&#x76EE;&#x6807;</a></li><li><span class="title-icon "></span><a href="#74-&#x6A2A;&#x7EB5;&#x6BD4;"><b></b>7.4 &#x6A2A;&#x7EB5;&#x6BD4;</a></li><li><span class="title-icon "></span><a href="#75-&#x76EE;&#x6807;&#x7EB9;&#x7406;"><b></b>7.5 &#x76EE;&#x6807;&#x7EB9;&#x7406;</a></li></ul></ul></ul></div><a href="#&#x4E00;&#x7BC7;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;3d&#x6444;&#x50CF;&#x673A;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x4E00;&#x7BC7;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;3d&#x6444;&#x50CF;&#x673A;"><a name="&#x4E00;&#x7BC7;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;3d&#x6444;&#x50CF;&#x673A;" class="anchor-navigation-ex-anchor" href="#&#x4E00;&#x7BC7;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;3d&#x6444;&#x50CF;&#x673A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x7BC7;&#x5B66;&#x4F1A;&#x4F7F;&#x7528;3D&#x6444;&#x50CF;&#x673A;</h1>
+<h2 id="&#x4E00;&#x3001;&#x6982;&#x8FF0;"><a name="&#x4E00;&#x3001;&#x6982;&#x8FF0;" class="anchor-navigation-ex-anchor" href="#&#x4E00;&#x3001;&#x6982;&#x8FF0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x3001;&#x6982;&#x8FF0;</h2>
+<p>&#x6211;&#x4EEC;&#x90FD;&#x77E5;&#x9053;&#xFF0C;&#x7535;&#x5F71;&#x662F;&#x901A;&#x8FC7;&#x6444;&#x50CF;&#x673A;&#x5C06;&#x6545;&#x4E8B;&#x4E0E;&#x753B;&#x9762;&#x5448;&#x73B0;&#x7ED9;&#x89C2;&#x4F17;&#x3002;</p>
+<p>&#x865A;&#x62DF;&#x7684;3D&#x4E16;&#x754C;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x865A;&#x62DF;&#x7684;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x5C06;&#x4E09;&#x7EF4;&#x753B;&#x9762;&#x53CA;&#x60C5;&#x8282;&#x5448;&#x73B0;&#x7ED9;&#x7528;&#x6237;&#x6216;&#x8005;&#x73A9;&#x5BB6;&#x3002;&#x5728;3D&#x6E38;&#x620F;&#x4E2D;&#xFF0C;Camera&#x76F8;&#x5F53;&#x4E8E;&#x773C;&#x775B;&#xFF0C;&#x901A;&#x8FC7;&#x4ED6;&#x6765;&#x770B;&#x4E16;&#x754C;&#xFF0C;&#x4E00;&#x5207;&#x666F;&#x8C61;&#x90FD;&#x901A;&#x8FC7;Camera&#x6765;&#x6E32;&#x67D3;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5982;&#x679C;&#x573A;&#x666F;&#x5185;&#x6CA1;&#x6709;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x90A3;&#x4E48;&#x6E38;&#x620F;&#x753B;&#x9762;&#x5185;&#x5C31;&#x4E0D;&#x4F1A;&#x663E;&#x793A;&#x4EFB;&#x4F55;&#x7269;&#x4F53;&#x3002;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;&#x8FD8;&#x53EF;&#x4EE5;&#x653E;&#x7F6E;&#x5728;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x4E2D;&#xFF0C;&#x6BD4;&#x5982;&#x6DFB;&#x52A0;&#x5230;&#x4E3B;&#x89D2;&#x89D2;&#x8272;&#x6A21;&#x578B;&#x4E2D;&#xFF0C;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x5448;&#x73B0;3D&#x753B;&#x9762;&#x3002;</p>
+<p>&#x5728;LayaAir&#x5F15;&#x64CE;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#x540C;&#x65F6;&#x5DE5;&#x4F5C;&#xFF0C;&#x8FD9;&#x53D6;&#x51B3;&#x4E8E;&#x6211;&#x4EEC;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x5B9E;&#x9645;&#x9700;&#x6C42;&#x3002;</p>
+<p>&#x672C;&#x7BC7;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B66;&#x4E60;&#x5982;&#x4F55;&#x63A7;&#x5236;LayaAir&#x5F15;&#x64CE;3D&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x4EE5;&#x53CA;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x6444;&#x50CF;&#x673A;&#x7684;&#x529F;&#x80FD;&#x4ECB;&#x7ECD;&#x3002;</p>
+<h2 id="&#x4E8C;&#x3001;ide&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;"><a name="&#x4E8C;&#x3001;ide&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;" class="anchor-navigation-ex-anchor" href="#&#x4E8C;&#x3001;ide&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E8C;&#x3001;IDE&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;</h2>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x4E86;&#x89E3;&#x4E00;&#x4E2A;3D&#x573A;&#x666F;&#x4E2D;&#x7684;&#x6444;&#x50CF;&#x673A;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x901A;&#x8FC7;&#x521B;&#x5EFA;3D-RPG&#x9879;&#x76EE;&#x6765;&#x53C2;&#x8003;&#xFF0C;&#x5982;&#x56FE;2-1&#x6240;&#x793A;</p>
+<p><img src="img/2-1.png" alt="2-1" style="zoom: 50%;"></p>
+<p>&#xFF08;&#x56FE;2-1&#xFF09;</p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;3D&#x573A;&#x666F;&#x65F6;&#xFF0C;&#x5F15;&#x64CE;&#x4F1A;&#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x4E3B;&#x6444;&#x50CF;&#x673A; <code>Main Camera</code> &#x5728;Scene3D&#x8282;&#x70B9;&#x4E0B;&#x3002;&#x5F53;&#x7136;&#x4E5F;&#x8FD8;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x7684;&#x6444;&#x50CF;&#x673A;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x5982;&#x56FE;2-1&#x6240;&#x793A;&#xFF0C;&#x9009;&#x4E2D;&#x4E3B;&#x6444;&#x50CF;&#x673A;&#x65F6;&#xFF0C;Scene&#x7A97;&#x53E3;&#x4E2D;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;<code>Camera Preview</code>&#x7A97;&#x53E3;&#xFF0C;&#x7528;&#x6765;&#x663E;&#x793A;&#x4E3B;&#x6444;&#x50CF;&#x673A;&#x6240;&#x770B;&#x5230;&#x7684;&#x89C6;&#x91CE;&#xFF0C;&#x8FD9;&#x6837;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x6765;&#x9884;&#x89C8;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x79FB;&#x52A8;&#x6216;&#x8005;&#x65CB;&#x8F6C;&#x6444;&#x50CF;&#x673A;&#x65F6;&#xFF0C;&#x9884;&#x89C8;&#x4E2D;&#x7684;&#x89C6;&#x91CE;&#x4F1A;&#x968F;&#x7740;&#x6539;&#x53D8;&#xFF0C;&#x5F53;&#x7136;&#x5176;&#x4ED6;&#x7684;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x4E5F;&#x4F1A;&#x6709;&#x6240;&#x53D8;&#x5316;&#xFF0C;&#x540E;&#x9762;&#x6211;&#x4EEC;&#x4F1A;&#x8BE6;&#x7EC6;&#x8BB2;&#x89E3;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x56FE;2-2&#x6240;&#x793A;&#xFF0C;LayaAir&#x4E2D;&#x6444;&#x50CF;&#x673A;&#x5177;&#x5907;&#x5982;&#x4E0B;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x80FD;&#x591F;&#x5F88;&#x597D;&#x7684;&#x6EE1;&#x8DB3;&#x9879;&#x76EE;&#x7684;&#x9700;&#x8981;&#xFF0C;&#x7EA2;&#x8272;&#x7684;&#x53C2;&#x6570;&#x4F1A;&#x662F;&#x6211;&#x4EEC;&#x5E38;&#x7528;&#x7684;&#x8BBE;&#x7F6E;</p>
+<p><img src="img/2-2.png" alt="2-2" style="zoom:80%;"></p>
+<p>&#xFF08;&#x56FE;2-2&#xFF09;</p>
+<h2 id="&#x4E09;&#x3001;&#x53D8;&#x6362;"><a name="&#x4E09;&#x3001;&#x53D8;&#x6362;" class="anchor-navigation-ex-anchor" href="#&#x4E09;&#x3001;&#x53D8;&#x6362;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E09;&#x3001;&#x53D8;&#x6362;</h2>
+<p>&#x5982;&#x56FE;2-2&#x6240;&#x793A;&#xFF0C;&#x6700;&#x4E0A;&#x9762;&#x7684;&#x7EA2;&#x8272;&#x533A;&#x57DF;&#x5185;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x662F;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x65CB;&#x8F6C;&#xFF0C;&#x533A;&#x522B;&#x4E8E;&#x5176;&#x4ED6;&#x573A;&#x666F;&#x5185;&#x7684;&#x7269;&#x4F53;&#xFF0C;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x65CB;&#x8F6C;&#xFF0C;&#x4E0D;&#x53EA;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x662F;&#x80FD;&#x591F;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x89C6;&#x91CE;&#x505A;&#x51FA;&#x6539;&#x53D8;&#x3002;</p>
+<h3 id="31-&#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;"><a name="31-&#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;" class="anchor-navigation-ex-anchor" href="#31-&#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;"><i class="fa fa-link" aria-hidden="true"></i></a>3.1 &#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;</h3>
+<p>&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Scene&#x7A97;&#x53E3;&#x4E0B;&#x7684;&#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;&#xFF0C;&#x6765;&#x8C03;&#x6574;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x52A8;&#x56FE;3-1&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/3-1.gif" alt="3-1" style="zoom:80%;"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;3-1&#xFF09;</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x5B9A;&#x4F4D;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x5982;&#x52A8;&#x56FE;3-2&#x6240;&#x793A;&#xFF0C; &#x5148;&#x5728;Scene&#x7A97;&#x53E3;&#x4E2D;&#x79FB;&#x52A8;&#x573A;&#x666F;&#xFF0C; &#x627E;&#x5230;&#x5408;&#x9002;&#x4F60;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x89D2;&#x5EA6;&#xFF0C;&#x70B9;Main Camera&#x8282;&#x70B9;&#xFF0C;&#x540C;&#x65F6;&#x6309;&#x4E0B; Ctrl+Shift+F &#xFF0C;&#x6B64;&#x65F6;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x89D2;&#x5EA6;&#x5C31;&#x4F1A;&#x53D8;&#x66F4;&#x5230;&#x4F60;&#x6240;&#x5B9A;&#x4F4D;&#x7684;&#x70B9;&#x3002;</p>
+<p><img src="img/3-2.gif" alt="3-2" style="zoom:80%;"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;3-2&#xFF09;</p>
+<p>&#x4EE5;&#x4E0A;&#x8FD9;&#x53EA;&#x662F;&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x8C03;&#x6574;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x521D;&#x59CB;&#x5316;&#x573A;&#x666F;&#x65F6;&#x6444;&#x50CF;&#x673A;&#x7684;&#x521D;&#x59CB;&#x4F4D;&#x7F6E;&#x3002;</p>
+<h3 id="32-&#x8DDF;&#x968F;&#x79FB;&#x52A8;"><a name="32-&#x8DDF;&#x968F;&#x79FB;&#x52A8;" class="anchor-navigation-ex-anchor" href="#32-&#x8DDF;&#x968F;&#x79FB;&#x52A8;"><i class="fa fa-link" aria-hidden="true"></i></a>3.2 &#x8DDF;&#x968F;&#x79FB;&#x52A8;</h3>
+<p>&#x5728;3D&#x6E38;&#x620F;&#x4E2D;&#xFF0C;&#x5F80;&#x5F80;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x6765;&#x8C03;&#x6574;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x6BD4;&#x5982;&#x6444;&#x50CF;&#x673A;&#x4E00;&#x76F4;&#x8DDF;&#x968F;&#x4E3B;&#x89D2;&#x7684;&#x79FB;&#x52A8;&#x548C;&#x65CB;&#x8F6C;&#x6765;&#x505A;&#x8C03;&#x6574;&#xFF0C;&#x5982;&#x52A8;&#x56FE;3-3&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/3-3.gif" alt="3-3"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;3-3&#xFF09;</p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x6765;&#x5904;&#x7406;&#xFF0C;&#x5728;Main Camera&#x8282;&#x70B9;&#x4E0B;&#x6DFB;&#x52A0;CameraControll &#x811A;&#x672C;&#xFF0C;&#x968F;&#x7740;&#x4E3B;&#x89D2;&#x7684;&#x79FB;&#x52A8;&#xFF0C;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#x4E5F;&#x540C;&#x6B65;&#x79FB;&#x52A8;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-typescript"><span class="token keyword">const</span> <span class="token punctuation">{</span> regClass<span class="token punctuation">,</span> property <span class="token punctuation">}</span> <span class="token operator">=</span> Laya<span class="token punctuation">;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">regClass</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">CameraControll</span> <span class="token keyword">extends</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span>Script <span class="token punctuation">{</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span> <span class="token punctuation">{</span> type<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D <span class="token punctuation">}</span> <span class="token punctuation">)</span>
+    <span class="token keyword">public</span> target<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> camera<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Camera<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> distanceUp<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span><span class="token comment">//&#x76F8;&#x673A;&#x4E0E;&#x76EE;&#x6807;&#x7684;&#x7AD6;&#x76F4;&#x9AD8;&#x5EA6;&#x53C2;&#x6570;</span>
+    <span class="token keyword">public</span> distanceAway<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span class="token comment">//&#x76F8;&#x673A;&#x4E0E;&#x76EE;&#x6807;&#x7684;&#x6C34;&#x5E73;&#x8DDD;&#x79BB;&#x53C2;&#x6570;</span>
+    <span class="token keyword">public</span> smooth<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span><span class="token comment">//&#x4F4D;&#x7F6E;&#x5E73;&#x6ED1;&#x79FB;&#x52A8;&#x63D2;&#x503C;&#x53C2;&#x6570;&#x503C;</span>
+    <span class="token keyword">public</span> camDepthSmooth<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">20</span>
+    <span class="token keyword">public</span> curpos<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Vector3<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> delatpos<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Vector3<span class="token punctuation">;</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * &#x7EC4;&#x4EF6;&#x88AB;&#x6FC0;&#x6D3B;&#x540E;&#x6267;&#x884C;&#xFF0C;&#x6B64;&#x65F6;&#x6240;&#x6709;&#x8282;&#x70B9;&#x548C;&#x7EC4;&#x4EF6;&#x5747;&#x5DF2;&#x521B;&#x5EFA;&#x5B8C;&#x6BD5;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x53EA;&#x6267;&#x884C;&#x4E00;&#x6B21;
+     * &#x6B64;&#x65B9;&#x6CD5;&#x4E3A;&#x865A;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x65F6;&#x91CD;&#x5199;&#x8986;&#x76D6;&#x5373;&#x53EF;
+     */</span>
+    <span class="token function">onAwake</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>curpos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Vector3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * &#x7B2C;&#x4E00;&#x6B21;&#x6267;&#x884C;update&#x4E4B;&#x524D;&#x6267;&#x884C;&#xFF0C;&#x53EA;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x6B21;
+     * &#x6B64;&#x65B9;&#x6CD5;&#x4E3A;&#x865A;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x65F6;&#x91CD;&#x5199;&#x8986;&#x76D6;&#x5373;&#x53EF;
+     */</span>
+    <span class="token function">onStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>camera <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>owner <span class="token keyword">as</span> Laya<span class="token punctuation">.</span>Camera<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>target<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">.</span><span class="token function">cloneTo</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>curpos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>delatpos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Vector3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * &#x6BCF;&#x5E27;&#x66F4;&#x65B0;&#x65F6;&#x6267;&#x884C;&#xFF0C;&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5728;&#x8FD9;&#x91CC;&#x5199;&#x5927;&#x5FAA;&#x73AF;&#x903B;&#x8F91;&#x6216;&#x8005;&#x4F7F;&#x7528;getComponent&#x65B9;&#x6CD5;
+     * &#x6B64;&#x65B9;&#x6CD5;&#x4E3A;&#x865A;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x65F6;&#x91CD;&#x5199;&#x8986;&#x76D6;&#x5373;&#x53EF;
+     */</span>
+    <span class="token function">onUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>target <span class="token operator">||</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>target<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">.</span><span class="token function">vsub</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>curpos<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>delatpos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">.</span><span class="token function">vadd</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>delatpos<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>delatpos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>delatpos<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>target<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">.</span><span class="token function">cloneTo</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>curpos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x56DB;&#x3001;projection"><a name="&#x56DB;&#x3001;projection" class="anchor-navigation-ex-anchor" href="#&#x56DB;&#x3001;projection"><i class="fa fa-link" aria-hidden="true"></i></a>&#x56DB;&#x3001;Projection</h2>
+<p><img src="img/4-1.png" alt="4-1" style="zoom:80%;"></p>
+<p>&#xFF08;&#x56FE;4-1&#xFF09;</p>
+<p>&#x6444;&#x50CF;&#x673A;&#x6210;&#x76F8;&#x6548;&#x679C;&#x7684;&#x6295;&#x5F71;&#x65B9;&#x5F0F;&#x6709;&#x4E24;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x9ED8;&#x8BA4;&#x503C;&#x900F;&#x89C6;&#x6A21;&#x5F0F;Perspective&#x548C;&#x6B63;&#x4EA4;&#x6A21;&#x5F0F;Orthographic&#x3002;&#x5728;LayaAir IDE&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x662F;&#x5426;&#x52FE;&#x9009;Orthographic&#x6765;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x54EA;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
+<h3 id="41-perspective-&#x900F;&#x89C6;&#x6A21;&#x5F0F;"><a name="41-perspective-&#x900F;&#x89C6;&#x6A21;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#41-perspective-&#x900F;&#x89C6;&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>4.1 Perspective &#x900F;&#x89C6;&#x6A21;&#x5F0F;</h3>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x52FE;&#x9009;Orthographic&#xFF0C;&#x5C31;&#x662F;&#x91C7;&#x7528;Perspective&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x900F;&#x89C6;&#x6295;&#x5F71;&#x7684;&#x89C2;&#x5BDF;&#x4F53;&#x662F;&#x89C6;&#x9525;&#x4F53;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x4E00;&#x7EC4;&#x7531;&#x6295;&#x5F71;&#x4E2D;&#x5FC3;&#x4EA7;&#x751F;&#x7684;&#x653E;&#x5C04;&#x6295;&#x5F71;&#x7EBF;&#xFF0C;&#x5C06;&#x4E09;&#x7EF4;&#x5BF9;&#x8C61;&#x6295;&#x5F71;&#x5230;&#x6295;&#x5F71;&#x5E73;&#x9762;&#x4E0A;&#x53BB;&#x3002;&#x8FD9;&#x79CD;&#x900F;&#x89C6;&#x6A21;&#x5F0F;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x6A21;&#x62DF;&#x4E86;&#x4EBA;&#x773C;&#x8FD1;&#x5927;&#x8FDC;&#x5C0F;&#x89C6;&#x89C9;&#x6548;&#x679C;&#x7684;&#x6444;&#x50CF;&#x673A;&#x6210;&#x76F8;&#x6A21;&#x5F0F;&#xFF0C;&#x5982;&#x52A8;&#x56FE;4-2&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/4-2.gif" alt="4-2" style="zoom:80%;"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;4-2&#xFF09;</p>
+<p><code>Field of view</code>&#x662F;&#x89C6;&#x91CE;&#x8303;&#x56F4;&#xFF0C;&#x4ECE;&#x52A8;&#x56FE;4-2&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x901A;&#x8FC7;&#x4FEE;&#x6539;Field Of View&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x6574;&#x900F;&#x89C6;&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x89C6;&#x91CE;&#x8303;&#x56F4;&#xFF0C;&#x4ECE;4&#x5230;120&#x5EA6;&#xFF0C;&#x53EA;&#x6709;&#x4F7F;&#x7528;&#x900F;&#x89C6;&#x6295;&#x5F71;&#x65F6;&#xFF0C;Field Of View&#x624D;&#x6709;&#x6548;&#x3002;</p>
+<p>&#x526A;&#x88C1;&#x5E73;&#x9762;&#x662F;&#x4E0E;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x91CE;&#x65B9;&#x5411;&#x5782;&#x76F4;&#x7684;&#x5E73;&#x9762;&#x3002;&#x901A;&#x8FC7;&#x8FD1;&#x88C1;&#x526A;&#x9762;&#x4E0E;&#x8FDC;&#x88C1;&#x526A;&#x9762;&#x4E24;&#x4E2A;&#x5B50;&#x53C2;&#x6570;&#x6765;&#x8BBE;&#x7F6E;&#x6444;&#x50CF;&#x673A;&#x6E32;&#x67D3;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x8D85;&#x51FA;&#x8303;&#x56F4;&#x7684;&#x90E8;&#x5206;&#x4E0D;&#x4F1A;&#x88AB;&#x6E32;&#x67D3;&#x663E;&#x793A;&#xFF0C;&#x72B9;&#x5982;&#x88AB;&#x526A;&#x88C1;&#x6389;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<p><code>Near Plane</code>&#x662F;&#x8FD1;&#x88C1;&#x9762;&#xFF0C;&#x662F;&#x6307;&#x79BB;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x91CE;&#x65B9;&#x5411;&#x6700;&#x8FD1;&#x7684;&#x526A;&#x88C1;&#x9762;&#xFF0C;&#x5C0F;&#x4E8E;&#x6B64;&#x8DDD;&#x79BB;&#x503C;&#x7684;&#x4E0D;&#x6E32;&#x67D3;&#x3002;</p>
+<p><code>Far Plane</code>&#x662F;&#x8FDC;&#x88C1;&#x9762;&#xFF0C;&#x662F;&#x6307;&#x79BB;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x91CE;&#x65B9;&#x5411;&#x6700;&#x8FDC;&#x7684;&#x526A;&#x88C1;&#x9762;&#xFF0C;&#x5927;&#x4E8E;&#x6B64;&#x8DDD;&#x79BB;&#x503C;&#x7684;&#x4E0D;&#x6E32;&#x67D3;&#x3002;</p>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#x53EA;&#x6709;&#x4F7F;&#x7528;&#x900F;&#x89C6;&#x6295;&#x5F71;&#x65F6;&#x624D;&#x6709;&#x6548;&#x3002;&#x5982;&#x52A8;&#x56FE;4-3&#x6240;&#x793A;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x4FEE;&#x6539;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x6548;&#x679C;&#xFF0C;</p>
+<p><img src="img/4-3.gif" alt="4-3" style="zoom:80%;"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;4-3&#xFF09; </p>
+<h3 id="42-orthographic-&#x6B63;&#x4EA4;&#x6A21;&#x5F0F;"><a name="42-orthographic-&#x6B63;&#x4EA4;&#x6A21;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#42-orthographic-&#x6B63;&#x4EA4;&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 Orthographic &#x6B63;&#x4EA4;&#x6A21;&#x5F0F;</h3>
+<p>&#x6B63;&#x4EA4;&#x6295;&#x5F71;&#x6A21;&#x5F0F;&#x7684;&#x89C2;&#x5BDF;&#x4F53;&#x662F;&#x89C4;&#x5219;&#x7684;&#x957F;&#x65B9;&#x4F53;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x4E00;&#x7EC4;&#x5E73;&#x884C;&#x6295;&#x5F71;&#xFF0C;&#x5C06;&#x4E09;&#x7EF4;&#x5BF9;&#x8C61;&#x6295;&#x5F71;&#x5230;&#x6295;&#x5F71;&#x5E73;&#x9762;&#x4E0A;&#x53BB;&#xFF0C;&#x5982;&#x56FE;4-4&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/4-4.png" alt="4-4" style="zoom:80%;"></p>
+<p>&#xFF08;&#x56FE;4-4&#xFF09;</p>
+<p><code>Orthographic Vertical Size</code>&#x662F;&#x89C6;&#x91CE;&#x5927;&#x5C0F;&#xFF0C;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x6B63;&#x4EA4;&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x89C6;&#x91CE;&#x5927;&#x5C0F;&#xFF0C;&#x5982;&#x52A8;&#x56FE;4-5&#x6240;&#x793A;&#x3002;&#x53EA;&#x6709;&#x5728;&#x6B63;&#x4EA4;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;Orthographic Vertical Size&#x624D;&#x6709;&#x6548;&#x3002;</p>
+<p><img src="img/4-5.gif" alt="4-5" style="zoom:80%;"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;4-5&#xFF09; </p>
+<h2 id="&#x4E94;&#x3001;render"><a name="&#x4E94;&#x3001;render" class="anchor-navigation-ex-anchor" href="#&#x4E94;&#x3001;render"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E94;&#x3001;Render</h2>
+<p><img src="img/5-1.png" alt="5-1" style="zoom:80%;"></p>
+<p>&#xFF08;&#x56FE;5-1&#xFF09;</p>
+<h3 id="51-&#x6E05;&#x9664;&#x6807;&#x5FD7;"><a name="51-&#x6E05;&#x9664;&#x6807;&#x5FD7;" class="anchor-navigation-ex-anchor" href="#51-&#x6E05;&#x9664;&#x6807;&#x5FD7;"><i class="fa fa-link" aria-hidden="true"></i></a>5.1 &#x6E05;&#x9664;&#x6807;&#x5FD7;</h3>
+<p>&#x6BCF;&#x4E2A;&#x6444;&#x76F8;&#x673A;&#x5728;&#x6E32;&#x67D3;&#x65F6;&#xFF0C;&#x90FD;&#x4F1A;&#x5148;&#x5C06;&#x989C;&#x8272;&#x548C;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x8D77;&#x6765;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;ColorBuffer&#x4E0E;DepthBuffer&#xFF0C;&#x7136;&#x540E;&#x4E0B;&#x4E00;&#x5E27;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x989C;&#x8272;&#x548C;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5B9E;&#x65F6;&#x8BA1;&#x7B97;&#x7684;&#x3002;&#x5F53;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#x90FD;&#x5C06;&#x81EA;&#x5DF1;&#x7684;&#x989C;&#x8272;&#x548C;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x5728;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#xFF0C;&#x90A3;&#x5C06;&#x79EF;&#x7D2F;&#x5927;&#x91CF;&#x7684;&#x6E32;&#x67D3;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;<code>Clear Flags</code>&#xFF08;&#x6E05;&#x9664;&#x6807;&#x8BB0;&#xFF09;&#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x6E05;&#x9664;&#x5F53;&#x524D;&#x6E32;&#x67D3;&#x4E4B;&#x524D;&#x5B58;&#x50A8;&#x8D77;&#x6765;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x4FE1;&#x606F;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x529F;&#x80FD;&#x6709;&#x56DB;&#x4E2A;&#x9009;&#x9879;&#xFF08;Sky&#x3001;SolidColor&#x3001;DepthOnly&#x3001;Nothing&#xFF09;&#xFF0C;&#x4E0B;&#x9762;&#x5206;&#x522B;&#x4ECB;&#x7ECD;&#x5B83;&#x4EEC;&#x5177;&#x4F53;&#x6E05;&#x9664;&#x4EC0;&#x4E48;&#x7F13;&#x51B2;&#x4FE1;&#x606F;&#x3002;</p>
+<ul>
+<li>Sky &#x5929;&#x7A7A;&#x76D2;</li>
+</ul>
+<p>&#x5929;&#x7A7A;&#x76D2;&#x662F;&#x9ED8;&#x8BA4;&#x9009;&#x9879;&#xFF0C;&#x8868;&#x793A;&#x7740;<strong>&#x6E05;&#x9664;</strong>&#x5F53;&#x524D;&#x6E32;&#x67D3;&#x4E4B;&#x524D;&#x7684;&#x5168;&#x90E8;&#x6444;&#x76F8;&#x673A;&#x7F13;&#x51B2;&#x533A;&#x7684;<strong>&#x989C;&#x8272;&#x4E0E;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</strong>&#xFF0C;&#x4F7F;&#x7528;&#x5929;&#x7A7A;&#x76D2;&#x4EE3;&#x66FF;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x5929;&#x7A7A;&#x76D2;&#xFF0C;&#x5219;&#x4F1A;&#x663E;&#x793A;&#x9ED8;&#x8BA4;&#x6E05;&#x9664;&#x8272;&#xFF08;Clear Color&#x5C5E;&#x6027;&#x7684;&#x989C;&#x8272;&#xFF09;&#x3002;</p>
+<ul>
+<li>SolidColor &#x7EAF;&#x8272;</li>
+</ul>
+<p>&#x8868;&#x793A;&#x7740;<strong>&#x6E05;&#x9664;</strong>&#x5F53;&#x524D;&#x6E32;&#x67D3;&#x4E4B;&#x524D;&#x7684;&#x5168;&#x90E8;&#x6444;&#x76F8;&#x673A;&#x7F13;&#x51B2;&#x533A;&#x7684;<strong>&#x989C;&#x8272;&#x4E0E;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</strong>&#xFF0C;&#x4F7F;&#x7528;&#x6E05;&#x9664;&#x8272;&#xFF08;Clear Color&#x5C5E;&#x6027;&#x7684;&#x989C;&#x8272;&#xFF09;&#x4EE3;&#x66FF;&#xFF0C;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x4EFB;&#x4F55;&#x7A7A;&#x7684;&#x90E8;&#x5206;&#x90FD;&#x5C06;&#x663E;&#x793A;&#x5F53;&#x524D;&#x6444;&#x50CF;&#x673A;&#x7684;&#x989C;&#x8272;&#x3002;</p>
+<ul>
+<li>Nothing &#x4E0D;&#x6E05;&#x9664;</li>
+</ul>
+<p>&#x8868;&#x793A;&#x8BE5;&#x9009;&#x9879;<strong>&#x4E0D;&#x6E05;&#x9664;</strong>&#x6444;&#x76F8;&#x673A;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x4FE1;&#x606F;&#xFF0C;<strong>&#x989C;&#x8272;&#x4E0E;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</strong>&#x5168;&#x90FD;&#x4FDD;&#x7559;&#x7740;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x4F1A;&#x5BFC;&#x81F4;&#x6BCF;&#x5E27;&#x6E32;&#x67D3;&#x7684;&#x7ED3;&#x679C;&#x90FD;&#x4F1A;&#x53E0;&#x52A0;&#x5728;&#x4E0B;&#x4E00;&#x5E27;&#x4E4B;&#x4E0A;&#x3002;</p>
+<p>&#x770B;&#x8D77;&#x6765;&#x8FD9;&#x9009;&#x9879;&#x6CA1;&#x6709;&#x5B58;&#x5728;&#x7684;&#x5FC5;&#x8981;&#xFF0C;&#x4E8B;&#x5B9E;&#x4E0A;&#x7684;&#x786E;&#x4E0D;&#x5E38;&#x7528;&#xFF0C;&#x4F46;&#x5728;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x573A;&#x5408;&#x8FD8;&#x662F;&#x7528;&#x7684;&#x4E0A;&#xFF0C;&#x4F8B;&#x5982;&#x7ED3;&#x5408;&#x81EA;&#x5B9A;&#x4E49;shader&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
+<ul>
+<li>DepthOnly &#x4EC5;&#x6DF1;&#x5EA6;</li>
+</ul>
+<p>&#x8868;&#x793A;&#x7740;<strong>&#x53EA;&#x6E05;&#x9664;</strong>&#x5F53;&#x524D;&#x6E32;&#x67D3;&#x4E4B;&#x524D;&#x7684;&#x5168;&#x90E8;&#x6444;&#x76F8;&#x673A;&#x7F13;&#x51B2;&#x533A;&#x7684;<strong>&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</strong>&#xFF0C;<strong>&#x4FDD;&#x7559;</strong>&#x5168;&#x90E8;&#x6444;&#x76F8;&#x673A;&#x7F13;&#x51B2;&#x533A;&#x7684;<strong>&#x989C;&#x8272;&#x4FE1;&#x606F;</strong>&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x975E;&#x5E38;&#x5B9E;&#x7528;&#xFF0C;&#x8981;&#x60F3;&#x5C06;&#x591A;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#x7684;&#x753B;&#x9762;&#xFF0C;&#x6E32;&#x67D3;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x753B;&#x9762;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;DepthOnly&#x9009;&#x9879;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x573A;&#x666F;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6444;&#x50CF;&#x673A;Camera2&#xFF0C;Clear Flag&#x4F7F;&#x7528;DepthOnly&#xFF0C;&#x628A;&#x6444;&#x50CF;&#x673A;Camera2&#x7684;&#x89C6;&#x91CE;&#x671D;&#x5411;&#x4E3B;&#x89D2;&#xFF0C;&#x70B9;&#x51FB;&#x8FD0;&#x884C;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x573A;&#x666F;&#x7684;&#x6E32;&#x67D3;&#x4E0D;&#x53D8;&#xFF0C;&#x8FD8;&#x662F;&#x7528;&#x7684;&#x5929;&#x7A7A;&#x76D2;&#xFF0C;&#x4F46;&#x662F;&#x4E3B;&#x6444;&#x50CF;&#x673A;&#x662F;&#x4E3B;&#x89D2;&#x6240;&#x770B;&#x5230;&#x7684;&#x89C6;&#x91CE;&#xFF0C;&#x4F46;&#x662F;&#x5C4F;&#x5E55;&#x4E2D;&#x8FD8;&#x6709;&#x663E;&#x793A;&#x4E86;&#x4E3B;&#x89D2;&#xFF0C;&#x90A3;&#x5C31;&#x662F;Camera2&#x6240;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4FDD;&#x7559;&#x4E86;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#x3002;</p>
+<blockquote>
+<p>&#x5F53;Clear Flags&#x7684;DepthOnly&#x5F00;&#x542F;&#x540E;&#xFF0C;LayaAir&#x5F15;&#x64CE;&#x4F1A;&#x901A;&#x8FC7;&#x6444;&#x50CF;&#x673A;&#x7684;&#x6E32;&#x67D3;&#x987A;&#x5E8F;&#x6765;&#x63A7;&#x5236;&#x3002;&#x9ED8;&#x8BA4;&#x7684;&#x6E32;&#x67D3;&#x987A;&#x5E8F;&#x5C31;&#x662F;&#x8282;&#x70B9;&#x7684;&#x6E32;&#x67D3;&#x987A;&#x5E8F;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;LayaAir&#x5F15;&#x64CE;&#x6444;&#x50CF;&#x673A;&#x7684;renderingOrder&#x6765;&#x6539;&#x53D8;&#x6E32;&#x67D3;&#x987A;&#x5E8F;&#x3002;</p>
+</blockquote>
+<p>&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x6444;&#x50CF;&#x673A;&#x7684;Clear Flags&#x8BBE;&#x7F6E;&#x7684;&#x662F;Skybox&#xFF0C;&#x90A3;&#x7B2C;&#x4E8C;&#x6444;&#x50CF;&#x673A;&#x7684;Clear Flags&#x8BBE;&#x7F6E;DepthOnly&#xFF0C;&#x8FD9;&#x65F6;&#x9700;&#x8981;&#x7B2C;&#x4E00;&#x6444;&#x50CF;&#x673A;&#x7684;&#x6E32;&#x67D3;&#x987A;&#x5E8F;&#x5728;&#x7B2C;&#x4E8C;&#x6444;&#x50CF;&#x673A;&#x7684;&#x6E32;&#x67D3;&#x987A;&#x5E8F;&#x4E4B;&#x524D;&#xFF0C;&#x5982;&#x56FE;5-2&#x6240;&#x793A;&#xFF0C;Main Camera&#x8282;&#x70B9;&#x5728;Camera2&#x8282;&#x70B9;&#x4E4B;&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;&#x4E24;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#x7684;&#x6E32;&#x67D3;&#x753B;&#x9762;&#x624D;&#x4F1A;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x8D77;&#x3002;</p>
+<p><img src="img/5-2.png" alt="5-2"></p>
+<p>&#xFF08;&#x56FE;5-2&#xFF09;</p>
+<p>&#x5982;&#x679C;&#x987A;&#x5E8F;&#x53CD;&#x4E86;&#xFF0C;Camera2&#x5148;&#x6E32;&#x67D3;&#x7684;&#x8BDD;&#xFF0C;&#x867D;&#x7136;&#x53EA;&#x6E05;&#x7406;&#x4E86;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#x4FDD;&#x7559;&#x4E86;&#x989C;&#x8272;&#x4FE1;&#x606F;&#x3002;&#x4F46;&#x540E;&#x6E32;&#x67D3;&#x7684;Main Camera&#x4F1A;&#x628A;&#x524D;&#x9762;&#x6240;&#x6709;&#x7F13;&#x51B2;&#x533A;&#x6DF1;&#x5EA6;&#x548C;&#x989C;&#x8272;&#x7684;&#x90FD;&#x6E05;&#x7406;&#x6389;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x6CA1;&#x529E;&#x6CD5;&#x770B;&#x5230;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x753B;&#x9762;&#x4E86;&#x3002;</p>
+<p>&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x5F53;&#x52A0;&#x8F7D;&#x5230;&#x573A;&#x666F;&#x4E2D;&#x540E;&#xFF0C;&#x5B83;&#x4EEC;&#x4F1A;&#x4EA7;&#x751F;&#x5404;&#x81EA;&#x7684;&#x6E38;&#x620F;&#x89C6;&#x56FE;&#x753B;&#x9762;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x4EE5;&#x524D;&#x9047;&#x5230;&#x7684;&#x6E38;&#x620F;&#x4E2D;&#xFF0C;&#x5982;&#x53CC;&#x4EBA;3D&#x6E38;&#x620F;&#x5C31;&#x4F7F;&#x7528;&#x4E86;&#x4E24;&#x4E2A;3D&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x5DE6;&#x534A;&#x5C4F;&#x5E55;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x73A9;&#x5BB6;&#xFF0C;&#x53F3;&#x534A;&#x5C4F;&#x5E55;&#x663E;&#x793A;&#x53E6;&#x4E00;&#x4E2A;&#xFF0C;&#x6781;&#x5927;&#x7684;&#x4E30;&#x5BCC;&#x4E86;&#x6E38;&#x620F;&#x6027;&#x3002;&#x4E0D;&#x8FC7;&#x591A;&#x6444;&#x50CF;&#x673A;&#x7684;&#x7F3A;&#x70B9;&#x662F;&#x975E;&#x5E38;&#x8017;&#x6027;&#x80FD;&#xFF0C;&#x6A21;&#x578B;&#x4E09;&#x89D2;&#x9762;&#x6570;&#x4E0E;DrawCall&#x6570;&#x91CF;&#x4F1A;&#x6210;&#x500D;&#x4E0A;&#x5347;&#xFF0C;&#x591A;&#x51E0;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#x5C31;&#x4F1A;&#x591A;&#x51FA;&#x51E0;&#x500D;&#x6027;&#x80FD;&#x635F;&#x8017;&#xFF0C;&#x56E0;&#x6B64;&#x5F00;&#x53D1;&#x8005;&#x4EEC;&#x9700;&#x914C;&#x60C5;&#x8003;&#x8651;&#x3002;</p>
+<h3 id="52-&#x9AD8;&#x52A8;&#x6001;&#x5149;&#x7167;&#x6E32;&#x67D3;"><a name="52-&#x9AD8;&#x52A8;&#x6001;&#x5149;&#x7167;&#x6E32;&#x67D3;" class="anchor-navigation-ex-anchor" href="#52-&#x9AD8;&#x52A8;&#x6001;&#x5149;&#x7167;&#x6E32;&#x67D3;"><i class="fa fa-link" aria-hidden="true"></i></a>5.2 &#x9AD8;&#x52A8;&#x6001;&#x5149;&#x7167;&#x6E32;&#x67D3;</h3>
+<p>&#x9AD8;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x56FE;&#x50CF;&#xFF08;High-Dynamic Range&#xFF09;&#x7B80;&#x79F0;HDR&#x3002;HDR&#x76F8;&#x6BD4;&#x666E;&#x901A;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x7684;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x548C;&#x56FE;&#x50CF;&#x7EC6;&#x8282;&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x66F4;&#x597D;&#x7684;&#x53CD;&#x6620;&#x51FA;&#x771F;&#x5B9E;&#x73AF;&#x5883;&#x4E2D;&#x7684;&#x89C6;&#x89C9;&#x6548;&#x679C;&#x3002;</p>
+<p><code>Enable HDR</code>&#x7528;&#x4E8E;&#x5F00;&#x542F;&#x6444;&#x50CF;&#x673A;&#x7684;&#x9AD8;&#x52A8;&#x6001;&#x8303;&#x56F4;&#x6E32;&#x67D3;&#x529F;&#x80FD;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x52FE;&#x9009;&#x72B6;&#x6001;&#xFF0C;&#x4EE3;&#x8868;&#x9ED8;&#x8BA4;&#x4E0D;&#x5F00;&#x542F;HDR&#x3002;</p>
+<p>&#x7531;&#x4E8E;HDR&#x9700;&#x8981;&#x57FA;&#x4E8E;webGL 2.0&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x67D0;&#x4E9B;&#x4E0D;&#x652F;&#x6301;webGL 2.0&#x7684;&#x5E73;&#x53F0;&#x4E2D;&#x53D1;&#x5E03;&#x4EA7;&#x54C1;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x6B64;&#x9009;&#x9879;&#x53BB;&#x6389;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x5F15;&#x64CE;&#x91CC;&#x5C06;&#x6444;&#x50CF;&#x673A;&#x7684;HDR&#x5173;&#x95ED;&#x3002;</p>
+<blockquote>
+<p>&#x5F00;&#x542F;HDR&#xFF0C;&#x8FD8;&#x4F1A;&#x5BFC;&#x81F4;LayaAir&#x5F15;&#x64CE;&#x6297;&#x952F;&#x9F7F;&#x529F;&#x80FD;&#x65E0;&#x6548;&#xFF0C;&#x9700;&#x8981;&#x5F00;&#x542F;&#x6297;&#x952F;&#x9F7F;&#x529F;&#x80FD;&#x7684;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x5F00;&#x542F;HDR&#x3002;</p>
+</blockquote>
+<h3 id="53-&#x6297;&#x952F;&#x9F7F;"><a name="53-&#x6297;&#x952F;&#x9F7F;" class="anchor-navigation-ex-anchor" href="#53-&#x6297;&#x952F;&#x9F7F;"><i class="fa fa-link" aria-hidden="true"></i></a>5.3 &#x6297;&#x952F;&#x9F7F;</h3>
+<p><code>MSAA</code>&#xFF1A;&#x591A;&#x91CD;&#x91C7;&#x6837;&#x6297;&#x952F;&#x9F7F;&#x3002;MSAA&#x9996;&#x5148;&#x6765;&#x81EA;&#x4E8E;OpenGL&#xFF0C;&#x5177;&#x4F53;&#x662F;MSAA&#x53EA;&#x5BF9;Z&#x7F13;&#x5B58;( Z-Buffer)&#x548C;&#x6A21;&#x677F;&#x7F13;&#x5B58;&#xFF08;Stencil Buffer&#xFF09;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8D85;&#x7EA7;&#x91C7;&#x6837;&#x6297;&#x952F;&#x9F7F;&#x7684;&#x5904;&#x7406;&#x3002;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A;&#x53EA;&#x5BF9;&#x591A;&#x8FB9;&#x5F62;&#x7684;&#x8FB9;&#x7F18;&#x8FDB;&#x884C;&#x6297;&#x952F;&#x9F7F;&#x5904;&#x7406;&#x3002;</p>
+<p><code>FXAA</code>&#xFF1A;&#x5FEB;&#x901F;&#x8FD1;&#x4F3C;&#x6297;&#x952F;&#x9F7F;&#x3002;FXAA&#x7684;&#x57FA;&#x672C;&#x539F;&#x7406;&#x4E0E;MSAA&#x76F8;&#x540C;&#xFF0C;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x63D0;&#x53D6;&#x50CF;&#x7D20;&#x754C;&#x9762;&#x5468;&#x56F4;&#x7684;&#x989C;&#x8272;&#x4FE1;&#x606F;&#x5E76;&#x5B8C;&#x6210;&#x6DF7;&#x5408;&#x6765;&#x6D88;&#x9664;&#x9AD8;&#x5BF9;&#x6BD4;&#x5EA6;&#x754C;&#x9762;&#x6240;&#x4EA7;&#x751F;&#x7684;&#x952F;&#x9F7F;&#x3002;&#x4F46;&#x662F;FXAA&#x5C06;&#x50CF;&#x7D20;&#x7684;&#x63D0;&#x53D6;&#x548C;&#x6DF7;&#x5408;&#x8FC7;&#x7A0B;&#x4EA4;&#x7531;GPU&#x5185;&#x7684;ALU&#x6765;&#x6267;&#x884C;&#xFF0C;&#x56E0;&#x6B64;&#x5176;&#x6240;&#x5360;&#x7528;&#x7684;&#x663E;&#x5B58;&#x5E26;&#x5BBD;&#x8981;&#x5927;&#x5927;&#x4F4E;&#x4E8E;&#x4F20;&#x7EDF;&#x7684;MSAA&#x3002;</p>
+<h3 id="54-&#x5254;&#x9664;&#x906E;&#x7F69;"><a name="54-&#x5254;&#x9664;&#x906E;&#x7F69;" class="anchor-navigation-ex-anchor" href="#54-&#x5254;&#x9664;&#x906E;&#x7F69;"><i class="fa fa-link" aria-hidden="true"></i></a>5.4 &#x5254;&#x9664;&#x906E;&#x7F69;</h3>
+<p>&#x5728;LayaAir&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x8BBE;&#x7F6E;&#x6240;&#x5C5E;&#x7684;Layer(&#x5C42;)&#xFF0C;&#x4E0D;&#x8BBE;&#x7F6E;&#x5C31;&#x662F;&#x9ED8;&#x8BA4;&#x7684;Default&#x5C42;&#x3002;&#x5982;&#x56FE;5-3&#x6240;&#x793A;&#xFF0C;&#x662F;&#x4E3B;&#x89D2;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;Default&#x5C42;&#xFF0C;</p>
+<p><img src="img/5-3.png" alt="5-3" style="zoom:80%;"></p>
+<p>&#xFF08;&#x56FE;5-3&#xFF09;</p>
+<p><code>Culling Mask</code>&#xFF08;&#x5254;&#x9664;&#x906E;&#x7F69;&#xFF09;&#xFF0C;&#x5C31;&#x662F;&#x9488;&#x5BF9;&#x5C42;&#x7684;&#x6E32;&#x67D3;&#x5254;&#x9664;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x4E0E;DepthOnly&#x642D;&#x914D;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5C06;Cube&#x8282;&#x70B9;&#x8BBE;&#x7F6E;&#x5230;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;cube&#x5C42;&#x4E0A;&#xFF0C;Culling Mask&#x9009;&#x62E9;cube&#x5C42;&#xFF0C;&#x90A3;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C06;&#x4F1A;&#x5254;&#x9664;&#x8BE5;&#x6444;&#x50CF;&#x673A;&#x5176;&#x5B83;&#x7684;&#x8282;&#x70B9;&#x7269;&#x4F53;&#xFF0C;&#x50CF;&#x906E;&#x7F69;&#x6548;&#x679C;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x4FDD;&#x7559;cube&#x5C42;&#x4E0A;&#x7684;&#x8282;&#x70B9;&#x7269;&#x4F53;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x6444;&#x50CF;&#x673A;&#x5408;&#x5E76;&#x663E;&#x793A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x53EA;&#x5408;&#x5E76;&#x4FDD;&#x7559;&#x5C42;&#x4E0A;&#x7684;&#x8282;&#x70B9;&#x7269;&#x4F53;&#x3002;&#x5982;&#x56FE;5-4&#x6240;&#x793A;&#xFF0C;</p>
+<p><img src="img/5-4.png" alt="5-4"></p>
+<p>&#xFF08;&#x56FE;5-4&#xFF09;</p>
+<blockquote>
+<p>&#x4EE3;&#x7801;&#x4E2D;&#x8BBE;&#x7F6E;Culling Mask&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5355;&#x5C42;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x591A;&#x5C42;&#x6DF7;&#x5408;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>xx.cullingMask=Math.pow(2,0)|Math.pow(2,1); //&#x8BE5;&#x4EE3;&#x7801;&#x8868;&#x793A;&#x4E3A;&#x7B2C;0&#x5C42;&#x548C;&#x7B2C;1&#x5C42;&#x6E32;&#x67D3;&#x663E;&#x793A;&#x3002;</p>
+</blockquote>
+<h2 id="&#x516D;&#x3001;output"><a name="&#x516D;&#x3001;output" class="anchor-navigation-ex-anchor" href="#&#x516D;&#x3001;output"><i class="fa fa-link" aria-hidden="true"></i></a>&#x516D;&#x3001;Output</h2>
+<p><img src="img/6-1.png" alt="6-1" style="zoom:80%;"></p>
+<p>&#xFF08;&#x56FE;6-1&#xFF09;</p>
+<h3 id="61-&#x89C6;&#x56FE;&#x77E9;&#x5F62;"><a name="61-&#x89C6;&#x56FE;&#x77E9;&#x5F62;" class="anchor-navigation-ex-anchor" href="#61-&#x89C6;&#x56FE;&#x77E9;&#x5F62;"><i class="fa fa-link" aria-hidden="true"></i></a>6.1 &#x89C6;&#x56FE;&#x77E9;&#x5F62;</h3>
+<p>&#x89C6;&#x56FE;&#x77E9;&#x5F62;&#x662F;&#x901A;&#x8FC7;<code>X\Y\W\H</code>&#x56DB;&#x4E2A;&#x6570;&#x503C;&#x6765;&#x63A7;&#x5236;&#x6444;&#x50CF;&#x673A;&#x7684;&#x89C6;&#x56FE;&#x5728;&#x5C4F;&#x5E55;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x5927;&#x5C0F;&#x7684;&#x529F;&#x80FD;&#x3002;&#x8FD9;&#x56DB;&#x4E2A;&#x6570;&#x503C;&#x5747;&#x4F7F;&#x7528;&#x5C4F;&#x5E55;&#x5750;&#x6807;&#x7CFB;&#xFF0C;&#x6570;&#x503C;&#x8303;&#x56F4;&#x662F;0&#xFF5E;1&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5C0F;&#x6570;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x7684;&#x53C2;&#x6570;&#x8BF4;&#x660E;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>X&#xFF1A;&#x6C34;&#x5E73;&#x4F4D;&#x7F6E;&#x8D77;&#x70B9;</li>
+<li>Y&#xFF1A;&#x5782;&#x76F4;&#x4F4D;&#x7F6E;&#x8D77;&#x70B9;</li>
+<li>W&#xFF1A;&#x5BBD;&#x5EA6;</li>
+<li>H&#xFF1A;&#x9AD8;&#x5EA6;</li>
+</ul>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728;LayaAir&#x4E2D;&#x8868;&#x793A;&#x5C4F;&#x5E55;&#x5DE6;&#x4E0A;&#x89D2;(0,0)&#x4F4D;&#x7F6E;&#x3002;&#x5982;&#x56FE;6-2&#x6240;&#x793A;&#xFF0C;</p>
+<p><img src="img/6-2.png" alt="6-2" style="zoom:60%;"></p>
+<p>&#xFF08;&#x56FE;6-2&#xFF09; </p>
+<p>&#x5047;&#x5982;&#x6211;&#x4EEC;&#x5C06;&#x5C4F;&#x5E55;&#x6C34;&#x5E73;&#x4F4D;&#x7F6E;&#x8D77;&#x70B9;X&#x8BBE;&#x7F6E;&#x4E3A;0.25&#xFF0C;&#x5C4F;&#x5E55;&#x5782;&#x76F4;&#x4F4D;&#x7F6E;&#x8D77;&#x70B9;Y&#x8BBE;&#x7F6E;&#x4E3A;0.25&#xFF0C;&#x5BBD;&#x5EA6;W&#x8BBE;&#x4E3A;0.5&#xFF0C;&#x9AD8;&#x5EA6;H&#x8BBE;&#x4E3A;0.5&#xFF0C;&#x5728;LayaAir&#x4E2D;&#x6548;&#x679C;&#x5982;&#x56FE;6-3&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/6-3.png" alt="6-3" style="zoom:60%;"></p>
+<p>&#xFF08;&#x56FE;6-3&#xFF09; </p>
+<h3 id="62-&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;"><a name="62-&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;" class="anchor-navigation-ex-anchor" href="#62-&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;"><i class="fa fa-link" aria-hidden="true"></i></a>6.2 &#x6DF1;&#x5EA6;&#x8D34;&#x56FE;</h3>
+<p><code>Depth Texture Mode</code>&#xFF1A;&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;&#x6A21;&#x5F0F;&#x3002;</p>
+<ul>
+<li><code>None</code>&#xFF1A;&#x4E0D;&#x751F;&#x6210;&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;&#x3002;</li>
+<li><code>Depth</code>&#xFF1A;&#x751F;&#x6210;&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;&#x3002; &#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x8BA9;&#x6444;&#x50CF;&#x673A;&#x751F;&#x6210;&#x7684;&#x6DF1;&#x5EA6;&#x7EB9;&#x7406;&#x53EA;&#x643A;&#x5E26;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#x3002;&#x6DF1;&#x5EA6;&#x7EB9;&#x7406;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x6BCF;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x70B9;&#x76F8;&#x5BF9;&#x4E8E;&#x6444;&#x50CF;&#x673A;&#x7684;&#x8DDD;&#x79BB;&#xFF08;&#x6DF1;&#x5EA6;&#x503C;&#xFF09;&#x3002;</li>
+<li><code>DepthNormals</code>&#xFF1A;&#x751F;&#x6210;&#x6DF1;&#x5EA6;+&#x6CD5;&#x7EBF;&#x8D34;&#x56FE;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x6444;&#x50CF;&#x673A;&#x751F;&#x6210;&#x7684;&#x6DF1;&#x5EA6;&#x7EB9;&#x7406;&#x4E0D;&#x4EC5;&#x643A;&#x5E26;&#x4E86;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x7269;&#x4F53;&#x8868;&#x9762;&#x7684;&#x6CD5;&#x7EBF;&#x4FE1;&#x606F;&#x3002;</li>
+<li><code>DepthAndDepthNormals</code>&#xFF1A;&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x662F;Depth&#x548C;DepthNormals&#x7684;&#x7ED3;&#x5408;&#x4F53;&#x3002;&#x5728;&#x6B64;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x6444;&#x50CF;&#x673A;&#x5C06;&#x540C;&#x65F6;&#x751F;&#x6210;&#x5305;&#x542B;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#x548C;&#x6DF1;&#x5EA6;&#x6CD5;&#x7EBF;&#x4FE1;&#x606F;&#x7684;&#x7EB9;&#x7406;&#x3002;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6DF1;&#x5EA6;&#x7EB9;&#x7406;&#x4E0D;&#x4EC5;&#x5B58;&#x50A8;&#x4E86;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x7684;&#x6DF1;&#x5EA6;&#x503C;&#xFF08;&#x8DDD;&#x79BB;&#x6444;&#x50CF;&#x673A;&#x7684;&#x8DDD;&#x79BB;&#xFF09;&#xFF0C;&#x8FD8;&#x5B58;&#x50A8;&#x4E86;&#x6CD5;&#x7EBF;&#x4FE1;&#x606F;&#x3002;</li>
+</ul>
+<p><code>Depth Texture Format</code>&#xFF1A;&#x6444;&#x50CF;&#x673A;&#x6DF1;&#x5EA6;&#x683C;&#x5F0F;&#x4E0E;&#x6DF1;&#x5EA6;&#x7EB9;&#x7406;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x662F;DEPTH_16&#xFF0C;&#x968F;&#x7740;&#x6DF1;&#x5EA6;&#x5E7F;&#x6CDB;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x6709;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x4F1A;&#x53D1;&#x73B0;16&#x4F4D;&#x7684;&#x6DF1;&#x5EA6;&#x5DF2;&#x7136;&#x4E0D;&#x591F;&#x7528;&#xFF0C;&#x73B0;&#x5728;&#x589E;&#x52A0;&#x4E86;24&#x4F4D;&#x548C;32&#x4F4D;&#x6DF1;&#x5EA6;&#x6A21;&#x5F0F;&#x7684;&#x503C;&#x3002;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;<strong>depthTextureFormat</strong>&#x5C5E;&#x6027;&#x3002;</p>
+<p><img src="img/6-4.png" alt="6-4"></p>
+<p>&#xFF08;&#x56FE;6-4&#xFF09;</p>
+<h3 id="63-&#x76EE;&#x6807;&#x7EB9;&#x7406;"><a name="63-&#x76EE;&#x6807;&#x7EB9;&#x7406;" class="anchor-navigation-ex-anchor" href="#63-&#x76EE;&#x6807;&#x7EB9;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>6.3 &#x76EE;&#x6807;&#x7EB9;&#x7406;</h3>
+<p>&#x76EE;&#x6807;&#x7EB9;&#x7406;&#x5C31;&#x662F;&#x6307;&#x6444;&#x50CF;&#x673A;&#x7684; <strong>RenderTarget</strong> &#x5C5E;&#x6027;&#x3002;&#x5B83;&#x5C06;&#x6444;&#x50CF;&#x673A;&#x7684;&#x89C6;&#x56FE;&#x653E;&#x7F6E;&#x5728;&#x4E00;&#x4E2A;&#x7EB9;&#x7406;&#x4E0A;&#xFF0C;&#x8BE5;&#x7EB9;&#x7406;&#x53EF;&#x4EE5;&#x88AB;&#x5E94;&#x7528;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5730;&#x521B;&#x5EFA;&#x955C;&#x5B50;&#xFF0C;&#x76D1;&#x63A7;&#x6444;&#x50CF;&#x673A;&#x7B49;&#x6548;&#x679C;&#x4E86;&#x3002;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x4F7F;&#x7528;&#x4E86;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x6444;&#x50CF;&#x673A;&#x5C06;&#x7981;&#x7528;&#x6E32;&#x67D3;&#x5230;&#x5C4F;&#x5E55;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<blockquote>
+<p>&#x76F8;&#x5173;&#x529F;&#x80FD;&#x8FD8;&#x6709;<a href="../../IDE/uiEditor/use3D/readme.html">&#x6E32;&#x67D3;&#x7EB9;&#x7406;</a>&#x3002;</p>
+</blockquote>
+<h3 id="64-&#x5176;&#x5B83;"><a name="64-&#x5176;&#x5B83;" class="anchor-navigation-ex-anchor" href="#64-&#x5176;&#x5B83;"><i class="fa fa-link" aria-hidden="true"></i></a>6.4 &#x5176;&#x5B83;</h3>
+<p><code>Opaque Pass</code>&#xFF1A;&#x5F00;&#x542F;opaquePass&#x540E;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x975E;&#x900F;&#x660E;&#x7269;&#x4F53;&#x8D34;&#x56FE;&#x3002;&#x5728;Shader&#x4E2D;&#x53EF;&#x4EE5;&#x5F15;&#x5165;u_cameraOpaqueTexture&#x6765;&#x5F97;&#x5230;&#x76F8;&#x673A;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x7684;&#x975E;&#x900F;&#x660E;&#x56FE;&#x7247;&#x3002;&#x4F7F;&#x7528;&#x975E;&#x900F;&#x660E;&#x7269;&#x4F53;&#x8D34;&#x56FE;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x73BB;&#x7483;&#x6298;&#x5C04;&#xFF0C;&#x6C34;&#x9762;&#x6298;&#x5C04;&#xFF0C;&#x70ED;&#x6D6A;&#x7B49;&#x6548;&#x679C;&#x3002;</p>
+<p><code>Enable Blit Depth</code>&#xFF1A;&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x4F7F;&#x7528;&#x5185;&#x7F6E;&#x7684;&#x6DF1;&#x5EA6;&#x8D34;&#x56FE; (&#x5982;&#x679C;&#x5F00;&#x542F;&#xFF0C;&#x53EA;&#x53EF;&#x5728;&#x540E;&#x671F;&#x4F7F;&#x7528;&#x6DF1;&#x5EA6;&#x8D34;&#x56FE;&#xFF0C;&#x4E0D;&#x53EF;&#x5728;&#x6E32;&#x67D3;&#x6D41;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;)&#x3002;</p>
+<h2 id="&#x4E03;&#x3001;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x6444;&#x50CF;&#x673A;"><a name="&#x4E03;&#x3001;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x6444;&#x50CF;&#x673A;" class="anchor-navigation-ex-anchor" href="#&#x4E03;&#x3001;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x6444;&#x50CF;&#x673A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E03;&#x3001;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x6444;&#x50CF;&#x673A;</h2>
+<h3 id="71-&#x5982;&#x4F55;&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5C04;&#x7EBF;"><a name="71-&#x5982;&#x4F55;&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5C04;&#x7EBF;" class="anchor-navigation-ex-anchor" href="#71-&#x5982;&#x4F55;&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5C04;&#x7EBF;"><i class="fa fa-link" aria-hidden="true"></i></a>7.1 &#x5982;&#x4F55;&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5C04;&#x7EBF;</h3>
+<p>&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5C04;&#x7EBF;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;camera&#x7684; <strong>viewportPointToRay</strong> &#x65B9;&#x6CD5;&#x3002;&#x751F;&#x6210;&#x7684;&#x8FD9;&#x6761;&#x5C04;&#x7EBF;&#x662F;&#x4ECE;&#x6444;&#x50CF;&#x673A;&#x7684;&#x8FD1;&#x88C1;&#x526A;&#x9762;&#x7684;&#x4E00;&#x70B9;&#x51FA;&#x53D1;&#xFF0C;&#x5411;&#x8FDC;&#x88C1;&#x526A;&#x9762;&#x7684;&#x4E00;&#x70B9;&#x3002;&#x8FD9;&#x4E2A;&#x5C04;&#x7EBF;&#x7684;&#x53CD;&#x5411;&#x5EF6;&#x957F;&#x7EBF;&#x7ECF;&#x8FC7;&#x6444;&#x50CF;&#x673A;&#x7684;&#x539F;&#x70B9;&#x3002;</p>
+<pre class="language-"><code class="lang-typescript">    <span class="token comment">/**
+     * &#x8BA1;&#x7B97;&#x4ECE;&#x5C4F;&#x5E55;&#x7A7A;&#x95F4;&#x751F;&#x6210;&#x7684;&#x5C04;&#x7EBF;&#x3002;
+     * @param point &#x5C4F;&#x5E55;&#x7A7A;&#x95F4;&#x7684;&#x4F4D;&#x7F6E;&#x4F4D;&#x7F6E;&#x3002;
+     * @param out  &#x8F93;&#x51FA;&#x5C04;&#x7EBF;&#x3002;
+     */</span>
+    <span class="token function">viewportPointToRay</span><span class="token punctuation">(</span>point<span class="token operator">:</span> Vector2<span class="token punctuation">,</span> out<span class="token operator">:</span> Ray<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_rayViewport<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>viewport<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_rayViewport<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>viewport<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_rayViewport<span class="token punctuation">.</span>width <span class="token operator">=</span> ILaya<span class="token punctuation">.</span>stage<span class="token punctuation">.</span>_width<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_rayViewport<span class="token punctuation">.</span>height <span class="token operator">=</span> ILaya<span class="token punctuation">.</span>stage<span class="token punctuation">.</span>_height<span class="token punctuation">;</span>
+        Picker<span class="token punctuation">.</span><span class="token function">calculateCursorRay</span><span class="token punctuation">(</span>point<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_rayViewport<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_projectionMatrix<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>viewMatrix<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> out<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>&#x53C2;&#x7167;3D-RPG&#x9879;&#x76EE;&#xFF0C;&#x6211;&#x4EEC;&#x52A0;&#x4E0A;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x5F53;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x5C4F;&#x5E55;&#x65F6;&#xFF0C;&#x4F1A;&#x53D1;&#x5C04;&#x4E00;&#x6761;&#x5C04;&#x7EBF;&#xFF0C;&#x8FD9;&#x6761;&#x5C04;&#x7EBF;&#x78B0;&#x5230;&#x7684;&#x70B9;&#xFF0C;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7ACB;&#x65B9;&#x4F53;&#x3002;&#x4EE3;&#x7801;&#x548C;&#x6548;&#x679C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-typescript">    <span class="token comment">//&#x5728;CameraControll.ts&#x7C7B;&#x4E0B;&#x7684;onStart()&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x52A0;&#x5165;&#x9F20;&#x6807;&#x6309;&#x4E0B;&#x76D1;&#x542C;</span>
+    <span class="token comment">//Laya.stage.on(Laya.Event.MOUSE_DOWN,this, this.onMouseDown);</span>
+
+
+    <span class="token comment">//&#x9F20;&#x6807;&#x70B9;&#x4E0B;&#x4E8B;&#x4EF6;&#xFF0C;&#x5904;&#x7406;&#x53D1;&#x5C04;&#x5C04;&#x7EBF;&#xFF0C;&#x68C0;&#x6D4B;&#x78B0;&#x649E;&#x7269;&#x4F53;</span>
+    <span class="token function">onMouseDown</span><span class="token punctuation">(</span>e<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">let</span> point <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Vector2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        point<span class="token punctuation">.</span>x <span class="token operator">=</span> Laya<span class="token punctuation">.</span>stage<span class="token punctuation">.</span>mouseX<span class="token punctuation">;</span>
+        point<span class="token punctuation">.</span>y <span class="token operator">=</span> Laya<span class="token punctuation">.</span>stage<span class="token punctuation">.</span>mouseY<span class="token punctuation">;</span>
+        <span class="token comment">//&#x4EA7;&#x751F;&#x5C04;&#x7EBF;</span>
+        <span class="token keyword">let</span> ray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Ray</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Vector3</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Vector3</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span><span class="token function">viewportPointToRay</span><span class="token punctuation">(</span>point<span class="token punctuation">,</span>ray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//&#x62FF;&#x5230;&#x5C04;&#x7EBF;&#x78B0;&#x649E;&#x7684;&#x7269;&#x4F53;</span>
+        <span class="token keyword">let</span> outs <span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>scene<span class="token punctuation">.</span>physicsSimulation<span class="token punctuation">.</span><span class="token function">rayCastAll</span><span class="token punctuation">(</span>ray<span class="token punctuation">,</span>outs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//&#x5982;&#x679C;&#x78B0;&#x649E;&#x5230;&#x7269;&#x4F53;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>outs<span class="token punctuation">.</span>length <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span>  outs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment">//&#x5728;&#x5C04;&#x7EBF;&#x51FB;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7ACB;&#x65B9;&#x4F53;</span>
+                <span class="token keyword">let</span> box <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">MeshSprite3D</span><span class="token punctuation">(</span>Laya<span class="token punctuation">.</span>PrimitiveMesh<span class="token punctuation">.</span><span class="token function">createBox</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                box<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Vector3</span><span class="token punctuation">(</span>outs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>point<span class="token punctuation">.</span>x<span class="token punctuation">,</span> outs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>point<span class="token punctuation">.</span>y<span class="token punctuation">,</span> outs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>point<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>scene<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>box<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p><img src="img/7-1.gif" alt="7-1" style="zoom:80%;"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;7-1&#xFF09;</p>
+<h3 id="72-&#x53EF;&#x89C6;&#x906E;&#x7F69;&#x5C42;layer"><a name="72-&#x53EF;&#x89C6;&#x906E;&#x7F69;&#x5C42;layer" class="anchor-navigation-ex-anchor" href="#72-&#x53EF;&#x89C6;&#x906E;&#x7F69;&#x5C42;layer"><i class="fa fa-link" aria-hidden="true"></i></a>7.2 &#x53EF;&#x89C6;&#x906E;&#x7F69;&#x5C42;Layer</h3>
+<p>&#x524D;&#x9762;5.4&#x8282;&#x4E2D;&#x4E5F;&#x63D0;&#x5230;&#x8FC7;Culling Mask&#x7684;&#x7528;&#x5904;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x5236;&#x4F5C;&#x6E38;&#x620F;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x7528;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x6765;&#x8FBE;&#x5230;&#x2018; &#x9690;&#x8EAB; &#x2019;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x8FD8;&#x662F;&#x7528;3D-RPG&#x9879;&#x76EE;&#x4E3A;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x8BBE;&#x7F6E;&#x4E24;&#x4E2A;Layer&#x3002;</p>
+<p><img src="img/7-2.png" alt="7-2"></p>
+<p>&#xFF08;&#x56FE;7-2&#xFF09;</p>
+<p>&#x518D;&#x628A;&#x8FD9;&#x4E24;&#x4E2A;&#x5C4B;&#x5B50;&#x7684;Layer&#x6539;&#x4E3A;Building1&#x548C;Building2&#xFF0C;&#x5982;&#x56FE;7-3&#xFF0C;7-4&#x6240;&#x793A;&#xFF0C;</p>
+<p><img src="img/7-3.png" alt="7-3" style="zoom:80%;"></p>
+<p>&#xFF08;&#x56FE;7-3&#xFF09;</p>
+<p><img src="img/7-4.png" alt="7-4"></p>
+<p>&#xFF08;&#x56FE;7-4&#xFF09;</p>
+<p>&#x6211;&#x4EEC;&#x5728;CameraControll.ts&#x7C7B;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code class="lang-typescript">    <span class="token keyword">private</span> layerIndex<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">onMouseDown</span><span class="token punctuation">(</span>e<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Event<span class="token punctuation">)</span> 
+    <span class="token punctuation">{</span>
+        <span class="token comment">//&#x6E05;&#x9664;&#x6240;&#x6709;&#x56FE;&#x5C42;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span><span class="token function">removeAllLayers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>layerIndex<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token comment">//&#x8BBE;&#x7F6E;&#x53EF;&#x89C6;&#x56FE;&#x5C42;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span><span class="token function">addLayer</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>layerIndex<span class="token operator">%</span><span class="token number">2</span><span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>&#x6548;&#x679C;&#x5982;&#x52A8;&#x56FE;7-5&#x6240;&#x793A;&#xFF0C;</p>
+<p><img src="img/7-5.gif" alt="7-5"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;7-5&#xFF09;</p>
+<h3 id="73-&#x6355;&#x6349;&#x76EE;&#x6807;"><a name="73-&#x6355;&#x6349;&#x76EE;&#x6807;" class="anchor-navigation-ex-anchor" href="#73-&#x6355;&#x6349;&#x76EE;&#x6807;"><i class="fa fa-link" aria-hidden="true"></i></a>7.3 &#x6355;&#x6349;&#x76EE;&#x6807;</h3>
+<p>&#x5728;&#x521B;&#x5EFA;&#x6444;&#x50CF;&#x673A;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x8C03;&#x6574;&#x6444;&#x50CF;&#x673A;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x7528;&#x4E8E;&#x5BF9;&#x51C6;&#x663E;&#x793A;&#x67D0;&#x4E2A;&#x4E09;&#x7EF4;&#x7269;&#x4F53;&#xFF0C;&#x6216;&#x663E;&#x793A;&#x67D0;&#x4E2A;&#x533A;&#x57DF;&#x3002;&#x5BF9;&#x4E8E;&#x521D;&#x5B66;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x7A7A;&#x95F4;&#x601D;&#x7EF4;&#x8FD8;&#x672A;&#x5F62;&#x6210;&#x4E60;&#x60EF;&#xFF0C;&#x8C03;&#x6574;&#x4F4D;&#x7F6E;&#x6240;&#x82B1;&#x7684;&#x65F6;&#x95F4;&#x4F1A;&#x5F88;&#x591A;&#x3002;LayaAir&#x7684;3D&#x53D8;&#x6362;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;lookAt()&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x6355;&#x6349;&#x76EE;&#x6807;&#xFF0C;&#x81EA;&#x52A8;&#x8C03;&#x6574;3D&#x5BF9;&#x8C61;&#x5BF9;&#x51C6;&#x76EE;&#x6807;&#x70B9;&#x3002;&#x6444;&#x50CF;&#x673A;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x8FBE;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x8C03;&#x6574;&#x89C6;&#x89D2;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<pre class="language-"><code class="lang-typescript">    <span class="token comment">/**
+     * &#x89C2;&#x5BDF;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#x3002;
+     * @param    target &#x89C2;&#x5BDF;&#x76EE;&#x6807;&#x3002;
+     * @param    up &#x5411;&#x4E0A;&#x5411;&#x91CF;&#x3002;
+     * @param    isLocal &#x662F;&#x5426;&#x5C40;&#x90E8;&#x7A7A;&#x95F4;&#x3002;
+     */</span>
+    <span class="token function">lookAt</span><span class="token punctuation">(</span>target<span class="token operator">:</span> Vector3<span class="token punctuation">,</span> up<span class="token operator">:</span> Vector3<span class="token punctuation">,</span> isLocal<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> isCamera<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+</code></pre>
+<p>&#x540C;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x5728;3D-RPG&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x6765;&#x5207;&#x6362;&#x6240;&#x89C1;&#x533A;&#x57DF;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-typescript">    <span class="token comment">//CameraControll.ts&#x7C7B;&#x811A;&#x672C;&#x4E2D;&#xFF0C;&#x6DFB;&#x52A0;3&#x4E2A;&#x8282;&#x70B9;&#x5BF9;&#x8C61;&#xFF0C;&#x628A;3&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x623F;&#x5B50;&#x5EFA;&#x7B51;&#x62D6;&#x5165;&#x5230;&#x5C5E;&#x6027;&#x4E2D;</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span> <span class="token punctuation">{</span> type<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D <span class="token punctuation">}</span> <span class="token punctuation">)</span>
+    <span class="token keyword">public</span> target1<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D<span class="token punctuation">;</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> target2<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D<span class="token punctuation">;</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> target3<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D<span class="token punctuation">;</span>   
+    <span class="token keyword">private</span> _up <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Vector3</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-"><code class="lang-typescript">    <span class="token keyword">private</span> index<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x540C;&#x6837;&#xFF0C;&#x6DFB;&#x52A0;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;&#xFF0C;&#x6765;&#x4FEE;&#x6539;&#x6444;&#x50CF;&#x673A;&#x5BF9;3&#x4E2A;&#x5EFA;&#x7B51;&#x7684;&#x671D;&#x5411;</span>
+    <span class="token function">onMouseDown</span><span class="token punctuation">(</span>e<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Event<span class="token punctuation">)</span> 
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>index<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>index <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">===</span> <span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//&#x6444;&#x50CF;&#x673A;&#x6355;&#x6349;&#x6A21;&#x578B;&#x76EE;&#x6807;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">lookAt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>target1<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_up<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>index <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//&#x6444;&#x50CF;&#x673A;&#x6355;&#x6349;&#x6A21;&#x578B;&#x76EE;&#x6807;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">lookAt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>target2<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_up<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token comment">//&#x6444;&#x50CF;&#x673A;&#x6355;&#x6349;&#x6A21;&#x578B;&#x76EE;&#x6807;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>camera<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">lookAt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>target3<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>_up<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="img/7-6.gif" alt="7-6"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;7-6&#xFF09;</p>
+<h3 id="74-&#x6A2A;&#x7EB5;&#x6BD4;"><a name="74-&#x6A2A;&#x7EB5;&#x6BD4;" class="anchor-navigation-ex-anchor" href="#74-&#x6A2A;&#x7EB5;&#x6BD4;"><i class="fa fa-link" aria-hidden="true"></i></a>7.4 &#x6A2A;&#x7EB5;&#x6BD4;</h3>
+<p>&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x5C4F;&#x5E55;&#x7684;&#x6A2A;&#x7EB5;&#x6BD4;&#xFF0C;&#x5728;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x901A;&#x8FC7;&#x8BA1;&#x7B97;&#x81EA;&#x52A8;&#x8BBE;&#x7F6E;&#x6A2A;&#x7EB5;&#x6BD4;&#x3002;&#x4F46;&#x662F;&#x5728;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x9700;&#x8981;&#x5BF9;&#x6A2A;&#x7EB5;&#x6BD4;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x91CD;&#x7F6E;&#x6A2A;&#x7EB5;&#x6BD4;&#xFF0C;&#x53D8;&#x56DE;&#x81EA;&#x52A8;&#x6539;&#x53D8;&#x6A2A;&#x7EB5;&#x6BD4;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;0&#x3002;</p>
+<pre class="language-"><code class="lang-typescript"><span class="token comment">//&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x6A2A;&#x7EB5;&#x6BD4;</span>
+camera<span class="token punctuation">.</span>aspectRatio <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-"><code class="lang-typescript"><span class="token comment">//&#x91CD;&#x7F6E;</span>
+camera<span class="token punctuation">.</span>aspectRatio <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="75-&#x76EE;&#x6807;&#x7EB9;&#x7406;"><a name="75-&#x76EE;&#x6807;&#x7EB9;&#x7406;" class="anchor-navigation-ex-anchor" href="#75-&#x76EE;&#x6807;&#x7EB9;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>7.5 &#x76EE;&#x6807;&#x7EB9;&#x7406;</h3>
+<p>&#x6211;&#x4EEC;&#x4F9D;&#x7136;&#x7528;3D-RPG&#x9879;&#x76EE;&#x4E3A;&#x4F8B;&#xFF0C;Main Camera&#x4E3A;&#x573A;&#x666F;&#x4E3B;&#x6E32;&#x67D3;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684; renderTargetCamera &#x4E3A;&#x5F00;&#x542F; RenderTarget &#x5C5E;&#x6027;&#x7684;&#x6444;&#x50CF;&#x673A;&#x3002;&#x540C;&#x65F6;&#x5728;&#x573A;&#x666F;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;Plane&#xFF0C;&#x9762;&#x5411;&#x4E3B;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x5982;&#x56FE;7-7&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/7-7.png" alt="7-7" style="zoom:70%;"></p>
+<p>&#xFF08;&#x56FE;7-7&#xFF09;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x628A;Plane&#x548C;renderTargetCamera&#x6DFB;&#x52A0;&#x5230;CameraControll.ts&#x811A;&#x672C;&#x4E2D;&#xFF0C;</p>
+<pre class="language-"><code class="lang-typescript">    <span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Camera <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> renderTargetCamera<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Camera<span class="token punctuation">;</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">property</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> plane<span class="token operator">:</span> Laya<span class="token punctuation">.</span>Sprite3D<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x5E76;&#x5728;onStart()&#x4E2D;&#x6DFB;&#x52A0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code class="lang-typescript">        <span class="token comment">//&#x9009;&#x62E9;&#x6E32;&#x67D3;&#x76EE;&#x6807;&#x4E3A;&#x7EB9;&#x7406;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>renderTargetCamera<span class="token punctuation">.</span>renderTarget <span class="token operator">=</span> Laya<span class="token punctuation">.</span>RenderTexture<span class="token punctuation">.</span><span class="token function">createFromPool</span><span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">,</span> Laya<span class="token punctuation">.</span>RenderTargetFormat<span class="token punctuation">.</span><span class="token constant">R8G8B8A8</span><span class="token punctuation">,</span> Laya<span class="token punctuation">.</span>RenderTargetFormat<span class="token punctuation">.</span><span class="token constant">DEPTH_16</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//&#x6E32;&#x67D3;&#x987A;&#x5E8F;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>renderTargetCamera<span class="token punctuation">.</span>renderingOrder <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token comment">//&#x6E05;&#x9664;&#x6807;&#x8BB0;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>renderTargetCamera<span class="token punctuation">.</span>clearFlag <span class="token operator">=</span> Laya<span class="token punctuation">.</span>CameraClearFlags<span class="token punctuation">.</span>Sky<span class="token punctuation">;</span>
+        <span class="token comment">//&#x521B;&#x5EFA;&#x4E00;&#x4E2A;UnlitMaterial&#x6750;&#x8D28;</span>
+        <span class="token keyword">var</span> mat1<span class="token operator">:</span> Laya<span class="token punctuation">.</span>UnlitMaterial <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">UnlitMaterial</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mat1<span class="token punctuation">.</span>albedoColor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Laya</span><span class="token punctuation">.</span><span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mat1<span class="token punctuation">.</span>cull <span class="token operator">=</span> Laya<span class="token punctuation">.</span>RenderState<span class="token punctuation">.</span><span class="token constant">CULL_NONE</span><span class="token punctuation">;</span>
+        <span class="token comment">//&#x6307;&#x5B9A;plane&#x7684;&#x6750;&#x8D28;&#x4E3A;&#x521B;&#x5EFA;&#x7684;&#x6750;&#x8D28;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>plane<span class="token punctuation">.</span><span class="token function">getComponent</span><span class="token punctuation">(</span>Laya<span class="token punctuation">.</span>MeshRenderer<span class="token punctuation">)</span><span class="token punctuation">.</span>sharedMaterial <span class="token operator">=</span> mat1<span class="token punctuation">;</span>
+        <span class="token comment">//&#x6307;&#x5B9A;&#x7EB9;&#x7406;&#x4E3A;&#x6444;&#x50CF;&#x673A;&#x7684;&#x6E32;&#x67D3;&#x76EE;&#x6807;</span>
+        mat1<span class="token punctuation">.</span>albedoTexture <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>renderTargetCamera<span class="token punctuation">.</span>renderTarget<span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>&#x5728;LayaAir&#x5F15;&#x64CE;&#x4E2D;&#xFF0C;&#x6E32;&#x67D3;&#x987A;&#x5E8F;renderingOrder&#x8D8A;&#x5C0F;&#xFF0C;&#x6E32;&#x67D3;&#x4F18;&#x5148;&#x5EA6;&#x8D8A;&#x9AD8;&#x3002;</p>
+</blockquote>
+<p>&#x8FD0;&#x884C;&#x6548;&#x679C;&#x5982;&#x52A8;&#x56FE;7-8&#x6240;&#x793A;&#xFF0C;&#x573A;&#x666F;&#x4E2D;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x6444;&#x50CF;&#x673A;&#x7684;&#x89C6;&#x56FE;&#x653E;&#x5728;Plane&#x4E0A;&#x4F5C;&#x4E3A;&#x7EB9;&#x7406;&#xFF0C;</p>
+<p><img src="img/7-8.gif" alt="7-8"></p>
+<p>&#xFF08;&#x52A8;&#x56FE;7-8&#xFF09;</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9;Layabox 2025 all right reserved&#xFF0C;powered by <a href="https://layaAir.com/" target="_blank">LayaAir</a> Engine</span><span class="footer-modification">&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2025-06-26 15:37:38
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../displayObject/readme.html" class="navigation navigation-prev " aria-label="Previous page: 3D基础显示对象">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Light/readme.html" class="navigation navigation-next " aria-label="Next page: 3D灯光与阴影">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"使用3D摄像机","level":"1.3.2.4","depth":3,"next":{"title":"3D灯光与阴影","level":"1.3.2.5","depth":3,"path":"3D/Light/readme.md","ref":"3D/Light/readme.md","articles":[]},"previous":{"title":"3D基础显示对象","level":"1.3.2.3","depth":3,"path":"3D/displayObject/readme.md","ref":"3D/displayObject/readme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","sidebar-style","anchor-navigation-ex","-lunr","-search","-sharing","search-pro","versions-select","-favicon","favicon-absolute","fontsettings","prism","splitter","code","flexible-alerts","auto-scroll-table","popup","tbfed-pagefooter","-theme-hqbook"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"sidebar-style":{"author":"","title":""},"tbfed-pagefooter":{"copyright":"Copyright ©Layabox 2025","modify_label":"更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"splitter":{},"search-pro":{},"auto-scroll-table":{},"popup":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"favicon-absolute":{"appleTouchIconMore":{},"appleTouchIconPrecomposed152":"./style/layabox-152.png","appleTouchIconPrecomposedMore":{},"favicon":"./style/favicon-32.ico","bookmark":"./style/favicon-32.ico"},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":false,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"expandable-chapters-small":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"versions":{"options":[{"value":"https://layaAir.com/3.1/doc/","text":"v3.1"},{"value":"https://layaAir.com/3.4/doc/","text":"v3.4"},{"value":"https://layaAir.com/3.3/doc/","text":"v3.3"},{"value":"https://layaAir.com/3.2/doc/","text":"v3.2"},{"value":"https://layaAir.com/3.0/doc/","text":"v3.0"}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","style":{"website":"style/website.css"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"services.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LayaAir3.1 · 引擎文档 · LAYABOX","gitbook":"*"},"file":{"path":"3D/Camera/readme.md","mtime":"2025-06-26T07:37:38.589Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-02-03T03:04:26.206Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sidebar-style/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
+        
+    
+
+    </body>
+</html>
+
