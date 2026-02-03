@@ -57,7 +57,12 @@
                 {
                     "value": "https://layaAir.com/3.0/doc/",
                     "text": "v3.0"
-                },                {
+                },
+                {
+                    "value": "https://layaAir.com/3.4/doc/",
+                    "text": "v3.4"
+                },
+                {
                     "value": "https://layaAir.com/3.3/doc/",
                     "text": "v3.3"
                 },
