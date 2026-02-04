@@ -34,7 +34,7 @@
             ]
         },
         "tbfed-pagefooter": {
-            "copyright": "Copyright ©Layabox 2025",
+            "copyright": "Copyright ©Layabox 2026",
             "modify_label": "更新时间：",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
@@ -54,6 +54,10 @@
         },
         "versions": {
             "options": [
+                {
+                    "value": "https://layaAir.com/3.4/doc/",
+                    "text": "v3.4"
+                },
                 {
                     "value": "https://layaAir.com/3.3/doc/",
                     "text": "v3.3"
@@ -79,5 +83,5 @@
     "structure": {
         "readme": "index.md"
     },
-    "title": "LayaAir3.3 · 引擎文档 · LAYABOX"
+    "title": "LayaAir3.4 · 引擎文档 · LAYABOX"
 }

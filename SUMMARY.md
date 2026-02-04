@@ -161,10 +161,11 @@
 - 动画
   * [时间轴动画](IDE/animationEditor/timelineGUI/readme.md)
   * [动画状态机](IDE/animationEditor/aniController/readme.md)
-  * [IK动画](IDE/animationEditor/IK/readme.md)
+  * [IK动画](IDE/Component/3DAnimation/ChainsIK/readme.md)
   * [动画烘焙](IDE/animationEditor/aniBake/readme.md)
   - [骨骼动画](IDE/uiEditor/uiComponent/skeleton/readme.md)
     * [Spine骨骼动画](IDE/Component/2D/2DRender/Spine2DRenderNode/readme.md)
+    * [Spine3D渲染器](IDE/Component/3DRender/Spine3DRenderer/readme.md) 
     * [内置骨骼动画](IDE/uiEditor/uiComponent/skeleton/sk/readme.md)
   
 - IDE资源
@@ -247,6 +248,7 @@
       * [体积全局照明](IDE/Component/VolumetricGI/readme.md)
       * [静态合批](IDE/Component/StaticBatchVolume/readme.md)
       * [LOD组](IDE/Component/LOD/readme.md)
+      * [Spine3D渲染器](IDE/Component/3DRender/Spine3DRenderer/readme.md)
     * [3D灯光](3D/Light/readme.md)
     - [3D物理](IDE/Component/physics3D/readme.md)
       * [3D刚体](IDE/Component/physics3D/Rigidbody3D/readme.md)      
