@@ -24,9 +24,7 @@
   
   * [Cocos资源导出插件](basics/developmentEnvironment/CocosToLayaAir/readme.md)
   
-  * [AI编码环境：CodingMCP](basics/developmentEnvironment/CodingMCP/readme.md)
-  
-  * [AI开发环境：IDE-MCP](basics/developmentEnvironment/IDE-MCP/readme.md)
+  * [AI开发环境：LayaAir-MCP](basics/developmentEnvironment/IDE-MCP/readme.md)
   
 - IDE内置面板
   * [层级面板](basics/IDE/Hierarchy/readme.md)
