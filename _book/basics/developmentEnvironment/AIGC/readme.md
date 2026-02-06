@@ -121,4 +121,6 @@ MCP（Model Context Protocol，模型上下文协议）是由Anthropic开发的�
 
 LayaAir3-IDE中，已经支持基于MCP协议实现AI智能体的协作开发。
 
-LayaAir引擎的MCP插件地址与使用说明：[https://store.layaair.com/info.php?id=10326](https://store.layaair.com/info.php?id=10326)
+LayaAir引擎的MCP插件地址与使用说明：[https://store.layaair.com/info.php?id=10394](https://store.layaair.com/info.php?id=10326)
+
+LayaAir-MCP插件使用文档：[LayaAir MCP 开发指南](../../../basics/developmentEnvironment/IDE-MCP/readme.md)。
