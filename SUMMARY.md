@@ -19,11 +19,8 @@
     * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
     * [DevTools调试工具](basics/DevTools/readme.md)
   * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
-  
   * [Unity资源导出插件](3D/advanced/Unity/readme.md)
-  
   * [Cocos资源导出插件](basics/developmentEnvironment/CocosToLayaAir/readme.md)
-  
   * [AI开发环境：LayaAir-MCP](basics/developmentEnvironment/IDE-MCP/readme.md)
   
 - IDE内置面板
@@ -305,6 +302,7 @@
     * [LayaNative不是浏览器](released/native/native_index/readme.md)
     * [横竖屏设置](released/native/screen_orientation/readme.md)
     * [启动页设置](released/native/SplashScreenSettings/readme.md)
+    * [APP预览运行器](released/native/previewRunner/readme.md)
     * [关于网络监听](released/native/network/readme.md)
     * [缓存工具-layadcc](released/native/LayaDcc_Tool/readme.md)
     * [原生语言与JS通信](released/native/platform_communication/readme.md)
