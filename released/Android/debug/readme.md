@@ -66,6 +66,36 @@ JSDebugMode的取值和含义如下：
 
 ### 步骤4：使用Chrome连接工程
 
+连接调试有以下两种方式，**推荐优先使用方式一**，连接速度更快。方式二（`chrome://inspect`）连接较慢。
+
+#### 方式一：直接通过DevTools URL连接（推荐，3.3.8版本起支持）
+
+从3.3.8版本开始，可以直接在Chrome浏览器地址栏中输入以下格式的URL来连接调试：
+
+```
+devtools://devtools/bundled/js_app.html?v8only=true&ws=<设备IP或localhost>:5959/laya
+```
+
+根据调试环境的不同，有以下两种使用场景：
+
+**场景一：通过localhost连接（适用于USB连接并进行了端口转发的场景）**
+
+当Android测试机通过USB连接到调试机，并使用`adb forward tcp:5959 tcp:5959`进行了端口转发后，可以在Chrome浏览器中直接输入：
+
+```
+devtools://devtools/bundled/js_app.html?v8only=true&ws=localhost:5959/laya
+```
+
+**场景二：通过设备IP连接（适用于同一局域网的场景）**
+
+当调试机与Android测试机处于同一局域网时，将URL中的设备IP替换为Android测试机的实际IP地址。例如，测试机的IP地址为192.168.31.43，则在Chrome浏览器中输入：
+
+```
+devtools://devtools/bundled/js_app.html?v8only=true&ws=192.168.31.43:5959/laya
+```
+
+#### 方式二：通过chrome://inspect连接
+
 打开调试机上的Chrome浏览器，输入网址`chrome://inspect/#devices`后，可以看到LayaNative，表示连接成功。
 
 <img src="img/2-4.png" alt="2-4" style="zoom:80%;" />
