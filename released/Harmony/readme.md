@@ -40,6 +40,12 @@
 
 (图3)
 
-![](img/4.png) 
+![](img/4.png)
 
 (图4)
+
+## 5. 申请JIT权限
+
+鸿蒙NEXT平台默认不允许应用使用JIT（Just-In-Time）编译，这会影响JavaScript引擎的执行性能。为了获得更好的运行性能，开发者需要为应用申请JIT权限，启用JIT编译后可以显著提升JS代码的执行效率。
+
+参考链接：[申请使用JIT资源的profile](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/jsvm-apply-jit-profile)
