@@ -62,7 +62,7 @@ LayaAir3.1引擎版本中，我们对于物理引擎的接口架构进行了重�
 
 （动图1-2）
 
-angulaVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉角来描述物体的旋转，3D向量的每个分量代表绕x、y、z轴旋转的速度，单位是**弧度/秒**。动图1-2，就是在x轴分别设置了3.14与31.4的对比效果。
+angularVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉角来描述物体的旋转，3D向量的每个分量代表绕x、y、z轴旋转的速度，单位是**弧度/秒**。动图1-2，就是在x轴分别设置了3.14与31.4的对比效果。
 
 #####  `angularDamping` 角阻尼
 
@@ -108,9 +108,7 @@ angulaVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉�
 
 ##### `linearFactor` 线性因子
 
-刚体的linearFactor属性，是指个轴方向上缩放物理值（速度和力）的线性因子
-
-刚体的linearDamping属性，是指线性速度的阻尼系数，使得线性速度衰减。
+刚体的linearFactor属性，是指各轴方向上缩放物理值（速度和力）的线性因子。
 
 动图1-7，是动力学刚体在重力为0并且y轴设置了同样为-1的线速度值情况下，左侧为1线性因子和右侧为2线性因子的对比效果。
 
@@ -560,20 +558,19 @@ Laya.Mesh.load("res/threeDimen/Physics/table.lm", Laya.Handler.create(this, func
 
 ##### 2.4.4 使用生命周期方法
 
-###### 创建**Script3D**脚本
+###### 创建脚本
 
-生命周期的方法，只能在脚本类里使用，所以，我们需要创建一个脚本，3D游戏必须要继承3D的脚本**Script3D**。空脚本的示例代码如下：
+生命周期的方法，只能在脚本类里使用，所以，我们需要创建一个脚本，继承**Script**脚本类。空脚本的示例代码如下：
 
 ```typescript
 /**
  * TypeScript语言的3D脚本示例
  */
-export default class TSDemo extends Laya.Script3D {
+export default class TSDemo extends Laya.Script {
     constructor() { super(); }
 }
 ```
 
-> 2D脚本与3D脚本不要混用，如果是用IDE创建的脚本模板，需要将继承的2D脚本类（Laya.Script）改为3D脚本类（Laya.Script3D），
 
 ###### 添加物理脚本
 
@@ -634,7 +631,7 @@ export default class GameUI extends GameUIBase {
 /**
  * TypeScript语言的3D脚本示例
  */
-export default class TSDemo extends Laya.Script3D {
+export default class TSDemo extends Laya.Script {
     constructor() { super(); }
 
     onTriggerEnter(): void {
@@ -785,113 +782,31 @@ xxx.canCollideWith = Laya.Physics3DUtils.COLLISIONFILTERGROUP_ALLFILTER ^ Laya.P
 
 #### 3.1 LayaAir支持哪些约束
 
-目前在LayaAir引擎中只支持两种，分别是固定约束`Fixed Constraint`和可配置约束`Configurable Constraint`。
+LayaAir引擎支持四种约束类型，分别是固定约束、铰链约束、弹簧约束和可配置约束。
 
-**固定约束**是比较常用的约束，而**可配置约束**可以模拟任意**约束**的效果，所以这两种约束可以满足绝大多数的常用需求。
+#### 3.2 固定约束
 
-#### 3.2 固定约束`Fixed Constraint`
+固定约束（FixedConstraint）将两个物体完全固定在一起，限制所有的相对平移和旋转运动，就像被焊接在一起一样作为一个整体运动。常用于将武器固定到角色手上、将零件固定到机器上等场景。
 
-固定约束将对象的移动限制为依赖于另一个对象，一个物体产生位移变化 ，另一个与其约束的物体也会随之变化 。有些类似父子节点关系，但它与父子节点不同，位移不是通过transform实现，而是基于物理引擎。
+> 详细属性说明请参考[《固定约束》组件文档](../../Component/physics3D/FixedConstraint/readme.md)。
 
-固定关节类似2D物理（Box2D）里的焊接关节，适用于游戏中的物体对象永久或暂时粘在一起的需求，最好是两个没有父子关系的物理一起运动。好处是不必通过脚本更改对象的层级视图来实现所需的效果。代价是所有使用固定关节的对象都必须使用刚体。
+#### 3.3 铰链约束
 
-##### 3.2.1 设置连接刚体 setConnectRigidBody
+铰链约束（HingeConstraint）允许两个物体围绕一个共同轴进行旋转，类似于现实中的门铰链、车轮轴承等结构。支持角度限制和马达驱动功能。
 
-`setConnectRigidBody`用于指定固定约束要连接的刚体，若不指定，则该约束连接到世界。
+> 详细属性说明请参考[《铰链约束》组件文档](../../Component/physics3D/HingeConstraint/readme.md)。
 
-##### 3.2.2 断开力 breakForce
+#### 3.4 弹簧约束
 
-`breakForce`用于设置破坏固定约束需要施加的最大力。
+弹簧约束（SpringConstraint）用于模拟两个物体之间的弹簧连接效果，当物体之间的距离偏离平衡位置时会产生恢复力。常用于模拟悬挂系统、弹性绳索、弹跳平台等场景。
 
-##### 3.2.3 断开力矩 breakTorque
+> 详细属性说明请参考[《弹簧约束》组件文档](../../Component/physics3D/SpringConstraint/readme.md)。
 
-`breakTorque`用于设置破坏固定约束需要施加的最大力矩。
+#### 3.5 可配置约束
 
-#### 3.3 **可配置约束**`Configurable Constraint`
+可配置约束（ConfigurableConstraint）是功能最强大、最灵活的约束类型，允许开发者分别控制每个轴向上的平移和旋转自由度。通过可配置约束可以实现其它约束类型的全部功能，也可以创建布娃娃关节、机械臂、带弹性的滑轨等复杂约束效果。
 
-可配置约束可实现各种约束类型的所有功能，比如上文介绍过的固定约束，也可以通过可配置约束来实现，并且提供更强大的角色移动控制。
-
-当开发者想要自定义布娃娃的运动并对角色强制实施某些姿势时，这种约束特别有用。使用可配置约束还可以将约束修改为开发者自行设计的高度专业化约束。
-
-##### 3.3.1 设置连接刚体 setConnectRigidBody 
-
-`setConnectRigidBody`用于指定固定约束要连接的刚体，若不指定，则该约束连接到世界。
-
-#####  3.3.2 锚点  anchor  
-
-锚点`anchor` 是用于定义自身刚体约束中心的点。物理模拟会使用此点作为计算的中心点。
-
-#####  3.3.3  主轴 axis
-
-主轴 `axis`用于基于物理模拟来定义对象自然旋转的局部轴，该轴决定了对象在物理模拟下自然旋转的方向。
-
-##### 3.3.4 连接锚点 connectAnchor 
-
-连接锚点`connectAnchor` 用于设置所连接刚体的约束锚点。
-
-例如自己是车轮，连接的刚体是车身。那锚点就是车轮的约束中心点，连接锚点就是所连接的车身约束中心点。
-
-##### 3.3.5  副轴 secondaryAxis
-
-副轴`secondaryAxis`的作用是与主轴`axis`共同定义了约束的局部坐标系。第三个轴会与这两个轴所构成的平面相垂直。
-
-##### 3.3.6  沿XYZ轴平移约束模式 (X\Y\Z)Motion
-
- (X\Y\Z)Motion是表示沿 X、Y 、Z 轴平移约束的模式，根据属性设置的不同，约束的模式也不同。可以设置的值分别是：自由移动`Free`、锁定移动 `Locked`、限制性移动 `Limited`。
-
-自由移动`Free`就是不作限制的沿某轴移动。
-
-锁定移动 `Locked`是没有运动，完全固定住。
-
-限制性移动 `Limited`是平移运动受限于用户定义的约束。
-
-##### 3.3.7 绕XYZ轴旋转的角运动约束模式angular (X\Y\Z)Motion
-
-angular (X\Y\Z)Motion是表示绕X、Y 、Z 轴旋转的角运动约束模式，也是根据自由移动`Free`、锁定移动 `Locked`、限制性移动 `Limited`三种值的设置来区别约束模式，与(X\Y\Z)Motion类似，只是运动形式的线性平移和角运动旋转的区别。
-
-##### 3.3.8 弹簧线性限制 （linearLimitSpring、linearDamp）
-
-###### 弹簧力Spring
-
-其中的弹簧力`Spring` 在LayaAir引擎中对应线性限制的弹簧力`linearLimitSpring`，如果此处的值设置为零，则无法逾越限制；零以外的值将使限制变得有弹性。
-
-###### 阻尼Damper
-
-其中的阻尼`Damper`在LayaAir引擎中对应线性阻尼`linearDamp`，设置为大于零的值可让约束抑制振荡（否则将不断的进行振荡）。
-
-##### 3.3.9 线性移动限制（minLinearLimit、maxLinearLimit、linearBounce）
-
-###### 限制Limit
-
-其中的`Limit`是从原点到限制位置的距离。在LayaAir引擎中需要分别设置线性移动限制的最小值`minLinearLimit`和线性移动限制的最大值`maxLinearLimit`。
-
-###### 反弹力Boundciness
-
-其中的反弹力 `Bounciness` 是当对象达到限制距离时，要将对象拉回而施加的弹力。在LayaAir引擎中对应线性反弹力`linearBounce`。
-
-##### 3.3.10 弹簧角运动限制（angularLimitSpring、angularDamp）
-
-###### 弹簧力Spring
-
-其中的弹簧力`Spring` 在LayaAir引擎中对应角运动旋转限制的弹簧力`angularLimitSpring`，如果此处的值设置为零，则无法逾越限制；零以外的值将使限制变得有弹性。
-
-###### 阻尼Damper
-
-其中的阻尼`Damper`在LayaAir引擎中对应角运动旋转阻尼`angularDamp`，设置为大于零的值可让约束抑制振荡（否则将不断的进行振荡）。
-
-##### 3.3.11 角运动限制（minAngularLimit、maxAngularLimit、angularBounce）
-
-###### 限制Limit
-
-其中的`Limit`是限制旋转角度，设置对象旋转角度的下限值。在LayaAir引擎中需要分别设置旋转角度限制的最小值`minAngularLimit`和旋转角度限制的最大值`maxAngularLimit`。这两个值都是3D向量值。
-
-旋转限制最小值的X对应X轴旋转的下限`Low Angular X Limit`值，Y对应Y轴旋转的限制`Angular Y Limit`值取负，Z对应Z轴旋转的限制`Angular Z Limit`值取负。
-
-旋转限制最大值的X对应X轴旋转的上限`Hight Angular X Limit`值，Y对应Y轴旋转的限制`Angular Y Limit`值，Z对应Z轴旋转的限制`Angular Z Limit`值。
-
-###### 反弹力Boundciness
-
-其中的反弹力 `Bounciness` 是当对象的旋转达到限制角度时在对象上施加的反弹力矩。在LayaAir引擎中对应角度反弹力矩`angularBounce`。
+> 详细属性说明请参考[《可配置约束》组件文档](../../Component/physics3D/ConfigurableConstraint/readme.md)。
 
 ### 四、物理射线
 
@@ -1039,4 +954,4 @@ if (this.castAll) {
 
 ### 五、其它物理引擎的使用
 
-之前的章节一直在介绍LayaAir基于Bullet物理引擎封装的物理引擎API。Bullet虽然强大，但是有些开发者对于物理精度要求不高，物理功能的使用也比较基础，只对物理引擎库的体积有要求，比如Cannon物理引擎库，其体积只有不足200k。目前LayaAir3.0的物理引擎接口正在改进中，以支持更多的第三方物理引擎，因此Cannon物理引擎暂时从IDE中删除，等后续改进完将会告知开发者。
+LayaAir 3.x 使用的物理引擎是基于 Bullet 物理引擎封装的。Bullet 物理引擎是一个功能强大、计算精度高的开源物理引擎，被广泛应用于游戏和仿真领域，能够满足大多数3D物理模拟的需求。

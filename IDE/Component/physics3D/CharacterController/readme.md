@@ -1,22 +1,8 @@
 # 角色控制器
 
-> Author : Charley        Version >= LayaAir 3.2
+> Author : Charley
 
-**角色控制器**是游戏引擎中用于控制玩家或NPC（非玩家角色）运动的组件。它通常用来简化和优化角色在三维空间中的运动和碰撞处理，提供一个专门的接口来实现角色的移动、跳跃、碰撞检测等功能。
-
-从本质上讲，角色控制器代表了一种受限的物理实体。与完全遵循牛顿物理定律的刚体不同，角色控制器采用了一种混合方法，将确定性的角色移动与物理环境的交互结合起来。它既不是完全静态的碰撞体，也不是完全动态的刚体，而是介于两者之间的特殊存在。
-
-与静态物理碰撞器（PhysicsCollider）不同，角色控制器可以在场景中主动移动；
-
-与动态刚体（Rigidbody3D）不同，角色控制器的移动不完全受物理引擎的力学系统控制，而是通过显式的移动指令实现，这确保了游戏角色的移动更精确可控。
-
-对于角色控制器，引擎默认使用胶囊碰撞形状（CapsuleColliderShape）作为碰撞形状，这是因为胶囊体形状最适合模拟人形角色，能够在保持稳定性的同时有效处理与环境的碰撞。
-
-角色控制器内置了多种实用功能来处理常见的角色移动场景。例如，stepHeight属性定义了角色可以自动跨越的最大台阶高度，使角色能够平滑地爬上小台阶而不需要跳跃。maxSlope属性设置了角色能够攀爬的最大斜坡角度，超过此角度的斜面将被视为不可攀爬。move与jump方法，分别控制角色的移动与跳跃功能。
-
-在游戏开发实践中，角色控制器特别适用于第一人称或第三人称游戏中的主角控制，它解决了传统使用3D刚体控制角色时可能出现的问题，如滑动、翻倒或碰撞不稳定等。通过角色控制器，开发者可以实现精确的角色控制，包括移动、跳跃、攀爬和与环境的交互，同时保持适当的物理真实感。
-
-在LayaAir3引擎中，**角色控制器**的类为**CharacterController**，这是一个物理的组件类，继承自物理碰撞器组件类 PhysicsColliderComponent，它是一个专为角色移动设计的物理组件，是实现高品质角色控制系统的理想选择。
+在LayaAir3引擎中，角色控制器的类为 **CharacterController**，继承自 PhysicsColliderComponent。本文档介绍角色控制器的碰撞形状、专有属性和运动控制方法。关于角色控制器的概念说明，请参考[《3D物理组件》总览](../readme.md#13-角色控制器)。
 
 ## 1、碰撞形状相关
 
@@ -64,53 +50,9 @@
 
 ## 2、碰撞分组设置
 
-基于角色控制器的特点，除了碰撞分组外，碰撞基类的很多属性都不常用，所以IDE中并不显示出来，如果有特别的应用场景，可以在代码中开启。本小节仅介绍碰撞基类中常用的碰撞分组属性。
+角色控制器继承自物理碰撞器组件基类 PhysicsColliderComponent，支持碰撞分组功能。通过设置所属碰撞组（collisionGroup）和可碰撞组（canCollideWith），可以控制角色与哪些物体发生碰撞。
 
-### 2.1 所属碰撞组 collisionGroup
-
-当我们产生复杂的碰撞需求时，例如，想碰哪个，不碰哪个。这时候就需要进行分组，并指定可以与哪个碰撞组进行碰撞。
-
-所属碰撞组用于指定当前碰撞器属于哪个碰撞组，在IDE中，可以通过点击`编辑组`Editor Group跳转到`项目设置`的`物理系统`栏目，添加碰撞分组以及分组的名称。如图2-1所示。
-
-![](img/2-1.png) 
-
-（图2-1）  
-
-这里需要说明一下，碰撞分组的名称只是用于IDE里的方便识别，引擎API的组其实是2的N次幂值。
-
-例如图2-1中的Default是2的**0次幂**，也就是1，而自己添加的npc组是2的**2次幂**，实际值是4，以此类推，分组ID为3的碰撞组实际值为8。
-
-所以，如果我们不通过IDE来设置碰撞分组的话，引擎API的碰撞分组需要将值设置为2的幂。
-
-示例代码如下：
-
-```typescript
-//用代码指定xxx碰撞器所属哪个碰撞组
-xxx.collisionGroup = 1 << 3  ;// 值为2 的 3 次幂（8），可以简单理解分组ID为3，这样就更容易与IDE中的概念统一
-```
-
-### 2.2 可碰撞组 canCollideWith
-
-在IDE中可以通过多选分组名称的方式，将值设置给**可碰撞组**，如图2-2所示，用于指定可以与哪些分组的碰撞器发生碰撞。
-
-![](img/2-2.png)  
-
-(图2-2)
-
-除了指定自定义的碰撞组，顶部的`Nothing`表示不与任何分组发生碰撞，而`Everything`表示可以与任何分组发生碰撞。
-
-如果开发者需要通过代码的方式传值，也可以基于位运算进行传值，示例代码如下：
-
-```typescript
-//指定xxx碰撞器 可以与  某个碰撞组 发生碰撞
-xxx.canCollideWith = 1 << 2;  //只与分组ID为2的（值为4）分成发生碰撞
-
-//指定xxx碰撞器 可以与 多个碰撞组 发生碰撞
-xxx.canCollideWith = (1 << 1) | (1 << 2) | (1 << 5); //只与分组ID为1、2、5的进行碰撞
-
-//指定xxx碰撞器  不可以  与哪些组 发生碰撞，其它组都可以碰撞
-xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞，除3与6组之外都可以发生碰撞)
-```
+关于碰撞分组的详细说明，请参考[《3D刚体》的碰撞分组章节](../Rigidbody3D/readme.md#12-所属碰撞组-collisiongroup)。
 
 ## 3、IDE面板的专有属性
 
@@ -155,6 +97,18 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 ![](img/3-4.gif) 
 
 (动图3-4)
+
+### 3.5 皮肤宽度 skinWidth
+
+皮肤宽度用于设置角色控制器的碰撞皮肤厚度。它定义了角色与其他碰撞体之间保持的最小距离缓冲区。较大的值可以减少角色卡在几何体中的概率，但可能导致角色看起来悬浮在地面上方；较小的值使角色更贴近地面，但可能导致碰撞穿透。
+
+### 3.6 起跳速度 jumpSpeed
+
+起跳速度用于设置角色控制器跳跃时的初始速度大小。值越大，角色跳跃时的初始向上速度越快，跳得越高。
+
+### 3.7 最小移动距离 minDistance
+
+最小移动距离用于设置角色控制器移动时的最小距离阈值。当移动的距离小于该值时，角色不会产生实际位移。该属性可以用于过滤掉微小的抖动运动。
 
 ## 4、引擎中的运动控制
 
@@ -293,6 +247,38 @@ export default class DirectMove extends Laya.Script {
             // 控制台输出角色的垂直速度
             console.log("垂直速度", this.characterController.getVerticalVel());
 	}
+}
+```
+
+### 4.5 判断是否在地面 isGrounded() / isOnGround()
+
+该方法用于判断角色是否站在地面上，返回布尔值。这是角色控制中非常常用的方法，可以用来控制跳跃逻辑（例如只有在地面上才能跳跃）或切换行走/下落动画。
+
+> `isGrounded()` 和 `isOnGround()` 功能相同，都可以使用。
+
+代码设置示例如下：
+
+```typescript
+const { regClass, property } = Laya;
+@regClass()
+export default class DirectMove extends Laya.Script {
+    declare owner: Laya.Sprite3D;
+    private characterController: Laya.CharacterController;
+
+    onAwake(): void {
+        this.characterController = this.owner.getComponent(Laya.CharacterController);
+    }
+
+    onKeyDown(evt: Laya.Event): void {
+        switch (evt.keyCode) {
+            case Laya.Keyboard.SPACE:
+                // 只有在地面上时才能跳跃
+                if (this.characterController.isGrounded()) {
+                    this.characterController.jump(new Laya.Vector3(0, 5, 0));
+                }
+                break;
+        }
+    }
 }
 ```
 
