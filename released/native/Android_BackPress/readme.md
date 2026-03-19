@@ -17,7 +17,7 @@ TS示例如下：
 ```typescript
 if (Laya.Browser.onLayaRuntime) {
     (window as any).conch.onBackPressed = () => {
-        alert(“onBackPressed”);
+        (window as any).conch.exit();
     };
 }
 ```
