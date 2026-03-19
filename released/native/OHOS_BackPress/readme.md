@@ -1,6 +1,3 @@
-
-
-
 # 接管鸿蒙NEXT的后退按钮
 
 在LayaNative中，可以通过设置 `conch.onBackPressed` 回调来接管鸿蒙NEXT"后退键"的处理。
