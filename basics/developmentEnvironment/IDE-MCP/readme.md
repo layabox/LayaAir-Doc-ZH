@@ -70,6 +70,8 @@ LayaAir 引擎的 MCP 插件地址与使用说明：[https://store.layaair.com/i
 
 接下来，在包管理器中将插件导入，具体的操作流程可参考[包管理器与资源包导入](../../../IDE/layapackage/pluginImport/readme.md)。
 
+**注意：由于目前LayaAir-MCP为插件，所以每次新建项目都需要执行这一步。**
+
 导入完成后，在 AI 服务栏点击 MCP Server Settings 即可打开配置面板：
 
 ![3-1](img/3-1.png)
