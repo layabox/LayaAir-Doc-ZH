@@ -78,9 +78,13 @@ ViewStack组件默认显示item0，可以通过调整selectedIndex属性值来�
 
 ### 1.6 通过代码控制ViewStack组件切换显示
 
-创建Tab后，需要通过程序代码把Tab标签和ViewStack的子页面切换显示关联起来。
+创建Tab后，需要通过程序代码把Tab标签和ViewStack的子页面切换显示关联起来。在Scene2D的属性设置面板中，增加一个自定义组件脚本，然后将ViewStack和Tab组件拖入到其暴露的属性入口中。
 
-在Scene2D的属性设置面板中，增加一个自定义组件脚本。然后，将ViewStack和Tab组件拖入到其暴露的属性入口中。需要添加如下的示例代码：
+关联Tab与ViewStack有两种方案：
+
+#### 方案一：使用 setIndexHandler 直接关联（推荐）
+
+如果只需要单纯的页面切换，最简单的做法是将Tab的 `selectHandler` 直接指向ViewStack的 `setIndexHandler`，这样Tab选中哪个索引，ViewStack就会自动切换到对应的子页面，无需手写切换逻辑：
 
 ```typescript
 const { regClass, property } = Laya;
@@ -94,25 +98,46 @@ export class NewScript extends Laya.Script {
     @property({ type: Laya.Tab })
     public tab: Laya.Tab;
 
-    //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
-        //点击Tab选择按钮的处理
-        this.tab.selectHandler = new Laya.Handler(this, this.onSelecte);
-    }
-
-    // 根据选择tab的索引切换页面
-    private onSelecte(index: number): void {
-        //切换ViewStack子页面
-        this.viewstack.selectedIndex = index;
+        // 直接关联：Tab选择索引变化时，ViewStack自动切换到对应页面
+        this.tab.selectHandler = this.viewstack.setIndexHandler;
     }
 }
 ```
 
-最终的效果如动图1-7所示：
+#### 方案二：自定义处理函数
 
-<img src="img/1-7.gif" alt="1-7" style="zoom:80%;" />
+如果在页面切换的同时还需要执行其它逻辑（例如切换页面前后的数据加载、动画播放等），可以使用自定义处理函数：
 
-（动图1-7）
+```typescript
+const { regClass, property } = Laya;
+
+@regClass()
+export class NewScript extends Laya.Script {
+
+    @property({ type: Laya.ViewStack })
+    public viewstack: Laya.ViewStack;
+
+    @property({ type: Laya.Tab })
+    public tab: Laya.Tab;
+
+    onAwake(): void {
+        this.tab.selectHandler = new Laya.Handler(this, this.onSelecte);
+    }
+
+    private onSelecte(index: number): void {
+        //切换ViewStack子页面
+        this.viewstack.selectedIndex = index;
+        // 这里可以添加其它逻辑，例如数据加载、动画播放等
+    }
+}
+```
+
+两种方案最终的效果相同，如动图1-8所示：
+
+<img src="img/1-7.gif" alt="1-8" style="zoom:80%;" />
+
+（动图1-8）
 
 
 
