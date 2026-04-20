@@ -32,6 +32,7 @@
   * [Unity资源导出插件](3D/advanced/Unity/readme.md)
   * [Cocos资源导出插件](basics/developmentEnvironment/CocosToLayaAir/readme.md)
   * [AI开发环境：LayaAir-MCP](basics/developmentEnvironment/IDE-MCP/readme.md)
+  * [AI开发工具：LayaIdea](basics\developmentEnvironment\LayaIdea/readme.md)
   
 - IDE主要面板
   * [面板布局](basics/IDE/layouts/readme.md)
