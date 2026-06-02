@@ -369,8 +369,6 @@ await dcc.updateAll((p)=>{/*进度提示*/})
 ```
 注意，zip是通过dcc插件生成的zip文件，有特定的文件组织形式。
 
-> 详细参考[zip更新](../zipUpdate/readme.md)。
-
 ### 4.6 清理本地缓存
 
 ```typescript

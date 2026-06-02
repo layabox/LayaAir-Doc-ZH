@@ -1,31 +1,36 @@
-
-
 # 接管android的后退按钮
 
-> 从3.2版本后删除
+在LayaNative中，有两种方式可以接管Android”后退键”的处理，两种方式都会被调用，推荐使用方法一。
 
-在LayaNative中可以使用这两个函数， conch.setOnBackPressedFunction(onBack) 和conch.exit(), 接管按下“后退键”的处理方式。接管setOnBackPressedFunction后，当用户按下后退键时便会执行此函数。
+如果需要退出应用，可以调用 `conch.exit()` 函数来实现。
 
-一旦调用了这个函数，就屏蔽了引擎中默认按下两次退出的功能，这时候，如果想要退出应用的话，可以通过调用exit()函数来实现。
+**Tips**
+*1、conch.exit() 只能在LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否在LayaNative环境下。*
 
+## 方法一：通过 conch.onBackPressed 回调（推荐）
 
-**Tips**  
-*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。*   
-*2、LayaNative只有Android版有这两个函数。*  
+直接设置 `conch.onBackPressed` 回调函数，当用户按下后退键时会优先调用此回调。
 
-
-js示例如下：  
-```javascript
-var n=3;
-if(window.conch){
-    window.conch.setOnBackPressedFunction(()=>{
-        console.log('press back '+n);
-        if(n-- <=0){
-            window.conch.exit();
-        }
-        else{
-            //用户自己的代码，例如返回上层页面
-        }
-    });
+TS示例如下：
+```typescript
+if (Laya.Browser.onLayaRuntime) {
+    (window as any).conch.onBackPressed = () => {
+        (window as any).conch.exit();
+    };
 }
+```
+
+## 方法二：通过监听 KEY_DOWN 事件
+
+通过监听 `Laya.Event.KEY_DOWN` 事件来处理后退键，当用户按下后退键时，`keyCode` 值为 4（即 Android 的 `KEYCODE_BACK`），开发者可以在回调中实现自定义逻辑。
+
+TS示例如下：
+```typescript
+Laya.stage.on(Laya.Event.KEY_DOWN, this, (e: Laya.Event) => {
+    if (e.keyCode === 4) { // Android KEYCODE_BACK
+        if (Laya.Browser.onLayaRuntime) {
+            (window as any).conch.exit();
+        }
+    }
+});
 ```
