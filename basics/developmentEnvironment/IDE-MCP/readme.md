@@ -14,7 +14,7 @@ MCP（Model Context Protocol，模型上下文协议）是由 Anthropic 开发�
 
 目前，MCP 已成为 AI 领域的主流协议，被 Google、Notion、Figma、OpenAI 等科技巨头支持，应用于跨库分析、3D 设计、智能日程生成等多个场景。
 
-LayaAir 引擎的 MCP 插件地址与使用说明：[https://store.layaair.com/info.php?id=10394)
+LayaAir 引擎的 MCP 插件地址与使用说明：（https://store.layaair.com/info.php?id=10394)
 
 ---
 
@@ -90,23 +90,23 @@ LayaAir 引擎的 MCP 插件地址与使用说明：[https://store.layaair.com/i
 
 - **云端知识库API_KEY**：用于连接 LayaAir MCP 服务，可以点击右侧的`获取API_KEY`按钮来获取 API_KEY。
 
-打开页面后，点击右上角的登录按钮，选择账号登录或微信扫码登录方式，完成注册或登录。
+要使用 LayaAir-CodingMCP 服务，首先需要获取通信密钥。开发者可以通过 LayaAir 3.3.6 及以上版本的 IDE，打开菜单 `AI 服务 -> CodingMCP 服务`，如下图所示，或者直接在浏览器中输入网址（https://ai-console.layaair.com/）访问。
 
-<img src="img/2-2.png" alt="3-2" style="zoom:60%;" />
+![](img\2-1.jpg) 
 
-登录成功后，点击订阅选项上的按钮，或者点击顶部导航的 API Keys，进入 **API Keys** 页面。
+打开页面后，点击右上角的登录按钮，选择账号登录或微信扫码登录方式，完成注册或登录。如下图 所示。
 
-<img src="img/2-3.png" alt="3-2" style="zoom:60%;" />
+![img](img/2-2.png)
 
-在**API Keys** 页面，点击"创建 API Key"按钮。在弹出的窗口中输入 Key 的名称，然后确认创建，即可立即生成密钥值。
+订阅套餐后（订阅服务相关参见LayaIdea官网：https://ai-console.layaair.com/#/subscribe/layaidea）在**接口密钥** 页面，点击"新建 Key"按钮。在弹出的窗口中输入 Key 的名称，然后确认创建，即可立即生成密钥值。
 
-<img src="img/2-4.png" alt="3-2" style="zoom:60%;" />
-
-
+<img src="img/2-3.png" alt="2-3" style="zoom:60%;" />
 
 > [Tip]
 >
 > 生成的 Key 需要开发者自行复制并妥善保存，因为关闭页面后将无法再次查看。在后续的 MCP 配置中，需要将这个 Key 填写到对应位置，以完成服务授权。
+>
+> 订阅套餐后也可以使用LayaIdea 官网文档：https://www.layaidea.com/#/docs
 
 配置完成后点击**下一步**。
 

@@ -48,7 +48,7 @@ LayaAir引擎推出了LayaAir-CodingMCP服务，让AI编码环境下，再也不
 
 ### 2.1 获取通信密钥
 
-要使用 LayaAir-CodingMCP 服务，首先需要获取通信密钥。开发者可以通过 LayaAir 3.3.6 及以上版本的 IDE，打开菜单 `AI 服务 -> CodingMCP 服务`，如图 2-1所示，或者直接在浏览器中输入网址（https://client.layaair.com/mcp/index.html）访问。
+要使用 LayaAir-CodingMCP 服务，首先需要获取通信密钥。开发者可以通过 LayaAir 3.3.6 及以上版本的 IDE，打开菜单 `AI 服务 -> CodingMCP 服务`，如图 2-1所示，或者直接在浏览器中输入网址（https://ai-console.layaair.com/）访问。
 
 ![](img/2-1.jpg) 
 
