@@ -3,15 +3,15 @@
 - 引擎介绍
   * [引擎历史与服务](services.md)
   * [引擎功能概述](basics/readme.md)
-  * [引擎架构概述](basics/architecture/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [引擎架构概述](basics/architecture/readme.md) -->
   * [Unity转LayaAir差异说明](basics/UnityToLayaAir/readme.md)
   * [2.x引擎项目升级说明](basics/2.x-Upgrade/readme.md)
-- 学习路线图 
-  * [程序新手路线](guides/roadmap/beginner/readme.md) 
-  * [程序进阶路线](guides/roadmap/intermediate/readme.md) 
-  * [美术路线](guides/roadmap/artist/readme.md) 
-  * [AI开发路线](guides/roadmap/AI/readme.md)
-  * [Unity/Cocos迁移路线](guides/roadmap/migration/readme.md) 
+<!-- [hidden:empty-group] - 学习路线图 -->
+<!-- [hidden:empty-leaf(text=12)] * [程序新手路线](guides/roadmap/beginner/readme.md) -->
+<!-- [hidden:empty-leaf(text=12)] * [程序进阶路线](guides/roadmap/intermediate/readme.md) -->
+<!-- [hidden:empty-leaf(text=12)] * [美术路线](guides/roadmap/artist/readme.md) -->
+<!-- [hidden:empty-leaf(text=12)] * [AI开发路线](guides/roadmap/AI/readme.md) -->
+<!-- [hidden:empty-leaf(text=12)] * [Unity/Cocos迁移路线](guides/roadmap/migration/readme.md) -->
 - 快速入门
   - [初学者必读](basics/developmentEnvironment/readme.md)
     * [搭建基础开发环境](basics/developmentEnvironment/download/readme.md)
@@ -25,9 +25,9 @@
     * [项目启动入口说明](basics/IDE/entry/readme.md)
     * [开发流程: Hello World](basics/IDE/helloWorld/readme.md)
     * [DevTools调试工具](basics/DevTools/readme.md)
-  - [游戏入门实例](basics/IDE/gameDevelopment/readme.md)
-    * [一个2D入门游戏](2D/advanced/2DGame/readme.md)
-    * [一个3D入门游戏](3D/advanced/3DGame/readme.md)
+<!-- [hidden:empty-parent(text=0)] - [游戏入门实例](basics/IDE/gameDevelopment/readme.md) -->
+  * [一个2D入门游戏](2D/advanced/2DGame/readme.md)
+<!-- [hidden:empty-leaf(text=60)] * [一个3D入门游戏](3D/advanced/3DGame/readme.md) -->
   * [IDE快捷键与鼠标交互操作大全](basics/IDE/shortcutKeyCombinations/readme.md)
   * [Unity资源导出插件](3D/advanced/Unity/readme.md)
   * [Cocos资源导出插件](basics/developmentEnvironment/CocosToLayaAir/readme.md)
@@ -37,20 +37,20 @@
 - IDE主要面板
   * [面板布局](basics/IDE/layouts/readme.md)
   - [场景面板](basics/IDE/Scene/readme.md)
-    * [2D场景交互工具](basics/IDE/Scene/2DInteraction/readme.md)
-    * [3D场景交互工具](basics/IDE/Scene/3DInteraction/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [2D场景交互工具](basics/IDE/Scene/2DInteraction/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [3D场景交互工具](basics/IDE/Scene/3DInteraction/readme.md) -->
   * [预览运行面板](basics/IDE/Game/readme.md)
   * [属性设置面板](basics/IDE/Inspector/readme.md)
   * [层级面板](basics/IDE/Hierarchy/readme.md)
   * [项目资源面板](basics/IDE/assets/readme.md)
-  * [控制台面板](basics/IDE/console/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [控制台面板](basics/IDE/console/readme.md) -->
   * [小部件面板](IDE/uiEditor/widgets/readme.md)
   * [时间轴动画面板](IDE/animationEditor/timelineGUI/readme.md)
   * [动画状态机面板](IDE/animationEditor/aniController/readme.md)
   - [项目设置面板](basics/IDE/projectSettings/readme.md)
     * [运行配置](basics/IDE/projectSettings/runConfig/readme.md)
     * [引擎模块](basics/IDE/projectSettings/engineModule/readme.md)
-    * [UI系统](basics/IDE/projectSettings/uiSystem/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [UI系统](basics/IDE/projectSettings/uiSystem/readme.md) -->
     * [物理系统](basics/IDE/projectSettings/physicalSystem/readme.md)
     * [WebGPU](basics/IDE/projectSettings/webGPU/readme.md)
     * [启动页](basics/IDE/projectSettings/startPage/readme.md)
@@ -59,7 +59,7 @@
     * [预览服务](basics/IDE/projectSettings/previewServer/readme.md)
     * [预设值](basics/IDE/projectSettings/preset/readme.md)
   * [资源依赖面板](basics/IDE/AssetDependency/readme.md)
-  * [帧调试器面板](basics/IDE/frameDebugger/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [帧调试器面板](basics/IDE/frameDebugger/readme.md) -->
 
 - 引擎核心功能
   * [资源加载](basics/common/Loader/readme.md)
@@ -84,21 +84,21 @@
   * [引擎基础概念](basics/common/basicConcepts/readme.md)
   * [UI编辑器基础交互](IDE/uiEditor/basic/readme.md)
   * [UI小部件](IDE/uiEditor/widgets/readme.md)
-  - [2D基础显示对象](2D/displayObject/readme.md)
-    * [精灵](2D/displayObject/Sprite/readme.md)
-    * [2D区域](IDE/uiEditor/Area2D/readme.md)
-    * [动画节点](2D/displayObject/Animation/readme.md)
-    * [基础文本](2D/displayObject/Text/readme.md)
-    * [开放数据域视图](IDE/uiEditor/uiComponent/OpenDataContextView/readme.md)  
-    * [音频节点](2D/displayObject/SoundNode/readme.md)
-    * [视频节点](2D/displayObject/VideoNode/readme.md)
+<!-- [hidden:empty-parent(text=0)] - [2D基础显示对象](2D/displayObject/readme.md) -->
+  * [精灵](2D/displayObject/Sprite/readme.md)
+  * [2D区域](IDE/uiEditor/Area2D/readme.md)
+  * [动画节点](2D/displayObject/Animation/readme.md)
+  * [基础文本](2D/displayObject/Text/readme.md)
+  * [开放数据域视图](IDE/uiEditor/uiComponent/OpenDataContextView/readme.md)  
+  * [音频节点](2D/displayObject/SoundNode/readme.md)
+  * [视频节点](2D/displayObject/VideoNode/readme.md)
   * [图形绘制](IDE/uiEditor/graphics/readme.md)
-  * [2D动画概述](2D/animation/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [2D动画概述](2D/animation/readme.md) -->
   * [2D相机](IDE/uiEditor/Area2D/Camera2D/readme.md)
   * [2D粒子](IDE/particleEditor2D/readme.md)
   * [2D拖尾](IDE/Component/2D/2DRender/Trail2DRender/readme.md)
   * [2D网格](IDE/Component/2D/2DRender/Mesh2DRender/readme.md)
-  * [2D材质](IDE/assets/lmat/2D/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [2D材质](IDE/assets/lmat/2D/readme.md) -->
   * [自定义2D着色器](2D/advanced/customShader/readme.md)
   - [2D灯光与阴影](IDE/Component/2D/BaseLight2D/readme.md) 
       * [2D方向光](IDE/Component/2D/DirectionLight2D/readme.md)
@@ -128,7 +128,7 @@
   * [面板容器组件](IDE/uiEditor/FairyGUI/GPanel/readme.md)
   * [列表组件](IDE/uiEditor/FairyGUI/GList/readme.md)
   * [树状列表组件](IDE/uiEditor/FairyGUI/GTree/readme.md)
-  * [标签组件](IDE/uiEditor/FairyGUI/GLabel/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [标签组件](IDE/uiEditor/FairyGUI/GLabel/readme.md) -->
   * [按钮组件](IDE/uiEditor/FairyGUI/GButton/readme.md)
   * [下拉选项框组件](IDE/uiEditor/FairyGUI/GComboBox/readme.md)
   * [进度条组件](IDE/uiEditor/FairyGUI/GProgressBar/readme.md)
@@ -177,17 +177,17 @@
   * [3D变换](basics/3D/Transform/readme.md)
   * [3D场景编辑基础交互](IDE/sceneEditor/basic/readme.md)
   * [3D场景环境设置](IDE/sceneEditor/environment/readme.md)
-    * [天空盒](IDE/sceneEditor/skybox/readme.md)
-    * [环境光](IDE/sceneEditor/environmentLight/readme.md)
-    * [环境反射](IDE/sceneEditor/environmentReflection/readme.md)
-    * [环境雾](IDE/sceneEditor/environmentFog/readme.md)
-    * [光照贴图](IDE/sceneEditor/lightmap/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [天空盒](IDE/sceneEditor/skybox/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [环境光](IDE/sceneEditor/environmentLight/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [环境反射](IDE/sceneEditor/environmentReflection/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [环境雾](IDE/sceneEditor/environmentFog/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [光照贴图](IDE/sceneEditor/lightmap/readme.md) -->
   * [3D基础显示对象](3D/displayObject/readme.md)
   * [3D精灵](3D/Sprite3D/readme.md)
   * [3D摄像机](3D/Camera/readme.md)
-    * [摄像机属性设置](3D/Camera/inspector/readme.md)
-    * [IDE摄相机使用](3D/Camera/useCamera/readme.md)
-    * [摄像机动画](3D/Camera/cameraAnimation/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [摄像机属性设置](3D/Camera/inspector/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [IDE摄相机使用](3D/Camera/useCamera/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [摄像机动画](3D/Camera/cameraAnimation/readme.md) -->
   - [3D网格](IDE/Component/Mesh/readme.md)
     * [网格过滤器](IDE/Component/Mesh/MeshFilter/readme.md) 
     * [网格渲染器](IDE/Component/Mesh/MeshRenderer/readme.md)
@@ -209,12 +209,12 @@
     * [粒子材质](IDE/assets/lmat/ParticleShuriken/readme.md)
     * [拖尾材质](IDE/assets/lmat/Trail/readme.md)
     * [天空材质](IDE/assets/lmat/Sky/readme.md)
-  * [3D动画概述](3D/animationOverview/readme.md)
-  - [3D渲染](3D/advanced/3DRender/readme.md)
-    * [反射探针](IDE/Component/ReflectionProbe/readme.md)
-    * [体积全局照明](IDE/Component/VolumetricGI/readme.md)
-    * [3D后处理](3D/advanced/PostProcessing/readme.md)  
-    * [CommandBuffer](3D/advanced/CommandBuffer/readme.md)
+<!-- [hidden:missing] * [3D动画概述](3D/animationOverview/readme.md) -->
+<!-- [hidden:missing] - [3D渲染](3D/advanced/3DRender/readme.md) -->
+  * [反射探针](IDE/Component/ReflectionProbe/readme.md)
+  * [体积全局照明](IDE/Component/VolumetricGI/readme.md)
+  * [3D后处理](3D/advanced/PostProcessing/readme.md)  
+  * [CommandBuffer](3D/advanced/CommandBuffer/readme.md)
   * [3D UI](IDE/uiEditor/3DUI/readme.md)
   * [WebXR](3D/WebXR/readme.md)
   
@@ -223,19 +223,19 @@
   * [3D粒子](IDE/particleEditor3D/readme.md)
   
 - 动画
-  * [2D逐帧动画](2D/animation/frameAnimation/readme.md)
-  * [缓动动画](basics/animation/tweenAnimation/readme.md)
-  * [模型内置动画](3D/useModel/animation/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [2D逐帧动画](2D/animation/frameAnimation/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [缓动动画](basics/animation/tweenAnimation/readme.md) -->
+<!-- [hidden:empty-leaf(text=27)] * [模型内置动画](3D/useModel/animation/readme.md) -->
   * [时间轴动画](IDE/animationEditor/timelineGUI/readme.md)
   * [动画状态机](IDE/animationEditor/aniController/readme.md)
   * [IK动画](IDE/Component/3DAnimation/ChainsIK/readme.md)
-  * [摄像机动画](3D/Camera/animation/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [摄像机动画](3D/Camera/animation/readme.md) -->
   - [骨骼动画](IDE/uiEditor/uiComponent/skeleton/readme.md)
     * [Spine骨骼动画](IDE/Component/2D/2DRender/Spine2DRenderNode/readme.md)
     * [Spine3D渲染器](IDE/Component/3DRender/Spine3DRenderer/readme.md) 
     * [内置骨骼动画](IDE/uiEditor/uiComponent/skeleton/sk/readme.md)
   * [动画烘焙](IDE/animationEditor/aniBake/readme.md)
-  * [动画脚本](basics/animation/aniScript/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [动画脚本](basics/animation/aniScript/readme.md) -->
   
 - 物理引擎
   - [2D物理系统](IDE/physicsEditor/physics2D/readme.md)
@@ -250,7 +250,7 @@
     * [平移关节](IDE/Component/physics2D/PrismaticJoint/readme.md)
     * [轮子关节](IDE/Component/physics2D/wheelJoint/readme.md)
     * [齿轮关节](IDE/Component/physics2D/gearJoint/readme.md)
-    * [2D物理全局配置](basics/IDE/projectSettings/physicalSystem/Physics2DGlobalConfig/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [2D物理全局配置](basics/IDE/projectSettings/physicalSystem/Physics2DGlobalConfig/readme.md) -->
   - [3D物理系统](IDE/physicsEditor/physics3D/readme.md)
     * [3D刚体](IDE/Component/physics3D/Rigidbody3D/readme.md)
     * [静态碰撞器](IDE/Component/physics3D/StaticCollider/readme.md)
@@ -259,18 +259,18 @@
     * [铰链约束](IDE/Component/physics3D/HingeConstraint/readme.md)
     * [弹簧约束](IDE/Component/physics3D/SpringConstraint/readme.md)
     * [可配置约束](IDE/Component/physics3D/ConfigurableConstraint/readme.md)
-    * [3D物理全局配置](basics/IDE/projectSettings/physicalSystem/Physics3DGlobalConfig/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [3D物理全局配置](basics/IDE/projectSettings/physicalSystem/Physics3DGlobalConfig/readme.md) -->
   * [自定义物理引擎](3D/advanced/customPhysicsEngine/readme.md)
   
 - 着色器
-  * [Shader模板](IDE/assets/shader/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [Shader模板](IDE/assets/shader/readme.md) -->
   * [自定义2D Shader](2D/advanced/customShader/readme.md)
   * [自定义3D Shader](3D/advanced/customShader/readme.md)
   * [计算着色器](basics/WebGPU/ComputeShader/readme.md)
 
 - 蓝图
   * [着色器蓝图](IDE/assets/blueprint/shaderBlueprint/readme.md)
-  * [蓝图函数](IDE/assets/blueprint/ShaderFunction/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [蓝图函数](IDE/assets/blueprint/ShaderFunction/readme.md) -->
   * [程序蓝图](IDE/assets/blueprint/BlueprintScript/readme.md)
 
 - 设备接口与适配  
@@ -279,7 +279,7 @@
   * [陀螺仪与加速计](basics/common/device/motion/readme.md)
   * [获取位置信息](basics/common/device/geolocation/readme.md)
   * [使用百度地图](basics/common/device/baiduMap/readme.md)
-  * [保存游戏](basics/common/saveGameData/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [保存游戏](basics/common/saveGameData/readme.md) -->
   
 - 音频与视频
   * [音频节点](2D/displayObject/SoundNode/readme.md)
@@ -313,9 +313,9 @@
       * [2D线渲染器](IDE/Component/2D/2DRender/Line2DRender/readme.md)
       * [瓦片地图层](IDE/Component/2D/TileMapLayer/readme.md)
       * [2D粒子渲染器](IDE/particleEditor2D/readme.md)
-    - [2D动画](IDE/Component/2D/2DAnimation/readme.md)
-      * [2D动画组件](IDE/Component/2D/2DAnimation/Animator2D/readme.md)
-      * [序列帧动画组件](IDE/Component/2D/2DAnimation/FrameAnimation/readme.md)
+<!-- [hidden:missing] - [2D动画](IDE/Component/2D/2DAnimation/readme.md) -->
+    * [2D动画组件](IDE/Component/2D/2DAnimation/Animator2D/readme.md)
+    * [序列帧动画组件](IDE/Component/2D/2DAnimation/FrameAnimation/readme.md)
     * [2D灯光](IDE/Component/2D/BaseLight2D/readme.md) 
       * [2D方向光](IDE/Component/2D/DirectionLight2D/readme.md)
       * [2D精灵光](IDE/Component/2D/SpriteLight2D/readme.md)
@@ -384,7 +384,7 @@
   * [模型资源设置](IDE/assets/model/readme.md)
   - [纹理资源](IDE/assets/texture/readme.md)
     * [压缩纹理](IDE/uiEditor/textureCompress/readme.md)
-  * [场景资源](IDE/assets/scene/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [场景资源](IDE/assets/scene/readme.md) -->
   * [预制体](IDE/assets/prefab/readme.md)
   - [材质资源](IDE/assets/lmat/readme.md)
     * [布林冯材质](IDE/assets/lmat/BlinPhong/readme.md)
@@ -394,27 +394,27 @@
     * [粒子材质](IDE/assets/lmat/ParticleShuriken/readme.md)
     * [拖尾材质](IDE/assets/lmat/Trail/readme.md)
     * [天空材质](IDE/assets/lmat/Sky/readme.md)
-    * [2D材质](IDE/assets/lmat/2D/readme.md)
-  * [着色器资源](IDE/assets/shader/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [2D材质](IDE/assets/lmat/2D/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [着色器资源](IDE/assets/shader/readme.md) -->
   * [立方体贴图](IDE/assets/cubemap/readme.md)
-  * [渲染纹理](IDE/assets/renderTexture/readme.md)
-  * [纹理数组](IDE/assets/texture2DArray/readme.md)
-  * [镜头光晕数据](IDE/assets/lensFlareData/readme.md)
-  - [蓝图资源](IDE/assets/blueprint/readme.md)
-    * [着色器蓝图](IDE/assets/blueprint/shaderBlueprint/readme.md)
-    * [蓝图函数](IDE/assets/blueprint/blueprint/ShaderFunction/readme.md)
-    * [程序蓝图](IDE/assets/blueprint/BlueprintSprite/readme.md)
-  * [动画状态机](IDE/assets/animation/controller/readme.md)
-  * [动画遮罩](IDE/assets/animation/lavm/readme.md)
-  * [光照贴图烘焙设置](IDE/assets/LightmapBakeSettings/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [渲染纹理](IDE/assets/renderTexture/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [纹理数组](IDE/assets/texture2DArray/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [镜头光晕数据](IDE/assets/lensFlareData/readme.md) -->
+<!-- [hidden:empty-parent(text=0)] - [蓝图资源](IDE/assets/blueprint/readme.md) -->
+  * [着色器蓝图](IDE/assets/blueprint/shaderBlueprint/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [蓝图函数](IDE/assets/blueprint/blueprint/ShaderFunction/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [程序蓝图](IDE/assets/blueprint/BlueprintSprite/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [动画状态机](IDE/assets/animation/controller/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [动画遮罩](IDE/assets/animation/lavm/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [光照贴图烘焙设置](IDE/assets/LightmapBakeSettings/readme.md) -->
   * [自动图集配置](IDE/assets/atlascfg/readme.md)
-  * [国际化配置](IDE/assets/i18ns/readme.md)
-  * [脚本](IDE/assets/script/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [国际化配置](IDE/assets/i18ns/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [脚本](IDE/assets/script/readme.md) -->
   * [脚本集定义](IDE/assets/bundledef/readme.md)
-  * [位图字体](IDE/assets/bitmapFont/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [位图字体](IDE/assets/bitmapFont/readme.md) -->
   * [瓦片地图](IDE/assets/TileSet/readme.md)
-  * [IDE插件安装包](IDE/assets/packages/readme.md)
-  * [IDE内部资源](IDE/assets/editor-widgets/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [IDE插件安装包](IDE/assets/packages/readme.md) -->
+<!-- [hidden:empty-leaf(text=0)] * [IDE内部资源](IDE/assets/editor-widgets/readme.md) -->
   
 - IDE插件
   * [插件开发说明](IDE/layapackage/plug-in/readme.md)
@@ -439,13 +439,13 @@
     * [文本进阶使用](2D/advanced/useText/readme.md)
     * [多线程Worker](2D/useWorker/readme.md)
     * [和原生Dom交互](2D/dom/readme.md)
-    * [2D角色的控制](2D/advanced/2DGame/controlCharacter/readme.md)
+<!-- [hidden:empty-leaf(text=0)] * [2D角色的控制](2D/advanced/2DGame/controlCharacter/readme.md) -->
     * [一个2D入门游戏](2D/advanced/2DGame/readme.md)
-    * [一个2/3D混合游戏](3D/advanced/2_3DMixGame/readme.md)
+<!-- [hidden:empty-leaf(text=39)] * [一个2/3D混合游戏](3D/advanced/2_3DMixGame/readme.md) -->
     * [多人联机游戏实战](basics/common/network/multiplayerGame/readme.md) 
   - [3D](3D/advanced/readme.md)
     * [3D角色的控制](3D/advanced/3DGame/controlCharacter/readme.md)
-    * [一个3D入门游戏](3D/advanced/3DGame/readme.md)
+<!-- [hidden:empty-leaf(text=60)] * [一个3D入门游戏](3D/advanced/3DGame/readme.md) -->
     * [饥荒类型3D游戏](3D/advanced/3DGame/dstGame/readme.md)
   
 - 构建发布
@@ -463,10 +463,10 @@
     * [vivo小游戏](released/miniGame/vivo/readme.md)
     * [小米快游戏](released/miniGame/xiaomi/readme.md)
     * [支付宝小游戏](released/miniGame/alipaygame/readme.md)
-    - [淘宝平台](released/miniGame/taobao/readme.md)
-      * [淘宝小游戏](released/miniGame/taobao/tbgame/readme.md)
-      * [淘宝小部件](released/miniGame/taobao/tbWidget/readme.md)
-      * [淘宝小程序](released/miniGame/taobao/tbProgram/readme.md)
+<!-- [hidden:missing] - [淘宝平台](released/miniGame/taobao/readme.md) -->
+<!-- [hidden:missing] * [淘宝小游戏](released/miniGame/taobao/tbgame/readme.md) -->
+<!-- [hidden:missing] * [淘宝小部件](released/miniGame/taobao/tbWidget/readme.md) -->
+<!-- [hidden:missing] * [淘宝小程序](released/miniGame/taobao/tbProgram/readme.md) -->
   - [安装包开发基础](released/native/LayaNative_Introduction/readme.md)
     * [LayaNative不是浏览器](released/native/native_index/readme.md)
     * [横竖屏设置](released/native/screen_orientation/readme.md)
