@@ -241,10 +241,14 @@ android_studio/app/src/main/assets/my_extension.layaext.json
     "extension": {
         "name": "my_extension",
         "version": "1.0.0",
-        "api_version": 1
+        "api_version": 1,
+        "description": "LayaNative Android extension sample"
     },
     "libraries": {
-        "android.arm64-v8a": "libmy_extension.so"
+        "android.arm64-v8a": "libmy_extension.so",
+        "android.armeabi-v7a": "libmy_extension.so",
+        "android.x86": "libmy_extension.so",
+        "android.x86_64": "libmy_extension.so"
     },
     "dependencies": []
 }
