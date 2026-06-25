@@ -120,16 +120,6 @@ static int on_event(LayaExtEventType event,
 }
 ```
 
-JS 侧通过插件名访问：
-
-```ts
-declare const my_extension: {
-    nativeAdd(a: number, b: number): number;
-};
-
-console.log(my_extension.nativeAdd(10, 20));
-```
-
 ### 1.4 插件描述文件
 
 插件需要配套 `.layaext.json` 描述文件，运行时根据描述文件找到不同平台的库文件。
@@ -158,43 +148,33 @@ console.log(my_extension.nativeAdd(10, 20));
 
 各平台发布工程已经集成了示例插件工程。正常使用发布工程构建时，会自动编译插件库，并把插件库和 `.layaext.json` 描述文件复制到该平台运行时约定的加载位置，不需要开发者手动拷贝产物。
 
+> 注意：目前扩展插件只支持通过导出的 Native 工程进行构建。
+
 开发者通常只需要修改对应平台 `extension` 目录下的插件源码和描述文件，然后重新构建发布工程即可。只有新增插件、修改插件库名称、修改 ABI 或调整工程结构时，才需要同步更新工程配置和 `.layaext.json` 中的 `libraries` 字段。
+
+### 1.6 在 LayaAir-IDE 中使用
+
+扩展插件属于 LayaNative 运行时能力，需要通过对应平台的 Native 预览或发布工程运行。IDE 中的 Web 预览不会加载原生插件。
+
+在 IDE 项目脚本中，可以按插件描述文件里的 `extension.name` 声明全局对象，然后直接调用插件导出的函数。例如插件名为 `my_extension`：
+
+```ts
+declare const my_extension: {
+    nativeAdd(a: number, b: number): number;
+    nativeStr(value: string): string;
+};
+
+console.log(my_extension.nativeAdd(10, 11));
+console.log(my_extension.nativeStr("LayaNative"));
+```
+
+发布或预览 Native 工程前，需要确认对应平台 `config.ini` 中已经开启 `LoadExtension`，并且插件源码、插件描述文件和库文件名称与发布工程中的配置保持一致。
 
 ## 二、Windows 插件开发
 
-Windows 插件通常编译为 `.dll`。旧版 Windows 扩展文档中使用 `LayaExtInit(jsvm_env env, jsvm_value exp)` 导出函数；新版扩展系统建议使用 `LayaExtension.h`、`LayaExtensionInterface` 和 `.layaext.json`，这样可以和 Android、iOS、鸿蒙、Linux 共享大部分插件代码。
+Windows 插件通常编译为 `.dll`。扩展系统使用 `LayaExtension.h`、`LayaExtensionInterface` 和 `.layaext.json`，可以和 Android、iOS、鸿蒙、Linux 共享大部分插件代码。
 
-### 2.1 创建工程
-
-可以参考发布工程中的示例目录：
-
-```text
-publish/windows/extension/
-  extension.vcxproj
-  main.cpp
-  my_extension.layaext.json
-```
-
-工程需要包含以下头文件目录：
-
-```text
-conch/include
-modules/extension/include
-modules/jsvm/include
-modules/interfaces/include
-modules/filesystem/include
-modules/utils/include
-```
-
-插件源码中包含：
-
-```cpp
-#include <extension/LayaExtension.h>
-```
-
-并使用 `LAYA_EXTENSION_ENTRY(ext_init)` 导出入口。
-
-### 2.2 编译 DLL
+### 2.1 编译 DLL
 
 使用 Visual Studio 打开 `LayaBox.slnx` 或发布工程，选择 `x64` 与发布配置进行构建。Windows 发布工程已经把 `extension/extension.vcxproj` 作为构建依赖，构建时会自动生成 `my_extension.dll`，并把 DLL 和描述文件复制到运行时可加载的位置。
 
@@ -214,22 +194,6 @@ modules/utils/include
     "dependencies": []
 }
 ```
-
-### 2.3 JS 调用
-
-插件加载成功后，运行时会把 `exports` 挂到全局对象 `my_extension` 上：
-
-```ts
-declare const my_extension: {
-    nativeAdd(a: number, b: number): number;
-    nativeStr(value: string): string;
-};
-
-console.log(my_extension.nativeAdd(1, 2));
-console.log(my_extension.nativeStr("LayaNative"));
-```
-
-如果项目仍使用旧的 DLL 扩展方式，也可以参考旧文档中的 `Laya.importNative("LayaExt.dll")`。新项目建议优先使用 `.layaext.json` 和 `LayaExtension.h` 的方式。
 
 ## 三、Android 插件开发
 
@@ -303,13 +267,7 @@ publish/android_studio/app/src/main/assets/my_extension.layaext.json
 }
 ```
 
-编译 Android 工程时，`app` 工程会自动依赖并编译 `:extension` 模块，生成对应 ABI 的 `libmy_extension.so`，并随 APK 或 AAB 一起打包。JS 侧仍通过全局插件名调用：
-
-```ts
-console.log(my_extension.nativeAdd(10, 11));
-```
-
-如果插件只是接入 Java/Kotlin SDK，也可以在 `app/src/main/java/demo/HandleMessageUtils.java` 中处理 JS 消息，再由 Java/Kotlin 调用 SDK。JS 侧使用 `conch.postSyncMessage` 或 `conch.postAsyncMessage` 和原生层通信。
+编译 Android 工程时，`app` 工程会自动依赖并编译 `:extension` 模块，生成对应 ABI 的 `libmy_extension.so`，并随 APK 或 AAB 一起打包。
 
 ## 四、iOS 插件开发
 
@@ -349,22 +307,7 @@ NSString* MySdkGetDeviceName() {
 }
 ```
 
-再在插件 C++ 回调中把结果转换为 JS 字符串返回。需要主动执行 JS 时，可以在 iOS 原生侧调用：
-
-```objc
-[[conchRuntime GetIOSConchRuntime] runJS:@"console.log('from iOS')"];
-```
-
-如果只是简单的 JS 与 iOS 通信，也可以在 `LayaBox/HandleMessageUtils.mm` 中处理：
-
-```objc
-+(NSString*)handleSyncMessageWithEventName:(NSString*)eventName data:(NSString*)data {
-    if ([eventName isEqualToString:@"getDeviceName"]) {
-        return [[UIDevice currentDevice] name];
-    }
-    return @"";
-}
-```
+再在插件 C++ 回调中把结果转换为 JS 字符串返回。
 
 ## 五、鸿蒙插件开发
 
@@ -424,36 +367,6 @@ target_link_libraries(my_extension PRIVATE conch)
     "dependencies": []
 }
 ```
-
-### 5.3 ArkTS 与 JS 通信
-
-如果插件能力主要在 ArkTS 层，可以在 `libSysCapabilities/src/main/ets/event/HandleMessageUtils.ets` 中处理 JS 消息：
-
-```ts
-static handleSyncMessage(eventName: string, data: string): string {
-    if (eventName == "getChannel") {
-        return "ohos";
-    }
-    return "";
-}
-
-static async handleAsyncMessage(eventName: string, data: string, cb: Function): Promise<void> {
-    if (eventName == "login") {
-        cb("login result");
-    }
-}
-```
-
-JS 侧调用：
-
-```ts
-const channel = conch.postSyncMessage("getChannel", "");
-conch.postAsyncMessage("login", "{}").then((result: string) => {
-    console.log(result);
-});
-```
-
-需要从鸿蒙原生侧主动执行 JS 时，可以调用 `laya.ConchNAPI_RunJS`。
 
 ## 六、Linux 插件开发
 
@@ -518,24 +431,6 @@ target_link_libraries(my_extension PRIVATE conch)
     },
     "dependencies": []
 }
-```
-
-### 6.3 JS 与 Linux 原生通信
-
-插件加载后，JS 侧和其他平台一样通过 `my_extension` 全局对象访问。如果只是要在 Linux 主工程里处理 JS 消息，也可以在 `publish/linux/src/main.cpp` 中设置消息回调：
-
-```cpp
-conchSetHandleMessageCallback(
-    [](const char* eventName, const char* data) -> void {
-        if (strcmp(eventName, "syncMessage") == 0) {
-            conchSendHandleMessageResult(eventName, "sync message from linux");
-        }
-    },
-    [](const char* eventName, const char* data) -> void {
-        if (strcmp(eventName, "asyncMessage") == 0) {
-            conchSendHandleMessageResult(eventName, "async message from linux");
-        }
-    });
 ```
 
 ## 七、调试与注意事项
