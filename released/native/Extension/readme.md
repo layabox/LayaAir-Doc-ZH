@@ -174,7 +174,18 @@ console.log(my_extension.nativeStr("LayaNative"));
 
 Windows 插件通常编译为 `.dll`。扩展系统使用 `LayaExtension.h`、`LayaExtensionInterface` 和 `.layaext.json`，可以和 Android、iOS、鸿蒙、Linux 共享大部分插件代码。
 
-### 2.1 编译 DLL
+### 2.1 工程位置
+
+可以参考发布工程中的示例目录：
+
+```text
+windows/extension/
+  extension.vcxproj
+  main.cpp
+  my_extension.layaext.json
+```
+
+### 2.2 编译 DLL
 
 使用 Visual Studio 打开 `LayaBox.slnx` 或发布工程，选择 `x64` 与发布配置进行构建。Windows 发布工程已经把 `extension/extension.vcxproj` 作为构建依赖，构建时会自动生成 `my_extension.dll`，并把 DLL 和描述文件复制到运行时可加载的位置。
 
@@ -204,7 +215,7 @@ Android 插件通常编译为 `.so`，并随 Android Studio 工程一起打包�
 可以参考发布工程中的示例目录：
 
 ```text
-publish/android_studio/extension/
+android_studio/extension/
   build.gradle
   src/main/AndroidManifest.xml
   src/main/cpp/CMakeLists.txt
@@ -213,42 +224,14 @@ publish/android_studio/extension/
 
 插件 CMake 工程会编译 `my_extension` 动态库，并链接对应 ABI 的 `libconch.so`。
 
-### 3.2 CMake 配置
-
-关键配置如下：
-
-```cmake
-add_library(my_extension SHARED main.cpp)
-
-target_include_directories(my_extension PRIVATE
-    "${REPO_ROOT}/conch/include"
-    "${REPO_ROOT}/modules/extension/include"
-    "${REPO_ROOT}/modules/jsvm/include"
-    "${REPO_ROOT}/modules/interfaces/include"
-    "${REPO_ROOT}/modules/filesystem/include"
-    "${REPO_ROOT}/modules/utils/include"
-)
-
-target_compile_definitions(my_extension PRIVATE
-    JS_V8=1
-    USING_CONCH_SHARED=1
-)
-
-target_link_libraries(my_extension PRIVATE
-    "${CONCH_LIB}"
-    android
-    log
-)
-```
-
 实际项目中需要保证插件 ABI 和应用 ABI 一致，例如 `arm64-v8a`。如果使用了多个 ABI，每个 ABI 都需要产出对应的 `libmy_extension.so`。
 
-### 3.3 描述文件与打包
+### 3.2 描述文件与打包
 
 Android 描述文件可以放在应用 assets 中，例如：
 
 ```text
-publish/android_studio/app/src/main/assets/my_extension.layaext.json
+android_studio/app/src/main/assets/my_extension.layaext.json
 ```
 
 描述文件中配置 Android 库：
@@ -278,7 +261,7 @@ iOS 对运行时加载动态库有限制，插件通常以静态库或源码方�
 可以参考发布工程中的示例目录：
 
 ```text
-publish/ios/extension/
+ios/extension/
   main.cpp
   my_extension.layaext.json
 ```
@@ -318,38 +301,11 @@ NSString* MySdkGetDeviceName() {
 可以参考发布工程中的示例目录：
 
 ```text
-publish/ohos/entry/src/main/cpp/extension/
+ohos/entry/src/main/cpp/extension/
   CMakeLists.txt
   main.cpp
-publish/ohos/entry/src/main/resources/rawfile/
+ohos/entry/src/main/resources/rawfile/
   my_extension.layaext.json
-```
-
-### 5.2 CMake 配置
-
-鸿蒙插件需要包含 LayaNative 的扩展、JSVM、接口和工具头文件，并链接 `conch`：
-
-```cmake
-add_library(my_extension SHARED
-    main.cpp
-)
-
-target_include_directories(my_extension PRIVATE
-    ${NATIVER_RENDER_ROOT_PATH}/conch/include
-    ${NATIVER_RENDER_ROOT_PATH}/modules/extension/include
-    ${NATIVER_RENDER_ROOT_PATH}/modules/jsvm/include
-    ${NATIVER_RENDER_ROOT_PATH}/modules/interfaces/include
-    ${NATIVER_RENDER_ROOT_PATH}/modules/filesystem/include
-    ${NATIVER_RENDER_ROOT_PATH}/modules/utils/include
-)
-
-target_compile_definitions(my_extension PRIVATE
-    OS_OHOS=1
-    JS_OHOS_JSVM=1
-    USING_CONCH_SHARED=1
-)
-
-target_link_libraries(my_extension PRIVATE conch)
 ```
 
 描述文件放入 `resources/rawfile`，并配置对应的鸿蒙 ABI。构建鸿蒙发布工程时，插件 CMake 目标会自动编译 `libmy_extension.so`，并输出到工程约定的 `third_party/conch/lib/${OHOS_ARCH}` 目录，随应用一起打包：
@@ -377,44 +333,11 @@ Linux 插件通常编译为 `.so`，并和 Linux 运行时一起发布。
 可以参考发布工程中的示例目录：
 
 ```text
-publish/linux/extension/
+linux/extension/
   CMakeLists.txt
   main.cpp
-publish/linux/resource/
+linux/resource/
   my_extension.layaext.json
-```
-
-### 6.2 CMake 配置
-
-Linux 插件需要生成无 `lib` 前缀的 `my_extension.so`，并链接 `conch`：
-
-```cmake
-add_library(my_extension SHARED
-    main.cpp
-)
-
-target_include_directories(my_extension PRIVATE
-    ${CONCH_INCLUDES}
-    ${LAYANATIVE_ROOT}/conch/include
-    ${LAYANATIVE_ROOT}/modules/extension/include
-    ${LAYANATIVE_ROOT}/modules/jsvm/include
-    ${LAYANATIVE_ROOT}/modules/interfaces/include
-    ${LAYANATIVE_ROOT}/modules/filesystem/include
-    ${LAYANATIVE_ROOT}/modules/utils/include
-)
-
-target_compile_definitions(my_extension PRIVATE
-    JS_V8=1
-    USING_CONCH_SHARED=1
-)
-
-set_target_properties(my_extension PROPERTIES
-    PREFIX ""
-    OUTPUT_NAME "my_extension"
-    INSTALL_RPATH "$ORIGIN"
-)
-
-target_link_libraries(my_extension PRIVATE conch)
 ```
 
 构建 Linux 发布工程时，插件 CMake 目标会自动生成 `my_extension.so`，并通过安装/打包流程复制到运行目录；描述文件放在 `resource` 目录中。描述文件示例：
