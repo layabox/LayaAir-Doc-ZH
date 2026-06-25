@@ -35,6 +35,16 @@ LoadExtension=true #comment true|false
 
 ### 1.2 插件入口
 
+各平台发布工程中的插件示例入口文件位置如下：
+
+```text
+Windows: windows/extension/main.cpp
+Android: android_studio/extension/src/main/cpp/main.cpp
+iOS:     ios/extension/main.cpp
+Linux:   linux/extension/main.cpp
+鸿蒙:    ohos/entry/src/main/cpp/extension/main.cpp
+```
+
 插件需要包含 `extension/LayaExtension.h`，并导出扩展入口。运行时加载插件后，会调用入口函数，插件在入口函数中填写名称、版本和生命周期回调。
 
 ```cpp
@@ -144,6 +154,12 @@ console.log(my_extension.nativeAdd(10, 20));
 
 `extension.name` 必须和插件入口中填写的 `info->name` 保持一致。iOS 静态链接时，运行时会根据插件名查找 `laya_extension_init_<插件名>` 入口，因此插件名也需要和 `LAYA_EXTENSION_ENTRY_NAMED` 中的名称一致。
 
+### 1.5 自动编译与复制
+
+各平台发布工程已经集成了示例插件工程。正常使用发布工程构建时，会自动编译插件库，并把插件库和 `.layaext.json` 描述文件复制到该平台运行时约定的加载位置，不需要开发者手动拷贝产物。
+
+开发者通常只需要修改对应平台 `extension` 目录下的插件源码和描述文件，然后重新构建发布工程即可。只有新增插件、修改插件库名称、修改 ABI 或调整工程结构时，才需要同步更新工程配置和 `.layaext.json` 中的 `libraries` 字段。
+
 ## 二、Windows 插件开发
 
 Windows 插件通常编译为 `.dll`。旧版 Windows 扩展文档中使用 `LayaExtInit(jsvm_env env, jsvm_value exp)` 导出函数；新版扩展系统建议使用 `LayaExtension.h`、`LayaExtensionInterface` 和 `.layaext.json`，这样可以和 Android、iOS、鸿蒙、Linux 共享大部分插件代码。
@@ -180,7 +196,9 @@ modules/utils/include
 
 ### 2.2 编译 DLL
 
-使用 Visual Studio 打开工程，选择 `x64` 与发布配置，生成 `my_extension.dll`。生成后需要把 DLL 和描述文件放到运行时可加载的位置，描述文件示例：
+使用 Visual Studio 打开 `LayaBox.slnx` 或发布工程，选择 `x64` 与发布配置进行构建。Windows 发布工程已经把 `extension/extension.vcxproj` 作为构建依赖，构建时会自动生成 `my_extension.dll`，并把 DLL 和描述文件复制到运行时可加载的位置。
+
+描述文件示例：
 
 ```json
 {
@@ -285,7 +303,7 @@ publish/android_studio/app/src/main/assets/my_extension.layaext.json
 }
 ```
 
-编译 Android 工程后，插件 `.so` 会随 APK 或 AAB 一起打包。JS 侧仍通过全局插件名调用：
+编译 Android 工程时，`app` 工程会自动依赖并编译 `:extension` 模块，生成对应 ABI 的 `libmy_extension.so`，并随 APK 或 AAB 一起打包。JS 侧仍通过全局插件名调用：
 
 ```ts
 console.log(my_extension.nativeAdd(10, 11));
@@ -307,7 +325,7 @@ publish/ios/extension/
   my_extension.layaext.json
 ```
 
-插件源码和其他 C/C++/Objective-C++ 文件一起加入 Xcode 工程或构建脚本，最终链接进应用。
+插件源码和其他 C/C++/Objective-C++ 文件一起加入 Xcode 工程或构建脚本。发布工程构建 iOS 时会自动参与编译和链接，最终把插件入口编入应用；开发者不需要手动把插件产物复制到应用包内。
 
 ### 4.2 入口要求
 
@@ -391,7 +409,7 @@ target_compile_definitions(my_extension PRIVATE
 target_link_libraries(my_extension PRIVATE conch)
 ```
 
-描述文件放入 `resources/rawfile`，并配置对应的鸿蒙 ABI：
+描述文件放入 `resources/rawfile`，并配置对应的鸿蒙 ABI。构建鸿蒙发布工程时，插件 CMake 目标会自动编译 `libmy_extension.so`，并输出到工程约定的 `third_party/conch/lib/${OHOS_ARCH}` 目录，随应用一起打包：
 
 ```json
 {
@@ -486,7 +504,7 @@ set_target_properties(my_extension PROPERTIES
 target_link_libraries(my_extension PRIVATE conch)
 ```
 
-描述文件示例：
+构建 Linux 发布工程时，插件 CMake 目标会自动生成 `my_extension.so`，并通过安装/打包流程复制到运行目录；描述文件放在 `resource` 目录中。描述文件示例：
 
 ```json
 {
