@@ -283,7 +283,32 @@ LAYA_EXTENSION_ENTRY_NAMED(my_extension, ext_init)
 
 `my_extension` 必须和描述文件中的 `extension.name` 一致。构建时需要防止入口符号被链接器裁剪，`LAYA_EXTENSION_ENTRY_NAMED` 已经包含 `used` 标记，实际工程还要确认静态库被链接进最终应用。
 
-### 4.3 接入系统 SDK
+### 4.3 描述文件
+
+iOS 描述文件位于：
+
+```text
+ios/extension/my_extension.layaext.json
+```
+
+描述文件中配置 iOS 静态库：
+
+```json
+{
+    "extension": {
+        "name": "my_extension",
+        "version": "1.0.0",
+        "api_version": 1,
+        "description": "LayaNative iOS extension sample"
+    },
+    "libraries": {
+        "ios.arm64": "libmy_extension.a"
+    },
+    "dependencies": []
+}
+```
+
+### 4.4 接入系统 SDK
 
 如果插件需要调用 Objective-C 或 Swift SDK，建议把跨平台 C++ 逻辑放在 `main.cpp`，平台实现放在 `.mm` 文件中。例如：
 
