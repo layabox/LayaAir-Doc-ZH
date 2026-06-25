@@ -319,13 +319,16 @@ ohos/entry/src/main/resources/rawfile/
     "extension": {
         "name": "my_extension",
         "version": "1.0.0",
-        "api_version": 1
+        "api_version": 1,
+        "description": "LayaNative OHOS extension sample"
     },
     "libraries": {
-        "ohos.arm64-v8a": "libmy_extension.so"
+        "ohos.arm64-v8a": "libmy_extension.so",
+        "ohos.x86_64": "libmy_extension.so"
     },
     "dependencies": []
 }
+
 ```
 
 ## 六、Linux 插件开发
