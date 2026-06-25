@@ -354,7 +354,8 @@ linux/resource/
     "extension": {
         "name": "my_extension",
         "version": "1.0.0",
-        "api_version": 1
+        "api_version": 1,
+        "description": "LayaNative Linux extension sample"
     },
     "libraries": {
         "linux.x86_64": "my_extension.so"
