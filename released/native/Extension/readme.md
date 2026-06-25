@@ -13,7 +13,27 @@ LayaNative 扩展插件用于把原生能力封装成 JavaScript 可以调用的
 
 ## 一、通用开发流程
 
-### 1.1 插件入口
+### 1.1 开启扩展加载
+
+扩展插件默认不自动加载。开发或调试扩展插件前，需要先打开发布工程中对应平台的配置文件：
+
+```text
+Windows: windows/resource/config.ini
+Android: android_studio/app/src/main/assets/config.ini
+iOS:     ios/resource/config.ini
+Linux:   linux/resource/config.ini
+鸿蒙:    ohos/entry/src/main/resources/rawfile/config.ini
+```
+
+在 `[common]` 配置段中找到 `LoadExtension`，把默认关闭改为开启：
+
+```ini
+LoadExtension=true #comment true|false
+```
+
+如果配置仍为 `LoadExtension=false #comment true|false`，运行时不会加载 `.layaext.json` 描述文件，也不会加载对应平台的插件库，JS 侧无法访问插件导出的全局对象。
+
+### 1.2 插件入口
 
 插件需要包含 `extension/LayaExtension.h`，并导出扩展入口。运行时加载插件后，会调用入口函数，插件在入口函数中填写名称、版本和生命周期回调。
 
@@ -47,7 +67,7 @@ LAYA_EXTENSION_ENTRY_NAMED(my_extension, ext_init)
 
 `LAYA_EXTENSION_ENTRY` 导出通用入口 `laya_extension_init`。`LAYA_EXTENSION_ENTRY_NAMED` 导出带插件名的入口，主要用于 iOS 静态链接场景，也建议保留，便于跨平台使用同一份插件代码。
 
-### 1.2 注册 JS 函数
+### 1.3 注册 JS 函数
 
 在 `LAYA_EXT_EVENT_INIT` 中获取 `jsvm_env` 和 `exports`，然后把原生函数注册到 `exports` 对象上。
 
@@ -100,7 +120,7 @@ declare const my_extension: {
 console.log(my_extension.nativeAdd(10, 20));
 ```
 
-### 1.3 插件描述文件
+### 1.4 插件描述文件
 
 插件需要配套 `.layaext.json` 描述文件，运行时根据描述文件找到不同平台的库文件。
 
