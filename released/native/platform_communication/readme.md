@@ -24,21 +24,89 @@ alert(data);
 ```
 ### 1.2 在原生端中主动执行JS端脚本
 
-iOS/OC执行JS脚本：
+原生端主动执行 JS 脚本时，建议只调用一个稳定的 JS 入口方法，将复杂数据通过 JSON 传递，避免直接拼接业务逻辑。JS 侧可以先定义一个统一接收器：
 
 ```javascript
-  [[conchRuntime GetIOSConchRuntime] runJS:@"alert('hello')"];
+window.NativeBridge = {
+    dispatch(eventName, data) {
+        switch (eventName) {
+            case "nativeEvent":
+                console.log("native event:", JSON.stringify(data));
+                break;
+            case "loginResult":
+                console.log("login result:", JSON.stringify(data));
+                break;
+            case "purchaseResult":
+                console.log("purchase result:", JSON.stringify(data));
+                break;
+            default:
+                console.warn("unknown native event:", eventName, JSON.stringify(data));
+                break;
+        }
+    }
+};
+```
+
+iOS/OC执行JS脚本：
+
+```objectivec
+#import "conchRuntime.h"
+
+[[conchRuntime GetIOSConchRuntime] runJS:@"alert('hello')"];
+```
+
+iOS/OC传递JSON数据：
+
+```objectivec
+    NSDictionary *payload = @{
+        @"message": @"hello from iOS",
+        @"time": @([[NSDate date] timeIntervalSince1970] * 1000)
+    };
+
+
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:payload options:0 error:nil];
+    NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *js = [NSString stringWithFormat:
+        @"window.NativeBridge && NativeBridge.dispatch('nativeEvent', %@);",
+        json
+    ];
+
+
+    [[conchRuntime GetIOSConchRuntime] runJS:js];
 ```
 
 Android/Java执行JS脚本：
 
-```javascript
-  ConchJNI.RunJS("alert('hello world')");
+```java
+import layaair.game.browser.ConchJNI;
+
+ConchJNI.RunJS("alert('hello world')");
 ```
 
+Android/Java传递JSON数据：
 
+```java
+import org.json.JSONObject;
+import layaair.game.browser.ConchJNI;
+
+try {
+    payload.put("message", "hello from Android");
+    payload.put("time", System.currentTimeMillis());
+} catch (JSONException e) {
+    throw new RuntimeException(e);
+}
+
+String js = "window.NativeBridge && NativeBridge.dispatch('nativeEvent', "
+        + payload.toString()
+        + ");";
+
+ConchJNI.RunJS(js);
+```
+
+> 注意：原生端调用 JS 前，需要确保引擎和 JS 业务脚本已经初始化完成。如果调用时机太早，`window.NativeBridge` 等 JS 对象可能还不存在。
 
 # 2. 原生端的消息处理
+注意:原生端处理消息函数各个代码分支一定要返回相应值或者消息，以免造成卡死
 
 ### 1. HarmonyOS
 在libSysCapabilities/src/main/ets/event/HandleMessageUtils.ts添加消息处理代码
@@ -161,4 +229,3 @@ int main(int argc, char *argv[])
     return conchMain(argc, argv);
 }
 ```
-
