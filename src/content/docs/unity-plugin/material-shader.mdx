@@ -1,0 +1,106 @@
+---
+title: "材质与Shader导出"
+description: "材质导出的核心是按 shader 名查表映射：渲染状态、贴图、颜色（HDR 分解为颜色加强度）、float 条件规则与 defines 宏逐类映射到 .lmat，天空盒作为特例单独导出 .cubemap，以 3D Game Kit 实测材质验证。"
+slug: "unity-plugin/material-shader"
+---
+
+- **入口**：`MaterialFile` → `MetarialUitls.WriteMetarial`
+- **格式**：`LAYAMATERIAL:04`（`.lmat`）
+- **查表配置**：`MetarialPropData.json`
+
+:::note[本章思路]
+材质导出的核心是按 shader 名查表映射：① 先以 shader 名查到对应的映射配置，据此逐类映射 → ② 渲染状态、③ 贴图、④ 颜色（HDR 需分解）、⑤ float（含条件规则）、⑥ defines 宏 → ⑦ 天空盒为特例，单独导出 `.cubemap`。
+:::
+
+:::note[本页实测材质]
+`Ellen_Body_Mat`（Standard shader）来自 Unity 官方免费示例 [3D Game Kit Lite](https://assetstore.unity.com/packages/templates/tutorials/3d-game-kit-lite-135162)；天空盒为 6 面天空盒 `6SidedFluffball`。
+:::
+
+## ① 按 shader 名查表
+
+**本节是总纲——先按 shader 名查到映射配置，决定后续映射方式。** `WriteMetarial` 用 `material.shader.name` 查 `MaterialPropsConfigs`：查到就按配置导出；**查不到**时：未启用自定义 Shader 导出则跳过该材质，启用则转交[自定义 Shader 导出](/unity-plugin/custom-shader/)。
+
+实测 `Ellen_Body_Mat` 是 **Standard**，配置把它映射为 Laya 的 **PBR** 材质类型：
+
+![Unity 材质检查器](/unity-plugin/img/material-inspector.png)
+
+**导出前 · Unity：** Standard shader，反射率 / 金属 / 法线 / 发射（HDR 青色）等贴图槽与参数。
+
+![导出后 LayaAir 材质](/unity-plugin/img/material-lmat.png)
+
+**导出后 · LayaAir：** type 变 `PBR`，反照率 / 法线 / 自发光 / 遮挡 / 金属光泽贴图，金属度 / 光滑度 / Alpha 测试阈值齐全。
+
+:::note
+`Standard` 配置含 8 个贴图槽（`_MainTex→u_AlbedoTexture`、`_BumpMap→u_NormalTexture`、`_MetallicGlossMap`、`_EmissionMap`、`_OcclusionMap`…）+ 颜色 + float + 条件规则。已配置的 shader 类型：`Standard/PBR`、`BlinnPhong`、`Unlit`、`Skybox` 系、`PARTICLESHURIKEN`。
+:::
+
+## ② 渲染状态
+
+**映射剔除 / 混合 / 深度等渲染状态到 Laya 字段。** 写入 `s_Cull`（剔除）、`s_Blend` / `s_BlendSrc` / `s_BlendDst`（混合因子）、`alphaTest` + `alphaTestValue`、`renderQueue`、`materialRenderMode`。普通材质（本页主题的 Standard/PBR 等）的混合因子经 `GetSrcBlend` / `GetDstBlend` 把 Unity 的 `_SrcBlend` / `_DstBlend` 整数值用 **switch** 逐项映射到 Laya 的混合枚举。（自定义 Shader 与粒子材质走另一条按枚举名映射的路径，不在此处。）
+
+## ③ 贴图映射
+
+**将配置中的各贴图槽映射到 Laya 字段并导出。** 遍历配置的贴图槽，`material.GetTexture(uName)` → 导出 `TextureFile` → 加入 `textures` 数组（带 layaName）。**内置资源贴图跳过**（`unity_builtin_extra` 等）；法线贴图标 `isNormal`。平铺偏移走 `tillOffset` 写 Vector4。
+
+## ④ 颜色 + HDR 分解
+
+**普通颜色直接写入；HDR 超亮颜色分解为颜色 + 强度两部分。** 普通颜色直接写 rgba；**HDR 颜色**（如自发光）分量 > 1，超出 0–1 范围，于是 `DecomposeHdrColor` 把它拆成**压缩颜色 + 强度**两部分：颜色分量先按最大分量缩放、再夹到上限 **0.749**（`k_MaxByteForOverexposedColor`），并经 `LinearToGammaSpace` 转到 **Gamma 空间**后写 rgba；强度是**按最大分量反算**得出（`1 / scaleFactor`，**不等于** Unity 强度滑杆的原值），单独写到 `hdrName`（如 `u_EmissionIntensity`）。
+
+转换示意：Unity HDR 颜色 RGB(0,143,191) 强度 2 —（`DecomposeHdrColor`）→ 压缩颜色（≤0.749，Gamma 空间）+ 反算强度 = Laya 自发光颜色 + 强度分离。
+
+![Unity HDR 自发光颜色选择器](/unity-plugin/img/material-emission-hdr.png)
+
+**导出前 · Unity：**「发射」(Emission) 的 HDR 颜色选择器——颜色 RGB(0,143,191)，**强度滑杆** = 2，颜色超亮。
+
+![导出后 LayaAir 自发光颜色与强度](/unity-plugin/img/material-lmat.png)
+
+**导出后 · LayaAir：** 拆成**「自发光颜色」（青）+「自发光强度」**两个独立字段——HDR 分解完成。
+
+:::note
+BlinnPhong 材质若缺高光色，会补默认 `u_MaterialSpecular = (0.2,0.2,0.2,1)`。
+:::
+
+## ⑤ float + 条件规则
+
+**逐个映射 float，部分带条件规则按情况切换取值来源。** `material.GetFloat(uName)` → 写 layaName。支持 **rule 条件改名**：如材质有 `_MetallicGlossMap` 贴图时，光滑度改为从 `_GlossMapScale` 读取（Laya 端字段仍是 `u_Smoothness`，变的只是去 Unity 材质取值的属性名）。`isGamma` 标记的值经 `LinearToGammaSpace` 转换。
+
+## ⑥ defines（宏开关）
+
+**按材质实际特性追加宏开关。** 下面三类来源各自对应一种触发条件：
+
+| 来源 | 触发条件 |
+| --- | --- |
+| floatValue | 某 float 等于指定值 → 加宏 |
+| TextureValue | 某贴图存在 → 加宏（如有法线贴图 → `NORMALTEXTURE`） |
+| keyWorld | 某 shader keyword 启用 → 加宏 |
+
+:::note
+含法线类宏（`NORMALTEXTURE` / `DETAILNORMAL` / `NORMALMAP`）时自动追加 `NEEDTBN`。
+:::
+
+## ⑦ 天空盒 → .cubemap
+
+**天空盒作为特例单独导出，生成 `.cubemap` 而非仅 `.lmat`。** 场景天空盒材质若是 `Skybox/6 Sided`，走 `WriteSkyMetarial`：把 6 个面的贴图写入一个 `.cubemap` 文件，材质 `.lmat` 的 type 为 `SkyBox`，引用该 cubemap。
+
+| Unity 天空盒 Shader | 支持 | 导出去向 |
+| --- | --- | --- |
+| `Skybox/6 Sided` | ✓ | `WriteSkyMetarial` → `.cubemap`（6 面）+ SkyBox 材质 |
+| `Skybox/Procedural` | ✓ | 普通查表 → `SkyProcedural`（SkyTint / GroundColor） |
+| `Skybox/Panoramic` | ✓ | 普通查表 |
+| `Skybox/Cubemap` | ✗ | 当前版本未支持单张 Cubemap 天空盒导出 → 跳过，**不生成 cubemap** |
+
+![6 面天空盒材质](/unity-plugin/img/material-skybox-mat.png)
+
+**导出前 · Unity：** `Skybox/6 Sided` 材质，Front / Back / Left / Right / Up / Down 六个面贴图。
+
+![LayaAir 中的天空盒](/unity-plugin/img/material-skybox-laya.png)
+
+**导出后 · LayaAir：** 6 面合成的 `.cubemap` 在场景中渲染出天空，右侧为 cubemap 属性。
+
+:::note[天空盒支持范围]
+当前版本支持 `Skybox/6 Sided`（导成 `.cubemap`）、`Skybox/Procedural`、`Skybox/Panoramic`；不支持单张 `Skybox/Cubemap` 天空盒。
+:::
+
+---
+
+本页基于插件 1.1.7 源码与实测整理。

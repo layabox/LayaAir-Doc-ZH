@@ -1,0 +1,17 @@
+{
+  "name": "layaair-doc-poc",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node tools/add-lazy.mjs",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.34.0",
+    "astro": "^5.6.1",
+    "rehype-external-links": "^3.0.0",
+    "sharp": "^0.33.5"
+  }
+}

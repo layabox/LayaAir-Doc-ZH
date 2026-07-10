@@ -1,0 +1,182 @@
+---
+title: "Unity 导出插件 · 能力一览"
+description: "基于插件 1.1.7 源码逐模块核查整理的能力对照总表，列出 Unity 场景、网格、材质、粒子、动画、2D 精灵等各功能能否导出到 LayaAir 3.0 及其支持程度，并链接到各导出流程详情页。"
+slug: "unity-plugin"
+---
+
+import FeatureTable from '../../../components/FeatureTable.astro';
+
+本表基于插件源码逐模块核查整理，列出 Unity 各功能能否导出到 LayaAir 3.0 及其支持程度。关键且复杂的导出流程可点击各节的「查看导出流程 →」进入对应详情页。
+
+- **插件版本**：1.1.7
+- **入口**：Unity 菜单 `LayaAir3D 3.0 / Export Tool`
+- **导出根模式**：整场景 Scene / 预制体 Sprite3D
+
+:::tip[第一次使用？]
+先看[安装与导出窗口介绍](/unity-plugin/install/)，了解安装步骤与导出窗口各控件的含义。插件的官方介绍见 [Unity资源导出插件](/3d/advanced/unity/)。
+:::
+
+## ① 场景 / 节点 / 组件
+
+GameObject 层级 → Sprite3D 节点树，含左手→右手坐标转换。 [查看导出流程 →](/unity-plugin/overview/)
+
+<FeatureTable cols={['Unity 功能', 'LayaAir 目标', '支持度', '说明']} rows={[
+  { feat: 'GameObject + Transform 层级', target: 'Sprite3D 节点 + transform', level: 'full',
+    note: 'name / active / layer / tag / isStatic；自动 X 轴翻转、相机/灯光 Y180 补偿' },
+  { feat: 'Camera', target: 'Camera 节点', level: 'part',
+    note: 'clearFlags / 正交 / 近远裁剪 / HDR / 视口 / 背景色可导。<b>FOV 按 Laya 设计分辨率 1334/750 重算</b>；cullingMask、targetTexture、物理相机参数不导' },
+  { feat: 'Light（方向 / 点 / 聚光）', target: 'DirectionLightCom / PointLightCom / SpotLightCom', level: 'full',
+    note: '强度、颜色、阴影模式（硬/软）、烘焙类型、range、spotAngle。<b>Area/Disc/Rectangle 灯不导</b>' },
+  { feat: 'MeshFilter + MeshRenderer', target: 'MeshFilter + MeshRenderer', level: 'full',
+    note: '材质、enabled、receiveShadow、castShadow。lightmap 索引、探针用法、运动矢量不导' },
+  { feat: 'SkinnedMeshRenderer', target: 'MeshFilter + SkinnedMeshRenderer', level: 'full',
+    note: '含骨骼引用、rootBone、bindpose、localBounds' },
+  { feat: 'ReflectionProbe', target: 'ReflectionProbe', level: 'part',
+    note: 'bounds / importance / boxProjection 等可导；cullingMask、ambientColor、IBL 采样数为硬编码常量，烘焙立方图不导' },
+  { feat: 'LODGroup', target: 'LODGroup', level: 'full',
+    note: '各 LOD 层级 + 切换比例 + renderer 引用' },
+  { feat: '场景渲染设置', target: 'Scene 根节点', level: 'full',
+    note: '天空盒、环境光 / 模式、球谐 SH、雾效（start/range/color）' },
+  { feat: 'Prefab 预制体实例', target: '_$prefab 引用 + override 差异', level: 'part',
+    note: '仅在「预制体 / Sprite3D」导出路径生效；<b>整场景导出时会内联展开，不保留预制体引用</b>' },
+]} />
+
+## ② 网格 Mesh
+
+二进制 `.lm` 格式（LAYAMODEL:0501）。 [查看导出流程 →](/unity-plugin/mesh/)
+
+<FeatureTable cols={['Unity 功能', 'LayaAir 目标', '支持度', '说明']} rows={[
+  { feat: '顶点 Position / Normal / Tangent / Color', target: '交错顶点缓冲', level: 'conf',
+    note: '可逐项剥离（IgnoreVertices*）；X 轴翻转' },
+  { feat: 'UV0 / UV1（mesh.uv / uv2）', target: 'UV / UV1', level: 'part',
+    note: 'V 翻转为左上原点；静态与蒙皮网格对忽略标志处理不一致' },
+  { feat: '蒙皮（骨骼权重 + 索引）', target: 'BLENDWEIGHT / BLENDINDICES', level: 'full',
+    note: '每绘制调用 <b>≤24 骨骼</b>，超出拆分绘制组（会复制顶点）' },
+  { feat: '子网格（多材质）', target: 'SUBMESH 索引区间', level: 'full',
+    note: '每子网格独立索引范围' },
+  { feat: '网格简化 / LOD 减面', target: '减面后的 Mesh', level: 'conf',
+    note: '独立减面工具（主要给粒子网格用），<b>非</b> Unity LODGroup 导入器；高质量 QEM 需可选包 + 编译宏' },
+  { feat: 'BlendShape 形变 / UV2-7 / 几何压缩', target: '—', level: 'no',
+    note: '不读取、不导出；顶点全为裸 float32，无压缩量化' },
+]} />
+
+## ③ 材质 & 内置 Shader
+
+按 Shader 精确名查表映射 → `.lmat`（LAYAMATERIAL:04）。 [查看导出流程 →](/unity-plugin/material-shader/)
+
+<FeatureTable cols={['Unity Shader', 'LayaAir 材质', '支持度', '说明']} rows={[
+  { feat: 'Standard（Metallic）', target: 'PBR', level: 'full',
+    note: '反照率 / 法线 / 金属光泽 / 细节 / 自发光 / AO / 视差 全套' },
+  { feat: 'Standard（Specular setup）', target: '—', level: 'no',
+    note: '<b>无映射条目</b>，会警告或转去自定义 Shader 导出' },
+  { feat: 'URP / Lit · Simple Lit · Unlit', target: 'PBR / BlinnPhong / Unlit', level: 'full',
+    note: '各自映射对应贴图槽与属性' },
+  { feat: 'HDRP / Lit', target: 'PBR', level: 'part',
+    note: 'MaskMap 通道语义与 Laya 不完全一致；无 AO/细节/视差槽' },
+  { feat: 'Skybox（6 Sided / Procedural / Panoramic）', target: 'SkyBox / SkyProcedural / SkyPanoramic', level: 'full',
+    note: '6 Sided 会生成 <code>.cubemap</code> 资源' },
+  { feat: 'Legacy / Mobile（Diffuse · Bumped · Specular · VertexLit）', target: 'BlinnPhong', level: 'full',
+    note: '主纹理 / 法线 / 高光等按变体映射' },
+  { feat: '渲染状态（Cull / Blend / AlphaTest / RenderQueue）', target: 's_Cull / s_Blend / ...', level: 'part',
+    note: '可推算；<b>ZWrite/ZTest 仅对粒子材质写入</b>，普通材质走 Laya 默认' },
+]} />
+
+## ④ 自定义 Shader 导出
+
+任意 ShaderLab/CG/HLSL → LayaAir GLSL（默认关闭）。 [查看导出流程 →](/unity-plugin/custom-shader/)
+
+<FeatureTable cols={['能力', 'LayaAir 目标', '支持度', '说明']} rows={[
+  { feat: 'Properties / HLSL 类型 / 数学函数 / 纹理采样 转换', target: 'Laya .shader + GLSL', level: 'part',
+    note: '正则启发式改写，约 150 条属性名映射、JSON 映射表、手写预转换模板（推荐）' },
+  { feat: '多 Pass / #include 内容 / URP-HDRP 宏 / multi_compile 变体', target: '—', level: 'no',
+    note: '仅解析首个 Pass；include 不内联；不处理 CBUFFER/TEXTURE2D 宏；只认 <code>vert</code>/<code>frag</code> 入口' },
+  { feat: '整体转换质量', target: '—', level: 'exp',
+    note: '工具自打印「预估转换率」，&lt;80% 时提示<b>需手动调整</b>' },
+]} />
+
+## ⑤ 粒子系统 Shuriken
+
+GPU / CPU 两条互斥路径，按对象自动选择。 [查看导出流程 →](/unity-plugin/particle/)
+
+| Unity 模块 | GPU 模式 | CPU 模式 | 说明 |
+| --- | --- | --- | --- |
+| Main / Emission / Shape | 部分 | **完整** | GPU 下曲线降级为常量、Shape 部分类型回退球形 |
+| Velocity / Color / Size / Rotation over Lifetime | **完整** | **完整** | 四种曲线模式均支持 |
+| Texture Sheet Animation | 部分 | 部分 | 仅 Grid 模式，不支持 Sprites 模式 |
+| Renderer（Billboard / Stretch / Mesh） | **完整** | **完整** | 5 种渲染模式 |
+| Trails 拖尾 / Noise / Collision / Limit·Inherit Velocity / Force / by Speed / External Forces / Sub Emitters | 不支持 | **完整** | **启用 Trails / Noise / LimitVelocity 时自动强制切到 CPU 模式**，因此正常不会真的丢失 |
+| Lights / Trigger / Custom Data | 不支持 | 不支持 | 两种模式都不导出 |
+
+## ⑥ 动画
+
+3D 属性动画 `.lani` · 2D 动画 `.mc`/`.mcc`。 [查看导出流程 →](/unity-plugin/animation/)
+
+<FeatureTable cols={['Unity 功能', 'LayaAir 目标', '支持度', '说明']} rows={[
+  { feat: 'Transform / 位置 / 旋转 / 缩放 / Euler 曲线', target: '.lani 节点', level: 'full',
+    note: '含坐标转换、事件、帧率、循环' },
+  { feat: '材质属性曲线 / 材质切换', target: 'sharedMaterials 节点 / MaterialSwap', level: 'conf',
+    note: '属性须在该 Shader 的映射配置表中' },
+  { feat: 'Camera / 自定义脚本 / 其他组件 属性曲线', target: '对应节点（反射推断类型）', level: 'part',
+    note: 'int/bool 被并入 Float 关键帧' },
+  { feat: '2D SpriteRenderer 颜色动画 + Animator 状态机', target: '.mc + .mcc', level: 'part',
+    note: '仅 m_Color；2D 状态机仅顶层状态/转换/参数' },
+  { feat: '3D Animator + AnimatorController', target: 'Animator + AnimationController JSON', level: 'part',
+    note: '仅 motion 为 AnimationClip 的状态' },
+  { feat: 'BlendTree / IK / 根运动 / 人形重定向 / BlendShape 曲线 / 加权切线', target: '—', level: 'no',
+    note: '混合树、Mecanim 重定向等均不处理' },
+]} />
+
+## ⑦ 2D / Sprite
+
+SpriteRenderer → UI3D + Mesh2DRender + 图集。 [查看导出流程 →](/unity-plugin/sprite-2d/)
+
+<FeatureTable cols={['Unity 功能', 'LayaAir 目标', '支持度', '说明']} rows={[
+  { feat: 'SpriteRenderer（整图）', target: 'UI3D + 2D 预制体 .lh', level: 'full',
+    note: 'Mesh2DRender 引用纹理' },
+  { feat: 'SpriteRenderer（子区域 / 图集）', target: '.atlas + fileconfig.json', level: 'full',
+    note: '会把整张纹理上所有子精灵都打进图集（含未使用的）' },
+  { feat: 'SpriteRenderer m_Color 颜色动画', target: 'Animator2D + .mcc', level: 'part',
+    note: '<b>精灵帧切换 m_Sprite 动画不支持</b>' },
+]} />
+
+## ⑧ 纹理资源
+
+Texture2D → png / jpg / hdr + .meta importer 配置。
+
+<FeatureTable cols={['Unity 功能', 'LayaAir 目标', '支持度', '说明']} rows={[
+  { feat: 'Texture2D（普通 / 法线 / Sprite / HDR）', target: '.png（带 alpha）/ .jpg / .hdr', level: 'full',
+    note: '采样状态（wrap/filter/mipmap/各向异性/sRGB）完整映射；jpg 固定质量 75' },
+  { feat: '压缩格式（DXT/ETC/ASTC）', target: '强制未压缩 R8G8B8(A8)', level: 'part',
+    note: '<b>刻意丢弃压缩</b>，避免 Laya 压缩纹理兼容问题' },
+  { feat: '分平台覆盖（iOS/Android/WebGL）', target: '单一 platformDefault', level: 'no',
+    note: 'HDR 路径依赖 Windows msvcrt.dll（仅 Windows）' },
+]} />
+
+## ⑨ 自定义脚本 & 导出配置
+
+MonoBehaviour → LayaAir TS 脚本（UUID 映射）。
+
+<FeatureTable cols={['能力', 'LayaAir 目标', '支持度', '说明']} rows={[
+  { feat: '自定义脚本 UUID 映射', target: '映射后的 _$comp + 序列化属性', level: 'full',
+    note: '菜单「组件脚本导出配置」；支持属性名重映射。<b>未映射的脚本会被静默丢弃</b>，UUID 需手动填' },
+  { feat: '序列化属性类型', target: '—', level: 'full',
+    note: 'Float / Int / Bool / String / Enum / Color / Vector2-4 / Quaternion / Rect' },
+  { feat: '内置运行时 TS 脚本注入', target: '_src_/ 目录', level: 'full',
+    note: '目前仅 <code>Animator2DSync.ts</code>' },
+  { feat: '导出配置项', target: 'Configuration.xml', level: 'full',
+    note: '根模式、忽略非激活对象、批量导出、顶点流剥离、自动 UV1、输出目录、启用自定义 Shader、粒子默认模式、中/英语言' },
+]} />
+
+## ⑩ 明确不支持的组件
+
+导出时检测并在控制台/对话框警告，但**不阻断导出**，相关功能静默丢弃：
+
+Rigidbody 刚体 · Box/Sphere/Capsule/Mesh Collider 碰撞器 · CharacterController 角色控制器 · Joint 所有关节 · AudioSource 音频源 · AudioListener 音频监听 · TrailRenderer 拖尾渲染器 · LineRenderer 线条渲染器 · Cloth 布料 · WindZone 风区 · Canvas uGUI 画布 · VideoPlayer 视频 · Terrain 地形
+
+:::note
+**TrailRenderer（独立拖尾组件）**不导出；但**粒子系统的 Trails 拖尾模块**可导出（见 ⑤ 粒子系统，启用时自动走 CPU 模式）。LayaAir 引擎本身具备拖尾能力，此处为插件未做该组件的转换。
+:::
+
+---
+
+本能力表基于插件源码逐模块核查整理（插件版本 1.1.7）。复杂导出流程详情见各分组的「查看导出流程 →」链接。

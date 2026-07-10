@@ -1,0 +1,138 @@
+---
+title: "整体导出流程"
+description: "Unity 导出插件的导出主链路全景：从点击导出到文件落盘的六个阶段，组件按类型分发给对应导出器，全程进行左手系到右手系的坐标转换，并以 3D Game Kit Lite 实测场景验证整条链路。"
+slug: "unity-plugin/overview"
+---
+
+- **入口**：`LayaAir3Export.ExportScene()`
+- **核心类**：`HierarchyFile` · `NodeMap` · `ResoureMap`
+- **产物**：`.ls` / `.lh` / `.lm` / `.lmat` / `.lani` …
+
+:::note[本章思路]
+本章是整个导出流程的全景。点「导出」后，插件执行一条流水线：遍历当前场景的对象 → 展开为节点表并建立父子树 → 逐组件按类型分发给对应导出器 → 落盘成文件，全程进行左手系到右手系的坐标转换。① 给出主链路全景；②③④ 分别展开其中的组件分发、坐标转换与产物类型；⑤ 以实测场景验证整条链路。其余各页（网格 / 材质 / 动画…）是 ② 分发链中各类组件的深入说明。
+:::
+
+![Unity 编辑器中打开导出工具](/unity-plugin/img/overview-entry.png)
+
+**导出入口：** Unity 菜单 `LayaAir3D 3.0 / Export Tool` 打开导出窗口；左侧 Hierarchy 即待导出的场景层级，场景视图为 3D Game Kit Lite 关卡。
+
+## ① 导出主链路
+
+**本节给出整条流水线的全景：从点下「导出」到文件落盘，插件依次走过六个阶段。** 六个阶段依次为——入口与配置 → 多场景循环 → 层级收集（展开为节点列表）→ 节点映射与建树 → 组件分发 → 落盘。
+
+1. **入口与配置 · `LayaAir3D.OnGUI` → `ExportScene()`**
+   导出窗口（菜单 `LayaAir3D 3.0 / Export Tool`）顶部切「导出为场景 / 导出为预设」，下含**节点设置 / 模型设置 / 其他设置 / 自定义 Shader 设置 / 组件脚本导出配置**五个折叠区与保存路径。点导出按钮 → `LayaAir3Export.ExportScene()`。
+
+2. **初始化与多场景循环 · `ExportScene()`**
+   先初始化各工具类（`GameObjectUitls` / `MetarialUitls` / `AnimationCurveGroup` / `UnsupportedFeatureCollector`，并清空自定义 Shader 缓存），再遍历**当前所有已打开场景**。**仅导出已保存的场景**：路径为空（未保存）的场景不在导出范围内。每个场景构造一个 `HierarchyFile` 并调用 `saveAllFile()`。
+
+3. **层级收集 · `HierarchyFile` 构造**
+   从场景根对象递归把整棵树**拍平成节点列表**。其间两类节点被整体跳过：勾了「忽略未激活节点」时的非激活物体；以及**带 `Canvas` 的对象及其整棵子树**（UI 2D 暂未启用）。随后建立总资源表 `ResoureMap`，并为每个对象登记进 `NodeMap`。
+
+4. **节点映射与建树 · `NodeMap` → `ResoureMap.createNodeTree()`**
+   每个 GameObject 生成基础节点 JSON 并分配自增 `_$id`（`#0`=Scene2D、`#1`=Scene3D 预留，业务节点从 `#2` 起）。场景模式直接导出实例内容；预制体模式则检测预制体实例根、写 `_$prefab` 引用。之后按父子关系挂成 `_$child` 树，并逐节点调 `writeCompoent()` 写组件。（`_$` 前缀是 LayaAir 场景 / 预制体文件的字段约定，下文 `_$type` / `_$comp` 等同理。）
+
+5. **组件分发 · `ResoureMap.writeComponentData()`**
+   整个插件的「总开关」：遍历每个组件，按类型分发给对应导出器（相机 / 网格 / 蒙皮网格 / 灯光 / 动画 / 粒子 / 精灵 / 自定义脚本…）。详见下方 ② 组件分发链。
+
+6. **落盘 · `saveAllFile()` → `ResoureMap.SaveAllFile()`**
+   **场景模式**构建 `Scene2D → Scene3D` 根（写入天空盒 / 环境光 / 球谐 / 雾），输出 `.ls`；**预设模式**把每个根节点输出为 `.lh`（开启「批量导出一级节点」时按一级子节点拆分）。最后迭代保存所有登记文件——保存中可能动态产生新文件（如动画又引用了材质），用「已处理集合 + 循环」确保不漏。完成后弹出**不支持功能汇总**对话框。
+
+![导出窗口折叠总览](/unity-plugin/img/overview-window-collapsed.png)
+
+**折叠态总览：** 顶部切换导出为场景 / 预设，下含五个折叠设置区与保存路径、导出按钮。
+
+![导出窗口展开全部设置](/unity-plugin/img/overview-window-expanded.png)
+
+**展开全部设置：** 节点 / 模型 / 其他（含粒子默认模式）/ 自定义 Shader / 组件脚本导出配置。
+
+![导出为预设模式与导出进度](/unity-plugin/img/overview-preset-progress.png)
+
+**导出过程：**「导出为预设」模式下多出「批量导出一级节点」选项；导出时 Unity 会对涉及的纹理触发重导入并显示进度。
+
+![选择导出保存路径](/unity-plugin/img/overview-output-dir.png)
+
+**选择保存路径：** 点「浏览」从文件系统选择导出目录。图中目标是一个已有的 LayaAir 工程的 `assets` 目录——其中的 `atlas`、`resources` 等文件夹是 LayaAir 引擎工程自带的结构，**并非本次导出生成**。
+
+## ② 组件分发链
+
+**本节展开 ① 中的组件分发阶段：插件逐个检查节点上的组件，按类型交给对应导出器，各自产出对应文件。** 下表枚举每种 Unity 组件、其对应的 LayaAir 产物，以及对应的细化页。
+
+| Unity 组件 | LayaAir 产物 | 说明 / 详情 |
+| --- | --- | --- |
+| Camera <sup>*</sup> | Camera 节点（`_$type`） | 投影、FOV、裁剪面、清屏色；相机有额外 Y180 朝向补偿（见 ③） |
+| MeshFilter + MeshRenderer | `.lm` 网格 + `.lmat` 材质 | [网格导出](/unity-plugin/mesh/) · [材质 / Shader](/unity-plugin/material-shader/) |
+| SkinnedMeshRenderer | 网格 + 骨骼引用 + 包围盒 | 骨骼按节点引用，`localBounds` 中心 X 取反 · [网格导出](/unity-plugin/mesh/) |
+| Light | 方向光 / 点光 / 聚光 | 按类型分流，写颜色 / 强度 / 范围等；与相机同样有额外 Y180 朝向补偿（见 ③） |
+| Animator | `.lani` + 状态机 | 曲线绑定按类型分发；纯 SpriteRenderer 颜色动画转 2D · [动画导出](/unity-plugin/animation/) |
+| ReflectionProbe / LODGroup | 反射探针 / LOD | 包围盒经矩阵变换；LOD 各级按节点引用 |
+| ParticleSystem | GPU(Shuriken) 或 CPU 粒子 | 按模式分两条路；启用 Trails/Noise 等会自动转 CPU · [粒子导出](/unity-plugin/particle/) |
+| ParticleSystemForceField | 力场 | 仅在 CPU 粒子模式下有意义 · [粒子导出](/unity-plugin/particle/) |
+| SpriteRenderer | UI3D + 2D 预制体 + 图集 | 整图直引 / 子区域出 `.atlas`；颜色动画出 `.mcc` · [2D 精灵导出](/unity-plugin/sprite-2d/) |
+| 自定义 MonoBehaviour | 脚本组件 + 序列化属性 | **仅在配置了 UUID 映射时导出**，否则不导出；只搬属性值，不转逻辑代码 |
+
+:::note[* Camera 例外]
+相机不走 `writeComponentData` 的组件分发链，而是在**上一层** `getComponentsData` 里就被单独识别——挂了 Camera 的对象直接把节点 `_$type` 标成 `Camera`（其余对象标为 `Sprite3D`），相机参数随节点本体写出，而非作为 `_$comp` 里的一个组件项。表中其余各行才是真正经 `writeComponentData` 按组件类型分流的。
+:::
+
+:::caution[分发即总开关]
+没有匹配分支的组件会被直接忽略。这也意味着——任何**靠脚本逻辑驱动**的东西（角色控制器、相机 Rig、Cinemachine 等）都不在导出范围内，需要在 LayaAir 端用 TS 重写。
+:::
+
+## ③ 坐标系转换
+
+**本节说明贯穿全程的坐标系转换：Unity 为左手系、LayaAir 为右手系，分发链的每条导出路径在写出空间数据前都需先对齐坐标。** 两个引擎手性相反，插件统一以**沿 X 轴翻转**处理，相应逻辑分布于各导出路径中，汇总如下：
+
+| 对象 | 处理方式 |
+| --- | --- |
+| 网格顶点 | 顶点位置 X 分量取反（导出时逐顶点翻转，详见[网格导出](/unity-plugin/mesh/)） |
+| SpriteRenderer 节点 | 没有导出网格可翻转，改为在节点 `transform.localScale.x` 取反补偿 |
+| SkinnedMeshRenderer 包围盒 | `localBounds` 中心 X 取反后重算 min / max |
+| 相机 / 灯光 | 本体施加额外 Y180 旋转；其子节点改用「取反 Z」而非取反 X，并左乘 Y180 补偿父级 |
+| 反射探针包围盒 | 顶点经 `worldToLocalMatrix` 变换到局部空间 |
+
+## ④ 产物文件类型
+
+**本节列出整条链路落盘产出的文件类型。** 每种产物对应一类资源——场景、节点、网格、材质、动画、贴图等，构成最终交付 LayaAir 工程的导出结果。
+
+| 扩展名 / 目录 | 内容 |
+| --- | --- |
+| `.ls` | 场景文件（`Scene2D → Scene3D` 根，含天空盒 / 环境光 / 球谐 / 雾） |
+| `.lh` | 节点 / 预制体（导出为预设模式；可按一级节点批量拆分） |
+| `.lm` | 网格（顶点流 / 子网格范围 / 骨骼绑定） |
+| `.lmat` | 材质（贴图 / 颜色 / 浮点参数 / 渲染状态） |
+| `.lani` | 动画片段（骨骼 / 属性曲线） |
+| `.atlas` + 贴图 | 2D 图集（SpriteRenderer 子区域） |
+| `.mcc` | 2D 动画控制器（SpriteRenderer 颜色动画） |
+| 贴图 `.png`/`.jpg`/`.hdr` | 纹理（按是否含 Alpha / HDR 决定格式） |
+| `_src_/` 运行时脚本 | 内置注入的 TS（目前仅 `Animator2DSync.ts`） |
+
+## ⑤ 实测验证 · Unity → LayaAir
+
+**本节以真实场景验证前四节的整条链路导出结果。** 以 3D Game Kit Lite 的示例场景实测：导出后将产物导入 LayaAir 3.x，**场景层级、角色网格、材质贴图、灯光、骨骼**等核心美术资源均忠实还原并正常渲染——这部分正是分发链里有明确分支的组件。
+
+![Unity 与 LayaAir 并排对比](/unity-plugin/img/overview-unity-vs-laya.png)
+
+**Unity（左）↔ LayaAir（右）：** 导出产物在 LayaAir 3.x 中打开，场景层级、角色、地块均还原渲染。
+
+![导出完成的不支持组件兼容性提示](/unity-plugin/img/overview-unsupported-dialog.png)
+
+**兼容性提示：** 导出完成时插件弹出汇总对话框（`UnsupportedFeatureCollector`），列出场景中不支持、不会被导出的组件——碰撞器、AudioSource、CharacterController、TrailRenderer 等，详细 GameObject 列表同步输出到 Console。
+
+:::note[导出范围边界]
+（导出完成对话框 / Console 同步列出）
+
+- **脚本逻辑**：MonoBehaviour 只导出序列化属性值，不转换逻辑代码；靠脚本驱动的相机 Rig、角色控制器等不在导出范围内。
+- **Animator 混合树（BlendTree）**：当前版本不导出，对应状态导出为空状态。
+- **自定义 Shader**：以启发式方式将 HLSL 转换为 GLSL，仅覆盖常见结构（见[自定义 Shader](/unity-plugin/custom-shader/)）。
+- **粒子**：导出为 LayaAir 粒子格式，渲染依赖目标工程具备对应的粒子运行时（见[粒子导出](/unity-plugin/particle/)）。
+- **纹理可读性**：导出时插件会临时开启纹理的 Read/Write 再读取，无需手动预先开启；但位于**只读 / 不可变包**（如部分内置示例包）内、无法修改导入设置的纹理不在导出范围内。
+:::
+
+:::tip
+**概括：本插件迁移的是美术资产，运行逻辑不在迁移范围内。** 导出器解决几何 / 材质 / 动画数据的迁移；交互与玩法逻辑始终需要在 LayaAir 工程内用引擎 API 重新实现。
+:::
+
+---
+
+本页基于插件 1.1.7 源码与实测整理。

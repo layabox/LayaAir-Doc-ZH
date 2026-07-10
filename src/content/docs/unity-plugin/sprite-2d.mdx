@@ -1,0 +1,79 @@
+---
+title: "2D精灵导出"
+description: "3D 场景中 SpriteRenderer 的导出结构：外层导为 UI3D 组件引用 2D 预制，贴图按整图直引或子区域出 .atlas 图集，2D 预制内部为 Mesh2DRender 精灵，含变体去重、色彩动画接入与不导出情形说明。"
+slug: "unity-plugin/sprite-2d"
+---
+
+- **入口**：`GetSpriteRendererComponentData`
+- **组件**：`UI3D` → `.lh`（Mesh2DRender）
+- **图集**：`.atlas`（子图时）
+
+:::note[本章思路]
+将 3D 场景中的 2D 精灵（SpriteRenderer）导出到 Laya，按「外层结构 → 贴图 → 内层预制 → 复用 → 边界」展开：① 外层结构——SpriteRenderer 导为 UI3D，引用一个 2D 预制 → ② 贴图引用方式（整图直引 / 子区域出图集）→ ③ 2D 预制内部结构 → ④ 变体去重与色彩动画 → ⑤ 不导出的情形。
+:::
+
+:::note[本页实测]
+把 `EllenHealth`（Game Kit 的 HUD 精灵，是一张含 9 个子图的 spritesheet）拖进场景做演示。导出产物：场景里一个 **UI3D** 组件 + 2D 预制 `EllenHealth_EllenHealth_Empty_sprite.lh` + 图集 `EllenHealth.atlas`。
+:::
+
+## ① SpriteRenderer → UI3D + 2D 预制
+
+**外层结构——SpriteRenderer 导为 UI3D（节点仍是 Sprite3D、保留 3D 变换），UI3D 引用一个 2D 预制。** SpriteRenderer 导出成 **UI3D 组件**（节点仍是 Sprite3D，保留 3D 变换，`localScale.x` 取负做左右手坐标补偿）。UI3D 引用一个 `.lh` 2D 预制，预制里是带 **Mesh2DRender** 的精灵：贴图来自导出的图，颜色取自 `SpriteRenderer.color`，2D 材质用自动生成的默认材质 `Mesh2DRender_DefaultMaterial.lmat`（一次生成、复用）。
+
+![Unity SpriteRenderer](/unity-plugin/img/sprite-2d-renderer.png)
+
+**导出前 · Unity：** `SpriteRenderer`——精灵 `EllenHealth Empty`、颜色、绘制模式（简单）、材质 Sprites-Default。
+
+![Laya UI3D 组件](/unity-plugin/img/sprite-2d-laya.png)
+
+**导出后 · LayaAir：** 同一节点带 **3D UI（UI3D）** 组件，预制体指向 `..._sprite`，UI3D 渲染模式 = `透明(AlphaBlend)`——精灵在 3D 场景中渲染。
+
+:::note[2D 材质]
+2D 精灵的渲染材质使用自动生成的默认 `baseRender2D` 材质（`Mesh2DRender_DefaultMaterial.lmat`，一次生成、全局复用）。`SpriteRenderer` 上的自定义材质 / shader 不会作为预制体的 2D 渲染材质——画面表现按默认 2D 材质走。自定义材质的透明 / 叠加属性参与判定 **UI3D 的渲染模式**（透明 AlphaBlend / 叠加 Additive）。
+:::
+
+## ② 整图 vs 图集
+
+**确定贴图引用方式——精灵占满整图则直引，精灵为大图子区域则导出 `.atlas` 并按子区域引用。**
+
+| 情况 | 导出方式 |
+| --- | --- |
+| 精灵**占满整张贴图** | 直接用**贴图 UUID** 引用 |
+| 精灵是贴图的**一部分**（spritesheet） | 导出一个 `.atlas` 文件（记录各子图在母图里的像素 rect）+ 用**子贴图 URL** 引用，并预加载该图集 |
+
+本例 `EllenHealth` 是 spritesheet → 走**图集模式**，导出 `EllenHealth.atlas`，同母图的多个子图**累加到同一个 atlas**：
+
+![导出的 atlas](/unity-plugin/img/sprite-2d-atlas.png)
+
+**导出后 · LayaAir：** `EllenHealth.atlas` 的帧列表——Empty / Full / Gaining00–03 / Losing00–02 共 9 个子图，都映射到母图 `EllenHealth.png`。
+
+## ③ 2D 预制（.lh）
+
+**UI3D 所引用的 2D 预制的内部结构（带 Mesh2DRender 的精灵）。** UI3D 引用的 `.lh` 预制就是一个标准的 Laya 2D 节点（带 Mesh2DRender 的精灵）。世界尺寸按精灵自然边界（像素 / pixelsPerUnit，Simple 绘制模式）或 size 属性换算，另算渲染分辨率。
+
+![导出的 2D 预制](/unity-plugin/img/sprite-2d-prefab.png)
+
+**导出后 · LayaAir：** 2D 预制 `EllenHealth_EllenHealth_Empty_sprite.lh`——一个带 Mesh2DRender 的精灵节点，UI3D 把它当画面内容渲染到 3D 场景里。
+
+## ④ 变体去重 · 色彩动画
+
+**多个相同精灵复用同一预制与图集；色彩动画接入 Animator2D。**
+
+- **A · 变体去重**：同一精灵复用**同一个 `.lh` 预制**（多个物体引用同一精灵不重复导）；图集模式下同母图的多个子图**累加进同一个 `.atlas`**。
+- **B · 色彩动画 → Animator2D**：SpriteRenderer 的颜色动画导成 2D `.mc` + Animator2D，附到 2D 预制上（详见[动画导出](/unity-plugin/animation/) ③）。
+
+## ⑤ 不导出的情况
+
+**能力边界——空 SpriteRenderer（未挂精灵或精灵无贴图）被跳过，属预期行为。**
+
+:::note
+SpriteRenderer **没挂精灵**（Sprite 为空）或精灵**没有贴图** → 跳过该组件（导出时给警告）。
+:::
+
+:::note
+**运行时才赋图的空 SpriteRenderer 会被批量跳过——这是预期行为。** 像 Game Kit 这类项目里，很多 SpriteRenderer 的 Sprite 在**编辑器态是空的**（`fileID=0`），真正的图在**运行时由脚本赋值**。导出器只读取**编辑器态的引用**，对这类空引用按上面的规则跳过并给出警告。若发现一批精灵没被导出，可先确认它们的 Sprite 是否在编辑器里就为空、靠脚本运行时填充。
+:::
+
+---
+
+本页基于插件 1.1.7 源码与实测整理。

@@ -1,0 +1,46 @@
+---
+title: Unity 导出能力一览
+description: 复刻 untiydoc 风格的能力对照徽章表 —— 演示 AI 生成正文 + 可复用富组件。
+---
+
+import FeatureTable from '../../../components/FeatureTable.astro';
+
+本页演示：untiydoc 那种「**能力对照徽章表**」可以做成**一个可复用组件**，
+内容只需提供数据（AI 直出），样式、图例、徽章配色由组件统一兜底——
+不再像老做法那样每页手抄一遍 HTML。
+
+## ① 场景 / 节点 / 组件
+
+GameObject 层级 → Sprite3D 节点树，含左手→右手坐标转换。
+
+<FeatureTable rows={[
+  { feat: 'GameObject + Transform 层级', target: 'Sprite3D 节点 + transform', level: 'full',
+    note: 'name / active / layer / tag / isStatic；自动 X 轴翻转、相机/灯光 Y180 补偿' },
+  { feat: 'Camera', target: 'Camera 节点', level: 'part',
+    note: 'clearFlags / 正交 / 近远裁剪 / HDR / 视口 / 背景色可导。<b>FOV 按 1334/750 设计分辨率重算</b>；cullingMask、targetTexture 不导' },
+  { feat: 'Light（方向 / 点 / 聚光）', target: 'DirectionLightCom / PointLightCom / SpotLightCom', level: 'full',
+    note: '强度、颜色、阴影模式、烘焙类型、range、spotAngle。<b>Area/Disc 灯不导</b>' },
+  { feat: 'MeshFilter + MeshRenderer', target: 'MeshFilter + MeshRenderer', level: 'full',
+    note: '材质、enabled、receiveShadow、castShadow。lightmap 索引、探针用法不导' },
+  { feat: 'ReflectionProbe', target: 'ReflectionProbe', level: 'part',
+    note: 'bounds / importance / boxProjection 可导；IBL 采样数为硬编码常量，烘焙立方图不导' },
+  { feat: 'Prefab 预制体实例', target: '_$prefab 引用 + override 差异', level: 'conf',
+    note: '仅在「预制体 / Sprite3D」导出路径生效；<b>整场景导出时会内联展开</b>' },
+]} />
+
+## ② 网格 Mesh
+
+二进制 `.lm` 格式（LAYAMODEL:0501）。
+
+<FeatureTable rows={[
+  { feat: '顶点位置 / 法线 / UV0', target: '.lm 顶点流', level: 'full', note: '标准顶点属性完整导出' },
+  { feat: '切线 Tangent', target: '.lm 顶点流', level: 'conf', note: '取决于材质是否需要法线贴图' },
+  { feat: '骨骼权重 / BindPose', target: 'SkinnedMesh 数据', level: 'full', note: '含 rootBone 与 localBounds' },
+  { feat: '顶点色 Color', target: '.lm 顶点流', level: 'exp', note: '默认关闭，需手动开启，未充分验证' },
+  { feat: 'UV2 / 光照贴图 UV', target: '—', level: 'no', note: '不导出，需在 Laya 内重新展 UV' },
+]} />
+
+:::note
+以上数据节选自 untiydoc 原始对照表，仅用于演示组件渲染效果。
+正式迁移时，这类表格可由 AI 直接生成 `rows` 数据数组。
+:::

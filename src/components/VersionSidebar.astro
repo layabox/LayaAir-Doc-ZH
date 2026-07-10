@@ -1,0 +1,117 @@
+---
+// 覆写 Starlight 侧栏：
+//  1) 顶部加「引擎版本切换器」(3.0–3.4)
+//  2) 让「有概述/总览子项的父级分组」标题可点击跳到其概述页（恢复老 GitBook「点目录即看内容」的体验）
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import { DOC_VERSION } from '../constants/doc-version';
+---
+
+<div class="version-switch">
+  <label for="laya-version-select">引擎版本</label>
+  <select id="laya-version-select" data-version-switch>
+    <option value="">v{DOC_VERSION}（当前）</option>
+    <option value="https://www.layaair.com/3.3/doc/">v3.3</option>
+    <option value="https://www.layaair.com/3.2/doc/">v3.2</option>
+    <option value="https://www.layaair.com/3.1/doc/">v3.1</option>
+    <option value="https://www.layaair.com/3.0/doc/">v3.0</option>
+  </select>
+</div>
+
+<Default><slot /></Default>
+
+<script>
+  import { navigate } from 'astro:transitions/client';
+
+  // 版本切换：用事件委托替代内联 onchange（内联处理器不利于 CSP 与无障碍）。
+  // 绑在 document 上一次即可，对 ClientRouter 换页后重建的下拉框依然生效。
+  document.addEventListener('change', (e) => {
+    const el = e.target as HTMLSelectElement | null;
+    if (el?.matches?.('[data-version-switch]') && el.value) {
+      location.href = el.value;
+    }
+  });
+
+  // 还原老 GitBook「点父级目录即看内容、且父级下没有多余『概述』子项」的结构。
+  // 背景：Starlight 侧栏里「有子项的分组」只是 <details>，点击仅展开/收缩；migrate.mjs 把父级内容
+  // 挂成了分组的第一个子项（标签「概述」；VFX 文档集为「…总览」），多出一层、与父级重复。
+  // 处理：把该概述链接接到分组标题上（点标题无刷新跳到概述页；右侧 caret 仍负责展开/收缩），
+  //       然后移除那个多余的「概述/总览」子项；若当前正处于概述页，则把父级标题高亮为选中态。
+  function enhanceGroupLinks() {
+    document.querySelectorAll<HTMLElement>('.sidebar-content details > summary').forEach((summary) => {
+      const details = summary.parentElement as HTMLDetailsElement | null;
+      const label = summary.querySelector<HTMLElement>('.group-label');
+      if (!details || !label || label.dataset.groupLink) return;
+
+      // 取分组的第一个直接子项链接，判定它是不是「概述/总览」入口
+      const ul = details.querySelector(':scope > ul');
+      const firstLi = ul?.firstElementChild as HTMLElement | undefined;
+      const firstA = firstLi?.querySelector<HTMLAnchorElement>(':scope > a[href]');
+      if (!firstLi || !firstA) return;
+      const text = (firstA.textContent || '').trim();
+      const href = firstA.getAttribute('href');
+      if (!href || !(text === '概述' || /总览/.test(text))) return;
+
+      const isCurrent = firstA.getAttribute('aria-current') === 'page';
+
+      label.dataset.groupLink = '1';
+      label.classList.add('group-label-clickable');
+      label.setAttribute('role', 'link');
+      label.setAttribute('tabindex', '0');
+      const go = (e: Event) => {
+        e.preventDefault();
+        e.stopPropagation(); // 阻止冒泡到 summary，避免顺带展开/收缩
+        navigate(href);
+      };
+      label.addEventListener('click', go);
+      label.addEventListener('keydown', (e) => {
+        if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') go(e);
+      });
+
+      // 当前就在该概述页：父级标题高亮选中态，并保持分组展开
+      if (isCurrent) {
+        label.classList.add('group-label-current');
+        details.open = true;
+      }
+
+      // 移除多余的「概述/总览」子项（父级标题已承担其入口，恢复老结构）
+      firstLi.remove();
+    });
+  }
+
+  // 首屏 + 每次 ClientRouter 换页后都重新接（换页会重建侧栏 DOM）
+  enhanceGroupLinks();
+  document.addEventListener('astro:page-load', enhanceGroupLinks);
+</script>
+
+<style is:global>
+  /* 消除「同级色差」：Starlight 里分组标题恒为 .large（白/粗/大），而嵌套层普通链接为灰/常规/小，
+     同一层级（如官方插件下的 VFX粒子插件 vs LOD减面插件）外观不一致。
+     这里把「嵌套层的分组标题」对齐到同级普通链接的字号/字重/颜色；顶层分组标题(.top-level)保持不变；
+     当前选中项(.group-label-current)与悬停态各自的样式不受影响。 */
+  .sidebar-content ul:not(.top-level) summary .group-label:not(.group-label-current) .large {
+    font-size: 0.9rem;                 /* 对齐同级普通链接的 0.9rem（--sl-text-sm 是 14px，差 0.4px 也能看出粗细不齐） */
+    line-height: 1.4;                  /* 与普通链接同行高，行盒等高 */
+    font-weight: 400;                  /* 去掉加粗 */
+    color: var(--laya-sb-link);        /* 与深色侧栏的普通链接同色 */
+  }
+  /* 可点击的父级标题：加指针；悬停转亮，与同级普通链接的悬停表现一致 */
+  .sidebar-content .group-label-clickable {
+    cursor: pointer;
+  }
+  .sidebar-content .group-label-clickable:hover .large {
+    color: var(--laya-sb-link-active);
+  }
+  .sidebar-content .group-label-clickable:focus-visible {
+    outline: 2px solid var(--laya-sb-heading);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+  /* 当前正处于该父级的概述页：官方风扁平深底高亮 */
+  .sidebar-content summary:has(.group-label-current) {
+    background-color: var(--laya-sb-bg-active);
+    border-radius: 0.25rem;
+  }
+  .sidebar-content .group-label-current .large {
+    color: var(--laya-sb-link-active);
+  }
+</style>

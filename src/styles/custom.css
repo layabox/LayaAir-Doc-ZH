@@ -1,0 +1,778 @@
+/* ============================================================
+   LayaAir 引擎文档 · 高级感主题
+   目标：对标 Stripe / Linear / Vercel 级别的文档观感
+   ============================================================ */
+
+/* ============ 全站柔和交互动效 ============ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 给所有可交互元素一个统一的柔和过渡，杜绝"生硬"的瞬切 */
+a,
+button,
+summary,
+input,
+select,
+.card,
+.sl-markdown-content tbody tr,
+.sidebar-content a,
+[role='tab'] {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* 正文链接：下划线"生长"动画 */
+.sl-markdown-content a {
+  background-image: linear-gradient(var(--sl-color-accent), var(--sl-color-accent));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease, color 0.2s ease;
+}
+.sl-markdown-content a:hover {
+  background-size: 100% 1.5px;
+}
+
+/* 侧栏菜单项：悬停轻微右移 + 渐显底色 */
+.sidebar-content a:not([aria-current='page']):hover {
+  transform: translateX(3px);
+}
+
+/* 进入页面时，正文柔和淡入上浮 */
+@keyframes laya-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sl-markdown-content {
+  animation: laya-fade-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.content-panel + .content-panel .sl-markdown-content {
+  animation-delay: 0.05s;
+}
+
+/* 折叠区（可展开章节）平滑展开 */
+details > summary {
+  cursor: pointer;
+}
+
+/* 点击反馈：按钮/卡片按下时轻微回弹 */
+button:active,
+.card:active,
+.hero .actions a:active {
+  transform: scale(0.97);
+}
+
+/* 锚点跳转留出顶栏空间，避免标题被遮 + 平滑 */
+:target {
+  scroll-margin-top: 5rem;
+}
+
+/* 尊重"减少动态效果"无障碍偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* —— 页面切换：无刷新 SPA 导航 + 零过场动画 —— */
+/* ClientRouter 负责"不整页重新加载"，这里把浏览器原生的淡入淡出过渡全部抹掉，*/
+/* 让切换瞬间完成，不再有被动画拖一下的"慢"感。 */
+::view-transition-group(*),
+::view-transition-image-pair(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation: none !important;
+  mix-blend-mode: normal !important;
+}
+
+
+:root {
+  /* —— 品牌强调色（对标官方文档站蓝色系 #2980b9 / #55a5d9）—— */
+  --sl-color-accent-low: #102b40;
+  --sl-color-accent: #2980b9;        /* 主强调：官方蓝 */
+  --sl-color-accent-high: #cbe4f5;
+  --sl-color-text-accent: #2980b9;
+
+  /* —— 深色侧栏调色板（浅/深色模式下侧栏都固定深色）——
+     底色与深色模式正文背景(#0b1016)同源：深色模式下侧栏与正文融为一体（原 #2d3143 比正文还浅，
+     两块深色不同源很别扭），浅色模式下则是更利落的深轨。分隔靠 .sidebar-pane 的 hairline 边线。 */
+  --laya-sb-bg: #0b1016;             /* 侧栏底色 = 深色模式正文底 */
+  --laya-sb-bg-active: #1a2433;      /* 选中/悬停底色 */
+  --laya-sb-divider: #161e2a;        /* 分隔线 */
+  --laya-sb-link: #c1c6d7;           /* 普通链接 */
+  --laya-sb-link-active: #f4f4f5;    /* 选中/悬停文字 */
+  --laya-sb-heading: #55a5d9;        /* 一级分组标题（亮蓝）*/
+
+  /* —— 字体 —— */
+  --sl-font: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB",
+    system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sl-font-mono: "JetBrains Mono", "Cascadia Code", "SF Mono", Consolas,
+    "Liberation Mono", monospace;
+
+  --sl-content-width: 70rem;   /* 外层内容面板宽度（保持原值）。真正的「阅读行长」不由它控制，
+                                   而是由下方 .main-pane .sl-container 的 max-width:48rem 收窄居中（Unity 文档式两侧留白）*/
+  --sl-line-height: 1.75;
+
+  /* 品牌渐变（hero、按钮、强调用）：深蓝 → 官方蓝 → 浅亮蓝 */
+  --laya-grad: linear-gradient(135deg, #1f5f8b 0%, #2980b9 55%, #55a5d9 100%);
+}
+
+/* 深色模式：偏冷的高级深蓝墨，而非纯黑 */
+:root[data-theme='dark'] {
+  --sl-color-bg: #0b1016;
+  --sl-color-bg-nav: #0b1016cc;
+  --sl-color-bg-sidebar: #0a0f15;
+  --sl-color-hairline-shade: #141b24;
+  --sl-color-hairline: #1b2430;
+  --sl-color-gray-6: #111824;
+  --sl-color-gray-5: #1d2735;
+  --sl-color-accent: #2980b9;
+  --sl-color-accent-high: #cbe4f5;
+  --sl-color-text-accent: #6cb8e6;
+}
+
+:root[data-theme='light'] {
+  --sl-color-bg-sidebar: #f4f7fb;
+  --sl-color-accent-low: #d6e8f5;
+  --sl-color-accent: #2980b9;
+  --sl-color-accent-high: #0c3a5a;
+  --sl-color-text-accent: #2073a8;
+}
+
+/* —— 顶栏：磨砂玻璃质感 —— */
+.header {
+  backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+.site-title {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* —— 正文阅读列：收窄到 56rem 并居中，两侧留白（对标 Unity 文档的居中窄栏） —— */
+/* 48rem 时宽屏留白偏大（用户反馈"空的太大"），放宽到 56rem（约 56 汉字/行）折中；
+   标题面板与正文面板都经由 .sl-container，一起收窄所以左缘对齐。
+   留白由 margin auto 自然产生，任何屏宽下都居中。 */
+.main-pane .sl-container {
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+/* —— 正文排版打磨 —— */
+.sl-markdown-content {
+  font-size: 1rem;
+}
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+.sl-markdown-content h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+.sl-markdown-content a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+/* 链接列表（服务那页）更精致 */
+.sl-markdown-content :is(ul, ol) > li::marker {
+  color: var(--sl-color-accent);
+}
+
+/* —— 代码块：圆角 + 细边 + 轻阴影 —— */
+.sl-markdown-content .expressive-code,
+.sl-markdown-content pre {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.25);
+}
+
+/* —— 表格：清爽、悬停高亮，窄屏可横向滚动 —— */
+.sl-markdown-content table {
+  display: table;         /* 覆盖 Starlight 默认的 block —— 否则 table-layout:fixed 失效、列缩在左半 */
+  width: 100%;            /* 撑满正文宽度，不再紧贴内容缩成窄条 */
+  table-layout: fixed;    /* 列按比例均分撑满，解决窄内容时右半空白 */
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+/* 单元格文字居中 + 舒展的内边距 */
+.sl-markdown-content :is(th, td) {
+  text-align: center;
+  padding: 0.62em 1em;
+  vertical-align: middle;
+}
+/* 窄屏下表格不撑破布局，改为可横向滚动 */
+@media (max-width: 50rem) {
+  .sl-markdown-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* —— 站外链接：尾部小箭头图标，一眼区分内外 —— */
+.sl-markdown-content a[target='_blank']::after {
+  content: '↗';
+  display: inline-block;
+  margin-inline-start: 0.15em;
+  font-size: 0.85em;
+  color: var(--sl-color-gray-3);
+  vertical-align: baseline;
+}
+
+/* 站点 logo 尺寸由 SiteTitle.astro 组件自管（完整品牌图，高度 2.25rem），此处不再约束 */
+.sl-markdown-content th {
+  background: var(--sl-color-gray-6);
+  font-weight: 700;
+}
+.sl-markdown-content tbody tr:hover {
+  background: var(--sl-color-gray-6);
+}
+
+/* —— 侧栏当前项：官方风扁平深底高亮 —— */
+.sidebar-content a[aria-current='page'] {
+  background: var(--laya-sb-bg-active);
+  color: var(--laya-sb-link-active);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* ============ Splash 首页 Hero ============ */
+.hero {
+  position: relative;
+  padding-block: 2rem;
+}
+/* hero 背景光晕 */
+[data-has-hero] main {
+  position: relative;
+}
+[data-has-hero] .hero::before {
+  content: '';
+  position: absolute;
+  inset: -20% -30% auto -30%;
+  height: 480px;
+  background: radial-gradient(
+    60% 60% at 50% 0%,
+    rgba(85, 165, 217, 0.22),
+    transparent 70%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  background: var(--laya-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.1;
+}
+.hero .tagline {
+  font-size: 1.15rem;
+  color: var(--sl-color-gray-2);
+  max-width: 34ch;
+}
+/* 主按钮：品牌渐变 + 悬停上浮 */
+.hero .actions a.primary {
+  background: var(--laya-grad);
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px -10px rgba(41, 128, 185, 0.7);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hero .actions a.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -10px rgba(41, 128, 185, 0.85);
+}
+.hero .actions a.minimal {
+  border-radius: 10px;
+  transition: transform 0.15s ease;
+}
+.hero .actions a.minimal:hover {
+  transform: translateY(-2px);
+}
+
+/* —— 首页卡片：圆角、悬停上浮发光 —— */
+.card {
+  border-radius: 14px;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg-sidebar);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 16px 40px -16px rgba(41, 128, 185, 0.5);
+}
+.card .icon {
+  background: var(--laya-grad);
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* ============ 版本切换器（侧栏顶部） ============ */
+.version-switch {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 12px;
+  background: var(--sl-color-bg-sidebar);
+}
+.version-switch label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--sl-color-gray-3);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.version-switch select {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+  background: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.version-switch select:hover {
+  border-color: var(--sl-color-accent);
+}
+
+/* ============================================================
+   内容页阅读体验 + 全站视觉系统打磨（第二轮）
+   嵌入主站深色科技蓝外壳，文档区做精致呼应
+   ============================================================ */
+
+/* —— 正文图片：统一圆角 + 细边 + 轻阴影 + 居中，告别"裸图" —— */
+.sl-markdown-content img:not(.no-frame) {
+  border-radius: 10px;
+  border: 1px solid var(--sl-color-hairline);
+  box-shadow: 0 6px 22px -14px rgba(10, 20, 40, 0.45);
+  display: block;
+  margin-inline: auto;
+}
+:root[data-theme='dark'] .sl-markdown-content img:not(.no-frame) {
+  box-shadow: 0 6px 22px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* —— 提示框 aside：更克制的圆角 + 粗一点的左色条 + 呼吸感 —— */
+.sl-markdown-content .starlight-aside {
+  border-radius: 10px;
+  border-inline-start-width: 3px;
+  padding: 1rem 1.15rem;
+}
+.sl-markdown-content .starlight-aside__title {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* 正文段距 / 标题间距全部沿用 Starlight 默认（用户认可的「以前」观感），不再自定义。 */
+
+/* —— 行内代码：胶囊底色，和正文区分 —— */
+.sl-markdown-content :not(pre) > code {
+  background: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 6px;
+  padding: 0.12em 0.4em;
+  font-size: 0.88em;
+}
+
+/* —— 侧栏：一级分组标题用官方亮蓝；嵌套层标题颜色由 VersionSidebar 对齐普通链接 —— */
+.sidebar-content .group-label > span {
+  font-size: 1.02rem;          /* 父标题比子项大 */
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--laya-sb-heading);
+}
+/* 清除各层级 li 自带的 margin 差异，间距统一由链接的 padding 决定 */
+.sidebar-content li { margin: 0; }
+/* 嵌套列表的树状引导线（Starlight 默认给 ul ul li 加浅色左边线）：
+   深色侧栏上呈现为一条突兀的白线，去掉 */
+.sidebar-content ul ul li {
+  border-inline-start: none;
+}
+.sidebar-content a {
+  border-radius: 8px;
+  padding-block: 0.5em;        /* 统一行距 */
+  line-height: 1.4;
+  font-size: 0.9rem;           /* 子项字号，明显小于父标题 */
+}
+/* 分组标题上方留一点分隔空间 —— 仅顶层分组（组与组之间）。
+   不能写成 .group-label 通配：嵌套层分组行(summary)是 flex 居中盒，
+   label 带上这条 margin-top 会被推下去，出现「文字不居中、框比普通链接高」的别扭观感 */
+.sidebar-content ul.top-level > li > details > summary .group-label {
+  margin-top: 0.7rem;
+  padding-block: 0.25em;
+}
+/* 嵌套层「可展开分组行」：盒子与同级普通链接完全一致（内边距/圆角/悬停底色），
+   文字垂直居中，消除与不带箭头项的宽窄/高矮差 */
+.sidebar-content ul:not(.top-level) summary {
+  font-size: 0.9rem;     /* 与普通链接同字号：em 内边距/caret 随之同尺寸，行盒完全等高 */
+  padding-block: 0.5em;
+  border-radius: 8px;
+}
+.sidebar-content ul:not(.top-level) summary .group-label {
+  margin-top: 0;
+  padding-block: 0;
+}
+.sidebar-content ul:not(.top-level) summary:hover {
+  background: var(--laya-sb-bg-active);
+}
+.sidebar-content ul:not(.top-level) summary:hover .group-label .large {
+  color: var(--laya-sb-link-active);
+}
+/* 当前项左侧加一道亮蓝条强化定位 */
+.sidebar-content a[aria-current='page'] {
+  box-shadow: inset 3px 0 0 var(--laya-sb-heading);
+}
+
+/* —— 右侧目录(本页内容)：行距拉开不拥挤 + 当前项高亮 + 左条 —— */
+starlight-toc a {
+  border-inline-start: 2px solid transparent;
+  padding-block: 0.32rem;
+  line-height: 1.35;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+starlight-toc li { margin-block: 0.05rem; }
+
+/* —— 右侧目录列：固定 14rem(224px) 并推到屏幕最右缘，正文在剩余空间居中 —— */
+/* Starlight 默认公式是「目录列吸收一半剩余空白（列很宽、目录文字靠左贴正文）」，
+   宽屏下目录区显得又宽又空；而单独把目录列钉死 14rem 又会让剩余空白无人吸收、
+   全部堆在最右侧成死空间（正文列宽度另有公式，不会自动补位）。
+   这里三条规则配套：目录列 14rem 固定 → 正文列吃掉其余全部宽度 → 正文在列内居中，
+   形成「侧栏 | 居中正文 | 右缘目录」的 Vercel/Stripe 式三栏，任何宽度下都无死空间。 */
+/* 仅在 ≥72rem(Starlight 显示独立右栏的断点)生效；更窄时目录自动收成顶部下拉，不受影响。 */
+/* 关键：.right-sidebar 是 position:fixed 满宽，真正决定目录可视宽度的是它内部的 .sl-container，
+   只设外层保留列(.right-sidebar-container)管不到它 —— 两层必须一起设，否则目录仍按旧宽折行。 */
+@media (min-width: 72rem) {
+  /* 目录列宽度与左侧栏一致（--sl-sidebar-width=18.75rem），左右对称 */
+  .right-sidebar-container {
+    width: var(--sl-sidebar-width);
+  }
+  /* 目录面板两侧各有 var(--sl-sidebar-pad-x)=1rem 内边距，列已贴屏幕右缘，
+     内层必须按列宽扣除内边距，否则文字溢出视口被裁（扣除后 268px ≥ 最长条目 201px） */
+  .right-sidebar .sl-container {
+    width: calc(var(--sl-sidebar-width) - 2 * var(--sl-sidebar-pad-x));
+  }
+  /* 正文列吃掉目录列之外的全部宽度，并把内容容器从「贴右(auto 0)」改为居中(auto) */
+  [data-has-sidebar][data-has-toc] .main-pane {
+    width: calc(100% - var(--sl-sidebar-width));
+    --sl-content-margin-inline: auto;
+  }
+}
+starlight-toc a[aria-current='true'] {
+  color: var(--sl-color-text-accent);
+  font-weight: 600;
+  border-inline-start-color: var(--sl-color-accent);
+}
+
+/* —— 全站细滚动条：深色科技风 —— */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sl-color-gray-4) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sl-color-gray-5);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sl-color-accent);
+  background-clip: content-box;
+}
+
+/* —— 强调色微调：深色模式下更亮的蓝，暗底上更跳、可读性更好 —— */
+:root[data-theme='dark'] {
+  --sl-color-text-accent: #6cb8e6;
+  --sl-color-accent: #2980b9;
+}
+
+/* ============================================================
+   官方风深色侧栏（对标 layaair.com/3.x/doc 的 GitBook 深蓝灰侧栏）
+   浅色 / 深色模式下侧栏都固定深色；正文区不受影响。
+   ============================================================ */
+.sidebar-pane,
+.sidebar .sidebar-content {
+  background: var(--laya-sb-bg);
+}
+/* 侧栏与正文同底后（深色模式下无色差），用一条 hairline 立住列边界 */
+.sidebar-pane {
+  border-inline-end: 1px solid var(--sl-color-hairline);
+}
+/* 普通链接 */
+.sidebar-content a {
+  color: var(--laya-sb-link);
+}
+/* 悬停 / 当前项 */
+.sidebar-content a:hover {
+  color: var(--laya-sb-link-active);
+  background: var(--laya-sb-bg-active);
+}
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover {
+  background: var(--laya-sb-bg-active);
+  color: var(--laya-sb-link-active);
+}
+/* 分组展开/收缩箭头 caret 在深底上可见 */
+.sidebar-content .caret {
+  color: var(--laya-sb-link);
+}
+/* 分隔线 */
+.sidebar-content hr,
+.sidebar-pane .sidebar-content {
+  border-color: var(--laya-sb-divider);
+}
+
+/* 版本切换器：适配深色侧栏 */
+.version-switch {
+  border-color: var(--laya-sb-divider);
+  background: var(--laya-sb-bg-active);
+}
+.version-switch label {
+  color: #8b91a7;
+}
+.version-switch select {
+  color: #fff;
+  background: #3a3f54;
+  border-color: var(--laya-sb-divider);
+}
+.version-switch select:hover {
+  border-color: var(--laya-sb-heading);
+}
+.version-switch select option {
+  color: #212529;
+  background: #fff;
+}
+
+/* ============================================================
+   阅读工具条（对标官方 GitBook）：① 侧栏伸缩  ② 阅读设置
+   工具条由 Head.astro 的脚本注入到顶栏 site-title 之后。
+   ============================================================ */
+/* 工具条（☰/A）注入在顶栏中列（搜索框所在列）搜索之后；整列内容靠右，
+   与右侧的 明暗切换/GitHub 连成一排，左侧只留 logo */
+.header > .sl-flex:not(.title-wrapper):not(.right-group) {
+  justify-content: flex-end;
+}
+.laya-reader-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-inline-start: 0.6rem;
+  flex-shrink: 0;
+}
+.laya-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--sl-color-gray-1);
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.laya-tool-btn:hover {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent);
+}
+
+/* A 阅读设置下拉面板 */
+.laya-fontsettings {
+  position: relative;
+}
+.laya-font-panel {
+  position: absolute;
+  inset-block-start: calc(100% + 0.45rem);
+  inset-inline-end: 0; /* 工具条已移到顶栏右侧：面板右缘对齐按钮，向左展开，避免伸出视口 */
+  z-index: var(--sl-z-index-navbar);
+  min-width: 13rem;
+  padding: 0.55rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 12px;
+  background: var(--sl-color-bg);
+  box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.4);
+  display: grid;
+  gap: 0.45rem;
+}
+.laya-font-panel[hidden] {
+  display: none;
+}
+/* 每行：行首固定宽的中文标签 + 右侧按钮组（说明每行用途：字号/字体/背景） */
+.laya-font-panel .laya-row {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+.laya-font-panel .laya-row-label {
+  font-size: 0.78rem;
+  color: var(--sl-color-gray-2);
+  white-space: nowrap;
+}
+.laya-font-panel .laya-row-btns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.3rem;
+}
+.laya-font-panel button {
+  padding: 0.42rem 0.5rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 8px;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-gray-1);
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+.laya-font-panel button:hover {
+  border-color: var(--sl-color-accent);
+}
+.laya-font-panel button[aria-pressed='true'] {
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  color: #fff;
+}
+/* A−（缩小）略小、A+（放大）略大，方向 + 大小双重提示 */
+.laya-font-panel .laya-sizes button {
+  font-weight: 700;
+}
+.laya-font-panel .laya-sizes button[data-font-dec] {
+  font-size: 0.9rem;
+}
+.laya-font-panel .laya-sizes button[data-font-inc] {
+  font-size: 1.15rem;
+}
+.laya-font-panel .laya-serif-btn {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ① 折叠侧栏：仅桌面 ≥50rem 生效（移动端侧栏是抽屉，不受影响）。
+   目标：只隐藏左侧导航栏，保留右侧「本页内容」目录；正文吃掉左侧腾出的空间。
+   注意：不能改 --sl-sidebar-width（右侧目录列也依赖它），只归零正文左偏移。 */
+@media (min-width: 50rem) {
+  html.laya-sb-collapsed {
+    --sl-content-inline-start: 0rem;
+  }
+  html.laya-sb-collapsed .sidebar-pane {
+    display: none;
+  }
+  /* 无独立右栏断点：正文列占满 main-frame */
+  html.laya-sb-collapsed .main-pane {
+    width: 100%;
+    --sl-content-margin-inline: 0;
+  }
+}
+/* 宽屏(≥72rem，有独立右侧目录)：正文列铺满到目录列之前，目录列宽度不变 */
+@media (min-width: 72rem) {
+  html.laya-sb-collapsed [data-has-sidebar][data-has-toc] .main-pane {
+    width: calc(100% - var(--sl-sidebar-width));
+    --sl-content-margin-inline: 0;
+  }
+}
+/* 折叠时放宽正文容器，否则仍被 56rem 卡住、左侧大片留白 */
+html.laya-sb-collapsed .main-pane .sl-container {
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: var(--sl-content-pad-x, 1.5rem);
+}
+
+/* ② 正文字号缩放（只缩放正文，不动 UI/侧栏）
+   - 正文/列表：容器 font-size 乘缩放，子元素继承 → 自动缩放。
+   - 标题：Starlight 用 var(--sl-text-hX)，该变量在 :root 处已被解析成定值再继承下来，
+     在容器内改 base token 对它无效；这里直接对标题把「已解析出的 --sl-text-hX」再乘缩放系数，
+     既缩放又保留 Starlight 的响应式断点（hX 仍随屏宽切换）。 */
+.sl-markdown-content {
+  font-size: calc(1rem * var(--laya-font-scale, 1));
+}
+.sl-markdown-content :is(h1, .sl-heading-wrapper.level-h1) {
+  font-size: calc(var(--sl-text-h1) * var(--laya-font-scale, 1));
+}
+.sl-markdown-content :is(h2, .sl-heading-wrapper.level-h2) {
+  font-size: calc(var(--sl-text-h2) * var(--laya-font-scale, 1));
+}
+.sl-markdown-content :is(h3, .sl-heading-wrapper.level-h3) {
+  font-size: calc(var(--sl-text-h3) * var(--laya-font-scale, 1));
+}
+.sl-markdown-content :is(h4, .sl-heading-wrapper.level-h4) {
+  font-size: calc(var(--sl-text-h4) * var(--laya-font-scale, 1));
+}
+.sl-markdown-content :is(h5, .sl-heading-wrapper.level-h5) {
+  font-size: calc(var(--sl-text-h5) * var(--laya-font-scale, 1));
+}
+.sl-markdown-content :is(h6, .sl-heading-wrapper.level-h6) {
+  font-size: calc(var(--sl-text-h6) * var(--laya-font-scale, 1));
+}
+
+/* ② 衬线字体（仅正文） */
+html.laya-serif .sl-markdown-content {
+  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+}
+
+/* ② Sepia 暖色纸张主题（在 light 基础上覆盖正文区配色；侧栏同步切为暖色，保持协调） */
+html.laya-sepia {
+  --sl-color-bg: #f3ead6;
+  --sl-color-bg-nav: rgba(243, 234, 214, 0.85);
+  --sl-color-text: #5b4636;
+  --sl-color-white: #4a3829;
+  --sl-color-gray-1: #5b4636;
+  --sl-color-gray-2: #6b5644;
+  --sl-color-gray-6: #e9dec5;
+  --sl-color-hairline: #ddceac;
+
+  /* 侧栏暖色调色板：沿用「深底浅字」结构，仅换成暖棕色相，跟随纸张主题 */
+  --laya-sb-bg: #463a28;             /* 暖棕侧栏底 */
+  --laya-sb-bg-active: #5a4a32;      /* 选中/悬停底 */
+  --laya-sb-divider: #564730;        /* 分隔线 */
+  --laya-sb-link: #e3d6bd;           /* 普通链接 */
+  --laya-sb-link-active: #fff7e8;    /* 选中/悬停文字 */
+  --laya-sb-heading: #d8a25a;        /* 一级分组标题（暖琥珀）*/
+}
+html.laya-sepia .sl-markdown-content {
+  color: #5b4636;
+}
+/* Sepia 下版本切换器也切暖色，避免深蓝灰突兀 */
+html.laya-sepia .version-switch select {
+  background: #5a4a32;
+  color: #fff7e8;
+}

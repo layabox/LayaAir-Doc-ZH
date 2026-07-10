@@ -1,0 +1,79 @@
+---
+title: "自定义Shader导出"
+description: "未注册 Shader 的自动转换流水线：触发条件与命名、预转换模板优先、解析 Unity shader 源码、启发式 HLSL 到 GLSL 转译（内置规则与 JSON 映射表双模式）、类型映射、转换摘要与能力边界说明。"
+slug: "unity-plugin/custom-shader"
+---
+
+- **入口**：`CustomShaderExporter.WriteAutoCustomShaderMaterial`
+- **触发**：shader 未注册 + 面板开关已开
+- **产物**：`Shaders/<name>.shader`
+
+:::note[本章思路]
+[材质与Shader导出](/unity-plugin/material-shader/)处理「已注册 shader 的查表导出」，本页处理「未注册 shader 的自动转换」，是一条转换流水线：① 触发条件与命名（含预转换模板优先）→ ② 解析 Unity shader 源码，提取属性 / 渲染状态 / 变量 → ③ 将 HLSL 转译为 GLSL（双模式）→ ④ 类型映射（转译的子环节）→ ⑤ 转换摘要 → ⑥ 能力边界。
+:::
+
+:::note[本页示例 shader]
+`Custom/Shield`（Ellen 护盾，**表面着色器** `#pragma surface`）来自 [3D Game Kit Lite](https://assetstore.unity.com/packages/templates/tutorials/3d-game-kit-lite-135162)，自动转出 `Custom_Shield_D3.shader`。下文以它为例说明触发、命名、解析、转译、类型映射的完整流程。
+:::
+
+## ① 触发条件 · 命名 · 模板优先
+
+**本节为流水线入口——决定是否走自动转换、转出的命名，以及预转换模板优先。** 材质 shader **不在** `MetarialPropData.json` 里，**且**导出面板勾了「启用自定义 Shader 自动导出」时，`MetarialUitls.WriteMetarial` 才转交 `WriteAutoCustomShaderMaterial`。**没勾**则未注册 shader 的普通材质跳过导出、粒子材质回退 Laya 内置粒子 shader（见 [材质与Shader导出](/unity-plugin/material-shader/)）。
+
+![启用自定义 Shader 自动导出开关](/unity-plugin/img/custom-shader-toggle.png)
+
+**触发开关：** 导出面板「自定义 Shader 设置」→ 勾「启用自定义 Shader 自动导出」。提示语：「插件将自动识别并导出未内置支持的自定义 Shader 材质，自动把 Unity Shader 属性转换为 LayaAir 属性格式」。不勾则未注册 shader 一律跳过。
+
+流程分三步：
+
+- **A · 生成 Laya shader 名**：`GenerateLayaShaderName`：`/ 空格 -` → `_`，去非法字符。`Custom/Shield` → `Custom_Shield`。
+- **B · 按 renderer 加后缀**：MeshRenderer / CPU 粒子 → `_D3`；ParticleSystem → `_Effect`；2D → 无后缀。Shield 是 Mesh → `Custom_Shield_D3`。
+- **C · 模板优先（更可靠）**：`TryLoadPreConvertedTemplate`：若 `Editor/Mappings/templat_Shaders/` 有**手工预转好**的同名模板（`Mesh_`/`Particle_` 前缀回退查找），直接用模板，跳过自动转译。**没有模板才走下面的启发式转换。**
+
+## ② 解析 Unity shader
+
+**转译前先解析源码，提取属性 / 渲染状态 / 变量，为改写做准备。** 读 shader 源码（CGPROGRAM / HLSL 块），提取 → `ShaderParseResult`：**属性**（贴图 / 颜色 / float）、**渲染状态**（`ParseRenderState`：Cull / Blend / ZWrite）、**变量 / varyings / 自定义函数**（`ExtractVariables` / `ParseVaryings` / `ExtractCustomFunctions`），并**检测**是否用顶点色（`DetectVertexColorUsage`）、UV（`DetectUVUsage`）、粒子 billboard。
+
+## ③ HLSL → GLSL 转译（双模式）
+
+**核心步骤——将解析出的 HLSL 转译为 Laya 的 GLSL，含内置规则 / 映射表两种模式。** 改写规则有两种来源——默认用插件内置的硬编码规则，也可切换成外部 JSON 映射表（内置规则兜底）：
+
+| 模式 | 说明 |
+| --- | --- |
+| 内置规则（默认） | 全部用 C# 硬编码正则替换规则（`useMappingTableMode = false`） |
+| 映射表 Hybrid（可选） | 加载 JSON 映射表（`ShaderMappingEngine`）：按 priority 用表里的 types / functions / variables / patterns 规则，**内置规则兜底**。把 `example_custom_mappings.json` 复制为 `ProjectSettings/LayaShaderMappings.json` 才会启用映射表模式（无独立开关，文件存在即启用）；`Editor/Mappings/` 下的 example 文件只是模板，永远不会被读取 |
+
+转译内容：uniform map（`GenerateUniformMapFromProperties`）、defines（`GenerateDefinesFromParseResult`）、VS / FS（`GenerateConvertedVertexShader` / `Fragment`）、Unity 内置函数（`TransformTex` / `tex2D` / sincos / 反射…）。
+
+## ④ 类型映射
+
+**③ 的子环节——HLSL 类型到 GLSL 类型的对应关系。** 下表是固定的对照关系，遇到表里没有的类型则兜底成 `vec4`：
+
+| HLSL | GLSL |
+| --- | --- |
+| `float` / `half` / `fixed` | `float` |
+| `floatN` / `halfN` / `fixedN` | `vecN` |
+| `float4x4` / `3x3` / `2x2` | `mat4` / `mat3` / `mat2` |
+| `sampler2D` / `samplerCUBE` | `sampler2D` / `samplerCube` |
+| `int` / `bool` | `int` / `bool` |
+| **未知类型** | **兜底 `vec4`** |
+
+## ⑤ 转换摘要
+
+**转译完成后输出统计与检测摘要。** `GenerateConversionSummary` 会汇总：架构模式、shader 类型、统计（Properties / Defines / Varyings / Total Lines）、**功能检测**（多层贴图、溶解、扭曲、边缘光、自定义光照、顶点偏移、UV 旋转 / 滚动、法线、极坐标、渐变重映射…）、**警告**（硬编码零向量、未用 `positionOS`、无 varyings、varyings 过多）。
+
+:::tip[查看转换结果]
+要确认某个 shader 转成了什么，直接打开导出目录里的 `Shaders/<名称>.shader` 产物文件查看生成的 GLSL。
+:::
+
+## ⑥ 能力边界
+
+**说明该自动转换的适用范围与局限。** HLSL→GLSL 转换是**启发式**的：常见的属性、贴图采样、类型映射、渲染状态能自动转换，但**复杂 Shader（尤其 Unity 表面着色器 `#pragma surface`、手写复杂片元逻辑）可能无法完整转换，导出后需在 Laya 中手动调整 Shader**。对外观要求严格的 Shader，推荐用 ① 的**预转换模板**（`Editor/Mappings/templat_Shaders/` 放手工转好的同名模板）替代自动转译。
+
+![Ellen_Shield_Effect_Mat 检视器](/unity-plugin/img/custom-shader-material.png)
+
+**导出前 · Unity 材质示例：** `Ellen_Shield_Effect_Mat`，Shader = `Custom/Shield`（非 Standard），含 Color（青）/ Albedo / Smoothness / Metallic，渲染队列 3000（Transparent）。这类未注册 shader 的材质即由本页流程自动转换。
+
+---
+
+本页基于插件 1.1.7 源码与实测整理。

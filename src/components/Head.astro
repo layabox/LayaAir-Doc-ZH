@@ -1,0 +1,213 @@
+---
+// 覆写 Starlight Head：注入 Astro ClientRouter。
+// 作用是「无刷新切换页面」（不整页重新加载）；过场动画已在 custom.css 中全部关闭，
+// 切换瞬间完成 —— 既无缝又不慢。
+import Default from '@astrojs/starlight/components/Head.astro';
+import { ClientRouter } from 'astro:transitions';
+---
+
+<Default><slot /></Default>
+<ClientRouter />
+
+{/* 阅读偏好早应用：在首屏绘制前读 localStorage 并落到 <html>，避免折叠/字号/主题闪烁 */}
+<script is:inline>
+  (function () {
+    try {
+      var d = document.documentElement, ls = localStorage;
+      if (ls.getItem('laya-sb-collapsed') === '1') d.classList.add('laya-sb-collapsed');
+      var s = ls.getItem('laya-font-scale');
+      if (s) d.style.setProperty('--laya-font-scale', s);
+      if (ls.getItem('laya-font-family') === 'serif') d.classList.add('laya-serif');
+      var rt = ls.getItem('laya-reader-theme');
+      if (rt === 'sepia') d.classList.add('laya-sepia');
+      // 恢复明暗：white/sepia 建立在 light，night 建立在 dark（与 Starlight 的 data-theme 对齐）
+      if (rt === 'night') d.setAttribute('data-theme', 'dark');
+      else if (rt === 'white' || rt === 'sepia') d.setAttribute('data-theme', 'light');
+    } catch (e) {}
+  })();
+</script>
+
+<script>
+  // 修复：点击右侧「本页内容」目录时，蓝色高亮立即切到被点项。
+  // 根因：Starlight 的 scroll-spy(IntersectionObserver) 在「点击锚点 + 平滑滚动 + ClientRouter」
+  // 组合下，点击跳转不触发监听器更新高亮（只有手动滚动才更新），表现为「点了没反应」。
+  // 这里用 document 级事件委托接管点击瞬间的高亮，一次绑定，对 ClientRouter 换页后的新 DOM 仍有效。
+  document.addEventListener('click', (e) => {
+    const target = e.target as Element | null;
+    const link = target?.closest?.('starlight-toc a') as HTMLAnchorElement | null;
+    if (!link) return;
+    const toc = link.closest('starlight-toc');
+    if (!toc) return;
+    toc
+      .querySelectorAll('a[aria-current="true"]')
+      .forEach((a) => a.removeAttribute('aria-current'));
+    link.setAttribute('aria-current', 'true');
+  });
+
+  // 修复：ClientRouter 无刷新换页时，整页 DOM（含左侧导航）被整体替换重建，
+  // 导致侧栏滚动位置每次都被重置回顶部 —— 在长目录里点开一项后，侧栏跳回顶端，
+  // 无法接着点下一项，阅读被打断。
+  // 解决：在换页生命周期里保存/恢复侧栏滚动容器 .sidebar-pane 的 scrollTop，让侧栏保持原位。
+  let savedSidebarScroll = 0;
+  document.addEventListener('astro:before-swap', () => {
+    const pane = document.querySelector('.sidebar-pane');
+    if (pane) savedSidebarScroll = pane.scrollTop;
+  });
+  document.addEventListener('astro:after-swap', () => {
+    const pane = document.querySelector('.sidebar-pane');
+    if (pane) pane.scrollTop = savedSidebarScroll;
+    // 换页后新页 <html> 是构建时静态版，运行时设置的 data-theme / laya-sepia 等会丢失，
+    // 这里在「绘制前」重新落地阅读偏好，避免背景色被重置（白/夜/护眼）。
+    applyReaderPrefs();
+  });
+
+  // ============================================================
+  // 阅读工具条（对标官方 GitBook）：① 侧栏伸缩  ② 阅读设置（字号/衬线/背景主题）
+  // 注入到顶栏 site-title 之后；偏好存 localStorage；兼容 ClientRouter（每次换页重建）。
+  // ============================================================
+  const FONT_SCALES = [0.875, 1, 1.125, 1.25];
+  const ls = {
+    get: (k: string) => { try { return localStorage.getItem(k); } catch { return null; } },
+    set: (k: string, v: string) => { try { localStorage.setItem(k, v); } catch {} },
+  };
+
+  function applyReaderPrefs() {
+    const d = document.documentElement;
+    d.classList.toggle('laya-sb-collapsed', ls.get('laya-sb-collapsed') === '1');
+    const s = ls.get('laya-font-scale');
+    if (s) d.style.setProperty('--laya-font-scale', s);
+    d.classList.toggle('laya-serif', ls.get('laya-font-family') === 'serif');
+    const rt = ls.get('laya-reader-theme'); // white | sepia | night
+    d.classList.toggle('laya-sepia', rt === 'sepia');
+    // 恢复明暗：换页(ClientRouter)后新页 <html> 是静态版、丢了运行时的 data-theme，这里按偏好补回
+    if (rt === 'night') d.dataset.theme = 'dark';
+    else if (rt === 'white' || rt === 'sepia') d.dataset.theme = 'light';
+  }
+
+  function currentReaderTheme(): 'white' | 'sepia' | 'night' {
+    if (document.documentElement.classList.contains('laya-sepia')) return 'sepia';
+    return document.documentElement.dataset.theme === 'dark' ? 'night' : 'white';
+  }
+
+  function setReaderTheme(t: 'white' | 'sepia' | 'night') {
+    const d = document.documentElement;
+    ls.set('laya-reader-theme', t);
+    if (t === 'night') {
+      d.classList.remove('laya-sepia');
+      d.dataset.theme = 'dark';
+      ls.set('starlight-theme', 'dark');
+    } else {
+      // white / sepia 都建立在 light 之上
+      d.dataset.theme = 'light';
+      ls.set('starlight-theme', 'light');
+      d.classList.toggle('laya-sepia', t === 'sepia');
+    }
+  }
+
+  function setFontFamily(f: 'serif' | 'sans') {
+    ls.set('laya-font-family', f);
+    document.documentElement.classList.toggle('laya-serif', f === 'serif');
+  }
+
+  function stepFontScale(dir: number) {
+    const cur = parseFloat(ls.get('laya-font-scale') || '1');
+    let i = FONT_SCALES.findIndex((v) => Math.abs(v - cur) < 0.001);
+    if (i < 0) i = 1;
+    i = Math.min(FONT_SCALES.length - 1, Math.max(0, i + dir));
+    const v = String(FONT_SCALES[i]);
+    ls.set('laya-font-scale', v);
+    document.documentElement.style.setProperty('--laya-font-scale', v);
+  }
+
+  function syncPanelState(panel: HTMLElement) {
+    const fam = ls.get('laya-font-family') === 'serif' ? 'serif' : 'sans';
+    const theme = currentReaderTheme();
+    panel.querySelectorAll<HTMLElement>('[data-font-family]').forEach((b) =>
+      b.setAttribute('aria-pressed', String(b.dataset.fontFamily === fam))
+    );
+    panel.querySelectorAll<HTMLElement>('[data-reader-theme]').forEach((b) =>
+      b.setAttribute('aria-pressed', String(b.dataset.readerTheme === theme))
+    );
+  }
+
+  function buildToolbar() {
+    if (document.querySelector('.laya-reader-tools')) return;
+    // 插入顶栏中列（搜索框所在列）、搜索之后：☰/A 与搜索一起靠右显示（列的靠右由 custom.css 控制），
+    // 保持 header 三列栅格不变。找不到搜索列时退回 logo 列，工具条不至于消失。
+    const titleWrap = document.querySelector('site-search')?.parentElement
+      || document.querySelector('.header .title-wrapper') || document.querySelector('.title-wrapper');
+    if (!titleWrap) return;
+
+    const tools = document.createElement('div');
+    tools.className = 'laya-reader-tools';
+    tools.innerHTML = `
+      <button class="laya-tool-btn" data-sidebar-toggle type="button" aria-label="折叠/展开侧栏" title="折叠/展开侧栏">☰</button>
+      <div class="laya-fontsettings">
+        <button class="laya-tool-btn" data-font-toggle type="button" aria-label="阅读设置" title="阅读设置（字号/字体/背景）" aria-expanded="false">A</button>
+        <div class="laya-font-panel" role="menu" hidden>
+          <div class="laya-row">
+            <span class="laya-row-label">字号</span>
+            <div class="laya-row-btns laya-sizes">
+              <button type="button" data-font-dec aria-label="缩小字号" title="缩小字号">A−</button>
+              <button type="button" data-font-inc aria-label="放大字号" title="放大字号">A+</button>
+            </div>
+          </div>
+          <div class="laya-row">
+            <span class="laya-row-label">字体</span>
+            <div class="laya-row-btns laya-families">
+              <button type="button" class="laya-serif-btn" data-font-family="serif">Serif</button>
+              <button type="button" data-font-family="sans">Sans</button>
+            </div>
+          </div>
+          <div class="laya-row">
+            <span class="laya-row-label">背景</span>
+            <div class="laya-row-btns laya-themes">
+              <button type="button" data-reader-theme="white">White</button>
+              <button type="button" data-reader-theme="sepia">Sepia</button>
+              <button type="button" data-reader-theme="night">Night</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    titleWrap.appendChild(tools);
+
+    const panel = tools.querySelector('.laya-font-panel') as HTMLElement;
+    const fontToggle = tools.querySelector('[data-font-toggle]') as HTMLElement;
+
+    tools.querySelector('[data-sidebar-toggle]')!.addEventListener('click', () => {
+      const collapsed = document.documentElement.classList.toggle('laya-sb-collapsed');
+      ls.set('laya-sb-collapsed', collapsed ? '1' : '0');
+    });
+
+    const openPanel = (open: boolean) => {
+      panel.hidden = !open;
+      fontToggle.setAttribute('aria-expanded', String(open));
+      if (open) syncPanelState(panel);
+    };
+    fontToggle.addEventListener('click', (e) => { e.stopPropagation(); openPanel(panel.hidden); });
+    panel.addEventListener('click', (e) => e.stopPropagation());
+
+    tools.querySelector('[data-font-dec]')!.addEventListener('click', () => stepFontScale(-1));
+    tools.querySelector('[data-font-inc]')!.addEventListener('click', () => stepFontScale(1));
+    panel.querySelectorAll<HTMLElement>('[data-font-family]').forEach((b) =>
+      b.addEventListener('click', () => { setFontFamily(b.dataset.fontFamily as 'serif' | 'sans'); syncPanelState(panel); })
+    );
+    panel.querySelectorAll<HTMLElement>('[data-reader-theme]').forEach((b) =>
+      b.addEventListener('click', () => { setReaderTheme(b.dataset.readerTheme as 'white' | 'sepia' | 'night'); syncPanelState(panel); })
+    );
+  }
+
+  // 点击空白处 / Esc 关闭设置面板（document 级，仅绑一次）
+  document.addEventListener('click', () => {
+    document.querySelectorAll<HTMLElement>('.laya-font-panel').forEach((p) => {
+      if (!p.hidden) { p.hidden = true; p.previousElementSibling?.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.querySelectorAll<HTMLElement>('.laya-font-panel').forEach((p) => (p.hidden = true));
+  });
+
+  function initReaderTools() { applyReaderPrefs(); buildToolbar(); }
+  initReaderTools();
+  document.addEventListener('astro:page-load', initReaderTools);
+</script>

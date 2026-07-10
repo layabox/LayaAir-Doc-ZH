@@ -1,0 +1,109 @@
+---
+// 覆写 Starlight 页脚：保留默认页脚 + 注入「图片点击放大」灯箱
+// 复刻老 GitBook 的 popup 能力，零依赖。
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default><slot /></Default>
+
+<div id="laya-lightbox" role="dialog" aria-modal="true" aria-label="图片放大预览" aria-hidden="true" tabindex="-1">
+  <img alt="" />
+</div>
+
+<style is:global>
+  /* 正文图片可点击放大的提示 */
+  .sl-markdown-content img {
+    cursor: zoom-in;
+    border-radius: 8px;
+  }
+  #laya-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4vmin;
+    background: rgba(8, 14, 24, 0.85);
+    backdrop-filter: blur(6px);
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  #laya-lightbox.open {
+    display: flex;
+    opacity: 1;
+  }
+  #laya-lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.7);
+    transform: scale(0.96);
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  #laya-lightbox.open img {
+    transform: scale(1);
+  }
+</style>
+
+<script>
+  // 灯箱：全局监听只绑定「一次」（模块作用域），靠事件委托覆盖 ClientRouter 换页后的新 DOM。
+  // 老实现把 box/document 监听写在 initLightbox 里、每次 astro:page-load 重复绑定 →
+  // 监听器逐次累积（内存泄漏 + 多个 Escape 处理）。这里彻底改为「绑一次 + 委托」。
+  let lastFocused: HTMLElement | null = null;
+
+  function isContentImage(el: EventTarget | null): el is HTMLImageElement {
+    return el instanceof HTMLImageElement && !!el.closest('.sl-markdown-content');
+  }
+
+  function openLightbox(img: HTMLImageElement) {
+    const box = document.getElementById('laya-lightbox');
+    if (!box) return;
+    const big = box.querySelector('img') as HTMLImageElement | null;
+    if (!big) return;
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt || '放大的图片'; // 把原图 alt 带给屏幕阅读器，不再是空 alt
+    lastFocused = (document.activeElement as HTMLElement) ?? img;
+    box.classList.add('open');
+    box.setAttribute('aria-hidden', 'false');
+    box.focus(); // 焦点移入对话框，Esc 可关、不再困在正文
+  }
+
+  function closeLightbox() {
+    const box = document.getElementById('laya-lightbox');
+    if (!box || !box.classList.contains('open')) return;
+    box.classList.remove('open');
+    box.setAttribute('aria-hidden', 'true');
+    lastFocused?.focus(); // 焦点归还到触发图片
+    lastFocused = null;
+  }
+
+  // 点击：正文图放大；点遮罩关闭
+  document.addEventListener('click', (e) => {
+    if (isContentImage(e.target)) { openLightbox(e.target); return; }
+    if ((e.target as Element)?.closest?.('#laya-lightbox')) closeLightbox();
+  });
+
+  // 键盘：Esc 关闭；Enter/Space 在聚焦的正文图上放大
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeLightbox(); return; }
+    if ((e.key === 'Enter' || e.key === ' ') && isContentImage(document.activeElement)) {
+      e.preventDefault();
+      openLightbox(document.activeElement as HTMLImageElement);
+    }
+  });
+
+  // 让正文图可被键盘聚焦/触发（每次换页幂等补一遍，已处理的跳过）
+  function enhanceImages() {
+    document.querySelectorAll<HTMLImageElement>('.sl-markdown-content img').forEach((img) => {
+      if (img.dataset.zoomable) return;
+      img.dataset.zoomable = '1';
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      if (!img.getAttribute('aria-label')) img.setAttribute('aria-label', '放大查看图片');
+    });
+  }
+  enhanceImages();
+  document.addEventListener('astro:page-load', enhanceImages);
+</script>

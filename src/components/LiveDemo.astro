@@ -1,0 +1,148 @@
+---
+// 可交互演示「孤岛」示例：文档页里嵌入一个活的 Canvas 演示。
+// 旋转的 3D 线框立方体 + 实时调速 / 调色 / 暂停。
+// 纯 Canvas + 原生 JS，零依赖；证明交互演示可直接嵌进文档。
+---
+
+<div class="live-demo">
+  <canvas id="laya-demo-canvas" width="560" height="320"></canvas>
+  <div class="ld-controls">
+    <label>
+      旋转速度
+      <input id="ld-speed" type="range" min="0" max="100" value="40" />
+    </label>
+    <label>
+      线框颜色
+      <input id="ld-color" type="color" value="#4dabf7" />
+    </label>
+    <button id="ld-toggle">暂停</button>
+  </div>
+  <p class="ld-hint">↑ 这是一个真实运行的交互组件，拖动滑块 / 改颜色 / 点暂停试试。</p>
+</div>
+
+<style>
+  .live-demo {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 14px;
+    padding: 1rem;
+    background: var(--sl-color-bg-sidebar);
+    box-shadow: 0 8px 30px -16px rgba(28, 126, 214, 0.4);
+  }
+  #laya-demo-canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: radial-gradient(120% 120% at 50% 0%, #11243f, #0a0f18);
+    display: block;
+  }
+  .ld-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 0.9rem;
+  }
+  .ld-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-2);
+  }
+  .ld-controls button {
+    padding: 0.35rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, #1c7ed6, #4dabf7);
+  }
+  .ld-hint {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>
+
+<script>
+  // 立方体 8 顶点 / 12 棱（模块常量，与实例无关）
+  const V = [
+    [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
+    [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
+  ];
+  const E = [
+    [0, 1], [1, 2], [2, 3], [3, 0],
+    [4, 5], [5, 6], [6, 7], [7, 4],
+    [0, 4], [1, 5], [2, 6], [3, 7],
+  ];
+
+  // 每个页面实例独立的 rAF 句柄；切页/后台时据此取消，杜绝「离开页面后动画仍在跑」的泄漏。
+  let rafId = 0;
+  function stopDemo() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+  }
+
+  function initDemo() {
+    stopDemo(); // 幂等：重复初始化先停掉上一轮，避免叠加多条 rAF 循环
+    const canvas = document.getElementById('laya-demo-canvas') as HTMLCanvasElement | null;
+    if (!canvas) return; // 非演示页直接跳过
+    const ctx = canvas.getContext('2d');
+    const speedEl = document.getElementById('ld-speed') as HTMLInputElement | null;
+    const colorEl = document.getElementById('ld-color') as HTMLInputElement | null;
+    const toggleEl = document.getElementById('ld-toggle') as HTMLButtonElement | null;
+    if (!ctx || !speedEl || !colorEl || !toggleEl) return;
+
+    // 无障碍：尊重「减少动态效果」偏好 —— 默认暂停，只渲染一帧静态线框，用户仍可点「继续」。
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let angle = 0;
+    let running = !reduceMotion;
+    toggleEl.textContent = running ? '暂停' : '继续';
+
+    function render() {
+      const w = canvas!.width, h = canvas!.height;
+      ctx!.clearRect(0, 0, w, h);
+      const speed = Number(speedEl!.value) / 100;
+      if (running) angle += 0.01 + speed * 0.05;
+
+      const cosA = Math.cos(angle), sinA = Math.sin(angle);
+      const cosB = Math.cos(angle * 0.6), sinB = Math.sin(angle * 0.6);
+      const pts = V.map(([x, y, z]) => {
+        let dx = x * cosA - z * sinA;       // 绕 Y
+        let dz = x * sinA + z * cosA;
+        let dy = y * cosB - dz * sinB;       // 绕 X
+        dz = y * sinB + dz * cosB;
+        const scale = 110 / (dz + 4);
+        return [w / 2 + dx * scale, h / 2 + dy * scale];
+      });
+
+      ctx!.strokeStyle = colorEl!.value;
+      ctx!.lineWidth = 2;
+      ctx!.shadowColor = colorEl!.value;
+      ctx!.shadowBlur = 12;
+      ctx!.beginPath();
+      for (const [a, b] of E) {
+        ctx!.moveTo(pts[a][0], pts[a][1]);
+        ctx!.lineTo(pts[b][0], pts[b][1]);
+      }
+      ctx!.stroke();
+      rafId = requestAnimationFrame(render);
+    }
+
+    toggleEl.addEventListener('click', () => {
+      running = !running;
+      toggleEl!.textContent = running ? '暂停' : '继续';
+    });
+
+    rafId = requestAnimationFrame(render);
+  }
+
+  // 首次加载 + 每次 ClientRouter 换页都重新初始化；离开页面/切后台时取消 rAF。
+  initDemo();
+  document.addEventListener('astro:page-load', initDemo);
+  document.addEventListener('astro:before-swap', stopDemo);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopDemo();
+    else if (!rafId && document.getElementById('laya-demo-canvas')) initDemo();
+  });
+</script>

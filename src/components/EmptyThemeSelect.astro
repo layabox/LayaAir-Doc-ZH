@@ -1,0 +1,48 @@
+---
+// 占用 Starlight 的主题切换器（ThemeSelect）槽位：渲染一个「太阳/月亮」明暗切换按钮。
+// 历史：曾把此槽位置空、明暗只能通过左上角「A」阅读设置面板的背景选项（White/Sepia/Night）切换，
+// 但「A」入口太隐晦，用户找不到明暗开关，这里恢复一个直观的一键切换。
+// 状态与 A 面板同源：同时写 laya-reader-theme（Head.astro 首屏恢复用）和 starlight-theme
+// （Starlight ThemeProvider 用），两个入口不会互相打架；Sepia 仍从 A 面板进入。
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<button
+  class="laya-tool-btn laya-theme-toggle"
+  data-theme-toggle
+  type="button"
+  aria-label="切换浅色/深色模式"
+  title="切换浅色/深色模式"
+>
+  <Icon name="sun" class="laya-icon-sun" />
+  <Icon name="moon" class="laya-icon-moon" />
+</button>
+
+<style is:global>
+  /* 图标随当前主题切换：浅色显示月亮（点击去深色），深色显示太阳（点击回浅色），纯 CSS 无需 JS 同步 */
+  .laya-theme-toggle .laya-icon-sun {
+    display: none;
+  }
+  :root[data-theme='dark'] .laya-theme-toggle .laya-icon-sun {
+    display: inline-block;
+  }
+  :root[data-theme='dark'] .laya-theme-toggle .laya-icon-moon {
+    display: none;
+  }
+</style>
+
+<script>
+  // 一次绑定 + 事件委托：ClientRouter 换页重建 DOM 后依然生效（与灯箱/工具条同一模式）
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as Element | null)?.closest?.('[data-theme-toggle]');
+    if (!btn) return;
+    const d = document.documentElement;
+    const toDark = d.dataset.theme !== 'dark';
+    d.dataset.theme = toDark ? 'dark' : 'light';
+    d.classList.remove('laya-sepia'); // 一键切换在 白/夜 间进行，离开护眼态
+    try {
+      localStorage.setItem('laya-reader-theme', toDark ? 'night' : 'white');
+      localStorage.setItem('starlight-theme', toDark ? 'dark' : 'light');
+    } catch {}
+  });
+</script>

@@ -1,0 +1,2350 @@
+[
+  {
+    "label": "文档首页",
+    "link": "/"
+  },
+  {
+    "label": "引擎介绍",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "引擎历史与服务",
+        "link": "/services/"
+      },
+      {
+        "label": "引擎功能概述",
+        "link": "/basics/"
+      },
+      {
+        "label": "引擎架构概述",
+        "link": "/basics/architecture/"
+      },
+      {
+        "label": "Unity转LayaAir差异说明",
+        "link": "/basics/unitytolayaair/"
+      },
+      {
+        "label": "2.x引擎项目升级说明",
+        "link": "/basics/2-x-upgrade/"
+      }
+    ]
+  },
+  {
+    "label": "学习路线图",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "程序新手路线",
+        "link": "/guides/roadmap/beginner/"
+      },
+      {
+        "label": "程序进阶路线",
+        "link": "/guides/roadmap/intermediate/"
+      },
+      {
+        "label": "美术路线",
+        "link": "/guides/roadmap/artist/"
+      },
+      {
+        "label": "AI开发路线",
+        "link": "/guides/roadmap/ai/"
+      },
+      {
+        "label": "Unity/Cocos迁移路线",
+        "link": "/guides/roadmap/migration/"
+      }
+    ]
+  },
+  {
+    "label": "快速入门",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "初学者必读",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/basics/developmentenvironment/"
+          },
+          {
+            "label": "搭建基础开发环境",
+            "link": "/basics/developmentenvironment/download/"
+          },
+          {
+            "label": "AI协同开发环境",
+            "link": "/basics/developmentenvironment/aigc/"
+          },
+          {
+            "label": "TS语言基础",
+            "link": "/basics/language/"
+          },
+          {
+            "label": "如何阅读LayaAir的API",
+            "link": "/basics/developmentenvironment/api/"
+          }
+        ]
+      },
+      {
+        "label": "基础开发模块与流程",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/basics/ide/"
+          },
+          {
+            "label": "IDE主要模块概述",
+            "link": "/basics/ide/gui/"
+          },
+          {
+            "label": "创建新项目",
+            "link": "/basics/ide/createnewproject/"
+          },
+          {
+            "label": "项目工程目录说明",
+            "link": "/basics/ide/projecfolders/"
+          },
+          {
+            "label": "项目启动入口说明",
+            "link": "/basics/ide/entry/"
+          },
+          {
+            "label": "开发流程: Hello World",
+            "link": "/basics/ide/helloworld/"
+          },
+          {
+            "label": "DevTools调试工具",
+            "link": "/basics/devtools/"
+          }
+        ]
+      },
+      {
+        "label": "游戏入门实例",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/basics/ide/gamedevelopment/"
+          },
+          {
+            "label": "一个2D入门游戏",
+            "link": "/2d/advanced/2dgame/"
+          },
+          {
+            "label": "一个3D入门游戏",
+            "link": "/3d/advanced/3dgame/"
+          }
+        ]
+      },
+      {
+        "label": "IDE快捷键与鼠标交互操作大全",
+        "link": "/basics/ide/shortcutkeycombinations/"
+      },
+      {
+        "label": "Unity资源导出插件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "插件介绍与导入",
+            "link": "/3d/advanced/unity/"
+          },
+          {
+            "label": "导出能力一览",
+            "link": "/unity-plugin/"
+          },
+          {
+            "label": "安装与导出窗口",
+            "link": "/unity-plugin/install/"
+          },
+          {
+            "label": "整体导出流程",
+            "link": "/unity-plugin/overview/"
+          },
+          {
+            "label": "网格导出",
+            "link": "/unity-plugin/mesh/"
+          },
+          {
+            "label": "材质与Shader导出",
+            "link": "/unity-plugin/material-shader/"
+          },
+          {
+            "label": "自定义Shader导出",
+            "link": "/unity-plugin/custom-shader/"
+          },
+          {
+            "label": "粒子系统导出",
+            "link": "/unity-plugin/particle/"
+          },
+          {
+            "label": "动画导出",
+            "link": "/unity-plugin/animation/"
+          },
+          {
+            "label": "2D精灵导出",
+            "link": "/unity-plugin/sprite-2d/"
+          },
+          {
+            "label": "疑似问题清单",
+            "link": "/unity-plugin/known-issues/"
+          }
+        ]
+      },
+      {
+        "label": "Cocos资源导出插件",
+        "link": "/basics/developmentenvironment/cocostolayaair/"
+      },
+      {
+        "label": "AI开发环境：LayaAir-MCP",
+        "link": "/basics/developmentenvironment/ide-mcp/"
+      },
+      {
+        "label": "AI开发工具：LayaIdea",
+        "link": "/basics/developmentenvironment/layaidea/"
+      }
+    ]
+  },
+  {
+    "label": "IDE主要面板",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "面板布局",
+        "link": "/basics/ide/layouts/"
+      },
+      {
+        "label": "场景面板",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/basics/ide/scene/"
+          },
+          {
+            "label": "2D场景交互工具",
+            "link": "/basics/ide/scene/2dinteraction/"
+          },
+          {
+            "label": "3D场景交互工具",
+            "link": "/basics/ide/scene/3dinteraction/"
+          }
+        ]
+      },
+      {
+        "label": "预览运行面板",
+        "link": "/basics/ide/game/"
+      },
+      {
+        "label": "属性设置面板",
+        "link": "/basics/ide/inspector/"
+      },
+      {
+        "label": "层级面板",
+        "link": "/basics/ide/hierarchy/"
+      },
+      {
+        "label": "项目资源面板",
+        "link": "/basics/ide/assets/"
+      },
+      {
+        "label": "控制台面板",
+        "link": "/basics/ide/console/"
+      },
+      {
+        "label": "小部件面板",
+        "link": "/ide/uieditor/widgets/"
+      },
+      {
+        "label": "时间轴动画面板",
+        "link": "/ide/animationeditor/timelinegui/"
+      },
+      {
+        "label": "动画状态机面板",
+        "link": "/ide/animationeditor/anicontroller/"
+      },
+      {
+        "label": "项目设置面板",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/basics/ide/projectsettings/"
+          },
+          {
+            "label": "运行配置",
+            "link": "/basics/ide/projectsettings/runconfig/"
+          },
+          {
+            "label": "引擎模块",
+            "link": "/basics/ide/projectsettings/enginemodule/"
+          },
+          {
+            "label": "UI系统",
+            "link": "/basics/ide/projectsettings/uisystem/"
+          },
+          {
+            "label": "物理系统",
+            "link": "/basics/ide/projectsettings/physicalsystem/"
+          },
+          {
+            "label": "WebGPU",
+            "link": "/basics/ide/projectsettings/webgpu/"
+          },
+          {
+            "label": "启动页",
+            "link": "/basics/ide/projectsettings/startpage/"
+          },
+          {
+            "label": "统计信息",
+            "link": "/basics/ide/projectsettings/statistics/"
+          },
+          {
+            "label": "脚本编译",
+            "link": "/basics/ide/projectsettings/scriptcompiler/"
+          },
+          {
+            "label": "预览服务",
+            "link": "/basics/ide/projectsettings/previewserver/"
+          },
+          {
+            "label": "预设值",
+            "link": "/basics/ide/projectsettings/preset/"
+          }
+        ]
+      },
+      {
+        "label": "资源依赖面板",
+        "link": "/basics/ide/assetdependency/"
+      },
+      {
+        "label": "帧调试器面板",
+        "link": "/basics/ide/framedebugger/"
+      }
+    ]
+  },
+  {
+    "label": "引擎核心功能",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "资源加载",
+        "link": "/basics/common/loader/"
+      },
+      {
+        "label": "场景管理",
+        "link": "/basics/common/scene/"
+      },
+      {
+        "label": "节点管理",
+        "link": "/basics/common/node/"
+      },
+      {
+        "label": "事件管理",
+        "link": "/basics/common/event/"
+      },
+      {
+        "label": "定时器",
+        "link": "/basics/common/timer/"
+      },
+      {
+        "label": "缓动",
+        "link": "/basics/common/tween/"
+      },
+      {
+        "label": "对象池",
+        "link": "/basics/common/pool/"
+      },
+      {
+        "label": "实体组件系统",
+        "link": "/basics/common/component/"
+      }
+    ]
+  },
+  {
+    "label": "数学工具",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "向量",
+        "link": "/basics/common/math/vector234/"
+      },
+      {
+        "label": "矩阵",
+        "link": "/basics/common/math/matrix4/"
+      },
+      {
+        "label": "四元数",
+        "link": "/basics/common/math/quaternion/"
+      },
+      {
+        "label": "射线",
+        "link": "/basics/common/math/ray/"
+      },
+      {
+        "label": "插值",
+        "link": "/basics/common/math/interpolation/"
+      },
+      {
+        "label": "贝塞尔曲线",
+        "link": "/basics/common/math/beziercurve/"
+      },
+      {
+        "label": "随机数",
+        "link": "/basics/common/math/random/"
+      }
+    ]
+  },
+  {
+    "label": "2D开发基础",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "引擎基础概念",
+        "link": "/basics/common/basicconcepts/"
+      },
+      {
+        "label": "UI编辑器基础交互",
+        "link": "/ide/uieditor/basic/"
+      },
+      {
+        "label": "UI小部件",
+        "link": "/ide/uieditor/widgets/"
+      },
+      {
+        "label": "2D基础显示对象",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/2d/displayobject/"
+          },
+          {
+            "label": "精灵",
+            "link": "/2d/displayobject/sprite/"
+          },
+          {
+            "label": "2D区域",
+            "link": "/ide/uieditor/area2d/"
+          },
+          {
+            "label": "动画节点",
+            "link": "/2d/displayobject/animation/"
+          },
+          {
+            "label": "基础文本",
+            "link": "/2d/displayobject/text/"
+          },
+          {
+            "label": "开放数据域视图",
+            "link": "/ide/uieditor/uicomponent/opendatacontextview/"
+          },
+          {
+            "label": "音频节点",
+            "link": "/2d/displayobject/soundnode/"
+          },
+          {
+            "label": "视频节点",
+            "link": "/2d/displayobject/videonode/"
+          }
+        ]
+      },
+      {
+        "label": "图形绘制",
+        "link": "/ide/uieditor/graphics/"
+      },
+      {
+        "label": "2D动画概述",
+        "link": "/2d/animation/"
+      },
+      {
+        "label": "2D相机",
+        "link": "/ide/uieditor/area2d/camera2d/"
+      },
+      {
+        "label": "2D粒子",
+        "link": "/ide/particleeditor2d/"
+      },
+      {
+        "label": "2D拖尾",
+        "link": "/ide/component/2d/2drender/trail2drender/"
+      },
+      {
+        "label": "2D网格",
+        "link": "/ide/component/2d/2drender/mesh2drender/"
+      },
+      {
+        "label": "2D材质",
+        "link": "/ide/assets/lmat/2d/"
+      },
+      {
+        "label": "自定义2D着色器",
+        "link": "/2d/advanced/customshader/"
+      },
+      {
+        "label": "2D灯光与阴影",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/component/2d/baselight2d/"
+          },
+          {
+            "label": "2D方向光",
+            "link": "/ide/component/2d/directionlight2d/"
+          },
+          {
+            "label": "2D精灵光",
+            "link": "/ide/component/2d/spritelight2d/"
+          },
+          {
+            "label": "2D自由形态光",
+            "link": "/ide/component/2d/freeformlight2d/"
+          },
+          {
+            "label": "2D聚光灯",
+            "link": "/ide/component/2d/spotlight2d/"
+          },
+          {
+            "label": "2D光遮挡器与阴影",
+            "link": "/ide/component/2d/lightoccluder2d/"
+          }
+        ]
+      },
+      {
+        "label": "2D后处理",
+        "link": "/ide/uieditor/postprocess/"
+      },
+      {
+        "label": "动态图集",
+        "link": "/2d/dynamicatlas/"
+      },
+      {
+        "label": "UI运行时脚本",
+        "link": "/ide/uieditor/runtime/"
+      },
+      {
+        "label": "2D节点使用3D",
+        "link": "/ide/uieditor/use3d/"
+      }
+    ]
+  },
+  {
+    "label": "新UI系统",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "基础使用",
+        "link": "/ide/uieditor/fairygui/"
+      },
+      {
+        "label": "控制器",
+        "link": "/ide/uieditor/fairygui/controller/"
+      },
+      {
+        "label": "关联系统",
+        "link": "/ide/uieditor/fairygui/relation/"
+      },
+      {
+        "label": "布局容器",
+        "link": "/ide/uieditor/fairygui/layout/"
+      },
+      {
+        "label": "滚动支持",
+        "link": "/ide/uieditor/fairygui/scroller/"
+      },
+      {
+        "label": "选择支持",
+        "link": "/ide/uieditor/fairygui/selection/"
+      },
+      {
+        "label": "精灵组件",
+        "link": "/ide/uieditor/fairygui/gwidget/"
+      },
+      {
+        "label": "图像组件",
+        "link": "/ide/uieditor/fairygui/gimage/"
+      },
+      {
+        "label": "序列帧动画组件",
+        "link": "/ide/uieditor/fairygui/gmovieclip/"
+      },
+      {
+        "label": "装载器组件",
+        "link": "/ide/uieditor/fairygui/gloader/"
+      },
+      {
+        "label": "文本组件",
+        "link": "/ide/uieditor/fairygui/gtextfield/"
+      },
+      {
+        "label": "输入文本组件",
+        "link": "/ide/uieditor/fairygui/gtextinput/"
+      },
+      {
+        "label": "盒子容器组件",
+        "link": "/ide/uieditor/fairygui/gbox/"
+      },
+      {
+        "label": "面板容器组件",
+        "link": "/ide/uieditor/fairygui/gpanel/"
+      },
+      {
+        "label": "列表组件",
+        "link": "/ide/uieditor/fairygui/glist/"
+      },
+      {
+        "label": "树状列表组件",
+        "link": "/ide/uieditor/fairygui/gtree/"
+      },
+      {
+        "label": "标签组件",
+        "link": "/ide/uieditor/fairygui/glabel/"
+      },
+      {
+        "label": "按钮组件",
+        "link": "/ide/uieditor/fairygui/gbutton/"
+      },
+      {
+        "label": "下拉选项框组件",
+        "link": "/ide/uieditor/fairygui/gcombobox/"
+      },
+      {
+        "label": "进度条组件",
+        "link": "/ide/uieditor/fairygui/gprogressbar/"
+      },
+      {
+        "label": "滑动条组件",
+        "link": "/ide/uieditor/fairygui/gslider/"
+      },
+      {
+        "label": "滚动条组件",
+        "link": "/ide/uieditor/fairygui/gscrollbar/"
+      },
+      {
+        "label": "窗口组件",
+        "link": "/ide/uieditor/fairygui/gwindow/"
+      },
+      {
+        "label": "根节点与弹窗",
+        "link": "/ide/uieditor/fairygui/groot/"
+      },
+      {
+        "label": "国际化",
+        "link": "/ide/uieditor/fairygui/i18n/"
+      }
+    ]
+  },
+  {
+    "label": "经典UI系统",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "基础使用与构成",
+        "link": "/ide/uieditor/uicomponent/"
+      },
+      {
+        "label": "UI组件资源命名规则",
+        "link": "/ide/uieditor/uicomponent/namingrule/"
+      },
+      {
+        "label": "图像组件",
+        "link": "/ide/uieditor/uicomponent/image/"
+      },
+      {
+        "label": "显示文本组件",
+        "link": "/ide/uieditor/uicomponent/label/"
+      },
+      {
+        "label": "输入文本组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/textinput/"
+          },
+          {
+            "label": "多行输入文本组件",
+            "link": "/ide/uieditor/uicomponent/textarea/"
+          }
+        ]
+      },
+      {
+        "label": "位图切片组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/clip/"
+          },
+          {
+            "label": "字体切片组件",
+            "link": "/ide/uieditor/uicomponent/fontclip/"
+          }
+        ]
+      },
+      {
+        "label": "按钮组件",
+        "link": "/ide/uieditor/uicomponent/button/"
+      },
+      {
+        "label": "滚动条组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/scroll/"
+          },
+          {
+            "label": "水平滚动条组件",
+            "link": "/ide/uieditor/uicomponent/hscrollbar/"
+          },
+          {
+            "label": "垂直滚动条组件",
+            "link": "/ide/uieditor/uicomponent/vscrollbar/"
+          }
+        ]
+      },
+      {
+        "label": "滑动条组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/slider/"
+          },
+          {
+            "label": "水平滑动条组件",
+            "link": "/ide/uieditor/uicomponent/hslider/"
+          },
+          {
+            "label": "垂直滑动条组件",
+            "link": "/ide/uieditor/uicomponent/vslider/"
+          }
+        ]
+      },
+      {
+        "label": "进度条组件",
+        "link": "/ide/uieditor/uicomponent/progressbar/"
+      },
+      {
+        "label": "容器组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/box/"
+          },
+          {
+            "label": "水平布局容器组件",
+            "link": "/ide/uieditor/uicomponent/hbox/"
+          },
+          {
+            "label": "垂直布局容器组件",
+            "link": "/ide/uieditor/uicomponent/vbox/"
+          },
+          {
+            "label": "面板容器组件",
+            "link": "/ide/uieditor/uicomponent/panel/"
+          }
+        ]
+      },
+      {
+        "label": "列表组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/list/"
+          },
+          {
+            "label": "树状列表组件",
+            "link": "/ide/uieditor/uicomponent/tree/"
+          }
+        ]
+      },
+      {
+        "label": "选项框",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/optionbox/"
+          },
+          {
+            "label": "下拉选项框组件",
+            "link": "/ide/uieditor/uicomponent/combobox/"
+          },
+          {
+            "label": "单选框组件",
+            "link": "/ide/uieditor/uicomponent/radio/"
+          },
+          {
+            "label": "单选框组容器组件",
+            "link": "/ide/uieditor/uicomponent/radiogroup/"
+          },
+          {
+            "label": "复选框组件",
+            "link": "/ide/uieditor/uicomponent/checkbox/"
+          }
+        ]
+      },
+      {
+        "label": "导航菜单",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/navigationmenu/"
+          },
+          {
+            "label": "导航标签组组件",
+            "link": "/ide/uieditor/uicomponent/tab/"
+          },
+          {
+            "label": "导航容器组件",
+            "link": "/ide/uieditor/uicomponent/viewstack/"
+          }
+        ]
+      },
+      {
+        "label": "取色器组件",
+        "link": "/ide/uieditor/uicomponent/colorpicker/"
+      },
+      {
+        "label": "弹窗视图组件",
+        "link": "/ide/uieditor/dialog/"
+      }
+    ]
+  },
+  {
+    "label": "3D开发基础",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "3D概念入门",
+        "link": "/basics/3d/beginner/"
+      },
+      {
+        "label": "3D变换",
+        "link": "/basics/3d/transform/"
+      },
+      {
+        "label": "3D场景编辑基础交互",
+        "link": "/ide/sceneeditor/basic/"
+      },
+      {
+        "label": "3D场景环境设置",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/sceneeditor/environment/"
+          },
+          {
+            "label": "天空盒",
+            "link": "/ide/sceneeditor/skybox/"
+          },
+          {
+            "label": "环境光",
+            "link": "/ide/sceneeditor/environmentlight/"
+          },
+          {
+            "label": "环境反射",
+            "link": "/ide/sceneeditor/environmentreflection/"
+          },
+          {
+            "label": "环境雾",
+            "link": "/ide/sceneeditor/environmentfog/"
+          },
+          {
+            "label": "光照贴图",
+            "link": "/ide/sceneeditor/lightmap/"
+          }
+        ]
+      },
+      {
+        "label": "3D基础显示对象",
+        "link": "/3d/displayobject/"
+      },
+      {
+        "label": "3D精灵",
+        "link": "/3d/sprite3d/"
+      },
+      {
+        "label": "3D摄像机",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/3d/camera/"
+          },
+          {
+            "label": "摄像机属性设置",
+            "link": "/3d/camera/inspector/"
+          },
+          {
+            "label": "IDE摄相机使用",
+            "link": "/3d/camera/usecamera/"
+          },
+          {
+            "label": "摄像机动画",
+            "link": "/3d/camera/cameraanimation/"
+          }
+        ]
+      },
+      {
+        "label": "3D网格",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/component/mesh/"
+          },
+          {
+            "label": "网格过滤器",
+            "link": "/ide/component/mesh/meshfilter/"
+          },
+          {
+            "label": "网格渲染器",
+            "link": "/ide/component/mesh/meshrenderer/"
+          }
+        ]
+      },
+      {
+        "label": "3D灯光与阴影",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/3d/light/"
+          },
+          {
+            "label": "3D方向光",
+            "link": "/ide/component/3dlight/directionlight/"
+          },
+          {
+            "label": "3D点光",
+            "link": "/ide/component/3dlight/pointlight/"
+          },
+          {
+            "label": "3D聚光灯",
+            "link": "/ide/component/3dlight/spotlight/"
+          },
+          {
+            "label": "3D区域光",
+            "link": "/ide/component/3dlight/arealight/"
+          },
+          {
+            "label": "3D阴影",
+            "link": "/ide/component/3dlight/shadow/"
+          }
+        ]
+      },
+      {
+        "label": "模型",
+        "link": "/3d/usemodel/"
+      },
+      {
+        "label": "3D粒子",
+        "link": "/ide/particleeditor3d/"
+      },
+      {
+        "label": "3D拖尾",
+        "link": "/ide/component/3drender/trailrenderer/"
+      },
+      {
+        "label": "Spine动画3D渲染器",
+        "link": "/ide/component/3drender/spine3drenderer/"
+      },
+      {
+        "label": "3D材质",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/assets/lmat/"
+          },
+          {
+            "label": "布林冯材质",
+            "link": "/ide/assets/lmat/blinphong/"
+          },
+          {
+            "label": "不受光材质",
+            "link": "/ide/assets/lmat/unlit/"
+          },
+          {
+            "label": "基于物理渲染材质",
+            "link": "/ide/assets/lmat/pbr/"
+          },
+          {
+            "label": "基于物理渲染材质(glTF)",
+            "link": "/ide/assets/lmat/gltfpbr/"
+          },
+          {
+            "label": "粒子材质",
+            "link": "/ide/assets/lmat/particleshuriken/"
+          },
+          {
+            "label": "拖尾材质",
+            "link": "/ide/assets/lmat/trail/"
+          },
+          {
+            "label": "天空材质",
+            "link": "/ide/assets/lmat/sky/"
+          }
+        ]
+      },
+      {
+        "label": "3D动画概述",
+        "link": "/3d/animationoverview/"
+      },
+      {
+        "label": "3D渲染",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/3d/advanced/3drender/"
+          },
+          {
+            "label": "反射探针",
+            "link": "/ide/component/reflectionprobe/"
+          },
+          {
+            "label": "体积全局照明",
+            "link": "/ide/component/volumetricgi/"
+          },
+          {
+            "label": "3D后处理",
+            "link": "/3d/advanced/postprocessing/"
+          },
+          {
+            "label": "CommandBuffer",
+            "link": "/3d/advanced/commandbuffer/"
+          }
+        ]
+      },
+      {
+        "label": "3D UI",
+        "link": "/ide/uieditor/3dui/"
+      },
+      {
+        "label": "WebXR",
+        "link": "/3d/webxr/"
+      }
+    ]
+  },
+  {
+    "label": "粒子",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "2D粒子",
+        "link": "/ide/particleeditor2d/"
+      },
+      {
+        "label": "3D粒子",
+        "link": "/ide/particleeditor3d/"
+      }
+    ]
+  },
+  {
+    "label": "动画",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "2D逐帧动画",
+        "link": "/2d/animation/frameanimation/"
+      },
+      {
+        "label": "缓动动画",
+        "link": "/basics/animation/tweenanimation/"
+      },
+      {
+        "label": "模型内置动画",
+        "link": "/3d/usemodel/animation/"
+      },
+      {
+        "label": "时间轴动画",
+        "link": "/ide/animationeditor/timelinegui/"
+      },
+      {
+        "label": "动画状态机",
+        "link": "/ide/animationeditor/anicontroller/"
+      },
+      {
+        "label": "IK动画",
+        "link": "/ide/component/3danimation/chainsik/"
+      },
+      {
+        "label": "摄像机动画",
+        "link": "/3d/camera/animation/"
+      },
+      {
+        "label": "骨骼动画",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/uieditor/uicomponent/skeleton/"
+          },
+          {
+            "label": "Spine骨骼动画",
+            "link": "/ide/component/2d/2drender/spine2drendernode/"
+          },
+          {
+            "label": "Spine3D渲染器",
+            "link": "/ide/component/3drender/spine3drenderer/"
+          },
+          {
+            "label": "内置骨骼动画",
+            "link": "/ide/uieditor/uicomponent/skeleton/sk/"
+          }
+        ]
+      },
+      {
+        "label": "动画烘焙",
+        "link": "/ide/animationeditor/anibake/"
+      },
+      {
+        "label": "动画脚本",
+        "link": "/basics/animation/aniscript/"
+      }
+    ]
+  },
+  {
+    "label": "物理引擎",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "2D物理系统",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/physicseditor/physics2d/"
+          },
+          {
+            "label": "刚体",
+            "link": "/ide/component/physics2d/rigidbody/"
+          },
+          {
+            "label": "静态碰撞器",
+            "link": "/ide/component/physics2d/staticcollider/"
+          },
+          {
+            "label": "距离关节",
+            "link": "/ide/component/physics2d/distancejoint/"
+          },
+          {
+            "label": "鼠标关节",
+            "link": "/ide/component/physics2d/mousejoint/"
+          },
+          {
+            "label": "焊接关节",
+            "link": "/ide/component/physics2d/weldjoint/"
+          },
+          {
+            "label": "滑轮关节",
+            "link": "/ide/component/physics2d/pulleyjoint/"
+          },
+          {
+            "label": "马达关节",
+            "link": "/ide/component/physics2d/motorjoint/"
+          },
+          {
+            "label": "旋转关节",
+            "link": "/ide/component/physics2d/revolutejoint/"
+          },
+          {
+            "label": "平移关节",
+            "link": "/ide/component/physics2d/prismaticjoint/"
+          },
+          {
+            "label": "轮子关节",
+            "link": "/ide/component/physics2d/wheeljoint/"
+          },
+          {
+            "label": "齿轮关节",
+            "link": "/ide/component/physics2d/gearjoint/"
+          },
+          {
+            "label": "2D物理全局配置",
+            "link": "/basics/ide/projectsettings/physicalsystem/physics2dglobalconfig/"
+          }
+        ]
+      },
+      {
+        "label": "3D物理系统",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/physicseditor/physics3d/"
+          },
+          {
+            "label": "3D刚体",
+            "link": "/ide/component/physics3d/rigidbody3d/"
+          },
+          {
+            "label": "静态碰撞器",
+            "link": "/ide/component/physics3d/staticcollider/"
+          },
+          {
+            "label": "角色控制器",
+            "link": "/ide/component/physics3d/charactercontroller/"
+          },
+          {
+            "label": "固定约束",
+            "link": "/ide/component/physics3d/fixedconstraint/"
+          },
+          {
+            "label": "铰链约束",
+            "link": "/ide/component/physics3d/hingeconstraint/"
+          },
+          {
+            "label": "弹簧约束",
+            "link": "/ide/component/physics3d/springconstraint/"
+          },
+          {
+            "label": "可配置约束",
+            "link": "/ide/component/physics3d/configurableconstraint/"
+          },
+          {
+            "label": "3D物理全局配置",
+            "link": "/basics/ide/projectsettings/physicalsystem/physics3dglobalconfig/"
+          }
+        ]
+      },
+      {
+        "label": "自定义物理引擎",
+        "link": "/3d/advanced/customphysicsengine/"
+      }
+    ]
+  },
+  {
+    "label": "着色器",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Shader模板",
+        "link": "/ide/assets/shader/"
+      },
+      {
+        "label": "自定义2D Shader",
+        "link": "/2d/advanced/customshader/"
+      },
+      {
+        "label": "自定义3D Shader",
+        "link": "/3d/advanced/customshader/"
+      },
+      {
+        "label": "计算着色器",
+        "link": "/basics/webgpu/computeshader/"
+      }
+    ]
+  },
+  {
+    "label": "蓝图",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "着色器蓝图",
+        "link": "/ide/assets/blueprint/shaderblueprint/"
+      },
+      {
+        "label": "蓝图函数",
+        "link": "/ide/assets/blueprint/shaderfunction/"
+      },
+      {
+        "label": "程序蓝图",
+        "link": "/ide/assets/blueprint/blueprintscript/"
+      }
+    ]
+  },
+  {
+    "label": "设备接口与适配",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "屏幕适配",
+        "link": "/basics/common/adaptscreen/"
+      },
+      {
+        "label": "浏览器接口",
+        "link": "/basics/common/browser/"
+      },
+      {
+        "label": "陀螺仪与加速计",
+        "link": "/basics/common/device/motion/"
+      },
+      {
+        "label": "获取位置信息",
+        "link": "/basics/common/device/geolocation/"
+      },
+      {
+        "label": "使用百度地图",
+        "link": "/basics/common/device/baidumap/"
+      },
+      {
+        "label": "保存游戏",
+        "link": "/basics/common/savegamedata/"
+      }
+    ]
+  },
+  {
+    "label": "音频与视频",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "音频节点",
+        "link": "/2d/displayobject/soundnode/"
+      },
+      {
+        "label": "音频播放组件",
+        "link": "/ide/component/media/soundplayer/"
+      },
+      {
+        "label": "代码控制音频",
+        "link": "/basics/common/device/media/"
+      },
+      {
+        "label": "视频节点",
+        "link": "/2d/displayobject/videonode/"
+      },
+      {
+        "label": "视频播放组件",
+        "link": "/ide/component/media/videoplayer/"
+      },
+      {
+        "label": "代码控制视频",
+        "link": "/basics/common/device/video/"
+      }
+    ]
+  },
+  {
+    "label": "网络通信",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "HTTP通信",
+        "link": "/basics/common/network/http/"
+      },
+      {
+        "label": "WebSocket通信",
+        "link": "/basics/common/network/websocket/"
+      },
+      {
+        "label": "ProtocolBuffer通信",
+        "link": "/libs/protobuf/"
+      },
+      {
+        "label": "多人联机游戏实战",
+        "link": "/basics/common/network/multiplayergame/"
+      }
+    ]
+  },
+  {
+    "label": "性能",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "性能统计信息的使用",
+        "link": "/basics/ide/projectsettings/statistics/"
+      },
+      {
+        "label": "2D性能优化",
+        "link": "/2d/performanceoptimization/"
+      },
+      {
+        "label": "3D性能优化",
+        "link": "/3d/advanced/performanceoptimization/"
+      }
+    ]
+  },
+  {
+    "label": "引擎组件",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "实体组件系统",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/basics/common/component/"
+          },
+          {
+            "label": "组件脚本的内置方法",
+            "link": "/ide/customcomponent/system/"
+          },
+          {
+            "label": "组件装饰器说明",
+            "link": "/ide/customcomponent/decorators/"
+          },
+          {
+            "label": "组件属性的代码使用",
+            "link": "/ide/customcomponent/componentproperties/"
+          }
+        ]
+      },
+      {
+        "label": "2D内置组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/component/2d/"
+          },
+          {
+            "label": "2D渲染",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/2d/2drender/"
+              },
+              {
+                "label": "2D网格渲染器",
+                "link": "/ide/component/2d/2drender/mesh2drender/"
+              },
+              {
+                "label": "Spine渲染器",
+                "link": "/ide/component/2d/2drender/spine2drendernode/"
+              },
+              {
+                "label": "2D拖尾渲染器",
+                "link": "/ide/component/2d/2drender/trail2drender/"
+              },
+              {
+                "label": "2D线渲染器",
+                "link": "/ide/component/2d/2drender/line2drender/"
+              },
+              {
+                "label": "瓦片地图层",
+                "link": "/ide/component/2d/tilemaplayer/"
+              },
+              {
+                "label": "2D粒子渲染器",
+                "link": "/ide/particleeditor2d/"
+              }
+            ]
+          },
+          {
+            "label": "2D动画",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/2d/2danimation/"
+              },
+              {
+                "label": "2D动画组件",
+                "link": "/ide/component/2d/2danimation/animator2d/"
+              },
+              {
+                "label": "序列帧动画组件",
+                "link": "/ide/component/2d/2danimation/frameanimation/"
+              }
+            ]
+          },
+          {
+            "label": "2D灯光",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/2d/baselight2d/"
+              },
+              {
+                "label": "2D方向光",
+                "link": "/ide/component/2d/directionlight2d/"
+              },
+              {
+                "label": "2D精灵光",
+                "link": "/ide/component/2d/spritelight2d/"
+              },
+              {
+                "label": "2D聚光灯",
+                "link": "/ide/component/2d/spotlight2d/"
+              },
+              {
+                "label": "2D自由形态光",
+                "link": "/ide/component/2d/freeformlight2d/"
+              },
+              {
+                "label": "2D光遮挡器与阴影",
+                "link": "/ide/component/2d/lightoccluder2d/"
+              }
+            ]
+          },
+          {
+            "label": "2D物理",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/physicseditor/physics2d/"
+              },
+              {
+                "label": "刚体",
+                "link": "/ide/component/physics2d/rigidbody/"
+              },
+              {
+                "label": "静态碰撞器",
+                "link": "/ide/component/physics2d/staticcollider/"
+              },
+              {
+                "label": "距离关节",
+                "link": "/ide/component/physics2d/distancejoint/"
+              },
+              {
+                "label": "鼠标关节",
+                "link": "/ide/component/physics2d/mousejoint/"
+              },
+              {
+                "label": "焊接关节",
+                "link": "/ide/component/physics2d/weldjoint/"
+              },
+              {
+                "label": "滑轮关节",
+                "link": "/ide/component/physics2d/pulleyjoint/"
+              },
+              {
+                "label": "马达关节",
+                "link": "/ide/component/physics2d/motorjoint/"
+              },
+              {
+                "label": "旋转关节",
+                "link": "/ide/component/physics2d/revolutejoint/"
+              },
+              {
+                "label": "平移关节",
+                "link": "/ide/component/physics2d/prismaticjoint/"
+              },
+              {
+                "label": "轮子关节",
+                "link": "/ide/component/physics2d/wheeljoint/"
+              },
+              {
+                "label": "齿轮关节",
+                "link": "/ide/component/physics2d/gearjoint/"
+              }
+            ]
+          },
+          {
+            "label": "多媒体",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/media/"
+              },
+              {
+                "label": "音频播放组件",
+                "link": "/ide/component/media/soundplayer/"
+              },
+              {
+                "label": "视频播放组件",
+                "link": "/ide/component/media/videoplayer/"
+              }
+            ]
+          },
+          {
+            "label": "导航寻路",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/2d/navmesh/"
+              },
+              {
+                "label": "2D导航网格表面",
+                "link": "/ide/component/2d/navmesh/navmesh2dsurface/"
+              },
+              {
+                "label": "2D导航代理",
+                "link": "/ide/component/2d/navmesh/nav2dagent/"
+              }
+            ]
+          },
+          {
+            "label": "程序蓝图2D组件",
+            "link": "/ide/component/2d/blueprintscript/"
+          }
+        ]
+      },
+      {
+        "label": "3D内置组件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/component/"
+          },
+          {
+            "label": "3D网格",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/mesh/"
+              },
+              {
+                "label": "网格过滤器",
+                "link": "/ide/component/mesh/meshfilter/"
+              },
+              {
+                "label": "网格渲染器",
+                "link": "/ide/component/mesh/meshrenderer/"
+              }
+            ]
+          },
+          {
+            "label": "3D渲染",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/3drender/"
+              },
+              {
+                "label": "粒子渲染器",
+                "link": "/ide/particleeditor3d/"
+              },
+              {
+                "label": "网格像素线",
+                "link": "/ide/component/pixelline/"
+              },
+              {
+                "label": "拖尾渲染器",
+                "link": "/ide/component/trail/"
+              },
+              {
+                "label": "3D UI",
+                "link": "/ide/uieditor/3dui/"
+              },
+              {
+                "label": "反射探针",
+                "link": "/ide/component/reflectionprobe/"
+              },
+              {
+                "label": "体积全局照明",
+                "link": "/ide/component/volumetricgi/"
+              },
+              {
+                "label": "细节层次组",
+                "link": "/ide/component/lod/"
+              },
+              {
+                "label": "Spine3D渲染器",
+                "link": "/ide/component/3drender/spine3drenderer/"
+              }
+            ]
+          },
+          {
+            "label": "3D灯光",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/light/"
+              },
+              {
+                "label": "方向光",
+                "link": "/ide/component/light/directionlightcom/"
+              },
+              {
+                "label": "点光源",
+                "link": "/ide/component/light/pointlightcom/"
+              },
+              {
+                "label": "聚光灯",
+                "link": "/ide/component/light/spotlightcom/"
+              },
+              {
+                "label": "区域光",
+                "link": "/ide/component/light/arealightcom/"
+              }
+            ]
+          },
+          {
+            "label": "3D动画",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/3danimation/"
+              },
+              {
+                "label": "动画组件",
+                "link": "/ide/animationeditor/anicontroller/"
+              },
+              {
+                "label": "IK链",
+                "link": "/ide/component/3danimation/chainsik/"
+              },
+              {
+                "label": "骨骼约束",
+                "link": "/ide/component/3danimation/boneconstraints/"
+              }
+            ]
+          },
+          {
+            "label": "3D物理",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/physics3d/"
+              },
+              {
+                "label": "3D刚体",
+                "link": "/ide/component/physics3d/rigidbody3d/"
+              },
+              {
+                "label": "静态碰撞器",
+                "link": "/ide/component/physics3d/physicscollider/"
+              },
+              {
+                "label": "角色控制器",
+                "link": "/ide/component/physics3d/charactercontroller/"
+              },
+              {
+                "label": "固定约束",
+                "link": "/ide/component/physics3d/fixedconstraint/"
+              },
+              {
+                "label": "铰链约束",
+                "link": "/ide/component/physics3d/hingeconstraint/"
+              },
+              {
+                "label": "弹簧约束",
+                "link": "/ide/component/physics3d/springconstraint/"
+              },
+              {
+                "label": "可配置约束",
+                "link": "/ide/component/physics3d/configurableconstraint/"
+              }
+            ]
+          },
+          {
+            "label": "3D导航寻路",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/ide/component/navmesh/"
+              },
+              {
+                "label": "导航网格表面",
+                "link": "/ide/component/navmesh/navmesh3dsurface/"
+              },
+              {
+                "label": "动态导航表面",
+                "link": "/ide/component/navmesh/navmeshmodifilesurface/"
+              },
+              {
+                "label": "导航障碍物",
+                "link": "/ide/component/navmesh/navmeshobstacles/"
+              },
+              {
+                "label": "3D导航代理",
+                "link": "/ide/component/navmesh/navagent/"
+              },
+              {
+                "label": "导航区域链接",
+                "link": "/ide/component/navmesh/navmeshlink/"
+              },
+              {
+                "label": "动态区域体积",
+                "link": "/ide/component/navmesh/navmeshmodifiervolume/"
+              }
+            ]
+          },
+          {
+            "label": "程序蓝图3D组件",
+            "link": "/ide/component/blueprintscript/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "IDE资源",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "模型资源设置",
+        "link": "/ide/assets/model/"
+      },
+      {
+        "label": "纹理资源",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/assets/texture/"
+          },
+          {
+            "label": "压缩纹理",
+            "link": "/ide/uieditor/texturecompress/"
+          }
+        ]
+      },
+      {
+        "label": "场景资源",
+        "link": "/ide/assets/scene/"
+      },
+      {
+        "label": "预制体",
+        "link": "/ide/assets/prefab/"
+      },
+      {
+        "label": "材质资源",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/assets/lmat/"
+          },
+          {
+            "label": "布林冯材质",
+            "link": "/ide/assets/lmat/blinphong/"
+          },
+          {
+            "label": "不受光材质",
+            "link": "/ide/assets/lmat/unlit/"
+          },
+          {
+            "label": "基于物理渲染材质",
+            "link": "/ide/assets/lmat/pbr/"
+          },
+          {
+            "label": "基于物理渲染材质(glTF)",
+            "link": "/ide/assets/lmat/gltfpbr/"
+          },
+          {
+            "label": "粒子材质",
+            "link": "/ide/assets/lmat/particleshuriken/"
+          },
+          {
+            "label": "拖尾材质",
+            "link": "/ide/assets/lmat/trail/"
+          },
+          {
+            "label": "天空材质",
+            "link": "/ide/assets/lmat/sky/"
+          },
+          {
+            "label": "2D材质",
+            "link": "/ide/assets/lmat/2d/"
+          }
+        ]
+      },
+      {
+        "label": "着色器资源",
+        "link": "/ide/assets/shader/"
+      },
+      {
+        "label": "立方体贴图",
+        "link": "/ide/assets/cubemap/"
+      },
+      {
+        "label": "渲染纹理",
+        "link": "/ide/assets/rendertexture/"
+      },
+      {
+        "label": "纹理数组",
+        "link": "/ide/assets/texture2darray/"
+      },
+      {
+        "label": "镜头光晕数据",
+        "link": "/ide/assets/lensflaredata/"
+      },
+      {
+        "label": "蓝图资源",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/assets/blueprint/"
+          },
+          {
+            "label": "着色器蓝图",
+            "link": "/ide/assets/blueprint/shaderblueprint/"
+          },
+          {
+            "label": "蓝图函数",
+            "link": "/ide/assets/blueprint/blueprint/shaderfunction/"
+          },
+          {
+            "label": "程序蓝图",
+            "link": "/ide/assets/blueprint/blueprintsprite/"
+          }
+        ]
+      },
+      {
+        "label": "动画状态机",
+        "link": "/ide/assets/animation/controller/"
+      },
+      {
+        "label": "动画遮罩",
+        "link": "/ide/assets/animation/lavm/"
+      },
+      {
+        "label": "光照贴图烘焙设置",
+        "link": "/ide/assets/lightmapbakesettings/"
+      },
+      {
+        "label": "自动图集配置",
+        "link": "/ide/assets/atlascfg/"
+      },
+      {
+        "label": "国际化配置",
+        "link": "/ide/assets/i18ns/"
+      },
+      {
+        "label": "脚本",
+        "link": "/ide/assets/script/"
+      },
+      {
+        "label": "脚本集定义",
+        "link": "/ide/assets/bundledef/"
+      },
+      {
+        "label": "位图字体",
+        "link": "/ide/assets/bitmapfont/"
+      },
+      {
+        "label": "瓦片地图",
+        "link": "/ide/assets/tileset/"
+      },
+      {
+        "label": "IDE插件安装包",
+        "link": "/ide/assets/packages/"
+      },
+      {
+        "label": "IDE内部资源",
+        "link": "/ide/assets/editor-widgets/"
+      }
+    ]
+  },
+  {
+    "label": "IDE插件",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "插件开发说明",
+        "link": "/ide/layapackage/plug-in/"
+      },
+      {
+        "label": "包管理器与资源包导入",
+        "link": "/ide/layapackage/pluginimport/"
+      },
+      {
+        "label": "资源包导出与上传至商店",
+        "link": "/ide/layapackage/exporttostore/"
+      },
+      {
+        "label": "官方插件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/layapackage/layabox/"
+          },
+          {
+            "label": "LOD减面插件",
+            "link": "/ide/layapackage/layabox/lod/"
+          },
+          {
+            "label": "3D骨骼动作烘焙插件",
+            "link": "/ide/layapackage/layabox/bakeanimation/"
+          },
+          {
+            "label": "VFX粒子插件",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "教学文档集 · 总览",
+                "link": "/vfx-graph/"
+              },
+              {
+                "label": "概念篇",
+                "link": "/vfx-graph/concepts/"
+              },
+              {
+                "label": "IDE 操作流程",
+                "link": "/vfx-graph/ide-workflow/"
+              },
+              {
+                "label": "属性详解 · Context",
+                "link": "/vfx-graph/context/"
+              },
+              {
+                "label": "属性详解 · Block",
+                "link": "/vfx-graph/block/"
+              },
+              {
+                "label": "属性详解 · 图级与组件",
+                "link": "/vfx-graph/graph-and-components/"
+              },
+              {
+                "label": "代码篇",
+                "link": "/vfx-graph/code/"
+              },
+              {
+                "label": "属性详解 · Operator",
+                "link": "/vfx-graph/operator/"
+              },
+              {
+                "label": "示例验证索引",
+                "link": "/vfx-graph/examples/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "VIP增值功能插件",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/ide/layapackage/enterprise/"
+          },
+          {
+            "label": "性能分析插件",
+            "link": "/ide/layapackage/enterprise/performanceanalysis/"
+          },
+          {
+            "label": "智能资源管理插件",
+            "link": "/ide/layapackage/enterprise/addressable/"
+          },
+          {
+            "label": "CPU粒子系统",
+            "link": "/ide/layapackage/enterprise/cpuparticle/"
+          },
+          {
+            "label": "Spine动画烘焙插件",
+            "link": "/ide/layapackage/enterprise/spinebake/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "外部资源与脚本使用",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "引用外部脚本的方式",
+        "link": "/basics/ide/importjslibrary/"
+      },
+      {
+        "label": "实战ProtocolBuffer通信",
+        "link": "/libs/protobuf/"
+      },
+      {
+        "label": "TiledMap地图",
+        "link": "/2d/tiledmap/"
+      }
+    ]
+  },
+  {
+    "label": "进阶与实例",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "2D",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/2d/advanced/"
+          },
+          {
+            "label": "文本进阶使用",
+            "link": "/2d/advanced/usetext/"
+          },
+          {
+            "label": "多线程Worker",
+            "link": "/2d/useworker/"
+          },
+          {
+            "label": "和原生Dom交互",
+            "link": "/2d/dom/"
+          },
+          {
+            "label": "2D角色的控制",
+            "link": "/2d/advanced/2dgame/controlcharacter/"
+          },
+          {
+            "label": "一个2D入门游戏",
+            "link": "/2d/advanced/2dgame/"
+          },
+          {
+            "label": "一个2/3D混合游戏",
+            "link": "/3d/advanced/2-3dmixgame/"
+          },
+          {
+            "label": "多人联机游戏实战",
+            "link": "/basics/common/network/multiplayergame/"
+          }
+        ]
+      },
+      {
+        "label": "3D",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/3d/advanced/"
+          },
+          {
+            "label": "3D角色的控制",
+            "link": "/3d/advanced/3dgame/controlcharacter/"
+          },
+          {
+            "label": "一个3D入门游戏",
+            "link": "/3d/advanced/3dgame/"
+          },
+          {
+            "label": "饥荒类型3D游戏",
+            "link": "/3d/advanced/3dgame/dstgame/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "构建发布",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "通用发布设置",
+        "link": "/released/generalsetting/"
+      },
+      {
+        "label": "命令行发布",
+        "link": "/released/commandline/"
+      },
+      {
+        "label": "Web发布",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/released/web/"
+          },
+          {
+            "label": "CrazyGames",
+            "link": "/released/crazygames/"
+          },
+          {
+            "label": "Poki",
+            "link": "/released/poki/"
+          }
+        ]
+      },
+      {
+        "label": "Web单文件发布",
+        "link": "/released/singleweb/"
+      },
+      {
+        "label": "小游戏发布",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/released/minigame/"
+          },
+          {
+            "label": "微信小游戏",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/released/minigame/wechat/"
+              },
+              {
+                "label": "微信小游戏Worker使用",
+                "link": "/released/minigame/wechat/worker/"
+              }
+            ]
+          },
+          {
+            "label": "抖音小游戏",
+            "link": "/released/minigame/bytedance/"
+          },
+          {
+            "label": "OPPO小游戏",
+            "link": "/released/minigame/oppo/"
+          },
+          {
+            "label": "vivo小游戏",
+            "link": "/released/minigame/vivo/"
+          },
+          {
+            "label": "小米快游戏",
+            "link": "/released/minigame/xiaomi/"
+          },
+          {
+            "label": "支付宝小游戏",
+            "link": "/released/minigame/alipaygame/"
+          },
+          {
+            "label": "淘宝平台",
+            "collapsed": true,
+            "items": [
+              {
+                "label": "概述",
+                "link": "/released/minigame/taobao/"
+              },
+              {
+                "label": "淘宝小游戏",
+                "link": "/released/minigame/taobao/tbgame/"
+              },
+              {
+                "label": "淘宝小部件",
+                "link": "/released/minigame/taobao/tbwidget/"
+              },
+              {
+                "label": "淘宝小程序",
+                "link": "/released/minigame/taobao/tbprogram/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "安装包开发基础",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/released/native/layanative-introduction/"
+          },
+          {
+            "label": "LayaNative不是浏览器",
+            "link": "/released/native/native-index/"
+          },
+          {
+            "label": "横竖屏设置",
+            "link": "/released/native/screen-orientation/"
+          },
+          {
+            "label": "启动页设置",
+            "link": "/released/native/splashscreensettings/"
+          },
+          {
+            "label": "APP预览运行器",
+            "link": "/released/native/previewrunner/"
+          },
+          {
+            "label": "关于网络监听",
+            "link": "/released/native/network/"
+          },
+          {
+            "label": "缓存工具-layadcc",
+            "link": "/released/native/layadcc-tool/"
+          },
+          {
+            "label": "原生语言与JS通信",
+            "link": "/released/native/platform-communication/"
+          },
+          {
+            "label": "嵌入字体",
+            "link": "/released/native/built-in-font/"
+          },
+          {
+            "label": "APK扩展机制",
+            "link": "/released/native/apk-expansion/"
+          },
+          {
+            "label": "其他",
+            "link": "/released/native/other-settings/"
+          }
+        ]
+      },
+      {
+        "label": "Windows发布",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/released/windows/"
+          },
+          {
+            "label": "Windows扩展",
+            "link": "/released/windows/extension/"
+          },
+          {
+            "label": "Steam扩展实例",
+            "link": "/released/windows/steam/"
+          }
+        ]
+      },
+      {
+        "label": "鸿蒙NEXT构建",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/released/harmony/"
+          },
+          {
+            "label": "鸿蒙NEXT真机调试JavaScript",
+            "link": "/released/harmony/debug/"
+          },
+          {
+            "label": "鸿蒙NEXT接管后退按钮",
+            "link": "/released/native/ohos-backpress/"
+          }
+        ]
+      },
+      {
+        "label": "Android构建",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/released/android/"
+          },
+          {
+            "label": "Android真机调试JavaScript",
+            "link": "/released/android/debug/"
+          },
+          {
+            "label": "Android接管后退按钮",
+            "link": "/released/native/android-backpress/"
+          }
+        ]
+      },
+      {
+        "label": "iOS构建",
+        "link": "/released/ios/"
+      },
+      {
+        "label": "Linux构建",
+        "link": "/released/linux/"
+      }
+    ]
+  },
+  {
+    "label": "框架能力演示",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Unity 导出能力一览",
+        "link": "/showcase/unity-export/"
+      },
+      {
+        "label": "可交互演示（动效）",
+        "link": "/showcase/live-demo/"
+      }
+    ]
+  }
+]

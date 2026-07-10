@@ -1,0 +1,56 @@
+---
+// 覆写 Starlight 站点标题：LayaAir3 完整品牌 logo（猩猩六边形 + LAYA AIR 3 字标）+「文档」二字。
+// 素材：src/assets/layaair3-logo.png（由原图 sharp trim 去留白而来，带透明通道）。
+// 「文档」按需求与字标严格同大小同颜色：
+//   - 字号 = 字标字母的实际高度。实测字母带占裁剪图高度 60.4%（142..577 / 720），
+//     故 font-size = logo 显示高度 × 0.604（中文字形基本撑满 em 框，视觉等高）；
+//   - 颜色 = 字标采样色 #0e1c3b。
+// 字标字母带在图内垂直居中（中心 359.5 / 360），flex 垂直居中即光学对齐，无需微调。
+// 深色模式用专门生成的变体（字标藏青→浅蓝灰 #c9d7ef，青绿猩猩原色保留），
+// 比 CSS filter 反色更准：绿色不会变闷。两张图 CSS 按主题切换显示。
+import logo from '../assets/layaair3-logo.png';
+import logoDark from '../assets/layaair3-logo-dark.png';
+---
+
+<a href="/" class="site-title laya-brand sl-flex">
+  <img src={logo.src} alt="LayaAir3" class="laya-brand-logo laya-brand-light" />
+  <img src={logoDark.src} alt="LayaAir3" class="laya-brand-logo laya-brand-dark" />
+  <span class="laya-brand-doc">文档</span>
+</a>
+
+<style>
+  .laya-brand {
+    --laya-logo-h: 1.75rem; /* 整图高 28px：字标/「文档」≈17px，与顶栏常规文字体量相当 */
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+  }
+  .laya-brand-logo {
+    height: var(--laya-logo-h);
+    width: auto;
+    display: block;
+  }
+  .laya-brand-doc {
+    font-size: 1.25rem; /* 略大于字标字母高度(≈17px)：纯中文两字比拉丁字标需要多一点体量才显得等重 */
+    line-height: 1;
+    font-weight: 800;
+    color: #0e1c3b; /* = 字标色（对原图采样） */
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transform: translateY(-2px); /* 与字标同基线：中文字形底沿默认略低于 LAYA 基线，上移对齐 */
+  }
+  /* 明暗两版 logo 按主题切换；「文档」颜色始终与当前字标色一致 */
+  .laya-brand-dark {
+    display: none;
+  }
+  :global([data-theme='dark']) .laya-brand-dark {
+    display: block;
+  }
+  :global([data-theme='dark']) .laya-brand-light {
+    display: none;
+  }
+  :global([data-theme='dark']) .laya-brand-doc {
+    color: #c9d7ef;
+  }
+</style>

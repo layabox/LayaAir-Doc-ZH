@@ -1,0 +1,88 @@
+---
+title: "安装与导出窗口介绍"
+description: "从安装到第一次成功导出：介绍 Unity 导出插件的环境要求、安装步骤、菜单总览，以及 Export Tool 导出窗口各控件的含义与典型导出流程。"
+slug: "unity-plugin/install"
+---
+
+从安装到第一次成功导出，本页介绍插件的环境要求、安装步骤、菜单总览，以及导出窗口各控件的含义。
+
+- **包名**：`com.layaair.export-tool`
+- **版本**：1.1.7
+- **适用**：Unity 2019.4 及以上
+
+## ① 环境要求
+
+| 项目 | 要求 |
+| --- | --- |
+| Unity 版本 | 2019.4 LTS+ |
+| 导出目标 | LayaAir 3.x |
+| 运行平台 | Windows（HDR 导出依赖 msvcrt.dll） |
+| 外部依赖 | 无（package.json 无 dependencies） |
+
+:::tip[可选增强]
+仓库内 `LayaShader/` 提供了一套与 Laya 对应的 Unity 作者 Shader（`Laya/BlinnPhong`、`Laya/Unlit` 等）。给材质改用这些 Shader 可获得最佳的材质导出保真度；高质量网格简化则需另装 UnityMeshSimplifier 包并开启 `UNITY_MESH_SIMPLIFIER` 编译宏。
+:::
+
+## ② 安装步骤
+
+推荐：直接放入 Assets 目录。
+
+1. **获取插件**：克隆或下载插件仓库（含 `Editor/`、`Runtime/`、`LayaShader/`、`package.json`）。
+2. **放入项目 Assets**：将整个插件文件夹放到 Unity 工程的 `Assets/LayaAir3.0UnityPlugin/` 下。Unity 会自动编译 `Editor/` 内的编辑器脚本。
+3. **等待编译完成**：Console 无报错后，顶部菜单栏会出现 `LayaAir3D 3.0` 与 `LayaAir` 两个菜单。
+4. **打开导出窗口**：菜单 `LayaAir3D 3.0 / Export Tool` 打开主窗口，即可开始配置导出。
+
+:::caution[为什么放在 Assets 而不是用 Package Manager？]
+插件大部分文件靠 `AssetDatabase.FindAssets("LanguageConfig")` 动态定位自身，理论上可放任意位置；但**运行时脚本注入**（`Animator2DSync.ts`）与**组件脚本映射文件**硬编码到 `Assets/LayaAir3.0UnityPlugin/…`。若通过 UPM 安装到只读的 `Packages/` 目录，这些功能会失效。**因此请安装到 `Assets/LayaAir3.0UnityPlugin/`。**
+:::
+
+:::caution[避免重名冲突]
+自定位依赖工程中存在唯一的 `LanguageConfig.cs`。若项目里有同名文件，插件会报「File name clash」并停止——请确保不重复导入。
+:::
+
+:::note
+若使用官方发布的 `.unitypackage` 安装包，导入方式见 [Unity资源导出插件](/3d/advanced/unity/)。
+:::
+
+## ③ 菜单总览
+
+| 菜单路径 | 作用 | 说明 |
+| --- | --- | --- |
+| `LayaAir3D 3.0 / Export Tool` | 打开导出主窗口 | 核心入口，所有导出配置与导出按钮都在此 |
+| `LayaAir3D 3.0 / Setting` | 语言切换 | English / 中文；默认中文，切换后导出窗口实时刷新 |
+| `LayaAir3D 3.0 / Help / Study` | 打开教程链接 | 远程配置 URL（注：源码中 Help 的 URL 取值疑似被对调，属已知小问题） |
+| `LayaAir3D 3.0 / Help / Answsers` | 打开问答链接 | 菜单原文即为 "Answsers"（拼写如此） |
+| `LayaAir / 组件脚本导出配置` | 组件脚本 UUID 映射面板 | 配置 Unity 自定义组件 → LayaAir TS 脚本 UUID 的映射（注意它在 `LayaAir` 顶级菜单下） |
+
+## ④ 导出窗口界面
+
+Export Tool 窗口自上而下依次为：**顶部模式切换（Scene 场景 / Sprite3D 预制体）**，以及**游戏对象设置、网格设置、其他设置、自定义 Shader 设置、组件脚本导出配置**五个折叠区，最下方是保存路径与导出按钮。
+
+![导出窗口展开全部设置](/unity-plugin/img/overview-window-expanded.png)
+
+各控件含义如下：
+
+| 控件 | 说明 |
+| --- | --- |
+| **A · 顶部模式切换：Scene / Sprite3D** | 选择导出源：整个当前场景，或预制体 / Sprite3D 层级。选 Sprite3D 模式时才会出现「批量导出第一级」选项（每个一级子节点导出为独立文件）。 |
+| **B · 游戏对象设置** | **忽略未激活的 GameObject**：跳过 inactive 物体。**批量导出第一级**：把根的每个一级子节点拆成独立输出。 |
+| **C · 网格设置** | 四个剥离开关（UV / 顶点色 / 法线 / 切线）可减小网格体积；**自动生成 UV1** 在缺失光照贴图 UV 时自动生成。 |
+| **D · 其他设置 · 自定义目录 & 粒子模式** | **自定义导出根目录名**：在保存路径下追加子文件夹。**粒子导出默认模式**：全局默认 GPU(Shuriken) 或 CPU；单个粒子可挂 `LayaParticleExportSetting` 组件覆盖，启用 Trails/Noise 等模块时会自动转 CPU。 |
+| **E · 自定义 Shader 设置** | 勾选后，未在映射表中的 Shader 会经启发式转换为 Laya GLSL（默认关闭，转换有损，复杂 Shader 需手动调整）。`ENABLE_PARTICLE_MESH_OPTIMIZATION` 宏开启时此处还会显示粒子 Mesh 优化选项。 |
+| **F · 组件脚本导出配置** | 点击按钮打开 UUID 映射面板，把 Unity 自定义组件映射到 LayaAir TS 脚本。未映射的自定义组件不会被导出。 |
+| **G · 保存路径 + Browse** | 导出产物的输出目录，默认 `Assets`。留空会红字提示「保存路径不能为空」。 |
+| **H · LayaAir Export 导出按钮** | 执行导出（调用 `LayaAir3Export.ExportScene()`）。出错时 Console 打印失败信息与堆栈。 |
+
+## ⑤ 典型导出流程
+
+1. **选择导出模式**：整场景选 Scene；导单个角色/道具预制体选 Sprite3D。
+2. **按需调整设置**：网格剥离、粒子默认模式、是否启用自定义 Shader 导出、自定义脚本映射等。
+3. **设定保存路径**：指定输出目录（可配合自定义根目录名）。
+4. **点击导出**：生成 LayaAir 资源（场景层级、`.lm` 网格、`.lmat` 材质、`.lani` 动画、纹理、`_src_` 脚本等）。
+5. **导入 LayaAir 工程**：将产物拷入 LayaAir 3.x 项目资源目录使用；不支持的组件会在 Console 与完成对话框中列出，需在 Laya 端补做。
+
+完整流程详见[整体导出流程](/unity-plugin/overview/)。
+
+---
+
+本页基于插件 1.1.7 源码整理。

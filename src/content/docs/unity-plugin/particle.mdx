@@ -1,0 +1,127 @@
+---
+title: "粒子系统导出"
+description: "Shuriken 粒子导出的 GPU 与 CPU 双路径：三级优先的模式决策、GPU 路径的逐模块映射与渲染模式、CPU 路径的 Plus 模块、两种粒子材质类型，以及各 Unity 粒子模块在两条路径下的支持差异。"
+slug: "unity-plugin/particle"
+---
+
+- **分发**：`ResoureMap`（`GetParticleExportMode`）
+- **GPU**：`LayaParticleExportV2`
+- **CPU**：`ParticleSystemData`
+
+:::note[本章思路]
+粒子导出首先决定导出模式：① 模式决策（GPU 或 CPU）。其后分述两条路径：② GPU（Shuriken）、③ CPU；再说明 ④ 两条路径各自的材质类型，最后 ⑤ 列出触发 CPU 的模块（对应 ① 的判定）。
+:::
+
+:::caution[适用范围]
+本插件仅支持 Unity **内置 Shuriken 粒子系统**（`ParticleSystem` 组件，由 `GameObject → Effects → Particle System` 创建）。**不支持 VFX Graph**（`VisualEffect` 组件 / `com.unity.visualeffectgraph` 包，节点图式 GPU 粒子）——插件源码不识别该组件，场景中的 VFX Graph 物体会被直接跳过、不产生任何 Laya 产物。本页全部内容均针对 Shuriken 粒子。
+:::
+
+:::note[前置条件（Laya 工程）]
+导出工程需在**项目设置 → 引擎模块**中启用 **3D 粒子模块**（`laya.particle3D`）；**CPU 粒子**另需安装官方扩展包 `com.layabox.cpu-particles`。两者就绪后，粒子方可在 Laya 中渲染。
+:::
+
+## ① 模式决策：GPU 还是 CPU
+
+**首步——每个粒子系统按规则确定走 GPU 还是 CPU。** 判定按**三级优先**决定导出模式：
+
+1. **物体 / 父级挂了 `LayaParticleExportSetting` 组件**：用它的 `exportMode`（`ShurikenParticle=0` / `CPUParticle=1`）。沿父链向上查找。
+2. **否则自动检测 `RequiresCPUParticle`**：粒子用了 **Noise（噪声）/ Trails（拖尾）/ LimitVelocityOverLifetime（速度限制）** 任一 → **强制 CPU**（这些是 GPU 路径不支持的模块）。
+3. **否则用全局默认**：`ExportConfig.ParticleExportMode`，出厂默认 `0` = GPU（Shuriken）。
+
+![导出窗口的粒子导出默认模式开关](/unity-plugin/img/particle-export-mode.png)
+
+**③ 全局默认：** 导出窗口「其他设置」里的 `Particle Export Mode` 开关（`Shuriken (GPU)` / `CPU Particle`）——作用于没挂覆盖组件、也未命中自动检测的粒子。
+
+![LayaParticleExportSetting 组件](/unity-plugin/img/particle-export-setting.png)
+
+**① 手动指定：** 给粒子物体加 `LayaAir / Particle Export Setting` 组件，`Export Mode` 下拉二选一：`Shuriken Particle`（GPU）/ `CPU Particle`。
+
+第 ② 步自动切换时，导出会在 Unity Console 打印提示：
+
+```
+[LayaAir Export] 'StaffSwish': 检测到 GPU 不支持的模块 [Noise]，自动切换为 CPU 粒子导出。
+```
+
+## ② GPU 路径（Shuriken）
+
+**默认路径——判定为 GPU 时导出 `ShurikenParticleRenderer`，逐模块映射。** 导出组件 `_$type: ShurikenParticleRenderer`，逐模块映射：main / startLifetime / gravity / emission / shape / velocityOverLifetime / colorOverLifetime / sizeOverLifetime / rotationOverLifetime / colorBySpeed / sizeBySpeed / forceOverLifetime / textureSheetAnimation。
+
+![Unity 粒子系统检视器](/unity-plugin/img/particle-system-inspector.png)
+
+**导出前 · Unity：** 粒子系统检视器——持续时间 / 起始生命周期 / 起始速度、发射、突发、形状等模块，逐项导出到 Laya。
+
+**渲染模式（`renderMode`）决定粒子面片如何朝向与成形**——面向相机的广告牌、沿速度方向拉伸，或用网格作为粒子。Unity 的渲染模式映射到 Laya 对应值如下：
+
+| renderMode | 值 | 说明 |
+| --- | --- | --- |
+| Billboard | 0 | 默认，永远面向相机。**0 为默认值，不写入产物 JSON**（`if (renderMode != 0)` 才写字段） |
+| Stretch | 1 | 拉伸（带速度方向参数） |
+| HorizontalBillboard | 2 | 水平面片 |
+| VerticalBillboard | 3 | 垂直面片 |
+| Mesh | 4 | 用网格当粒子（`maxParticles × meshVertexCount` 即总顶点数） |
+
+**实测·导出后在 Laya 正确渲染：** 一个默认 Billboard + 叠加（Additive）材质的 GPU 粒子，导出前后效果一致。
+
+![Unity 中的 GPU 粒子](/unity-plugin/img/particle-gpu-unity.png)
+
+**Unity：** 默认粒子系统（Billboard，柔和圆形粒子）。
+
+![LayaAir 中的 GPU 粒子](/unity-plugin/img/particle-gpu-laya.png)
+
+**LayaAir：** 导出后正常渲染，形态一致。材质产物 `"type":"PARTICLESHURIKEN"`、`materialRenderMode:3`（叠加）。
+
+## ③ CPU 路径
+
+**判定为 CPU 时导出 `ParticleSystem` + `Plus*` 模块，表达 GPU 路径不支持的效果。** 顶层组件 `_$type: ParticleSystem`，子模块用 **Plus 命名**（Laya CPU 粒子模块）：突发 `PlusBurst`、曲线关键帧 `FloatKeyframe`、网格粒子 `MeshItem` 等。过程中做 Unity→Laya 语义转换，例如突发 `cycleCount=0`（Unity 的 Infinite）→ Laya `-1`（Infinite）。CPU 路径能表达 GPU 不支持的 Noise / Trails / 速度限制，代价是 CPU 模拟开销。
+
+**实测·导出后在 Laya 正确渲染：** 给一个粒子勾上 **Noise（噪声）** 模块，命中自动检测被转为 CPU 导出，导出前后效果一致。
+
+![Unity 中的 CPU 粒子](/unity-plugin/img/particle-cpu-unity.png)
+
+**Unity：** 含 Noise 模块的粒子，命中自动检测 → CPU 路径。
+
+![LayaAir 中的 CPU 粒子](/unity-plugin/img/particle-cpu-laya.png)
+
+**LayaAir：** 导出后正常渲染，形态一致。材质产物 `"type":"CpuParticle3D"`。
+
+## ④ 粒子材质
+
+**两条路径各对应一种粒子材质类型。** 下表按导出情况列出对应的材质 `type`：
+
+| 情况 | 函数 | 材质 type |
+| --- | --- | --- |
+| GPU + shader 已注册 | `WriteParticleMaterial` | `PARTICLESHURIKEN` |
+| CPU 粒子 | CPU 路径 | `CpuParticle3D` |
+| shader 未注册 + 没开自定义 shader | `WriteParticleMaterialGeneric` | 回退内置粒子 shader |
+
+:::note[实测产物核对]
+（导出工程 `assets/.../Ellen/`）：`Respawn_Particle_Mat.lmat` → `"type":"PARTICLESHURIKEN"`（GPU）；`Staff_Particle_Mat_cpu.lmat` → `"type":"CpuParticle3D"`（CPU）。两条路径各产一种材质类型。
+:::
+
+## ⑤ 各模块支持差异
+
+**各 Unity 粒子模块在两条路径下的支持情况如下。** GPU（Shuriken）只支持广告牌/网格 + 各 over Lifetime 这类，复杂模拟类模块需走 CPU；少数模块两条路径都不支持。
+
+| Unity 模块 | GPU 路径 | CPU 路径 |
+| --- | --- | --- |
+| Noise（噪声） | ✗ | ✓ |
+| Trails（拖尾） | ✗ | ✓ |
+| Limit Velocity over Lifetime（速度限制） | ✗ | ✓ |
+| Inherit Velocity（继承速度） | ✗ | ✓ |
+| Collision（碰撞） | ✗ | ✓ |
+| Force over Lifetime（力） | ✗ | ✓ |
+| Color / Size / Rotation by Speed（按速度变化） | ✗ | ✓ |
+| External Forces（外力） | ✗ | ✓ |
+| Sub Emitters（子发射器） | ✗ | ✓ |
+| Lights（灯光） | ✗ | ✗ |
+| Trigger（触发器） | ✗ | ✗ |
+| Custom Data（自定义数据） | ✗ | ✗ |
+| 其余常规模块（发射 / 形状 / 各 over Lifetime…） | ✓ | ✓ |
+
+:::caution
+**插件自动转 CPU 只认 `Noise` / `Trails` / `速度限制（LimitVelocityOverLifetime）` 三者**（`RequiresCPUParticle`）。其余 GPU 不支持的模块若要走 CPU，需手动给粒子挂 `LayaParticleExportSetting` 设为 `CPU Particle`；否则按 GPU 导出、该模块效果丢失。**Lights / Trigger / Custom Data 两条路径都不支持。**
+:::
+
+---
+
+本页基于插件 1.1.7 源码与实测整理。

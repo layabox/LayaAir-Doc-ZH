@@ -1,0 +1,71 @@
+---
+// 可复用「能力对照表」组件 —— 复刻 untiydoc 的徽章对照表观感。
+// AI 生成内容时只需传 rows 数据，样式与图例由组件统一兜底。
+interface Row {
+  feat: string;   // 功能
+  target: string; // 目标
+  level: 'full' | 'part' | 'conf' | 'exp' | 'no'; // 支持度
+  note: string;   // 说明
+}
+interface Props {
+  rows: Row[];
+  cols?: [string, string, string, string];
+}
+const { rows, cols = ['功能', 'LayaAir 目标', '支持度', '说明'] } = Astro.props;
+const LABEL: Record<Row['level'], string> = {
+  full: '完整', part: '部分', conf: '看配置', exp: '实验性', no: '不支持',
+};
+---
+
+<div class="ft-legend">
+  <span><i class="ft-badge full">完整</i> 基本完整映射</span>
+  <span><i class="ft-badge part">部分</i> 有损 / 子集</span>
+  <span><i class="ft-badge conf">看配置</i> 取决于开关</span>
+  <span><i class="ft-badge exp">实验性</i> 未完善</span>
+  <span><i class="ft-badge no">不支持</i> 不导出</span>
+</div>
+
+<table class="ft-table">
+  <thead>
+    <tr>{cols.map((c) => <th>{c}</th>)}</tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr>
+        <td class="ft-feat">{r.feat}</td>
+        <td><code>{r.target}</code></td>
+        <td><i class={`ft-badge ${r.level}`}>{LABEL[r.level]}</i></td>
+        <td class="ft-note" set:html={r.note} />
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .ft-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.82rem;
+    color: var(--sl-color-gray-2);
+  }
+  .ft-table { width: 100%; font-size: 0.9rem; }
+  .ft-feat { font-weight: 600; }
+  .ft-note { color: var(--sl-color-gray-2); }
+  .ft-badge {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #fff;
+  }
+  .ft-badge.full { background: #2f9e44; }
+  .ft-badge.part { background: #f08c00; }
+  .ft-badge.conf { background: #1c7ed6; }
+  .ft-badge.exp  { background: #ae3ec9; }
+  .ft-badge.no   { background: #e03131; }
+</style>
