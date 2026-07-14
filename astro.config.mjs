@@ -113,7 +113,8 @@ export default defineConfig({
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/layabox/LayaAir-Doc-ZH' },
       ],
-      // 侧边导航 —— 由 migrate.mjs 解析 SUMMARY.md 自动生成；正式构建时裁掉 draft 页条目
+      // 侧边导航 —— 数据源是 src/sidebar.generated.json；dev 模式下可在页内「编辑目录」面板中
+      // 直接调整（见 dev-editor/README.md），保存后自动重启生效；正式构建时裁掉 draft 页条目
       sidebar,
     }),
   ],

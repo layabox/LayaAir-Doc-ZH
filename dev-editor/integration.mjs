@@ -12,12 +12,16 @@ export default function devEditor() {
   return {
     name: 'dev-editor',
     hooks: {
-      'astro:config:setup': ({ command, config, injectScript, updateConfig }) => {
+      'astro:config:setup': ({ command, config, injectScript, updateConfig, addWatchFile }) => {
         if (command !== 'dev') return;
         const docsDir = fileURLToPath(new URL('./src/content/docs', config.root));
         const publicDir = fileURLToPath(config.publicDir);
+        const sidebarFile = fileURLToPath(new URL('./src/sidebar.generated.json', config.root));
+        // 侧栏 JSON 是 astro.config 启动时 import 的——加入配置监视,
+        // 编辑器保存目录后 dev server 自动重启,新目录立即生效
+        addWatchFile(sidebarFile);
         injectScript('page', fs.readFileSync(path.join(here, 'client.js'), 'utf8'));
-        updateConfig({ vite: { plugins: [apiPlugin(docsDir, publicDir)] } });
+        updateConfig({ vite: { plugins: [apiPlugin(docsDir, publicDir, sidebarFile)] } });
       },
     },
   };
@@ -47,7 +51,7 @@ function recentSaveActive() {
   return recentSaves.size > 0;
 }
 
-function apiPlugin(docsDir, publicDir) {
+function apiPlugin(docsDir, publicDir, sidebarFile) {
   return {
     name: 'dev-editor-api',
     configureServer(server) {
@@ -62,7 +66,7 @@ function apiPlugin(docsDir, publicDir) {
         };
       }
       server.middlewares.use('/__dev-editor', (req, res) => {
-        handle(req, res, docsDir, publicDir).catch((err) => {
+        handle(req, res, docsDir, publicDir, sidebarFile).catch((err) => {
           send(res, 500, { error: String(err) });
         });
       });
@@ -70,8 +74,30 @@ function apiPlugin(docsDir, publicDir) {
   };
 }
 
-async function handle(req, res, docsDir, publicDir) {
+async function handle(req, res, docsDir, publicDir, sidebarFile) {
   const url = new URL(req.url, 'http://localhost');
+  if (req.method === 'GET' && url.pathname === '/sidebar') {
+    // 目录(侧边栏) → 面板可编辑的缩进文本
+    const items = JSON.parse(fs.readFileSync(sidebarFile, 'utf8'));
+    return send(res, 200, { text: sidebarToText(items) });
+  }
+  if (req.method === 'POST' && url.pathname === '/sidebar') {
+    const body = JSON.parse(await readBody(req));
+    if (typeof body.text !== 'string') return send(res, 400, { error: 'invalid text' });
+    const { items, warnings, missing } = parseSidebarText(body.text, docsDir);
+    if (!items.length) return send(res, 400, { error: '目录不能为空' });
+    // 目录里新增、但还没有对应文档的条目 → 自动生成骨架文档(frontmatter 齐全 + draft 占位),
+    // 保存后点进页面用「编辑本页」直接写正文,新建文档全程不离开浏览器
+    const created = createStubDocs(missing, docsDir, warnings);
+    const count = (arr) => arr.reduce((n, it) => n + (it.items ? count(it.items) : 1), 0);
+    send(res, 200, { ok: true, warnings, created, count: count(items) });
+    // 先发响应再写盘:写入会触发 dev server 重启,先写会把这个响应打断
+    setTimeout(() => {
+      // 与现有文件格式保持一致(2 空格缩进、无尾部换行),内容不变时字节零差异
+      fs.writeFileSync(sidebarFile, JSON.stringify(items, null, 2));
+    }, 150);
+    return;
+  }
   if (req.method === 'GET' && url.pathname === '/load') {
     const file = resolveDocFile(docsDir, url.searchParams.get('pathname') || '/');
     if (!file) return send(res, 404, { error: 'not a markdown page' });
@@ -216,7 +242,11 @@ async function handle(req, res, docsDir, publicDir) {
   send(res, 404, { error: 'unknown endpoint' });
 }
 
-// URL → 源文件：逐段大小写不敏感匹配（Astro slug 会把 2DGame 变成 2dgame）
+// URL → 源文件:逐段按 slug 规则匹配。文件/目录名要经过与 migrate.mjs 相同的 slug 化再比较——
+// 不只是大小写(2DGame→2dgame),点号等特殊字符也会转连字符(2.x-Upgrade→2-x-upgrade)。
+function slugifySeg(s) {
+  return s.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '').replace(/-+/g, '-');
+}
 function resolveDocFile(docsDir, pathname) {
   let p;
   try { p = decodeURIComponent(pathname); } catch { return null; }
@@ -225,21 +255,47 @@ function resolveDocFile(docsDir, pathname) {
   for (let i = 0; i < segs.length; i++) {
     const seg = segs[i].toLowerCase();
     let entries;
-    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return null; }
-    const d = entries.find((e) => e.isDirectory() && e.name.toLowerCase() === seg);
-    if (d) { dir = path.join(dir, d.name); continue; }
-    if (i === segs.length - 1) {
-      const f = entries.find((e) => e.isFile() &&
-        /\.(md|mdx)$/i.test(e.name) && e.name.replace(/\.(md|mdx)$/i, '').toLowerCase() === seg);
-      if (f) return path.join(dir, f.name);
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { entries = null; }
+    if (entries) {
+      const d = entries.find((e) => e.isDirectory() && slugifySeg(e.name) === seg);
+      if (d) { dir = path.join(dir, d.name); continue; }
+      if (i === segs.length - 1) {
+        const f = entries.find((e) => e.isFile() &&
+          /\.(md|mdx)$/i.test(e.name) && slugifySeg(e.name.replace(/\.(md|mdx)$/i, '')) === seg);
+        if (f) return path.join(dir, f.name);
+      }
     }
-    return null;
+    // 逐段匹配失败 → 按 frontmatter 显式 slug 全量查找兜底(slug 与路径不同形的文档)
+    return findBySlug(docsDir, segs.join('/').toLowerCase());
   }
   for (const name of ['index.md', 'index.mdx']) {
     const cand = path.join(dir, name);
     if (fs.existsSync(cand)) return cand;
   }
-  return null;
+  return findBySlug(docsDir, segs.join('/').toLowerCase());
+}
+
+// frontmatter 显式 slug → 源文件的兜底索引;仅在逐段匹配失败时重建,3 秒内复用
+let slugIndex = { at: 0, map: new Map() };
+function findBySlug(docsDir, slug) {
+  if (Date.now() - slugIndex.at > 3000) {
+    const map = new Map();
+    const walk = (dir) => {
+      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, e.name);
+        if (e.isDirectory()) walk(p);
+        else if (/\.mdx?$/i.test(e.name)) {
+          const head = fs.readFileSync(p, 'utf8').slice(0, 2000);
+          const fm = head.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+          const m = fm && fm[1].match(/^slug:\s*"([^"]*)"/m);
+          if (m) map.set(m[1].toLowerCase(), p);
+        }
+      }
+    };
+    try { walk(docsDir); } catch {}
+    slugIndex = { at: Date.now(), map };
+  }
+  return slugIndex.map.get(slug) || null;
 }
 
 // ---------- 实时预览渲染（不写盘） ----------
@@ -295,6 +351,137 @@ async function renderPreview(content) {
     } else html += rendered;
   }
   return html;
+}
+
+// ---------- 目录(侧边栏)编辑 ----------
+// 面板里的文本格式:markdown 列表,缩进 2 空格为一层
+//   - [条目名](/站点链接/)   ← 叶子(单篇文档)
+//   - 分组名                 ← 无链接的行是分组,子项缩进写在下面
+function sidebarToText(items) {
+  const lines = [];
+  const emit = (arr, depth) => {
+    for (const it of arr) {
+      const pad = '  '.repeat(depth);
+      if (it.items) { lines.push(`${pad}- ${it.label}`); emit(it.items, depth + 1); }
+      else lines.push(`${pad}- [${it.label}](${it.link})`);
+    }
+  };
+  emit(items, 0);
+  return lines.join('\n') + '\n';
+}
+
+// 全站文档的 slug 集合,供保存时校验目录链接。
+// 与 Starlight 的规则一致:frontmatter 显式 slug 优先,否则按文件路径推导。
+function collectDocSlugs(docsDir) {
+  const slugs = new Set(['/']);
+  const pathToSlug = (rel) => {
+    let p = rel.replace(/\.mdx?$/i, '');
+    const base = path.posix.basename(p);
+    if (/^(index|readme)$/i.test(base)) p = path.posix.dirname(p);
+    if (p === '.' || p === '') return '/';
+    return '/' + p.split('/').map((seg) =>
+      seg.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '').replace(/-+/g, '-')
+    ).filter(Boolean).join('/') + '/';
+  };
+  const walk = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (/\.mdx?$/i.test(e.name)) {
+        const head = fs.readFileSync(p, 'utf8').slice(0, 2000);
+        const fm = head.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+        const slug = fm && fm[1].match(/^slug:\s*"([^"]*)"/m);
+        const rel = path.relative(docsDir, p).split(path.sep).join('/');
+        slugs.add(slug ? (slug[1] ? '/' + slug[1] + '/' : '/') : pathToSlug(rel));
+      }
+    }
+  };
+  walk(docsDir);
+  return slugs;
+}
+
+function parseSidebarText(text, docsDir) {
+  const warnings = [];
+  const root = { items: [] };
+  const stack = [{ depth: -1, node: root }];
+  const rows = text.split(/\r?\n/);
+  for (let ln = 0; ln < rows.length; ln++) {
+    const raw = rows[ln];
+    if (!raw.trim()) continue;
+    const m = raw.match(/^(\s*)[*\-+]\s+(.*)$/);
+    if (!m) { warnings.push(`第 ${ln + 1} 行不是「- 」列表项,已忽略`); continue; }
+    const depth = Math.floor(m[1].replace(/\t/g, '  ').length / 2);
+    const body = m[2].trim();
+    if (!body) continue;
+    const link = body.match(/^\[([^\]]+)\]\(([^)]+)\)\s*$/);
+    let node;
+    if (link) {
+      // 站内链接自动规范化:小写、补尾部斜杠(带锚点或站外链接原样保留)
+      let u = link[2].trim();
+      if (u.startsWith('/') && !u.includes('#')) {
+        u = u.toLowerCase();
+        if (!u.endsWith('/')) u += '/';
+      }
+      node = { label: link[1].trim(), link: u };
+    } else node = { label: body, collapsed: true, items: [] };
+    while (stack.length && stack[stack.length - 1].depth >= depth) stack.pop();
+    stack[stack.length - 1].node.items.push(node);
+    stack.push({ depth, node });
+  }
+  // 去掉空分组(编辑到一半留下的)
+  const prune = (arr) => arr.filter((it) => {
+    if (!it.items) return true;
+    it.items = prune(it.items);
+    if (!it.items.length) { warnings.push(`空分组「${it.label}」已忽略`); return false; }
+    return true;
+  });
+  const items = prune(root.items);
+  // 找出站内链接没有对应文档的条目(交给 createStubDocs 自动建骨架或给出警告)
+  const slugs = collectDocSlugs(docsDir);
+  const missing = [];
+  const check = (arr) => {
+    for (const it of arr) {
+      if (it.items) check(it.items);
+      else if (it.link.startsWith('/') && !slugs.has(it.link.toLowerCase().replace(/#.*$/, ''))) {
+        missing.push(it);
+      }
+    }
+  };
+  check(items);
+  return { items, warnings, missing };
+}
+
+// 为目录里指向不存在文档的条目生成骨架文档:<slug>/index.md,
+// frontmatter 按《AI出文档规范》(显式 slug、无 H1 正文),draft: true 保证正式构建不上线。
+function createStubDocs(missing, docsDir, warnings) {
+  const created = [];
+  for (const it of missing) {
+    if (it.link.includes('#')) {
+      warnings.push(`「${it.label}」的链接 ${it.link} 带锚点且页面不存在,未自动创建,访问会 404`);
+      continue;
+    }
+    const slug = it.link.replace(/^\/+|\/+$/g, '');
+    // slug 规范:仅小写字母/数字/连字符/斜杠(与《AI出文档规范》一致,防 Linux 上线断链)
+    if (!/^[a-z0-9-]+(\/[a-z0-9-]+)*$/.test(slug)) {
+      warnings.push(`「${it.label}」的链接 ${it.link} 不符合 slug 规范(仅小写字母、数字、连字符),未自动创建,访问会 404`);
+      continue;
+    }
+    const abs = path.join(docsDir, ...slug.split('/'), 'index.md');
+    if (!abs.startsWith(docsDir + path.sep) || fs.existsSync(abs)) continue;
+    fs.mkdirSync(path.dirname(abs), { recursive: true });
+    fs.writeFileSync(abs, `---
+title: ${JSON.stringify(it.label)}
+slug: ${JSON.stringify(slug)}
+draft: true
+---
+
+:::note[内容整理中]
+本页由「编辑目录」自动创建。用右下角「编辑本页」撰写正文;完成后删除 frontmatter 中的 \`draft: true\` 一行(并按规范补上 \`description\`),即可在正式构建中上线。
+:::
+`);
+    created.push(slug + '/index.md');
+  }
+  return created;
 }
 
 function readBody(req) {

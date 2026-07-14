@@ -17,21 +17,26 @@
     sessionStorage.setItem(stateKey(), JSON.stringify(Object.assign(getState(), patch)));
   };
 
+  // 目录编辑面板的状态(全站共用一份,不分页面)
+  const SB_KEY = 'devEditorSb';
+  const sbGet = () => { try { return JSON.parse(sessionStorage.getItem(SB_KEY)) || {}; } catch { return {}; } };
+  const sbPatch = (patch) => sessionStorage.setItem(SB_KEY, JSON.stringify(Object.assign(sbGet(), patch)));
+
   let initSeq = 0;
   async function init() {
     const seq = ++initSeq; // 初始加载时 DOMContentLoaded 与 astro:page-load 都会触发，只让最后一次生效
     document.getElementById(ROOT_ID)?.remove();
     document.documentElement.removeAttribute('data-de-open');
-    let data;
+    let data = null; // 非文档页(搜索页等) data 为 null,只显示「编辑目录」按钮
     try {
       const r = await fetch(API + '/load?pathname=' + encodeURIComponent(location.pathname));
-      if (!r.ok) return; // 非文档页不显示按钮
-      data = await r.json();
+      if (r.ok) data = await r.json();
     } catch { return; }
     if (seq !== initSeq) return;
     document.getElementById(ROOT_ID)?.remove();
     buildUI(data);
-    if (getState().open) openPanel();
+    if (data && getState().open) openPanel();
+    else if (sbGet().open) openSb();
   }
 
   let ui = null; // { root, panel, ta, status, file, disk }
@@ -46,14 +51,16 @@
         :root[data-de-open] .right-sidebar-container { display: none; }
         /* Starlight 给 .main-pane 留了右目录的 300px（width: calc(100% - sidebar)），编辑模式下占满 */
         :root[data-de-open] .main-pane { width: 100% !important; }
-        #${ROOT_ID} .de-btn { position: fixed; right: 1rem; bottom: 1rem; z-index: 99998;
+        #${ROOT_ID} .de-btns { position: fixed; right: 1rem; bottom: 1rem; z-index: 99998;
+          display: flex; gap: 0.5rem; }
+        #${ROOT_ID} .de-btn {
           padding: 0.5rem 1rem; border: 1px solid var(--sl-color-hairline, #888);
           border-radius: 0.5rem; cursor: pointer; font-family: inherit;
           background: var(--sl-color-bg-nav, var(--sl-color-bg));
           color: var(--sl-color-text); font-size: var(--sl-text-sm, 0.875rem);
           box-shadow: var(--sl-shadow-md, 0 2px 8px rgba(0,0,0,.15)); }
         #${ROOT_ID} .de-btn:hover { color: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); }
-        :root[data-de-open] #${ROOT_ID} .de-btn { display: none; }
+        :root[data-de-open] #${ROOT_ID} .de-btns { display: none; }
         #${ROOT_ID} .de-panel { position: fixed; top: 0; right: 0; height: 100vh; z-index: 99999;
           width: var(--de-w, min(620px, 45vw)); display: none; flex-direction: column;
           background: var(--sl-color-bg-nav, var(--sl-color-bg)); color: var(--sl-color-text);
@@ -84,8 +91,11 @@
         /* 定位到图片时的高亮框 */
         .sl-markdown-content img.de-img-flash { outline: 3px solid #f5c518; outline-offset: 3px; }
       </style>
-      <button class="de-btn" type="button">编辑本页</button>
-      <div class="de-panel">
+      <div class="de-btns">
+        ${data ? '<button class="de-btn de-btn-page" type="button">编辑本页</button>' : ''}
+        <button class="de-btn de-btn-sb" type="button">编辑目录</button>
+      </div>
+      ${data ? `<div class="de-panel de-page-panel">
         <div class="de-grip"></div>
         <div class="de-head">
           <span class="de-file" title="${data.file}">${data.file}</span>
@@ -95,23 +105,36 @@
         </div>
         <textarea spellcheck="false"></textarea>
         <div class="de-status">输入后正文实时预览；Ctrl+S 保存落盘；粘贴或拖入图片自动上传</div>
+      </div>` : ''}
+      <div class="de-panel de-sb-panel">
+        <div class="de-grip"></div>
+        <div class="de-head">
+          <span class="de-file" title="src/sidebar.generated.json">目录（侧边导航）</span>
+          <button class="de-save de-sb-save" type="button">保存 (Ctrl+S)</button>
+          <button class="de-sb-close" type="button">关闭</button>
+        </div>
+        <textarea class="de-sb-ta" spellcheck="false"></textarea>
+        <div class="de-status de-sb-status">- [名称](/链接/) 是条目，无链接的行是分组；Tab 缩进层级，Alt+↑/↓ 移动行</div>
       </div>`;
     document.body.appendChild(root);
 
+    buildSb(root);
+    if (!data) { ui = null; return; }
+
     ui = {
       root,
-      panel: root.querySelector('.de-panel'),
-      ta: root.querySelector('textarea'),
-      status: root.querySelector('.de-status'),
+      panel: root.querySelector('.de-page-panel'),
+      ta: root.querySelector('.de-page-panel textarea'),
+      status: root.querySelector('.de-page-panel .de-status'),
       file: data.file,
       disk: data.content,
       replaced: new Set(), // 本次会话里被「换图」覆盖、尚未保存提交的图片名
       replaceStack: [],    // 换图动作栈 {name,url,time}——撤回时若最近一步是换图,直接还原原图
       lastInputTime: 0,    // 最近一次文字输入时间,用于判断"最近一步"是打字还是换图
     };
-    root.querySelector('.de-btn').onclick = openPanel;
+    root.querySelector('.de-btn-page').onclick = openPanel;
     root.querySelector('.de-close').onclick = closePanel;
-    root.querySelector('.de-save').onclick = save;
+    root.querySelector('.de-page-panel .de-save').onclick = save;
     // 撤回：最近一步是换图 → 还原原图；否则走原生撤销栈（打字、插入图片引用一步步退）
     root.querySelector('.de-undo').onclick = undoOnce;
 
@@ -150,9 +173,12 @@
       if (files.length) { e.preventDefault(); uploadImages(files); }
     });
 
-    // 拖动左缘调宽度（页面让位宽度同步变化）
-    const setW = (w) => document.documentElement.style.setProperty('--de-w', w + 'px');
-    const grip = root.querySelector('.de-grip');
+    bindGrip(root.querySelector('.de-page-panel .de-grip'));
+  }
+
+  // 拖动面板左缘调宽度（页面让位宽度同步变化）；两个面板共用同一宽度
+  const setW = (w) => document.documentElement.style.setProperty('--de-w', w + 'px');
+  function bindGrip(grip) {
     grip.addEventListener('mousedown', (e) => {
       e.preventDefault();
       const move = (ev) => {
@@ -166,6 +192,178 @@
     });
     const w = localStorage.getItem('devEditor:w');
     if (w) setW(w);
+  }
+
+  // ---------- 目录（侧边栏）编辑面板 ----------
+  // 文本树格式:- [名称](/链接/) 是条目,无链接的行是分组,缩进 2 空格为一层。
+  // 保存写回 src/sidebar.generated.json → dev server 因配置监视自动重启 → 页面刷新后新目录生效。
+  let sb = null; // { panel, ta, status, loadedText }
+
+  function buildSb(root) {
+    sb = {
+      panel: root.querySelector('.de-sb-panel'),
+      ta: root.querySelector('.de-sb-ta'),
+      status: root.querySelector('.de-sb-status'),
+      loadedText: '',
+    };
+    root.querySelector('.de-btn-sb').onclick = openSb;
+    root.querySelector('.de-sb-close').onclick = closeSb;
+    root.querySelector('.de-sb-save').onclick = sbSave;
+    bindGrip(root.querySelector('.de-sb-panel .de-grip'));
+
+    let t;
+    sb.ta.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => sbPatch({ draft: sb.ta.value }), 300);
+    });
+    sb.ta.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); sbSave(); return; }
+      if (e.key === 'Tab') { e.preventDefault(); indentLines(sb.ta, e.shiftKey); return; }
+      if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+        e.preventDefault();
+        moveLines(sb.ta, e.key === 'ArrowUp' ? -1 : 1);
+      }
+    });
+  }
+
+  async function openSb() {
+    if (!sb) return;
+    try {
+      const r = await fetch(API + '/sidebar');
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error || r.status);
+      sb.loadedText = j.text;
+    } catch (e) { alert('目录加载失败：' + e.message); return; }
+    const st = sbGet();
+    if (st.draft != null && st.draft !== sb.loadedText) {
+      sb.ta.value = st.draft;
+      sbStatus('已恢复未保存的目录草稿');
+    } else {
+      sb.ta.value = sb.loadedText;
+      // 上次保存留下的提示（404 链接警告等）刷新后补显示一次
+      if (st.notice) { sbStatus(st.notice); sbPatch({ notice: null }); }
+    }
+    sb.panel.classList.add('open');
+    document.documentElement.setAttribute('data-de-open', '');
+    sbPatch({ open: true });
+    sb.ta.focus();
+    locateCurrentPage();
+  }
+
+  function closeSb() {
+    if (!sb) return;
+    if (sb.ta.value !== sb.loadedText && !confirm('目录有未保存的修改，确定不保存关闭？')) return;
+    sb.panel.classList.remove('open');
+    document.documentElement.removeAttribute('data-de-open');
+    sbPatch({ open: false, draft: null });
+  }
+
+  async function sbSave() {
+    if (!sb) return;
+    sbStatus('保存中…');
+    try {
+      const r = await fetch(API + '/sidebar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: sb.ta.value }),
+      });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error || r.status);
+      sb.loadedText = sb.ta.value;
+      const notes = [];
+      if (j.created?.length) notes.push(`已自动新建 ${j.created.length} 个骨架文档：${j.created.join('、')}（点进页面用「编辑本页」写正文）`);
+      if (j.warnings?.length) notes.push('⚠ ' + j.warnings.join('；'));
+      const warn = notes.join(' ');
+      // 保存会触发 dev server 重启并整页刷新;提示存起来,刷新后重开面板时补显示
+      sbPatch({ open: true, draft: null, notice: warn || null });
+      sbStatus(`已保存（${j.count} 个条目），预览服务重启中，页面会自动刷新，请勿手动刷新… ${warn}`);
+      // 保存触发 dev server 重启,期间端口不在线,手动刷新会「拒绝访问」。
+      // 这里主动探测:先等服务下线、再等恢复,恢复后立刻刷新;15 秒兜底强刷。
+      (async () => {
+        const ping = async () => {
+          try { return (await fetch(API + '/sidebar', { cache: 'no-store' })).ok; } catch { return false; }
+        };
+        const t0 = Date.now();
+        let wentDown = false;
+        while (Date.now() - t0 < 15000) {
+          await new Promise((r) => setTimeout(r, 600));
+          const up = await ping();
+          if (!up) wentDown = true;
+          else if (wentDown) break; // 经历过下线又恢复 = 重启完成
+        }
+        location.reload();
+      })();
+    } catch (e) {
+      sbPatch({ draft: sb.ta.value });
+      sbStatus('保存失败：' + e.message);
+    }
+  }
+
+  function sbStatus(msg) { if (sb) sb.status.textContent = msg; }
+
+  // 打开面板时自动定位到当前页对应的目录行
+  function locateCurrentPage() {
+    let pn;
+    try { pn = decodeURIComponent(location.pathname).toLowerCase(); } catch { return; }
+    if (!pn.endsWith('/')) pn += '/';
+    const lines = sb.ta.value.split('\n');
+    let pos = 0;
+    for (const l of lines) {
+      const m = l.match(/\]\(([^)]+)\)\s*$/);
+      if (m && m[1].toLowerCase() === pn) {
+        sb.ta.setSelectionRange(pos + l.length - l.trimStart().length, pos + l.length);
+        const lineNo = sb.ta.value.slice(0, pos).split('\n').length - 1;
+        const lh = parseFloat(getComputedStyle(sb.ta).lineHeight) || 22;
+        sb.ta.scrollTop = Math.max(0, lineNo * lh - sb.ta.clientHeight / 3);
+        return;
+      }
+      pos += l.length + 1;
+    }
+  }
+
+  // Tab / Shift+Tab:选中行整体缩进/反缩进(2 空格一层);经 execCommand 走原生撤销栈
+  function indentLines(ta, outdent) {
+    const v = ta.value;
+    const s = ta.selectionStart, e = ta.selectionEnd;
+    const ls = v.lastIndexOf('\n', s - 1) + 1;
+    let le = v.indexOf('\n', Math.max(e, s));
+    if (le < 0) le = v.length;
+    const block = v.slice(ls, le);
+    const changed = block.split('\n')
+      .map((l) => (outdent ? l.replace(/^  /, '') : l.trim() ? '  ' + l : l))
+      .join('\n');
+    if (changed === block) return;
+    ta.setSelectionRange(ls, le);
+    document.execCommand('insertText', false, changed);
+    ta.setSelectionRange(ls, ls + changed.length);
+    sbPatch({ draft: ta.value });
+  }
+
+  // Alt+↑/↓:选中行(块)与相邻行交换位置;经 execCommand 走原生撤销栈
+  function moveLines(ta, dir) {
+    const v = ta.value;
+    const s = ta.selectionStart, e = ta.selectionEnd;
+    const ls = v.lastIndexOf('\n', s - 1) + 1;
+    let le = v.indexOf('\n', Math.max(e, s));
+    if (le < 0) le = v.length;
+    const block = v.slice(ls, le);
+    if (dir < 0) {
+      if (ls === 0) return;
+      const ps = v.lastIndexOf('\n', ls - 2) + 1;
+      const prev = v.slice(ps, ls - 1);
+      ta.setSelectionRange(ps, le);
+      document.execCommand('insertText', false, block + '\n' + prev);
+      ta.setSelectionRange(ps, ps + block.length);
+    } else {
+      if (le >= v.length) return;
+      let ne = v.indexOf('\n', le + 1);
+      if (ne < 0) ne = v.length;
+      const next = v.slice(le + 1, ne);
+      ta.setSelectionRange(ls, ne);
+      document.execCommand('insertText', false, next + '\n' + block);
+      ta.setSelectionRange(ls + next.length + 1, ls + next.length + 1 + block.length);
+    }
+    sbPatch({ draft: ta.value });
   }
 
   function openPanel() {
