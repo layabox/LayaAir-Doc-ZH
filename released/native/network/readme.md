@@ -47,7 +47,7 @@ NET_YES = 5;
 ```javascript
 if( conch )
 {
-    var nType = conch.config.getNetworkType();
+    var nType = conchConfig.getNetworkType();
 }
 ```
 
