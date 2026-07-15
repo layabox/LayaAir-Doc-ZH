@@ -20,7 +20,7 @@ if( conch )
 
 1、conch只能在LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。  
 
-> 在LayaAir-IDE中的脚本中添加代码时，如果没有定义，可以这样写：`(window as any).conch.config.xxxx`。
+> 在LayaAir-IDE中的脚本中添加代码时，如果没有定义，可以这样写：`(window as any).conchConfig.xxxx`。
 
 2、还可以使用`if(Render.isConchApp)`进行判断。  
 
@@ -55,7 +55,7 @@ NET_YES = 5;
 ```javascript
 if( conch )
 {
-    var nType = conch.config.getNetworkType();
+    var nType = conchConfig.getNetworkType();
 }
 ```
 
@@ -74,7 +74,7 @@ NET_YES = 5;
 
 ```typescript
     onStart(): void {
-        var nType = (window as any).conch.config.getNetworkType();
+        var nType = (window as any).conchConfig.getNetworkType();
         console.log("network type: " + nType);
     }
 ```
