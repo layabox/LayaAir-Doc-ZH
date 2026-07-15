@@ -1,26 +1,33 @@
 ---
 title: "粒子系统导出"
-description: "Shuriken 粒子导出的 GPU 与 CPU 双路径：三级优先的模式决策、GPU 路径的逐模块映射与渲染模式、CPU 路径的 Plus 模块、两种粒子材质类型，以及各 Unity 粒子模块在两条路径下的支持差异。"
+description: "LayaAir 三套粒子系统（GPU / CPU / VFX）总览与 Unity 粒子的导出对应关系；Shuriken 粒子导出的 GPU 与 CPU 双路径（模式决策、逐模块映射、粒子材质、支持差异）；VFX Graph 粒子经独立转换器的完整导入导出流程（转换器窗口、批量与 prefab 变体、产物与依赖、转换能力与边界）。"
 slug: "unity-plugin/particle"
 ---
 
-- **分发**：`ResoureMap`（`GetParticleExportMode`）
-- **GPU**：`LayaParticleExportV2`
-- **CPU**：`ParticleSystemData`
+import ParticleOverview from '../../../components/ParticleOverview.astro';
 
 :::note[本章思路]
-粒子导出首先决定导出模式：① 模式决策（GPU 或 CPU）。其后分述两条路径：② GPU（Shuriken）、③ CPU；再说明 ④ 两条路径各自的材质类型，最后 ⑤ 列出触发 CPU 的模块（对应 ① 的判定）。
+先总览 LayaAir 的三套粒子系统（GPU / CPU / VFX）及其与 Unity 粒子的对应关系。本页分两部分：**第一至五章**讲 Shuriken 粒子经 Export Tool 导出的 GPU / CPU 双路径——一、模式决策；二、GPU 路径；三、CPU 路径；四、粒子材质；五、各模块支持差异。**第六章**讲 VFX Graph 粒子经独立转换器的导入导出——6.1 转换器入口与界面；6.2 转换操作流程；6.3 产物与导入 LayaAir；6.4 转换能力与边界（上下文 / 块 / 算子 / 曲线渐变 / 暴露属性 / 转换策略）。
 :::
 
-:::caution[适用范围]
-本插件仅支持 Unity **内置 Shuriken 粒子系统**（`ParticleSystem` 组件，由 `GameObject → Effects → Particle System` 创建）。**不支持 VFX Graph**（`VisualEffect` 组件 / `com.unity.visualeffectgraph` 包，节点图式 GPU 粒子）——插件源码不识别该组件，场景中的 VFX Graph 物体会被直接跳过、不产生任何 Laya 产物。本页全部内容均针对 Shuriken 粒子。
-:::
+## LayaAir 粒子系统总览
+
+LayaAir 拥有 GPU、CPU、VFX 三套互补共存的粒子系统，覆盖全场景需求：
+
+<ParticleOverview />
+
+与 Unity 粒子的导出对应关系：
+
+| Unity 粒子 | LayaAir 粒子系统 | 说明 |
+| --- | --- | --- |
+| Shuriken（`ParticleSystem` 组件） | GPU 粒子 或 CPU 粒子 | 随 Export Tool 场景 / 预设导出，两条互斥路径按第一章的规则逐对象决策；第一至五章详述 |
+| VFX Graph（`.vfx` 资产 / `VisualEffect` 组件） | VFX 粒子 | 通过独立的「VFX-SHADER 转换器」把 `.vfx` 转为 `.laya.vfx`，**不走 Export Tool 场景导出**；第六章详述 |
 
 :::note[前置条件（Laya 工程）]
-导出工程需在**项目设置 → 引擎模块**中启用 **3D 粒子模块**（`laya.particle3D`）；**CPU 粒子**另需安装官方扩展包 `com.layabox.cpu-particles`。两者就绪后，粒子方可在 Laya 中渲染。
+三套粒子系统的可用条件不同——**只有 GPU 粒子是引擎内置的**，在**项目设置 → 引擎模块**中启用 **3D 粒子模块**（`laya.particle3D`）即可使用；**CPU 粒子**需要配合 VIP（企业会员）功能中的 CPU 粒子插件（`com.layabox.cpu-particles`）才可以使用，详见[CPU粒子系统](/ide/layapackage/enterprise/cpuparticle/)；**VFX 粒子**需要配合免费的 VFX 粒子插件使用，详见 [VFX Graph 文档集](/vfx-graph/)。对应插件就绪后，导出的粒子方可在 Laya 中渲染。
 :::
 
-## ① 模式决策：GPU 还是 CPU
+## 一、模式决策：GPU 还是 CPU
 
 **首步——每个粒子系统按规则确定走 GPU 还是 CPU。** 判定按**三级优先**决定导出模式：
 
@@ -30,19 +37,19 @@ slug: "unity-plugin/particle"
 
 ![导出窗口的粒子导出默认模式开关](/unity-plugin/img/particle-export-mode.png)
 
-**③ 全局默认：** 导出窗口「其他设置」里的 `Particle Export Mode` 开关（`Shuriken (GPU)` / `CPU Particle`）——作用于没挂覆盖组件、也未命中自动检测的粒子。
+**第 3 级 · 全局默认：** 导出窗口「其他设置」里的 `Particle Export Mode` 开关（`Shuriken (GPU)` / `CPU Particle`）——作用于没挂覆盖组件、也未命中自动检测的粒子。
 
 ![LayaParticleExportSetting 组件](/unity-plugin/img/particle-export-setting.png)
 
-**① 手动指定：** 给粒子物体加 `LayaAir / Particle Export Setting` 组件，`Export Mode` 下拉二选一：`Shuriken Particle`（GPU）/ `CPU Particle`。
+**第 1 级 · 手动指定：** 给粒子物体加 `LayaAir / Particle Export Setting` 组件，`Export Mode` 下拉二选一：`Shuriken Particle`（GPU）/ `CPU Particle`。
 
-第 ② 步自动切换时，导出会在 Unity Console 打印提示：
+第 2 级自动切换时，导出会在 Unity Console 打印提示：
 
 ```
 [LayaAir Export] 'StaffSwish': 检测到 GPU 不支持的模块 [Noise]，自动切换为 CPU 粒子导出。
 ```
 
-## ② GPU 路径（Shuriken）
+## 二、GPU 路径（Shuriken）
 
 **默认路径——判定为 GPU 时导出 `ShurikenParticleRenderer`，逐模块映射。** 导出组件 `_$type: ShurikenParticleRenderer`，逐模块映射：main / startLifetime / gravity / emission / shape / velocityOverLifetime / colorOverLifetime / sizeOverLifetime / rotationOverLifetime / colorBySpeed / sizeBySpeed / forceOverLifetime / textureSheetAnimation。
 
@@ -70,7 +77,7 @@ slug: "unity-plugin/particle"
 
 **LayaAir：** 导出后正常渲染，形态一致。材质产物 `"type":"PARTICLESHURIKEN"`、`materialRenderMode:3`（叠加）。
 
-## ③ CPU 路径
+## 三、CPU 路径
 
 **判定为 CPU 时导出 `ParticleSystem` + `Plus*` 模块，表达 GPU 路径不支持的效果。** 顶层组件 `_$type: ParticleSystem`，子模块用 **Plus 命名**（Laya CPU 粒子模块）：突发 `PlusBurst`、曲线关键帧 `FloatKeyframe`、网格粒子 `MeshItem` 等。过程中做 Unity→Laya 语义转换，例如突发 `cycleCount=0`（Unity 的 Infinite）→ Laya `-1`（Infinite）。CPU 路径能表达 GPU 不支持的 Noise / Trails / 速度限制，代价是 CPU 模拟开销。
 
@@ -84,7 +91,7 @@ slug: "unity-plugin/particle"
 
 **LayaAir：** 导出后正常渲染，形态一致。材质产物 `"type":"CpuParticle3D"`。
 
-## ④ 粒子材质
+## 四、粒子材质
 
 **两条路径各对应一种粒子材质类型。** 下表按导出情况列出对应的材质 `type`：
 
@@ -98,7 +105,7 @@ slug: "unity-plugin/particle"
 （导出工程 `assets/.../Ellen/`）：`Respawn_Particle_Mat.lmat` → `"type":"PARTICLESHURIKEN"`（GPU）；`Staff_Particle_Mat_cpu.lmat` → `"type":"CpuParticle3D"`（CPU）。两条路径各产一种材质类型。
 :::
 
-## ⑤ 各模块支持差异
+## 五、各模块支持差异
 
 **各 Unity 粒子模块在两条路径下的支持情况如下。** GPU（Shuriken）只支持广告牌/网格 + 各 over Lifetime 这类，复杂模拟类模块需走 CPU；少数模块两条路径都不支持。
 
@@ -124,4 +131,139 @@ slug: "unity-plugin/particle"
 
 ---
 
-本页基于插件 1.1.7 源码与实测整理。
+## 六、VFX Graph 粒子导出
+
+以上第一至五章讲的是 Unity 内置 Shuriken 粒子（`ParticleSystem` 组件），随 Export Tool 场景 / 预设一起导出。**VFX Graph 是另一套体系**——Unity 的节点图式 GPU 粒子（`.vfx` 资产、场景中挂 `VisualEffect` 组件），LayaAir 对应的是 **VFX 粒子系统**。本章讲它的导入导出，与前面的 Shuriken 流程完全独立
+
+:::caution[VFX 不走 Export Tool 场景导出]
+用 Export Tool 导出整场景 / 预设时，**挂了 `VisualEffect` 组件的节点，其 VFX 效果不会被导出**——主导出链路不识别该组件（节点本身作为 GameObject 仍按层级导出，但粒子效果丢失）。要得到可在 Laya 运行的 VFX 粒子，必须用下面介绍的**独立「转换器」窗口**单独转换 `.vfx` 资产。
+:::
+
+:::note[前置条件]
+VFX 粒子在 Laya 工程中渲染，需先安装**免费的 VFX 粒子插件**（VFX Graph 运行时），详见 [VFX Graph 文档集](/vfx-graph/)。转换只是把 Unity 的 `.vfx` 翻译成 Laya 的 `.laya.vfx` 资源，运行仍依赖该插件。
+:::
+
+### 6.1 转换器入口与界面
+
+转换器是插件里独立于 Export Tool 的一个工具窗口，同时负责 VFX Graph 与 ShaderGraph（蓝图）的转换。
+
+- **菜单入口**：`LayaAir3D 3.0 / VFX-SHADER Converter`，打开「转换器」窗口。
+
+![Unity 菜单中的 VFX-SHADER Converter 入口](/unity-plugin/img/vfx-menu-entry.jpg)
+
+窗口有**单文件**和**多文件**两个页签：
+
+| 页签 | 用途 | 主要控件 |
+| --- | --- | --- |
+| **单文件转换** | 转换单个源文件 | 源文件（`.vfx` 或 `.shadergraph`，按扩展名自动识别类型）、输出目录（可空，空则输出到源文件同目录）、「转换」按钮 |
+| **多文件转换** | 递归批量转换整个目录 | 源目录、目标目录、三个转换类型开关（蓝图 / VFX / **应用 prefab 属性覆盖**）、「开始批量转换」按钮，保留相对子目录结构 |
+
+窗口底部是**日志区**，转换后打印结果、依赖资源拷贝报告与缺失资源清单。
+
+![转换器窗口·单文件转换页签](/unity-plugin/img/vfx-converter-window.jpg)
+
+![转换器窗口·多文件转换页签](/unity-plugin/img/vfx-converter-batch.jpg)
+
+:::note[关于「应用 prefab 属性覆盖」]
+多文件页签里 VFX 勾选后会出现此开关。它扫描源目录下的 `.prefab`，把预制体上 `VisualEffect` 组件对基础 `.vfx` 做的**属性覆盖**（换纹理 / 网格、改数值 / 渐变、initialEventName 等）烘进对应的基础 `.laya.vfx`，为每个用到该 VFX 的预制体生成一个**变体 `.laya.vfx`**。这也是插件唯一处理「预制体上 VisualEffect 覆盖」的地方。
+:::
+
+### 6.2 转换操作流程
+
+以单个 `.vfx` 为例（多文件批量同理，只是换成选目录）：
+
+1. **打开转换器**：菜单 `LayaAir3D 3.0 / VFX-SHADER Converter`，切到「单文件转换」页签。
+2. **选源文件**：浏览选中要转换的 `.vfx` 资产；窗口会提示「识别为：VFX（.vfx → .laya.vfx）」。
+3. **（可选）设输出目录**：留空则输出到 `.vfx` 同目录。
+4. **点「转换」**：插件先扫描资源映射（读 Unity 工程与 VFX/URP 包的 `.meta` 建 GUID→类映射，并从已导出资源的 Laya 工程侧取纹理 / 网格 / shader 的 uuid），再把 `.vfx`（Unity YAML）解析、转换、写出 `<名称>.laya.vfx`（JSON 格式的节点图）。
+5. **收集依赖**：转换器从产物里抓出所有引用的资源（`res://uuid`），在 Laya 资源工程里按 uuid 反查真实文件（网格 / 纹理 / shader），连同 `.meta` 拷到输出目录旁的 **`_deps/`** 文件夹。
+6. **看日志**：日志区列出产物路径、已拷贝的依赖数量，以及**找不到的资源清单**（多半是还没用 Export Tool 导出的 FBX / 贴图，提示先导出再重转）。
+
+![选中源文件后识别为 VFX，转换完成后的日志（产物 + 依赖报告）](/unity-plugin/img/vfx-convert-log.jpg)
+
+### 6.3 导入 LayaAir 与使用
+
+转换主产物是一个 **Laya `.vfx` 节点图**（JSON 格式），内含上下文、算子、暴露属性等，对应 Laya VFX 粒子系统的图结构。放进 Laya 工程即可使用：
+
+1. 产物文件名是 `<名称>.laya.vfx`（`.laya` 后缀只为避免和同目录的 Unity 源文件 `<名称>.vfx` 重名）。放进 Laya 工程时**去掉 `.laya`**，改回 `<名称>.vfx`。
+2. 拷进 Laya 工程 `assets` 目录，在 IDE 里**双击打开该 `.vfx` → 保存一次**，编辑器会自动编译出运行时资源（`.lvfx` + `computeshader`），无需手动处理。
+3. 导入后，节点图、暴露属性（Blackboard）、图级设置（Initial Event 等）都完整保留：
+
+![导入 LayaAir 后的 VFX 节点图与暴露属性](/unity-plugin/img/vfx-laya-graph.jpg)
+
+![在 LayaAir 中打开转换后的 VFX Graph（节点图 / 图设置 / 控制台）](/unity-plugin/img/vfx-laya-import.jpg)
+
+:::caution[贴图等资源需手动重连]
+转换只迁移**图逻辑**（发射、模块、曲线、渐变、颜色、流程）。**资源引用（贴图 / 网格 / 自定义 shader）保留的是 Unity 端的 guid**，Laya 工程里没有对应资源时会是占位——IDE 控制台会报 `res://... texture load returned null`（见上图控制台）。需要把这些贴图 / 网格也带进 Laya 工程并在组件的 Properties 面板 / 材质里重新指向，或先用 Export Tool 把它们导出为 Laya 资源。
+:::
+
+> **怎么在场景里播放、用代码驱动？** 转换后的 VFX 与 Laya 原生 VFX 完全一致：挂 `VisualEffect` 组件、事件触发、暴露属性的运行时读写等用法，见 [VFX Graph 文档](/vfx-graph/) 系列（[IDE 操作流程](/vfx-graph/ide-workflow/)、[图级与组件](/vfx-graph/graph-and-components/)、[代码篇](/vfx-graph/code/)）。
+
+### 6.4 转换能力与边界
+
+VFX 转换器把 Unity VFX Graph 的**节点图整体**翻译成 Laya 的 VFX 节点图，覆盖面较广——上下文、算子、块、曲线渐变、暴露属性都在转换范围内。下面按类别说明支持面。
+
+#### 6.4.1 上下文（Context）与输出类型
+
+VFX Graph 的系统流程节点（Spawn → Initialize → Update → Output）都能转换，各 Output 类型映射到 Laya 对应的输出上下文：
+
+| Unity Output 类型 | Laya 输出 | 说明 |
+| --- | --- | --- |
+| Planar Primitive（含 Lit / URP Lit / HDRP 变体） | 广告牌 | 面向相机的四边形粒子 |
+| Mesh（含 Lit / URP Lit 变体） | 网格粒子 | 用网格作为粒子 |
+| Static Mesh（含 Lit / URP Lit 变体） | 静态网格粒子 | 与 Mesh 是不同的输出类型 |
+| Quad Strip / Particle Strip（含 Lit / URP Lit 变体） | 拖尾 | 条带 / 拖尾粒子 |
+| Cube / Line / Point / Line Strip | 立方体 / 线 / 点 / 线条带 | 各对应 Laya 同类输出 |
+| Composed Particle（组合粒子） | 组合粒子输出 | 复合拓扑 |
+| Decal（URP / HDRP） | 广告牌（降级） | 贴花无专用输出，按广告牌近似 |
+
+其中，**若 Output 使用了 ShaderGraph 作为着色**（topology 为 Mesh / Quad 且 shading 为 ShaderGraph），网格 / 广告牌输出会**升级**为专门的「ShaderGraph 网格 / ShaderGraph 广告牌」输出，并绑定由 ShaderGraph 转换出的着色器属性表达式图。
+
+Spawn 块支持 **Constant Rate（恒定速率）/ Burst（单次突发）/ Periodic Burst（周期突发）/ Variable Rate（变速率）/ Set Spawn Event Attribute（设置生成事件属性）/ Custom（自定义包装）**。
+
+#### 6.4.2 块（Block）
+
+块的映射覆盖了 VFX 常用的绝大多数类别（映射表约 60 余条），主要有：
+
+- **属性设置**：Set Attribute（设置任意粒子属性）、Attribute from Curve（曲线驱动属性）、Attribute from Map、Color over Life（生命期颜色）。
+- **朝向与位置**：Orient（朝向，含 Along Velocity / Fixed Axis 等模式）、Position Shape（球 / 盒 / 锥 / 环 / 圆 / 线各形状发射）、Position Mesh / Depth / SDF / Sequential（网格 / 深度 / SDF / 序列位置）。
+- **速度**：Velocity Direction / Randomize / Spherical / Tangent（方向 / 随机 / 球面 / 切向速度）。
+- **力场**：Gravity（重力）、Drag（线性阻力）、Force（力）、Turbulence（湍流）、Vector Field Force（矢量场力）、Vortex（涡旋）、Conform to Sphere / SDF（吸附到球 / SDF）。
+- **碰撞与消亡**：Collision Sphere / AABox / Plane / Cone / Torus / SDF / Oriented Box（各形状碰撞）、Kill Sphere / AABox / Plane / Cone / Torus（各形状消亡区）。
+- **其他**：Camera Fade（相机淡入淡出）、Subpixel AA、Tile Warp、Flipbook Play（翻页动画播放）、Connect Target、Screen Space Size、Trigger Event（触发事件）、Custom HLSL（自定义 HLSL 块）。
+
+#### 6.4.3 算子（Operator）
+
+运算节点覆盖面很广（映射表约 100 条），包括：
+
+- **数学**：加减乘除、取模、取负、绝对值、三角函数（Sin / Cos / Tan）、取整（Floor / Ceil / Round）、幂 / 开方、Min / Max、Clamp / Saturate / Smoothstep、Lerp / InverseLerp / Step、Remap、One Minus、Fractional、Sign、Reciprocal 等。
+- **向量 / 矩阵**：Length / Distance / Normalize、点积 / 叉积、Append / Swizzle、Transform Position / Direction / Vector / Matrix、Look At、极坐标 / 球坐标互转。
+- **采样**：Sample Curve（曲线）、Sample Gradient（渐变）、Sample Texture 2D / 3D / Cube / 2DArray、Sample Mesh Position / Normal / Tangent / UV / Color / Index、Sample Point Cache、Sample SDF / Bezier。
+- **噪声**：Perlin / Value Noise、Curl Noise、Voro Noise。
+- **粒子 / 时间 / 逻辑**：Get Attribute、Age over Lifetime、Total Time、Random、Compare / Branch / Switch、Sequential 3D / Line / Circle 等。
+- **属性**：Get Property（读取暴露属性）。
+
+#### 6.4.4 曲线与渐变
+
+- **曲线（AnimationCurve）** 烘成 Laya 曲线的关键帧数据——每个关键帧保留 7 个分量（时间、值、入 / 出切线、入 / 出权重、加权模式），无曲线数据时用 0→1 线性默认。
+- **渐变（Gradient）** 把 Unity 分离的颜色键（colorKeys）与透明度键（alphaKeys）按时间点并集重采样、合并成 Laya 的 `stops` 色标数组（`[{t, color:{r,g,b,a}}]`），**内联进 `.laya.vfx`**，不生成独立文件。另有两个后处理：HDR 条带渐变逐键最大值归一、stops 转成 IDE 渐变控件格式（规避 IDE 编译器的一个 bug）。
+
+#### 6.4.5 暴露属性
+
+**暴露属性（Exposed Properties）完整保留**：VFX 图上的暴露参数会转成 Laya 的 `properties`，保留暴露名、暴露标志、类型、默认值，还支持分组（`m_Category`）与数值范围（Min / Max）。默认值按类型处理——纹理 / 网格解析成 uuid、渐变转成 stops、向量 / 颜色给默认值。暴露参数还会参与着色器属性绑定的表达式图。
+
+两个边界：**Transform 类型的暴露属性会被跳过**；**从子图内联进来的参数不算用户暴露属性**（不写进 `properties`）。
+
+#### 6.4.6 转换策略与边界
+
+转换器的总体策略是**尽力转换 + 收集警告 + 缺省填默认，全程零崩溃**。需要注意的边界：
+
+- **坐标系转换**：Unity 左手系 → Laya 右手系，位置 / 速度 / 角度等按分量取反。
+- **子图（Subgraph）内联**：先展开进主图，再整体转换。
+- **降级处理**：Masked 混合模式无对应，降级为 Opaque；Decal 无专用输出，归为广告牌；4 个内置参数（Frame Index / Play Rate / Fixed Time Step / Max Delta Time）无对应，跳过并记警告。
+- **静默跳过（不崩溃）**：映射表里没有的未知块 / 算子、被禁用（disabled / activation=false）的块、与所在上下文类别不匹配的块，都会被直接跳过；曲线若序列化成非法值（Infinity / NaN，即所谓 broken tangent），整条曲线丢弃、回退为默认曲线。
+- **警告不可见**：上述跳过 / 降级多数会记入转换器内部的警告列表，但**这些内部警告目前不会显示在转换器窗口日志里**——用户在窗口里只能看到资源依赖的缺失报告。因此**转换后建议在 Laya IDE 中打开 `.laya.vfx` 核对效果**，确认没有关键节点被静默丢弃。
+
+---
+
+本页基于插件源码（`Editor/Export/vfx/`）与实测整理。
