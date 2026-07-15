@@ -58,7 +58,7 @@ if (window.conch)
     // 值为5：输出所有日志，包括 Debug（调试）日志（默认值）
     // 
     // 过滤规则：值为n时，输出所有 LogLevel <= n 的日志
-    window.conch.config.setLogLevel(2);
+    window.conchConfig.setLogLevel(2);
 }
 ```
 
@@ -88,12 +88,12 @@ LayaNative支持iOS模拟器，但是由于模拟器运行效率比较低，建�
 | getAppVersion()      | 获得iOS-App的版本号      | 返回字符串 1.1                                | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 | getAppLocalVersion() | 获得iOS-App的Local版本号 | 返回字符串1.2                                 | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 
-这些函数都属于conch.config类的函数，调用实例：
+这些函数都属于conchConfig类的函数，调用实例：
 
 ```javascript
 if (window.conch)
 {
-    window.conch.config.getRuntimeVersion();
+    window.conchConfig.getRuntimeVersion();
 }
 ```
 
