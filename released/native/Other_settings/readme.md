@@ -28,7 +28,7 @@ if( window.conch )
 	//值为0：表示关闭所有日志输出
     //值为1：表示所有LOGE全部弹出alert
     //值为2：表示所有LOGE和LOGW全部弹出alert
-    window.conch.config.setDebugLevel(1);
+    window.conchConfig.setDebugLevel(1);
 }
 ```
 
@@ -59,12 +59,12 @@ LayaNative支持iOS模拟器，但是由于模拟器运行效率比较低，建�
 | getAppVersion()      | 获得iOS-App的版本号      | 返回字符串 1.1                                | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 | getAppLocalVersion() | 获得iOS-App的Local版本号 | 返回字符串1.2                                 | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 
-这些函数都属于conch.config类的函数，调用实例：
+这些函数都属于conchConfig类的函数，调用实例：
 
 ```javascript
 if( window.conch )
 {
-    window.conch.config.getRuntimeVersion();
+    window.conchConfig.getRuntimeVersion();
 }
 ```
 
@@ -91,11 +91,11 @@ window.onLayaInitError=function(e)
 开发者可以根据自己需求，修改报错信息和报错方式。
 
 ## 9. 获取设备型号
-在LayaNative中，iOS可以通过调用conch.config.getDeviceInfo()获取设备型号。可以用于iPhone X的头帘适配，代码如下：
+在LayaNative中，iOS可以通过调用conchConfig.getDeviceInfo()获取设备型号。可以用于iPhone X的头帘适配，代码如下：
 ```javascript
 if( window.conch )
 {
-    var devInfo = JSON.parse(window.conch.config.getDeviceInfo());
+    var devInfo = JSON.parse(window.conchConfig.getDeviceInfo());
 
     if (devInfo.devicename === 'iPhone10,3' || devInfo.devicename === 'iPhone10,6')
     {
