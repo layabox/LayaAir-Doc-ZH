@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gtextfield"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GTextField/img/1-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:60%;" />
 
 - `Is Demo` Text设置的内容只作为Demo，也就是只在IDE编辑时显示，发布时将自动清空。
 - `Fit Content`

@@ -22,7 +22,7 @@ slug: "released/minigame/alipaygame"
 
 在构建发布面板中，侧边栏选择目标平台为支付宝小游戏。如图2-1所示，
 
-![2-1](/released/miniGame/alipaygame/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -40,7 +40,7 @@ slug: "released/minigame/alipaygame"
 
 发布后的目录结构如图2-2所示 ：
 
-<img src="/released/miniGame/alipaygame/img/2-2.png" alt="2-2" style="zoom:125%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:125%;" />
 
 （图2-2）
 
@@ -94,15 +94,15 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 打开小程序开发者工具IDE，选择打开项目。
 
-<img src="/released/miniGame/alipaygame/img/3-3-1.png" alt="3-3-1" style="zoom:80%;" />
+<img src="./img/3-3-1.png" alt="3-3-1" style="zoom:80%;" />
 
 找到LayaAirIDE中构建发布好的项目，选择alipaygame文件夹。
 
-<img src="/released/miniGame/alipaygame/img/3-3-2.png" alt="3-3-2" style="zoom:80%;" />
+<img src="./img/3-3-2.png" alt="3-3-2" style="zoom:80%;" />
 
 点击完成，即可打开项目。
 
-<img src="/released/miniGame/alipaygame/img/3-3-3.png" alt="3-3-3" style="zoom:80%;" />
+<img src="./img/3-3-3.png" alt="3-3-3" style="zoom:80%;" />
 
 >注意：小游戏和小程序的项目结构是不一样的，两者并不通用，开发者要选择小游戏作为项目类型。
 
@@ -112,7 +112,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 打开IDE之后，我们首先要登录支付宝开发者账号。在IDE左上角点击登录，并用手机支付宝扫描二维码进行登录。需要注意，这里使用的支付宝账号应是3.1章节中设置好的有项目开发权限的账号。
 
-<img src="/released/miniGame/alipaygame/img/3-4-1.png" alt="3-4-1" style="zoom:80%;" />
+<img src="./img/3-4-1.png" alt="3-4-1" style="zoom:80%;" />
 
 
 
@@ -120,7 +120,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 完成小游戏项目的创建后，即可在支付宝开发者工具工具内预览效果和调试。
 
-<img src="/released/miniGame/alipaygame/img/3-5-1.png" alt="3-5-1" style="zoom:80%;" />
+<img src="./img/3-5-1.png" alt="3-5-1" style="zoom:80%;" />
 
 
 
@@ -128,7 +128,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 在开始预览或是真机调试之前，开发者要先选择该项目对应的小游戏是哪个。在IDE的左上角，选择需要的小游戏应用。
 
-<img src="/released/miniGame/alipaygame/img/3-6-1.png" alt="3-6-1" style="zoom:80%;" />
+<img src="./img/3-6-1.png" alt="3-6-1" style="zoom:80%;" />
 
 > 即使开发者没有选择小游戏项目，支付宝开发者工具也会提醒开发者进行选择。
 
@@ -136,7 +136,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 由于LayaAirIDE里也可以调试项目效果，除非是适配相关的问题，基本上两边的效果不会有不一致的情况。因此这一步最重要的是点击预览或是真机调试功能，通过手机支付宝扫码或是直接推送的方式，在手机上进行调试。
 
-<img src="/released/miniGame/alipaygame/img/3-6-2.png" alt="3-6-2" style="zoom:80%;" />
+<img src="./img/3-6-2.png" alt="3-6-2" style="zoom:80%;" />
 
 
 
@@ -146,7 +146,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 开发者可以在IDE右上角找到上传版本功能。
 
-<img src="/released/miniGame/alipaygame/img/3-7-1.png" alt="3-7-1" style="zoom: 80%;" />
+<img src="./img/3-7-1.png" alt="3-7-1" style="zoom: 80%;" />
 
 在上传完成后，小游戏项目还需要设置体验版，提交审核，灰度测试，上架小游戏等操作，具体的操作流程请参考[小游戏发布 - 支付宝文档中心](https://opendocs.alipay.com/mini-game/094o15?pathHash=af8f31f0)这篇文档。
 
@@ -156,7 +156,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 下面介绍LayaAir IDE给支付宝小游戏分包的方法，开发者可以先看一下[通用](/released/generalsetting/)设置的分包。可以通过以下步骤进行分包加载，如图4-1所示，勾选开启分包，然后选择要分包的文件夹即可。开发者还可以选择是否开启远程包。
 
-<img src="/released/miniGame/alipaygame/img/4-1.png" alt="4-1" style="zoom:80%;" />
+<img src="./img/4-1.png" alt="4-1" style="zoom:80%;" />
 
 （图4-1）
 
@@ -212,7 +212,7 @@ export class Script extends Laya.Script {
 
 代码中`printProgress`会打印加载进度日志，效果如下所示：
 
-![4-2](/released/miniGame/alipaygame/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 

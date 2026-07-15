@@ -20,13 +20,13 @@ slug: "ide/uieditor/runtime"
 
 首先，我们的项目不止一套UI，就比如游戏开发来说，有登陆界面，加载界面，英雄属性界面，背包界面，战斗界面等等，那么对于这些界面的合理规划，我们建议是通过划分场景或者预制体来解决。如图1-1所示，这里有很多UI**场景**，因为这些UI的功能是不一样的，所以将它们划分到场景里。
 
-![1-1](/IDE/uiEditor/runtime/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
 如图1-2所示，这里有很多Prefab（**预制体**），因为这些UI的功能是一样的，可以重复利用，所以划分到预制体中。
 
-![1-2](/IDE/uiEditor/runtime/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -40,7 +40,7 @@ slug: "ide/uieditor/runtime"
 
 如图1-3所示，这是一套复杂的UI的预制体，是通过UI组件脚本（Runtime即UI运行时）进行管理的。
 
-<img src="/IDE/uiEditor/runtime/img/1-3.png" alt="image-20221229153156561" style="zoom:50%;" />
+<img src="./img/1-3.png" alt="image-20221229153156561" style="zoom:50%;" />
 
 （图1-3）
 
@@ -60,7 +60,7 @@ UI组件脚本只能添加在Scene2D节点或2D预制体根节点的属性设置
 
 如动图2-1所示，在`UI运行时`属性输入框进行**鼠标双击**操作，IDE会弹窗提示创建UI组件脚本文件，默认是`RuntimeScript.ts`，开发者可以对其进行重命名，最后点击`保存`即可创建脚本。
 
-![2-1](/IDE/uiEditor/runtime/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 
@@ -68,13 +68,13 @@ UI组件脚本只能添加在Scene2D节点或2D预制体根节点的属性设置
 
 图2-2展示了`RuntimeScript.ts`默认生成的代码，其类名RuntimeScript就是创建时的文件名，它在生成时自动继承于RuntimeScriptBase 类。
 
-![2-2](/IDE/uiEditor/runtime/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
 图2-3展示了`RuntimeScript.generated.ts`默认生成的代码，这个类的名字为RuntimeScriptBase ，它继承了“Laya.Scene”，说明它是有场景管理能力的。
 
-![2-3](/IDE/uiEditor/runtime/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -90,19 +90,19 @@ UI组件脚本只能添加在Scene2D节点或2D预制体根节点的属性设置
 
 新建一个场景，创建一个UI组件脚本，并在场景中先添加几个UI组件（如图2-4）。
 
-![2-4](/IDE/uiEditor/runtime/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 要想管理这几个UI组件，需要对这些组件勾选 `定义变量` 选项，如动图2-5所示。
 
-![2-5](/IDE/uiEditor/runtime/img/2-5.gif)
+![2-5](./img/2-5.gif)
 
 （动图2-5）
 
 勾选 `定义变量` 选项后，**保存场景**，此时IDE会自动识别出组件的声明有变化，再看 `RuntimeScript.generated.ts` 代码（如图2-6），多了几个属性，正是对应于刚刚勾选的组件。
 
- ![2-6](/IDE/uiEditor/runtime/img/2-6.png)
+ ![2-6](./img/2-6.png)
 
 （图2-6） 
 
@@ -126,7 +126,7 @@ UI组件脚本只能添加在Scene2D节点或2D预制体根节点的属性设置
 
 运行此场景来看看效果，如动图2-7所示。
 
-![2-7](/IDE/uiEditor/runtime/img/2-7.gif)
+![2-7](./img/2-7.gif)
 
 （动图2-7） 
 
@@ -140,15 +140,15 @@ UI组件脚本就已经介绍完了，再复杂的UI都可以通过勾选组件�
 
 UI组件脚本如果添加在Scene2D上，它的父类就继承于Laya.Scene（如图3-1）；如果添加在2D预制体的根节点，它的父类就继承于UI小部件的类，例如Laya.Box（如图3-2）。而自定义的组件脚本继承于Laya.Script（如图3-3）。
 
-![3-1](/IDE/uiEditor/runtime/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
-![3-2](/IDE/uiEditor/runtime/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
-![3-3](/IDE/uiEditor/runtime/img/3-3.png)
+![3-3](./img/3-3.png)
 
 （图3-3）
 
@@ -158,7 +158,7 @@ UI组件脚本如果添加在Scene2D上，它的父类就继承于Laya.Scene（�
 
 自定义的组件脚本的生命周期，如图3-4所示。
 
-![3-4](/IDE/uiEditor/runtime/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
@@ -244,7 +244,7 @@ export class RuntimeScript extends RuntimeScriptBase {
 
 其次，可以在Scene2D节点下添加自定义的组件脚本，如图4-1所示。
 
-![4-1](/IDE/uiEditor/runtime/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 
@@ -288,13 +288,13 @@ export class NewScript extends Laya.Script {
 
 那么以“统一找到和处理所有UI的Button，让所有Button点击时自动缩放” 为例，我们需要再创建一个有多个Button的UI场景，命名为“Button_Scene”，如图4-2所示。
 
-![4-2](/IDE/uiEditor/runtime/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 
 因为不同的UI，所持有的UI组件是不一样的，比如A场景有a1，a2组件，B场景有b1，b2，b3组件，那么不同的场景就需要有不同的 Runtime来关联每个UI的组件。那么下一步，针对这个Button_Scene的场景，再在Runtime入口创建一个UI组件脚本，并重命名为“ButtonRuntime.ts” ，如动图4-3所示。
 
-![4-3](/IDE/uiEditor/runtime/img/4-3.gif)
+![4-3](./img/4-3.gif)
 
 （动图4-3）
 
@@ -302,7 +302,7 @@ export class NewScript extends Laya.Script {
 
 最后，我们还需要给Button_Scene再添加一个自定义的组件脚本，命名为“ButtonScript.ts”，如图4-4所示。
 
-![4-4](/IDE/uiEditor/runtime/img/4-4.png)
+![4-4](./img/4-4.png)
 
 （图4-4）
 
@@ -314,7 +314,7 @@ export class NewScript extends Laya.Script {
 
 而自定义的组件脚本类（NewScript、ButtonScript）都继承自Laya.Script，那么我们再多继承一层，可以让NewScript和ButtonScript都继承自一个新的类“Main”（这个类就是创建项目时默认生成的Main.ts），Main类再继承自Laya.Script（图4-5），从而实现统一处理的目的。
 
-![4-5](/IDE/uiEditor/runtime/img/4-5.png)
+![4-5](./img/4-5.png)
 
 （图4-5）
 
@@ -421,11 +421,11 @@ export class Main extends Laya.Script {
 
 分别运行两个场景看看效果：
 
-![4-6](/IDE/uiEditor/runtime/img/4-6.gif)
+![4-6](./img/4-6.gif)
 
 （动图4-6）Scene的Button可以点击缩放
 
-![4-7](/IDE/uiEditor/runtime/img/4-7.gif)
+![4-7](./img/4-7.gif)
 
 （动图4-7）Button_Scene的三个Button都可以点击缩放
 

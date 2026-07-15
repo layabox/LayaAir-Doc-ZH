@@ -22,11 +22,11 @@ slug: "unity-plugin/material-shader"
 
 实测 `Ellen_Body_Mat` 是 **Standard**，配置把它映射为 Laya 的 **PBR** 材质类型：
 
-![Unity 材质检查器](/unity-plugin/img/material-inspector.png)
+![Unity 材质检查器](./img/material-inspector.png)
 
 **导出前 · Unity：** Standard shader，反射率 / 金属 / 法线 / 发射（HDR 青色）等贴图槽与参数。
 
-![导出后 LayaAir 材质](/unity-plugin/img/material-lmat.png)
+![导出后 LayaAir 材质](./img/material-lmat.png)
 
 **导出后 · LayaAir：** type 变 `PBR`，反照率 / 法线 / 自发光 / 遮挡 / 金属光泽贴图，金属度 / 光滑度 / Alpha 测试阈值齐全。
 
@@ -48,11 +48,11 @@ slug: "unity-plugin/material-shader"
 
 转换示意：Unity HDR 颜色 RGB(0,143,191) 强度 2 —（`DecomposeHdrColor`）→ 压缩颜色（≤0.749，Gamma 空间）+ 反算强度 = Laya 自发光颜色 + 强度分离。
 
-![Unity HDR 自发光颜色选择器](/unity-plugin/img/material-emission-hdr.png)
+![Unity HDR 自发光颜色选择器](./img/material-emission-hdr.png)
 
 **导出前 · Unity：**「发射」(Emission) 的 HDR 颜色选择器——颜色 RGB(0,143,191)，**强度滑杆** = 2，颜色超亮。
 
-![导出后 LayaAir 自发光颜色与强度](/unity-plugin/img/material-lmat.png)
+![导出后 LayaAir 自发光颜色与强度](./img/material-lmat.png)
 
 **导出后 · LayaAir：** 拆成**「自发光颜色」（青）+「自发光强度」**两个独立字段——HDR 分解完成。
 
@@ -89,11 +89,11 @@ BlinnPhong 材质若缺高光色，会补默认 `u_MaterialSpecular = (0.2,0.2,0
 | `Skybox/Panoramic` | ✓ | 普通查表 |
 | `Skybox/Cubemap` | ✗ | 当前版本未支持单张 Cubemap 天空盒导出 → 跳过，**不生成 cubemap** |
 
-![6 面天空盒材质](/unity-plugin/img/material-skybox-mat.png)
+![6 面天空盒材质](./img/material-skybox-mat.png)
 
 **导出前 · Unity：** `Skybox/6 Sided` 材质，Front / Back / Left / Right / Up / Down 六个面贴图。
 
-![LayaAir 中的天空盒](/unity-plugin/img/material-skybox-laya.png)
+![LayaAir 中的天空盒](./img/material-skybox-laya.png)
 
 **导出后 · LayaAir：** 6 面合成的 `.cubemap` 在场景中渲染出天空，右侧为 cubemap 属性。
 

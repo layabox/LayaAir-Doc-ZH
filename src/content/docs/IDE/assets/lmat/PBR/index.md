@@ -39,14 +39,14 @@ Material → PBRMaterial → PBRStandardMaterial
 
 反照率颜色定义了材质表面的固有颜色，是一个RGBA值。
 
-![](/IDE/assets/lmat/PBR/img/2-1.png)
+![](./img/2-1.png)
 （图2-1）
 
 ### 2.2 反照率贴图（albedoTexture）
 
 反照率贴图用于提供逐像素的颜色信息，使材质表面呈现更丰富的细节。贴图颜色会与反照率颜色相乘。
 
-![](/IDE/assets/lmat/PBR/img/2-2.png)
+![](./img/2-2.png)
 （图2-2）
 
 ### 2.3 纹理平铺和偏移（tilingOffset）
@@ -69,7 +69,7 @@ Material → PBRMaterial → PBRStandardMaterial
 | 1 | 纯金属，如金、银、铁等 |
 | 0~1 | 过渡值，用于模拟带有氧化层或涂层的金属 |
 
-![](/IDE/assets/lmat/PBR/img/3-1.gif)
+![](./img/3-1.gif)
 （图3-1）
 
 ### 3.2 光滑度（smoothness）
@@ -81,7 +81,7 @@ Material → PBRMaterial → PBRStandardMaterial
 | 0 | 完全粗糙，漫反射为主，如未打磨的石头 |
 | 1 | 完全光滑，镜面反射为主，如镜子 |
 
-![](/IDE/assets/lmat/PBR/img/3-2.gif)
+![](./img/3-2.gif)
 （图3-2）
 
 > 注意：在某些PBR工作流中，使用"粗糙度"（Roughness）代替光滑度，两者是互补关系：`粗糙度 = 1 - 光滑度`。
@@ -105,7 +105,7 @@ Material → PBRMaterial → PBRStandardMaterial
 
 法线贴图通过修改表面法线方向来模拟凹凸细节，而无需增加实际的几何面数。它可以让低面数模型呈现出丰富的表面细节效果。
 
-![](/IDE/assets/lmat/PBR/img/4-1.png)
+![](./img/4-1.png)
 （图4-1）
 
 ### 4.2 法线贴图缩放系数（normalTextureScale）
@@ -117,7 +117,7 @@ Material → PBRMaterial → PBRStandardMaterial
 ### 5.1 遮蔽贴图（occlusionTexture）
 
 遮蔽贴图（也称AO贴图，Ambient Occlusion）用于模拟环境光在缝隙、角落等位置的遮蔽效果，使这些区域看起来更暗，增强立体感和真实感。
-![](/IDE/assets/lmat/PBR/img/5-1.png)
+![](./img/5-1.png)
 （图5-1）
 
 ### 5.2 遮蔽贴图强度（occlusionTextureStrength）
@@ -161,7 +161,7 @@ Material → PBRMaterial → PBRStandardMaterial
 | `anisotropyTexture` | Texture2D | 各向异性强度贴图 |
 
 
-![](/IDE/assets/lmat/PBR/img/7-1.png)
+![](./img/7-1.png)
 （图7-1)
 
 ## 八、清漆层（Clear Coat）

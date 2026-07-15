@@ -21,19 +21,19 @@ UI与场景编辑、组件化开发、屏幕适配与抗锯齿的合集课程链
 
 **本篇文章将对两个不同页面中的Image组件设置同一个runtime逻辑类来实现相同的功能，运行效果如动图0所示：**
 
-![0](/basics/ScriptUse/runtime/img/0.gif)(图0)
+![0](./img/0.gif)(图0)
 
 ### 一、给页面中的组件设置runtime类
 
 在页面管理目录下创建两个UI页面，分别叫MonkeyPage和BGPage。如下图，
 
-![1](/basics/ScriptUse/runtime/img/ide1.png) 
+![1](./img/ide1.png) 
 
 两个UI页面中各拖入一张Image组件，点击Scene2D设置runtime属性为game.ImageRunTime。(将脚本拖拽到runtime的script图标上)。 如图1图2所示：
 
-![1](/basics/ScriptUse/runtime/img/ide3.png)(图1)
+![1](./img/ide3.png)(图1)
 
-![2](/basics/ScriptUse/runtime/img/ide2.png)(图2)
+![2](./img/ide2.png)(图2)
 
 设置完成之后保存导出UI，开始编写逻辑代码。
 
@@ -155,7 +155,7 @@ module game {
 }
 ```
 
-![5](/basics/ScriptUse/runtime/img/5.gif)(图5)
+![5](./img/5.gif)(图5)
 
 这时我们会发现UI页面上的资源显示的很怪异，这时因为按钮的skin默认是三态的，当Image的runtime逻辑类继承自Button组件后，它就不再是一个Image组件了，而是一个Button组件。
 

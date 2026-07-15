@@ -12,7 +12,7 @@ slug: "ide/component/physics3d/fixedconstraint"
 
 在 IDE 中为节点添加固定约束组件后，如图1-1所示：
 
-<img src="/IDE/Component/physics3D/FixedConstraint/img/1-1.png" style="zoom:80%;" />
+<img src="./img/1-1.png" style="zoom:80%;" />
 
 （图1-1）
 
@@ -49,7 +49,7 @@ slug: "ide/component/physics3d/fixedconstraint"
 
 动图1-2演示了固定约束的效果，两个物体被完全固定在一起直到约束断裂后分离：
 
-<img src="/IDE/Component/physics3D/FixedConstraint/img/2-1.gif" style="zoom:50%;" />
+<img src="./img/2-1.gif" style="zoom:50%;" />
 
 （动图1-2）
 

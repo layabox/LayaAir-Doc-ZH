@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gslider"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GSlider/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 - `Value` 进度值，应该在`Min`和`Max`之间。
 - `Min` 进度的最小值。

@@ -30,19 +30,19 @@ slug: "basics/common/adaptscreen"
 
 iOS绘制图形是以 point （pt）为单位，在早期的时候`1 point=1 pixel`。在2010年推出的iPhone4 开始采用 Retina(视网膜) 屏幕显示技术 ，物理分辨率提升了4倍，此时，如果iPhone4 还是`1pt=1px`这个方案，将会导致如图1-1的显示效果。
 
-![图1](/basics/common/adaptScreen/img/1.png) （图1-1）
+![图1](./img/1.png) （图1-1）
 
 在图1-1中，按 iPhone3GS的`320 × 480`进行全屏设计，那在iPhone4下的显示效果则如图1左侧，原来的满屏内容只占了四分之一，其余部分留空。而按iPhone4分辨率 `640 × 960`进行全屏设计，那在iPhone3GS的屏幕下显示效果则如图1右侧，大量内容超出可显示区。
 
 很显然，apple不会让图1的事情发生。实际上，iPhone4的缩放因子为[@2X](https://github.com/2X)，也就是在这个机型上1个point 用`2×2`的像素矩阵来表示，如图2中效果所示，完美解决图1-2中可能发生的问题。
 
-![图2](/basics/common/adaptScreen/img/2.png) 
+![图2](./img/2.png) 
 
 （图1-2）
 
 随着时代的发展，后续的机型物理分辨率也越来越高，1个point占用的物理像素也越来越多，如图1-3。
 
-![图2](/basics/common/adaptScreen/img/3.png) 
+![图2](./img/3.png) 
 
 （图1-3）
 
@@ -52,7 +52,7 @@ iOS绘制图形是以 point （pt）为单位，在早期的时候`1 point=1 pix
 
 逻辑分辨率简单理解就是软件所使用的分辨率，我们设计适配全靠他，也是用乘法数学表达方式来体现。为了更好的理解这个概念，我们先看一组数据表格。如图图1-4。
 
-![图3](/basics/common/adaptScreen/img/4.png) 
+![图3](./img/4.png) 
 
 （图1-3）
 
@@ -118,7 +118,7 @@ LayaAir引擎中的物理宽高是通过`逻辑宽高*DPR`计算而来。
 
 设计宽高是开发者在设计产品时采用的宽高，面对众多机型，如图1-5，选择哪个作为设计宽高，也是一些新手开发者有点迷茫的，这里简单多说几句。
 
-![图5](/basics/common/adaptScreen/img/5.png) 
+![图5](./img/5.png) 
 
 （图1-5）
 
@@ -130,7 +130,7 @@ LayaAir引擎中的物理宽高是通过`逻辑宽高*DPR`计算而来。
 
 打开LayaAir3-IDE 的**项目设置**`Project Settings`面板，可以直接设置设计宽高，效果如图1-6所示。
 
-<img src="/basics/common/adaptScreen/img/6.png" alt="image-20221116100004435" /> 
+<img src="./img/6.png" alt="image-20221116100004435" /> 
 
 （图1-6）
 
@@ -170,7 +170,7 @@ export default class IndexRT extends IndexRTBase {
 
 我们在IDE里任意运行一个页面， 在打开的chrome里用F12进入调试模式后，入口页面中找到id为 `layaCanvas`的canvas标签。记住这个位置，图1-7中红圈标记的，就是画布的初始宽高，后面理解屏幕适配模式的时候，大家可以多关注这里。
 
-![图7](/basics/common/adaptScreen/img/7.png) 
+![图7](./img/7.png) 
 
 （图1-7）
 
@@ -184,7 +184,7 @@ export default class IndexRT extends IndexRTBase {
 
 大家在理解各个适配模式的时候，可以在HTML入口页面中观察画布宽高与transform的matrix（矩阵）缩放效果来对比不同模式之间的差异。如图1-8中红圈标记所示，适配宽高分别为249.99975和444.666222。还原至物理分辨率大小后，虽然有精度上的细微损失，但已经很难看出。
 
-![图8](/basics/common/adaptScreen/img/8.png) 
+![图8](./img/8.png) 
 
 （图1-8）
 
@@ -228,7 +228,7 @@ noscale模式是引擎默认的模式。该模式下，在任何屏幕都会始�
 
 高分辨率下的PC浏览器效果如图2-1中所示。
 
-![图11-1](/basics/common/adaptScreen/img/11-1.png) 
+![图11-1](./img/11-1.png) 
 
 （图2-1）
 
@@ -240,13 +240,13 @@ full模式和noscale模式一样，并没有对设计宽高做缩放处理。
 
 比如，同样是图2-2中的场景，宽高是1334和750。
 
-![图11-2](/basics/common/adaptScreen/img/11-2.png) 
+![图11-2](./img/11-2.png) 
 
 （图2-2）
 
 noscale与full模式的对比效果如图2-3所示，
 
-![](/basics/common/adaptScreen/img/11-3.png) 
+![](./img/11-3.png) 
 
 （图2-3）
 
@@ -266,13 +266,13 @@ noscale与full模式的对比效果如图2-3所示，
 
 另外，使用full模式时，最好是保持场景“使用设计宽高”处于勾选状态，设置如图2-4所示。
 
-![](/basics/common/adaptScreen/img/11-4.png)  
+![](./img/11-4.png)  
 
 （图2-4）
 
 勾选后，舞台是全屏的，更适合UI的动态布局，效果对比如图2-5所示
 
-![](/basics/common/adaptScreen/img/11-5.png) 
+![](./img/11-5.png) 
 
 （图2-5）
 
@@ -294,7 +294,7 @@ fixedwidth保宽模式就是在保障设计宽的内容一定全屏显示的等�
 
 fixedwidth模式，不同机型对比效果，如图2-6所示。
 
-![图12-1](/basics/common/adaptScreen/img/12-1.png) 
+![图12-1](./img/12-1.png) 
 
 （图2-6）
 
@@ -308,13 +308,13 @@ fixedheight保高模式就是在保障设计高的内容一定全屏显示的等
 
 在这个模式下，画布高和舞台高会等于设计高。但**画布宽和舞台宽**会按物理高与设计高的比例**进行缩放后改变**，不采用我们配置的设计宽。所以，当改变后的画布和舞台宽小于原来的设计宽，那就会被裁剪掉多出的部分，如图2-7所示。
 
-![图](/basics/common/adaptScreen/img/12-2.png) 
+![图](./img/12-2.png) 
 
 (图2-7)
 
 如果改变后的画布和舞台宽大于原来的设计宽，底部就会露出舞台背景色（Laya.stage.bgColor），如图2-8所示。
 
-![图](/basics/common/adaptScreen/img/12-3.png) 
+![图](./img/12-3.png) 
 
 (图2-8)
 
@@ -324,7 +324,7 @@ fixedheight保高模式就是在保障设计高的内容一定全屏显示的等
 
 fixedauto自动保宽高模式就是在保障**设计宽高的内容**，**在任意机型的分辨率下**一定**全部显示，而不被裁切**。但有可能会**露出舞台背景色**（Laya.stage.bgColor），如图2-9所示。 **需要通过结合相对布局属性**，进行全屏适配，解决露出舞台背景色的问题。
 
-![图12-4](/basics/common/adaptScreen/img/12-4.png) 
+![图12-4](./img/12-4.png) 
 
 （图2-9）
 
@@ -342,13 +342,13 @@ showall模式的适配结果与fixedauto非常像，也是保障设计宽高一�
 
 showall模式不同屏幕对比效果，如图2-10所示。
 
-![图13-1](/basics/common/adaptScreen/img/13-1.png) 
+![图13-1](./img/13-1.png) 
 
 （图2-10）
 
 在PC浏览器里，尤其是竖屏游戏，如图2-11，推荐首选showall模式。
 
-![](/basics/common/adaptScreen/img/2-11.png) 
+![](./img/2-11.png) 
 
 (图2-11)
 

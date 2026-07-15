@@ -12,7 +12,7 @@ slug: "unity-plugin/overview"
 本章是整个导出流程的全景。点「导出」后，插件执行一条流水线：遍历当前场景的对象 → 展开为节点表并建立父子树 → 逐组件按类型分发给对应导出器 → 落盘成文件，全程进行左手系到右手系的坐标转换。① 给出主链路全景；②③④ 分别展开其中的组件分发、坐标转换与产物类型；⑤ 以实测场景验证整条链路。其余各页（网格 / 材质 / 动画…）是 ② 分发链中各类组件的深入说明。
 :::
 
-![Unity 编辑器中打开导出工具](/unity-plugin/img/overview-entry.png)
+![Unity 编辑器中打开导出工具](./img/overview-entry.png)
 
 **导出入口：** Unity 菜单 `LayaAir3D 3.0 / Export Tool` 打开导出窗口；左侧 Hierarchy 即待导出的场景层级，场景视图为 3D Game Kit Lite 关卡。
 
@@ -38,19 +38,19 @@ slug: "unity-plugin/overview"
 6. **落盘 · `saveAllFile()` → `ResoureMap.SaveAllFile()`**
    **场景模式**构建 `Scene2D → Scene3D` 根（写入天空盒 / 环境光 / 球谐 / 雾），输出 `.ls`；**预设模式**把每个根节点输出为 `.lh`（开启「批量导出一级节点」时按一级子节点拆分）。最后迭代保存所有登记文件——保存中可能动态产生新文件（如动画又引用了材质），用「已处理集合 + 循环」确保不漏。完成后弹出**不支持功能汇总**对话框。
 
-![导出窗口折叠总览](/unity-plugin/img/overview-window-collapsed.png)
+![导出窗口折叠总览](./img/overview-window-collapsed.png)
 
 **折叠态总览：** 顶部切换导出为场景 / 预设，下含五个折叠设置区与保存路径、导出按钮。
 
-![导出窗口展开全部设置](/unity-plugin/img/overview-window-expanded.png)
+![导出窗口展开全部设置](./img/overview-window-expanded.png)
 
 **展开全部设置：** 节点 / 模型 / 其他（含粒子默认模式）/ 自定义 Shader / 组件脚本导出配置。
 
-![导出为预设模式与导出进度](/unity-plugin/img/overview-preset-progress.png)
+![导出为预设模式与导出进度](./img/overview-preset-progress.png)
 
 **导出过程：**「导出为预设」模式下多出「批量导出一级节点」选项；导出时 Unity 会对涉及的纹理触发重导入并显示进度。
 
-![选择导出保存路径](/unity-plugin/img/overview-output-dir.png)
+![选择导出保存路径](./img/overview-output-dir.png)
 
 **选择保存路径：** 点「浏览」从文件系统选择导出目录。图中目标是一个已有的 LayaAir 工程的 `assets` 目录——其中的 `atlas`、`resources` 等文件夹是 LayaAir 引擎工程自带的结构，**并非本次导出生成**。
 
@@ -111,11 +111,11 @@ slug: "unity-plugin/overview"
 
 **本节以真实场景验证前四节的整条链路导出结果。** 以 3D Game Kit Lite 的示例场景实测：导出后将产物导入 LayaAir 3.x，**场景层级、角色网格、材质贴图、灯光、骨骼**等核心美术资源均忠实还原并正常渲染——这部分正是分发链里有明确分支的组件。
 
-![Unity 与 LayaAir 并排对比](/unity-plugin/img/overview-unity-vs-laya.png)
+![Unity 与 LayaAir 并排对比](./img/overview-unity-vs-laya.png)
 
 **Unity（左）↔ LayaAir（右）：** 导出产物在 LayaAir 3.x 中打开，场景层级、角色、地块均还原渲染。
 
-![导出完成的不支持组件兼容性提示](/unity-plugin/img/overview-unsupported-dialog.png)
+![导出完成的不支持组件兼容性提示](./img/overview-unsupported-dialog.png)
 
 **兼容性提示：** 导出完成时插件弹出汇总对话框（`UnsupportedFeatureCollector`），列出场景中不支持、不会被导出的组件——碰撞器、AudioSource、CharacterController、TrailRenderer 等，详细 GameObject 列表同步输出到 Console。
 

@@ -37,7 +37,7 @@ Laya.Stat.show(0,0);
 
 FPS是每秒传输帧数(Frames Per Second)的缩写。假设游戏的帧速为60FPS，表明游戏运行时每个帧的执行时间为1/60 秒。帧速值越高，视觉上感觉越流畅。
 
-![图1](/basics/PerformanceOptimization/Stat_Panel/img/1.png)<br />	（图1）
+![图1](./img/1.png)<br />	（图1）
 
 当前PC与手机等设备的满帧是60帧，如图1所示，但某些游戏对画面的流畅度要求并不高，也可以采用引擎的帧速限制方法`Stage.FRAME_SLOW`，将FPS帧速限制为最高30帧。
 
@@ -47,7 +47,7 @@ FPS是每秒传输帧数(Frames Per Second)的缩写。假设游戏的帧速为6
 
 LayaAir引擎支持Canvas与WebGL两种渲染模式。因此在看FPS帧速时要注意是在哪种模式下，`FPS(Canvas)`说明是Canvas模式下的帧速，如图1所示；`FPS(WebGL)`说明是WebGL模式下的帧速，如图2所示。
 
-![图片2.png](/basics/PerformanceOptimization/Stat_Panel/img/2.png)<br />	（图2）
+![图片2.png](./img/2.png)<br />	（图2）
 
 #### 2.3  FPS的数值说明
 
@@ -57,13 +57,13 @@ LayaAir引擎支持Canvas与WebGL两种渲染模式。因此在看FPS帧速时�
 
 这两个值如果不能维持在满帧，会在产品操作过程中产生变化，如动图3所示。
 
-![动图3](/basics/PerformanceOptimization/Stat_Panel/img/3.gif) <br /> (动图3)
+![动图3](./img/3.gif) <br /> (动图3)
 
 ## 3、DrawCall介绍
 
  **DrawCall的次数是决定性能的重要指标**，位于统计面板的第三行，如图4所示。DrawCall在Canvas和WebGL渲染下代表不同的意义，但都是越少越好，**建议开发者尽量限制在100之下**。
 
-![图4](/basics/PerformanceOptimization/Stat_Panel/img/4.png) <br /> (图4)
+![图4](./img/4.png) <br /> (图4)
 
 
 

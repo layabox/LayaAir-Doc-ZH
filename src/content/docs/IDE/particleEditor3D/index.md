@@ -14,7 +14,7 @@ slug: "ide/particleeditor3d"
 
 ### 火焰效果展示
 
-<img src="/IDE/particleEditor3D/gif/1.gif" alt="1" style="zoom:50%;" /> 
+<img src="./gif/1.gif" alt="1" style="zoom:50%;" /> 
 
 （动图1）
 
@@ -24,13 +24,13 @@ slug: "ide/particleeditor3d"
 
 在场景中的Scene3D节点下，可以通过鼠标右键来创建3D粒子
 
-<img src="/IDE/particleEditor3D/images/2.png" alt="2" style="zoom:40%;" /> 
+<img src="./images/2.png" alt="2" style="zoom:40%;" /> 
 
 （图2.1.1-1）
 
 默认粒子系统添加完成效果
 
-<img src="/IDE/particleEditor3D/gif/10.gif" alt="10" style="zoom:33%;" /> 
+<img src="./gif/10.gif" alt="10" style="zoom:33%;" /> 
 
 （动图2）
 
@@ -38,7 +38,7 @@ slug: "ide/particleeditor3d"
 
 如果考虑到3D粒子是需要复用的，建议使用预制体，在Assets下创建预制体，双击打开预制体后，在Sprite3D节点下通过鼠标右键来创建3D粒子
 
-<img src="/IDE/particleEditor3D/images/12.png" style="zoom:60%;" /> 
+<img src="./images/12.png" style="zoom:60%;" /> 
 
 （图2.1.2）
 
@@ -52,7 +52,7 @@ slug: "ide/particleeditor3d"
 
 - ### **粒子着色器**
 
-  <img src="/IDE/particleEditor3D/images/46.png" alt="image-20221104145528912" style="zoom:40%;" /> 
+  <img src="./images/46.png" alt="image-20221104145528912" style="zoom:40%;" /> 
 
   （图3.0）从图3.0中看到，当创建一个3D粒子后，会自动添加这三个组件，下面我们来详细了解各系统的使用
 
@@ -64,7 +64,7 @@ slug: "ide/particleeditor3d"
 
 在LayaAir编辑器中，粒子系统组件由五个部分构成
 
-<img src="/IDE/particleEditor3D/images/1.png" alt="1" style="zoom:50%;" /> 
+<img src="./images/1.png" alt="1" style="zoom:50%;" /> 
 
 （图3.1）
 
@@ -72,7 +72,7 @@ slug: "ide/particleeditor3d"
 
 默认的是粒子系统的通用模块，用于设置粒子系统的基础性的设置。此模块为固有模块，不可禁用。该模块定义了粒子初始化时的持续时间、循环方式、发射速度、大小等一些列基本的参数。
 
-<img src="/IDE/particleEditor3D/images/4.png" alt="4" style="zoom:50%;" /> 
+<img src="./images/4.png" alt="4" style="zoom:50%;" /> 
 
 （图3.1.1-1）
 
@@ -80,7 +80,7 @@ slug: "ide/particleeditor3d"
 
 ​	*注意：不是一个粒子的生命周期时间，下面会介绍一个粒子的生命周期时间*
 
-<img src="/IDE/particleEditor3D/gif/2.gif" alt="2" style="zoom:50%;" /> 
+<img src="./gif/2.gif" alt="2" style="zoom:50%;" /> 
 
 （动图3）Duration为5的效果，5秒到达时，粒子不在发射，同时Loop要设为不启动
 
@@ -92,13 +92,13 @@ slug: "ide/particleeditor3d"
 		`Constant` 固定时间
 		`Random Between Two Constant` 从最小到最大两个时间中随机取值
 
-<img src="/IDE/particleEditor3D/gif/3.gif" alt="3" style="zoom: 40%;" /> 
+<img src="./gif/3.gif" alt="3" style="zoom: 40%;" /> 
 
 （动图4）展示了使用最小2到最大5秒随机的方式，可以看到当第4秒时，粒子开始发射
 
 `Start Lifetime`：控制每个粒子的生命周期，也就是粒子发生多长时间后消失，它可以是两个数字之间的随机值
 
-<img src="/IDE/particleEditor3D/gif/4.gif" alt="4" style="zoom:36%;" /> 
+<img src="./gif/4.gif" alt="4" style="zoom:36%;" /> 
 
 （动图5）展示了使用Start Lifetime为3时的效果，显示每个粒子从发射出生到消失用时3秒
 
@@ -112,7 +112,7 @@ slug: "ide/particleeditor3d"
 		`Constant` 固定值
 		`Random Between Two Constant` 从最小到最大中随机取值
 
-<img src="/IDE/particleEditor3D/images/38.png" alt="image-20221104102146889" style="zoom: 38%;" /> 
+<img src="./images/38.png" alt="image-20221104102146889" style="zoom: 38%;" /> 
 
 （图3.1.1-2） 展示了Start Size在1和5之间随机，可以看到左边粒子有大有小
 
@@ -122,25 +122,25 @@ slug: "ide/particleeditor3d"
 		`Constant` 固定值
 		`Random Between Two Constant` 从最小到最大中随机取值
 
-<img src="/IDE/particleEditor3D/images/39.png" alt="image-20221104102637418" style="zoom:39%;" /> 
+<img src="./images/39.png" alt="image-20221104102637418" style="zoom:39%;" /> 
 
 （图3.1.1-3） 展示了Start Rotation在1和360之间随机，可以看到左边粒子有各个方向的旋转
 
 `Start Color`：每个粒子的初始颜色
 
-<img src="/IDE/particleEditor3D/images/40.png" alt="image-20221104103039063" style="zoom:40%;" /> 
+<img src="./images/40.png" alt="image-20221104103039063" style="zoom:40%;" /> 
 
 （图3.1.1-4） 展示了Start Color为红色的效果
 
 *注意，即便在StartColor中规定了粒子为红色，显示出来的效果也不是纯红色，粒子与粒子，天空，红色方块叠加的地方都变成了不一样的颜色，这是因为画面的最终显示效果是由着色器调控的，我们在设置粒子材质的时候，选择的RenderingMode为Additive(叠加的)，所以最终显示效果会受到粒子背后传来的光的影响从而发生变色。可以尝试选择不同的着色器选项观察变化*
 
-<img src="/IDE/particleEditor3D/images/41.png" alt="image-20221104103526729" style="zoom:39%;" /> 
+<img src="./images/41.png" alt="image-20221104103526729" style="zoom:39%;" /> 
 
 （图3.1.1-5） 展示了RenderingMode为Additive的效果
 
 `Gravity Modifier`：设置物理重力值。零值会关闭重力
 
-<img src="/IDE/particleEditor3D/gif/5.gif" alt="5" style="zoom:50%;" /> 
+<img src="./gif/5.gif" alt="5" style="zoom:50%;" /> 
 
 （动图6）展示了使用`Gravity Modifier`为5时的效果 
 
@@ -167,7 +167,7 @@ slug: "ide/particleeditor3d"
 
 该模块是粒子系统组件的一部分，用来指定发射粒子的属性。当创建新的粒子系统时，Emission 模块会默认启用。
 
-<img src="/IDE/particleEditor3D/images/5.png" alt=" " style="zoom: 50%;" /> 
+<img src="./images/5.png" alt=" " style="zoom: 50%;" /> 
 
 （图3.1.2）
 
@@ -176,7 +176,7 @@ slug: "ide/particleeditor3d"
 `Rate over Distance` 每个移动距离单位发射的粒子数，此模式对于模拟实际由对象运动产生的粒子非常有用（例如，泥路上车轮留下的尘土）
 `Bursts`：爆发是产生粒子的事件。这些设置允许在指定时间发射粒子。可以设置多组爆发点，分别修改时间，最小粒子数，最大粒子数
 
-<img src="/IDE/particleEditor3D/gif/6.gif" alt="6" style="zoom:50%;" /> 
+<img src="./gif/6.gif" alt="6" style="zoom:50%;" /> 
 
 （动图7）展示了使用Rate Over Time为5，每秒发射5个粒子，同时使用一组Bursts，在第3秒时，突然发射30个粒子
 
@@ -184,7 +184,7 @@ slug: "ide/particleeditor3d"
 
 该模块定义了发射粒子的体积或表面，以及起始速度的方向。
 
-<img src="/IDE/particleEditor3D/images/6.png" alt="6" style="zoom:50%;" /> 
+<img src="./images/6.png" alt="6" style="zoom:50%;" /> 
 
 （图3.1.3-1）
 
@@ -194,7 +194,7 @@ slug: "ide/particleeditor3d"
 	`Emit from shell`：根据壳发射
 	`Randomize Direction`：随机化方向
 
-<img src="/IDE/particleEditor3D/gif/7.gif" alt="7" style="zoom: 45%;" /> 
+<img src="./gif/7.gif" alt="7" style="zoom: 45%;" /> 
 
 （动图8）展示了使用球形，半径是3，从球体的边缘发射
 
@@ -203,7 +203,7 @@ slug: "ide/particleeditor3d"
 	`Emit from shell`：根据壳发射
 	`Randomize Direction`：随机化方向
 
-<img src="/IDE/particleEditor3D/images/42.png" alt="image-20221104113658052" style="zoom:50%;" /> 
+<img src="./images/42.png" alt="image-20221104113658052" style="zoom:50%;" /> 
 
 （图3.1.3-2）
 
@@ -218,7 +218,7 @@ slug: "ide/particleeditor3d"
 		`Volume Shell`：基于锥形内部壳
 	`Randomize Direction`：随机化方向
 
-<img src="/IDE/particleEditor3D/gif/8.gif" alt="8" style="zoom:50%;" /> 
+<img src="./gif/8.gif" alt="8" style="zoom:50%;" /> 
 
  （动图9）展示了使用锥形，半径是2，锥形长度是6，从锥形内部发射
 
@@ -226,7 +226,7 @@ slug: "ide/particleeditor3d"
 	`Length`：XYZ各个方向的长度
 	`Randomize Direction`：随机化方向
 
-<img src="/IDE/particleEditor3D/images/43.png" alt="image-20221104114904448" style="zoom: 40%;" /> 
+<img src="./images/43.png" alt="image-20221104114904448" style="zoom: 40%;" /> 
 
 （图3.1.3-3）
 
@@ -236,7 +236,7 @@ slug: "ide/particleeditor3d"
 	`Emit From Edge`：基于边缘发射
 	`Randomize Direction`：随机化方向
 
-<img src="/IDE/particleEditor3D/images/44.png" alt="image-20221104115105636" style="zoom:41%;" /> 
+<img src="./images/44.png" alt="image-20221104115105636" style="zoom:41%;" /> 
 
 （图3.1.3-4） 
 
@@ -244,7 +244,7 @@ slug: "ide/particleeditor3d"
 
 该模块定义了发射出的粒子的生命周期内的属性
 
-<img src="/IDE/particleEditor3D/images/7.png" alt="7" style="zoom:50%;" /> 
+<img src="./images/7.png" alt="7" style="zoom:50%;" /> 
 
 （图3.1.4）
 
@@ -280,11 +280,11 @@ slug: "ide/particleeditor3d"
 
 帧动画：使用多张图片，每张图片为一帧，构成一个完整的动画叫帧动画。或一张大图片，图片中包含了一个动画的所有帧的图片
 
-<img src="/IDE/particleEditor3D/images/Fireball.png" alt="Fireball" style="zoom: 33%;" /> 
+<img src="./images/Fireball.png" alt="Fireball" style="zoom: 33%;" /> 
 
 （图3.1.5-1）
 
-<img src="/IDE/particleEditor3D/images/8.png" alt="8" style="zoom:50%;" /> 
+<img src="./images/8.png" alt="8" style="zoom:50%;" /> 
 
 （图3.1.5-2）
 
@@ -310,7 +310,7 @@ slug: "ide/particleeditor3d"
 
 `Cycles`：动画序列在粒子生命周期内重复的次数
 
-<img src="/IDE/particleEditor3D/images/45.png" alt="image-20221104120252249" style="zoom:50%;" /> 
+<img src="./images/45.png" alt="image-20221104120252249" style="zoom:50%;" /> 
 
 （图3.1.5-3）第四节火焰示例中会介绍使用过程
 
@@ -318,7 +318,7 @@ slug: "ide/particleeditor3d"
 
 渲染器模块的设置决定了一个粒子的图像，模型，如何被其它粒子变换、着色和过度绘制。
 
-#### <img src="/IDE/particleEditor3D/images/9.png" alt="9" style="zoom: 50%;" />
+#### <img src="./images/9.png" alt="9" style="zoom: 50%;" />
 
 （图3.2）
 
@@ -344,7 +344,7 @@ slug: "ide/particleeditor3d"
 
 5，`Mesh`：粒子是从3D网格而不是纹理渲染的
 
-<img src="/IDE/particleEditor3D/gif/10.gif" alt="10" style="zoom:50%;" /> 
+<img src="./gif/10.gif" alt="10" style="zoom:50%;" /> 
 
 （动图）
 
@@ -355,7 +355,7 @@ slug: "ide/particleeditor3d"
 在材质中选择Laya的particle，可以添加Laya内置的粒子着色器（PARTICLESHURIKEN），其可渲染各种粒子系统
 效果。所有的粒子都是用使用的这个材质。
 
-#### <img src="/IDE/particleEditor3D/images/10.png" alt="10" style="zoom:50%;" />
+#### <img src="./images/10.png" alt="10" style="zoom:50%;" />
 
 （图3.3）
 
@@ -383,7 +383,7 @@ slug: "ide/particleeditor3d"
 
 #### 4.1 创建火焰预制体
 
-<img src="/IDE/particleEditor3D/images/13.png" alt="image-20221102094250016" style="zoom:50%;" /> 
+<img src="./images/13.png" alt="image-20221102094250016" style="zoom:50%;" /> 
 
 （图4.1）
 
@@ -391,7 +391,7 @@ slug: "ide/particleeditor3d"
 
 #### 4.2 火焰序列帧动画
 
-<img src="/IDE/particleEditor3D/images/15.png" alt="image-20221102095201473" style="zoom: 33%;" /> 
+<img src="./images/15.png" alt="image-20221102095201473" style="zoom: 33%;" /> 
 
 （图4.2）
 
@@ -399,7 +399,7 @@ slug: "ide/particleeditor3d"
 
 #### 4.3 设置火焰材质
 
-<img src="/IDE/particleEditor3D/images/16.png" alt="image-20221102095612863" style="zoom:33%;" /> 
+<img src="./images/16.png" alt="image-20221102095612863" style="zoom:33%;" /> 
 
 （图4.3）
 
@@ -407,13 +407,13 @@ slug: "ide/particleeditor3d"
 
 #### 4.4 设置粒子系统渲染模块
 
-<img src="/IDE/particleEditor3D/images/17.png" alt="image-20221102100047289" style="zoom:33%;" /> 
+<img src="./images/17.png" alt="image-20221102100047289" style="zoom:33%;" /> 
 
 （图4.4-1）
 
 创建粒子系统后，Inspector面板中默认会添加ShurikenParticleRenderer组件，选择FlameRoundYellowParticle材质
 
-<img src="/IDE/particleEditor3D/images/18.png" alt="image-20221102101151815" style="zoom:33%;" /> 
+<img src="./images/18.png" alt="image-20221102101151815" style="zoom:33%;" /> 
 
 （图4.4-2）
 
@@ -421,25 +421,25 @@ slug: "ide/particleeditor3d"
 
 #### 4.5 使用贴图动画
 
- <img src="/IDE/particleEditor3D/images/19.png" alt="image-20221102101600360" style="zoom: 33%;" /> 
+ <img src="./images/19.png" alt="image-20221102101600360" style="zoom: 33%;" /> 
 
 （图4.5-1）
 
 在粒子系统的TextureSheet中，创建一个Instance，由于火焰贴图的组成方式为10x5，此时修改Tiles为X：10，Y：5。修改后粒子系统贴图变为火焰效果，但是依然是静态图，下面来修改Frame帧动画，修改Frame->Type为Curve，点击Curve打开面板，横轴为时间线，纵轴为帧动画的帧数，我们希望的效果是1秒中火焰帧动画循环播放一遍，也就是从0到50帧，那么我们修改Curve为下图
 
-<img src="/IDE/particleEditor3D/images/37.png" alt="image-20221102102312764" style="zoom:33%;" /> 
+<img src="./images/37.png" alt="image-20221102102312764" style="zoom:33%;" /> 
 
 （图4.5-2）
 
 完成Curve后，再看火焰效果已经可以播放帧动画
 
-<img src="/IDE/particleEditor3D/gif/9.gif" alt="9" style="zoom: 33%;" /> 
+<img src="./gif/9.gif" alt="9" style="zoom: 33%;" /> 
 
 （动图10）
 
 #### 4.6 设置基础属性
 
- <img src="/IDE/particleEditor3D/images/20.png" alt="image-20221102102603464" style="zoom:33%;" />
+ <img src="./images/20.png" alt="image-20221102102603464" style="zoom:33%;" />
 
 （图4.6） 
 
@@ -447,7 +447,7 @@ Start Speed的Constant为0，火焰发射时的初始速度为0，Start Size的C
 
 #### 4.7 设置发射器
 
-<img src="/IDE/particleEditor3D/images/36.png" alt="image-20221103201917005" style="zoom:33%;" /> 
+<img src="./images/36.png" alt="image-20221103201917005" style="zoom:33%;" /> 
 
 （图4.7） 
 
@@ -455,7 +455,7 @@ Start Speed的Constant为0，火焰发射时的初始速度为0，Start Size的C
 
 #### 4.8 设置形状模块
 
-<img src="/IDE/particleEditor3D/images/21.png" alt="image-20221102103453699" style="zoom:33%;" /> 
+<img src="./images/21.png" alt="image-20221102103453699" style="zoom:33%;" /> 
 
 （图4.8） 
 
@@ -463,25 +463,25 @@ Start Speed的Constant为0，火焰发射时的初始速度为0，Start Size的C
 
 #### 4.9 设置粒子生命周期
 
-<img src="/IDE/particleEditor3D/images/22.png" alt="image-20221102103927956" style="zoom:33%;" /> 
+<img src="./images/22.png" alt="image-20221102103927956" style="zoom:33%;" /> 
 
 （图4.9-1） 
 
 最重要一环为设置粒子生命周期，首先设置火焰生命周期内颜色的过程，创建Color Over Lifetime实例，Type设置为Gradient梯度变化曲线，打开Gradient面板，上面3个箭头向下的指示标表明颜色的透明度从 0%的不透明->80%的不透明->100%的全透明，下面的2个箭头向上的指示标表明颜色的区间变化从c99451到ff4500
 
-<img src="/IDE/particleEditor3D/images/23.png" alt="image-20221102104518054" style="zoom:33%;" /> 
+<img src="./images/23.png" alt="image-20221102104518054" style="zoom:33%;" /> 
 
 （图4.9-2） 
 
 由于火焰是粒子向上运动到消失，创建Velocity Over Lifetime实例，选择Curve曲线，只需要修改Y轴的位移为1秒钟从0到1，向上移动1个单位
 
-<img src="/IDE/particleEditor3D/images/24.png" alt="image-20221102104820089" style="zoom:33%;" /> 
+<img src="./images/24.png" alt="image-20221102104820089" style="zoom:33%;" /> 
 
 （图4.9-3） 
 
 由于火焰是会尺寸上有缩小的过程，创建Size Over Lifetime实例，选择Curve曲线，只需要修改0.5秒时间内，Size从1到0.5，缩小一倍
 
-<img src="/IDE/particleEditor3D/gif/1.gif" alt="1" style="zoom:50%;" /> 
+<img src="./gif/1.gif" alt="1" style="zoom:50%;" /> 
 
 （动图11）
 

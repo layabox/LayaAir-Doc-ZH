@@ -46,14 +46,14 @@ Material → BlinnPhongMaterial
 
 `albedoColor` 属性定义材质表面的固有颜色，类型为 `Color`（RGBA）。它与漫反射贴图颜色相乘后决定最终的漫反射颜色。
 
-![](/IDE/assets/lmat/BlinPhong/img/2-1.gif)
+![](./img/2-1.gif)
 （图2-1）
 
 ### 2.2 反照率贴图（albedoTexture）
 
 `albedoTexture` 属性用于设置漫反射贴图，提供逐像素的颜色细节。贴图颜色与 `albedoColor` 相乘后产生最终的漫反射颜色效果。
 
-![](/IDE/assets/lmat/BlinPhong/img/2-2.gif)
+![](./img/2-2.gif)
 （图2-2）
 
 ### 2.3 反照率强度（albedoIntensity）
@@ -79,7 +79,7 @@ Material → BlinnPhongMaterial
 
 `specularColor` 属性设置高光反射的颜色，类型为 `Color`。高光颜色决定了光线照射到光滑表面时产生的高亮区域的颜色。
 
-![](/IDE/assets/lmat/BlinPhong/img/3-1.png)
+![](./img/3-1.png)
 （图3-1）
 
 ### 3.2 高光贴图（specularTexture）
@@ -95,7 +95,7 @@ Material → BlinnPhongMaterial
 | 趋近0 | 高光范围大而模糊，表面看起来粗糙 |
 | 趋近1 | 高光范围小而集中，表面看起来光滑 |
 
-![](/IDE/assets/lmat/BlinPhong/img/3-2.png)
+![](./img/3-2.png)
 （图3-2）
 
 ## 四、法线贴图（Normal Map）
@@ -104,7 +104,7 @@ Material → BlinnPhongMaterial
 
 `normalTexture` 属性用于设置法线贴图。法线贴图通过修改表面法线方向来模拟凹凸细节，使低面数模型也能呈现丰富的表面纹理效果，而无需增加实际的几何面数。
 
-![](/IDE/assets/lmat/BlinPhong/img/4-1.png)
+![](./img/4-1.png)
 （图4-1）
 
 ## 五、透光性（Transmission）

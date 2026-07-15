@@ -10,7 +10,7 @@ Author: 谷主
 
 ### 一、编辑器操作
 
-<img src="/IDE/uiEditor/FairyGUI/layout/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 

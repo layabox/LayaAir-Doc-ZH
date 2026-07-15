@@ -20,7 +20,7 @@ slug: "unity-plugin/mesh"
 
 **首先枚举网格的顶点属性，据此构建顶点声明（`vbDeclaration`）并累加每顶点字节数。** 除位置外，顶点可含法线、UV、颜色，蒙皮网格另含骨骼权重与索引。下面是实测的 `Ellen_Body` 网格——**18727 顶点、30320 三角形、1 子网格、85 骨骼**：
 
-![Ellen_Body 网格详情](/unity-plugin/img/mesh-mesh-info.png)
+![Ellen_Body 网格详情](./img/mesh-mesh-info.png)
 
 **Ellen_Body 网格信息：** 顶点流（Position/Normal/Tangent/UV/BlendWeight/BlendIndices）、索引格式、子网格数、骨骼数一览。
 
@@ -34,11 +34,11 @@ slug: "unity-plugin/mesh"
 | 骨骼权重 + 索引 | `BLENDWEIGHT,BLENDINDICES` | 16 + 4 | 仅蒙皮网格；权重 `Float32×4`(16B)，索引**导出后压成 `Uint8×4`**(4B) |
 | 切线 | `TANGENT` | 16 | 忽略顶点切线 可剥离 |
 
-![导出工具模型设置](/unity-plugin/img/mesh-model-settings.png)
+![导出工具模型设置](./img/mesh-model-settings.png)
 
 **模型设置折叠区：** 四个剥离开关（UV / 颜色 / 法线 / 切线）减小体积；自动生成 UV1 补光照贴图 UV。
 
-![模型导入设置](/unity-plugin/img/mesh-import-settings.png)
+![模型导入设置](./img/mesh-import-settings.png)
 
 **前提 · 模型导入设置：**「读取/写入」需开启，导出时才能读到顶点数据；法线 / 切线 / 焊接顶点等设置也决定了上面表格里哪些顶点流存在。
 
@@ -68,11 +68,11 @@ slug: "unity-plugin/mesh"
 
 **以下两节为蒙皮网格专属。** LayaAir 单次 drawcall 的骨骼矩阵上限为 **24 根**（uniform 限制），而角色骨骼常达上百根。因此当子网格引用的骨骼超过 24 根时，需将其三角形拆分为多个骨骼数 ≤24 的分组、分批渲染。`Ellen_Body` 引用 **85 根**，需进行分组。
 
-![Ellen 骨骼层级树](/unity-plugin/img/mesh-bones-tree.png)
+![Ellen 骨骼层级树](./img/mesh-bones-tree.png)
 
 **Ellen 的骨骼树：** 从 `Ellen_Root` 展开是上百根骨骼节点（手指、脸部、头发都独立成骨），`Ellen_Body` 引用其中 85 根。
 
-![蒙皮网格渲染器组件](/unity-plugin/img/mesh-skinned-renderer.png)
+![蒙皮网格渲染器组件](./img/mesh-skinned-renderer.png)
 
 **蒙皮网格渲染器：** 导出时从这里读取 `bones` 列表（85 根）、根骨骼（Ellen Hips）与 sharedMesh，再做下面的分组。
 
@@ -87,7 +87,7 @@ slug: "unity-plugin/mesh"
 
 **实证 · 顶点复制导致顶点数增加**：Unity 原始 **18727** 顶点 —（24 骨骼分组 / 跨堆复制）→ 导出 `.lm` **19629** 顶点 = 多出 **902** 个（被复制的顶点）。
 
-![导出后 .lm 网格信息](/unity-plugin/img/mesh-lm-info.png)
+![导出后 .lm 网格信息](./img/mesh-lm-info.png)
 
 **导出后的 `.lm`（在 LayaAir 中查看）：** 顶点数 **19629**（> Unity 的 18727）、85 骨骼、Uint16 索引；`BLENDINDICES` 已从 UInt32 压成 `Uint8 × 4`（对应代码里的 `(byte)boneIndex`）。
 
@@ -108,11 +108,11 @@ slug: "unity-plugin/mesh"
 | 顶点复制 | 无 | 有（24 骨骼分组所致） |
 | 子网格 | 1 | 1 |
 
-![静态网格导出前信息](/unity-plugin/img/mesh-static-info.png)
+![静态网格导出前信息](./img/mesh-static-info.png)
 
 **导出前 · Unity：** 地块网格 `pb_Mesh`，729 顶点、无骨骼，包围盒中心 `(25,0,25)`。
 
-![静态网格导出后 .lm](/unity-plugin/img/mesh-static-lm.png)
+![静态网格导出后 .lm](./img/mesh-static-lm.png)
 
 **导出后 · .lm：** 顶点仍是 **729**（无复制）、`Bones: 0`；包围盒中心变 `(-25,0,25)`——**X 已取反**，实证坐标翻转。
 
@@ -151,15 +151,15 @@ Unity 采用**左手系**、LayaAir 采用**右手系**，二者差异等价于�
 
 同一个 Ellen 模型，导出前后并排对比——网格形状一致，证明顶点 / 三角形 / 骨骼绑定正确还原：
 
-![导出前 Unity 网格线框](/unity-plugin/img/mesh-wireframe.png)
+![导出前 Unity 网格线框](./img/mesh-wireframe.png)
 
 **导出前 · Unity：** Scene 视图「着色线框」下的网格拓扑（顶点 / 三角形）。
 
-![导出后 LayaAir 渲染](/unity-plugin/img/mesh-laya-render.png)
+![导出后 LayaAir 渲染](./img/mesh-laya-render.png)
 
 **导出后 · LayaAir：** 同一 Ellen 网格 + 法杖在引擎中还原渲染，形状一致。
 
-![导出的 .lm 模型文件](/unity-plugin/img/mesh-output-lm.png)
+![导出的 .lm 模型文件](./img/mesh-output-lm.png)
 
 **产物 `.lm`：** 导出目录 `Models/` 下，每个网格一个文件——如 `Ellen-Ellen_Body`、`Staff-Staff_Body`。
 

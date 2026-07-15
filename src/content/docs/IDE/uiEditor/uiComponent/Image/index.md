@@ -12,13 +12,13 @@ Image 是 UI 里最常见的显示图像的组件，用来显示位图图像。�
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-![1-1](/IDE/uiEditor/uiComponent/Image/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
 Image 组件拖放到编辑区后显示效果如图1-2所示：
 
-![1-2](/IDE/uiEditor/uiComponent/Image/img/1-2.png)
+![1-2](./img/1-2.png)
 
 (图1-2) 
 
@@ -28,7 +28,7 @@ Image 组件拖放到编辑区后显示效果如图1-2所示：
 
 Image组件的特有属性如下：
 
-![1-3](/IDE/uiEditor/uiComponent/Image/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -42,25 +42,25 @@ Image组件的特有属性如下：
 
 这里详细说明一下九宫格的设置。假设有一张位图，如图1-4所示，它的边框颜色正好符合作为一个弹窗的需求（这里只是举例，具体色彩搭配要根据需求选择），但是图片的长度太短了，要做弹窗需要将其拉长。
 
-<img src="/IDE/uiEditor/uiComponent/Image/img/1-4.png" alt="1-4" style="zoom:50%;" />
+<img src="./img/1-4.png" alt="1-4" style="zoom:50%;" />
 
 （图1-4）
 
 拉长后的效果如图1-5所示，可以看到，黑色边框会跟着被拉长。
 
-<img src="/IDE/uiEditor/uiComponent/Image/img/1-5.png" alt="1-5" style="zoom:50%;" />
+<img src="./img/1-5.png" alt="1-5" style="zoom:50%;" />
 
 （图1-5）
 
 如果只想放大红色区域，黑色边框保持原来的粗细，那么就要用到sizeGrid了。具体的设置如动图1-6所示，最终可以看到，放大后的弹窗边框粗细不变，中间红色部分为有效缩放区域。
 
-![1-6](/IDE/uiEditor/uiComponent/Image/img/1-6.gif)
+![1-6](./img/1-6.gif)
 
 （动图1-6）
 
 重复填充指的是，如果勾选，则放大图像时，有效缩放区域会重复填充放大的区域，而不会进行放大。效果如图1-7所示。
 
-![1-7](/IDE/uiEditor/uiComponent/Image/img/1-7.png)
+![1-7](./img/1-7.png)
 
 （图1-7）
 

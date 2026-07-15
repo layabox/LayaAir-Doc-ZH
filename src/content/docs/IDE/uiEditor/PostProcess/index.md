@@ -14,11 +14,11 @@ slug: "ide/uieditor/postprocess"
 
 选中一个节点，并创建一个后期处理实例，然后在效果列表中添加后期处理效果，创建完成后，即可看到效果：
 
-![1-1-1](/IDE/uiEditor/PostProcess/img/1-1-1.gif)
+![1-1-1](./img/1-1-1.gif)
 
 后期处理实例上的启用属性决定了后期处理是否生效，此属性会对每个效果都生效，默认勾选：
 
-![1-1-2](/IDE/uiEditor/PostProcess/img/1-1-2.png)
+![1-1-2](./img/1-1-2.png)
 
 
 
@@ -26,7 +26,7 @@ slug: "ide/uieditor/postprocess"
 
 一个节点上可以添加多个后期处理效果，一种后期处理效果也可以重复添加到一个节点上，这些后期处理效果会相互叠加，并同时生效：
 
-![1-2-1](/IDE/uiEditor/PostProcess/img/1-2-1.png)
+![1-2-1](./img/1-2-1.png)
 
 
 
@@ -40,7 +40,7 @@ ColorEffect2D是变色效果，通过设置不同的参数，变色效果可以�
 
 如图所示，变色效果有以下这些属性：
 
-![2-1-1](/IDE/uiEditor/PostProcess/img/2-1-1.png)
+![2-1-1](./img/2-1-1.png)
 
 **启用**：是否启用此效果。
 
@@ -102,7 +102,7 @@ export class Script extends Laya.Script {
 
 变灰效果在IDE中只有启用这一个属性可被设置：
 
-![3-1-1](/IDE/uiEditor/PostProcess/img/3-1-1.png)
+![3-1-1](./img/3-1-1.png)
 
 
 
@@ -146,7 +146,7 @@ export class Script extends Laya.Script {
 
 如图所示，模糊效果有两个基础属性：
 
-![4-1-1](/IDE/uiEditor/PostProcess/img/4-1-1.png)
+![4-1-1](./img/4-1-1.png)
 
 **启用**：是否启用此效果。
 
@@ -197,19 +197,19 @@ export class Script extends Laya.Script {
 
 如图所示，发光效果有以下这些基础属性：
 
-![5-1-1](/IDE/uiEditor/PostProcess/img/5-1-1.png)
+![5-1-1](./img/5-1-1.png)
 
 **启用**：是否启用此效果。
 
 **偏移**：发光效果相较于节点的偏移。下图为不设置偏移和设置偏移后的效果对比。
 
-![5-1-2](/IDE/uiEditor/PostProcess/img/5-1-2.png)
+![5-1-2](./img/5-1-2.png)
 
 **模糊**：发光效果的边缘模糊大小，数值越大，边缘越模糊。
 
 **颜色**：发光滤镜的颜色。通过颜色和偏移可以创建类似阴影的效果：
 
-![5-1-3](/IDE/uiEditor/PostProcess/img/5-1-3.png)
+![5-1-3](./img/5-1-3.png)
 
 ### 5.2代码实现
 

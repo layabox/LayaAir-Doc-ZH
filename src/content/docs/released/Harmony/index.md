@@ -20,7 +20,7 @@ slug: "released/harmony"
 
 在[官网](https://layaair.com/#/engineDownload)下载LayaAir-IDE（需要LayaAirIDE3.2.0beta3版本及以上），打开LayaAirIDE->文件->添加模块->勾选鸿蒙NEXT构建支持，点击安装等待模块的下载解压，如图1所示：
 
-![](/released/Harmony/img/1.png) 
+![](./img/1.png) 
 
 (图1)
 
@@ -28,7 +28,7 @@ slug: "released/harmony"
 
 在LayaAirIDE->文件->构建发布，打开构建发布窗口，选择发布平台为鸿蒙NEXT平台，如图2所示：
 
-![](/released/Harmony/img/2.png) 
+![](./img/2.png) 
 
 (图2)
 
@@ -40,11 +40,11 @@ slug: "released/harmony"
 
 通过上面app构建器构建出来的鸿蒙NEXT项目工程，如图3所示，需要使用鸿蒙开发者工具DevEco Studio打开来进行二次开发和打包等操作，如图4，使用DevEco Studio工具打开并连接设备构建App运行。
 
-![](/released/Harmony/img/3.png) 
+![](./img/3.png) 
 
 (图3)
 
-![](/released/Harmony/img/4.png)
+![](./img/4.png)
 
 (图4)
 

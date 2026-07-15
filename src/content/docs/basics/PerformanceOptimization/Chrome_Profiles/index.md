@@ -15,7 +15,7 @@ slug: "basics/performanceoptimization/chrome-profiles"
 
 ​         选中 `Record JavaScript CPU Profile`，点击 Start 按钮或左上角的实心圆点，这个时候Chrome 就会开始记录当前网页的方法的执行。如图1-1所示。
 
-![图片1-1](/basics/PerformanceOptimization/Chrome_Profiles/img/1-1.png)<br/>（图1-1）
+![图片1-1](./img/1-1.png)<br/>（图1-1）
 
 
 
@@ -23,7 +23,7 @@ slug: "basics/performanceoptimization/chrome-profiles"
 
 结束这个性能分析器的监控记录需要点击Stop按钮（或左侧的红色实心圆圈）。如图1-2所示。
 
-![图片1-2](/basics/PerformanceOptimization/Chrome_Profiles/img/1-2.png)<br/>（图1-2）
+![图片1-2](./img/1-2.png)<br/>（图1-2）
 
 
 
@@ -31,7 +31,7 @@ slug: "basics/performanceoptimization/chrome-profiles"
 
 结束监控后，在左侧 Profiles 下会列出一个监控结果文件，单击可以打开此监控结果文件。如图1-3所示
 
-![图片1-3](/basics/PerformanceOptimization/Chrome_Profiles/img/1-3.png)<br/>（图1-3）
+![图片1-3](./img/1-3.png)<br/>（图1-3）
 
 监控结果是以数据表格形式展现的。我们可以根据消耗排行，找到Function中提供的函数名，针对性能消耗较大的地方进行优化。
 
@@ -45,7 +45,7 @@ slug: "basics/performanceoptimization/chrome-profiles"
 
 
 
-![图片2-1](/basics/PerformanceOptimization/Chrome_Profiles/img/2-1.png)<br/>（图2-1）
+![图片2-1](./img/2-1.png)<br/>（图2-1）
 
 生成的内存快照文件是以数据表格的形式记录了，当前网页对象的个数、所占的内存大小等。
 
@@ -55,7 +55,7 @@ slug: "basics/performanceoptimization/chrome-profiles"
 
 在启动内存分析后，很快就会在左侧的 Profiles 栏目下生成一个当前网页的内存快照记录文件。单击可以查看相关数据，如图2-2所示。
 
-![图片2-2](/basics/PerformanceOptimization/Chrome_Profiles/img/2-2.png)<br/>（图2-2）
+![图片2-2](./img/2-2.png)<br/>（图2-2）
 
 
 
@@ -66,8 +66,8 @@ slug: "basics/performanceoptimization/chrome-profiles"
 
 
 
-​    ![图片1.png](/basics/PerformanceOptimization/Chrome_Profiles/img/5.png)<br/>
+​    ![图片1.png](./img/5.png)<br/>
 ​    （图2-3）
 
-​    ![图片1.png](/basics/PerformanceOptimization/Chrome_Profiles/img/6.png)<br/>
+​    ![图片1.png](./img/6.png)<br/>
 ​    （图6）

@@ -13,7 +13,7 @@ LayaAir2.0开始，支持自定义脚本到编辑器，方便扩展已有组件�
 
 如果想在编辑器内展示脚本定义的属性，可用通过特殊注释来实现，比如下面的脚本类：
 
-<img src="/basics/IDE/Script/images/1.png" alt="image-20221101102208573" style="zoom:50%;" /> 
+<img src="./images/1.png" alt="image-20221101102208573" style="zoom:50%;" /> 
 
 （图1）
 
@@ -39,11 +39,11 @@ private btn_1: Laya.Button;
 
 在自定义属性的上一行，加入@property()，则可以在编辑器暴露此属性，并可以拖拽场景中的相对应的节点
 
-<img src="/basics/IDE/Script/images/2.png" alt="image-20221101103355334" style="zoom: 50%;" /> 
+<img src="./images/2.png" alt="image-20221101103355334" style="zoom: 50%;" /> 
 
 （图2）
 
-<img src="/basics/IDE/Script/images/3.png" alt="image-20221101103614591" style="zoom:67%;" /> 
+<img src="./images/3.png" alt="image-20221101103614591" style="zoom:67%;" /> 
 
 （图3）
 
@@ -237,7 +237,7 @@ private btn_1: Laya.Button;
 
 代码实现了自定义脚本的暴露属性的标识符，生命周期方法onStart()和事件mouseDown()的实现
 
-<img src="/basics/IDE/Script/images/4.png" alt="image-20221031205632806" style="zoom: 25%;" /> 
+<img src="./images/4.png" alt="image-20221031205632806" style="zoom: 25%;" /> 
 
 （图4）
 

@@ -18,7 +18,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 该属性表示角色控制器所使用的胶囊碰撞形状的半径。决定了角色在水平方向上的碰撞范围大小。如动图1-1所示：
 
-![](/IDE/Component/physics3D/CharacterController/img/1-1.gif) 
+![](./img/1-1.gif) 
 
 (动图1-1)
 
@@ -26,7 +26,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 该属性表示角色控制器所使用的胶囊碰撞形状的高度，决定了角色在垂直方向上的碰撞范围大小。如动图1-2所示：
 
-![](/IDE/Component/physics3D/CharacterController/img/1-2.gif) 
+![](./img/1-2.gif) 
 
 (动图1-2)
 
@@ -38,7 +38,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 进入编辑模式后，可以看到几个白色方块，这些就是编辑点，通过拖动编辑点，可以实现便捷的形状外观改变。
 
-![](/IDE/Component/physics3D/CharacterController/img/1-3.gif) 
+![](./img/1-3.gif) 
 
 (动图1-3)
 
@@ -48,7 +48,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 当角色模型的原点与实际的碰撞中心不一致时，使用中心偏移量来修正胶囊体的位置，确保碰撞检测的准确性。
 
-![](/IDE/Component/physics3D/CharacterController/img/1-4.gif) 
+![](./img/1-4.gif) 
 
 (动图1-4)
 
@@ -68,7 +68,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 默认的重力值为 **(0, -9.8, 0)**，表示物体会以 9.8 m/s² 的加速度向下坠落，效果如动图3-1所示。
 
-![](/IDE/Component/physics3D/CharacterController/img/3-1.gif)   
+![](./img/3-1.gif)   
 
 （动图3-1）
 
@@ -78,7 +78,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 如动图3-2所示，设置了推动力后，方块障碍未能阻挡角色的步伐，如果推动力为0，则无法推开方块，角色会被挡住。
 
-![](/IDE/Component/physics3D/CharacterController/img/3-2.gif) 
+![](./img/3-2.gif) 
 
 (动图3-2)
 
@@ -88,7 +88,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 如动图3-3所示，当最大坡度设置为50的时候，角色可以轻松走上锥体，但是面对90度的方块障碍物就无法通过了。
 
-![](/IDE/Component/physics3D/CharacterController/img/3-3.gif) 
+![](./img/3-3.gif) 
 
 (动图3-3)
 
@@ -98,7 +98,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 该值通常在 `0.1 - 1`之间，例如动图3-4中，最大坡度为默认值90度，脚步高度设置为0.5，可以轻松通过图中较低障碍，但无法通过相对较高的障碍。
 
-![](/IDE/Component/physics3D/CharacterController/img/3-4.gif) 
+![](./img/3-4.gif) 
 
 (动图3-4)
 

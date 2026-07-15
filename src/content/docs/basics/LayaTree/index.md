@@ -6,7 +6,7 @@ slug: "basics/layatree"
 
 > Author：李尔                       
 
-![](/basics/LayaTree/img/logo.png) 
+![](./img/logo.png) 
 
 :::note
 
@@ -26,13 +26,13 @@ LayaTree是LayaAir引擎开发者李尔专门为LayaAir引擎广大的开发者�
 
 > 商店地址：https://chrome.google.com/webstore/
 
-![](/basics/LayaTree/img/1.png) 
+![](./img/1.png) 
 
 也可以直接在Chrome里输入安装地址：https://chrome.google.com/webstore/detail/laya-tree/jnmdcbmpmfhnlchjdkcngihpjmgofajm?hl=zh-CN&authuser=0
 
 如下图所示：
 
-![](/basics/LayaTree/img/2.png) 
+![](./img/2.png) 
 
 ### 1.2 手动下载并安装
 
@@ -47,16 +47,16 @@ LayaTree是LayaAir引擎开发者李尔专门为LayaAir引擎广大的开发者�
 打开开发者模式，
 
 将解压后crx文件拖入该页面即可，安装成功后重启浏览器。
-![2020.11_.03_.png](/basics/LayaTree/img/cec59bb76e8273018f3cdf7f34f6ab4b.png)
+![2020.11_.03_.png](./img/cec59bb76e8273018f3cdf7f34f6ab4b.png)
 
 :::tip[Tips]
 
 需要注意的一点是: 如果需要调试的页面是文件网址，需要打开允许访问文件网址。否则无法识别当前laya引擎;
 :::
 
-![1604763750(1).jpg](/basics/LayaTree/img/3.png) 
+![1604763750(1).jpg](./img/3.png) 
 
-![](/basics/LayaTree/img/4.png) 
+![](./img/4.png) 
 
 
 
@@ -67,7 +67,7 @@ LayaTree是LayaAir引擎开发者李尔专门为LayaAir引擎广大的开发者�
 在需要调试的项目页面(需未混淆代码)，打开开发者工具页面(F12或 Ctrl+Shift+I)
 
 选择LayaTree页签，如下图所示
-![231111.png](/basics/LayaTree/img/17f7fef86c91cf45f6f30d302bfd0fe8.png)
+![231111.png](./img/17f7fef86c91cf45f6f30d302bfd0fe8.png)
 
 ### 2.2 使用技巧
 
@@ -108,7 +108,7 @@ LayaTree设计的本意是尽可能少的影响到游戏，做一个安安静静
 使用下拉框来选择文本的水平对齐和垂直对齐方式
 
 字体大小,粗细,描边,overflow超出行为随意调节
-![GIF33.gif](/basics/LayaTree/img/cee42e3b81fe56b3e4b98565b5881f67.gif)
+![GIF33.gif](./img/cee42e3b81fe56b3e4b98565b5881f67.gif)
 
 #### 2.2.5 基于AOP的暂停与单帧调试运行
 
@@ -124,7 +124,7 @@ LayaTree设计的本意是尽可能少的影响到游戏，做一个安安静静
 
 cacheAs为"none"，不做任何缓存.当值为"bitmap"时，webgl模式下显示对象使用renderTarget缓存成静态图像可以大幅提升渲染效率.但是额外创建的renderTarget对象，会增加内存开销.通过该选项可以便捷的切换模式,找到优化方向.
 
-![2020.10_.16_李铒_.png](/basics/LayaTree/img/ea4101d29d3c67db88bb995046fba0ff.png)
+![2020.10_.16_李铒_.png](./img/ea4101d29d3c67db88bb995046fba0ff.png)
 
  
 
@@ -142,4 +142,4 @@ cacheAs为"none"，不做任何缓存.当值为"bitmap"时，webgl模式下显�
 
 LayaTreeQQ群： 200482074
 
-[![2020.10_.19_李铒_.jpg](/basics/LayaTree/img/62008957133967fed312fd6b6a33ad24.jpg)](https://img.layabox.com/questions/20201019/62008957133967fed312fd6b6a33ad24.jpg)
+[![2020.10_.19_李铒_.jpg](./img/62008957133967fed312fd6b6a33ad24.jpg)](https://img.layabox.com/questions/20201019/62008957133967fed312fd6b6a33ad24.jpg)

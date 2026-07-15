@@ -56,7 +56,7 @@ LayaPlayer是LayaNative最核心的部分，它是一个基于JavaScript脚本�
 
 流程如图1所示：
 
-![1](/released/native/LayaNative_Introduction/img/1.png)
+![1](./img/1.png)
 
 （图1）
 

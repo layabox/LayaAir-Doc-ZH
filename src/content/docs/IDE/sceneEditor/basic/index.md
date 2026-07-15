@@ -14,7 +14,7 @@ slug: "ide/sceneeditor/basic"
 
 我们可以使用如图1所示的基础工具，
 
-![](/IDE/sceneEditor/basic/img/1.png) 
+![](./img/1.png) 
 
 （图1）
 
@@ -30,7 +30,7 @@ slug: "ide/sceneeditor/basic"
 
 在该模式下，在屏幕方向上移动鼠标，可以改变视窗摄像机的角度，对整个场景的任意角度进行观察，效果如动图1-1所示。
 
-![img](/IDE/sceneEditor/basic/img/1-1.gif) 
+![img](./img/1-1.gif) 
 
 (动图1-1)
 
@@ -49,7 +49,7 @@ slug: "ide/sceneeditor/basic"
 
 位移视窗摄像机的效果如动图1-2所示。
 
-![](/IDE/sceneEditor/basic/img/1-2.gif) 
+![](./img/1-2.gif) 
 
 (动图1-2)
 
@@ -67,7 +67,7 @@ slug: "ide/sceneeditor/basic"
 
 使用快捷键Q时，鼠标左键按下并拖拽，即可实现视窗摄像机在屏幕任意方向位移，效果如动图1-3所示。
 
-![](/IDE/sceneEditor/basic/img/1-3.gif) 
+![](./img/1-3.gif) 
 
 (动图1-3)
 
@@ -79,7 +79,7 @@ slug: "ide/sceneeditor/basic"
 
 视窗摄像机缩放本质上就是视窗摄像机的前后位移，只因在位移过程中，观察目标时基于近大远小的透视原理，有种缩放的错觉，所以称为缩放视窗摄像机。效果如动图1-4所示，
 
-![](/IDE/sceneEditor/basic/img/1-4.gif) 
+![](./img/1-4.gif) 
 
 (动图1-4）
 
@@ -91,7 +91,7 @@ slug: "ide/sceneeditor/basic"
 
 聚焦后，通过`Alt + 左键`的组合，左键向任意角度拖拽，即可实现绕焦点中心旋转，效果如动图1-5所示，
 
-![](/IDE/sceneEditor/basic/img/1-5.gif) 
+![](./img/1-5.gif) 
 
 (动图1-5)
 
@@ -106,7 +106,7 @@ slug: "ide/sceneeditor/basic"
 
 如动图1-6所示，在场景面板中，将相机移动到合适位置后，按下快捷键`Ctrl + Shift +1`，这时，这个摄像机位置就保存在了数字1下，移动相机后，想回到1的位置，按下数字键1即可。
 
-![1-6](/IDE/sceneEditor/basic/img/1-6.gif)
+![1-6](./img/1-6.gif)
 
 （动图1-6）
 
@@ -116,7 +116,7 @@ slug: "ide/sceneeditor/basic"
 
 如动图1-7所示，基础工具中的`透视投影/正交投影`表示：当前场景预览摄像机的投影模式为正交投影还是透视投影。
 
-![1-7](/IDE/sceneEditor/basic/img/1-7.gif)
+![1-7](./img/1-7.gif)
 
 （动图1-7）
 
@@ -124,7 +124,7 @@ slug: "ide/sceneeditor/basic"
 
 如动图1-8所示，将Cube绕x轴旋转45度，此时可以观察到移动模型相对于局部坐标和全局坐标的区别。
 
-![1-8](/IDE/sceneEditor/basic/img/1-8.gif)
+![1-8](./img/1-8.gif)
 
 （动图1-8）
 
@@ -132,7 +132,7 @@ slug: "ide/sceneeditor/basic"
 
 点击图1-9所示的显示设置，可以设置Camera和Gizmos属性。
 
-<img src="/IDE/sceneEditor/basic/img/1-9.png" alt="1-9" style="zoom:50%;" />
+<img src="./img/1-9.png" alt="1-9" style="zoom:50%;" />
 
 （图1-9）
 
@@ -162,7 +162,7 @@ slug: "ide/sceneeditor/basic"
 
 点击图1-10所示的场景视图刷新频率，可以选择响应式和实时。响应式，是当前的模式，有改动才会刷新；实时，是场景视图以30fps帧率刷新。
 
-![1-10](/IDE/sceneEditor/basic/img/1-10.png)
+![1-10](./img/1-10.png)
 
 （图1-10）
 
@@ -187,7 +187,7 @@ slug: "ide/sceneeditor/basic"
 
 箭头所指的方向为正方向，拖动其中一个轴，可使该模型按该轴的正负方向进行位移，效果如动图2-1所示。
 
-![](/IDE/sceneEditor/basic/img/2-1.gif) 
+![](./img/2-1.gif) 
 
 (动图2-1)
 
@@ -197,7 +197,7 @@ slug: "ide/sceneeditor/basic"
 
 拖动其中一个面，可使该模型在该面范围内任意位移，效果如动图2-2所示。
 
-![](/IDE/sceneEditor/basic/img/2-2.gif) 
+![](./img/2-2.gif) 
 
 (动图2-2)
 
@@ -209,19 +209,19 @@ slug: "ide/sceneeditor/basic"
 
 选中其中一个弧线后，会变成完整的圆圈，代表按该该轴方向进行旋转，效果如动图2-3所示。
 
-![](/IDE/sceneEditor/basic/img/2-3.gif) 
+![](./img/2-3.gif) 
 
 (动图2-3)
 
 外层白圈，是基于屏幕的垂直旋转，效果如动图2-4所示。
 
-![](/IDE/sceneEditor/basic/img/2-4.gif) 
+![](./img/2-4.gif) 
 
 (动图2-4)
 
 如果鼠标在半透明圆拖拽，则可以任意角度旋转，效果如动图2-5所示。
 
-![](/IDE/sceneEditor/basic/img/2-5.gif) 
+![](./img/2-5.gif) 
 
 (动图2-5)
 
@@ -231,13 +231,13 @@ slug: "ide/sceneeditor/basic"
 
 红绿蓝三色轴分别代表X、Y、Z三个轴的方向，拉动其中一个轴，可在该轴对模式进行缩放，效果如动图2-6所示。
 
-![](/IDE/sceneEditor/basic/img/2-6.gif) 
+![](./img/2-6.gif) 
 
 (动图2-6）
 
 中心的白块与外层白色圆圈均是三轴同时缩放，两者的区别仅是缩放速率差异，效果如动图2-7所示。
 
-![](/IDE/sceneEditor/basic/img/2-7.gif) 
+![](./img/2-7.gif) 
 
 (动图2-7）
 
@@ -247,7 +247,7 @@ slug: "ide/sceneeditor/basic"
 
 唯一需要注意的是，混合模式下，中心块缩放不再保留，只能通过外层白色圆圈整体缩放，以及通过拉动各轴的方块从单轴方向缩放，效果如动图2-8所示。
 
-![](/IDE/sceneEditor/basic/img/2-8.gif) 
+![](./img/2-8.gif) 
 
 (动图2-8)
 
@@ -267,7 +267,7 @@ slug: "ide/sceneeditor/basic"
 
 假设有两个立方体，Cube1在上，Cube2在下，选中Cube1，按下End键（Mac: fn+右方向键），如动图2-9所示，Cube1会直接下落到下面的Cube2上。
 
-![2-9](/IDE/sceneEditor/basic/img/2-9.gif)
+![2-9](./img/2-9.gif)
 
 （动图2-9）
 
@@ -275,7 +275,7 @@ slug: "ide/sceneeditor/basic"
 
 点吸附是指，基于模型的顶点与目标模型的顶点进行吸附对齐。选中模型后，持续按住快捷键V，即可进入点吸附模式。此时，鼠标可移到当前模型的任何一个顶点上，然后持续按住顶点拖拽到目标模型上，与目标模型的顶点进行吸附对齐。如动图2-10所示，场景中有两个Cube，选中其中一个，按下V键不松开，移动到另一个Cube的顶点上，**移动过程中也不要松开V键**，可以将两个Cube的顶点对齐。
 
-![2-10](/IDE/sceneEditor/basic/img/2-10.gif)
+![2-10](./img/2-10.gif)
 
 （动图2-10）
 
@@ -283,13 +283,13 @@ slug: "ide/sceneeditor/basic"
 
 面吸附是指，基于模型与目标模型的网格表面进行对齐。选中模型后，持续按住快捷键Ctrl+Shift（Mac: control+shift），即可进入面吸附模式。鼠标持续按住模型拖拽到目标模型上，模型的中心点会与目标模型的网格表面对齐，此时，可以在目标模型的各个面上移动，但中心点不得离开网格表面，除非退出面吸附模式。如动图2-11所示，将一个Cube的中心点移动到另一个Cube的侧面上，鼠标移动过程中Cube不会发生移动，只有将中心点拖到另一个Cube的面上时，才会移动。
 
-![2-11](/IDE/sceneEditor/basic/img/2-11.gif)
+![2-11](./img/2-11.gif)
 
 （动图2-11）
 
 如果持续按住快捷键Ctrl+Shift（Mac: control+shift）的同时，持续按下V，可开启面吸附的组合模式。组合模式下Ctrl+Shift+V（Mac: control+shift+V），不再局限于中心点，鼠标可划到当前模型的任意顶点上，然后持续按住该顶点，可以与目标模型的网格表面进行对齐。如动图2-12所示，在面吸附的组合模式下，将一个Cube的顶点移动到另一个Cube的侧面上，鼠标移动过程中Cube不会发生移动，只有将顶点拖到另一个Cube的面上时，才会移动。
 
-![2-12](/IDE/sceneEditor/basic/img/2-12.gif)
+![2-12](./img/2-12.gif)
 
 （动图2-12）
 
@@ -303,13 +303,13 @@ slug: "ide/sceneeditor/basic"
 
 比较常用的情况是，选中摄像机后，可以通过Ctrl+Shift+F快捷键，直接将摄像机（Main Camera）一键对齐到视窗摄像机的位置，如动图3-1所示（注意看右下角Main Camera视口的变化）。这样，视窗摄像机看到什么，那摄像机（Main Camera）也可以直接看到什么。方便用户调整，让摄像机的镜头调整更方便、更精确。
 
-![3-1](/IDE/sceneEditor/basic/img/3-1.gif)
+![3-1](./img/3-1.gif)
 
 （动图3-1）
 
 如动图3-2所示，Ctrl+Shift+F可以应用于其它3D对象。
 
-![3-2](/IDE/sceneEditor/basic/img/3-2.gif)
+![3-2](./img/3-2.gif)
 
 （动图3-2）
 
@@ -319,12 +319,12 @@ slug: "ide/sceneeditor/basic"
 
 比较常用的情况是，选中摄像机，可以通过Shift+F快捷键，直接将视窗摄像机一键对齐到摄像机（Main Camera）的位置，如动图3-3所示。这样，就能快速转移到摄像机（Main Camera）的视口下了。
 
-![3-3](/IDE/sceneEditor/basic/img/3-3.gif)
+![3-3](./img/3-3.gif)
 
 （动图3-3）
 
 如动图3-4所示，还可以将视窗摄像机一键（Shift＋Ｆ）对齐到其它3D对象，使其快速具有编辑器的第一人称视口。
 
-![3-4](/IDE/sceneEditor/basic/img/3-4.gif)
+![3-4](./img/3-4.gif)
 
 （动图3-4）

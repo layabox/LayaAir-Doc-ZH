@@ -10,7 +10,7 @@ slug: "basics/ide/inspector"
 
 在属性设置面板中，可以点击`增加组件`，来给节点添加对应的组件，如图1-1所示。
 
-![1-1](/basics/IDE/Inspector/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -25,7 +25,7 @@ slug: "basics/ide/inspector"
 
 如图1-2所示，点击`<`可以回到看过的上一个节点，点击`>`可以看到切换前看到的结点。
 
-![1-2](/basics/IDE/Inspector/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -33,7 +33,7 @@ slug: "basics/ide/inspector"
 
 如动图1-3所示，点击锁定可以锁定属性面板，切换结点时属性设置面板不切换。
 
-![1-3](/basics/IDE/Inspector/img/1-3.gif)
+![1-3](./img/1-3.gif)
 
 （动图1-3）
 
@@ -49,19 +49,19 @@ slug: "basics/ide/inspector"
 
 2D节点和3D节点都有激活功能，当取消勾选如图2-1所示选项后，该结点在层级面板会变灰，并且不激活父节点子节点会跟着被不激活。
 
-<img src="/basics/IDE/Inspector/img/2-1.png" alt="2-1" style="zoom: 80%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom: 80%;" />
 
 （图2-1）
 
 取消激活后，对于3D节点将不显示，即使运行时也不显示，如动图2-2所示。
 
-![2-2](/basics/IDE/Inspector/img/2-2.gif)
+![2-2](./img/2-2.gif)
 
 （动图2-2）
 
 但是，对于2D节点，取消激活后并不影响节点本身，只是不激活节点的脚本。例如动图2-3所示，使用脚本改变显示的文本，不激活后文本不会被改变。
 
-![2-3](/basics/IDE/Inspector/img/2-3.gif)
+![2-3](./img/2-3.gif)
 
 （动图2-3）
 
@@ -71,7 +71,7 @@ slug: "basics/ide/inspector"
 
 可以按照如动图2-4所示的方式对节点进行重命名。
 
-![2-4](/basics/IDE/Inspector/img/2-4.gif)
+![2-4](./img/2-4.gif)
 
 （动图2-4）
 
@@ -142,6 +142,6 @@ slug: "basics/ide/inspector"
 
 如图2-5所示，在src文件夹中选中脚本文件，就可以进行代码预览了。开发者可以使用代码编辑器（推荐使用VS Code）进行修改。如果是[引用第三方JS文件](/basics/ide/importjslibrary/)，则可以进行单独导入的设置。
 
-![2-5](/basics/IDE/Inspector/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）

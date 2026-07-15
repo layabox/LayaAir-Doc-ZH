@@ -28,7 +28,7 @@ slug: "ide/uieditor/uicomponent/box"
 
 开发者直接使用的容器对象一共有9个。如图2-1的黄字高亮部分所示。
 
-![2-1](/IDE/uiEditor/uiComponent/Box/img/2-1.png) 
+![2-1](./img/2-1.png) 
 
 (图2-1)
 
@@ -38,7 +38,7 @@ slug: "ide/uieditor/uicomponent/box"
 
 创建Box可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。如下图所示：
 
-<img src="/IDE/uiEditor/uiComponent/Box/img/3-1.png" alt="3-1" style="zoom:50%;" /> 
+<img src="./img/3-1.png" alt="3-1" style="zoom:50%;" /> 
 
 （图3-1）
 
@@ -50,7 +50,7 @@ slug: "ide/uieditor/uicomponent/box"
 
 在IDE里的操作，如图3-2所示，先勾选设置背景色状态选框，再点击取色器输入栏，然后在取色器窗口里拾取或输入颜色之后，关闭取色器窗口即可。
 
-<img src="/IDE/uiEditor/uiComponent/Box/img/3-2.png" alt="3-2" style="zoom:80%;" /> 
+<img src="./img/3-2.png" alt="3-2" style="zoom:80%;" /> 
 
 （图3-2）
 

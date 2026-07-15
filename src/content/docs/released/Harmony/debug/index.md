@@ -37,7 +37,7 @@ LayaAir-IDE发布后的代码，最终都会被编译为JS。而JavaScript代码
 
 打开`ohos/entry/src/main/resources/rawfile/config.ini`，修改`JSDebugMode`的值,设置需要的调试模式。如图2-1所示，
 
-![2-1](/released/Harmony/debug/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -57,14 +57,14 @@ JSDebugMode的取值和含义如下：
 
 - 如果选择的是Debug/Normal模式，等待鸿蒙NEXT测试机成功**启动并运行**项目。
 
-<img src="/released/Harmony/debug/img/2-2.png" alt="2-2" style="zoom:70%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:70%;" />
 
 （图2-2）
 
 - 如果选择的是Debug/Wait模式，等待鸿蒙NEXT测试机成功**启动**项目。
 
 
-<img src="/released/Harmony/debug/img/2-3.png" alt="2-3" style="zoom:150%;" />
+<img src="./img/2-3.png" alt="2-3" style="zoom:150%;" />
 
 （图2-3）
 
@@ -73,7 +73,7 @@ JSDebugMode的取值和含义如下：
 
 hdc shell "netstat -anp | grep 5959"。结果为5959端口状态为“LISTEN"即可。
 
-<img src="/released/Harmony/debug/img/14.png" alt="2-4" style="zoom:80%;" />
+<img src="./img/14.png" alt="2-4" style="zoom:80%;" />
 
 （图2-4）
 
@@ -81,20 +81,20 @@ hdc shell "netstat -anp | grep 5959"。结果为5959端口状态为“LISTEN"即
 
 hdc fport tcp:5959 tcp:5959。转发PC侧端口5959到端侧端口5959。结果为"Forwardport result:OK"即可。
 
-<img src="/released/Harmony/debug/img/10.png" alt="2-5" style="zoom:120%;" />
+<img src="./img/10.png" alt="2-5" style="zoom:120%;" />
 
 （图2-5）
 ### 步骤6：使用Chrome连接工程
 在chrome浏览器地址栏输入"localhost:5959/json"，回车。获取端口连接信息。
 
-<img src="/released/Harmony/debug/img/12.png" alt="2-5" style="zoom:100%;" />
+<img src="./img/12.png" alt="2-5" style="zoom:100%;" />
 
 （图2-6）
 
 ### 步骤7：进行调试
 拷贝"devtoolsFrontendUrl"字段url内容到地址栏，回车，进入DevTools源码页，将看到在应用中执行的JS源码，此时暂停在第一行JS源码处。
 用户可在源码页打断点，通过按钮发出各种调试命令控制JS代码执行，并查看变量。
-<img src="/released/Harmony/debug/img/13.png" alt="2-6" style="zoom:70%;" />
+<img src="./img/13.png" alt="2-6" style="zoom:70%;" />
 
 （图2-7）
 

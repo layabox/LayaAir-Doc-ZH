@@ -8,7 +8,7 @@ slug: "ide/shaderblueprint/blueprint"
 
 在使用蓝图前，首先需要在LayaAir-IDE的项目设置面板中勾选蓝图模块。
 
-![1](/IDE/ShaderBlueprint/blueprint/img/1.png)
+![1](./img/1.png)
 
 
 
@@ -16,19 +16,19 @@ slug: "ide/shaderblueprint/blueprint"
 
 在项目资源目录下，通过点击“＋”或鼠标右键进行蓝图的创建，
 
-<img src="/IDE/ShaderBlueprint/blueprint/img/1-1.png" alt="1-1" style="zoom:80%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:80%;" />
 
 （图1-1）
 
 然后双击蓝图要继承的类，就会创建好蓝图文件了。
 
-![1-2](/IDE/ShaderBlueprint/blueprint/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
 双击创建好的蓝图文件，就可以打开蓝图编辑器了。
 
-![1-3](/IDE/ShaderBlueprint/blueprint/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -36,19 +36,19 @@ slug: "ide/shaderblueprint/blueprint"
 
 - 继承Sprite3D的蓝图直接拖到3D场景中使用 （也可拖到3D场景的层级目录）。
 
-![1-4](/IDE/ShaderBlueprint/blueprint/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
 - 继承UI派生类的蓝图直接拖到2D场景中使用  （也可以拖到2D场景的层级目录）。
 
-![1-5](/IDE/ShaderBlueprint/blueprint/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
 - 继承组件的蓝图，自动会填充到IDE的组件列表中，也可以直接拖拽到属性面板上直接添加 （与脚本组件在IDE中的使用方式相同）。
 
-![1-6](/IDE/ShaderBlueprint/blueprint/img/1-6.png)
+![1-6](./img/1-6.png)
 
 （图1-6）
 
@@ -60,7 +60,7 @@ slug: "ide/shaderblueprint/blueprint"
 
 - 事件节点，包括一些生命周期方法（蓝图运行的入口），只有输出引脚。
 
-![2-1](/IDE/ShaderBlueprint/blueprint/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -68,7 +68,7 @@ slug: "ide/shaderblueprint/blueprint"
 
 - 函数节点，有一个执行类型输入引脚（excute），一个目标类型引脚（target），一个执行类型输出引脚（then）。
 
-![2-2](/IDE/ShaderBlueprint/blueprint/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -78,25 +78,25 @@ slug: "ide/shaderblueprint/blueprint"
 
 Sequence用于顺序执行，不等待异步操作。
 
-![2-3](/IDE/ShaderBlueprint/blueprint/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
 Branch用于进行判断。
 
-![2-4](/IDE/ShaderBlueprint/blueprint/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 forLoop(withBreak)用于创建循环结构。
 
-![2-5](/IDE/ShaderBlueprint/blueprint/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
 forEach(withBreak)用于遍历所有元素。
 
-![2-6](/IDE/ShaderBlueprint/blueprint/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
@@ -108,7 +108,7 @@ forEach(withBreak)用于遍历所有元素。
 
 如图2-7给出的示例，当蓝图节点触发onEnable生命周期时，开始打印”game start“，然后等待2秒 （这里的add就是参数节点，将1+1的结果输入给waitTime），再顺序执行打印“3”，2秒过后打印“4”。
 
-![2-7](/IDE/ShaderBlueprint/blueprint/img/2-7.png)
+![2-7](./img/2-7.png)
 
 （图2-7）
 
@@ -120,13 +120,13 @@ forEach(withBreak)用于遍历所有元素。
 
 如图3-1所示，点击图表右面的加号，增加一个新的事件图表，并可以给事件图表重命名。
 
-![3-1](/IDE/ShaderBlueprint/blueprint/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
 创建后，双击即可打开新建的事件图表，
 
-![3-2](/IDE/ShaderBlueprint/blueprint/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
@@ -136,13 +136,13 @@ forEach(withBreak)用于遍历所有元素。
 
 如动图4-1所示，可以通过鼠标右键增加蓝图节点，并支持搜索节点。
 
-![4-1](/IDE/ShaderBlueprint/blueprint/img/4-1.gif)
+![4-1](./img/4-1.gif)
 
 （动图4-1）
 
 蓝图编辑器还支持多选节点以后，对节点进行对齐操作，可以使用图4-2所示的功能，
 
-![4-2](/IDE/ShaderBlueprint/blueprint/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 
@@ -154,19 +154,19 @@ forEach(withBreak)用于遍历所有元素。
 
 如图5-1所示，蓝图支持创建静态函数和普通函数。
 
-![5-1](/IDE/ShaderBlueprint/blueprint/img/5-1.png)
+![5-1](./img/5-1.png)
 
 （图5-1）
 
 创建完函数以后可以给函数重命名，双击可以进入函数的编辑，如动图5-2所示。进入函数编辑以后，默认会有函数的入口执行节点。
 
-![5-2](/IDE/ShaderBlueprint/blueprint/img/5-2.gif)
+![5-2](./img/5-2.gif)
 
 （动图5-2）
 
 在左侧属性面板中还可以增加函数的参数以及返回节点，
 
-![5-3](/IDE/ShaderBlueprint/blueprint/img/5-3.png)
+![5-3](./img/5-3.png)
 
 （图5-3）
 
@@ -174,37 +174,37 @@ forEach(withBreak)用于遍历所有元素。
 
 支持创建变量和静态变量，
 
-![6-1](/IDE/ShaderBlueprint/blueprint/img/6-1.png)
+![6-1](./img/6-1.png)
 
 （图6-1）
 
 创建变量以后可以对变量进行重命名，右侧的眼睛图标（如图6-2）可以控制该变量是否是外部可见的，
 
-![6-2](/IDE/ShaderBlueprint/blueprint/img/6-2.png)
+![6-2](./img/6-2.png)
 
 （图6-2）
 
 将变量拖入面板中，可以选择是设置还是获取该变量。
 
-![6-3](/IDE/ShaderBlueprint/blueprint/img/6-3.gif)
+![6-3](./img/6-3.gif)
 
 （动图6-3）
 
 如果是获取变量，那这个变量入口只有一个target，出口就是这个变量的值。
 
-![6-4](/IDE/ShaderBlueprint/blueprint/img/6-4.png)
+![6-4](./img/6-4.png)
 
 （图6-4）
 
 如果是设置变量，那变量入口会有（execute，target，set）出口会有（then和return），
 
-![6-5](/IDE/ShaderBlueprint/blueprint/img/6-5.png)
+![6-5](./img/6-5.png)
 
 （图6-5）
 
 如果是静态变量，target是无法设置的。
 
-![6-6](/IDE/ShaderBlueprint/blueprint/img/6-6.png)
+![6-6](./img/6-6.png)
 
 （图6-6）
 
@@ -214,13 +214,13 @@ forEach(withBreak)用于遍历所有元素。
 
 点击图7-1的“+“图标可以创建事件分发器，
 
-![7-1](/IDE/ShaderBlueprint/blueprint/img/7-1.png)
+![7-1](./img/7-1.png)
 
 （图7-1）
 
 事件分发器创建完成以后，拖拽到面板中，会分为（调用、绑定、解除绑定、解除全部绑定、事件）。
 
-![7-2](/IDE/ShaderBlueprint/blueprint/img/7-2.png)
+![7-2](./img/7-2.png)
 
 （图7-2）
 
@@ -230,7 +230,7 @@ forEach(withBreak)用于遍历所有元素。
 
 如动图8-1所示，在左侧的”我的蓝图“面板上，双击事件图表、变量、事件分发器可以快速定位到对应的节点上。
 
-![8-1](/IDE/ShaderBlueprint/blueprint/img/8-1.gif)
+![8-1](./img/8-1.gif)
 
 （动图8-1）
 
@@ -244,7 +244,7 @@ forEach(withBreak)用于遍历所有元素。
 
 将鼠标移动到节点上，然后点击节点左上角的气泡，可以输入注释，如图9-1所示。
 
-![9-1](/IDE/ShaderBlueprint/blueprint/img/9-1.png)
+![9-1](./img/9-1.png)
 
 （图9-1）
 
@@ -254,13 +254,13 @@ forEach(withBreak)用于遍历所有元素。
 
 框选多个节点以后，鼠标右键，选择范围注释。
 
-![10-1](/IDE/ShaderBlueprint/blueprint/img/10-1.png)
+![10-1](./img/10-1.png)
 
 （图10-1）
 
 之后点击范围注释，在属性面板中可以修改注释的颜色，拖动范围注释，所有在范围注释内部的节点都会跟着移动。
 
-<img src="/IDE/ShaderBlueprint/blueprint/img/10-2.png" alt="10-2" style="zoom:80%;" />
+<img src="./img/10-2.png" alt="10-2" style="zoom:80%;" />
 
 （图10-2）
 
@@ -270,19 +270,19 @@ forEach(withBreak)用于遍历所有元素。
 
 在要调试的节点上鼠标右键，然后选择增加断点，就会给该节点增加断点。增加断点成功以后，节点的右上角会出现一个红点。
 
-![11-1](/IDE/ShaderBlueprint/blueprint/img/11-1.png)
+![11-1](./img/11-1.png)
 
 （图11-1）
 
 然后点击调试，
 
-<img src="/IDE/ShaderBlueprint/blueprint/img/11-2.png" alt="11-2" style="zoom:80%;" />
+<img src="./img/11-2.png" alt="11-2" style="zoom:80%;" />
 
 （图11-2）
 
 如动图11-3所示，当程序运行到这个节点以后就会停止。
 
-![11-3](/IDE/ShaderBlueprint/blueprint/img/11-3.gif)
+![11-3](./img/11-3.gif)
 
 （动图11-3）
 
@@ -339,7 +339,7 @@ export class TestBluePrint extends Laya.Script {
 }
 ```
 
-![12-1](/IDE/ShaderBlueprint/blueprint/img/12-1.png)
+![12-1](./img/12-1.png)
 
 （图12-1）
 
@@ -418,7 +418,7 @@ export class TestBluePrint extends Laya.Script {
 
 通过createNew创建TestBluePrint类的实例后，如动图12-2所示，就可以使用这些属性了。
 
-![12-2](/IDE/ShaderBlueprint/blueprint/img/12-2.gif)
+![12-2](./img/12-2.gif)
 
 （动图12-2）
 
@@ -485,7 +485,7 @@ export class TestBluePrint extends Laya.Script {
 
 通过createNew创建TestBluePrint类的实例后，就可以使用这些方法了，如图12-3所示。
 
-![12-3](/IDE/ShaderBlueprint/blueprint/img/12-3.png)
+![12-3](./img/12-3.png)
 
 （图12-3）
 
@@ -542,7 +542,7 @@ export class Main extends Laya.Sprite {
 
 通过createNew创建TestBluePrint类的实例后，就可以看到这些事件了，如图12-4所示。
 
-![12-4](/IDE/ShaderBlueprint/blueprint/img/12-4.png)
+![12-4](./img/12-4.png)
 
 （图12-4）
 

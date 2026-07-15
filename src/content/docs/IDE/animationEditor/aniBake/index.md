@@ -10,7 +10,7 @@ slug: "ide/animationeditor/anibake"
 
 从LayaAir3.1开始，开发者进行动画烘焙可通过[资源商店](https://store.layaair.com/)导入“3D骨骼动作烘焙插件”到LayaAir IDE中。
 
-<img src="/IDE/animationEditor/aniBake/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -22,19 +22,19 @@ slug: "ide/animationeditor/anibake"
 
 由于在LayaAir项目中播放动画的对象都需要添加Animator组件，因此我们先准备好一个带Animator的动画对象，如图2-1所示
 
-<img src="/IDE/animationEditor/aniBake/img/2-1.png" alt="2-1" style="zoom:50%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom:50%;" />
 
 （图2-1）
 
 在动画状态机中配置好动画状态和动画片段，如图2-2所示
 
-<img src="/IDE/animationEditor/aniBake/img/2-2.png" alt="2-2" style="zoom:50%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:50%;" />
 
 （图2-2）
 
 此时运行场景，可以看到人物在做待机的动画，如动图2-3所示
 
-<img src="/IDE/animationEditor/aniBake/img/2-3.gif" alt="2-3" style="zoom:50%;" />
+<img src="./img/2-3.gif" alt="2-3" style="zoom:50%;" />
 
 （动图2-3）
 
@@ -42,13 +42,13 @@ slug: "ide/animationeditor/anibake"
 
 在菜单栏中，点击“面板”，选择“动作烘焙”，如图2-4所示
 
-![2-4](/IDE/animationEditor/aniBake/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 可以打开“动作烘焙”插件，如图2-5所示
 
-<img src="/IDE/animationEditor/aniBake/img/2-5.png" alt="2-5" style="zoom:80%;" />
+<img src="./img/2-5.png" alt="2-5" style="zoom:80%;" />
 
 （图2-5）
 
@@ -62,7 +62,7 @@ slug: "ide/animationeditor/anibake"
 
 从插件中可以了解到，要想对上面的带Animator的动画做动画烘焙，需要把包含Animator组件的节点，拖入到插件中，如动图2-6所示，
 
-<img src="/IDE/animationEditor/aniBake/img/2-6.gif" alt="2-6" style="zoom:80%;" />
+<img src="./img/2-6.gif" alt="2-6" style="zoom:80%;" />
 
 （动图2-6）
 
@@ -76,7 +76,7 @@ slug: "ide/animationeditor/anibake"
 
 我们来看看都生成了什么数据文件，如图2-7所示
 
-<img src="/IDE/animationEditor/aniBake/img/2-7.png" alt="2-7" style="zoom: 50%;" />
+<img src="./img/2-7.png" alt="2-7" style="zoom: 50%;" />
 
 （图2-7）
 
@@ -96,7 +96,7 @@ slug: "ide/animationeditor/anibake"
 
 这时我们可以直接使用代码或者直接将预制体拖入场景中，在LayaAir示例中，可以看到加载大量烘焙后的动画，效率有大幅提高，如图2-8所示，
 
-<img src="/IDE/animationEditor/aniBake/img/2-8.png" alt="2-8" style="zoom: 50%;" />
+<img src="./img/2-8.png" alt="2-8" style="zoom: 50%;" />
 
 > 预烘焙骨骼动画示例：https://layaair.com/3.x/demo/?category=3D&group=8&name=6
 
@@ -108,13 +108,13 @@ slug: "ide/animationeditor/anibake"
 
 例如，图2-9中，两个武器节点并没有作为两个手节点的子节点，此时并不确定手与武器节点是否绑定（需要结合具体情况判断），
 
-<img src="/IDE/animationEditor/aniBake/img/2-9.png" alt="2-9" style="zoom:80%;" />
+<img src="./img/2-9.png" alt="2-9" style="zoom:80%;" />
 
 （图2-9）
 
 此时将两个武器节点作为两个手节点的子节点，如图2-10，则可以保证它们是绑定的。
 
-<img src="/IDE/animationEditor/aniBake/img/2-10.png" alt="2-10" style="zoom:80%;" />
+<img src="./img/2-10.png" alt="2-10" style="zoom:80%;" />
 
 （图2-10）
 
@@ -124,13 +124,13 @@ slug: "ide/animationeditor/anibake"
 
 通常情况下Animator中会配置好多个动画，那么就可以一次性的烘焙所有的动画，如图3-1所示
 
-<img src="/IDE/animationEditor/aniBake/img/3-1.png" alt="3-1" style="zoom:50%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom:50%;" />
 
 （图3-1）
 
 重新对DanDing节点做动画烘焙后，多个动画就烘焙好了，如图3-2所示
 
-<img src="/IDE/animationEditor/aniBake/img/3-3.png" alt="3-3" style="zoom:50%;" />
+<img src="./img/3-3.png" alt="3-3" style="zoom:50%;" />
 
 （图3-2）
 

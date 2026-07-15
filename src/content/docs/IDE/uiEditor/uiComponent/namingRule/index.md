@@ -78,7 +78,7 @@ slug: "ide/uieditor/uicomponent/namingrule"
 
 在层级面板里选中一个或多个基础组件，右键菜单中点击 `转换为容器`（或者使用`Ctrl+B`快捷键）。如图2-1所示。然后选择要转换的容器类型即可。
 
-![](/IDE/uiEditor/uiComponent/namingRule/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
@@ -86,6 +86,6 @@ slug: "ide/uieditor/uicomponent/namingrule"
 
 如果不需要容器组件了，也可以选中容器，通过`Ctrl+U`解除当前选中的容器，或者点击右键菜单底层的打散容器，如图2-2所示。
 
-![](/IDE/uiEditor/uiComponent/namingRule/img/2-2.png) 
+![](./img/2-2.png) 
 
 （图2-2）

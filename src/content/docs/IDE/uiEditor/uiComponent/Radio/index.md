@@ -14,7 +14,7 @@ Radio继承自Button，它的很多属性也继承自Button，所以前面Button
 
 使用LayaAir IDE创建Radio非常简单，通过IDE的可视化操作，就可以实现组件的创建与布局，也是推荐使用的组件创建方式。可以从层级面板右键进行创建，也可以选择小部件面板里的Radio组件，拖拽进行添加，如图1-1所示。
 
-<img src="/IDE/uiEditor/uiComponent/Radio/img/1-1.png" alt="1-1" style="zoom:80%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:80%;" />
 
 （图1-1）
 
@@ -24,7 +24,7 @@ Radio继承自Button，它的很多属性也继承自Button，所以前面Button
 
 Radio组件的特有属性如下：
 
-<img src="/IDE/uiEditor/uiComponent/Radio/img/1-2.png" alt="1-2" style="zoom: 100%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom: 100%;" />
 
 （图1-2）
 
@@ -46,7 +46,7 @@ Radio组件的特有属性如下：
 
 Radio继承于Button，是一个单选框组件。相对于按钮组件，单选框组件的特性是，点中之后不会恢复状态，如动图1-3所示。
 
-![1-3](/IDE/uiEditor/uiComponent/Radio/img/1-3.gif)
+![1-3](./img/1-3.gif)
 
 （动图1-3）
 
@@ -125,7 +125,7 @@ export class UI_Radio extends Laya.Script {
 
 效果如动图2-1所示：
 
-![2-1](/IDE/uiEditor/uiComponent/Radio/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

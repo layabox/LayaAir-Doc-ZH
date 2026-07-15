@@ -32,11 +32,11 @@ slug: "ide/component/volumetricgi"
 
 在属性设置面板中，创建Volumetric GI组件的方式如图2-1所示：增加组件 -> 渲染 -> Volumetric GI。
 
-![2-1](/IDE/Component/VolumetricGI/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
-![2-2](/IDE/Component/VolumetricGI/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -44,7 +44,7 @@ slug: "ide/component/volumetricgi"
 
 只有在Volume Bound范围中的物体才会收到Volumetric GI的影响，Volume Bound中均匀分布了一定数量的probe用于采集周围的球谐信息。
 
-![2-3](/IDE/Component/VolumetricGI/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -60,7 +60,7 @@ slug: "ide/component/volumetricgi"
 
 图2-4展示了不同数量级的Probe排布：
 
-![2-4](/IDE/Component/VolumetricGI/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4） 
 

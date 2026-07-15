@@ -10,7 +10,7 @@ slug: "2d/displayobject/videonode"
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/2D/displayObject/VideoNode/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -20,7 +20,7 @@ slug: "2d/displayobject/videonode"
 
 在IDE中，将VideoNode节点添加到场景编辑的视图区后，属性面板中VideoNode的专属属性如下图所示： 
 
-![1-2](/2D/displayObject/VideoNode/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -42,13 +42,13 @@ slug: "2d/displayobject/videonode"
 两种播放模式的具体表现如下：
 设置解码器后，由于被捕获到Texture在显示，所以与视频节点的宽高一致，如动图1-3所示
 
-![1-3](/2D/displayObject/VideoNode/img/1-3.gif)
+![1-3](./img/1-3.gif)
 
 （动图1-3）
 
 设置播放器后，由于视频直接浮动在主画布上面，所以维持视频原本的宽高比，如动图1-4所示
 
-![1-4](/2D/displayObject/VideoNode/img/1-4.gif)
+![1-4](./img/1-4.gif)
 
 （动图1-4）
 
@@ -56,19 +56,19 @@ slug: "2d/displayobject/videonode"
 缩放模式的具体表现如下：
 fill模式：视频拉伸填满整个容器，不保证保持原有长宽比例。如图1-5所示
 
-![1-5](/2D/displayObject/VideoNode/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
 contain模式：保持原有长宽比例。保证视频尺寸一定可以在容器里面放得下。因此，可能会有部分空白，如图1-6所示
 
-![1-6](/2D/displayObject/VideoNode/img/1-6.png)
+![1-6](./img/1-6.png)
 
 （图1-6）
 
 cover模式：保持原有长宽比例。保证视频尺寸一定大于容器尺寸，宽度和高度至少有一个和容器一致。因此，视频有部分会看不见，如图1-7所示
 
-![1-7](/2D/displayObject/VideoNode/img/1-7.png)
+![1-7](./img/1-7.png)
 
 （图1-7）
 ### 1.5 脚本控制VideoNode

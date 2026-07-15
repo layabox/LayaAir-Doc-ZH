@@ -237,7 +237,7 @@ LayaAirIDE提供了开发编辑器UI的可视化编辑器。在`项目资源`面
 
 双击打开MyWidget.widget，使用内置UI编辑器制作好插件需要的UI界面。
 
-![3-1](/IDE/layapackage/plug-in/img/3-1.png)
+![3-1](./img/3-1.png)
 
 以面板为例，代码里载入该预制体的方法为：
 
@@ -355,7 +355,7 @@ export class MyPanel extends IEditor.EditorPanel {
 
 执行效果如下：
 
-![4-1](/IDE/layapackage/plug-in/img/4-1.png)
+![4-1](./img/4-1.png)
 
 如果不需要顶部的'My Panel Type'栏目显示，可以稍微修改代码，加入以下红字：
 
@@ -371,7 +371,7 @@ export class MyPanel extends IEditor.EditorPanel {
 
 效果如下：
 
-![4-2](/IDE/layapackage/plug-in/img/4-2.png)
+![4-2](./img/4-2.png)
 
 配置方式可以生成非常复杂的界面，它不但可以用于制作单一的面板，也可以嵌入到其他UI中。例如，在UI编辑器制作界面时中拖入InspectorPanel预制体（它放在"editor-widgets/baisc/Inspector/InspectorPanel.widget），然后在代码里通过getChild获得的Widget对象类型则自动为IEditor.InspectorPanel，然后可以通过上述的API（inspect等）进行填充。
 
@@ -463,7 +463,7 @@ export class Script extends Laya.Script {
 
 3、实际效果：
 
-<img src="/IDE/layapackage/plug-in/img/5-1.png" alt="5-1" style="zoom:50%;" />
+<img src="./img/5-1.png" alt="5-1" style="zoom:50%;" />
 
 
 
@@ -486,7 +486,7 @@ export class TestPanel extends IEditor.EditorPanel {
 
 效果如下图：
 
-<img src="/IDE/layapackage/plug-in/img/6-1.png" alt="6-1" style="zoom:50%;" />
+<img src="./img/6-1.png" alt="6-1" style="zoom:50%;" />
 
 
 
@@ -534,7 +534,7 @@ class AnyName {
 
 menu的第一个参数表示菜单的路径，路径用"/"分隔，"App/tool/test"表示App菜单下的tool子菜单的test子项。注意这里的路径使用的是ID，不是菜单显示的文字。编辑器内部支持扩展的所有菜单名称和它的子菜单可以通过下面的方法打印出来参考：
 
-<img src="/IDE/layapackage/plug-in/img/8-1.png" alt="8-1" style="zoom:50%;" />
+<img src="./img/8-1.png" alt="8-1" style="zoom:50%;" />
 
 menu方法的第二个参数是可选参数，通过它可以进行一些额外的配置。例如：
 
@@ -664,7 +664,7 @@ export class TestCustomEditor extends IEditorEnv.CustomEditor {
 
 实现效果如下：
 
-![10-1](/IDE/layapackage/plug-in/img/10-1.png)
+![10-1](./img/10-1.png)
 
 2D的实现方式有所不同，它必须通过IEditorEnv.Gizmos2D接口，并且目前只支持onDrawGizmosSelected事件，不支持onDrawGizmos和onSceneGUI事件。
 
@@ -688,7 +688,7 @@ export class TestCustomEditor extends IEditorEnv.CustomEditor {
 
 实现效果如下：
 
-![10-2](/IDE/layapackage/plug-in/img/10-2.png)
+![10-2](./img/10-2.png)
 
 
 
@@ -802,7 +802,7 @@ export class TestSettings extends IEditor.EditorPanel {
 
 上述代码的显示效果为：
 
-<img src="/IDE/layapackage/plug-in/img/12-1.png" alt="12-1" style="zoom:80%;" />
+<img src="./img/12-1.png" alt="12-1" style="zoom:80%;" />
 
 
 
@@ -971,7 +971,7 @@ export class TestBuildSettings extends IEditor.EditorPanel {
 
 效果如下：
 
-![13-1](/IDE/layapackage/plug-in/img/13-1.png)
+![13-1](./img/13-1.png)
 
 在构建插件中可以通过Settings机制访问这些参数，例如：
 
@@ -1043,7 +1043,7 @@ export class TestBuildSettings extends IEditor.EditorPanel {
 
 效果如下：
 
-![14-1](/IDE/layapackage/plug-in/img/14-1.png)
+![14-1](./img/14-1.png)
 
 在场景进程中，需要添加一个或者多个构建插件，用于这个新的自定义平台。
 
@@ -1115,9 +1115,9 @@ export class TestAssetProcessor implements IEditorEnv.IAssetProcessor {
 
 使用LayaAirIDE提供的接口，可以实现插件界面国际化以及插件代码里输出的信息国际化。首先我们需要一个新建一个配置文件，如果这个配置是用于界面国际化，请将它新建在你的所有界面文件所在的目录或上级目录。
 
-<img src="/IDE/layapackage/plug-in/img/16-1.png" alt="16-1" style="zoom:50%;" />
+<img src="./img/16-1.png" alt="16-1" style="zoom:50%;" />
 
-<img src="/IDE/layapackage/plug-in/img/16-2.png" alt="16-2" style="zoom:50%;" />
+<img src="./img/16-2.png" alt="16-2" style="zoom:50%;" />
 
 **标识**：国际化配置文件的唯一标识，自动生成，不可修改（如果确实要修改，可以用文本方式打开配置文件直接修改，但需要自行保证唯一。但修改后已经在界面上绑定的会全部丢失）。
 
@@ -1135,15 +1135,15 @@ export class TestAssetProcessor implements IEditorEnv.IAssetProcessor {
 
 除了自动收集界面上的文字，我们也可以手动设定，例如一个按钮的标题：
 
-<img src="/IDE/layapackage/plug-in/img/16-3.png" alt="16-3" style="zoom:80%;" />
+<img src="./img/16-3.png" alt="16-3" style="zoom:80%;" />
 
 点击右上角的按钮，将弹出界面：
 
-<img src="/IDE/layapackage/plug-in/img/16-4.png" alt="16-4" style="zoom: 50%;" />
+<img src="./img/16-4.png" alt="16-4" style="zoom: 50%;" />
 
 在这里可以选择，或者新建语言文件中的条目。选择一项后，输入框更新显示为：
 
-<img src="/IDE/layapackage/plug-in/img/16-5.png" alt="16-5" style="zoom:50%;" />
+<img src="./img/16-5.png" alt="16-5" style="zoom:50%;" />
 
 绿色的横条显示着翻译文件的键值，表示这个文本已经国际化。
 
@@ -1153,13 +1153,13 @@ export class TestAssetProcessor implements IEditorEnv.IAssetProcessor {
 
 除了界面国际化，代码输出的信息也需要国际化。通常我们建议使用另外的配置文件，不要和界面使用的配置文件混淆。我们新建一个国际化配置：
 
-<img src="/IDE/layapackage/plug-in/img/16-6.png" alt="16-6" style="zoom:50%;" />
+<img src="./img/16-6.png" alt="16-6" style="zoom:50%;" />
 
 这里只要手动创建多个翻译文件，拖入到翻译文件列表中就可以了。这些文件的键值需要自行同步。
 
 翻译参考功能可以忽略，因为无需从界面上收集。
 
-![16-7](/IDE/layapackage/plug-in/img/16-7.png)
+![16-7](./img/16-7.png)
 
 代码里使用的方式为：
 
@@ -1319,7 +1319,7 @@ class AssetHelper {
 
 （注意：如下图两个红色箭头所示，需要开启双列显示，并且图标大小不为最小时，才会显示缩略图，否则显示为图标）
 
-![18-1](/IDE/layapackage/plug-in/img/18-1.png)
+![18-1](./img/18-1.png)
 
 为某种资源添加资源缩略图通过以下方式实现：
 
@@ -1373,7 +1373,7 @@ export class DemoThumbnailPlugin extends IEditorEnv.AssetThumbnail {
 
 资源的预览是指下图红框中的界面：
 
-![19-1](/IDE/layapackage/plug-in/img/19-1.png)
+![19-1](./img/19-1.png)
 
 这部分界面可以由插件自定义：
 
@@ -1430,7 +1430,7 @@ export class DemoPreviewPlugin extends IEditorEnv.AssetPreview {
 
 显示效果如下：
 
-![19-2](/IDE/layapackage/plug-in/img/19-2.png)
+![19-2](./img/19-2.png)
 
 
 
@@ -1545,11 +1545,11 @@ IEditor.inspectorLayout注册了一个编辑器布局，第一个参数指定是
 
 显示如果如下：
 
-![21-1](/IDE/layapackage/plug-in/img/21-1.png)
+![21-1](./img/21-1.png)
 
 修改数据并点击应用按钮，观察meta文件的变化，可以看到数据写入到了meta文件的importer属性内。这部分数据，在AssetImporter的settings属性可以读取到。
 
-![21-2](/IDE/layapackage/plug-in/img/21-2.png)
+![21-2](./img/21-2.png)
 
 
 
@@ -1637,13 +1637,13 @@ export class DemoInspectorLayout extends IEditor.ResourceInspectorLayout {
 
 界面的显示效果为：
 
-![21-3](/IDE/layapackage/plug-in/img/21-3.png)
+![21-3](./img/21-3.png)
 
 可以看到这里是没有"应用”和“撤销”按钮的，所有属性的改变都会立刻同步到场景的资源实例里，并实时影响场景效果。
 
 保存的文件内容为：
 
-![21-4](/IDE/layapackage/plug-in/img/21-4.png)
+![21-4](./img/21-4.png)
 
 资源会在恰当的时机保存到文件，例如任何场景的保存，构建发布前，关闭编辑器前等。
 

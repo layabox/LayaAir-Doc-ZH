@@ -26,7 +26,7 @@ slug: "ide/assets/bundledef"
 
 在项目资源面板中，通过 **右键目录 → 创建 → 脚本集定义** 即可生成脚本集定义文件，如图1-1所示。
 
-![](/IDE/assets/bundledef/img/1-1.png)  
+![](./img/1-1.png)  
 
 （图1-1）
 
@@ -40,7 +40,7 @@ slug: "ide/assets/bundledef"
 
 构建发布完成后，系统会在主包目录（`js` 文件夹）下生成一个与**脚本集定义**文件同名的**脚本集**文件，如图1-2所示。
 
-![](/IDE/assets/bundledef/img/1-2.png) 
+![](./img/1-2.png) 
 
 （图1-2）
 
@@ -50,13 +50,13 @@ slug: "ide/assets/bundledef"
 
 在构建发布设置中，通用 -> 分包 -> 分包配置 项允许将脚本集定义文件指定为该分包的**入口脚本**，如图1-3所示。
 
-![](/IDE/assets/bundledef/img/1-3.png) 
+![](./img/1-3.png) 
 
 (图1-3)
 
 当**脚本集定义**文件被设为分包**入口脚本后**，**构建发布**生成的**脚本集**文件名称，将不再与**脚本集定义**文件名一致，而是统一命名为分包目录下的 `game.js`，如图1-4所示。
 
-![](/IDE/assets/bundledef/img/1-4.png)（图1-4） 
+![](./img/1-4.png)（图1-4） 
 
 ## 2、文件配置属性说明
 
@@ -96,7 +96,7 @@ slug: "ide/assets/bundledef"
 
 拖拽TS脚本文件到入口文件的右侧加号（+）处。或者，点击 加号（+）选择要编译的TS脚本文件，添加到入口文件的列表中，如图2-1所示：
 
-![](/IDE/assets/bundledef/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1） 
 
@@ -116,7 +116,7 @@ slug: "ide/assets/bundledef"
 
 点击 + 号，添加引用功能所在的脚本集定义文件，如图2-2所示，以确保加载顺序正确。  
 
-![](/IDE/assets/bundledef/img/2-2.png) 
+![](./img/2-2.png) 
 
 (图2-2)
 

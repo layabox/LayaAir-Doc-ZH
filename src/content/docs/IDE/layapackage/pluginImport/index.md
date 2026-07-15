@@ -26,13 +26,13 @@ slug: "ide/layapackage/pluginimport"
 
 打开链接并登录后，免费源码可以直接点击 `添加至我的资源` ，收费资源则需要先`加入购物车`，如图1-1所示，然后进行付费购买。
 
-![](/IDE/layapackage/pluginImport/img/1-1.png) 
+![](./img/1-1.png) 
 
 （图1-1）
 
 无论是免费添加还是付费购买，一旦成功添加至我的资源。打开LayaAir3-IDE登录（与资源商店相同的帐号），在**创建项目**的面板里，选择 **已购源码** 再选中目标的源码资源，即可以该源码为模板，创建一个新的项目。如图1-2所示。
 
-![](/IDE/layapackage/pluginImport/img/1-2.png) 
+![](./img/1-2.png) 
 
 （图1-2）
 
@@ -44,7 +44,7 @@ slug: "ide/layapackage/pluginimport"
 
 在创建项目时，选择 “**本地模板**” 栏目，然后点击右上角的 “**导入本地模板**” 按钮，如图1-3所示，选择对应的源码 `.zip` 包即可完成导入。
 
-![1-3](/IDE/layapackage/pluginImport/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -58,13 +58,13 @@ slug: "ide/layapackage/pluginimport"
 
 当我们在资源商店里将资源**添加至我的资源**后，可以在 [`已购资源`](https://store.layaair.com/assets.php) 列表中找到，并点击 “**在LayaAirIDE中打开**”，如图2-1所示。
 
-![](/IDE/layapackage/pluginImport/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
 在弹出的浏览器窗口点击“**打开LayaAirIDE**”会调起`LayaAir3-IDE`并弹出资源导入面板，加载完资源包后，我们可以看到资源包的结构，如动图2-2所示。开发者可以全选或仅选择所需的资源，点击`导入`按钮，将资源导入到项目内。
 
-![](/IDE/layapackage/pluginImport/img/2-2.gif) 
+![](./img/2-2.gif) 
 
 （动图2-2）
 
@@ -74,7 +74,7 @@ slug: "ide/layapackage/pluginimport"
 
 我们也可以使用可访问的网络地址导入（只能是IDE导出的资源包`.layapkg`后缀），操作路径为：`工具` -> `从网络导入资源包`，如图2-4所示。
 
-![](/IDE/layapackage/pluginImport/img/2-4.png) 
+![](./img/2-4.png) 
 
 （图2-4）
 
@@ -84,7 +84,7 @@ slug: "ide/layapackage/pluginimport"
 
 如果资源包是存在IDE本地硬盘中，也可以直接从本地导入，操作路径为：`工具` -> `导入资源包`，如图2-5所示。
 
-![](/IDE/layapackage/pluginImport/img/2-5.png) 
+![](./img/2-5.png) 
 
 （图2-5）
 
@@ -98,7 +98,7 @@ slug: "ide/layapackage/pluginimport"
 
 在资源商店 [`已购资源`](https://store.layaair.com/assets.php) 列表中能看到的资源，除了从资源商店网页打开并导入外，也可以直接从IDE的包管理器中下载并导入。操作流程为：`开发者`菜单 -> `包管理器` -> 选择资源包  -> `下载`   ->  `导入`，如图3-1所示。
 
-![](/IDE/layapackage/pluginImport/img/3-1.png) 
+![](./img/3-1.png) 
 
 （图3-1）
 
@@ -106,7 +106,7 @@ slug: "ide/layapackage/pluginimport"
 
 从IDE包管理器导入与从资源商店网页中导入，最本质的区别是包管理器中除了下载资源包包入外，还可以安装\卸载资源包，如图3-2所示。
 
-![](/IDE/layapackage/pluginImport/img/3-2.png) 
+![](./img/3-2.png) 
 
 （图3-2）
 
@@ -122,7 +122,7 @@ slug: "ide/layapackage/pluginimport"
 
 除了资源商店中可以免费添加和购买的资源包外，包管理器中还会内置一些资源商店中没有的引擎官方插件安装包。这些安装包，需要购买会员资格，根据帐号坐席数量开通相应的帐号权限。权限开通之后，才会显示出来，并允许安装。如图3-3所示。
 
-![](/IDE/layapackage/pluginImport/img/3-3.png) 
+![](./img/3-3.png) 
 
 （图3-3）
 
@@ -142,7 +142,7 @@ slug: "ide/layapackage/pluginimport"
 
 确定更新前，**建议开发者自行导出备份旧资源包**（以防万一，无法回退版本），点击**更新**按钮后，即完成了最新版本在已购列表中的同步。
 
-![](/IDE/layapackage/pluginImport/img/4-1.gif) 
+![](./img/4-1.gif) 
 
 （动图4-1）
 
@@ -154,7 +154,7 @@ slug: "ide/layapackage/pluginimport"
 
 在**资源商店**网页的 [`已购资源`](https://store.layaair.com/assets.php) 列表中同步完版本后，再回到`包管理器`中，点击`更新`按钮完成包的更新，如图4-2所示。
 
-![](/IDE/layapackage/pluginImport/img/4-2.png) 
+![](./img/4-2.png) 
 
 （图4-2）
 
@@ -162,7 +162,7 @@ slug: "ide/layapackage/pluginimport"
 
 如果是本地插件包，点击更新按钮，如图4-3所示，会自动更新安装插件时的目录，因此，在不换目录的情况下，复制替换原插件目录，然后直接点击更新按钮即可。可以不用通过左上角`+`号那里，通过选择目录的方式安装。
 
-![](/IDE/layapackage/pluginImport/img/4-3.png) 
+![](./img/4-3.png) 
 
 （图4-3）
 

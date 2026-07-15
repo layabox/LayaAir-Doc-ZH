@@ -52,35 +52,35 @@ SoundManager.playSound(soundJson[1].url,1);
 ## 5.使用Cool Edit Pro工具进行声音格式转换
 现在有很多可以对MP3转换wav的工具，这里给大家简单介绍一款Cool Edit Pro工具，下面简单介绍下该工具在进行mp3转换wav的具体操作步骤：
 1、首先自行下载并先安装好Cool Edit Pro工具，然后打开Cool Edit Pro程序；
-![图1](/released/native/sound/img/1.png)
+![图1](./img/1.png)
 
 
 2、点击左上角“文件”下的“批量转换”，进入“批量转换”子菜单  
 
-![图2](/released/native/sound/img/2.png)
+![图2](./img/2.png)
 
-![图3](/released/native/sound/img/3.png)
+![图3](./img/3.png)
 
 **注意：建议按照批量文件转换下面的1、2、3、4步骤一步一步来进行操作**
 
 3、选择文件来源：点击右侧增加文件。这里我们选择sound文件下的所有文件进行批处理，之后点击打开；  
 
-![图4](/released/native/sound/img/4.png)
-![图5](/released/native/sound/img/5.png)
+![图4](./img/4.png)
+![图5](./img/5.png)
 
 4、转换采样类型：在重采样目录下点击改变目标格式，在这里选择我们所需要的采样率22050Hz、单声道、16位bit，然后点击确定；  
-![图6](/released/native/sound/img/6.png)
+![图6](./img/6.png)
 
 5、选择新的格式：输出格式选择我们需要的Windows PCM（*.wav），格式类型22050Hz，16位，单声道；
-![图7](/released/native/sound/img/7.png)
+![图7](./img/7.png)
 
 8、选择目标文件夹及文件名：这里就是简单的选择下输出目录就好了，然后点击“运行批处理”进行输出所要的文件，当出现“文件批量转换完成”提示，表示你已成功完成MP3转换wav的批量转换  
-![图8](/released/native/sound/img/8.png)
-![图9](/released/native/sound/img/9.png)
+![图8](./img/8.png)
+![图9](./img/9.png)
 
 9、若在运行Cool Edit Pro工具进行批处理时出现下面的弹窗，只需要重新替换下Resample.xfm文件，再重新运行一下Cool Edit Pro就好了。
 
-![图10](/released/native/sound/img/10.png)
+![图10](./img/10.png)
 
 **出现这种情况，可以百度搜索一下 cool edit resample.xfm，或者购买正版cool edit，或者。。。(你懂的)**
 

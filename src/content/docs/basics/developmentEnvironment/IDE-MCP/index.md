@@ -78,17 +78,17 @@ LayaAir 引擎的 MCP 插件地址与使用说明：（https://store.layaair.com
 
 导入完成后，在 AI 服务栏点击 MCP Server Settings 即可打开配置面板：
 
-![3-1](/basics/developmentEnvironment/IDE-MCP/img/3-1.png)
+![3-1](./img/3-1.png)
 
 #### 3.2.2 配置参数
 
 插件在初次运行时需要进行一些参数配置，点击开始配置按钮：
 
-<img src="/basics/developmentEnvironment/IDE-MCP/img/3-2.png" alt="3-2" style="zoom:60%;" />
+<img src="./img/3-2.png" alt="3-2" style="zoom:60%;" />
 
 **服务配置**：
 
-![3-3](/basics/developmentEnvironment/IDE-MCP/img/3-3.png)
+![3-3](./img/3-3.png)
 
 - **本地MCP服务器端口**：在启用此插件后，插件会自行开启一个 MCP 服务，此设置用于配置服务端口。一般情况下无需修改，除非此端口与已用端口存在冲突。需要注意的是，如果开发者想要在多个 LayaAirIDE 中使用此插件，则每个 IDE 中配置的端口号必须不同。
 
@@ -96,15 +96,15 @@ LayaAir 引擎的 MCP 插件地址与使用说明：（https://store.layaair.com
 
 要使用 LayaAir-CodingMCP 服务，首先需要获取通信密钥。开发者可以通过 LayaAir 3.3.6 及以上版本的 IDE，打开菜单 `AI 服务 -> CodingMCP 服务`，如下图所示，或者直接在浏览器中输入网址（https://ai-console.layaair.com/）访问。
 
-![](/basics/developmentEnvironment/IDE-MCP/img/2-1.jpg) 
+![](./img/2-1.jpg) 
 
 打开页面后，点击右上角的登录按钮，选择账号登录或微信扫码登录方式，完成注册或登录。如下图 所示。
 
-![img](/basics/developmentEnvironment/IDE-MCP/img/2-2.png)
+![img](./img/2-2.png)
 
 订阅套餐后（订阅服务相关参见LayaIdea官网：https://ai-console.layaair.com/#/subscribe/layaidea）在**接口密钥** 页面，点击"新建 Key"按钮。在弹出的窗口中输入 Key 的名称，然后确认创建，即可立即生成密钥值。
 
-<img src="/basics/developmentEnvironment/IDE-MCP/img/2-3.png" alt="2-3" style="zoom:60%;" />
+<img src="./img/2-3.png" alt="2-3" style="zoom:60%;" />
 
 > [Tip]
 >
@@ -116,7 +116,7 @@ LayaAir 引擎的 MCP 插件地址与使用说明：（https://store.layaair.com
 
 **环境自动集成**：
 
-<img src="/basics/developmentEnvironment/IDE-MCP/img/3-4.png" alt="3-4" style="zoom:80%;" />
+<img src="./img/3-4.png" alt="3-4" style="zoom:80%;" />
 
 - **AI编码工具**：LayaAir-MCP 插件会自动检测电脑中已经安装的 AI 编码工具，并自动将 MCP 的配置与规则注入其中。开发者只需要勾选要注入 MCP 的编码工具即可。目前插件支持的 AI 编码工具包括 Cursor、Claude Code、Trae 三种。
 - **规则提示词预览**：规则提示词用于告知 AI 与 MCP 协同工作的方式，以保证生成内容的效果与质量。插件会提供一个标准的规则模板，开发者也可以根据项目的需求进行优化。
@@ -129,14 +129,14 @@ LayaAir 引擎的 MCP 插件地址与使用说明：（https://store.layaair.com
 
 **LayaAir-MCP **：
 
-<img src="/basics/developmentEnvironment/IDE-MCP/img/3-5.png" alt="3-5" style="zoom:70%;" />
+<img src="./img/3-5.png" alt="3-5" style="zoom:70%;" />
 
 - **本地服务状态**：此处可以配置 LayaAir-MCP 服务的端口，以及控制 MCP 服务是否启用；勾选跟随 IDE 启动这一项后，插件会在项目打开时自动启动，否则需要开发者手动启动。
 - **运行日志**：开发者可以在此处查看 MCP 工具的相关运行日志。
 
-![3-10](/basics/developmentEnvironment/IDE-MCP/img/3-10.png)
+![3-10](./img/3-10.png)
 
-![3-11](/basics/developmentEnvironment/IDE-MCP/img/3-11.png)
+![3-11](./img/3-11.png)
 
 **环境配置**：
 
@@ -144,31 +144,31 @@ LayaAir 引擎的 MCP 插件地址与使用说明：（https://store.layaair.com
 
 
 
-![3-9](/basics/developmentEnvironment/IDE-MCP/img/3-9.png)
+![3-9](./img/3-9.png)
 
 - **云端知识库设置**：插件会自动读取当前项目使用的引擎版本，并配置到 MCP 服务中。如果开发者更换了引擎版本，可以点击右侧按钮重新获取。
 
-![3-7](/basics/developmentEnvironment/IDE-MCP/img/3-7.png)
+![3-7](./img/3-7.png)
 
-![3-8](/basics/developmentEnvironment/IDE-MCP/img/3-8.png)
+![3-8](./img/3-8.png)
 
 - **云端知识库 API_KEY**：此处设置用于连接 MCP 服务的 KEY，如果开发者使用的 KEY 发生了变化，需要在此处重新设置。
 
-![3-12](/basics/developmentEnvironment/IDE-MCP/img/3-12.png)
+![3-12](./img/3-12.png)
 
 当云端知识库设置发生变化后，需要点击下方按钮将设置重新应用到 AI 编码工具中。
 
-![3-13](/basics/developmentEnvironment/IDE-MCP/img/3-13.png)
+![3-13](./img/3-13.png)
 
 **AI提示词&规则**：
 
 如果开发者想要为 AI 生成的内容追加新的规则，可以在此处修改。
 
-![3-14](/basics/developmentEnvironment/IDE-MCP/img/3-14.png)
+![3-14](./img/3-14.png)
 
 修改提示词后需要点击下方按钮，将提示词应用到环境中。
 
-![3-15](/basics/developmentEnvironment/IDE-MCP/img/3-15.png)
+![3-15](./img/3-15.png)
 
 ### 3.3 使用实践
 

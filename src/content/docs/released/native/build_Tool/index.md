@@ -18,7 +18,7 @@ slug: "released/native/build-tool"
 
 使用LayaAir-IDE发布项目，开发者首先在文件菜单中，打开“构建发布”选项，如图2-1所示，
 
-<img src="/released/native/build_Tool/img/2-1.png" alt="2-1" style="zoom:80%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom:80%;" />
 
 （图2-1）
 
@@ -116,7 +116,7 @@ x86-64: 也称为x64或AMD64，是Intel处理器的64位版本。用于较新的
 
 设置好参数后，如果是第一次构建Android/iOS，会先下载模块，如图2-2所示，
 
-![2-2](/released/native/build_Tool/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -132,13 +132,13 @@ x86-64: 也称为x64或AMD64，是Intel处理器的64位版本。用于较新的
 
 如图3-1所示，如果不勾选`导出Android Studio项目`，则导出的项目会直接生成apk包。
 
-![3-1](/released/native/build_Tool/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
 图3-1的导出方式是一个纯单机版的应用，导出后的目录如图3-2所示，直接将apk包安装到手机即可。但是，这样的纯单机版应用无法实现资源动态更新，当资源发生变化时，必须更新APP。
 
-![3-2](/released/native/build_Tool/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 

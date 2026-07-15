@@ -14,7 +14,7 @@ slug: "ide/component/physics2d/gearjoint"
 
 齿轮关节与其它关节不同的是，齿轮关节并非是连接绑定刚体，而是连接两个关节，如图1所示。并且关节类型只能是旋转关节（RevoluteJoint）或平移关节（PrismaticJoint）。
 
-![](/IDE/Component/physics2D/gearJoint/img/1.png)
+![](./img/1.png)
 
 (图1)
 
@@ -30,7 +30,7 @@ slug: "ide/component/physics2d/gearjoint"
 
 动图2中，演示了齿轮关节设置的基础流程：
 
-![为了减少动图大小，把核心的添加关节和设置马达，然后运行的基础流程演示出即可](/IDE/Component/physics2D/gearJoint/img/2.gif)
+![为了减少动图大小，把核心的添加关节和设置马达，然后运行的基础流程演示出即可](./img/2.gif)
 
 (动图2)
 
@@ -44,6 +44,6 @@ slug: "ide/component/physics2d/gearjoint"
 
 效果如动图3所示：
 
-![正值默认比率和负值调整后的比率，效果对比](/IDE/Component/physics2D/gearJoint/img/3.gif)
+![正值默认比率和负值调整后的比率，效果对比](./img/3.gif)
 
 (动图3)

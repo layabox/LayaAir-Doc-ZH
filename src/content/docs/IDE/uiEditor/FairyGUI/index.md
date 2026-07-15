@@ -36,11 +36,11 @@ Author: 谷主
 
 在使用IDE制作场景或者预制体时，GWidget以及它的派生类可以直接加入到场景的节点树中，使用方法和引擎的旧UI系统一样，如下图1-1，1-2所示。
 
-<img src="/IDE/uiEditor/FairyGUI/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
-<img src="/IDE/uiEditor/FairyGUI/img/1-2.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-2.png" alt="1-1" style="zoom:50%;" />
 
 （图1-2）
 
@@ -56,7 +56,7 @@ GButton是一个行为组件，它不带显示功能。你需要制作自己的�
 
 ​       在新UI系统中，你应该为每种皮肤不同的按钮制作一个预制体。编辑器也提供了快捷生成按钮预制体的功能，在`工具->制作按钮`菜单下。如下图1-3所示。
 
-<img src="/IDE/uiEditor/FairyGUI/img/1-3.png" alt="1-1" style="zoom:70%;" />
+<img src="./img/1-3.png" alt="1-1" style="zoom:70%;" />
 
 （图1-3）
 

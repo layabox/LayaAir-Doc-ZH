@@ -8,7 +8,7 @@ slug: "ide/component/trail"
 
 拖尾渲染器（Trail Renderer）用于制作跟在场景中的物体后面的拖尾效果来代表它们在到处移动。像在物体移动路径的位置上出现的残影，就是一种拖尾效果。
 
-<img src="/IDE/Component/Trail/img/1-1.gif" alt="img" style="zoom: 50%;" />   
+<img src="./img/1-1.gif" alt="img" style="zoom: 50%;" />   
 
 （动图1-1）
 
@@ -22,7 +22,7 @@ slug: "ide/component/trail"
 
 在一个3D场景的Hierarchy窗口中，任何节点下，或者是空白位置，都可以通过鼠标右键来创建拖尾对象，如动图2-1所示
 
-<img src="/IDE/Component/Trail/img/2-1.gif" style="zoom: 43%;" /> 
+<img src="./img/2-1.gif" style="zoom: 43%;" /> 
 
 （动图2-1）
 
@@ -34,13 +34,13 @@ slug: "ide/component/trail"
 
 如图2-2所示，拖尾渲染器有如下的属性
 
-<img src="/IDE/Component/Trail/img/2-2.png" style="zoom:50%;" /> 
+<img src="./img/2-2.png" style="zoom:50%;" /> 
 
 （图2-2）
 
 由于 `Trail Renderer` 组件是继承自 `Base Renderer` 组件，因此拖尾渲染器本身具备一些基础属性，如图2-3所示
 
-<img src="/IDE/Component/Trail/img/2-3.png" style="zoom:50%;" />  
+<img src="./img/2-3.png" style="zoom:50%;" />  
 
 （图2-3）
 
@@ -56,7 +56,7 @@ slug: "ide/component/trail"
 
 首先我们在Asset下新建一个Material，默认情况下Material的Shader是BlinnPhone，接下来我们修改下Shader，如动图2-4所示
 
-<img src="/IDE/Component/Trail/img/2-4.gif" style="zoom: 50%;" /> 
+<img src="./img/2-4.gif" style="zoom: 50%;" /> 
 
 （动图2-4）
 
@@ -66,19 +66,19 @@ slug: "ide/component/trail"
 
 如图2-5所示，带 Laya.Trail Shader的材质有如下几个属性
 
-<img src="/IDE/Component/Trail/img/2-5.png" alt="image-20221226104854987" style="zoom:50%;" /> 
+<img src="./img/2-5.png" alt="image-20221226104854987" style="zoom:50%;" /> 
 
 （图2-5）
 
 这里我们主要关注拖尾效果的贴图，如动图1-1示例中的效果，需要做出拖尾效果的话，需要一张拖尾效果的纹理贴图，如图2-6所示
 
-![](/IDE/Component/Trail/img/2-6.jpg) 
+![](./img/2-6.jpg) 
 
 （图2-6）
 
 我们接下来将纹理贴图拖入材质中，如图2-7所示，这样拖尾的贴图就配置好了
 
-<img src="/IDE/Component/Trail/img/2-7.gif" style="zoom:50%;" />
+<img src="./img/2-7.gif" style="zoom:50%;" />
 
 （动图2-7）
 
@@ -88,19 +88,19 @@ slug: "ide/component/trail"
 
 我们想让拖尾的效果是一种灰色的类似烟雾的效果，那么我们需要对材质的颜色做设置，如图2-8所示，选取灰色的颜色，并改透明图为55
 
-<img src="/IDE/Component/Trail/img/2-8.png" alt="image-20221226105620269" style="zoom: 50%;" />  
+<img src="./img/2-8.png" alt="image-20221226105620269" style="zoom: 50%;" />  
 
 （图2-8）
 
 这样颜色就配置好了，同时我们需要改下 `Material Render Mode`为 `Additive` 模式，才能让贴图中黑色的颜色变为纯透明，并改变 `Cull` 为 `Off`，如图2-9所示
 
-<img src="/IDE/Component/Trail/img/2-9.png" alt="image-20221226115732845" style="zoom:50%;" /> 
+<img src="./img/2-9.png" alt="image-20221226115732845" style="zoom:50%;" /> 
 
 （图2-9）
 
 这样修改后，效果才能如动图2-10所示
 
-<img src="/IDE/Component/Trail/img/2-10.gif" style="zoom:50%;" /> 
+<img src="./img/2-10.gif" style="zoom:50%;" /> 
 
 （动图2-10）
 
@@ -110,7 +110,7 @@ slug: "ide/component/trail"
 
 拖尾材质可以指定拖尾的纹理效果，透明方式等等，但拖尾过滤器才可以设置拖尾的时间，轨迹，长度等等，就像3D粒子系统一样，如图2-11所示
 
-<img src="/IDE/Component/Trail/img/2-11.png" alt="image-20221226105829772" style="zoom:55%;" />  
+<img src="./img/2-11.png" alt="image-20221226105829772" style="zoom:55%;" />  
 
 （图2-11）
 
@@ -122,13 +122,13 @@ slug: "ide/component/trail"
 
 默认是5秒，5秒之后才会消失，如动图2-12所示
 
-<img src="/IDE/Component/Trail/img/2-12.gif" style="zoom:50%;" /> 
+<img src="./img/2-12.gif" style="zoom:50%;" /> 
 
 （动图2-12）
 
 但是我们可以调整时间为1秒，如动图2-13所示
 
-<img src="/IDE/Component/Trail/img/2-13.gif" style="zoom:50%;" /> 
+<img src="./img/2-13.gif" style="zoom:50%;" /> 
 
 （动图2-13）
 
@@ -162,7 +162,7 @@ slug: "ide/component/trail"
 
 如动图2-9所示，我们可以通过鼠标双击红线上来添加曲线节点，并通过白色旋转轴来调整曲线角度，通过鼠标双击红色节点来删除
 
-<img src="/IDE/Component/Trail/img/2-14.gif" style="zoom:50%;" />  
+<img src="./img/2-14.gif" style="zoom:50%;" />  
 
 （动图2-14）
 
@@ -178,7 +178,7 @@ slug: "ide/component/trail"
 
 如图2-15所示，为设置从半透明到白色，最后变为半透明的颜色设置
 
-<img src="/IDE/Component/Trail/img/2-15.png" alt="image-20221226111319095" style="zoom:50%;" />  
+<img src="./img/2-15.png" alt="image-20221226111319095" style="zoom:50%;" />  
 
 （图2-15） 
 
@@ -196,13 +196,13 @@ slug: "ide/component/trail"
 
 如动图2-16，采用Tile平铺的方式效果
 
-<img src="/IDE/Component/Trail/img/2-16.gif" style="zoom:50%;" /> 
+<img src="./img/2-16.gif" style="zoom:50%;" /> 
 
 （动图2-16）
 
 最终我们选择Stretch为拖尾效果，如动图2-17所示
 
-<img src="/IDE/Component/Trail/img/2-17.gif" style="zoom:50%;" /> 
+<img src="./img/2-17.gif" style="zoom:50%;" /> 
 
 （动图2-17）
 

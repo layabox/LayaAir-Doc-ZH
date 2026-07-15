@@ -12,7 +12,7 @@ Dialog是弹窗视图组件，主要用于弹窗面板。
 
 如图1-1所示，点击选择小部件面板里的Dialog组件，拖放到页面编辑区，或者在层级窗口中通过右键创建，即可添加Dialog组件到页面上。
 
-<img src="/IDE/uiEditor/Dialog/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -22,7 +22,7 @@ Dialog是弹窗视图组件，主要用于弹窗面板。
 
 Dialog的特有属性如下：
 
-![1-2](/IDE/uiEditor/Dialog/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -37,7 +37,7 @@ Dialog的特有属性如下：
 
 在设置dragArea属性后，可以在设置的数值范围内对Dialog进行拖动。将其设置为"0,0,100,100"，效果如动图1-3所示，红色区域为可拖拽区域。在设置后只可以在设置的数值内拖动，在超出数值内的区域拖动是无效的。
 
-<img src="/IDE/uiEditor/Dialog/img/1-3.gif" alt="1-3" style="zoom: 50%;" />
+<img src="./img/1-3.gif" alt="1-3" style="zoom: 50%;" />
 
 （动图1-3）
 
@@ -49,19 +49,19 @@ Dialog的特有属性如下：
 
 Dialog的弹窗效果需要将它作为根节点使用。可以在项目资源面板创建一个2D预制体Prefab2D，如图1-4所示。
 
-<img src="/IDE/uiEditor/Dialog/img/1-4.png" alt="1-4" style="zoom:80%;" />
+<img src="./img/1-4.png" alt="1-4" style="zoom:80%;" />
 
 （图1-4）
 
 双击Prefab2D进入编辑界面。右键单击根节点，选择“转换节点类型”，选择`UI->Dialog`即可，如动图1-5所示。
 
-<img src="/IDE/uiEditor/Dialog/img/1-5.gif" alt="1-5" style="zoom:80%;" />
+<img src="./img/1-5.gif" alt="1-5" style="zoom:80%;" />
 
 （动图1-5）
 
 然后，在预制体的编辑界面就可以制作弹窗页面了，制作的效果如图1-6所示。
 
-<img src="/IDE/uiEditor/Dialog/img/1-6.png" alt="1-6" style="zoom: 60%;" />
+<img src="./img/1-6.png" alt="1-6" style="zoom: 60%;" />
 
 （图1-6）
 
@@ -73,7 +73,7 @@ Dialog的弹窗效果需要将它作为根节点使用。可以在项目资源�
 
 在弹窗页面中，有一个关闭按钮（closeBtn），需要添加脚本实现关闭页面的逻辑。如动图1-7所示，勾选closeBtn的定义变量选项，然后双击Prefab2D的“UI运行时”，创建UI组件脚本。
 
-<img src="/IDE/uiEditor/Dialog/img/1-7.gif" alt="1-7" style="zoom: 50%;" />
+<img src="./img/1-7.gif" alt="1-7" style="zoom: 50%;" />
 
 （动图1-7）
 
@@ -120,7 +120,7 @@ export class NewScript extends Laya.Script {
 
 运行效果如下：
 
-<img src="/IDE/uiEditor/Dialog/img/1-8.gif" alt="1-8" style="zoom:50%;" />
+<img src="./img/1-8.gif" alt="1-8" style="zoom:50%;" />
 
 （动图）
 
@@ -182,7 +182,7 @@ export class UI_Dialog extends Laya.Script {
 
 效果如下动图所示：
 
-![2-1](/IDE/uiEditor/Dialog/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

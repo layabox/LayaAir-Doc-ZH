@@ -34,7 +34,7 @@ ray.at(5, point);
 
 ### 3.1 生成射线
 
-![图3-1](/basics/common/math/Ray/img/3-1.png)
+![图3-1](./img/3-1.png)
 
 （图3-1）
 

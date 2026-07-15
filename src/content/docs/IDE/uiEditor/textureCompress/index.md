@@ -70,7 +70,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 如图2-1所示，LayaAir 3.0可以在IDE中直接操作图片，做纹理压缩的转换。 
 
-![2-1](/IDE/uiEditor/textureCompress/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -78,7 +78,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 纹理压缩在PC端和手机端有所不同，如动图2-2所示，若在Default选项中选择“纹理压缩(BC1与ASTC_6×6)”，那么PC就默认使用`BC1`，Android和IOS默认都使用`ASTC_6×6`。
 
-![2-2](/IDE/uiEditor/textureCompress/img/2-2.gif)
+![2-2](./img/2-2.gif)
 
 （动图2-2）
 
@@ -90,19 +90,19 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 在PC端以BC1为例（BC3也可以，但PC端不支持ASTC格式），按照如图2-3所示进行设置，勾选`PC平台设置`后，就可以单独设置纹理格式了。其它平台如果要单独设置也是同样的道理，只需勾选对应的选项即可，后面会再介绍。
 
-![2-3](/IDE/uiEditor/textureCompress/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
 如动图2-4所示，设置好后，可以将图像作为Image组件的皮肤，然后构建发布。
 
-![2-4](/IDE/uiEditor/textureCompress/img/2-4.gif)
+![2-4](./img/2-4.gif)
 
 （动图2-4）
 
 如图2-5所示，发布后的目录里，有一个`layabox@0.dds`文件，这个就是BC1纹理压缩格式的图片。同时生成的还有一个.png图片，因为在设置纹理压缩格式时，虽然PC平台设置的是BC1，但是Android和iOS设置的还是“带透明通道的位图(32位)”，所以生成的”layabox.png“是在Android和iOS运行的纹理格式。
 
-![2-5](/IDE/uiEditor/textureCompress/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -149,7 +149,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 运行发布后的Web项目（可以使用anywhere启动本地服务器，参考文档[《Web发布》](/released/web/)），启动后在Chrome浏览器中打开DevTools工具。如图2-6所示，点击“Network“选项，可以看到使用的是BC1纹理格式，`@0`表示在PC平台运行。
 
-![2-6](/IDE/uiEditor/textureCompress/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
@@ -157,7 +157,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 如果我们想针对Android和iOS平台使用ASTC_6x6，设置方法如动图2-7所示： 
 
-<img src="/IDE/uiEditor/textureCompress/img/2-7.gif" alt="2-7" style="zoom:67%;" />
+<img src="./img/2-7.gif" alt="2-7" style="zoom:67%;" />
 
 （动图2-7）
 
@@ -165,7 +165,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 分别对Andorid和iOS选择ASTC_6x6纹理压缩格式，并点击应用后，再将设置好的图像作为Image组件的皮肤，然后构建发布。通过发布web平台，如图2-8所示，来看发布后的文件： 
 
-![2-8](/IDE/uiEditor/textureCompress/img/2-8.png)
+![2-8](./img/2-8.png)
 
 （图2-8）
 
@@ -218,7 +218,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 点击后，如下图所示：
 
-![2-9](/IDE/uiEditor/textureCompress/img/2-9.png)
+![2-9](./img/2-9.png)
 
 （图2-9）
 
@@ -226,7 +226,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 > 注意：**手机端调试必须使用真机**。如果不使用真机，只是在PC平台的Chrome下，使用手机模式（如图2-10），是无法使用到纹理压缩格式的。因为虽然使用了手机模式，但是LayaAir引擎会判断当前运行的平台依然是win32。  
 
-![2-10](/IDE/uiEditor/textureCompress/img/2-10.png)
+![2-10](./img/2-10.png)
 
 （图2-10）
 
@@ -236,7 +236,7 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 不仅图片可以纹理压缩，通常我们在2D开发中使用的图集也可以使用纹理压缩格式，如图2-11所示： 
 
-![2-11](/IDE/uiEditor/textureCompress/img/2-11.png)
+![2-11](./img/2-11.png)
 
 （图2-11）
 
@@ -244,13 +244,13 @@ LayaAir 3.0引擎及工具也更新了这一情况，全面支持ASTC标准，�
 
 以Android平台为例，在LayaAir IDE中，对自动图集设置进行纹理压缩配置，然后在场景中将图像作为Image组件的皮肤。发布后可以看到图集也可以使用纹理压缩格式了，如图2-12所示，`@1.ktx`是Android平台的纹理压缩格式，.atlas是图集文件，.png是其它平台默认的纹理格式。
 
-![2-12](/IDE/uiEditor/textureCompress/img/2-12.png)
+![2-12](./img/2-12.png)
 
 （图2-12）
 
 再用Android手机来看看运行时的情况，图集纹理压缩文件“@1.ktx”成功使用了，如图2-13所示： 
 
-![2-13](/IDE/uiEditor/textureCompress/img/2-13.png)
+![2-13](./img/2-13.png)
 
 （图2-13）
 
@@ -330,7 +330,7 @@ export class Main extends Laya.Script {
 
 当舞台上什么显示也没有的时候，初始显存占用是2.31M，使用纹理压缩格式，只增加170K，加上初始大小最终为2.48M。而原图则增加1024K，达到3.31M。如图4-1所示。所以显存优化效果还是非常明显的，减少约83%。
 
-![4-1](/IDE/uiEditor/textureCompress/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 

@@ -16,25 +16,25 @@ LayaAir3.0继续延用2.0开发思路为组件化，脚本化，场景管理开�
 
 使用IDE新建一个3D项目，在IDE中创建一个场景，并保存，默认情况下，会在assets目录下，保存为Scene1.ls。如动图1-1所示
 
-<img src="/basics/common/Scene/images/1-1.gif" style="zoom:50%;" />  
+<img src="./images/1-1.gif" style="zoom:50%;" />  
 
 （动图1-1） 
 
 通过资源管理器打开assets目录，可以看到Scene1的后缀是ls文件，这个场景ls文件，与2.0的区别是，它包括了Scene3D场景和Scene2D场景。如图1-2所示
 
-<img src="/basics/common/Scene/images/1-2.png" alt="1-2" style="zoom:50%;" /> 
+<img src="./images/1-2.png" alt="1-2" style="zoom:50%;" /> 
 
 （图1-2）
 
 `Scene3D`：编辑3D场景的根节点，可以参考[《3D场景编辑的基础交互》](/ide/sceneeditor/basic/)文档和[《3D场景环境设置》](/ide/sceneeditor/environment/)文档来详细了解3D场景的操作和使用，如图1-3所示
 
-<img src="/basics/common/Scene/images/1-3.png" style="zoom:50%;" />
+<img src="./images/1-3.png" style="zoom:50%;" />
 
 （图1-3）
 
 `Scene2D`：编辑2D场景的根节点，可以参考[《UI编辑器基础交互》](/ide/uieditor/basic/)文档和[《UI运行时》](/ide/uieditor/runtime/)文档来详细了解2D场景的操作和代码使用，如图1-4所示
 
-<img src="/basics/common/Scene/images/1-4.png" style="zoom:50%;" /> 
+<img src="./images/1-4.png" style="zoom:50%;" /> 
 
 （图1-4）
 
@@ -48,13 +48,13 @@ LayaAir3.0继续延用2.0开发思路为组件化，脚本化，场景管理开�
 
 - 对于只需要2D场景时，可以点击Scene3D，点击鼠标右键选择删除，那么剩下的场景就是一个单纯的Scene2D场景，如图1-5所示
 
-<img src="/basics/common/Scene/images/1-5.png" style="zoom:50%;" />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+<img src="./images/1-5.png" style="zoom:50%;" />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 （图1-5）
 
 - 对于只需要3D场景时，可以发现Scene2D是不可以删掉的，如图1-6所示
 
-<img src="/basics/common/Scene/images/1-6.png" style="zoom:50%;" /> 
+<img src="./images/1-6.png" style="zoom:50%;" /> 
 
 （图1-6）
 
@@ -130,7 +130,7 @@ export class Scene extends Sprite {
     }
 ```
 
-<img src="/basics/common/Scene/images/2-1.png" alt="image-20221103165707451" style="zoom:25%;" />        
+<img src="./images/2-1.png" alt="image-20221103165707451" style="zoom:25%;" />        
 
 （图2-1）
 
@@ -148,7 +148,7 @@ Laya.Scene.open("dailog.lh");
 
 运行效果如动图2-2所示
 
-<img src="/basics/common/Scene/images/2-2.gif" alt="2-2" style="zoom: 25%;" />
+<img src="./images/2-2.gif" alt="2-2" style="zoom: 25%;" />
 
 （动图2-2）
 
@@ -204,7 +204,7 @@ export class MsgRT extends MsgRTBase {
 
 这样，点击Scene场景中的Button，就会打印日志“点击成功！”，效果如动图2-3所示：
 
-![2-3](/basics/common/Scene/images/2-3.gif)
+![2-3](./images/2-3.gif)
 
 （动图2-3）
 
@@ -236,7 +236,7 @@ Laya.Scene.close("uiDemo/page/OpenScene.ls");
 
 `this.close()`
 
-<img src="/basics/common/Scene/images/2-4.png" alt="image-20221103174431210" style="zoom: 50%;" /> 
+<img src="./images/2-4.png" alt="image-20221103174431210" style="zoom: 50%;" /> 
 
 （图2-4）
 
@@ -326,7 +326,7 @@ export class NewScript extends Laya.Script {
 
 在打开的场景Scene.ls下，挂上脚本，并拖入Loading.lh作为场景。
 
-![2-5](/basics/common/Scene/images/2-5.png)
+![2-5](./images/2-5.png)
 
 （图2-5）
 

@@ -10,7 +10,7 @@ slug: "3d/advanced/unity"
 
 插件的下载地址：https://github.com/layabox/LayaAir3.0UnityPlugin/releases
 
-![1-1](/3D/advanced/Unity/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -69,7 +69,7 @@ slug: "3d/advanced/unity"
 
 当我们想导出整个场景时，可以选择场景，设置导出路径。如图4-1所示，导出路径建议设置为在LayaAir IDE项目工程目录下的`assets`文件夹，至于是assets目录下的什么目录，由开发者自行决定。
 
-![4-1](/3D/advanced/Unity/img/5-1.png)
+![5-1](./img/5-1.png)
 
 （图4-1）
 
@@ -78,7 +78,7 @@ slug: "3d/advanced/unity"
 打开场景后，导出的场景并不具有环境光sh信息，需要找到在Scene3D层级下的烘焙开关。如图4-2所示，点击`烘焙`，对当前场景的环境光sh数据进行预计算，
 这样烘焙完成后的效果就是我们想要的效果了。
 
-![4-2](/3D/advanced/Unity/img/5-2.png)
+![5-2](./img/5-2.png)
 
 （图4-2）
 
@@ -86,6 +86,6 @@ slug: "3d/advanced/unity"
 
 如图4-3所示，预设的导出，主要是用于当不需要完整导出使用整个场景，只需要某些节点资源。又或者某些节点资源需要独立导出复用或代码动态使用等需求。
 
-![4-3](/3D/advanced/Unity/img/5-3.png)
+![4-3](./img/5-3.png)
 
 （图4-3）

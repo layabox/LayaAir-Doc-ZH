@@ -24,7 +24,7 @@ List通常由两个部分组成：列表渲染项（单元格）、滚动条。
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/List/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -34,13 +34,13 @@ List通常由两个部分组成：列表渲染项（单元格）、滚动条。
 
 此处以Box对象为例。如图1-2所示，在List组件下添加一个Box组件，并且调整好Box的大小。然后在Box下添加一个Label组件，命名为m_label，并设置一下Label的显示效果，使它更好看一些。
 
-<img src="/IDE/uiEditor/uiComponent/List/img/1-2.png" alt="1-2" style="zoom: 80%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom: 80%;" />
 
 （图1-2）
 
 再将创建好的Box节点拖入到List的Item Template属性中，如图1-3所示，这样就指定List的列表项为子节点Box了。
 
-![1-3](/IDE/uiEditor/uiComponent/List/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -50,7 +50,7 @@ List通常由两个部分组成：列表渲染项（单元格）、滚动条。
 
 选择List属性的Scroll Type为垂直方向滚动。V Scroll Bar Skin属性用来设置垂直滚动条的皮肤，从资源面板里选择vscroll.png到该属性中，会立即生成滚动条皮肤。
 
-<img src="/IDE/uiEditor/uiComponent/List/img/1-4.png" alt="1-4" style="zoom:100%;" />
+<img src="./img/1-4.png" alt="1-4" style="zoom:100%;" />
 
 （图1-4）
 
@@ -58,7 +58,7 @@ List通常由两个部分组成：列表渲染项（单元格）、滚动条。
 
 设置Repeat Y为6，表示当列表项超出6个时，会开始滚动。
 
-<img src="/IDE/uiEditor/uiComponent/List/img/1-5.png" alt="1-5" style="zoom:0%;" />
+<img src="./img/1-5.png" alt="1-5" style="zoom:0%;" />
 
 （图1-5）
 
@@ -101,13 +101,13 @@ export class Script extends Laya.Script {
 
 将脚本挂载到Scene2D场景上，然后将List组件拖入到脚本暴露出来的属性即可，如图1-6所示。
 
-<img src="/IDE/uiEditor/uiComponent/List/img/1-6.png" alt="1-6" style="zoom:80%;" />
+<img src="./img/1-6.png" alt="1-6" style="zoom:80%;" />
 
 （图1-6）
 
 运行效果如下：
 
-<img src="/IDE/uiEditor/uiComponent/List/img/1-7.gif" alt="1-7" style="zoom:80%;" />
+<img src="./img/1-7.gif" alt="1-7" style="zoom:80%;" />
 
 （动图1-7）
 
@@ -152,7 +152,7 @@ export class Script extends Laya.Script {
 
 效果如下所示：
 
-<img src="/IDE/uiEditor/uiComponent/List/img/1-8.gif" alt="1-8" style="zoom:80%;" />
+<img src="./img/1-8.gif" alt="1-8" style="zoom:80%;" />
 
 （图1-8）
 
@@ -162,7 +162,7 @@ export class Script extends Laya.Script {
 
 List的特有属性如下：
 
-![1-9](/IDE/uiEditor/uiComponent/List/img/1-9.png)
+![1-9](./img/1-9.png)
 
 （图1-9）  
 
@@ -270,7 +270,7 @@ class Item extends Laya.Box {
 
 **运行效果：**
 
-<img src="/IDE/uiEditor/uiComponent/List/img/2-1.gif" alt="2-1" style="zoom: 50%;" />
+<img src="./img/2-1.gif" alt="2-1" style="zoom: 50%;" />
 
 （图2-1）
 

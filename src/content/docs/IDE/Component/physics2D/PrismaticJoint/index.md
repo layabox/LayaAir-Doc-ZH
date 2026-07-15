@@ -18,7 +18,7 @@ slug: "ide/component/physics2d/prismaticjoint"
 
 平移方向是指该关节只能沿着哪个方向进行平移，单位是角度。例如0度表示水平向右方向，90度表示垂直向下的方向，180度表示水平向左的方向，采用顺时针的角度作为方向，以此类推。效果如动图1所示：
 
-![几个启用马达力之后的不同角度方向对比](/IDE/Component/physics2D/PrismaticJoint/img/1.gif)
+![几个启用马达力之后的不同角度方向对比](./img/1.gif)
 
 (动图1)
 
@@ -26,7 +26,7 @@ slug: "ide/component/physics2d/prismaticjoint"
 
 在勾选`启用马达`后，有两个关联的属性，马达速度`motorSpeed`、最大力`maxMotorForce`，如图2所示：
 
-![](/IDE/Component/physics2D/PrismaticJoint/img/2.png)
+![](./img/2.png)
 
 (图2)
 
@@ -36,7 +36,7 @@ slug: "ide/component/physics2d/prismaticjoint"
 
 动图3中对比了不同速度与方向的效果：
 
-![三个示例，分别是两个不同正速度旋转和一个负速度旋转](/IDE/Component/physics2D/PrismaticJoint/img/3.gif)
+![三个示例，分别是两个不同正速度旋转和一个负速度旋转](./img/3.gif)
 
 （动图3）
 
@@ -44,7 +44,7 @@ slug: "ide/component/physics2d/prismaticjoint"
 
 在勾选`平移限制`后，有两个关联的属性，平移下限`lowerTranslation`、平移上限`upperTranslation`，如图4所示：
 
-![](/IDE/Component/physics2D/PrismaticJoint/img/4.png)
+![](./img/4.png)
 
 (图4)
 
@@ -58,6 +58,6 @@ slug: "ide/component/physics2d/prismaticjoint"
 
 下限与上限的对比效果如动图5所示。
 
-![不设置关节时，通过鼠标关节的拖动，来理解下限与上限的范围](/IDE/Component/physics2D/PrismaticJoint/img/5.gif)
+![不设置关节时，通过鼠标关节的拖动，来理解下限与上限的范围](./img/5.gif)
 
 (动图5)

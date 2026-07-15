@@ -12,13 +12,13 @@ slug: "3d/advanced/postprocessing"
 
 > 未开启后处理时的效果
 
-<img src="/3D/advanced/PostProcessing/img/1-1.png" alt="1-1" style="zoom:67%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:67%;" />
 
 图1-1
 
 > 开启后处理后的效果
 
-<img src="/3D/advanced/PostProcessing/img/1-2.png" alt="1-2" style="zoom:67%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom:67%;" />
 
 图1-2
 
@@ -29,19 +29,19 @@ slug: "3d/advanced/postprocessing"
 
 在层级面板中选中相机节点，此时在属性设置面板中就能看到后期处理这一属性：
 
-<img src="/3D/advanced/PostProcessing/img/2-1-1.png" alt="2-1-1" style="zoom: 67%;" />
+<img src="./img/2-1-1.png" alt="2-1-1" style="zoom: 67%;" />
 
 图2-1
 
 点击创建实例即可创建一个后处理实例：
 
-![2-1-2](/3D/advanced/PostProcessing/img/2-1-2.png)
+![2-1-2](./img/2-1-2.png)
 
 图2-2
 
 可以看到，有以下选项，我们一一讲解
 
-![2-1-3](/3D/advanced/PostProcessing/img/2-1-3.png)
+![2-1-3](./img/2-1-3.png)
 
 图2-2
 
@@ -54,13 +54,13 @@ slug: "3d/advanced/postprocessing"
 
 例如下图中明显的光斑就是镜头光晕
 
-![3-1-1](/3D/advanced/PostProcessing/img/3-1-1.png)
+![3-1-1](./img/3-1-1.png)
 
 图3-1-1 
 
 在引擎当中，点击创建即可使用 如图3-1-2
 
-![3-1-2](/3D/advanced/PostProcessing/img/3-1-2.png) 
+![3-1-2](./img/3-1-2.png) 
 
 图3-1-2 
 
@@ -76,13 +76,13 @@ slug: "3d/advanced/postprocessing"
 
 首先是`lensFlareData`，我们可以使用代码创建，也可以直接在资源面板中新建，如图3-1-3
 
-![3-1-3](/3D/advanced/PostProcessing/img/3-1-3.png)
+![3-1-3](./img/3-1-3.png)
 
 图3-1-3 
 
 镜头光晕属性如图3-1-4所示
 
-![3-1-4](/3D/advanced/PostProcessing/img/3-1-4.png)
+![3-1-4](./img/3-1-4.png)
 
 | 参数 | 类型 | 说明 | 默认值 |
 |------|------|------|--------|
@@ -100,7 +100,7 @@ slug: "3d/advanced/postprocessing"
 
 我们将贴图拖入装饰器，再将镜头光晕数据和灯光拖入，即可实现图3-1-5的效果。
 
-![3-1-5](/3D/advanced/PostProcessing/img/3-1-5.png)
+![3-1-5](./img/3-1-5.png)
 
 图3-1-5 
 
@@ -108,7 +108,7 @@ slug: "3d/advanced/postprocessing"
 
 **景深模糊**是一种常见的模拟相机镜头焦距特性的后处理效果。在现实生活中，相机只能在一定距离内对物体进行锐利的聚焦; 离相机较近或较远的物体会有点失焦。点击创建即可使用,如图3-2-1
 
-![3-2-1](/3D/advanced/PostProcessing/img/3-2-1.png)
+![3-2-1](./img/3-2-1.png)
 
 图3-2-1 
 
@@ -121,7 +121,7 @@ slug: "3d/advanced/postprocessing"
 
 应用效果如图3-2-2所示,可以看到,远处的房屋变模糊了
 
-![3-2-2](/3D/advanced/PostProcessing/img/3-2-2.png)
+![3-2-2](./img/3-2-2.png)
 
 图3-2-2 
 
@@ -129,7 +129,7 @@ slug: "3d/advanced/postprocessing"
 
 **后处理颜色调整** 就像是给 3D 场景添加了一层实时运行的“电影滤镜”。在场景渲染完成后，通过调整画面的**亮度、对比度、饱和度**以及**色调（Hue）**，统一全局的视觉风格。它能将渲染出的原始图像从平淡的“数码感”转化为具有特定氛围的艺术效果——例如通过增加蓝色调营造孤寂的科幻感，或通过提高对比度模拟烈日下的沙漠。该效果使用 LUT（Look-Up Table，查找表）技术实现高效的颜色调整。点击创建即可使用,如图3-3-1
 
-![3-3-1](/3D/advanced/PostProcessing/img/3-3-1.png)
+![3-3-1](./img/3-3-1.png)
 
 图3-3-1 
 
@@ -196,7 +196,7 @@ slug: "3d/advanced/postprocessing"
 ### 3.4泛光（Bloom Effect）
 **Bloom** 是一种模拟真实相机成像或人眼视觉的物理现象。当光线极强时，它会“溢出”物体的边缘，在周围产生一层柔和的光晕效果。它能让发光的物体（如灯管、魔法特效、太阳）看起来真的在“散发热量或能量”。点击创建即可使用,如图3-4-1
 
-![3-4-1](/3D/advanced/PostProcessing/img/3-4-1.png)
+![3-4-1](./img/3-4-1.png)
 
 图3-4-1 
 
@@ -217,7 +217,7 @@ slug: "3d/advanced/postprocessing"
 
 通过调整泛光强度，我们可以得到以下效果，如图3-4-2所示，可以看到天空具有泛光效果，就像有巨大的灯光打到场景中
 
-![3-4-2](/3D/advanced/PostProcessing/img/3-4-2.png)
+![3-4-2](./img/3-4-2.png)
 
 图3-4-2 
 
@@ -229,7 +229,7 @@ slug: "3d/advanced/postprocessing"
 
 在IDE中点击创建即可使用，如图3-5-1
 
-![3-5-1](/3D/advanced/PostProcessing/img/3-5-1.png)
+![3-5-1](./img/3-5-1.png)
 
 图3-5-1 
 
@@ -244,17 +244,17 @@ slug: "3d/advanced/postprocessing"
 
 拉强效果后开关效果如动图3-5-2所示，可以看到模型的隐藏边缘产生明显阴影效果
 
-![3-5-2](/3D/advanced/PostProcessing/img/3-5-2.gif)
+![3-5-2](./img/3-5-2.gif)
 
 动图3-5-2 
 
 ## 四、自定义后处理类型
 在3.0引擎中编写好自己的后处理效果后，在类定义前加上关键字**@regClass()**就可以将自定义好的后处理效果显式的展现在Camera的后处理组件的效果列表中
 
-![4-1](/3D/advanced/PostProcessing/img/4-1.png)
+![4-1](./img/4-1.png)
 
 图4-1
 
-![4-2](/3D/advanced/PostProcessing/img/4-2.png)
+![4-2](./img/4-2.png)
 
 图4-2

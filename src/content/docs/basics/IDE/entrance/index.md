@@ -10,7 +10,7 @@ slug: "basics/ide/entrance"
 
 在LayaAir3.0中，项目的入口做了根本的改变，在IDE中，可以在Project Setting中对项目做初始化参数设置，启动默认场景。
 
-<img src="/basics/IDE/entrance/images/1.png" alt="image-20221101111121282" style="zoom: 33%;" /> 
+<img src="./images/1.png" alt="image-20221101111121282" style="zoom: 33%;" /> 
 
 （图1）
 
@@ -18,11 +18,11 @@ slug: "basics/ide/entrance"
 
 使用LayaAir3.0创建工程后，会建立一个默认的场景，位于Assets下的Scene.ls，同时会创建一个Main的脚本，位于Src目录下。点击IDE的Project Setting，可以指定初始场景Scene。打开Scene场景，在场景中的Scene3D或者Scene2D节点都可以拖入Main脚本，已启动项目。
 
-<img src="/basics/IDE/entrance/images/2.png" alt="image-20221101112639072" style="zoom:33%;" /> 
+<img src="./images/2.png" alt="image-20221101112639072" style="zoom:33%;" /> 
 
 （图2）
 
-<img src="/basics/IDE/entrance/images/3.png" alt="image-20221101112526695" style="zoom:33%;" /> 
+<img src="./images/3.png" alt="image-20221101112526695" style="zoom:33%;" /> 
 
 （图3）
 
@@ -32,7 +32,7 @@ slug: "basics/ide/entrance"
 
 **自定义脚本**：自定义脚本，请参考“自定义脚本组件”文档。
 
-<img src="/basics/IDE/entrance/images/4.png" alt="image-20221102172202163" style="zoom:33%;" /> 
+<img src="./images/4.png" alt="image-20221102172202163" style="zoom:33%;" /> 
 
 （图4）
 
@@ -40,25 +40,25 @@ slug: "basics/ide/entrance"
 
 **使用Runtime流程：**
 
-<img src="/basics/IDE/entrance/images/5.png" alt="image-20221102172605933" style="zoom:33%;" /> 
+<img src="./images/5.png" alt="image-20221102172605933" style="zoom:33%;" /> 
 
 （图5）
 
 点击Scene2D节点，可以在Inspector里看到Runtime，拖入一个代码Main.ts，保存场景后，会在同级目录下生产Main_gen.ts 文件，此文件为当前节点的生产类，不可修改。
 
-<img src="/basics/IDE/entrance/images/6.png" alt="image-20221102173139912" style="zoom:33%;" /> 
+<img src="./images/6.png" alt="image-20221102173139912" style="zoom:33%;" /> 
 
 （图6）
 
 在Scene2D下创建一个Image组件，在属性面板勾选Declare Var，并修改名字为img，保存场景。
 
-<img src="/basics/IDE/entrance/images/7.png" alt="image-20221102173503223" style="zoom:50%;" /> 
+<img src="./images/7.png" alt="image-20221102173503223" style="zoom:50%;" /> 
 
 （图7）
 
 Main_gen.ts会再次生产，多了一个img属性，此时Main.ts代码中可以直接使用img属性，如图8。
 
-<img src="/basics/IDE/entrance/images/8.png" alt="image-20221102173659012" style="zoom:50%;" /> 
+<img src="./images/8.png" alt="image-20221102173659012" style="zoom:50%;" /> 
 
 （图8） 
 

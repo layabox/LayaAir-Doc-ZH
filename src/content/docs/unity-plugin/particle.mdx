@@ -35,11 +35,11 @@ LayaAir 拥有 GPU、CPU、VFX 三套互补共存的粒子系统，覆盖全场�
 2. **否则自动检测 `RequiresCPUParticle`**：粒子用了 **Noise（噪声）/ Trails（拖尾）/ LimitVelocityOverLifetime（速度限制）** 任一 → **强制 CPU**（这些是 GPU 路径不支持的模块）。
 3. **否则用全局默认**：`ExportConfig.ParticleExportMode`，出厂默认 `0` = GPU（Shuriken）。
 
-![导出窗口的粒子导出默认模式开关](/unity-plugin/img/particle-export-mode.png)
+![导出窗口的粒子导出默认模式开关](./img/particle-export-mode.png)
 
 **第 3 级 · 全局默认：** 导出窗口「其他设置」里的 `Particle Export Mode` 开关（`Shuriken (GPU)` / `CPU Particle`）——作用于没挂覆盖组件、也未命中自动检测的粒子。
 
-![LayaParticleExportSetting 组件](/unity-plugin/img/particle-export-setting.png)
+![LayaParticleExportSetting 组件](./img/particle-export-setting.png)
 
 **第 1 级 · 手动指定：** 给粒子物体加 `LayaAir / Particle Export Setting` 组件，`Export Mode` 下拉二选一：`Shuriken Particle`（GPU）/ `CPU Particle`。
 
@@ -53,7 +53,7 @@ LayaAir 拥有 GPU、CPU、VFX 三套互补共存的粒子系统，覆盖全场�
 
 **默认路径——判定为 GPU 时导出 `ShurikenParticleRenderer`，逐模块映射。** 导出组件 `_$type: ShurikenParticleRenderer`，逐模块映射：main / startLifetime / gravity / emission / shape / velocityOverLifetime / colorOverLifetime / sizeOverLifetime / rotationOverLifetime / colorBySpeed / sizeBySpeed / forceOverLifetime / textureSheetAnimation。
 
-![Unity 粒子系统检视器](/unity-plugin/img/particle-system-inspector.png)
+![Unity 粒子系统检视器](./img/particle-system-inspector.png)
 
 **导出前 · Unity：** 粒子系统检视器——持续时间 / 起始生命周期 / 起始速度、发射、突发、形状等模块，逐项导出到 Laya。
 
@@ -69,11 +69,11 @@ LayaAir 拥有 GPU、CPU、VFX 三套互补共存的粒子系统，覆盖全场�
 
 **实测·导出后在 Laya 正确渲染：** 一个默认 Billboard + 叠加（Additive）材质的 GPU 粒子，导出前后效果一致。
 
-![Unity 中的 GPU 粒子](/unity-plugin/img/particle-gpu-unity.png)
+![Unity 中的 GPU 粒子](./img/particle-gpu-unity.png)
 
 **Unity：** 默认粒子系统（Billboard，柔和圆形粒子）。
 
-![LayaAir 中的 GPU 粒子](/unity-plugin/img/particle-gpu-laya.png)
+![LayaAir 中的 GPU 粒子](./img/particle-gpu-laya.png)
 
 **LayaAir：** 导出后正常渲染，形态一致。材质产物 `"type":"PARTICLESHURIKEN"`、`materialRenderMode:3`（叠加）。
 
@@ -83,11 +83,11 @@ LayaAir 拥有 GPU、CPU、VFX 三套互补共存的粒子系统，覆盖全场�
 
 **实测·导出后在 Laya 正确渲染：** 给一个粒子勾上 **Noise（噪声）** 模块，命中自动检测被转为 CPU 导出，导出前后效果一致。
 
-![Unity 中的 CPU 粒子](/unity-plugin/img/particle-cpu-unity.png)
+![Unity 中的 CPU 粒子](./img/particle-cpu-unity.png)
 
 **Unity：** 含 Noise 模块的粒子，命中自动检测 → CPU 路径。
 
-![LayaAir 中的 CPU 粒子](/unity-plugin/img/particle-cpu-laya.png)
+![LayaAir 中的 CPU 粒子](./img/particle-cpu-laya.png)
 
 **LayaAir：** 导出后正常渲染，形态一致。材质产物 `"type":"CpuParticle3D"`。
 

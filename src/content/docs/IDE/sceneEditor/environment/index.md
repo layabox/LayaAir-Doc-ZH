@@ -6,7 +6,7 @@ slug: "ide/sceneeditor/environment"
 
 本篇，我们将全面了解LayaAir3.0 3D场景编辑的强大功能
 
-<img src="/IDE/sceneEditor/environment/img/1.png" alt="image-20221118100411921" style="zoom:80%;" /> 
+<img src="./img/1.png" alt="image-20221118100411921" style="zoom:80%;" /> 
 
 （图1-1）
 
@@ -19,7 +19,7 @@ slug: "ide/sceneeditor/environment"
 
 下面我们先来了解一个3D场景的参数都有哪些，为了让一个3D场景达到一个好的效果，都需要考虑的因素。我们通过创建3D-RPG项目来参考，如图1-2所示
 
-<img src="/IDE/sceneEditor/environment/img/1-2.png" alt="image-20221121182342983" style="zoom:80%;" /> 
+<img src="./img/1-2.png" alt="image-20221121182342983" style="zoom:80%;" /> 
 
 （图1-2）
 
@@ -29,7 +29,7 @@ slug: "ide/sceneeditor/environment"
 
 从Hierarchy窗口中，可以看到Scene3D和Scene2D根节点，这里我们只讲解Scene3D场景，其中包括了3D场景中重要的组成部分，3D摄像机，3D精灵等等，我们会在其它文档中讲解
 
-<img src="/IDE/sceneEditor/environment/img/1-3.png" alt="image-20221121182605897" style="zoom:80%;" />
+<img src="./img/1-3.png" alt="image-20221121182605897" style="zoom:80%;" />
 
 （图1-3）
 
@@ -37,7 +37,7 @@ slug: "ide/sceneeditor/environment"
 
 当我们点击Scene3D节点，在Inspector下看看都有什么参数信息，如图1-4所示
 
-<img src="/IDE/sceneEditor/environment/img/1-4.png" alt="image-20221118100501255" style="zoom: 83%;" />  
+<img src="./img/1-4.png" alt="image-20221118100501255" style="zoom: 83%;" />  
 
 （图1-4）
 
@@ -61,7 +61,7 @@ slug: "ide/sceneeditor/environment"
 
 图2-1中我们可以看到天空盒。天空盒的思想就是绘制一个大的立方体，然后将观察者放在立方体的中心，当相机移动时，这个立方体也跟着相机一起移动，这样相机就永远不会运动到场景的边缘。这与我们真实世界中的情况一样的，我们可以看见远处的天空接触到了地平线，但是不论我们怎么朝着那个方向移动，都不可能到达那个地方。
 
-<img src="/IDE/sceneEditor/environment/img/2-2.png" alt="image-20221117162222911" style="zoom:50%;" /> 
+<img src="./img/2-2.png" alt="image-20221117162222911" style="zoom:50%;" /> 
 
 （图2-1）
 
@@ -69,7 +69,7 @@ slug: "ide/sceneeditor/environment"
 
 天空渲染器组件  `Sky Renderer` 是Scene3D场景默认的组件，用来指定天空盒的网络形状。
 
-<img src="/IDE/sceneEditor/environment/img/2-1.png" alt="image-20221117154028457" style="zoom: 50%;" /> 
+<img src="./img/2-1.png" alt="image-20221117154028457" style="zoom: 50%;" /> 
 
 （图2-2）
 
@@ -85,7 +85,7 @@ slug: "ide/sceneeditor/environment"
 
 `Material`：指定天空盒的材质
 
-<img src="/IDE/sceneEditor/environment/img/2-3.png" alt="image-20221117162817847" style="zoom:50%;" /> 
+<img src="./img/2-3.png" alt="image-20221117162817847" style="zoom:50%;" /> 
 
 （图2-3）
 
@@ -99,7 +99,7 @@ slug: "ide/sceneeditor/environment"
 
 `Tint Color`：颜色，如图2-4，改变颜色，可以看到改变后的颜色叠加到纹理上了
 
-<img src="/IDE/sceneEditor/environment/img/2-4.png" alt="image-20221117164116006" style="zoom:33%;" /> 
+<img src="./img/2-4.png" alt="image-20221117164116006" style="zoom:33%;" /> 
 
 （图2-4）
 
@@ -115,7 +115,7 @@ slug: "ide/sceneeditor/environment"
 
 立方体天空盒用到的6张可以无缝相接的贴图参考，图2-5所示
 
-<img src="/IDE/sceneEditor/environment/img/2-6.png" alt="sky" style="zoom: 100%;" /> 
+<img src="./img/2-6.png" alt="sky" style="zoom: 100%;" /> 
 
 （图2-5）
 
@@ -125,7 +125,7 @@ slug: "ide/sceneeditor/environment"
 
 是一个球形模型及一张对应的贴图构成。示例中用到的是一张球形模型对应的贴图，如图2-6
 
-<img src="/IDE/sceneEditor/environment/img/2-5.jpg" alt="sky" style="zoom: 33%;" /> 
+<img src="./img/2-5.jpg" alt="sky" style="zoom: 33%;" /> 
 
 （图2-6）
 
@@ -133,7 +133,7 @@ slug: "ide/sceneeditor/environment"
 
 基本上用到纹理和颜色后，配置好天空盒材质，就可以为我们的场景添加好天空效果
 
-<img src="/IDE/sceneEditor/environment/img/2-7.gif" style="zoom:80%;" /> 
+<img src="./img/2-7.gif" style="zoom:80%;" /> 
 
 （动图2-7）
 
@@ -162,25 +162,25 @@ Laya.Material.load("sky2.lmat", Laya.Handler.create(null, function(mat: any) {
 
 当我们用IDE场景一个3D场景时，默认是采用SkyPanoramic材质的球形天空盒，如图2-8所示
 
-<img src="/IDE/sceneEditor/environment/img/2-8.png" style="zoom: 50%;" /> 
+<img src="./img/2-8.png" style="zoom: 50%;" /> 
 
 （图2-8）
 
 由于系统的材质是在IDE内部，无法直接修改，如果需要修改的话，可以通过克隆的方式复制一个同样的天空盒材质到assets目录下，如动图2-9所示
 
-<img src="/IDE/sceneEditor/environment/img/2-9.gif" style="zoom:50%;" /> 
+<img src="./img/2-9.gif" style="zoom:50%;" /> 
 
 （动图2-9）
 
 然后准备好一张新的球形天空盒贴图，如图2-10所示
 
-<img src="/IDE/sceneEditor/environment/img/2-10.png" style="zoom: 50%;" />
+<img src="./img/2-10.png" style="zoom: 50%;" />
 
 （图2-10）
 
 拖入新的贴图到克隆后的材质中，如动图2-11所示
 
-<img src="/IDE/sceneEditor/environment/img/2-11.gif" style="zoom:50%;" />
+<img src="./img/2-11.gif" style="zoom:50%;" />
 
 （动图2-11）
 
@@ -192,25 +192,25 @@ Laya.Material.load("sky2.lmat", Laya.Handler.create(null, function(mat: any) {
 
 如果开发者像使用立方体天空盒，首先我们更改上述天空盒材质为Skybox，如动图2-12所示
 
-<img src="/IDE/sceneEditor/environment/img/2-12.gif" style="zoom:50%;" /> 
+<img src="./img/2-12.gif" style="zoom:50%;" /> 
 
 （动图2-12）
 
 Laya.SkyBox材质是支持6张可以无缝相接的贴图，但是需要先创建一个Cube Texture，如动图2-13所示，在assets目录下创建Cube Texture
 
-<img src="/IDE/sceneEditor/environment/img/2-13.gif" style="zoom:50%;" /> 
+<img src="./img/2-13.gif" style="zoom:50%;" /> 
 
 （动图2-13）
 
 在Cube Texture中，添加好预先准备好的6张贴图，并点击应用，如图2-14所示
 
-![image-20230206205930406](/IDE/sceneEditor/environment/img/2-14.png)
+![image-20230206205930406](./img/2-14.png)
 
 （图2-14）
 
 最后，拖入配置好贴图的Cube Texture到skyBox材质的天空盒Texture中，立方体天空盒就配置好了，运行场景可以看到效果
 
-<img src="/IDE/sceneEditor/environment/img/2-15.png" style="zoom:50%;" /> 
+<img src="./img/2-15.png" style="zoom:50%;" /> 
 
 （图2-15）
 
@@ -223,7 +223,7 @@ Laya.SkyBox材质是支持6张可以无缝相接的贴图，但是需要先创�
 
 图3-1所示，在3D-RPG项目中`EnvironmentLight`组件来指定环境光
 
-<img src="/IDE/sceneEditor/environment/img/3-1.png" alt="image-20221117170711667" style="zoom: 50%;" /> 
+<img src="./img/3-1.png" alt="image-20221117170711667" style="zoom: 50%;" /> 
 
 （图3-1）
 
@@ -243,7 +243,7 @@ Laya.SkyBox材质是支持6张可以无缝相接的贴图，但是需要先创�
 
 ### 3.2 固定颜色
 
-<img src="/IDE/sceneEditor/environment/img/3-2.png" alt="image-20221121163117052" style="zoom:47%;" /> 
+<img src="./img/3-2.png" alt="image-20221121163117052" style="zoom:47%;" /> 
 
 图（3-2）
 
@@ -251,7 +251,7 @@ Laya.SkyBox材质是支持6张可以无缝相接的贴图，但是需要先创�
 
 我们用一个简单的场景来做参考，当我们关掉Direction Light后（图3-2）
 
-<img src="/IDE/sceneEditor/environment/img/3-2.gif" style="zoom: 73%;" /> 
+<img src="./img/3-2.gif" style="zoom: 73%;" /> 
 
 动图（3-2）
 
@@ -276,7 +276,7 @@ scene.ambientColor = new Laya.Color(0,0,0,0);
 
 可以看到采用球谐光照的效果，物体的表面受天空盒的影响，如动图3-3所示，下一节我们会介绍采用球谐光照作用到环境反射IBL方式的具体用法
 
-<img src="/IDE/sceneEditor/environment/img/3-3.gif" style="zoom:80%;" /> 
+<img src="./img/3-3.gif" style="zoom:80%;" /> 
 
 动图（3-3）
 
@@ -289,7 +289,7 @@ scene.ambientColor = new Laya.Color(0,0,0,0);
 
 `ReflectionProbe`是Scene3D场景的环境反射组件，如图4-1
 
-<img src="/IDE/sceneEditor/environment/img/4-1.png" alt="image-20221117174719224" style="zoom:100%;" /> 
+<img src="./img/4-1.png" alt="image-20221117174719224" style="zoom:100%;" /> 
 
 （图4-1）
 
@@ -317,13 +317,13 @@ scene.ambientColor = new Laya.Color(0,0,0,0);
 
 `Cubemap`：如果选择自定义反射，会使用cubemap，是一个由六个独立的正方形纹理组成的集合，它将多个纹理组合起来映射到一个单一纹理，如图4-2所示
 
-<img src="/IDE/sceneEditor/environment/img/2-6.png" alt="img" style="zoom:100%;" />  
+<img src="./img/2-6.png" alt="img" style="zoom:100%;" />  
 
 （图4-2）
 
 注意：纹理贴图要设置成Cube的纹理形状
 
-<img src="/IDE/sceneEditor/environment/img/4-3.png" alt="image-20221117193545370" style="zoom:100%;" /> 
+<img src="./img/4-3.png" alt="image-20221117193545370" style="zoom:100%;" /> 
 
 （图4-3）
 
@@ -331,26 +331,26 @@ scene.ambientColor = new Laya.Color(0,0,0,0);
 
 如图4-4所示，然后点击 Generate Light 生成反射效果
 
-<img src="/IDE/sceneEditor/environment/img/4-5.png" alt="image-20221117200230899" style="zoom:90%;" /> 
+<img src="./img/4-5.png" alt="image-20221117200230899" style="zoom:90%;" /> 
 
 （图4-4）
 
 如图4-5所示，球体的反射采用指定的天空盒纹理，而不采用场景的天空盒
 
-<img src="/IDE/sceneEditor/environment/img/4-4.png" alt="img" style="zoom: 80%;" />  
+<img src="./img/4-4.png" alt="img" style="zoom: 80%;" />  
 
 （图4-5）
 
 不管是哪种天空盒，我们都可以使用IBL来更好的处理反射效果，但是第一步我们先要生成光照 `Generate Light`
 通过点击 `Generate Light` 按钮，开始生成环境反射，如图4-6所示
 
-<img src="/IDE/sceneEditor/environment/img/4-7.png" alt="image-20221118203047952" style="zoom:50%;" /> 
+<img src="./img/4-7.png" alt="image-20221118203047952" style="zoom:50%;" /> 
 
 （图4-6）
 
 生成过程介绍后，从ReflectionProbe 组件中，可以看到IBL Tex多了天空盒的贴图，如图4-7所示
 
-<img src="/IDE/sceneEditor/environment/img/4-6.png" alt="image-20221118203236237" style="zoom:50%;" />  
+<img src="./img/4-6.png" alt="image-20221118203236237" style="zoom:50%;" />  
 
 （图4-7）
 
@@ -376,7 +376,7 @@ scene.ambientColor = new Laya.Color(0,0,0,0);
 
 雾化组件 `Fog` 是Scene3D场景默认的组件，如图5-1所示
 
-<img src="/IDE/sceneEditor/environment/img/5-1.png" alt="image-20221117194741681" style="zoom:50%;" /> 
+<img src="./img/5-1.png" alt="image-20221117194741681" style="zoom:50%;" /> 
 
 （图5-1）
 
@@ -415,11 +415,11 @@ this.scene.fogRange = 40;
 场景光照贴图就是为了解决这个问题，其优点就是可以通过较少的性能消耗使静态场景看上去更加真实，丰富，更具有立体感。缺点就在于不能实时的处理动态光照。
 我们来对比下未使用光照贴图和使用光照贴图的效果
 
-<img src="/IDE/sceneEditor/environment/img/6-10.png" alt="img" style="zoom: 80%;" /> 
+<img src="./img/6-10.png" alt="img" style="zoom: 80%;" /> 
 
 （图6-1）未使用光照贴图
 
-<img src="/IDE/sceneEditor/environment/img/6-9.png" alt="img" style="zoom:80%;" /> 
+<img src="./img/6-9.png" alt="img" style="zoom:80%;" /> 
 
 （图6-2）使用了光照贴图
 
@@ -431,7 +431,7 @@ this.scene.fogRange = 40;
 
 当我们创建一个新的场景的时候，默认 `Lighting` 组件是没有任何设置的，如图6-3
 
-<img src="/IDE/sceneEditor/environment/img/6-3.png" alt="image-20221118104253399" style="zoom:50%;" /> 
+<img src="./img/6-3.png" alt="image-20221118104253399" style="zoom:50%;" /> 
 
 （图6-3）
 
@@ -447,13 +447,13 @@ this.scene.fogRange = 40;
 
 接下来创建一个`LightingSetting`文件，如果6-4
 
-<img src="/IDE/sceneEditor/environment/img/6-4.png" alt="image-20221118111523723" style="zoom:40%;" /> 
+<img src="./img/6-4.png" alt="image-20221118111523723" style="zoom:40%;" /> 
 
 （图6-4）
 
 将生成的文件，拖入到 `Lighting Settings` 里
 
-<img src="/IDE/sceneEditor/environment/img/6-5.png" alt="image-20221118111712233" style="zoom:33%;" /> 
+<img src="./img/6-5.png" alt="image-20221118111712233" style="zoom:33%;" /> 
 
 （图6-5）
 
@@ -463,7 +463,7 @@ this.scene.fogRange = 40;
 
 下面我们可以看到 `LightingSettings` 的所有属性
 
-<img src="/IDE/sceneEditor/environment/img/6-6.png" alt="image-20221118111818606" style="zoom: 50%;" /> 
+<img src="./img/6-6.png" alt="image-20221118111818606" style="zoom: 50%;" /> 
 
 （图6-6）
 
@@ -531,7 +531,7 @@ this.scene.fogRange = 40;
 
 设置好参数后，点击Bake，等几分钟之后，会自动生成烘焙后的光照图，并添加到 `Lightmaps` 中，如图6-7所示
 
-<img src="/IDE/sceneEditor/environment/img/6-7.png" alt="image-20221118145656997" style="zoom:50%;" /> 
+<img src="./img/6-7.png" alt="image-20221118145656997" style="zoom:50%;" /> 
 
 （图6-7）
 
@@ -539,7 +539,7 @@ this.scene.fogRange = 40;
 
 光照贴图就是在物体本身的贴图基础上生成了一张新的贴图，如图6-8所示
 
-<img src="/IDE/sceneEditor/environment/img/6-8.png" alt="image-20221117174541292" style="zoom: 50%;" /> 
+<img src="./img/6-8.png" alt="image-20221117174541292" style="zoom: 50%;" /> 
 
 （图6-8）
 
@@ -547,13 +547,13 @@ this.scene.fogRange = 40;
 
 烘焙后的场景，树上带有光照效果和阴影效果，如图6-9所示
 
-<img src="/IDE/sceneEditor/environment/img/6-9.png" style="zoom:80%;" /> 
+<img src="./img/6-9.png" style="zoom:80%;" /> 
 
 （图6-9）
 
 通过对比，我们能看到光照贴图所带来的效果，并且渲染效率很高，不需要用实时光照。图6-10是没有用光照贴图的对比图
 
- <img src="/IDE/sceneEditor/environment/img/6-10.png" style="zoom:80%;" />
+ <img src="./img/6-10.png" style="zoom:80%;" />
 
 （图6-10）
 
@@ -569,7 +569,7 @@ this.scene.fogRange = 40;
 
 打开3D-RPG项目的Project资源目录，可以看到这里有个scene文件夹，如图7-1所示，这里来存放其它场景文件是比较好的习惯，看起来也比较清晰。
 
-<img src="/IDE/sceneEditor/environment/img/7-1.png" alt="image-20221207110543323" style="zoom:50%;" /> 
+<img src="./img/7-1.png" alt="image-20221207110543323" style="zoom:50%;" /> 
 
 （图7-1）
 
@@ -577,7 +577,7 @@ this.scene.fogRange = 40;
 
 例如在3D-RPG项目中，有了Game场景，可能还需要有游戏登录场景，那么我们来创建一个 `Login` 场景，如动图7-2所示
 
-<img src="/IDE/sceneEditor/environment/img/7-2.gif" style="zoom:50%;" /> 
+<img src="./img/7-2.gif" style="zoom:50%;" /> 
 
 （动图7-2）
 
@@ -585,7 +585,7 @@ this.scene.fogRange = 40;
 
 也可以从编辑器的File菜单里的New Scene来创建场景，保存到scene目录下，如动图7-3所示
 
-<img src="/IDE/sceneEditor/environment/img/7-3.gif" style="zoom:50%;" /> 
+<img src="./img/7-3.gif" style="zoom:50%;" /> 
 
 （动图7-3）
 
@@ -595,7 +595,7 @@ this.scene.fogRange = 40;
 
 想对场景进行重新命名，可以直接在Project里对场景文件进行改名操作，如动图7-4所示
 
-<img src="/IDE/sceneEditor/environment/img/7-4.gif" style="zoom:50%;" /> 
+<img src="./img/7-4.gif" style="zoom:50%;" /> 
 
 （动图7-4）
 

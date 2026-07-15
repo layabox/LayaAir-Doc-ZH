@@ -12,13 +12,13 @@ slug: "ide/uieditor/uicomponent/textinput"
  
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/TextInput/img/1-1.png" alt="1-1" style="zoom:67%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:67%;" />
 
 （图1-1）
 
 ### 1.2 TextInput属性
 
-<img src="/IDE/uiEditor/uiComponent/TextInput/img/1-2.png" alt="1-2" style="zoom:80%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom:80%;" />
 
 （图1-2）
 
@@ -173,6 +173,6 @@ export class UI_Input extends Laya.Script {
 
 运行结果：
 
- ![2-1](/IDE/uiEditor/uiComponent/TextInput/img/2-1.png)
+ ![2-1](./img/2-1.png)
 
 （图2-1）

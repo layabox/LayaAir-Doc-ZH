@@ -14,13 +14,13 @@ FontClip组件本质上是对位图从方向上进行等比切割，FontClip继�
 
 创建FontClip非常简单，通过IDE的可视化操作，只需要用鼠标就可以实现。如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/FontClip/img/1-1.png" alt="1-1" style="zoom: 50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom: 50%;" />
 
 （图1-1）
 
 在LayaAir中，自带了一个字体切片的图像资源（fontClip.png），如图1-2所示，
 
-![1-2](/IDE/uiEditor/uiComponent/FontClip/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -30,7 +30,7 @@ FontClip组件本质上是对位图从方向上进行等比切割，FontClip继�
 
 FontClip的特有属性如下：
 
-![1-3](/IDE/uiEditor/uiComponent/FontClip/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -54,7 +54,7 @@ FontClip如果位图内容是图形的话，可以将其等份切割成一个个
 
 演示一下sheet属性的使用方法，如图1-4所示，sheet值按照位图内容填上对应图1-2所示的15个字符。其中”羊“字和”猴“字中间分段了，所以要在这两个字中间加一个空格，让引擎知道这个位图文本是多行排行的。然后在value中输入想要显示的内容，就可以将其显示出来。
 
-![1-4](/IDE/uiEditor/uiComponent/FontClip/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
@@ -66,13 +66,13 @@ FontClip如果位图内容是图形的话，可以将其等份切割成一个个
 
 水平间距（SpaceX）用来调节X方向的间隔，需要配合布局方向（Direction）来使用，如图1-5所示，设置方向为水平。
 
-![1-5](/IDE/uiEditor/uiComponent/FontClip/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
 垂直间距（SpaceY）用来调节Y方向的间隔，需要配合布局方向（Direction）来使用，如图1-6所示，设置方向为垂直。
 
-![1-6](/IDE/uiEditor/uiComponent/FontClip/img/1-6.png)
+![1-6](./img/1-6.png)
 
 （图1-6）
 
@@ -121,7 +121,7 @@ export class NewScript extends Laya.Script {
 
 有时，不想让FontClip组件一开始就在舞台上，而是在要用的时候才添加，这就要通过代码来创建了。在Scene2D的属性设置面板中，增加一个自定义组件脚本，代码运行示例：
 
-![2-1](/IDE/uiEditor/uiComponent/FontClip/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 

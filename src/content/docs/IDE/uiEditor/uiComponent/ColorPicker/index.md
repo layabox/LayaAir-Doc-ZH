@@ -14,7 +14,7 @@ ColorPicker继承自UIComponent，ColorPicker组件将显示包含多个颜色�
 
 如图1-1所示，点击选择小部件面板里的ColorPicker组件，拖放到页面编辑区，或者在层级窗口中通过右键创建，即可添加ColorPicker组件到页面上。
 
-<img src="/IDE/uiEditor/uiComponent/ColorPicker/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -24,7 +24,7 @@ ColorPicker继承自UIComponent，ColorPicker组件将显示包含多个颜色�
 
 ColorPicker的特有属性如下：
 
-![1-2](/IDE/uiEditor/uiComponent/ColorPicker/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -83,7 +83,7 @@ export class UI_ColorPicker extends Laya.Script {
 
 运行效果如下动图所示：
 
-![2-1](/IDE/uiEditor/uiComponent/ColorPicker/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

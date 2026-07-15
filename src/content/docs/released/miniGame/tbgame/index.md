@@ -26,7 +26,7 @@ slug: "released/minigame/tbgame"
 
 在构建发布面板中，侧边栏选择目标平台为淘宝小游戏。如图2-1所示，
 
-![2-1](/released/miniGame/tbgame/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -42,7 +42,7 @@ slug: "released/minigame/tbgame"
 
 发布后的目录结构如图2-2所示 ：
 
-![2-2](/released/miniGame/tbgame/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -84,13 +84,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 在LayaAir IDE中创建并发布淘宝小游戏项目后，打开淘宝开发者工具，在侧边栏选择小游戏，点击打开项目，如图3-1所示，
 
-<img src="/released/miniGame/tbgame/img/3-1.png" alt="3-1" style="zoom:80%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom:80%;" />
 
 （图3-1）
 
 然后，选择项目路径，项目类型选择“小游戏-新”一栏的选项，关联应用则是在3.1节中创建的应用，最后点击确定打开项目。
 
-![3-2](/released/miniGame/tbgame/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
@@ -100,13 +100,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 打开淘宝开发者工具后，一般预览时都要勾选云构建，如图3-3所示，
 
-![3-3](/released/miniGame/tbgame/img/3-3.png)
+![3-3](./img/3-3.png)
 
 （图3-3）
 
 然后就可以进行预览和真机调试了。如图3-4所示，点击调试按钮，等待二维码生成，使用手机淘宝APP扫码即可。
 
-![3-4](/released/miniGame/tbgame/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
@@ -116,7 +116,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 下面介绍LayaAir IDE给淘宝小游戏分包的方法，开发者可以先看一下[通用](/released/generalsetting/)设置的分包。可以通过以下步骤进行分包加载，如图4-1所示，勾选开启分包，然后选择要分包的文件夹即可。开发者还可以选择是否开启远程包。
 
-![4-1](/released/miniGame/tbgame/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 
@@ -134,13 +134,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 一般来说，在进行图4-1所示的分包时，通常选取的sub1和sub2是资源根目录（assets目录下），如图4-2所示，
 
-![4-2](/released/miniGame/tbgame/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 
 其发布后的情况如图4-3所示（sub1和sub2都作为根目录）。
 
-![4-3](/released/miniGame/tbgame/img/4-3.png)
+![4-3](./img/4-3.png)
 
 （图4-3）
 
@@ -162,13 +162,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 有时开发者的分包选取的并不是资源根目录（assets目录下），如图4-4所示，
 
-![4-4](/released/miniGame/tbgame/img/4-4.png)
+![4-4](./img/4-4.png)
 
 （图4-4）
 
 这样分包，发布后的结果如图4-5所示（sub1和sub2都不是根目录），
 
-![4-5](/released/miniGame/tbgame/img/4-5.png)
+![4-5](./img/4-5.png)
 
 （图4-5）
 
@@ -186,13 +186,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 在真机调试的时候，会编译报错，如图4-6所示。
 
-![4-6](/released/miniGame/tbgame/img/4-6.png)
+![4-6](./img/4-6.png)
 
 （图4-6）
 
 这是由于淘宝小游戏的限制，所以开发者在发布后，需要更改game.json中的内容，如图4-7所示，将name改为单一目录名。
 
-![4-7](/released/miniGame/tbgame/img/4-7.png)
+![4-7](./img/4-7.png)
 
 （图4-7）
 
@@ -210,13 +210,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 还需要注意的是，在构建发布时勾选了`启动时自动加载`选项，需要将自动加载的分包路径更改为分包名，如图4-8所示。
 
-![4-8](/released/miniGame/tbgame/img/4-8.png)
+![4-8](./img/4-8.png)
 
 （图4-8）
 
 另外，更改分包名后，如果在分包中的资源有引用resources目录下的资源，需要注意层级关系，如图4-9所示。所以，不建议开发者在分包中引用其它目录下的资源。
 
-![4-9](/released/miniGame/tbgame/img/4-9.png)
+![4-9](./img/4-9.png)
 
 （图4-9）
 

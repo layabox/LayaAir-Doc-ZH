@@ -8,7 +8,7 @@ slug: "released/commandline"
 
 下载LayaAir-IDE后，在本地环境变量中添加Path，如图1-1所示，其中`D:\Program Files\LayaAirIDE`为安装路径，
 
-![1-1](/released/commandLine/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -20,7 +20,7 @@ slug: "released/commandline"
 
 **--project:**  要打开的项目路径（全路径）。例如，在`C:\Users\ASUS\Desktop\LayaProject`有一个LayaAir项目，在终端中输入`LayaAirIDE --project=C:\Users\ASUS\Desktop\LayaProject`即可打开该项目，如图1-2所示。
 
-![1-2](/released/commandLine/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -49,7 +49,7 @@ class MyScript {
 }
 ```
 
-![2-1](/released/commandLine/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -150,7 +150,7 @@ class Script {
 
 > 注意：传入的参数中，外层的引号用来定义参数字符串的边界。反斜杠是转义字符，它与内层引号的组合用于指示这里的双引号是字符串内容的一部分，而不是边界标识。
 
-![2-2](/released/commandLine/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 

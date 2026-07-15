@@ -10,7 +10,7 @@ MeshFilter（网格过滤器）组件用于持有和管理网格数据的引用�
 
 在 IDE 的组件面板中，MeshFilter 组件的面板效果如图1-1所示：
 
-![1-1](/IDE/Component/Mesh/MeshFilter/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 

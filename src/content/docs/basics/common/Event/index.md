@@ -30,13 +30,13 @@ LayaAir3.0引擎中的事件主要包含三部分
 
 `Laya.Event` 是事件类型的集合，当事件发生时`Laya.Event`对象将作为参数传递给事件侦听器。如图2-1，事件类型请参考[API](https://layaair.com/3.x/api/Chinese/index.html?version=3.0.0&type=Core&category=Event&class=laya.events.Event)文档。
 
-<img src="/basics/common/Event/images/2-1.png" alt="2-1" style="zoom:50%;" /> 
+<img src="./images/2-1.png" alt="2-1" style="zoom:50%;" /> 
 
 （图2-1）
 
 例如 `Laya.Event.CLICK:string = "click"`。`CLICK` 静态属性用于定义事件对象的`type`类型属性值为单击事件。这个事件是由鼠标点击触发后系统派发的事件，开发者也可以调用event()方法派发这些事件，如何派发事件会在下面的内容涉及。
 
-![2-2](/basics/common/Event/images/2-2.png) 
+![2-2](./images/2-2.png) 
 
 （图2-2）
 

@@ -28,7 +28,7 @@ slug: "released/minigame/wechat"
 
 在构建发布面板中，侧边栏选择目标平台为微信小游戏。如图2-1所示，
 
-![2-1](/released/miniGame/wechat/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -48,7 +48,7 @@ slug: "released/minigame/wechat"
 
 发布后的目录结构如图2-2所示。
 
-<img src="/released/miniGame/wechat/img/2-2.png" style="zoom:50%;" /> 
+<img src="./img/2-2.png" style="zoom:50%;" /> 
 
 （图2-2）
 
@@ -86,7 +86,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 打开”微信web开发者工具“，用开发者的微信扫码登录。然后选择**小游戏**点击进入项目设置，选择导入，如图3-1所示。
 
-<img src="/released/miniGame/wechat/img/3-1.png" alt="image-20230105105443511" style="zoom:50%;" /> 
+<img src="./img/3-1.png" alt="image-20230105105443511" style="zoom:50%;" /> 
 
 （图3-1）
 
@@ -94,13 +94,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 选择项目目录，就是在LayaAirIDE发布后的目标目录（通常在项目根目录下的release\wxgame）
 
-<img src="/released/miniGame/wechat/img/3-2.png" style="zoom:50%;" /> 
+<img src="./img/3-2.png" style="zoom:50%;" /> 
 
 （图3-2）
 
 选择wxgame目录之后，如图3-3所示
 
-<img src="/released/miniGame/wechat/img/3-3.png" style="zoom:50%;" /> 
+<img src="./img/3-3.png" style="zoom:50%;" /> 
 
 （图3-3）
 
@@ -110,7 +110,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 完成小游戏项目的创建后，即可在工具内预览效果和调试。如图3-4所示
 
-![](/released/miniGame/wechat/img/3-4.png)
+![](./img/3-4.png)
 
 （图3-4）
 
@@ -118,7 +118,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 由于LayaAirIDE里也可以调试项目效果，除非是适配相关的问题，基本上两边的效果不会有不一一致的情况。所以这里最重要的是点击**预览**功能，通过手机微信扫码，在微信内进行真机测试与调试。如图3-5所示
 
-<img src="/released/miniGame/wechat/img/3-5.png" style="zoom:50%;" /> 
+<img src="./img/3-5.png" style="zoom:50%;" /> 
 
 （图3-5）
 
@@ -157,7 +157,7 @@ Laya.loader.load("resources/layaair.png");
 
 如图4-1所示，在构建发布中，开启分包后，选择要分包的文件夹，即可完成分包。开发者也可以选择是否使用远程包。
 
-<img src="/released/miniGame/wechat/img/4-1.png" alt="4-1" style="zoom:80%;" />
+<img src="./img/4-1.png" alt="4-1" style="zoom:80%;" />
 
 （图4-1）
 
@@ -206,7 +206,7 @@ export class Script extends Laya.Script {
 
 下面重点介绍一下`printProgress`打印的内容，在微信开发者工具打开并编译我们导出的项目后，会打印如下日志：
 
-![4-2](/released/miniGame/wechat/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 
@@ -282,19 +282,19 @@ MiniAdpter.nativefiles=[
 
 首先，如图5-1所示，在层级面板中，向Scene2D中添加一个OpenDataContexView组件，即可激活开放数据域的显示（此时并没有排行榜的效果显示，需要发布后才能看到），组件的大小就是好友排行榜面板的大小。
 
-<img src="/released/miniGame/wechat/img/5-1.png" alt="5-1" style="zoom:67%;" />
+<img src="./img/5-1.png" alt="5-1" style="zoom:67%;" />
 
 （图5-1）
 
 添加后，在其属性设置面板中，可以看到FPS属性，如图5-2所示，表示sharedCanvas更新到主域的帧率。
 
-![5-2](/released/miniGame/wechat/img/5-2.png)
+![5-2](./img/5-2.png)
 
 （图5-2）
 
 然后构建发布时，勾选图2-1所示的`生成开放数据域工程模板`。发布完成后，如图5-3所示，会生成openDataContext目录。开发者可以根据需求修改这里面的内容，下次发布时，如果没有按照5.2那样构建模板目录，那么这个目录不会被清除或者修改。
 
-![5-3](/released/miniGame/wechat/img/5-3.png)
+![5-3](./img/5-3.png)
 
 （图5-3）
 
@@ -302,7 +302,7 @@ MiniAdpter.nativefiles=[
 
 发布后，在“微信开发者工具”里进行调试，此时使用的是默认的工程模板，效果如图5-4所示。
 
-<img src="/released/miniGame/wechat/img/5-4.png" alt="5-4" style="zoom: 67%;" />
+<img src="./img/5-4.png" alt="5-4" style="zoom: 67%;" />
 
 （图5-4）
 
@@ -312,7 +312,7 @@ MiniAdpter.nativefiles=[
 
 在游戏好友排行榜的开发中，发布后的release目录一般不会加入版本管理，这里的openDataContext目录在协同开发中可能不方便，那么可以将自定义改好的openDataContext目录放入构建模版目录，即放置在图5-5所示的项目根目录下的build-templates下的wxgame，这样每次发布时选择的`生成开放数据域工程模板`就不再是图5-4所示的IDE默认的模板了，而会从模版目录`build-templates/wxgame`中拷贝。
 
-![5-5](/released/miniGame/wechat/img/5-5.png)
+![5-5](./img/5-5.png)
 
 （图5-5）
 

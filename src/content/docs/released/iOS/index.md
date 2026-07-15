@@ -8,13 +8,13 @@ slug: "released/ios"
 
 在构建发布iOS之前，我们需要先添加iOS的发布环境模块，如图1-1所示，点击`文件`菜单栏下的`添加模块`选项，
 
-<img src="/released/iOS/img/1-1.png" style="zoom:67%;" />  
+<img src="./img/1-1.png" style="zoom:67%;" />  
 
 （图1-1）
 
 如果我们不先添加发布环境，当点击构建iOS时，也会弹出安装模块的提示，如图1-2所示。
 
-<img src="/released/iOS/img/1-2.png" style="zoom:67%;" /> 
+<img src="./img/1-2.png" style="zoom:67%;" /> 
 
 （图1-2）
 
@@ -28,7 +28,7 @@ slug: "released/ios"
 
 在`文件`菜单中，打开“`构建发布`”选项，选择 `iOS` 平台标签，如图2-1所示，
 
-<img src="/released/iOS/img/2-1.png" alt="2-1" style="zoom:80%;" />  
+<img src="./img/2-1.png" alt="2-1" style="zoom:80%;" />  
 
 （图2-1）
 

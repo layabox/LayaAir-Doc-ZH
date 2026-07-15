@@ -12,19 +12,19 @@ ComboBox是一个下拉选项框组件。ComboBox的脚本请接口参考[ComboB
 
 如图1-1所示，点击选择小部件面板里的ComboBox组件，拖放到页面编辑区，或者在层级窗口中通过右键创建，即可添加ComboBox组件到页面上。
 
-<img src="/IDE/uiEditor/uiComponent/ComboBox/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
 ComboBox组件的图像资源示例如下图所示：
 
-![1-2](/IDE/uiEditor/uiComponent/ComboBox/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
 ComboBox组件由**下拉按钮**（图1-3上部分1）和**下拉选项**（图1-3下部分2）构成，运行时点击下拉按钮会弹出下拉选项，在属性设置中这两项是分别进行设置的。
 
-![1-3](/IDE/uiEditor/uiComponent/ComboBox/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -34,7 +34,7 @@ ComboBox组件由**下拉按钮**（图1-3上部分1）和**下拉选项**（图
 
 ComboBox的特有属性如下：
 
-![1-4](/IDE/uiEditor/uiComponent/ComboBox/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
@@ -64,7 +64,7 @@ ComboBox的特有属性如下：
 
 使用默认的skin属性，设置stateNum为3，labels属性设置为“item0,item1,item2,item3,item4,item5,item6,item7,item8”。再将selectedIndex设置为0后，selectedLablel会变为item0，效果如图1-5所示。
 
-<img src="/IDE/uiEditor/uiComponent/ComboBox/img/1-5.png" alt="1-5" style="zoom:80%;" />
+<img src="./img/1-5.png" alt="1-5" style="zoom:80%;" />
 
 （图1-5）
 
@@ -72,13 +72,13 @@ ComboBox的特有属性如下：
 
 接下来设置**下拉选项**相关属性，如图1-6所示，设置下拉选项中字体大小为30，选项框的高度为50，设置下拉选项的文本边距为合适大小。itemColors属性保持默认，开发者可以对应观察，其中item1选项为OVER状态。再增加一个垂直滚动条，用于显示item6,item7,item8。
 
-<img src="/IDE/uiEditor/uiComponent/ComboBox/img/1-6.png" alt="1-6" style="zoom: 80%;" />
+<img src="./img/1-6.png" alt="1-6" style="zoom: 80%;" />
 
 （图1-6）
 
 然后设置**下拉按钮**相关属性，如动图1-7所示，设置下拉按钮中字体大小为50，宋体字体并加粗显示。**选中标签颜色**保持默认，**选中标签边距**设置为合适大小。
 
-<img src="/IDE/uiEditor/uiComponent/ComboBox/img/1-7.gif" alt="1-7" style="zoom:80%;" />
+<img src="./img/1-7.gif" alt="1-7" style="zoom:80%;" />
 
 （动图1-7）
 
@@ -119,7 +119,7 @@ export class NewScript extends Laya.Script {
 
 **运行示例效果：**
 
-![2-1](/IDE/uiEditor/uiComponent/ComboBox/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

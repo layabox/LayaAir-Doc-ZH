@@ -40,7 +40,7 @@ slug: "ide/physicseditor/physics2d"
 
 并且，在项目设置中开放了长度转换比率的设置，开发者可根据项目实际需求，自主进行调整，调整位置如图1-1所示：
 
-![](/IDE/physicsEditor/physics2D/img/1-1.png)
+![](./img/1-1.png)
 
 (图1-1)
 
@@ -75,7 +75,7 @@ slug: "ide/physicseditor/physics2d"
 
 原有的独立碰撞体组件（`BoxCollider`、`CircleCollider`、`PolygonCollider`、`ChainCollider`、`EdgeCollider`）已被移除，统一使用碰撞形状（Shapes）来定义碰撞区域。如图3-1所示。
 
-![](/IDE/physicsEditor/physics2D/img/3-1.png)
+![](./img/3-1.png)
 
 （图3-1）
 
@@ -98,7 +98,7 @@ slug: "ide/physicseditor/physics2d"
 | `EdgeShape2D` | 边缘碰撞形状，两个端点间的线段 |
 
 
-![](/IDE/physicsEditor/physics2D/img/3-2.png)
+![](./img/3-2.png)
 
 （图3-2）
 
@@ -115,7 +115,7 @@ slug: "ide/physicseditor/physics2d"
 
 碰撞形状的偏移量是指该形状相对于所属节点坐标的偏移值，XY的默认值均为0，与节点坐标保持一致，如图3-3所示。
 
- ![](/IDE/physicsEditor/physics2D/img/3-3.png)
+ ![](./img/3-3.png)
 
 （图3-3）
 
@@ -152,7 +152,7 @@ slug: "ide/physicseditor/physics2d"
 
 为了更方便开发者使用，LayaAirIDE添加了直观的碰撞组定义，每个类别可指定一个直观的组名，IDE会自动转换为2的幂值来传入，如图3-4所示，Default是2的**0次幂**，实际值是1，而自己添加的test组ID为1，实际值是2，以此类推，组ID为2的碰撞组实际值为4。
 
-![](/IDE/physicsEditor/physics2D/img/3-4.png)
+![](./img/3-4.png)
 
 （图3-4）
 
@@ -171,7 +171,7 @@ xxx.filterData = filter;
 
 LayaAirIDE的设置也非常直观。直接在选项中指定要和哪些定义的碰撞组发生碰撞即可，可以单选，也可以多选，如图3-5所示。
 
-![](/IDE/physicsEditor/physics2D/img/3-5.png)
+![](./img/3-5.png)
 
 （图3-5）
 
@@ -188,7 +188,7 @@ LayaAirIDE的设置也非常直观。直接在选项中指定要和哪些定义�
 
 二进制的`按位与`运算，如示意图3-6所示：
 
-![](/IDE/physicsEditor/physics2D/img/3-6.png)
+![](./img/3-6.png)
 
 (图3-6)
 
@@ -196,7 +196,7 @@ LayaAirIDE的设置也非常直观。直接在选项中指定要和哪些定义�
 
 开发者也可以在Devtools的控制台中，通过`&`运算符直接用十进制数字来计算，直观的理解碰撞关系，如图3-7所示：
 
-![](/IDE/physicsEditor/physics2D/img/3-7.png)
+![](./img/3-7.png)
 
 (图3-7)
 
@@ -245,7 +245,7 @@ xxx.filterData = filter;
 
 密度值在通常情况下都是正数，密度值越大，那么同等面积下，它的质量就越大。过小的密度可能会导致物体的行为不稳定，而过大的密度可能会导致物体质量极大，计算的消耗也更大。合理设置密度对于实现逼真的物理模拟至关重要，IDE内的默认值为10。不同密度的对比效果如动图3-8所示：
 
-<img src="/IDE/physicsEditor/physics2D/img/3-8.gif" alt="密度分别为0、默认值、更大的值之间的冲撞对比" style="zoom:67%;" />
+<img src="./img/3-8.gif" alt="密度分别为0、默认值、更大的值之间的冲撞对比" style="zoom:67%;" />
 
 （动图3-8）
 
@@ -259,7 +259,7 @@ xxx.filterData = filter;
 
 具体而言，恢复系数表示物体在碰撞时弹射回的速度相对于碰撞前的速度的比例。当两个物体发生碰撞时，它们之间的相对速度会影响碰撞的结果。如果恢复系数为1，表示碰撞是完全弹性的，物体之间会以相同的速度反弹；而如果恢复系数为0，表示碰撞是非弹性的，物体在碰撞后会停止。效果如动图3-9所示：
 
-<img src="/IDE/physicsEditor/physics2D/img/3-9.gif" alt="有与弹性的对比效果图" style="zoom:67%;" />
+<img src="./img/3-9.gif" alt="有与弹性的对比效果图" style="zoom:67%;" />
 
 （动图3-9）
 
@@ -278,7 +278,7 @@ xxx.filterData = filter;
 
 对于非常光滑的表面（如冰面），摩擦系数可能接近0.01；对于日常生活中的接触表面，如橡胶与干燥路面，摩擦系数可能在0.1到1之间；动图3-10演示了不同摩擦系数的效果。
 
-<img src="/IDE/physicsEditor/physics2D/img/3-10.gif" alt="相同的力，摩擦系数0和其它不同值的几个对比效果，例如三个方块同时从斜坡滑落" style="zoom: 67%;" />
+<img src="./img/3-10.gif" alt="相同的力，摩擦系数0和其它不同值的几个对比效果，例如三个方块同时从斜坡滑落" style="zoom: 67%;" />
 
 （动图3-10）
 
@@ -292,7 +292,7 @@ xxx.filterData = filter;
 
 是否设置为传感器的不同效果区别，如动图3-11所示：
 
-<img src="/IDE/physicsEditor/physics2D/img/3-11.gif" alt="设置和不设置传感器的碰撞反馈对比" style="zoom:67%;" />
+<img src="./img/3-11.gif" alt="设置和不设置传感器的碰撞反馈对比" style="zoom:67%;" />
 
 （动图3-11）
 
@@ -300,7 +300,7 @@ xxx.filterData = filter;
 
 点击编辑碰撞形状，可以使得该碰撞形状在场景面板中进入可视化的编辑状态，对其整体位置偏移或改变宽高的操作，鼠标离开碰撞形状和节点的范围，编辑模式自动退出，再次编辑需要再次点击该按钮。演示效果如动图3-12所示：
 
-![点击编辑按钮并作出操作演示](/IDE/physicsEditor/physics2D/img/3-12.gif)
+![点击编辑按钮并作出操作演示](./img/3-12.gif)
 
 (动图3-12)
 
@@ -314,7 +314,7 @@ xxx.filterData = filter;
 
 宽高是该碰撞形状特有的属性，如图3-13所示，通过设置宽高改变碰撞形状的大小。
 
-![](/IDE/physicsEditor/physics2D/img/3-13.png)
+![](./img/3-13.png)
 
 (图3-13)
 
@@ -324,7 +324,7 @@ xxx.filterData = filter;
 
 自动适配大小是指，通过该按钮一键将节点的宽高设置为碰撞形状的宽高。如图3-14所示。
 
-![](/IDE/physicsEditor/physics2D/img/3-14.png)
+![](./img/3-14.png)
 
 (图3-14)
 
@@ -339,7 +339,7 @@ xxx.filterData = filter;
 
 而**半径**正是圆形碰撞形状特有的属性，其大小通过半径来控制，半径越大，该碰撞形状的圆形框越大。效果如图3-15所示：
 
-![滑动修改半径值，圆碰撞体大小改变的效果](/IDE/physicsEditor/physics2D/img/3-15.png)
+![滑动修改半径值，圆碰撞体大小改变的效果](./img/3-15.png)
 
 (图3-15)
 
@@ -351,7 +351,7 @@ xxx.filterData = filter;
 
 这样的好处是，不再以节点的左上角作为中心点，使得更符合圆形碰撞形状的常用需求。效果如图3-16所示。
 
-![先自动适配大小，再修改宽高，再点适配大小，演示半径适配效果，然后再修改半径查看修改锚点后的效果](/IDE/physicsEditor/physics2D/img/3-16.png)
+![先自动适配大小，再修改宽高，再点适配大小，演示半径适配效果，然后再修改半径查看修改锚点后的效果](./img/3-16.png)
 
 （图3-16）
 
@@ -363,7 +363,7 @@ xxx.filterData = filter;
 
 多边形碰撞形状用于表示由多个顶点组成的凸多边形物体。顶点数量不能低于3个且不能超过8个。多边形碰撞形状可以用来模拟各种平面物体，比如箱子、三角形或其他多边形形状的物体。点击`点数据集`右侧的点数据列表按钮，可以通过弹窗面板设置每个顶点的坐标（XY），如图3-17所示，
 
-![](/IDE/physicsEditor/physics2D/img/3-17.png)
+![](./img/3-17.png)
 
 (图3-17)
 
@@ -382,7 +382,7 @@ xxx.filterData = filter;
 
 效果如动图3-18所示：
 
-![演示改变顶点位置、增加顶点、删除顶点的操作](/IDE/physicsEditor/physics2D/img/3-18.gif)
+![演示改变顶点位置、增加顶点、删除顶点的操作](./img/3-18.gif)
 
 (动图3-18)
 
@@ -408,7 +408,7 @@ xxx.filterData = filter;
 
 重点提醒一下，链形碰撞形状最少由2个点的线段组成，通常是3个或更多。链形碰撞形状的线段不能进行穿插自相交。如图3-19所示。
 
-![](/IDE/physicsEditor/physics2D/img/3-19.png)
+![](./img/3-19.png)
 
 （图3-19）
 
@@ -428,7 +428,7 @@ xxx.filterData = filter;
 
 效果如动图3-20所示：
 
-![演示改变顶点位置、增加顶点、删除顶点的操作、节点外形状内点击非线段部分离开编辑模式](/IDE/physicsEditor/physics2D/img/3-20.gif)
+![演示改变顶点位置、增加顶点、删除顶点的操作、节点外形状内点击非线段部分离开编辑模式](./img/3-20.gif)
 
 (动图3-20)
 
@@ -440,7 +440,7 @@ xxx.filterData = filter;
 
 勾选闭合的不同效果如动图3-21所示：
 
-![勾选和不勾选的闭合效果对比](/IDE/physicsEditor/physics2D/img/3-21.gif)
+![勾选和不勾选的闭合效果对比](./img/3-21.gif)
 
 (动图3-21)
 
@@ -452,19 +452,19 @@ xxx.filterData = filter;
 
 如图3-22所示，左侧小球顺着法线的方向，会直接穿透，无法出去。右侧小球与法线方向相对产生运动，则会发生碰撞，无法进入。
 
-![](/IDE/physicsEditor/physics2D/img/3-22.png)
+![](./img/3-22.png)
 
 （图3-22）
 
 我们再以动图3-23直观的感受，当闭合链形碰撞形状顶点逆时针排序形成一个封闭的区域时，小球产生的碰撞效果。
 
-![从外部掉落进入，然后在内部不断的反弹撞击效果](/IDE/physicsEditor/physics2D/img/3-23.gif)
+![从外部掉落进入，然后在内部不断的反弹撞击效果](./img/3-23.gif)
 
 (动图3-23)
 
 当顶点顺时针排序时，碰撞方向相反，效果如动图3-24所示，
 
-![同时几个物体，有的从内部可掉落穿出，反弹回无法进入，有的直接从外部无法进入](/IDE/physicsEditor/physics2D/img/3-24.gif)
+![同时几个物体，有的从内部可掉落穿出，反弹回无法进入，有的直接从外部无法进入](./img/3-24.gif)
 
 (动图3-24)
 
@@ -472,7 +472,7 @@ xxx.filterData = filter;
 
 其实，还是上面的理论，根据顶点逆时针还是顺时针排序来判断，与是否闭合没有关系。上面的示例只是由于闭合时，更形象的解释和理解了逆时针和顺时针的排序特点。例如动图3-25演示了未闭合的碰撞效果。
 
-![同时演示两种，一种是逆时针右开口的未封闭两侧碰撞效果，一种是顺时针的左开口两侧碰撞效果](/IDE/physicsEditor/physics2D/img/3-25.gif)
+![同时演示两种，一种是逆时针右开口的未封闭两侧碰撞效果，一种是顺时针的左开口两侧碰撞效果](./img/3-25.gif)
 
 (动图3-25)
 
@@ -484,7 +484,7 @@ xxx.filterData = filter;
 
 反之，方向从右向左，是逆时针方向，法线向上，从下向上才会碰撞。效果如动图3-26所示，
 
-<img src="/IDE/physicsEditor/physics2D/img/3-26.gif" alt="演示接近水平折线的两侧碰撞效果" style="zoom:80%;" />
+<img src="./img/3-26.gif" alt="演示接近水平折线的两侧碰撞效果" style="zoom:80%;" />
 
 （动图3-26）
 
@@ -502,7 +502,7 @@ xxx.filterData = filter;
 
 但与链形碰撞形状可以多条线段组合完全不同的是，**边缘碰撞形状只能由两个端点构成线段形状**，如图3-27所示，
 
-![](/IDE/physicsEditor/physics2D/img/3-27.png)
+![](./img/3-27.png)
 
 (图3-27)
 
@@ -512,7 +512,7 @@ xxx.filterData = filter;
 
 与链形碰撞形状不同的是，哪怕是同为两个点组成的线段形状，边缘碰撞形状两侧均可以发生碰撞，而链形碰撞形状是单侧的。效果如动图3-28所示，
 
-<img src="/IDE/physicsEditor/physics2D/img/3-28.gif" alt="演示同样两个点组成的链形和边缘碰撞体，两侧同时发生碰撞的对比效果" style="zoom:80%;" />
+<img src="./img/3-28.gif" alt="演示同样两个点组成的链形和边缘碰撞体，两侧同时发生碰撞的对比效果" style="zoom:80%;" />
 
 (动图3-28)
 
@@ -532,7 +532,7 @@ xxx.filterData = filter;
 
 关节的物理辅助编辑功能，主要是编辑连接两个关节连线的锚点位置。点击 `编辑关节连线`，关节连线的两端会出现两个点，红点表示自身刚体的锚点，绿点表示另一刚体的锚点。如图4-1所示：
 
-![](/IDE/physicsEditor/physics2D/img/4-1.png)
+![](./img/4-1.png)
 
 （图4-1）
 
@@ -548,7 +548,7 @@ xxx.filterData = filter;
 
 我们可以通过刚体选择弹窗来选择某个带刚体的节点进行绑定，也可以直接从层级面板上拖拽带有刚体组件的节点拖入到另一刚体的属性输入栏，操作如动图4-2所示。
 
-![演示不同的绑定刚体方式](/IDE/physicsEditor/physics2D/img/4-2.gif)
+![演示不同的绑定刚体方式](./img/4-2.gif)
 
 (动图4-2)
 
@@ -564,7 +564,7 @@ xxx.filterData = filter;
 
 当出现自身锚点与另一个刚体的锚点都需要设置时，为了明确区分，分别称为`自身锚点selfAnchor`和`另一锚点otherAnchor`，不需要设置另一个刚体锚点时，自身刚体的锚点直接称为`锚点anchor`。效果如下图所示：
 
-![](/IDE/physicsEditor/physics2D/img/4-3.png)
+![](./img/4-3.png)
 
 (图4-3)
 
@@ -572,7 +572,7 @@ xxx.filterData = filter;
 
 振动频率也是很多关节中都会出现的属性，该属性值越大表示振动频率越高，意味着在更短的时间内完成一个振动周期，所以，振动幅度相对较小，振动速度更快。反之，振动幅度相对较大，振动速度更慢。效果如动图4-4所示：
 
-![分别是1、0.8、3不同频率的效果对比](/IDE/physicsEditor/physics2D/img/4-4.gif)
+![分别是1、0.8、3不同频率的效果对比](./img/4-4.gif)
 
 （动图4-4）
 
@@ -592,7 +592,7 @@ xxx.filterData = filter;
 
 有无阻尼的对比效果如动图4-5所示：
 
-![无阻尼、弱阻尼、强阻尼效果对比](/IDE/physicsEditor/physics2D/img/4-5.gif)
+![无阻尼、弱阻尼、强阻尼效果对比](./img/4-5.gif)
 
 （动图4-5）
 
@@ -600,7 +600,7 @@ xxx.filterData = filter;
 
 通常情况下，关节之间彼此连接的关节之间是不需要产生碰撞的，这也是关节的默认设置。然而也有一些情况，两个相互连接的关节刚体之间也存在碰撞的需求，此时，勾选`碰撞连接刚体`就可以使得关节彼此连接的刚体之间也可以发生碰撞。效果如动图4-6所示：
 
-![分别是设置和不设置碰撞连接刚体的两个连接关节刚体的碰撞效果](/IDE/physicsEditor/physics2D/img/4-6.gif)
+![分别是设置和不设置碰撞连接刚体的两个连接关节刚体的碰撞效果](./img/4-6.gif)
 
 （动图4-6）
 

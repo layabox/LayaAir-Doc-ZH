@@ -12,19 +12,19 @@ ProgressBar经常被用于显示游戏中某个操作的进度，例如加载资
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/ProgressBar/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
 ProgressBar组件由两部分组成：底图`progress.png`和进度`progress$bar.png`，资源示例如图1-2所示。
 
-![1-2](/IDE/uiEditor/uiComponent/ProgressBar/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
 LayaAir默认创建的ProgressBar组件效果如下图所示：
 
-![1-3](/IDE/uiEditor/uiComponent/ProgressBar/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -34,7 +34,7 @@ LayaAir默认创建的ProgressBar组件效果如下图所示：
 
 ProgressBar的特有属性如下：
 
-![1-4](/IDE/uiEditor/uiComponent/ProgressBar/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
@@ -46,7 +46,7 @@ ProgressBar的特有属性如下：
 
 设置ProgressBar组件的属性value的值为0.3后，显示效果如下所示：
 
-![1-5](/IDE/uiEditor/uiComponent/ProgressBar/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
@@ -91,7 +91,7 @@ export class NewScript extends Laya.Script {
 
 效果如下：
 
-![1-6](/IDE/uiEditor/uiComponent/ProgressBar/img/1-6.gif)
+![1-6](./img/1-6.gif)
 
 （动图1-6）
 
@@ -143,7 +143,7 @@ export class UI_ProgressBar extends Laya.Script {
 
 示例效果如下：
 
-![2-1](/IDE/uiEditor/uiComponent/ProgressBar/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

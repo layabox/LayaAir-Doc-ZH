@@ -16,7 +16,7 @@ slug: "ide/component/physics2d/weldjoint"
 
 动图1演示了焊接关节的约束效果，
 
-![](/IDE/Component/physics2D/weldJoint/img/1.gif)
+![](./img/1.gif)
 
 （动图1）
 

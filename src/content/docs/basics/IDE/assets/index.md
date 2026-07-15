@@ -8,7 +8,7 @@ slug: "basics/ide/assets"
 
 LayaAir IDE打开项目工程后，由五个部分构成，效果如图1-1所示
 
-<img src="/basics/IDE/assets/img/1-1.png" style="zoom:50%;" /> 
+<img src="./img/1-1.png" style="zoom:50%;" /> 
 
 （图1-1）
 
@@ -28,7 +28,7 @@ assets目录是比较重要的项目目录，我们所有的场景与资源都�
 
 效果如图1-2所示：
 
-<img src="/basics/IDE/assets/img/1-2.png" style="zoom: 50%;" /> 
+<img src="./img/1-2.png" style="zoom: 50%;" /> 
 
 （图1-2）
 
@@ -44,7 +44,7 @@ assets目录是比较重要的项目目录，我们所有的场景与资源都�
 
 src里源码目录，如图1-3所示。
 
-<img src="/basics/IDE/assets/img/1-3.png" style="zoom:50%;" /> 
+<img src="./img/1-3.png" style="zoom:50%;" /> 
 
 (图1-3)
 
@@ -56,13 +56,13 @@ src里源码目录，如图1-3所示。
 
 通过鼠标右键任何目录或者文件，可以打开菜单，如图1-4所示
 
- <img src="/basics/IDE/assets/img/1-4.png" style="zoom:80%;" /> 
+ <img src="./img/1-4.png" style="zoom:80%;" /> 
 
 (图1-4)
 
 通过点击“创建”，动图1-5中在assets目录下创建了一个“光照贴图烘焙设置”文件
 
-<img src="/basics/IDE/assets/img/1-5.gif" style="zoom: 80%;" />  
+<img src="./img/1-5.gif" style="zoom: 80%;" />  
 
 （动图1-5）
 
@@ -88,13 +88,13 @@ src里源码目录，如图1-3所示。
 
 如图1-6所示，这是一张有透明通道的png图片
 
-<img src="/basics/IDE/assets/img/1-6.png" style="zoom:50%;" /> 
+<img src="./img/1-6.png" style="zoom:50%;" /> 
 
 （图1-6）
 
 点击图片，看下属性设置，如图1-7所示
 
-<img src="/basics/IDE/assets/img/1-7.png"  /> 
+<img src="./img/1-7.png"  /> 
 
 （图1-7）
 
@@ -104,19 +104,19 @@ src里源码目录，如图1-3所示。
 
 在不改变图片类型的情况下，将这张图作为2D图片在Image组件中使用并运行，页面背景是蓝色，如图1-8所示
 
-<img src="/basics/IDE/assets/img/1-8.png" style="zoom:50%;" /> 
+<img src="./img/1-8.png" style="zoom:50%;" /> 
 
 （图1-8）
 
 可以看到图中绿色区域有白色毛边，因此需要更改设置，如图1-9所示
 
-<img src="/basics/IDE/assets/img/1-9.png"  /> 
+<img src="./img/1-9.png"  /> 
 
 （图1-9）
 
 再看看运行效果，如图1-10所示
 
-<img src="/basics/IDE/assets/img/1-10.png" style="zoom:50%;" /> 
+<img src="./img/1-10.png" style="zoom:50%;" /> 
 
 （图1-10）
 
@@ -153,19 +153,19 @@ src里源码目录，如图1-3所示。
 
 1，快速创建是方便开发者可以快速创建特殊类型文件的方式，如动图2-1所示
 
-<img src="/basics/IDE/assets/img/2-1.gif" style="zoom:50%;" /> 
+<img src="./img/2-1.gif" style="zoom:50%;" /> 
 
 （动图2-1）
 
 2，点击项目资源面板中的空白处，选择创建，也可以做到快速创建，如动图2-2所示
 
-<img src="/basics/IDE/assets/img/2-2.gif" style="zoom:50%;" /> 
+<img src="./img/2-2.gif" style="zoom:50%;" /> 
 
 （动图2-2）
 
 3，这里快速创建的文件只会在assets目录下，如果想放到某个目录中，可以拖住文件放入，如动图2-3所示
 
-<img src="/basics/IDE/assets/img/2-3.gif" style="zoom:50%;" /> 
+<img src="./img/2-3.gif" style="zoom:50%;" /> 
 
 （动图2-3）
 
@@ -175,7 +175,7 @@ src里源码目录，如图1-3所示。
 
 如图2-3所示，在快速创建菜单中，点击“文件夹”会在assets下创建一个文件夹，并可以修改文件夹名字
 
-<img src="/basics/IDE/assets/img/2-3.png" style="zoom:50%;" /> 
+<img src="./img/2-3.png" style="zoom:50%;" /> 
 
 （图2-3）
 
@@ -189,13 +189,13 @@ src里源码目录，如图1-3所示。
 
 如图2-4所示，创建预制体2D后，点击后打开，预制体只有一个Box根节点，用于2D开发
 
-<img src="/basics/IDE/assets/img/2-4.png" style="zoom:50%;" /> 
+<img src="./img/2-4.png" style="zoom:50%;" /> 
 
 （图2-4）
 
 同时，我们也可以更改Box组件为Dialog组件，如动图2-5所示
 
-<img src="/basics/IDE/assets/img/2-5.gif" style="zoom:50%;" /> 
+<img src="./img/2-5.gif" style="zoom:50%;" /> 
 
 （动图2-5）
 
@@ -207,7 +207,7 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-6所示，创建预制体3D后，点击后打开，预制体只包括Sprite3D对象，用于3D对象开发
 
-<img src="/basics/IDE/assets/img/2-6.png" style="zoom:50%;" /> 
+<img src="./img/2-6.png" style="zoom:50%;" /> 
 
 （图2-6）
 
@@ -219,7 +219,7 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-7所示，在快速创建菜单中，点击“scene”会在assets下快速创建一个场景
 
-<img src="/basics/IDE/assets/img/2-7.png" style="zoom:50%;" /> 
+<img src="./img/2-7.png" style="zoom:50%;" /> 
 
 （图2-7）
 
@@ -231,13 +231,13 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-8所示，在快速创建菜单中，点击“着色器”会选择创建五种类型的shader文件
 
-<img src="/basics/IDE/assets/img/2-8.png" style="zoom:50%;" /> 
+<img src="./img/2-8.png" style="zoom:50%;" /> 
 
 （图2-8）
 
 通过创建shader，开发者可以对shader进行修改成自定义的shader使用，如图2-9所示
 
-<img src="/basics/IDE/assets/img/2-9.png" style="zoom:50%;" /> 
+<img src="./img/2-9.png" style="zoom:50%;" /> 
 
 （图2-9）
 
@@ -247,13 +247,13 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-10所示，在快速创建菜单中，点击“着色器蓝图”会在assets下快速创建一个着色器蓝图文件
 
-<img src="/basics/IDE/assets/img/2-10.png" style="zoom:50%;" /> 
+<img src="./img/2-10.png" style="zoom:50%;" /> 
 
 （图2-10）
 
 双击蓝图文件，可以通过可视化窗口来编辑
 
-<img src="/basics/IDE/assets/img/2-11.png" style="zoom:50%;" /> 
+<img src="./img/2-11.png" style="zoom:50%;" /> 
 
 （图2-11）
 
@@ -263,13 +263,13 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-12所示，在快速创建菜单中，点击“着色器蓝图函数”会在assets下快速创建一个着色器蓝图函数文件
 
-<img src="/basics/IDE/assets/img/2-12.png" style="zoom:50%;" /> 
+<img src="./img/2-12.png" style="zoom:50%;" /> 
 
 （图2-12）
 
 双击蓝图函数文件，可以通过可视化窗口来编辑
 
-<img src="/basics/IDE/assets/img/2-13.png" style="zoom:50%;" /> 
+<img src="./img/2-13.png" style="zoom:50%;" /> 
 
 （图2-13）
 
@@ -281,7 +281,7 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-14所示，在快速创建菜单中，点击“Material”会选择创建八种类型的材质文件
 
-<img src="/basics/IDE/assets/img/2-14.png" style="zoom:50%;" /> 
+<img src="./img/2-14.png" style="zoom:50%;" /> 
 
 （图2-14）
 
@@ -293,19 +293,19 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-15所示，在快速创建菜单中，点击“TextureCube”会在assets下快速创建一个TextureCube文件
 
-<img src="/basics/IDE/assets/img/2-15.png" style="zoom:50%;" /> 
+<img src="./img/2-15.png" style="zoom:50%;" /> 
 
 （图2-15）
 
 点击Cubemap文件，可以配置
 
-<img src="/basics/IDE/assets/img/2-16.png" style="zoom:50%;" />  
+<img src="./img/2-16.png" style="zoom:50%;" />  
 
 （图2-16）
 
 通常Cubemap文件，用于配置天空盒的贴图，如图2-17所示
 
-<img src="/basics/IDE/assets/img/2-17.png" style="zoom:50%;" />
+<img src="./img/2-17.png" style="zoom:50%;" />
 
 （图2-17）
 
@@ -317,13 +317,13 @@ Dialog是弹窗面板，可以通过设置来实现弹窗效果
 
 如图2-18所示，在快速创建菜单中，点击“RenderTexture”会在assets下快速创建一个RenderTexture文件
 
-<img src="/basics/IDE/assets/img/2-18.png" style="zoom:50%;" /> 
+<img src="./img/2-18.png" style="zoom:50%;" /> 
 
 （图2-18）
 
 RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开发使用，如动图2-19所示
 
-<img src="/basics/IDE/assets/img/2-19.gif" style="zoom:50%;" /> 
+<img src="./img/2-19.gif" style="zoom:50%;" /> 
 
 （图2-19）
 
@@ -335,7 +335,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 如图2-20所示，在快速创建菜单中，点击“AvatarMask”会创建AvatarMask文件
 
-<img src="/basics/IDE/assets/img/2-20.png" style="zoom:50%;" /> 
+<img src="./img/2-20.png" style="zoom:50%;" /> 
 
 （图2-20）
 
@@ -349,13 +349,13 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 如图2-21所示，在快速创建菜单中，点击“光照贴图烘焙设置”会创建LightingSettings文件
 
-<img src="/basics/IDE/assets/img/2-21.png" style="zoom:50%;" /> 
+<img src="./img/2-21.png" style="zoom:50%;" /> 
 
 （图2-21）
 
 通过创建LightingSettings，开发者可以设置光照属性，用来烘焙光照贴图
 
-<img src="/basics/IDE/assets/img/2-22.png" style="zoom:50%;" />
+<img src="./img/2-22.png" style="zoom:50%;" />
 
 （图2-22）
 
@@ -367,7 +367,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 如图2-23所示，在快速创建菜单中，点击“自动图集设置”会创建AtlasConfig文件
 
-<img src="/basics/IDE/assets/img/2-23.png" style="zoom:50%;" /> 
+<img src="./img/2-23.png" style="zoom:50%;" /> 
 
 （图2-23）
 
@@ -385,7 +385,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 如图2-24所示，创建动画状态机2D后，点击后打开
 
-<img src="/basics/IDE/assets/img/2-24.png" style="zoom:50%;" /> 
+<img src="./img/2-24.png" style="zoom:50%;" /> 
 
 （图2-24）
 
@@ -395,7 +395,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 如图2-25所示，创建动画状态机3D后，点击后打开
 
-<img src="/basics/IDE/assets/img/2-25.png" style="zoom:50%;" /> 
+<img src="./img/2-25.png" style="zoom:50%;" /> 
 
 （图2-25）
 
@@ -413,7 +413,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 通过在搜索框中，输入“button”可以快速检索出Button组件，并可快速拖入2D场景中，如动图3-1所示
 
-<img src="/basics/IDE/assets/img/3-1.gif" style="zoom:50%;" /> 
+<img src="./img/3-1.gif" style="zoom:50%;" /> 
 
 （动图3-1）
 
@@ -423,7 +423,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 通过点击类型搜索按钮，选择文件类型，比如选择“LightingSettings”，可以快速检索出所有灯光设置文件，如动图3-2所示
 
-<img src="/basics/IDE/assets/img/3-2.gif" style="zoom:50%;" /> 
+<img src="./img/3-2.gif" style="zoom:50%;" /> 
 
 （动图3-2）
 
@@ -435,7 +435,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 在开发过程中，往往在目录中的文件太多，对目录的反复浏览会比较繁琐，通过点击“两栏显示”按钮，可以解决，如图4-1所示
 
-<img src="/basics/IDE/assets/img/4-1.gif" style="zoom:50%;" /> 
+<img src="./img/4-1.gif" style="zoom:50%;" /> 
 
 （动图4-1）
 
@@ -445,7 +445,7 @@ RenderTexture渲染纹理，用于将3D场景渲染到2D纹理中，混合2D开�
 
 如果打开的目录太多，开发者可以通过点击“全部折叠”来关闭所有的目录，恢复到只有assets和src目录，如动图4-2所示
 
-<img src="/basics/IDE/assets/img/4-2.gif" style="zoom:50%;" /> 
+<img src="./img/4-2.gif" style="zoom:50%;" /> 
 
 （动图4-2）
 

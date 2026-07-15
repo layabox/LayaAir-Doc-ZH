@@ -14,13 +14,13 @@ AreaLight（区域光）可以通过空间中的两个形状之一定义区域�
 
 如图5-1所示，在一个场景中，通过调整区域光的尺寸和扩散，可以调整场景的光照效果
 
-<img src="/IDE/Component/3DLight/AreaLight/img/5-1.gif" style="zoom: 50%;" />
+<img src="./img/5-1.gif" style="zoom: 50%;" />
 
 （动图5-1）
 
 ## 一、创建区域光
 
-<img src="/IDE/Component/3DLight/AreaLight/img/5-2.gif" style="zoom:50%;" />
+<img src="./img/5-2.gif" style="zoom:50%;" />
 
 （动图5-2）
 
@@ -30,7 +30,7 @@ AreaLight（区域光）可以通过空间中的两个形状之一定义区域�
 
 如图5-3所示，当创建一个AreaLight后，在Inspector属性面板中会有如下几个属性
 
-<img src="/IDE/Component/3DLight/AreaLight/img/5-3.png" alt="image-20221221104220653" style="zoom:50%;" />
+<img src="./img/5-3.png" alt="image-20221221104220653" style="zoom:50%;" />
 
 （图5-3）
 

@@ -14,7 +14,7 @@ slug: "basics/common/basicconcepts"
 
 画布是浏览器提供的 `canvas` 元素，如图1-1所示：
 
-![img](/basics/common/basicConcepts/img/1-1.png) 
+![img](./img/1-1.png) 
 
 （图1-1）
 
@@ -26,7 +26,7 @@ LayaAir 引擎的所有可见画面，都是逐帧绘制在画布上的。引擎
 
 LayaAir 引擎中的画布大小，取决于项目中设定的设计宽高和屏幕适配策略。如图1-2所示：
 
-![img](/basics/common/basicConcepts/img/1-2.png)  
+![img](./img/1-2.png)  
 
 (图1-2)
 
@@ -123,7 +123,7 @@ UI小部件是用户界面中组成元素的基本单元，通常指功能独立
 
 如图2-1所示：
 
-![img](/basics/common/basicConcepts/img/2-1.png)  
+![img](./img/2-1.png)  
 
 (图2-1)
 

@@ -10,7 +10,7 @@ slug: "ide/layapackage/enterprise/addressable/apply"
 
 开发者需要使用已经开通智能资源管理插件使用权限的账号登陆IDE，在开发者栏中打开包管理器，选择智能资源管理插件并安装。
 
-![1-1](/IDE/layapackage/enterprise/addressable/apply/img/1-1.png)
+![1-1](./img/1-1.png)
 
 ## 2. 资源组管理
 
@@ -20,15 +20,15 @@ slug: "ide/layapackage/enterprise/addressable/apply"
 
 添加资源：
 
-![2-1](/IDE/layapackage/enterprise/addressable/apply/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 修改资源别名：
 
-![2-2](/IDE/layapackage/enterprise/addressable/apply/img/2-2.gif)
+![2-2](./img/2-2.gif)
 
 添加标签：
 
-![2-3](/IDE/layapackage/enterprise/addressable/apply/img/2-3.gif)
+![2-3](./img/2-3.gif)
 
 ## 3. 预览调试
 
@@ -36,7 +36,7 @@ slug: "ide/layapackage/enterprise/addressable/apply"
 
 设置好资源组后，便需要对资源进行打包，以在预览模式下对程序进行调试。打开智能资源管理面板，点击构建 - 新构建，启动插件的资源构建流程。
 
-![3-1-1-1](/IDE/layapackage/enterprise/addressable/apply/img/3-1-1-1.png)
+![3-1-1-1](./img/3-1-1-1.png)
 
 ### 3.2 资源加载示例
 
@@ -44,7 +44,7 @@ slug: "ide/layapackage/enterprise/addressable/apply"
 
 示例使用到的资源如下：
 
-![3-2-1-1](/IDE/layapackage/enterprise/addressable/apply/img/3-2-1-1.png)
+![3-2-1-1](./img/3-2-1-1.png)
 
 可以看到，资源组中只添加了一个资源 “Prefab”，但实际上这个预制体使用了红框中的资源，且 “layaBox” 和 “Material” 这两个资源并没有被添加到资源管理中。这便是智能资源管理插件的一项功能，开发者只需要将需要直接使用的资源添加到组管理中，与此资源相关联的资源会自动进行打包。
 
@@ -77,7 +77,7 @@ export class LoadPrefab extends Laya.Script {
 
 将以上脚本挂载到场景中，点击运行，运行结果如图：
 
-![3-2-1-2](/IDE/layapackage/enterprise/addressable/apply/img/3-2-1-2.png)
+![3-2-1-2](./img/3-2-1-2.png)
 
 加载预制体时，即可以使用 `Addressables.instantiateAsync` 方法直接将预制体创建为实例；也可以先使用 `Addressables.loadAssetAsync` 加载预制体资源，再通过预制体对象的 `create()` 方法创建实例。
 
@@ -85,7 +85,7 @@ export class LoadPrefab extends Laya.Script {
 
 示例使用到的资源如下：
 
-![3-2-2-1](/IDE/layapackage/enterprise/addressable/apply/img/3-2-2-1.png)
+![3-2-2-1](./img/3-2-2-1.png)
 
 示例代码如下：
 
@@ -128,7 +128,7 @@ export class LoadImage extends Laya.Script {
 
 运行结果如图：
 
-![3-2-2-2](/IDE/layapackage/enterprise/addressable/apply/img/3-2-2-2.png)
+![3-2-2-2](./img/3-2-2-2.png)
 
 **注意：**`Addressables.getLocationAsync` 方法不会对资源进行加载。当通过智能资源管理插件加载资源时，无论加载的是什么样的资源，第一步都是先调用[使用说明](/ide/layapackage/enterprise/addressable/instruction/)第5节中介绍的四种方法加载资源包。
 
@@ -136,7 +136,7 @@ export class LoadImage extends Laya.Script {
 
 示例使用到的资源如下：
 
-![3-2-3-1](/IDE/layapackage/enterprise/addressable/apply/img/3-2-3-1.png)
+![3-2-3-1](./img/3-2-3-1.png)
 
 示例代码如下：
 
@@ -167,7 +167,7 @@ export class NewScript extends Laya.Script {
 
 运行结果如图：
 
-![3-2-3-3](/IDE/layapackage/enterprise/addressable/apply/img/3-2-3-3.png)
+![3-2-3-3](./img/3-2-3-3.png)
 
 实际上，也可以将资源制作成预制体，然后进行加载。
 
@@ -177,7 +177,7 @@ export class NewScript extends Laya.Script {
 
 在每次进行资源构建后，插件都会自动生成构建报告。如果有多个资源引用了同一个资源，且被引用的资源未添加到智能资源管理中，那这个资源就会被插件重复打包，造成空间的浪费。开发者需根据实际需求，优化资源包。
 
-![3-3-1](/IDE/layapackage/enterprise/addressable/apply/img/3-3-1.png)
+![3-3-1](./img/3-3-1.png)
 
 ## 4. 构建发布
 
@@ -187,11 +187,11 @@ export class NewScript extends Laya.Script {
 
 在智能资源管理面板中，点击工具栏，打开构建配置管理面板。
 
-![4-1-1](/IDE/layapackage/enterprise/addressable/apply/img/4-1-1.png)
+![4-1-1](./img/4-1-1.png)
 
 根据需求，设置构建配置并激活。
 
-![4-1-2](/IDE/layapackage/enterprise/addressable/apply/img/4-1-2.png)
+![4-1-2](./img/4-1-2.png)
 
 构建配置的操作方法和属性请[参考文档](/ide/layapackage/enterprise/addressable/instruction/)
 
@@ -199,13 +199,13 @@ export class NewScript extends Laya.Script {
 
 在构建配置设置完成后，接下来就是在构建发布 - 智能资源管理页面进行设置，对具体属性的讲解请[使用说明](/ide/layapackage/enterprise/addressable/instruction/)中第2.1节和第2.3节。
 
-![4-2-1](/IDE/layapackage/enterprise/addressable/apply/img/4-2-1.png)
+![4-2-1](./img/4-2-1.png)
 
 ### 4.3 构建发布
 
 完成以上流程后，开发者就可以进行构建发布了，构建发布的流程与一般情况下的发布流程相同，无需额外设置。
 
-![4-3-1](/IDE/layapackage/enterprise/addressable/apply/img/4-3-1.png)
+![4-3-1](./img/4-3-1.png)
 
 构建完成后，会在输出目录下生成打包好的项目，项目文件中会存在一个 .dcc 文件。
 
@@ -215,26 +215,26 @@ export class NewScript extends Laya.Script {
 
 先说明以下下文提到的项目资源：项目资源就是构建发布后生成的资源包，一般会存放在release文件夹中。
 
-![4-4-3](/IDE/layapackage/enterprise/addressable/apply/img/4-4-3.png)
+![4-4-3](./img/4-4-3.png)
 
 首先就是将项目资源放到项目地址中。
 
-![4-4-1](/IDE/layapackage/enterprise/addressable/apply/img/4-4-1.png)
+![4-4-1](./img/4-4-1.png)
 
 接下来是 `head.json` 文件，这个文件会生成在项目资源下的 .dcc 文件中，开发者要将其转移到根文件地址中。留空时会使用项目路径下的DCC资源输出路径中的
 `head.json` 路径。
 
-![4-4-2](/IDE/layapackage/enterprise/addressable/apply/img/4-4-2.png)
+![4-4-2](./img/4-4-2.png)
 
 最后是DCC生成的文件。这些文件会生成在项目资源的`.dcc`目录中，开发者需将其转移到DCC服务器地址上。留空时会使用项目路径下的DCC资源输出路径作为DCC服务器地址。
 
-![4-4-3](/IDE/layapackage/enterprise/addressable/apply/img/4-4-3.png)
+![4-4-3](./img/4-4-3.png)
 
 ### 4.5 更新资源
 
 当开发者需要对资源进行更新时，可以使用更新上一次构建的功能。
 
-![4-5-1](/IDE/layapackage/enterprise/addressable/apply/img/4-5-1.png)
+![4-5-1](./img/4-5-1.png)
 
 更新上一次构建生成的资源包会根据开发者此时激活的构建配置，存放在构建输出目录中与构建配置同名的文件夹中。
 
@@ -244,11 +244,11 @@ export class NewScript extends Laya.Script {
 
 这里我们将3.2.1中使用的预制体改名为了aaa
 
-![4-5-2](/IDE/layapackage/enterprise/addressable/apply/img/4-5-2.png)
+![4-5-2](./img/4-5-2.png)
 
 重新构建资源后，在不修改任何代码的前提下，运行可以发现资源仍正常加载。
 
-![4-5-3](/IDE/layapackage/enterprise/addressable/apply/img/4-5-3.gif)
+![4-5-3](./img/4-5-3.gif)
 
 
 

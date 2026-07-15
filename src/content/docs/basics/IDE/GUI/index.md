@@ -16,7 +16,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 登录界面如图1-1所示。
 
-![](/basics/IDE/GUI/img/1-1.png) 
+![](./img/1-1.png) 
 
 (图1-1)
 
@@ -32,7 +32,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 效果如图2-1所示。
 
-![](/basics/IDE/GUI/img/2-1.png)
+![](./img/2-1.png)
 
 (图2-1)
 
@@ -40,13 +40,13 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 效果如图2-2所示。
 
-![](/basics/IDE/GUI/img/2-2.png)
+![](./img/2-2.png)
 
 (图2-2)
 
 在项目列表单元的右侧菜单里，有着项目相关的设置功能，分别是：设置项目图标、设置项目描述、打开项目的目录、将该项目从列表出移除。效果如动图2-3所示。
 
-![](/basics/IDE/GUI/img/2-3.gif)
+![](./img/2-3.gif)
 
 (动图2-3)
 
@@ -54,7 +54,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 点击导入项目，可以将其它电脑中创建的3.x项目或被移除列表的项目，导入到项目列表中。操作如图2-4所示。
 
-![](/basics/IDE/GUI/img/2-4.png)
+![](./img/2-4.png)
 
 (图2-4)
 
@@ -62,7 +62,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 如果要创建一个新的项目，我们可以点击创建项目，如图3-1所示，创建一个新的项目。
 
-![](/basics/IDE/GUI/img/3-1.png)
+![](./img/3-1.png)
 
 （图3-1）
 
@@ -70,7 +70,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 在创建新项目的界面，我们有三种类型的模板供开发者选择，如图3-2所示。
 
-![](/basics/IDE/GUI/img/3-2.png)
+![](./img/3-2.png)
 
 (图3-2)
 
@@ -84,7 +84,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 如图3-3所示。
 
-![](/basics/IDE/GUI/img/3-3.png)
+![](./img/3-3.png)
 
 (图3-3)
 
@@ -92,7 +92,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 如图3-4所示。
 
-![](/basics/IDE/GUI/img/3-4.png)
+![](./img/3-4.png)
 
 (图3-4)
 
@@ -100,7 +100,7 @@ LayaAir3.x由于在IDE内使用了资源商店，社区、IDE核心配置云存�
 
 完成以上选项后，点击创建项目，如图3-5所示。即可完成项目的创建，进入IDE编辑界面。如图3-5所示。
 
-![](/basics/IDE/GUI/img/3-5.png)
+![](./img/3-5.png)
 
 (图3-5)
 
@@ -118,7 +118,7 @@ https://store.layaair.com/
 
 帐号设置功能，当前仅支持退出登录。其它功能正在建设中。如图4-6所示。
 
-![](/basics/IDE/GUI/img/4-6.png) 
+![](./img/4-6.png) 
 
 (图4-6)
 
@@ -130,7 +130,7 @@ https://store.layaair.com/
 
 层级管理面板，主要包括了2D节点与3D节点，如果是纯粹的2D项目，也可以只包括2D节点。面板如图5-1所示。
 
-![](/basics/IDE/GUI/img/5-1.png) 
+![](./img/5-1.png) 
 
 (图5-1)
 
@@ -142,7 +142,7 @@ https://store.layaair.com/
 
 工程管理面板里，包括了项目全部的资源与代码。资源位于assets目录，代码位于src目录。面板如图5-2所示。
 
-![](/basics/IDE/GUI/img/5-2.png) 
+![](./img/5-2.png) 
 
 (图5-2)
 
@@ -150,7 +150,7 @@ https://store.layaair.com/
 
  UI布局小部件面板，包括了2D基础显示对象、UI组件、骨骼节点三部分，用于UI的排版与布局。面板如图5-3所示。
 
-![](/basics/IDE/GUI/img/5-3.png) 
+![](./img/5-3.png) 
 
 (图5-3)
 
@@ -158,7 +158,7 @@ https://store.layaair.com/
 
 场景视窗是编辑2D场景与3D场景的地方，是开发者可视化编辑虚拟世界的窗口。面板如动图5-4所示。
 
-![](/basics/IDE/GUI/img/5-4.gif) 
+![](./img/5-4.gif) 
 
 （动图5-4）
 
@@ -166,7 +166,7 @@ https://store.layaair.com/
 
 预览窗口是通过开发者布局编辑与代码逻辑展示给用户的视觉效果预览窗口。面板如图5-5所示。
 
-![](/basics/IDE/GUI/img/5-5.png) 
+![](./img/5-5.png) 
 
 （图5-5）
 
@@ -174,7 +174,7 @@ https://store.layaair.com/
 
 动画状态机，是控制时间轴动画逻辑的工具，动画状态机面板包括动画图层与状态机相关的功能。面板如图5-6所示。
 
-![](/basics/IDE/GUI/img/5-6.png) 
+![](./img/5-6.png) 
 
 （图5-6）
 
@@ -182,7 +182,7 @@ https://store.layaair.com/
 
 项目设置面板包括了屏幕适配设置、引擎初始化设置、项目启动设置等。面板如图5-7所示。
 
-![](/basics/IDE/GUI/img/5-7.png) 
+![](./img/5-7.png) 
 
 （图5-7）
 
@@ -190,7 +190,7 @@ https://store.layaair.com/
 
 控制台面板用来打印日志信息，可以复制和清空所打印的日志信息。面板如图5-8所示。
 
-![](/basics/IDE/GUI/img/5-8.png) 
+![](./img/5-8.png) 
 
 （图5-8）
 
@@ -198,7 +198,7 @@ https://store.layaair.com/
 
 时间轴动画面板用于2D与3D动画的编辑，有两个模式，分别是关键帧模式和曲线模式。如图5-9所示。
 
-![](/basics/IDE/GUI/img/5-9.png) 
+![](./img/5-9.png) 
 
 （图5-9）
 
@@ -210,25 +210,25 @@ https://store.layaair.com/
 
 **对象属性设置，如图6-1所示：**
 
-![](/basics/IDE/GUI/img/6-1.png) 
+![](./img/6-1.png) 
 
 （图6-1）
 
  **资源属性设置，如图6-2所示：**
 
-![](/basics/IDE/GUI/img/6-2.png) 
+![](./img/6-2.png) 
 
 （图6-2）
 
  **代码预览，如图6-3所示：**
 
-![](/basics/IDE/GUI/img/6-3.png)
+![](./img/6-3.png)
 
 （图6-3）
 
  **添加组件（自定义的属性），如图6-4所示：**
 
-![](/basics/IDE/GUI/img/6-4.png)  
+![](./img/6-4.png)  
 
 （图6-4）
 
@@ -240,7 +240,7 @@ https://store.layaair.com/
 
 场景文件打开的标签，都是同一个。点击预制体文件，会形成独立的预制体面板标签。效果如动图7-1所示。
 
-![](/basics/IDE/GUI/img/7-1.gif)
+![](./img/7-1.gif)
 
 （动图7-1）
 
@@ -252,7 +252,7 @@ https://store.layaair.com/
 
 打开Shader蓝图文件或Shader蓝图函数文件，即可进入蓝图编辑面板。如图动图7-2所示。
 
-![](/basics/IDE/GUI/img/7-2.gif)
+![](./img/7-2.gif)
 
 (动图7-2)
 
@@ -266,7 +266,7 @@ https://store.layaair.com/
 
 项目预览分为三种模式，分别是IDE内预览，浏览器预览，移动端预览。如图8所示。
 
-![](/basics/IDE/GUI/img/8.png)  
+![](./img/8.png)  
 
 （图8）
 
@@ -276,7 +276,7 @@ https://store.layaair.com/
 
 重新启动顾名思义，对当前预览运行场景进行重启，如图8-1所示。
 
-![](/basics/IDE/GUI/img/8-1.png) 
+![](./img/8-1.png) 
 
 （图8-1）
 
@@ -284,7 +284,7 @@ https://store.layaair.com/
 
 点击打开开发者工具会调出Developer Tools，方便开发者进行调试，也可以通过 `Ctrl + Alt + I` 快捷键来打开开发者工具。
 
-![](/basics/IDE/GUI/img/8-2.png) 
+![](./img/8-2.png) 
 
 （图8-2）
 
@@ -294,7 +294,7 @@ https://store.layaair.com/
 
 通过File菜单的Build调出发布界面，如图9所示。
 
-![9](/basics/IDE/GUI/img/9.png) 
+![9](./img/9.png) 
 
 （图9）
 

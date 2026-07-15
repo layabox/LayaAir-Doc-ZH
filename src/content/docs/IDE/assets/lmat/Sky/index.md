@@ -52,14 +52,14 @@ slug: "ide/assets/lmat/sky"
 | `tintColor` | Color | 颜色色调 |
 | `rotation` | number | 旋转角度 |
 
-<img src="/IDE/assets/lmat/Sky/img/2-1.png" style="zoom:50%;" />
+<img src="./img/2-1.png" style="zoom:50%;" />
 （图2-1）
 
 ### 2.2 立方体纹理
 
 天空盒材质的核心是立方体纹理（TextureCube），它由6张图片拼接而成，分别对应立方体的6个面。在IDE中，可以通过创建立方体贴图（CubeMap）资源来制作。
 
-<img src="/IDE/assets/lmat/Sky/img/2-2.gif" style="zoom:50%;" />
+<img src="./img/2-2.gif" style="zoom:50%;" />
 （图2-2）
 
 ### 2.3 代码示例
@@ -100,7 +100,7 @@ skyRenderer.mesh = Laya.SkyBox.instance;
 ### 3.2 全景纹理
 
 全景天空纹理是一张将360度全景视图展开为矩形的2D图片。推荐使用HDR格式的全景图以获得更好的光照效果。
-<img src="/IDE/assets/lmat/Sky/img/3-2.png" style="zoom:50%;" />
+<img src="./img/3-2.png" style="zoom:50%;" />
 （图3-2)
 
 ### 3.3 代码示例
@@ -153,14 +153,14 @@ skyRenderer.mesh = Laya.SkyDome.instance;
 | 1 | `SUN_SIMPLE` | 简化太阳，性能较好 |
 | 2 | `SUN_HIGH_QUALITY` | 高质量太阳，效果最佳 |
 
-<img src="/IDE/assets/lmat/Sky/img/4-1.png" style="zoom:50%;" />
+<img src="./img/4-1.png" style="zoom:50%;" />
 （图4-1）
 
 ### 4.3 大气厚度（atmosphereThickness）
 
 `atmosphereThickness` 属性模拟大气层的厚度。值越大，天空颜色越偏向暖色调（日落效果）；值较小时，天空呈现清澈的蓝色。
 
-<img src="/IDE/assets/lmat/Sky/img/4-2.png" style="zoom:50%;" />
+<img src="./img/4-2.png" style="zoom:50%;" />
 （图4-2）
 
 ### 4.4 代码示例

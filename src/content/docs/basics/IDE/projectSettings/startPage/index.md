@@ -14,7 +14,7 @@ slug: "basics/ide/projectsettings/startpage"
 
 启动页配置界面，如图1-1所示：
 
-![1-1](/basics/IDE/projectSettings/startPage/img/1-1.png) 
+![1-1](./img/1-1.png) 
 
 （图1-1）
 

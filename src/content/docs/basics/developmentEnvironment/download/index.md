@@ -34,7 +34,7 @@ npm -h
 
 按回车键后，如果能看到npm的命令说明、版本号，以及安装路径等信息，如图1-1所示（类似信息即可），那说明已经安装过了，如果不影响使用，可以跳过下载和安装node环境的步骤。
 
-![图1-1](/basics/developmentEnvironment/download/img/1-1.png) 
+![图1-1](./img/1-1.png) 
 
 (图1-1)
 
@@ -42,7 +42,7 @@ npm -h
 
 如果没有安装环境，而直接前往node官网下载安装即可，推荐LTS版本，如图1-2所示，URL地址为：https://nodejs.org/en/
 
-![图1-2](/basics/developmentEnvironment/download/img/1-2.png) 
+![图1-2](./img/1-2.png) 
 
 （图1-2）
 
@@ -52,7 +52,7 @@ npm -h
 
 下载完成后，找到刚刚下载的Node.js安装包，一步一步的安装即可，安装完全时界面如图1-3所示。
 
-![图1-3](/basics/developmentEnvironment/download/img/1-3.png)
+![图1-3](./img/1-3.png)
 （图1-3）
 
 安装完成之后，可以按2.1小节介绍的方式，在命令行下输入 `npm -h` 检查一下安装状态。
@@ -69,13 +69,13 @@ Node环境没问题后，就可以使用npm来安装TypeScript编译环境了。
 npm install -g typescript
 ```
 
-![图2-1](/basics/developmentEnvironment/download/img/2-1.png) 
+![图2-1](./img/2-1.png) 
 
 （图2-1）
 
 开发者如果安装时遇到图2-2的情况，通常是缓存冲突导致。（没遇到的直接跳过本步骤。）
 
-![图2-2](/basics/developmentEnvironment/download/img/2-2.png) 
+![图2-2](./img/2-2.png) 
 
 （图2-2）
 
@@ -94,7 +94,7 @@ npm cache clean --force
 
 当我们看到 “`All packages installed `”这些字样的时候，可以确认完成了 TypeScript 环境的安装，如图2-3所示，关闭命令行工具即可。
 
-![图2-3](/basics/developmentEnvironment/download/img/2-3.png)   
+![图2-3](./img/2-3.png)   
 （图2-3）
 
 图3-1中tsc目录中就是我们TypeScript编译环境的安装目录，有了这个，LayaAirIDE里就能通过这个Compiler将TypeScript编译成为JavaScript。
@@ -107,7 +107,7 @@ npm cache clean --force
 tsc -v
 ```
 
-![图2-4](/basics/developmentEnvironment/download/img/2-4.png)  
+![图2-4](./img/2-4.png)  
 
 （图2-4）
 

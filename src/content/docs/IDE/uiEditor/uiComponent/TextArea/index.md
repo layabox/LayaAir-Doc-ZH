@@ -14,7 +14,7 @@ slug: "ide/uieditor/uicomponent/textarea"
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/TextArea/img/1-1.png" alt="1-1" style="zoom: 80%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom: 80%;" />
 
 （图1-1）
 
@@ -22,7 +22,7 @@ slug: "ide/uieditor/uicomponent/textarea"
 
 ### 1.2 TextArea属性介绍
 
-![1-2](/IDE/uiEditor/uiComponent/TextArea/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -40,11 +40,11 @@ TextArea比TextInput多出的属性如下：
 
 TextArea是一个用于多行的文本域，相较于TextInput的区别是它可以添加垂直滚动条皮肤和水平滚动条皮肤。水平方向滚动效果如动图1-3所示，垂直方向滚动效果如动图1-4所示。
 
-![1-3](/IDE/uiEditor/uiComponent/TextArea/img/1-3.gif)
+![1-3](./img/1-3.gif)
 
 （动图1-3）
 
-![1-4](/IDE/uiEditor/uiComponent/TextArea/img/1-4.gif)
+![1-4](./img/1-4.gif)
 
 （动图1-4）
 
@@ -146,7 +146,7 @@ export class UI_TextArea extends Laya.Script {
 
 运行结果：
 
-![2-1](/IDE/uiEditor/uiComponent/TextArea/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1） 
 

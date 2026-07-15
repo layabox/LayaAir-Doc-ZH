@@ -8,7 +8,7 @@ slug: "basics/performanceoptimization/cacheas"
 
 ​	我们先看一下未使用CacheAs缓存功能的情况，如图1所示。在webgl的调试模式下，可以看到，DrawCall渲染次数为10（*该数据在优化后可以用于性能优化对比*）。
 
- ![imgage](/basics/PerformanceOptimization/cacheAs/img/1.png)<br/>
+ ![imgage](./img/1.png)<br/>
 （图1）
 
 
@@ -17,7 +17,7 @@ slug: "basics/performanceoptimization/cacheas"
 
 当我们使用cacheAs时，将cacheAs设置为“normal”模式，DrawCall未变，GPUMemory和TextureMemory下降了4M和3M多如图2所示。
 
-![图2](/basics/PerformanceOptimization/cacheAs/img/2.png) <br /> (图2)
+![图2](./img/2.png) <br /> (图2)
 
 **Tips**：
 
@@ -31,7 +31,7 @@ slug: "basics/performanceoptimization/cacheas"
 
 当我们使用cacheAs时，并将cacheAs设置为“bitmap”模式。DrawCall降到了4，只是修改了一个配置，性能上比不用cacheAs优化了1倍以上。效果如图3所示。
 
-![图3](/basics/PerformanceOptimization/cacheAs/img/3.png) <br /> (图3)
+![图3](./img/3.png) <br /> (图3)
 
 **Tips**：
 
@@ -59,7 +59,7 @@ Canvas下依然是画布缓存，在webgl模式下使用renderTarget缓存，相
 
 LayaAir引擎提供的DebugPanel调试工具可以帮助大家查看游戏重绘区，在代码中增加`DebugPanel.init();` 方法 ，编译运行项目后，浏览器中会出现调试窗口，如图4所示。
 
-![图3](/basics/PerformanceOptimization/cacheAs/img/4.png) <br /> (图4)
+![图3](./img/4.png) <br /> (图4)
 
 我们勾选“`显示当前cache重绘`”选项或“`显示所有重绘区域`”。如果UI进行重绘了，重绘区域会显示出绿色框线，绿色框的左上角显示了重绘次数与重绘时间，性能统计工具的Sprite、DrawCall等也会发生改变。
 

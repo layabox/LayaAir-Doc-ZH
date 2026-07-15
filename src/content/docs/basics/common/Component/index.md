@@ -52,7 +52,7 @@ ECS是Entity-Component-System（实体-组件-系统）的简写，这是一种�
 
 全部内置方法的构成如图2-1所示：
 
-![2-1](/basics/common/Component/images/2-1.png)
+![2-1](./images/2-1.png)
 
 （图2-1）组件脚本的生命周期方法
 
@@ -286,7 +286,7 @@ class DemoScript extends Laya.Script {
 
 基于上面的代码示例，为3D模型添加脚本。如动图2-2所示。
 
-![2-2](/basics/common/Component/images/2-2.gif)
+![2-2](./images/2-2.gif)
 
 （动图2-2）
 
@@ -383,13 +383,13 @@ export class Script extends Laya.Script {
 
 如图2-3所示，将组件脚本添加到Scene2D的属性面板后，先不勾选 Mouse Through，因为如果勾选它，Scene2D下鼠标事件将不会响应。如果是一个3D场景，它会传递到Scene3D中。
 
-![2-3](/basics/common/Component/images/2-3.png)
+![2-3](./images/2-3.png)
 
 （图2-3）
 
 运行项目，如动图2-4所示，当鼠标按下时执行onMouseDown，打印“onMouseDown”；松开鼠标，鼠标弹起时执行onMouseUp，打印“onMouseUp”。
 
-![2-4](/basics/common/Component/images/2-4.gif)
+![2-4](./images/2-4.gif)
 
 （动图2-4）
 
@@ -447,7 +447,7 @@ LayaAir分为2D节点与3D节点类型，当设置为2D节点Laya.Sprite时，�
 
 首先，如动图4-1所示，将场景中已经添加好的2D节点Sprite拖入到@property暴露的属性入口中，这样就获取到了此节点。
 
-![4-1](/basics/common/Component/images/4-1.gif)
+![4-1](./images/4-1.gif)
 
 （动图4-1）
 
@@ -472,7 +472,7 @@ export class NewScript extends Laya.Script {
 
 效果如图4-2所示：
 
-![4-2](/basics/common/Component/images/4-2.png)
+![4-2](./images/4-2.png)
 
 （图4-2）
 
@@ -482,7 +482,7 @@ export class NewScript extends Laya.Script {
 
 首先，如动图4-3所示，将场景中已经添加好的3D节点Cube拖入到@property暴露的属性入口中，这样就获取到了此节点。
 
-![4-3](/basics/common/Component/images/4-3.gif)
+![4-3](./images/4-3.gif)
 
 （动图4-3）
 
@@ -509,7 +509,7 @@ export class NewScript extends Laya.Script {
 
 效果如动图4-4所示：
 
-![4-4](/basics/common/Component/images/4-4.gif)
+![4-4](./images/4-4.gif)
 
 （动图4-4）
 
@@ -565,7 +565,7 @@ private prefabFromResource: Laya.Prefab;
 
 此时，需要按动图4-5所示，从assets目录下，拖入prefab资源。运行时会直接获取到加载实例化后的prefab。
 
-![4-5](/basics/common/Component/images/4-5.gif)
+![4-5](./images/4-5.gif)
 
 （动图4-5）
 

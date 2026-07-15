@@ -19,19 +19,19 @@ slug: "released/linux"
 
 在构建发布Liunx之前，我们需要先添加Linux的发布环境模块，如图2-1所示，点击`文件`菜单栏下的`添加模块`选项，
 
-![](/released/Linux/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
 当弹出图2-2所示的模块面板，选择Linux构建支持，点击安装即可。
 
-![2-2](/released/Linux/img/2-2.png) 
+![2-2](./img/2-2.png) 
 
 （图2-2）
 
 如果我们不先添加模块，当点击`构建Liunx`按钮后，也会提示先安装模块，如图2-3所示。
 
-![](/released/Linux/img/2-3.png) 
+![](./img/2-3.png) 
 
 （图2-3）
 
@@ -41,7 +41,7 @@ slug: "released/linux"
 
 在构建发布面板中，选择Linux，可以配置Linux的发布设置，如图3-1所示：
 
-![3-1](/released/Linux/img/3-1.png) 
+![3-1](./img/3-1.png) 
 
 （图3-1）
 
@@ -92,7 +92,7 @@ slug: "released/linux"
 ```
 执行命令后，可执行文件被写入install_cmake/bin目录。当前测试项目名称为LayaBox，如下图所示生成可执行文件为LayaBox，桌面环境下点击即可运行。 
 
-![4-1](/released/Linux/img/4-1.png) 
+![4-1](./img/4-1.png) 
 
 （图4-1）
 

@@ -10,7 +10,7 @@ slug: "basics/common/device/video"
 
 开发者可以在场景中添加视频节点，用于播放视频。程序运行时视频节点不会自动播放，需要开发者使用代码控制。有关视频节点的具体使用方法，可以参考[视频节点](/2d/displayobject/videonode/)。
 
-![1-1](/basics/common/device/video/img/1-1.gif)
+![1-1](./img/1-1.gif)
 
 
 
@@ -18,7 +18,7 @@ slug: "basics/common/device/video"
 
 开发者也可以使用Dom元素来播放视频，具体的使用方法[ LayaAir和原生Dom](/2d/dom/)这篇文档中的`LayaAir之Dom元素video`小节已有详细的讲解，这里不再重复。
 
-![](/basics/common/device/video/img/2-1.gif)
+![](./img/2-1.gif)
 
 
 
@@ -74,7 +74,7 @@ export class Script extends Laya.Script {
 
 效果如图所示：
 
-![3-1](/basics/common/device/video/img/3-1.gif)
+![3-1](./img/3-1.gif)
 
 下面我们来介绍一下videoTexture中常用的属性和方法，开发者也可以在[API文档](https://layaair.layabox.com/3.x/api/Chinese/index.html?version=3.0.0&type=Core&category=Media&class=laya.media.VideoTexture)中查看videoTexture的所有属性和方法。
 

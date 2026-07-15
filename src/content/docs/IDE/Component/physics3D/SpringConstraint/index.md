@@ -12,7 +12,7 @@ slug: "ide/component/physics3d/springconstraint"
 
 在 IDE 中添加弹簧约束组件后，属性面板如图1-1所示：
 
-<img src="/IDE/Component/physics3D/SpringConstraint/img/1-1.png" style="zoom:100%;" />
+<img src="./img/1-1.png" style="zoom:100%;" />
 
 （图1-1）
 
@@ -38,7 +38,7 @@ slug: "ide/component/physics3d/springconstraint"
 
 动图2-1演示了弹簧约束的效果，物体在弹簧力作用下产生弹性振荡：
 
-<img src="/IDE/Component/physics3D/SpringConstraint/img/2-1.gif" style="zoom:50%;" />
+<img src="./img/2-1.gif" style="zoom:50%;" />
 
 （动图2-1）
 

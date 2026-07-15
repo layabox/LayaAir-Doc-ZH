@@ -16,11 +16,11 @@ slug: "released/native/previewrunner"
 
 点击移动端预览按钮，然后点击运行器即可打开安装运行器用的二维码：
 
-<img src="/released/native/previewRunner/img/2-0-1.png" alt="2-0-1" width="400">
+<img src="./img/2-0-1.png" alt="2-0-1" width="400">
 
 打开后的二维码：
 
-<img src="/released/native/previewRunner/img/2-0-2.png" alt="2-0-2" width="400">
+<img src="./img/2-0-2.png" alt="2-0-2" width="400">
 
 安卓端和ios端安装的流程有所不同，这里分别进行说明。
 
@@ -38,19 +38,19 @@ slug: "released/native/previewrunner"
 
 **步骤1：**
 
-<img src="/released/native/previewRunner/img/2-3.png" alt="2-3" width="400">
+<img src="./img/2-3.png" alt="2-3" width="400">
 
  图1
 
 **步骤2：**
 
-<img src="/released/native/previewRunner/img/2-4.png" alt="2-4" width="400">
+<img src="./img/2-4.png" alt="2-4" width="400">
 
 图2
 
 **步骤3：**
 
-<img src="/released/native/previewRunner/img/2-5.png" alt="2-5" width="400">
+<img src="./img/2-5.png" alt="2-5" width="400">
 
 图3
 
@@ -68,31 +68,31 @@ slug: "released/native/previewrunner"
 
 **步骤5：**
 
-<img src="/released/native/previewRunner/img/2-6.png" alt="2-6" width="400">
+<img src="./img/2-6.png" alt="2-6" width="400">
 
  图4
 
 **步骤6：**
 
-<img src="/released/native/previewRunner/img/2-7.png" alt="2-7" width="400">
+<img src="./img/2-7.png" alt="2-7" width="400">
 
  图5
 
 **步骤7：**
 
-<img src="/released/native/previewRunner/img/2-8.png" alt="2-8" width="400">
+<img src="./img/2-8.png" alt="2-8" width="400">
 
 图6
 
 **步骤8：**
 
-<img src="/released/native/previewRunner/img/2-9.png" alt="2-9" width="400">
+<img src="./img/2-9.png" alt="2-9" width="400">
 
  图7
 
 **步骤9：**
 
-<img src="/released/native/previewRunner/img/2-10.png" alt="2-10" width="400">
+<img src="./img/2-10.png" alt="2-10" width="400">
 
 
 
@@ -102,15 +102,15 @@ slug: "released/native/previewrunner"
 
 打开应用之后，会看见如图8的界面：
 
-<img src="/released/native/previewRunner/img/3-1.png" alt="3-1" width="400">
+<img src="./img/3-1.png" alt="3-1" width="400">
 
 图8
 
 **步骤2：**
 
-使用LayaAirIDE打开案例项目，点击菜单栏最右侧的二维码图标<img src="/released/native/previewRunner/img/3-2.png" alt="3-2" width="40"> ，显示项目的二维码界面(如图9)。
+使用LayaAirIDE打开案例项目，点击菜单栏最右侧的二维码图标<img src="./img/3-2.png" alt="3-2" width="40"> ，显示项目的二维码界面(如图9)。
 
-<img src="/released/native/previewRunner/img/3-3.png" alt="3-3" width="300">
+<img src="./img/3-3.png" alt="3-3" width="300">
 
 图9
 
@@ -118,13 +118,13 @@ slug: "released/native/previewrunner"
 
 点击测试APP内的点击扫码（图10），**确保测试手机与项目所在电脑在同一个局域网下**，即可开启测试。
 
-<img src="/released/native/previewRunner/img/3-4.png" alt="3-4" width="300">
+<img src="./img/3-4.png" alt="3-4" width="300">
 
 图10
 
 扫码成功后，测试App会运行案例项目。
 
-<img src="/released/native/previewRunner/img/3-5.png" alt="3-5" width="500">
+<img src="./img/3-5.png" alt="3-5" width="500">
 
 
 

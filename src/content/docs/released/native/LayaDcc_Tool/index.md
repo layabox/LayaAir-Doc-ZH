@@ -51,15 +51,15 @@ DCC根文件又称为DCC头文件，指定了某一版的资源树，从这里�
 ## 二、界面
 LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如图2-2），Android（如图2-3）项目的时候，会有DCC相关选项。在勾选`使用DCC`后可以设置`根文件`的加载地址和`DCC服务器`的地址；勾选更新DCC后可设置`版本`和`版本描述`。
 
-![2-1](/released/native/LayaDcc_Tool/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
-![2-2](/released/native/LayaDcc_Tool/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
-![2-3](/released/native/LayaDcc_Tool/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -115,7 +115,7 @@ LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如
 
 这个目录在release/平台/dcc目录下，结构如图2-4所示，
 
-![2-4](/released/native/LayaDcc_Tool/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -139,7 +139,7 @@ LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如
 
 在构建发布中，勾选`打包资源`，并且保留`资源服务器URL`为空。
 
-![3-1](/released/native/LayaDcc_Tool/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -151,7 +151,7 @@ LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如
 
 构建发布时，设置资源服务器URL后，可以打包资源，也可以不打包。
 
-![3-2](/released/native/LayaDcc_Tool/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
@@ -159,7 +159,7 @@ LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如
 
 发布后，有一个resources目录，如图3-3所示，
 
-![3-3](/released/native/LayaDcc_Tool/img/3-3.png)
+![3-3](./img/3-3.png)
 
 （图3-3）
 
@@ -169,7 +169,7 @@ LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如
 
 选中`更新DCC`，以生成DCC数据。更改`更新DCC`下的`版本`后（1.0.1），点击构建发布，发布后，resource目录下的`.dcc`目录如图3-4所示，
 
-![3-4](/released/native/LayaDcc_Tool/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 

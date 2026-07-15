@@ -20,7 +20,7 @@ LayaAir 引擎采用多模块化设计，其核心目标是在**按需加载与�
 
 2D 模块组包含 2D 项目开发中常用的引擎功能模块，如图 1-1 所示。开发者可根据项目需求按需勾选。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-1.png) 
+![](./img/1-1.png) 
 
 （图1-1）
 
@@ -30,7 +30,7 @@ UI 系统基于精灵体系封装了一套常用的 UI 组件与布局能力，�
 
 模块选项中，**新 UI 系统**默认处于勾选状态。为兼容历史项目及旧版使用习惯，开发者也可选择 **经典 UI 系统**，或 **同时启用两套 UI 系统**。需要注意的是，同时使用两套 UI 系统将增加最终构建包体体积，如图 1-2 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-2.png) 
+![](./img/1-2.png) 
 
 （图1-2）
 
@@ -40,7 +40,7 @@ UI 系统基于精灵体系封装了一套常用的 UI 组件与布局能力，�
 
 在 IDE 中添加 2D 灯光组件时，系统会自动勾选对应引擎库，如图 1-3 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-3.png)  
+![](./img/1-3.png)  
 
 （图1-3）
 
@@ -50,7 +50,7 @@ UI 系统基于精灵体系封装了一套常用的 UI 组件与布局能力，�
 
 当使用 2D 线渲染器组件时，该模块为必选项，IDE 在添加组件时会自动启用，如图 1-4 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-4.png) 
+![](./img/1-4.png) 
 
 （图1-4）
 
@@ -60,7 +60,7 @@ UI 系统基于精灵体系封装了一套常用的 UI 组件与布局能力，�
 
 在使用 2D 拖尾渲染器组件时，需勾选该模块，IDE 会在添加组件时自动完成勾选，如图 1-5 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-5.png) 
+![](./img/1-5.png) 
 
 （图1-5）
 
@@ -70,7 +70,7 @@ UI 系统基于精灵体系封装了一套常用的 UI 组件与布局能力，�
 
 当使用 2D 粒子渲染器组件时，该模块必须启用，IDE 会自动检测并勾选，如图 1-6 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-6.png) 
+![](./img/1-6.png) 
 
 （图1-6）
 
@@ -80,7 +80,7 @@ UI 系统基于精灵体系封装了一套常用的 UI 组件与布局能力，�
 
 在使用瓦片地图层组件时，该模块为必选项，IDE 添加组件时会自动勾选，如图 1-7 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-7.png) 
+![](./img/1-7.png) 
 
 （图1-7）
 
@@ -88,7 +88,7 @@ UI 系统基于精灵体系封装了一套常用的 UI 组件与布局能力，�
 
 LayaAir 默认集成 **Box2D 物理引擎**，同时提供 **JS 版本**与 **Wasm 版本**，开发者可根据需求自行选择，如图 1-8 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-8.png) 
+![](./img/1-8.png) 
 
 （图1-8）
 
@@ -96,7 +96,7 @@ LayaAir 默认集成 **Box2D 物理引擎**，同时提供 **JS 版本**与 **Wa
 
 物理系统模块在使用任意物理相关组件时必须启用，IDE 在添加物理组件时会自动勾选对应引擎库，如图 1-9 所示。
 
- ![](/basics/IDE/projectSettings/engineModule/img/1-9.png) 
+ ![](./img/1-9.png) 
 
 （图1-9）
 
@@ -104,13 +104,13 @@ LayaAir 默认集成 **Box2D 物理引擎**，同时提供 **JS 版本**与 **Wa
 
 Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化后的运行时实现，目前支持 **Spine 3.7–4.2** 版本，如图 1-10 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-10.png) 
+![](./img/1-10.png) 
 
 （图1-10）
 
 使用 Spine 渲染器组件时，必须勾选对应的 Spine 动画模块，IDE 会自动完成勾选，如图 1-11 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-11.png) 
+![](./img/1-11.png) 
 
 （图1-11）
 
@@ -122,13 +122,13 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 当使用导航寻路相关组件时，该模块必须启用，IDE 添加组件时会自动勾选，如图 1-12 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-12.png) 
+![](./img/1-12.png) 
 
 （图1-12）
 
 导航寻路模块同样提供 **JS 版本**与 **Wasm 版本**，默认使用 JS 版本，开发者可根据需求进行切换，如图 1-13 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/1-13.png) 
+![](./img/1-13.png) 
 
 （图1-13）
 
@@ -142,7 +142,7 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 3D 模块组包含 3D 项目开发中常用的引擎功能模块，如图 2-1 所示。开发者可根据项目需求按需勾选。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图 2-1）
 
@@ -158,7 +158,7 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 在使用 3D 拖尾组件时，该模块为必选项，IDE 在添加组件时会自动检测并勾选，如图 2-2 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-2.png) 
+![](./img/2-2.png) 
 
 （图 2-2）
 
@@ -168,7 +168,7 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 当使用 3D 粒子渲染器组件时，该模块必须启用，IDE 添加组件时会自动完成勾选，如图 2-3 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-3.png) 
+![](./img/2-3.png) 
 
 （图 2-3）
 
@@ -178,7 +178,7 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 在启用 3D 相机的后处理功能并创建后处理实例后，该模块为必选项，IDE 会自动勾选对应引擎库，如图 2-4 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-4.png) 
+![](./img/2-4.png) 
 
 （图 2-4）
 
@@ -186,7 +186,7 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 3D 物理系统模块内置多种主流物理引擎实现，包含 **Bullet** 与 **PhysX**，并同时提供 **JS 版本**与 **Wasm 版本**，如图 2-5 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-5.png) 
+![](./img/2-5.png) 
 
 （图 2-5）
 
@@ -194,7 +194,7 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 在使用任意 3D 物理相关组件时，该模块必须启用，IDE 添加组件时会自动勾选，如图 2-6 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-6.png) 
+![](./img/2-6.png) 
 
 （图 2-6）
 
@@ -204,13 +204,13 @@ Spine 动画模块是基于 Spine 官方 JS 运行库进行适配与性能优化
 
 当使用 3D 导航寻路相关组件时，该模块为必选项，IDE 在添加组件时会自动勾选，如图 2-7 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-7.png) 
+![](./img/2-7.png) 
 
 （图2-7）
 
 该模块同样提供 **JS 版本**与 **Wasm 版本**，默认使用 JS 版本，开发者可根据实际需求进行切换，如图 2-8 所示。
 
-![](/basics/IDE/projectSettings/engineModule/img/2-8.png) 
+![](./img/2-8.png) 
 
 （图 2-8）
 

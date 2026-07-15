@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gprogressbar"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GProgressBar/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 - `Value` 进度值，应该在`Min`和`Max`之间。
 - `Min` 进度的最小值。
@@ -20,8 +20,8 @@ Author: 谷主
   
   -  比较以下两个进度条，第一个是正常的进度条，第二个是反向的。如图1-1所示：
   
-  <img src="/IDE/uiEditor/FairyGUI/GProgressBar/img/1-2.png" alt="1-2" style="zoom:100%;" />
-  <img src="/IDE/uiEditor/FairyGUI/GProgressBar/img/1-3.png" alt="1-3" style="zoom:100%;" />
+  <img src="./img/1-2.png" alt="1-2" style="zoom:100%;" />
+  <img src="./img/1-3.png" alt="1-3" style="zoom:100%;" />
   
   （图1-1）
 
@@ -39,6 +39,6 @@ Author: 谷主
 
 可以利用关联做出效果更丰富的进度条组件，例如下面这个进度条，会动的小松鼠建立了一个和bar部件“右->右”的关联，这样当进度变化时，小松鼠也跟着动了。如图1-2所示
 
-<img src="/IDE/uiEditor/FairyGUI/GProgressBar/img/1-4.png" alt="1-3" style="zoom:100%;" />
+<img src="./img/1-4.png" alt="1-3" style="zoom:100%;" />
 
 （图1-2）

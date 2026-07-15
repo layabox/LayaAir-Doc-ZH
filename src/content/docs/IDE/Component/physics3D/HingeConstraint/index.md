@@ -12,7 +12,7 @@ slug: "ide/component/physics3d/hingeconstraint"
 
 在 IDE 中添加铰链约束组件后，属性面板如图1-1所示：
 
-<img src="/IDE/Component/physics3D/HingeConstraint/img/1-2.png" style="zoom:100%;" />
+<img src="./img/1-2.png" style="zoom:100%;" />
 
 （图1-1）
 
@@ -55,7 +55,7 @@ slug: "ide/component/physics3d/hingeconstraint"
 
 动图2-1演示了铰链约束的效果，物体围绕铰链轴进行旋转运动：
 
-<img src="/IDE/Component/physics3D/HingeConstraint/img/2-1.gif" style="zoom:50%;" />
+<img src="./img/2-1.gif" style="zoom:50%;" />
 
 （动图2-1）
 

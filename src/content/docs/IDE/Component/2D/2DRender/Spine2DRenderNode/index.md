@@ -20,7 +20,7 @@ Spine 运行时则是官方提供的一系列开源库，LayaAir 引擎正是通
 
 当前，LayaAir支持Spine 3.7、3.8、4.0、4.1、4.2版本的运行时库，开发者可以通过IDE的`项目设置` -> `引擎模块`  -> 2D  -> Spine动画，选择Spine动画相应版本的Spine运行时，操作界面如图1-1所示。
 
-![1-1](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/1-1.png)  
+![1-1](./img/1-1.png)  
 
 （图1-1）
 
@@ -30,13 +30,13 @@ Spine 运行时则是官方提供的一系列开源库，LayaAir 引擎正是通
 
 当Spine的资源放到资源目录（assets）后，可以直接拖拽Spine文件（`.skel`或`.json`）到层级面板使用，此时，会自动创建一个2D精灵节点，并在这个节点上自动创建一个`Spine渲染器`的组件，并默认将Spine的源文件路径指到拖拽的Spine资源。如图1-2所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/1-2.png) 
+![](./img/1-2.png) 
 
 (图1-2)
 
 当然，开发者也可以在已创建的节点上，通过添加组件的方式，为节点添加`Spine渲染器`的组件，操作如动图1-3所示。
 
-![1-3](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/1-3.gif) 
+![1-3](./img/1-3.gif) 
 
 （动图1-3）
 
@@ -73,7 +73,7 @@ export class Demo extends Laya.Script {
 
 例如，设置渲染图层为`abc`之后，如图2-1所示。当允许接受光照后，当前节点的Spine动画可以被`图层遮罩`设置为 `abc` 的2D灯光所影响。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
@@ -85,7 +85,7 @@ export class Demo extends Laya.Script {
 
 如图2-2所示，两个同样的Spine动画，右侧的Spine被蓝色的2D方向光所影响了。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/2-2.png) 
+![](./img/2-2.png) 
 
 （图2-2）
 
@@ -101,7 +101,7 @@ Spine组件默认会开启 快速渲染，此状态下，会采用GPU运算等�
 
 当某个顶点的骨骼控制数量超过4个时，可能会导致渲染异常。引擎也会进行警告提醒，如图2-3所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/2-3.png) 
+![](./img/2-3.png) 
 
 （图2-3）
 
@@ -111,7 +111,7 @@ Spine组件默认会开启 快速渲染，此状态下，会采用GPU运算等�
 
 当Spine里存在多套皮肤的话，通过切换不同的皮肤名称，可以在IDE里预览不同皮肤的效果，如图2-4所示。
 
-![2-4](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -147,7 +147,7 @@ export class NewScript extends Laya.Script {
 
 使得开发者可以在IDE面板中，直接查看当前Spine动画的所有名称，用于切换和查看不同名称的动画效果。效果如图2-5所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/2-5.png) 
+![](./img/2-5.png) 
 
 (图2-5)
 
@@ -173,7 +173,7 @@ export class NewScript extends Laya.Script {
 
   如动图2-6所示，右侧女孩在`启用物理更新`后，头发与裙摆受物理力的影响，自然的摆动。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/2-6.gif) 
+![](./img/2-6.gif) 
 
 (动图2-6)
 
@@ -184,7 +184,7 @@ export class NewScript extends Laya.Script {
 
 这样一来，开发者即可基于锚点轻松完成动画的镜像、旋转等操作。如动图 2-7 所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/2-7.gif) 
+![](./img/2-7.gif) 
 
 (动图2-7)
 
@@ -210,7 +210,7 @@ export class NewScript extends Laya.Script {
 
 `外部皮肤 `右侧 `+` 号每次点击，都会创建了一个包含了`源文件` 和 `部件列表`的 子级对象属性。如图3-1所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/3-1.png) 
+![](./img/3-1.png) 
 
 （图3-1）
 
@@ -222,7 +222,7 @@ export class NewScript extends Laya.Script {
 
 如果当前组件下的Spine资源中有多套皮肤，仍然可以在外部皮肤的子对象列表中引用，如图3-2所示，注意不要在子对象中重复使用即可。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/3-2.png) 
+![](./img/3-2.png) 
 
 (图3-2)
 
@@ -234,7 +234,7 @@ export class NewScript extends Laya.Script {
 
 `插槽名称`是当前组件Spine资源文件中的所有插槽列表，开发者想替换哪个插槽，可以从列表中选择对应的插槽名称即可，如图3-3所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/3-3.png) 
+![](./img/3-3.png) 
 
 (图3-3)
 
@@ -244,13 +244,13 @@ export class NewScript extends Laya.Script {
 
 在Spine中，同一套皮肤下，会对应有不同的附件，效果如动图3-4所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/3-4.gif) 
+![](./img/3-4.gif) 
 
 (动图3-4)
 
 或者说，同一个附件名称，皮肤不同，外观也是不同的，效果如动图3-5所示，切换不同的皮肤名称，右腿的皮肤外观会产生变化。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/3-5.gif) 
+![](./img/3-5.gif) 
 
 (动图3-5)
 
@@ -258,7 +258,7 @@ export class NewScript extends Laya.Script {
 
 为了方便换装或换武器等需求，通常会把Spine整体拆分为一个个的部件，这个部件，在Spine中有一个专业的名词，叫`附件attachment`，附件需要通过插槽来连接。效果如动图3-6所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/3-6.gif) 
+![](./img/3-6.gif) 
 
 (动图3-6)
 
@@ -331,7 +331,7 @@ export class NewScript extends Laya.Script {
 
 代码运行效果如动图3-7所示。
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/3-7.gif) 
+![](./img/3-7.gif) 
 
 (动图3-7)
 
@@ -372,7 +372,7 @@ Laya.loader.load(["aa.json", "bb.json"], Laya.Loader.SPINE);
 
 以上操作如图4-1所示：
 
-![](/IDE/Component/2D/2DRender/Spine2DRenderNode/img/4-1.png) 
+![](./img/4-1.png) 
 
 （图4-1）
 

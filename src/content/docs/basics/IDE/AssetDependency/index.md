@@ -12,13 +12,13 @@ slug: "basics/ide/assetdependency"
 
 资源依赖面板默认位于属性设置面板右侧。如果被关闭，可通过顶部菜单栏的 ”面板 → 资源依赖 ” 重新打开，如图 1-1 所示。
 
-![](/basics/IDE/AssetDependency/img/1-1.png) 
+![](./img/1-1.png) 
 
 （图1-1）
 
 也可以在项目资源面板中，对任意资源右键选择 **“查找引用”**，直接跳转到资源依赖面板，如图 1-2 所示。
 
-![](/basics/IDE/AssetDependency/img/1-2.png) 
+![](./img/1-2.png) 
 
 (图1-2)
 
@@ -32,7 +32,7 @@ slug: "basics/ide/assetdependency"
 
 实际使用时，可在资源面板选中资源并右键 “查找引用”，或将资源拖放到引用输入框中，系统会立即列出所有引用该资源的场景、预制体和动画等，如图 2-1 所示。
 
-![](/basics/IDE/AssetDependency/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1） 
 
@@ -42,7 +42,7 @@ slug: "basics/ide/assetdependency"
 
 例如，当某个资源被删除后，组件的资源属性可能只剩下 `UUID`。只需在属性**输入框**中右键复制 `UUID`，并粘贴到“查找引用”的输入框中，就能找出所有引用这个丢失资源的地方，如图 2-2 所示。
 
-![](/basics/IDE/AssetDependency/img/2-2.png) 
+![](./img/2-2.png) 
 
 （图2-2）
 
@@ -52,13 +52,13 @@ slug: "basics/ide/assetdependency"
 
 我们只需要在“替换为”的资源输入框那里选择或拖入新的资源，再点击资源输入框右侧的替换按钮，如图2-3所示，即可批量替换结果列表中的全部引用。
 
-![](/basics/IDE/AssetDependency/img/2-3.png) 
+![](./img/2-3.png) 
 
 （图2-3）
 
 如果不希望某些引用参与替换，可以在列表中选中对应条目，右键选择 **“从列表中移除”**，即可将其排除在替换范围之外，如图 2-4 所示，使替换过程更安全、更灵活。
 
-![](/basics/IDE/AssetDependency/img/2-4.png) 
+![](./img/2-4.png) 
 
 （图2-4）
 
@@ -70,7 +70,7 @@ slug: "basics/ide/assetdependency"
 
 例如，一个预制体依赖哪些贴图、材质、模型、脚本文件等。如图3-1所示。
 
-![](/basics/IDE/AssetDependency/img/3-1.png) 
+![](./img/3-1.png) 
 
 （图3-1）
 
@@ -82,7 +82,7 @@ slug: "basics/ide/assetdependency"
 
 此时可在依赖结果列表中，对资源条目右键选择“在场景中查找引用”，即可在当前打开的场景层级面板中，列出所有引用了该资源的节点。如图3-2所示。
 
-![](/basics/IDE/AssetDependency/img/3-2.png) 
+![](./img/3-2.png) 
 
 （图3-2）
 

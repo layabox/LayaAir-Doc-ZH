@@ -24,7 +24,7 @@ LayaNative不仅支持把资源打包在assets目录下，还支持把资源打�
 
 把资源包制作为扩展文件：压缩cache文件，要求zip格式，文件结构必须保持与IDE发布生成的结构相同。即要让打包资源有效，结构就是“cache/dcc2.0/xxx”。
 
-![1-1](/released/native/apk_expansion/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -56,7 +56,7 @@ LayaNative不仅支持把资源打包在assets目录下，还支持把资源打�
 
 运行APP，看见下面的日志说明从主扩展包读取资源文件成功。
 
-![1-2](/released/native/apk_expansion/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 

@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "link:images": "node tools/link-doc-images.mjs",
+    "postinstall": "node tools/link-doc-images.mjs",
+    "dev": "node tools/link-doc-images.mjs && astro dev",
     "build": "astro build && node tools/add-lazy.mjs",
     "preview": "astro preview"
   },

@@ -14,7 +14,7 @@ slug: "ide/component/physics2d/revolutejoint"
 
 在勾选**启用马达**后，有两个关联的属性，马达速度`motorSpeed`与最大扭矩`maxMotorTorque`，如图1所示：
 
-![](/IDE/Component/physics2D/revoluteJoint/img/1.png)
+![](./img/1.png)
 
 （图1）
 
@@ -26,7 +26,7 @@ slug: "ide/component/physics2d/revolutejoint"
 
 动图2中对比了不同转速与方向的效果：
 
-<img src="/IDE/Component/physics2D/revoluteJoint/img/2.gif" alt="三个示例，分别是两个不同正速度旋转和一个负速度旋转" style="zoom:80%;" />
+<img src="./img/2.gif" alt="三个示例，分别是两个不同正速度旋转和一个负速度旋转" style="zoom:80%;" />
 
 （动图2）
 
@@ -34,7 +34,7 @@ slug: "ide/component/physics2d/revolutejoint"
 
 在勾选**角度限制**后，也有两个关联的属性，角度下限`lowerAngle`与角度上限`upperAngle`，如图3所示：
 
-![](/IDE/Component/physics2D/revoluteJoint/img/3.png)
+![](./img/3.png)
 
 (图3)
 
@@ -42,6 +42,6 @@ slug: "ide/component/physics2d/revolutejoint"
 
 当启用马达或施加外力的时候，关节的刚体会在该角度的范围内具有旋转的自由度。效果如动图4所示；
 
-![分别用带马达的限制效果和不带马达用鼠标力重力来演示限制效果](/IDE/Component/physics2D/revoluteJoint/img/4.gif)
+![分别用带马达的限制效果和不带马达用鼠标力重力来演示限制效果](./img/4.gif)
 
 （动图4）

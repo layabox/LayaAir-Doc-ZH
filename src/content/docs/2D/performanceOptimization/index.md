@@ -69,7 +69,7 @@ Laya.loader.load(assets).then(()=>{
 
 尝试尽量减少使用滤镜效果。将滤镜（BlurFilter和GlowFilter）应用于显示对象时，运行时将在内存中创建两张位图。其中每个位图的大小与显示对象相同。将第一个位图创建为显示对象的栅格化版本，然后用于生成应用滤镜的另一个位图：
 
-![5](/2D/performanceOptimization/img/1-1.png) 
+![5](./img/1-1.png) 
 
 （图1-1）
 
@@ -153,7 +153,7 @@ class Test {
 
 下面是笔者电脑上的运行时截图，FPS稳定于52上下。
 
-![1](/2D/performanceOptimization/img/2-1.png) 
+![1](./img/2-1.png) 
 
 （图2-1）
 
@@ -166,7 +166,7 @@ class Test {
  //...省略其他代码
 ```
 
-![2](/2D/performanceOptimization/img/2-2.png) 
+![2](./img/2-2.png) 
 
 （图2-2）
 
@@ -335,7 +335,7 @@ Laya.stage.on(Laya.Event.MOUSE_MOVE,this,function()
 });
 ```
 
-![图片1.png](/2D/performanceOptimization/img/3-1.png) 
+![图片1.png](./img/3-1.png) 
 
 （图3-1）
 
@@ -345,7 +345,7 @@ Laya.stage.on(Laya.Event.MOUSE_MOVE,this,function()
 Laya.stage.frameRate = Laya.Stage.FRAME_MOUSE;
 ```
 
-![图片1.png](/2D/performanceOptimization/img/3-2.png) 
+![图片1.png](./img/3-2.png) 
 
 （图3-2）
 
@@ -454,21 +454,21 @@ Laya.timer.callLater(this, update);
 
  选中 `Record JavaScript CPU Profile`，点击 Start 按钮或左上角的实心圆点，这个时候Chrome 就会开始记录当前网页的方法的执行。如图5-1所示。
 
-![图片1-1](/2D/performanceOptimization/img/5-1.png)
+![图片1-1](./img/5-1.png)
 （图5-1）
 
 #### 结束CPU性能分析器的监控
 
 结束这个性能分析器的监控记录需要点击Stop按钮（或左侧的红色实心圆圈）。如图5-2所示。
 
-![图片1-2](/2D/performanceOptimization/img/5-2.png)
+![图片1-2](./img/5-2.png)
 （图5-2）
 
 #### 查看CPU性能分析器的记录
 
 结束监控后，在左侧 Profiles 下会列出一个监控结果文件，单击可以打开此监控结果文件。如图5-3所示
 
-![图片1-3](/2D/performanceOptimization/img/5-3.png)
+![图片1-3](./img/5-3.png)
 （图5-3）
 
 监控结果是以数据表格形式展现的。我们可以根据消耗排行，找到Function中提供的函数名，针对性能消耗较大的地方进行优化。
@@ -481,7 +481,7 @@ Laya.timer.callLater(this, update);
 
 选中 `Take Heap Snapshot`，点击 `Take Snapshot` 按钮（也可以点击左边黑色实心圆圈），如图5-4所示，
 
-![图片2-1](/2D/performanceOptimization/img/5-4.png)
+![图片2-1](./img/5-4.png)
 （图5-4）
 
 生成的内存快照文件是以数据表格的形式记录了，当前网页对象的个数、所占的内存大小等。
@@ -490,18 +490,18 @@ Laya.timer.callLater(this, update);
 
 在启动内存分析后，很快就会在左侧的 Profiles 栏目下生成一个当前网页的内存快照记录文件。单击可以查看相关数据，如图5-5所示。
 
-![图片2-2](/2D/performanceOptimization/img/5-5.png)
+![图片2-2](./img/5-5.png)
 （图5-5）
 
 #### 内存快照分析
 
 在拍完第一个内存快照后，点击左上角的圆点，可以记录一个新的内存快照。单击选择第二个内存快照，可以选择 Comparison 模式对此第二个快照与第一个快照之间的变化。通过分析，对网页进行优化。
 
- ![图片1.png](/2D/performanceOptimization/img/5-6.png)
+ ![图片1.png](./img/5-6.png)
 
  （图5-6）
 
- ![图片1.png](/2D/performanceOptimization/img/5-7.png)
+ ![图片1.png](./img/5-7.png)
 
  （图5-7）
 

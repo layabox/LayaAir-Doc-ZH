@@ -10,7 +10,7 @@ Author: 谷主
 
 在编辑器里，不能直接创建GWindow节点。GWindow需要运行时构建，但它只是一个壳对象，我们需要在编辑器内为它制作窗口内容。窗口内容通常使用预制体方式制作。没有规定预制体的根节点是什么类型。通常我们会在这个预制体内放置一个名称固定为"frame"的节点，如下图，在这个例子中，frame是另外一个预制体，这样会更方便复用。
 
-<img src="/IDE/uiEditor/FairyGUI/GWindow/img/1-1.png" alt="1-1" style="zoom:70%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:70%;" />
 
 frame节点通常为GLabel类型，这样可以很方便的修改窗口的标题。另外，frame节点下约定名称的孩子节点可以激活一些常见的窗口功能：
 

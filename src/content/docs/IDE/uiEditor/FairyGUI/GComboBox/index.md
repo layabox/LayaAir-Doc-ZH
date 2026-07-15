@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gcombobox"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GComboBox/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 - `Title` 标题。必须先设置好`Title Widget`。
 - `Icon` 图标。必须先设置好`Icon Widget`。

@@ -54,7 +54,7 @@ LayaAir引擎支持多种材质类型，按用途可分为以下几类：
 2. 在弹出菜单中选择 `创建` → `材质`；
 3. 新创建的材质文件将出现在资源面板中，默认以 `New Material` 命名。
 
-![](/IDE/assets/lmat/img/2-1.gif)
+![](./img/2-1.gif)
 （图2-1）
 
 创建完成后，选中该材质文件，右侧的属性面板（Inspector）将显示材质的属性配置界面。
@@ -63,7 +63,7 @@ LayaAir引擎支持多种材质类型，按用途可分为以下几类：
 
 材质的外观效果由其使用的Shader决定。在属性面板中，可以通过切换Shader来更改材质类型：
 
-![](/IDE/assets/lmat/img/2-2.gif)
+![](./img/2-2.gif)
 （图2-2）
 
 IDE内置的Shader类型包括：BlinnPhong、PBR（Standard）、PBR（glTF）、Unlit、Sky Box、Sky Procedural、Sky Panoramic、Trail、ShurikenParticle等。

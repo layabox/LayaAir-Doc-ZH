@@ -12,7 +12,7 @@ slug: "ide/component/physics2d/distancejoint"
 
 根据距离关节的特点，这个关节的特色属性就是长度相关了，分别是长度、最小长度、最大长度，如图1所示：
 
-![](/IDE/Component/physics2D/distanceJoint/img/1.png)
+![](./img/1.png)
 
 (图1)
 
@@ -34,6 +34,6 @@ slug: "ide/component/physics2d/distancejoint"
 
 例如，钟摆示例中，如果不设置最小和最大长度，那震荡过程中，最短的弹性距离会小于长度的的设置，最大的弹性距离会大于长度的设置。而设置了最小和最大的长度后，最小和最大的振荡幅度范围会固定在这两个设定的范围区间。甚至是，当最小与最大长度保持一致时，直接不再振动，如同铁棍一样，关节约束的两个刚体固定在该长度的距离。效果如动图2所示。
 
-![](/IDE/Component/physics2D/distanceJoint/img/2.gif)
+![](./img/2.gif)
 
 (动图2)

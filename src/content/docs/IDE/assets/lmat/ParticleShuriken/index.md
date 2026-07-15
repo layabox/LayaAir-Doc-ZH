@@ -37,7 +37,7 @@ Material → ShurikenParticleMaterial
 | `colorB` | 设置颜色的B（蓝色）分量 |
 | `colorA` | 设置颜色的A（透明度）分量 |
 
-![](/IDE/assets/lmat/ParticleShuriken/img/2-1.png)
+![](./img/2-1.png)
 （图2-1）
 
 ### 2.2 贴图（texture）
@@ -46,7 +46,7 @@ Material → ShurikenParticleMaterial
 
 常见的粒子纹理包括：圆形渐变（用于火花）、烟雾形态、星形光芒、序列帧动画纹理等。
 
-![](/IDE/assets/lmat/ParticleShuriken/img/2-2.png)
+![](./img/2-2.png)
 （图2-2）
 
 ### 2.3 纹理平铺和偏移（tilingOffset）

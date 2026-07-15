@@ -22,7 +22,7 @@ LayaAir引擎中的Shader主要是围绕着.shader文件为核心，在引擎核
 
 在项目资源窗口右键菜单栏 -> 选择创建 -> 选择着色器（如图2-1所示），有两种内置的2D Shader可选。
 
-![2-1](/2D/advanced/customShader/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -32,7 +32,7 @@ LayaAir引擎中的Shader主要是围绕着.shader文件为核心，在引擎核
 
 LayaAir中Shader的应用主要体现在对不同材质效果的显示，通过对不同Shader的选择，材质随之改变，形成了各不相同的效果。如图2-2所示，在材质资源的“属性设置”面板中，可以选择自定义的Shader，而图中`Laya`中的Shader是引擎内置的Shader。
 
-![2-2](/2D/advanced/customShader/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -40,7 +40,7 @@ LayaAir中Shader的应用主要体现在对不同材质效果的显示，通过�
 
 > 每一种2D组件都有Material属性。
 
-![2-3](/2D/advanced/customShader/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -219,7 +219,7 @@ Shader3D End
 
 下图5-1展示了上述defines在材质的属性设置面板的效果，
 
-![5-1](/2D/advanced/customShader/img/5-1.png)
+![5-1](./img/5-1.png)
 
 （图5-1）
 
@@ -252,7 +252,7 @@ Shader3D End
 
 在材质的属性设置面板中，给u_mainTex添加纹理，会使A被勾选；给u_noiseMap添加纹理，会使B和C被勾选，效果如动图5-2所示。
 
-![5-2](/2D/advanced/customShader/img/5-2.gif)
+![5-2](./img/5-2.gif)
 
 （动图5-2）
 
@@ -304,7 +304,7 @@ styles更重要的功能是可以定义只用于UI而不属于uniform和define�
 
 RAIN和SNOWY在defines中，但是在styles中RAIN的inspector为null，所以不显示。SNOWY正常显示。weather是只用于UI而不属于uniform和define的属性，效果如图6-1所示。
 
-![6-1](/2D/advanced/customShader/img/6-1.png)
+![6-1](./img/6-1.png)
 
 （图6-1）
 
@@ -456,7 +456,7 @@ GLSL End
 
 最终的效果如动图7-1所示，通过宏开关控制图像是否为灰度图，可以看到勾选后变成了灰度图。
 
-<img src="/2D/advanced/customShader/img/7-1.gif" alt="7-1" style="zoom:80%;" />
+<img src="./img/7-1.gif" alt="7-1" style="zoom:80%;" />
 
 （动图7-1）
 
@@ -466,7 +466,7 @@ GLSL End
 
 在LayaAir-IDE中，可以创建三种内置的2D着色器，如图8-1所示，
 
-![8-1](/2D/advanced/customShader/img/8-1.png)
+![8-1](./img/8-1.png)
 
 （图8-1）
 
@@ -474,14 +474,14 @@ GLSL End
 
 - Texture（uv）类型，也就是2D纹理类型。可用于Sprite的材质赋值，如图8-2所示。不能用在BaseRenderNode2D类型上（例如，Mesh2DRender、Line2DRender、Trail2DRender）。
 
-![8-2](/2D/advanced/customShader/img/8-2.png)
+![8-2](./img/8-2.png)
 
 （图8-2）
 
 - Primitive（mesh）类型，也就是2D图形类型。可用于Sprite的材质赋值，与图8-2所示使用位置相同。与第一个类型的区别是，Primitive类型不能使用默认贴图，也就是Sprite不能给texture赋值。
 - BaseRender2D类型，也就是2D基础渲染类型。可用于Sprite的渲染组件赋值材质，不能用在图8-2中Sprite的材质。BaseRender2D可以接收2D光照类型，一般用在BaseRenderNode2D为基类的2D渲染组件（例如，Mesh2DRender、Line2DRender、Trail2DRender）上面，如图8-3所示。
 
-<img src="/2D/advanced/customShader/img/8-3.png" alt="8-3" style="zoom:50%;" />
+<img src="./img/8-3.png" alt="8-3" style="zoom:50%;" />
 
 （图8-3）
 

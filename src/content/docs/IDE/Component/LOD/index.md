@@ -22,11 +22,11 @@ LOD 技术允许引擎根据与摄像机的距离来相应减少为游戏对象�
 
 创建LODGroup组件的步骤：添加组件 -> 选择Rendering组件类型 -> 选择LOD Group组件
 
- ![image-20221205141318103](/IDE/Component/LOD/img/image-20221205141318103.png)
+ ![image-20221205141318103](./img/image-20221205141318103.png)
 
 图2-1
 
- ![image-20230116145332427](/IDE/Component/LOD/img/image-20230116145332427.png)
+ ![image-20230116145332427](./img/image-20230116145332427.png)
 
 图2-2
 
@@ -34,7 +34,7 @@ LOD 技术允许引擎根据与摄像机的距离来相应减少为游戏对象�
 
 通过调整不同LOD等级在LOD等级滑块上的占比来调整不同LOD的切换范围
 
- ![image-20230116150530688](/IDE/Component/LOD/img/image-20230116150530688.png)
+ ![image-20230116150530688](./img/image-20230116150530688.png)
 
 图2-3
 
@@ -44,7 +44,7 @@ LOD等级滑块被划分为一个从左到右范围为[100%, 0%]的区间, 每�
 
 #### 拓展  Mincull Rate
 
- <img src="/IDE/Component/LOD/img/image-20221205150533197.png" alt="image-20221205150533197" style="zoom:50%;" />
+ <img src="./img/image-20221205150533197.png" alt="image-20221205150533197" style="zoom:50%;" />
 
 图2-4
 
@@ -54,7 +54,7 @@ LOD等级滑块被划分为一个从左到右范围为[100%, 0%]的区间, 每�
 
 ### 2.3 Renders
 
- ![image-20230116151147848](/IDE/Component/LOD/img/image-20230116151147848.png)
+ ![image-20230116151147848](./img/image-20230116151147848.png)
 
 图2-5
 
@@ -68,7 +68,7 @@ Renders渲染器可以添加多个渲染对象在同一个LOD层级可以渲染�
 
 在美术软件创建好一个带有LOD层级网格资源，当导入引擎IDE之后，选择网格模型文件，勾选中导入设置中的Add Lod Group功能
 
- ![image-20221205151903478](/IDE/Component/LOD/img/image-20221205151903478.png)
+ ![image-20221205151903478](./img/image-20221205151903478.png)
 
 图3-1
 
@@ -78,9 +78,9 @@ Renders渲染器可以添加多个渲染对象在同一个LOD层级可以渲染�
 
 实际上LOD Cull Rate Array是Static Batch Volume的其中一个功能。
 
- ![image-20230117101546881](/IDE/Component/LOD/img/image-20230117101546881.png)
+ ![image-20230117101546881](./img/image-20230117101546881.png)
 
- ![image-20230117101208149](/IDE/Component/LOD/img/image-20230117101208149.png)
+ ![image-20230117101208149](./img/image-20230117101208149.png)
 
 LOD Cull Rate Array实际上是对这个Volume中的物体计算的Rate的N种等级的渲染。
 

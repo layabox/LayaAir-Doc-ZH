@@ -6,7 +6,7 @@ slug: "ide/uieditor/uicomponent/tab"
 
 Tab是导航标签组组件，用于定义选项卡按钮组，例如多页面切换显示，效果如动图1所示。Tab的详细属性可以参考[Tab API](https://layaair.com/3.x/api/Chinese/index.html?version=3.0.0&type=2D&category=UI&class=laya.ui.Tab)。
 
-![1](/IDE/uiEditor/uiComponent/Tab/img/1.gif)
+![1](./img/1.gif)
 
 （动图1）
 
@@ -18,13 +18,13 @@ Tab是导航标签组组件，用于定义选项卡按钮组，例如多页面�
 
 使用LayaAir IDE创建Tab非常简单，通过IDE的可视化操作，就可以实现组件的创建与布局，也是推荐使用的组件创建方式。可以从层级面板右键进行创建，也可以选择小部件面板里的Tab组件，拖拽进行添加，如图1-1所示。
 
-<img src="/IDE/uiEditor/uiComponent/Tab/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
 Tab组件的皮肤一般是竖向等分的两态图或三态图，默认的皮肤资源是三态的，如图1-2所示。
 
-![1-2](/IDE/uiEditor/uiComponent/Tab/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -36,7 +36,7 @@ Tab组件的皮肤一般是竖向等分的两态图或三态图，默认的皮�
 
 Tab组件的特有属性如下：
 
-<img src="/IDE/uiEditor/uiComponent/Tab/img/1-3.png" alt="1-3" style="zoom:80%;" />
+<img src="./img/1-3.png" alt="1-3" style="zoom:80%;" />
 
 （图1-3）
 
@@ -61,19 +61,19 @@ Tab组件的特有属性如下：
 
 Tab组件可以通过labels增加标签，如动图1-4中所示，默认的Tab组件中只有两个标签。如果想增加标签，只需在labels属性中增加即可，且修改标签中的文本内容也在该属性中设置。
 
-![1-4](/IDE/uiEditor/uiComponent/Tab/img/1-4.gif)
+![1-4](./img/1-4.gif)
 
 （动图1-4）
 
 改变Tab组件的布局方向与间距，可通过更改direction属性进行设置。默认是水平布局（horizontal），垂直布局是vertical。设置标签之间的间距可以通过space属性实现。操作如动图1-5所示。
 
-![1-5](/IDE/uiEditor/uiComponent/Tab/img/1-5.gif)
+![1-5](./img/1-5.gif)
 
 （动图1-5）
 
 设置Tab的默认选项可以通过selectedIndex属性实现。selectedIndex属性是用于改变Tab组件的索引值，默认不设置时，不选择任何选项，0为第1个标签，1为第2个标签……以此类推。效果如动图1-6所示。
 
-![1-6](/IDE/uiEditor/uiComponent/Tab/img/1-6.gif)
+![1-6](./img/1-6.gif)
 
 （动图1-6）
 
@@ -165,7 +165,7 @@ export class UI_Tab extends Laya.Script {
 
 运行效果如下动图所示：
 
-![2-1](/IDE/uiEditor/uiComponent/Tab/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

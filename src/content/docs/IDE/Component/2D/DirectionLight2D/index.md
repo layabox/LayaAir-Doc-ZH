@@ -16,7 +16,7 @@ slug: "ide/component/2d/directionlight2d"
 
 如动图1-1所示，在属性设置面板中，点击“增加组件”，选择“2D灯光->2D方向光”，即可添加方向光组件。
 
-![1-1](/IDE/Component/2D/DirectionLight2D/img/1-1.gif) 
+![1-1](./img/1-1.gif) 
 
 （动图1-1）
 
@@ -24,7 +24,7 @@ slug: "ide/component/2d/directionlight2d"
 
 如动图1-2所示，在层级面板中，添加2D灯光节点。
 
-![1-2](/IDE/Component/2D/DirectionLight2D/img/1-2.gif) 
+![1-2](./img/1-2.gif) 
 
 （动图1-2）
 
@@ -34,7 +34,7 @@ slug: "ide/component/2d/directionlight2d"
 
 方向光有一个特有的属性，那就是光源的方向。这个特性属性有两种表示方式，可以用角度表示，也可以用向量表示，其实是都是定义的光源方向。如图2-1所示。
 
-![](/IDE/Component/2D/DirectionLight2D/img/2-1.png) 
+![](./img/2-1.png) 
 
 (图2-1)
 
@@ -47,7 +47,7 @@ slug: "ide/component/2d/directionlight2d"
 
 光源的方向，从作用与效果上。不添加阴影是没有意义的。我们添加阴影可以查看光源方向变化对阴影的影响，如动图2-2所示，
 
-![](/IDE/Component/2D/DirectionLight2D/img/2-2.gif)
+![](./img/2-2.gif)
 
 （动图2-2）
 
@@ -130,7 +130,7 @@ export class DayNight extends Laya.Script {
 
 示例中的变暗效果如动图3-1所示，
 
-![](/IDE/Component/2D/DirectionLight2D/img/3-1.gif) 
+![](./img/3-1.gif) 
 
 （动图3-1）
 

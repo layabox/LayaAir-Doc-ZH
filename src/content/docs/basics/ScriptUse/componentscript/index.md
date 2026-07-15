@@ -14,23 +14,23 @@ UI与场景编辑、组件化开发、屏幕适配与抗锯齿的合集课程链
 
 LayaAir2.0开始，支持自定义脚本到编辑器，方便扩展已有组件功能
 
-![script1](/basics/ScriptUse/componentscript/img/5.jpg)
+![script1](./img/5.jpg)
 
 如果想在编辑器内展示脚本定义的属性，可用通过特殊注释来实现
 
 比如下面的脚本类：
 
-![script1](/basics/ScriptUse/componentscript/img/script1.jpg)
+![script1](./img/script1.jpg)
 
 在IDE内显示如下：
 
-![script1](/basics/ScriptUse/componentscript/img/script2.jpg)
+![script1](./img/script2.jpg)
 
 这样就可用在脚本里面设计显示参数，在IDE内输入参数，然后在脚本里面使用
 
 这种标记同时支持AS,JS,TS三种语言，甚至还可用只写标记，脚本本身没有具体实现（在继承属性时会用得到）
 
-![script1](/basics/ScriptUse/componentscript/img/script3.jpg)
+![script1](./img/script3.jpg)
 
 
 
@@ -127,4 +127,4 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 
 部分显示效果如下：
 
-![script1](/basics/ScriptUse/componentscript/img/111.png)
+![script1](./img/111.png)

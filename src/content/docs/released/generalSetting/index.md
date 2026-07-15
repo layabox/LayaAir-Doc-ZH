@@ -20,13 +20,13 @@ LayaAir 支持当前主流平台的发布能力，包括网页端、移动端（
 
 开发者可以通过 IDE 顶部菜单栏中的 **“文件” → “构建发布”** 打开构建发布面板。该面板可以自由停靠在 IDE 的中间区域，方便进行构建配置，如图1-1所示：  
 
-<img src="/released/generalSetting/img/1-1.png" alt="1-1" style="zoom:80%;" />  
+<img src="./img/1-1.png" alt="1-1" style="zoom:80%;" />  
 
 （图1-1）  
 
 在通用面板的底部，默认提供了 **“构建 Web”** 与 **“构建其它”** 两个快捷按钮。开发者既可以直接点击按钮进行快速构建，如图1-2所示。也可以在左侧平台列表中选择目标平台，进入对应的配置面板后再进行构建发布。  
 
-![](/released/generalSetting/img/1-2.png)  
+![](./img/1-2.png)  
 
 (图1-2)  
 
@@ -62,7 +62,7 @@ Liunx是指发布到 《[Liunx平台](/released/linux/)》，直接运行于Liun
 
 点击构建按钮后，IDE 会自动切换到 **“构建发布任务”** 面板。在发布过程完成后，开发者可以通过选中对应的历史记录来执行一系列操作，例如：打开发布目录、查看构建日志、重新构建、直接运行、扫码运行或删除构建目录。如图1-3所示。  
 
-![](/released/generalSetting/img/1-3.png)  
+![](./img/1-3.png)  
 
 (图1-3)  
 
@@ -78,7 +78,7 @@ Liunx是指发布到 《[Liunx平台](/released/linux/)》，直接运行于Liun
 
 作为 Native 包，名称将作为包名，以及窗体上的默认名称。如图2-1所示。
 
-![](/released/generalSetting/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
@@ -88,7 +88,7 @@ Liunx是指发布到 《[Liunx平台](/released/linux/)》，直接运行于Liun
 
 设置后，系统会优先显示该名称，而不是项目的名称。  如图2-2所示。
 
-![](/released/generalSetting/img/2-2.png) 
+![](./img/2-2.png) 
 
 (图2-2)
 
@@ -153,13 +153,13 @@ Source Map（源代码映射）是一种用于调试和开发的技术，它建�
 
 第二，assets目录下，所有采用resources命名的目录下的所有资源，都会被自动合并复制到发布目录下的resources目录内。如图4-1所示。
 
-![](/released/generalSetting/img/4-1.png) 
+![](./img/4-1.png) 
 
 (图4-1)
 
 第三，除以上两种规则外，在`始终包含的资源目录`配置中的目录，也会被复制到发布目录中。如图4-2所示。
 
-![](/released/generalSetting/img/4-2.png) 
+![](./img/4-2.png) 
 
 （图4-2）
 
@@ -184,7 +184,7 @@ Source Map（源代码映射）是一种用于调试和开发的技术，它建�
 
   如图5-1所示。
 
-![](/released/generalSetting/img/5-1.png) 
+![](./img/5-1.png) 
 
 （图5-1）
 
@@ -194,7 +194,7 @@ Source Map（源代码映射）是一种用于调试和开发的技术，它建�
 
 启用版本管理后，除引擎自带的入口文件外，其余未被忽略的文件名称都会附加一个由指定算法和长度生成的版本标签，如图6-1所示。  
 
-![](/released/generalSetting/img/6-1.png) 
+![](./img/6-1.png) 
 
 (图6-1)
 
@@ -228,26 +228,26 @@ Source Map（源代码映射）是一种用于调试和开发的技术，它建�
 
 启用 `开启远程主包` 后，需要设置资源服务器地址 `mainPackageRemoteUrl`，作为资源加载的路径前缀，如图7-1所示。  
 
-![](/released/generalSetting/img/7-1.png) 
+![](./img/7-1.png) 
 (图7-1)
 
 配置完成后，发布流程会将所有资源单独输出到一个名为 **`目标平台-remote`** 的目录中。  
 
 该目录中的内容需要上传到远程服务器，而原始的发布目录不再包含项目资源，仅包含入口文件、引擎库（libs）和项目脚本（js），如图7-2所示。 
 
-![](/released/generalSetting/img/7-2.png)   
+![](./img/7-2.png)   
 
 (图7-2)
 
 在开发或测试阶段，如果暂时没有远程服务器，可以直接在 **远程资源目录** 下启动一个本地 Web 服务（如使用 `anywhere`），并将该服务的访问地址配置为资源服务器 URL，如图7-3所示。
 
-![](/released/generalSetting/img/7-3.png) 
+![](./img/7-3.png) 
 
 (图7-3)
 
 发布完成后，可以通过调试工具验证资源加载情况。此时，资源的请求路径将指向配置的远程地址，而非项目的启动 URL，如图7-4所示。  
 
-![](/released/generalSetting/img/7-4.png) 
+![](./img/7-4.png) 
 
 (图7-4)
 
@@ -257,7 +257,7 @@ Source Map（源代码映射）是一种用于调试和开发的技术，它建�
 
 开启分包后，可以配置一个或多个分包，以及WASM分包，如图7-5所示。
 
-![](/released/generalSetting/img/7-5.png) 
+![](./img/7-5.png) 
 
 (图7-5)
 
@@ -268,13 +268,13 @@ Source Map（源代码映射）是一种用于调试和开发的技术，它建�
 `资源文件夹` 指定了每个分包的根目录路径。  
 通常我们会将目录命名为 `sub1`、`sub2` 等，再通过选择或拖拽的方式，将该目录绑定到 `资源文件夹` 配置项中，如图7-6所示。  
 
-![](/released/generalSetting/img/7-6.png)  
+![](./img/7-6.png)  
 
 (图7-6)
 
 需要注意：如果分包目录中的资源不在“包含场景”里，而是依赖代码动态加载，则必须将分包目录额外添加到 **始终包含的资源目录** 中如图7-7所示，否则发布时可能被忽略。
 
-![](/released/generalSetting/img/7-7.png) 
+![](./img/7-7.png) 
 
 （图7-7）
 
@@ -284,7 +284,7 @@ Source Map（源代码映射）是一种用于调试和开发的技术，它建�
 
 入口脚本的主要作用是代码分包。可接收 `脚本集定义`文件，如图7-8所示：
 
-![7-8](/released/generalSetting/img/7-8.png)
+![7-8](./img/7-8.png)
 
 （图7-8）
 
@@ -328,7 +328,7 @@ Laya.loader.loadPackage("NewFolder", "http://cdn.cn/"); //"http://cdn.cn/"是网
 
 当同时勾选 `启动时自动加载` 和 `是否远程包`，会显示 远程地址`remoteUrl` 这个参数，如动图7-9所示。
 
-![](/released/generalSetting/img/7-9.gif) 
+![](./img/7-9.gif) 
 
 （动图7-9）
 
@@ -340,7 +340,7 @@ Laya.loader.loadPackage("NewFolder", "http://cdn.cn/"); //"http://cdn.cn/"是网
 
 勾选`开启分包`和`WASM分包`后，发布时会筛选所有以"`.wasm`"结尾的文件（且文件属性勾选 `导入为插件`），当存在符合条件的`WASM`文件时，构建发布系统会自动创建一个分包配置对象 `wasmSubpackage` ，设置为`启动时自动加载`。并在资源输出目录中自动创建一个"`wasm_files"`文件夹，将符合条件的"`.wasm`"结尾的文件都复制到这个文件夹中，如图7-10所示。
 
-![](/released/generalSetting/img/7-10.png) 
+![](./img/7-10.png) 
 
 （图7-10）
 

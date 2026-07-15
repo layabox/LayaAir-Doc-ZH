@@ -14,13 +14,13 @@ Panel是一个带有裁剪功能的面板容器类，常用来设置元素的显
 
 通过IDE的可视化操作可以直接在层级面板对Panel进行创建，如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/Panel/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
 给Panel设置宽高（例如：`200*200`）。然后给Panel组件添加子节点，放入一张图片（`512*313`）。显示效果以及层级结构如图1-2所示。
 
-<img src="/IDE/uiEditor/uiComponent/Panel/img/1-2.png" alt="1-2" style="zoom:50%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom:50%;" />
 
 （图1-2）
 
@@ -32,7 +32,7 @@ Panel是一个带有裁剪功能的面板容器类，常用来设置元素的显
 
 Panel组件的特有属性如下：
 
-![1-3](/IDE/uiEditor/uiComponent/Panel/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -50,13 +50,13 @@ Panel组件的特有属性如下：
 
 **除List组件外，Panel是唯一一个可以设置滚动条的容器组件**。对Panel设置水平与垂直都滚动的效果如下：
 
-![1-4](/IDE/uiEditor/uiComponent/Panel/img/1-4.gif)
+![1-4](./img/1-4.gif)
 
 （动图1-4）
 
 开启橡皮筋回弹效果ElasticEnabled后，当滑块滚动到边界时，滑块会继续滚动一段距离，然后回弹。橡皮筋效果如动图1-5所示，这样可以增加滚动的流畅性和用户体验。
 
-![1-5](/IDE/uiEditor/uiComponent/Panel/img/1-5.gif)
+![1-5](./img/1-5.gif)
 
 （动图1-5）
 
@@ -126,7 +126,7 @@ export class UI_Panel extends Laya.Script {
 
 效果如下动图所示：
 
-![2-1](/IDE/uiEditor/uiComponent/Panel/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

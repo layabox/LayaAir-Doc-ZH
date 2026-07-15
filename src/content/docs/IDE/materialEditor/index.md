@@ -10,7 +10,7 @@ slug: "ide/materialeditor"
 
 我们可以在IDE的项目面板内创建材质，创建材质操作如动图1-1所示：
 
-<img src="/IDE/materialEditor/img/1-1.gif" style="zoom: 33%;" /> 
+<img src="./img/1-1.gif" style="zoom: 33%;" /> 
 
 动图1-1
 
@@ -20,7 +20,7 @@ slug: "ide/materialeditor"
 
 创建完材质之后我们看到右侧的Inspector面板上会出现新的属性说明，当我们选中创建的材质后，属性面板便会显示当前材质的属性内容，属性面板主要由材质基础属性与材质效果展示两部分组成，如图2-1所示，我们详细说明下材质属性面板的组成。
 
-<img src="/IDE/materialEditor/img/2-1.png" style="zoom: 33%;" /> 
+<img src="./img/2-1.png" style="zoom: 33%;" /> 
 
 图2-1
 
@@ -28,7 +28,7 @@ slug: "ide/materialeditor"
 
 材质是根据不同的着色器模型来描述不同表面的，IDE内置了八种着色器类型，我们根据着色器类型来说明每种着色器对应材质的基础属性，**切换材质的着色器是通过选择材质的Shader来实现的**，具体操作图动图2-1-1所示，来切换到其他类型的着色器。
 
-<img src="/IDE/materialEditor/img/2-1-1.gif" style="zoom: 50%;" /> 
+<img src="./img/2-1-1.gif" style="zoom: 50%;" /> 
 
 动图2-1-1
 
@@ -44,7 +44,7 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 可以设置材质的漫反射贴图的内容，示例使用一个砖块的贴图，效果如动图2-1-1-2-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-1-2-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-2-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-1-2-1
 
@@ -52,7 +52,7 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 可以设置材质的整体漫反射颜色，如动图2-1-1-3所示：
 
-<img src="/IDE/materialEditor/img/2-1-1-3.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-3.gif" style="zoom: 33%;" /> 
 
 动图2-1-1-3
 
@@ -64,11 +64,11 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 用来设置物体表面的高光镜面反射，根据物体当前顶点的uv在高光贴图上的rgb数值来反映物体当前顶点的光滑反射程度，如图2-1-1-5-1与图2-1-1-5-2所示：
 
-<img src="/IDE/materialEditor/img/2-1-1-5-1.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-5-1.png" style="zoom: 33%;" /> 
 
 图2-1-1-5-1
 
-<img src="/IDE/materialEditor/img/2-1-1-5-2.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-5-2.png" style="zoom: 33%;" /> 
 
 图2-1-1-5-2
 
@@ -78,7 +78,7 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 可以设置高光部分的颜色，如图2-1-1-6所示，将高光颜色设置为了绿色：
 
-<img src="/IDE/materialEditor/img/2-1-1-6.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-6.png" style="zoom: 33%;" /> 
 
 图2-1-1-6
 
@@ -86,11 +86,11 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 用来设置高光的范围，效果如图2-1-1-7-1与2-1-1-7-2在不同的光泽度下的对比：
 
-<img src="/IDE/materialEditor/img/2-1-1-7-1.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-7-1.png" style="zoom: 33%;" /> 
 
 图2-1-1-7-1
 
-<img src="/IDE/materialEditor/img/2-1-1-7-2.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-7-2.png" style="zoom: 33%;" /> 
 
 图2-1-1-7-2
 
@@ -100,11 +100,11 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 用来设置物体模型在切线空间下的法线，用于光照的计算，**需要模型带有切线数据**。 如图2-1-1-8-1与图2-1-1-8-2所示，在法线贴图参与下的光照与着色更为真实。
 
-<img src="/IDE/materialEditor/img/2-1-1-8-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-1-8-1.png" style="zoom:33%;" /> 
 
 图2-1-1-8-1
 
-<img src="/IDE/materialEditor/img/2-1-1-8-2.png" style="zoom:33%;" /> 
+<img src="./img/2-1-1-8-2.png" style="zoom:33%;" /> 
 
 图2-1-1-8-2
 
@@ -114,13 +114,13 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 这个需要配合材质的渲染模式为CUTOUT来使用，在CUTOUT模式下，当前顶点的片元颜色值的alpha小于AlphaTestValue时，这个片元的值会被直接丢弃，不进行渲染，我们使用一张蛛网的图作为漫反射贴图，通过调整AlphaTestValue的值来查看这个值的效果。蛛网图如2-1-1-9-1所示，AlphaTestValue的值如动图2-1-1-9-2所示：
 
-<img src="/IDE/materialEditor/img/2-1-1-9-1.png" style="zoom:50%;" /> 
+<img src="./img/2-1-1-9-1.png" style="zoom:50%;" /> 
 
 图2-1-1-9-1
 
 镂空部分的alpha通道值为0
 
-<img src="/IDE/materialEditor/img/2-1-1-9-2.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-9-2.gif" style="zoom: 33%;" /> 
 
 动图2-1-1-9-2
 
@@ -130,7 +130,7 @@ Blinn-Phong光照模型能够简单描述物体表面对光的吸收与反射，
 
 可以设置物体模型uv的缩放与偏移，来实现采样AlbedoTexture的不同效果，如动图2-1-1-10所示：
 
-<img src="/IDE/materialEditor/img/2-1-1-10.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-1-10.gif" style="zoom: 33%;" /> 
 
 动图2-1-1-10
 
@@ -182,11 +182,11 @@ Unlit着色器是不受光的材质，不会受到光照的影响，只靠材质
 
 设置用来描述物体描边颜色的贴图，如图2-1-2-2-1与图2-1-2-2-2所示，在设置贴图之后，物体表面根据uv来显示对应贴图部位的颜色，且能看到在场景中存在光的情况下，不会收到光照的影响。
 
-<img src="/IDE/materialEditor/img/2-1-2-2-1.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-2-2-1.png" style="zoom: 33%;" /> 
 
 图2-1-2-2-1
 
-<img src="/IDE/materialEditor/img/2-1-2-2-2.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-2-2-2.png" style="zoom: 33%;" /> 
 
 图2-1-2-2-2
 
@@ -194,7 +194,7 @@ Unlit着色器是不受光的材质，不会受到光照的影响，只靠材质
 
 同样AlbedoColor能够叠加颜色到物体表面，如图2-1-2-3-1所示，我们叠加一个红色到物体表面：
 
-<img src="/IDE/materialEditor/img/2-1-2-3-1.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-2-3-1.png" style="zoom: 33%;" /> 
 
 图2-1-2-3-1
 
@@ -202,7 +202,7 @@ Unlit着色器是不受光的材质，不会受到光照的影响，只靠材质
 
 这个同样也是需要在渲染模式为CUTOUT的模式下才生效，并配合使用，与Blinn-Phong着色器相同，也是通过判断当前顶点片元的alpha值与设置的AlphaTestValue的值大小，小于AlphaTestValue的值的都会被丢弃不进行渲染，我们还是使用上面Blinn-Phong着色器使用的蛛网贴图，来看下不同alphaTestValue的值的处理，如动图2-1-2-4-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-2-4-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-2-4-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-2-4-1
 
@@ -212,7 +212,7 @@ Unlit着色器是不受光的材质，不会受到光照的影响，只靠材质
 
 用来设置物体模型UV的缩放与偏移，与Blinn-Phong着色器的效果相同，如动图2-1-2-5-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-2-5-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-2-5-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-2-5-1
 
@@ -264,7 +264,7 @@ Front：剔除前面
 
 PBR材质是一种基于物理的渲染材质，可以提供灯光与曲面交互方式的精确表示，可以更为真实的描述物体表面性质。我们使用基于图像照明(IBL)的光照模式来更好的展示PBR的属性，我们需要将场景的环境光来源从SolidColor转化成球谐，并点击下面的GenerateLighing生成一个IBL的立方体贴图CubeMap，如图2-1-3-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-3-1.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-3-1.png" style="zoom: 33%;" /> 
 
 图2-1-3-1
 
@@ -272,11 +272,11 @@ PBR材质是一种基于物理的渲染材质，可以提供灯光与曲面交�
 
 为了设置物体表面材质的整体纹理，同样使用上面的墙体作为贴图，如图2-1-3-1-1与图2-1-3-1-2所示，设置AlbedoTexture的效果：
 
-<img src="/IDE/materialEditor/img/2-1-3-1-1.png" style="zoom: 33%;" />  
+<img src="./img/2-1-3-1-1.png" style="zoom: 33%;" />  
 
 图2-1-3-1-1
 
-<img src="/IDE/materialEditor/img/2-1-3-1-2.png" style="zoom: 33%;" />  
+<img src="./img/2-1-3-1-2.png" style="zoom: 33%;" />  
 
 图2-1-3-1-2
 
@@ -284,7 +284,7 @@ PBR材质是一种基于物理的渲染材质，可以提供灯光与曲面交�
 
 可以叠加一个整体的颜色到物体的表面上，如图2-1-3-2-1所示我们叠加一个黄色到材质上：
 
-<img src="/IDE/materialEditor/img/2-1-3-2-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-3-2-1.png" style="zoom:33%;" /> 
 
 图2-1-3-2-1
 
@@ -292,7 +292,7 @@ PBR材质是一种基于物理的渲染材质，可以提供灯光与曲面交�
 
 用来设置物体的表面金属光泽度的效果，一般我们使用使用0与1来设置物体的金属度，完全没有或者完全存在，当金属度为1时，能够反射出周围环境的内容。想象下当我们看向一个表面光滑的金属球时，它会反射出我们的脸。这样在IDE内我们已经设置了基于IBL的球谐立方体贴图作为环境光，当我们将材质的金属度越来越接近1时，物体表面会反射出周围环境的内容，同时我们将光滑度设置为1，这样能够更清楚的看到效果，如动图2-1-3-3-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-3-3-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-3-3-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-3-3-1
 
@@ -302,7 +302,7 @@ PBR材质是一种基于物理的渲染材质，可以提供灯光与曲面交�
 
 用来设置物体表面的光滑度，光滑度为0时，物体表面的漫反射明显，高光不足，光滑度为1时，高光部分更为明显。如动图2-1-3-4-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-3-4-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-3-4-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-3-4-1
 
@@ -318,7 +318,7 @@ MetallicGloassTextureAlpha：从MetallicGloass贴图的alpha通道来获取物�
 
 当设置了从贴图的alpha通道来获取光滑度值时，可以通过设置这个缩放值来控制贴图alpha通道下的整体光滑值。我们设置光滑度来源为albedoTexture的alpha值，并使用上面的蛛网贴图作为albedo贴图，如动图2-1-3-6-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-3-6-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-3-6-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-3-6-1
 
@@ -326,11 +326,11 @@ MetallicGloassTextureAlpha：从MetallicGloass贴图的alpha通道来获取物�
 
 设置物体的法线贴图，会根据物体法线贴图来计算光照，如图2-1-3-7-1与图2-1-3-7-2所示，设置法线贴图后，光照的高光部分与漫反射部分重新计算了：
 
- <img src="/IDE/materialEditor/img/2-1-3-7-1.png" style="zoom: 33%;" />
+ <img src="./img/2-1-3-7-1.png" style="zoom: 33%;" />
 
 图2-1-3-7-1
 
-<img src="/IDE/materialEditor/img/2-1-3-7-2.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-3-7-2.png" style="zoom: 33%;" /> 
 
 图2-1-3-7-2
 
@@ -350,7 +350,7 @@ MetallicGloassTextureAlpha：从MetallicGloass贴图的alpha通道来获取物�
 
 叠加的整体的自发光颜色，在漫反射部分会更为明显，如图2-1-3-10-1所示，叠加一个红色的自发光颜色：
 
-<img src="/IDE/materialEditor/img/2-1-3-10-1.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-3-10-1.png" style="zoom: 33%;" /> 
 
 图2-1-3-10-1
 
@@ -358,7 +358,7 @@ MetallicGloassTextureAlpha：从MetallicGloass贴图的alpha通道来获取物�
 
 设置自发光贴图可以根据模型来对不同的顶点位置叠加上面设置的自发光颜色，如图2-1-3-10-2所示：
 
-<img src="/IDE/materialEditor/img/2-1-3-10-2.png" style="zoom: 33%;" /> 
+<img src="./img/2-1-3-10-2.png" style="zoom: 33%;" /> 
 
 图2-1-3-10-2
 
@@ -370,11 +370,11 @@ MetallicGloassTextureAlpha：从MetallicGloass贴图的alpha通道来获取物�
 
 可以设置存放物体表面材质金属度与光滑度的贴图，贴图的r通道存放模型材质的金属度信息，贴图的a通道存放模型材质的光滑度信息，下面我们使用一张纯黑与纯白的贴图来展示金属光滑度贴图对PBR材质的影响，如图2-1-3-12-1与图2-1-3-12-2所示：
 
-<img src="/IDE/materialEditor/img/2-1-3-12-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-3-12-1.png" style="zoom:33%;" /> 
 
 图2-1-3-12-1
 
-<img src="/IDE/materialEditor/img/2-1-3-12-2.png" style="zoom:33%;" /> 
+<img src="./img/2-1-3-12-2.png" style="zoom:33%;" /> 
 
 图2-1-3-12-2
 
@@ -428,13 +428,13 @@ Front：剔除前面
 
 粒子着色器用来设置粒子的表面显示，主要用于粒子特效中。我们需要在场景中创建一个粒子系统，如动图2-1-4-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-4-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-4-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-4-1
 
 同时需要将材质赋值给粒子系统，如动图2-1-4-2所示：
 
-<img src="/IDE/materialEditor/img/2-1-4-2.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-4-2.gif" style="zoom: 33%;" /> 
 
 动图2-1-4-2
 
@@ -444,7 +444,7 @@ Front：剔除前面
 
 用来设置粒子材质的颜色，如图2-1-4-1-1所示，我们设置为红色的粒子颜色，粒子系统此时发出的粒子变为红色：
 
-<img src="/IDE/materialEditor/img/2-1-4-1-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-4-1-1.png" style="zoom:33%;" /> 
 
 图2-1-4-1-1
 
@@ -452,7 +452,7 @@ Front：剔除前面
 
 用来设置粒子的纹理样式，如图2-1-4-2-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-4-2-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-4-2-1.png" style="zoom:33%;" /> 
 
 图2-1-4-2-1
 
@@ -504,13 +504,13 @@ Front：剔除前面
 
 Trail着色器用来实现拖尾的效果，我们需要拖尾特效对象来对应实现，在场景中创建一个拖尾特效对象入动图2-1-5-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-5-1.gif" style="zoom:67%;" /> 
+<img src="./img/2-1-5-1.gif" style="zoom:67%;" /> 
 
 动图2-1-5-1
 
 我们给拖尾特效对象添加对应的材质如动图2-1-5-2所示，将myMaterial材质添加到拖尾特效对象上：
 
-![](/IDE/materialEditor/img/2-1-5-2.gif) 
+![](./img/2-1-5-2.gif) 
 
 动图2-1-5-2
 
@@ -520,7 +520,7 @@ Trail着色器用来实现拖尾的效果，我们需要拖尾特效对象来对
 
 用来设置拖尾的颜色，如动图2-1-5-1-1所示，我们设置一个红色作为拖尾颜色：
 
-<img src="/IDE/materialEditor/img/2-1-5-1-1.gif" style="zoom:67%;" /> 
+<img src="./img/2-1-5-1-1.gif" style="zoom:67%;" /> 
 
 动图2-1-5-1-1
 
@@ -528,11 +528,11 @@ Trail着色器用来实现拖尾的效果，我们需要拖尾特效对象来对
 
 用来设置拖尾的形状，如动图2-1-5-2-2中，我们添加一个图2-1-5-2-1作为贴图使用，拖尾着色器使用ADDITIVE模式实现透明叠加的效果：
 
-![](/IDE/materialEditor/img/2-1-5-2-1.jpg) 
+![](./img/2-1-5-2-1.jpg) 
 
 图2-1-5-2-1
 
-<img src="/IDE/materialEditor/img/2-1-5-2-2.gif" style="zoom:67%;" /> 
+<img src="./img/2-1-5-2-2.gif" style="zoom:67%;" /> 
 
 动图2-1-5-2-2
 
@@ -582,13 +582,13 @@ Front：剔除前面
 
 天空盒着色器用来设置场景的天空盒样式，天空盒需要一个立方体贴图来进行采样，我们首先需要新建一个立方体贴图，并根据天空盒的上下左右前后面来设置贴图，如动图2-1-6-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-6-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-6-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-6-1
 
 设置天空盒需要修改Scene3D的天空盒材质，如动图2-1-6-2所示：
 
-<img src="/IDE/materialEditor/img/2-1-6-2.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-6-2.gif" style="zoom: 33%;" /> 
 
 动图2-1-6-2
 
@@ -596,7 +596,7 @@ Front：剔除前面
 
 叠加颜色到天空盒上，如图2-1-6-1-1所示，设置一个淡红色，使整个天空发红：
 
-<img src="/IDE/materialEditor/img/2-1-6-1-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-6-1-1.png" style="zoom:33%;" /> 
 
 图2-1-6-1-1
 
@@ -604,7 +604,7 @@ Front：剔除前面
 
 用来设置天空盒的曝光度，当曝光为0时，天空盒为黑色；随着曝光值的增大，逐渐显示正常的立方体贴图颜色，随后会由于过曝导致天空盒全变为白色。如动图2-1-6-2-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-6-2-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-6-2-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-6-2-1
 
@@ -716,7 +716,7 @@ Front：剔除前面
 
 太阳的圆盘大小设置，如图2-1-8-1-1所示，设置太阳大小为0.1：
 
-<img src="/IDE/materialEditor/img/2-1-8-1-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-8-1-1.png" style="zoom:33%;" /> 
 
 图2-1-8-1-1
 
@@ -740,7 +740,7 @@ Front：剔除前面
 
 太阳的大小收敛，值越小，整体的太阳圆盘越大，只在SUN_HIGH_QUALITY的模式下生效。如动图2-1-8-3-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-8-3-1.gif" style="zoom:33%;" /> 
+<img src="./img/2-1-8-3-1.gif" style="zoom:33%;" /> 
 
 动图2-1-8-3-1
 
@@ -748,11 +748,11 @@ Front：剔除前面
 
 大气层的密度，更高密度的大气会吸收更多的颜色，如图2-1-8-4-1在密度为1时，与图2-1-8-4-2在密度为2时所示：
 
-<img src="/IDE/materialEditor/img/2-1-8-4-1.png" style="zoom:33%;" /> 
+<img src="./img/2-1-8-4-1.png" style="zoom:33%;" /> 
 
 图2-1-8-4-1
 
-<img src="/IDE/materialEditor/img/2-1-8-4-2.png" style="zoom:33%;" /> 
+<img src="./img/2-1-8-4-2.png" style="zoom:33%;" /> 
 
 图2-1-8-4-2
 
@@ -768,7 +768,7 @@ Front：剔除前面
 
 通过曝光值来设置天空盒的明暗，如动图2-1-8-7-1所示：
 
-<img src="/IDE/materialEditor/img/2-1-8-7-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-1-8-7-1.gif" style="zoom: 33%;" /> 
 
 动图2-1-8-7-1
 
@@ -818,7 +818,7 @@ Front：剔除前面
 
 可以通过点击右侧的方块键来切换不同mesh下材质的效果，如动图2-2-1所示：
 
-<img src="/IDE/materialEditor/img/2-2-1.gif" style="zoom: 33%;" /> 
+<img src="./img/2-2-1.gif" style="zoom: 33%;" /> 
 
 动图2-2-1
 
@@ -826,7 +826,7 @@ Front：剔除前面
 
 可以通过点击右侧的灯泡按键来切换材质在受光与不受光的效果，如动图2-2-2所示：
 
-<img src="/IDE/materialEditor/img/2-2-2.gif" style="zoom: 33%;" /> 
+<img src="./img/2-2-2.gif" style="zoom: 33%;" /> 
 
 动图2-2-2
 
@@ -834,13 +834,13 @@ Front：剔除前面
 
 当我们调整材质的属性为我们想要的效果之后，就可以将材质赋值给场景中的物体，设置物体的材质有两种方法可以使用，分别是下列动图3-1与动图3-2所示：
 
-<img src="/IDE/materialEditor/img/3-1.gif" style="zoom: 33%;" /> 
+<img src="./img/3-1.gif" style="zoom: 33%;" /> 
 
 动图3-1
 
 上面动图3-1可以直接将材质拖拽到Scene窗口内的物体上，或者也可以按照动图3-2所示，在对应物体的渲染器上选择相应的材质。
 
-<img src="/IDE/materialEditor/img/3-2.gif" style="zoom: 33%;" /> 
+<img src="./img/3-2.gif" style="zoom: 33%;" /> 
 
 动图3-2
 

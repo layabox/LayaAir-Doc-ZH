@@ -14,7 +14,7 @@ HBox其本质是容器类组件，所有的容器类组件都继承自Box，HBox
 
 通过IDE的可视化操作可以直接在层级面板对HBox进行创建，如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/HBox/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -24,7 +24,7 @@ HBox其本质是容器类组件，所有的容器类组件都继承自Box，HBox
 
 HBox的特有属性如下：
 
-![1-2](/IDE/uiEditor/uiComponent/HBox/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -38,31 +38,31 @@ HBox的特有属性如下：
 
 space属性就是设置子对象之间的水平间隔，以像素为单位，可以自行输入数字，也可以通过鼠标左键长按滑动来输入数值。假设HBox有三个Button组件子对象，调节space属性的效果如动图1-3所示。
 
-![1-3](/IDE/uiEditor/uiComponent/HBox/img/1-3.gif)
+![1-3](./img/1-3.gif)
 
 （动图1-3）
 
 HBox的子节点无论在IDE中怎样排列，在设置了align属性后都会变成相对应的垂直排序，如动图1-4所示。
 
-![1-4](/IDE/uiEditor/uiComponent/HBox/img/1-4.gif)
+![1-4](./img/1-4.gif)
 
 （动图1-4）
 
 不勾选跳过隐藏节点效果如动图1-5所示，这里将位图字体“2”的disable属性设置为true，可以看到排列时中间会产生空位。
 
-![1-5](/IDE/uiEditor/uiComponent/HBox/img/1-5.gif)
+![1-5](./img/1-5.gif)
 
 （动图1-5）
 
 勾选跳过隐藏节点效果如动图1-6所示，这里将位图字体“2”的disable属性设置为true，可以看到排列时“2”不进行排列。
 
-![1-6](/IDE/uiEditor/uiComponent/HBox/img/1-6.gif)
+![1-6](./img/1-6.gif)
 
 （动图1-6）
 
 自适应宽高主要为宽高自适应模式和高度自适应模式如图1-7所示。
 
-![1-8](/IDE/uiEditor/uiComponent/HBox/img/1-8.png)
+![1-8](./img/1-8.png)
 
 （图1-7）
 

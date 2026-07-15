@@ -8,19 +8,19 @@ slug: "ide/particleeditor2d"
 
 在LayaAir引擎中，2D粒子系统可以用于模拟雨、雪、烟、雾、火焰等非固定形态的效果。这些效果往往很难用一张图片来实现，需要多张图片组合在一起来实现效果，而这种组合中的最小单元就是2D粒子。
 
-![1-1](/IDE/particleEditor2D/img/1-1.gif)
+![1-1](./img/1-1.gif)
 
 ## 二、LayaAir引擎中创建2D粒子
 
 开发者可以在2D中创建一个精灵节点，然后在属性设置面板中为这个节点添加2D粒子渲染器。
 
-![2-1](/IDE/particleEditor2D/img/2-1.png)
+![2-1](./img/2-1.png)
 
 ## 三、2D粒子的使用
 
 ### 2D粒子渲染器
 
-![3-1-1](/IDE/particleEditor2D/img/3-1-1.png)
+![3-1-1](./img/3-1-1.png)
 
 **`渲染图层`**：用于2D灯光组件的图层遮罩所影响的图层。
 
@@ -36,59 +36,59 @@ slug: "ide/particleeditor2d"
 
 **`Constant`**：设置属性的常量值，该值在粒子整个生命周期内不会发生变化。
 
-![3-1-1-1](/IDE/particleEditor2D/img/3-1-1-1.png)
+![3-1-1-1](./img/3-1-1-1.png)
 
 
 
 **`TwoConstants`**：设置一个最大值和一个最小值作为常量区间，每个粒子实际的属性值会在常量区间内随机变化。
 
-![3-1-1-2](/IDE/particleEditor2D/img/3-1-1-2.png)
+![3-1-1-2](./img/3-1-1-2.png)
 
 
 
 **`Curve`**：设置一条曲线，每个粒子的属性值会随粒子的生命周期而沿曲线变化。
 
-![3-1-1-3](/IDE/particleEditor2D/img/3-1-1-3.png)
+![3-1-1-3](./img/3-1-1-3.png)
 
 横坐标为粒子的生命周期，是一个归一化的值；纵坐标为属性值。
 
-![3-1-1-4](/IDE/particleEditor2D/img/3-1-1-4.png)
+![3-1-1-4](./img/3-1-1-4.png)
 
 
 
 **`TwoCurves`**：设置两条曲线，作为属性值的上限与下限。在粒子的生命周期中，粒子会在两条曲线上取值作为这一时刻的属性值范围，并在这个范围内取一个随机值作为属性值。
 
-![3-1-1-5](/IDE/particleEditor2D/img/3-1-1-5.png)
+![3-1-1-5](./img/3-1-1-5.png)
 
 
 
 **`Color`**：设置一个固定的颜色作为属性值。
 
-![3-1-1-6](/IDE/particleEditor2D/img/3-1-1-6.png)
+![3-1-1-6](./img/3-1-1-6.png)
 
 
 
 **`TwoColors`**：设置两个固定颜色值，每个粒子实际的属性值由这两个颜色值随机线性插值得到。
 
-![3-1-1-7](/IDE/particleEditor2D/img/3-1-1-7.png)
+![3-1-1-7](./img/3-1-1-7.png)
 
 
 
 **`Gradient`**：设置一个颜色渐变，在粒子的生命周期中，每个粒子实际的属性值会根据颜色渐变而变化。
 
-![3-1-1-8](/IDE/particleEditor2D/img/3-1-1-8.png)
+![3-1-1-8](./img/3-1-1-8.png)
 
 
 
 **`TwoGradients`**：设置两个颜色渐变，在粒子的生命周期中，粒子会在两个颜色渐变上取值，并将得到的两个颜色值随机线性插值作为这一时刻的属性值。
 
-![3-1-1-9](/IDE/particleEditor2D/img/3-1-1-9.png)
+![3-1-1-9](./img/3-1-1-9.png)
 
 
 
 #### 通用
 
-![3-1-2-1](/IDE/particleEditor2D/img/3-1-2-1.png)
+![3-1-2-1](./img/3-1-2-1.png)
 
 **`Duration`**：粒子系统运行的持续时间。到达设置的时间后，系统停止发射粒子。
 
@@ -108,7 +108,7 @@ slug: "ide/particleeditor2d"
 
 `Start Size`：每个粒子的初始大小。有两种模式可供选择：`Constant`和`TwoConstants`。
 
-![3-1-2-2](/IDE/particleEditor2D/img/3-1-2-2.png)
+![3-1-2-2](./img/3-1-2-2.png)
 
 
 
@@ -118,7 +118,7 @@ slug: "ide/particleeditor2d"
 
 `Start Size Y`：每个粒子在Y轴上的初始大小。有两种模式可供选择：`Constant`和`TwoConstants`。
 
-![3-1-2-3](/IDE/particleEditor2D/img/3-1-2-3.png)
+![3-1-2-3](./img/3-1-2-3.png)
 
 
 
@@ -132,11 +132,11 @@ slug: "ide/particleeditor2d"
 
 `Local`：粒子生成后跟随粒子发射器坐标的移动而移动，这个模式下，粒子发射器的移动会表现在每个粒子上。
 
-![3-1-2-4](/IDE/particleEditor2D/img/3-1-2-4.gif)
+![3-1-2-4](./img/3-1-2-4.gif)
 
 `World`：粒子生成后不跟随粒子发射器，直接在世界坐标系中移动。
 
-![3-1-2-5](/IDE/particleEditor2D/img/3-1-2-5.gif)
+![3-1-2-5](./img/3-1-2-5.gif)
 
 
 
@@ -158,7 +158,7 @@ slug: "ide/particleeditor2d"
 
 #### 发射
 
-![3-1-3-1](/IDE/particleEditor2D/img/3-1-3-1.png)
+![3-1-3-1](./img/3-1-3-1.png)
 
 **`Enable`**：是否启用发射模块。只有在启用此属性时，系统才会发射粒子。当创建新的粒子系统时，此属性会默认启用。
 
@@ -168,7 +168,7 @@ slug: "ide/particleeditor2d"
 
 **`Bursts`**：爆发器，用于控制粒子系统在指定的时间点生成指定数量的粒子。一个粒子系统中可以添加多个爆发器。
 
-![3-1-3-2](/IDE/particleEditor2D/img/3-1-3-2.png)
+![3-1-3-2](./img/3-1-3-2.png)
 
 爆发器上有两个属性：
 
@@ -178,7 +178,7 @@ slug: "ide/particleeditor2d"
 
 爆发器的效果如图所示，可以看到，粒子系统在一瞬间创建了大量粒子。
 
-![3-1-3-3](/IDE/particleEditor2D/img/3-1-3-3.gif)
+![3-1-3-3](./img/3-1-3-3.gif)
 
 
 
@@ -186,17 +186,17 @@ slug: "ide/particleeditor2d"
 
 该模块用于控制粒子的初始位置以及粒子起始速度的方向。粒子会在shape范围内的随机位置生成。
 
-![3-1-4-1](/IDE/particleEditor2D/img/3-1-4-1.png)
+![3-1-4-1](./img/3-1-4-1.png)
 
 **`Enable`**：是否启用Shape模块。启用此属性后，粒子会在Shape范围内的随机位置生成。禁用此属性后，粒子会在组件所属节点的锚点处生成。
 
 **`Shape`**：粒子发射器的形状。有四种形状可以选择，每种形状的属性值各不相同。
 
-![3-1-4-2](/IDE/particleEditor2D/img/3-1-4-2.png)
+![3-1-4-2](./img/3-1-4-2.png)
 
 **`FanShape`**：扇形区域。粒子会像手电筒的光一样从一个扇形区域向外移动。
 
-![3-1-4-3](/IDE/particleEditor2D/img/3-1-4-3.png)
+![3-1-4-3](./img/3-1-4-3.png)
 
 `Angle`：扇形圆心角的角度.
 
@@ -208,13 +208,13 @@ slug: "ide/particleeditor2d"
 
 通过在粒子渲染器上添加爆发器，我们可以清楚的看到发射器的形状。
 
-![3-1-4-4](/IDE/particleEditor2D/img/3-1-4-4.gif)
+![3-1-4-4](./img/3-1-4-4.gif)
 
 
 
 **`Circle2DShape`**：圆形区域。粒子会向四面八方发射。
 
-![3-1-4-5](/IDE/particleEditor2D/img/3-1-4-5.png)
+![3-1-4-5](./img/3-1-4-5.png)
 
 `Radius`：圆形的半径。
 
@@ -222,25 +222,25 @@ slug: "ide/particleeditor2d"
 
 `Random Dirction`：随机方向。未启用此属性时，粒子的速度方向为圆心到粒子生成位置的向量；启用此属性后，粒子的速度方向随机。
 
-![3-1-4-6](/IDE/particleEditor2D/img/3-1-4-6.gif)
+![3-1-4-6](./img/3-1-4-6.gif)
 
 
 
 **`Box2DShape`**：盒子形区域，所有粒子会向一个方向发射。
 
-![3-1-4-7](/IDE/particleEditor2D/img/3-1-4-7.png)
+![3-1-4-7](./img/3-1-4-7.png)
 
 `Size`：盒子的大小。
 
 `Randomize Direction`：随机方向，启用此属性后粒子将向随机方向移动，而不是同一个方向。
 
-![3-1-4-8](/IDE/particleEditor2D/img/3-1-4-8.gif)
+![3-1-4-8](./img/3-1-4-8.gif)
 
 
 
 **`SemicircleShape`**：半圆形区域。
 
-![3-1-4-9](/IDE/particleEditor2D/img/3-1-4-9.png)
+![3-1-4-9](./img/3-1-4-9.png)
 
 `Radius`：半圆的半径。
 
@@ -248,7 +248,7 @@ slug: "ide/particleeditor2d"
 
 `Random Dirction`：随机方向。未启用此属性时，粒子的速度方向为圆心到粒子生成位置的向量；启用此属性后，粒子的速度方向随机。
 
-![3-1-4-10](/IDE/particleEditor2D/img/3-1-4-10.gif)
+![3-1-4-10](./img/3-1-4-10.gif)
 
 
 
@@ -258,7 +258,7 @@ slug: "ide/particleeditor2d"
 
 **`Velocity2D Over LifeTime`**：粒子速度随生命周期的变化。
 
-![3-1-5-1](/IDE/particleEditor2D/img/3-1-5-1.png)
+![3-1-5-1](./img/3-1-5-1.png)
 
 `Enable`：是否启用此属性。
 
@@ -272,7 +272,7 @@ slug: "ide/particleeditor2d"
 
 **`Color Over LifeTime`**：粒子颜色随生命周期的变化。
 
-![3-1-5-2](/IDE/particleEditor2D/img/3-1-5-2.png)
+![3-1-5-2](./img/3-1-5-2.png)
 
 `Enable`：是否启用此属性。
 
@@ -282,7 +282,7 @@ slug: "ide/particleeditor2d"
 
 **`Size2D Over LifeTime`**：粒子大小随生命周期变化。
 
-![3-1-5-3](/IDE/particleEditor2D/img/3-1-5-3.png)
+![3-1-5-3](./img/3-1-5-3.png)
 
 `Enable`：是否启用此属性。
 
@@ -290,19 +290,19 @@ slug: "ide/particleeditor2d"
 
 `Size`：未启用`Separate Axes`属性时可以设置此值，用于控制粒子整体的大小。有四种模式可供选择：`Constant`，`Curve`，`TwoConstants`和`TwoCurves`。
 
-![3-1-5-4](/IDE/particleEditor2D/img/3-1-5-4.png)
+![3-1-5-4](./img/3-1-5-4.png)
 
 `X`：启用`Separate Axes`属性后设置此值，用于控制粒子X轴方向上的大小。有四种模式可供选择：`Constant`，`Curve`，`TwoConstants`和`TwoCurves`。
 
 `Y`：启用`Separate Axes`属性后设置此值，用于控制粒子Y轴方向上的大小。有四种模式可供选择：`Constant`，`Curve`，`TwoConstants`和`TwoCurves`。
 
-![3-1-5-6](/IDE/particleEditor2D/img/3-1-5-6.png)
+![3-1-5-6](./img/3-1-5-6.png)
 
 
 
 **`Rotation Over LifeTime`**：粒子旋转的角速度随生命周期的变化。
 
-![3-1-5-7](/IDE/particleEditor2D/img/3-1-5-7.png)
+![3-1-5-7](./img/3-1-5-7.png)
 
 **`Enable`**：是否启用此属性。
 
@@ -312,7 +312,7 @@ slug: "ide/particleeditor2d"
 
 #### 贴图动画
 
-![3-1-6-1](/IDE/particleEditor2D/img/3-1-6-1.png)
+![3-1-6-1](./img/3-1-6-1.png)
 
 **`Enable`**：是否启用此属性。
 
@@ -334,13 +334,13 @@ slug: "ide/particleeditor2d"
 
 在`Shader`属性上选择Particle2D，可以添加Laya内置的2D粒子着色器。
 
-![3-3-1](/IDE/particleEditor2D/img/3-3-1.png)
+![3-3-1](./img/3-3-1.png)
 
 **`Texture`**：指定粒子使用的纹理。
 
 **`材质渲染模式`**：设置渲染模式
 
-![3-3-2](/IDE/particleEditor2D/img/3-3-2.png)
+![3-3-2](./img/3-3-2.png)
 
 `Opaque`：默认设置，适用于没有透明区域的普通实体对象。
 
@@ -368,7 +368,7 @@ slug: "ide/particleeditor2d"
 
 一般来说，粒子效果是需要重复使用的，因此我们可以将粒子效果制作成预制体。这里我们创建一个2D预制体。
 
-![4-1-1](/IDE/particleEditor2D/img/4-1-1.png)
+![4-1-1](./img/4-1-1.png)
 
 打开这个预制体，将其转化为2D精灵节点，并在其上添加2D粒子渲染器。
 
@@ -378,27 +378,27 @@ slug: "ide/particleeditor2d"
 
 在项目资源面板中创建一个基础2D渲染Shader：
 
-![4-2-1](/IDE/particleEditor2D/img/4-2-1.png)
+![4-2-1](./img/4-2-1.png)
 
 打开这个材质，将这个材质使用的shader更换为Particle2D：
 
-![4-2-2](/IDE/particleEditor2D/img/4-2-2.png)
+![4-2-2](./img/4-2-2.png)
 
 将这个材质添加到2D粒子渲染器上：
 
-![4-2-3](/IDE/particleEditor2D/img/4-2-3.png)
+![4-2-3](./img/4-2-3.png)
 
 将需要用到的纹理贴图添加到材质的`Texture`属性上：
 
-<img src="/IDE/particleEditor2D/img/4-2-4.png" alt="4-2-4" style="zoom:80%;" />
+<img src="./img/4-2-4.png" alt="4-2-4" style="zoom:80%;" />
 
 用到的贴图：
 
-![4-2-5](/IDE/particleEditor2D/img/4-2-5.png)
+![4-2-5](./img/4-2-5.png)
 
 设置好后，我们已经可以看到粒子的贴图了：
 
-![4-2-6](/IDE/particleEditor2D/img/4-2-6.png)
+![4-2-6](./img/4-2-6.png)
 
 显然，粒子的效果并不正确，我们还需要为其设置序列帧动画：
 
@@ -408,15 +408,15 @@ slug: "ide/particleeditor2d"
 
 在属性设置面板中找到Particle System栏，选择贴图动画，并创建实例：
 
-![4-3-1](/IDE/particleEditor2D/img/4-3-1.png)
+![4-3-1](./img/4-3-1.png)
 
 设置纹理在水平方向上和垂直方向上划分的图块数量：
 
-![4-3-2](/IDE/particleEditor2D/img/4-3-2.png)
+![4-3-2](./img/4-3-2.png)
 
 设置序列帧动画后，粒子效果如图：
 
-![4-3-3](/IDE/particleEditor2D/img/4-3-3.png)
+![4-3-3](./img/4-3-3.png)
 
 可以看到，粒子上已经有火焰动画了，但我们仍需对火焰效果进行调整。
 
@@ -424,15 +424,15 @@ slug: "ide/particleeditor2d"
 
 ### 4.4 设置基础属性
 
-![4-4-1](/IDE/particleEditor2D/img/4-4-1.png)
+![4-4-1](./img/4-4-1.png)
 
 Start Lifetime的Constant为1，设置粒子的存在时间为1秒；Start Speed的Constant为1，设置粒子的初始速度为1；Start Size的Constant为2，设置粒子的大小为2；效果如图所示：
 
-![4-4-2](/IDE/particleEditor2D/img/4-4-2.gif)
+![4-4-2](./img/4-4-2.gif)
 
 开发者也可以调整粒子系统的其它参数，改变粒子的效果，这里我们设置Start Speed为TwoConstants，最小值为0，最大值为5；在发射模块中设置Rate Over Time为30；在形状模块设置Shape为Box2DShape；运行效果如图：
 
-![4-4-3](/IDE/particleEditor2D/img/4-4-3.gif)
+![4-4-3](./img/4-4-3.gif)
 
 
 

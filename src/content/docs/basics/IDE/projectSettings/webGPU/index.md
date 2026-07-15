@@ -12,7 +12,7 @@ slug: "basics/ide/projectsettings/webgpu"
 
 在支持 `WebGPU ` 的浏览器环境中，启用 `WebGPU` 后，可显著提升 Web 应用在 **3D 渲染、复杂后处理以及 GPU 计算任务** 下的运行性能。如图 1-1 所示，浏览器在启用 `WebGPU`  后，可正常使用相关渲染能力。
 
-![](/basics/IDE/projectSettings/webGPU/img/1-1.png) 
+![](./img/1-1.png) 
 
 （图1-1）
 
@@ -31,7 +31,7 @@ slug: "basics/ide/projectsettings/webgpu"
 
 具体操作界面如图 2-1 所示。
 
-![](/basics/IDE/projectSettings/webGPU/img/2-1.png)
+![](./img/2-1.png)
 
 （图2-1）
 
@@ -39,13 +39,13 @@ slug: "basics/ide/projectsettings/webgpu"
 
 在实际开发过程中，开发者往往会使用本地 `HTTPS` 服务进行调试。但本地 `HTTPS` 服务通常无法使用受信任的权威证书，因此在浏览器中进行本地调试访问时，可能会出现“**您的连接不是私密连接**”的安全警告页面，如图2-2所示。
 
-![](/basics/IDE/projectSettings/webGPU/img/2-2.png)
+![](./img/2-2.png)
 
 （图2-2） 
 
 当遇到该提示时，可点击页面中的 **“高级”** 选项，展开详细信息后，选择 **继续访问** 对应链接，如图 2-3 所示，即可进入页面进行 `WebGPU` 效果调试。
 
-![](/basics/IDE/projectSettings/webGPU/img/2-3.png) 
+![](./img/2-3.png) 
 
 （图2-3） 
 

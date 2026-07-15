@@ -10,7 +10,7 @@ slug: "ide/component/physics2d/pulleyjoint"
 
 滑轮关节通过连接两个刚体，模拟现实中绳索或链条相互连接的滑轮系统运动和行为，实现力的传递和方向的改变，以及限制连接刚体之间的相对运动。当一个刚体上升时，另一个刚体就会下降。效果如动图1所示：
 
-![](/IDE/Component/physics2D/pulleyJoint/img/1.gif)
+![](./img/1.gif)
 
 (动图1)
 
@@ -24,13 +24,13 @@ slug: "ide/component/physics2d/pulleyjoint"
 
 当一侧的刚体进行位移时，另一侧的刚体基于连接的"绳索"进行关联移动，移动的约束限制就是地面点。效果如动图2所示。
 
-![分别演示两侧位移对另一刚体的影响](/IDE/Component/physics2D/pulleyJoint/img/2.gif)
+![分别演示两侧位移对另一刚体的影响](./img/2.gif)
 
 （动图2）
 
 初始的地面点与锚点是对齐的，在默认值的状态下，相同质量的物体是静止的。如果我们调整地面点的位置，使得与锚点不再对齐，刚体受重力影响产生运动。如动图3所示。
 
-![演示两个地面点的可视化调整，以及对齐和不对齐的差异效果](/IDE/Component/physics2D/pulleyJoint/img/3.gif)
+![演示两个地面点的可视化调整，以及对齐和不对齐的差异效果](./img/3.gif)
 
 （动图3）
 
@@ -44,6 +44,6 @@ slug: "ide/component/physics2d/pulleyjoint"
 
 效果如动图4所示：
 
- <img src="/IDE/Component/physics2D/pulleyJoint/img/4.gif" alt="默认的比率，小于1的比率，以及大小1的比率，三者效果对比" style="zoom:80%;" />
+ <img src="./img/4.gif" alt="默认的比率，小于1的比率，以及大小1的比率，三者效果对比" style="zoom:80%;" />
 
 （动图4）

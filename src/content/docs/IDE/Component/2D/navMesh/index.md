@@ -12,7 +12,7 @@ LayaAir为开发者提供了2D寻路解决方案。自动寻路可以有很多�
 
 而本篇介绍的是LayaAir中内置的2D寻路系统NavMesh2D。在使用前，首先需要勾选“项目设置”面板下的“导航寻路”模块，如图1-1所示，
 
-![1-1](/IDE/Component/2D/navMesh/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -24,7 +24,7 @@ LayaAir为开发者提供了2D寻路解决方案。自动寻路可以有很多�
 
 如图2-1所示，有一个以地形为背景的2D场景。场景中有山脉，湖泊，小路等，
 
-<img src="/IDE/Component/2D/navMesh/img/2-1.png" alt="2-1" style="zoom:60%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom:60%;" />
 
 （图2-1）
 
@@ -32,13 +32,13 @@ LayaAir为开发者提供了2D寻路解决方案。自动寻路可以有很多�
 
 在这个地形背景层级上，添加一个sprite，用于创建导航网格。给sprite添加`2D导航网格表面`组件，如图2-2所示，
 
-![2-2](/IDE/Component/2D/navMesh/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
 添加后的组件如图2-3所示，
 
-![2-3](/IDE/Component/2D/navMesh/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -52,13 +52,13 @@ LayaAir为开发者提供了2D寻路解决方案。自动寻路可以有很多�
 
 如图2-4所示，开发者可以通过选择`open Agent Settings`选项，打开配置界面，新增自定义的代理类型。
 
-![2-4](/IDE/Component/2D/navMesh/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 Agents的配置页面如图2-5所示，
 
-![2-5](/IDE/Component/2D/navMesh/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -66,7 +66,7 @@ Agents的配置页面如图2-5所示，
 
 `agentName`：导航网格表面适用的Agent类型的名称。此处填写的名称将与代理类型处选项的名称一致，如图2-6所示。
 
-![2-6](/IDE/Component/2D/navMesh/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
@@ -84,19 +84,19 @@ Agents的配置页面如图2-5所示，
 
 如图2-7所示，开发者可以通过点击`open Area Settings`选项，打开配置界面，新增自定义的区域标记类型。
 
-![2-7](/IDE/Component/2D/navMesh/img/2-7.png)
+![2-7](./img/2-7.png)
 
 （图2-7）
 
 Areas的配置界面如图2-8所示，
 
-![2-8](/IDE/Component/2D/navMesh/img/2-8.png)
+![2-8](./img/2-8.png)
 
 （图2-8）
 
 `name`：区域类型的名称，此处填写的名称将与区域标记处选项的名称一致，如图2-9所示。
 
-![2-9](/IDE/Component/2D/navMesh/img/2-9.png)
+![2-9](./img/2-9.png)
 
 （图2-9）
 
@@ -116,7 +116,7 @@ Areas的配置界面如图2-8所示，
 
 用于指定导航网格的分区方式，如图2-10所示，有Monotone（单调分割）、Watershed（流域分割）和Layer（层次分割）三个选项。
 
-![2-10](/IDE/Component/2D/navMesh/img/2-10.png)
+![2-10](./img/2-10.png)
 
 （2-10）
 
@@ -132,7 +132,7 @@ Areas的配置界面如图2-8所示，
 
 点击`Bake`按钮后，弹出烘焙面板，如图2-11所示，从层级面板中选择要烘焙的子节点（surface节点上添加了2D导航网格表面组件），拖入到烘焙面板中，按照需要选择节点进行烘焙。
 
-![2-11](/IDE/Component/2D/navMesh/img/2-11.png)
+![2-11](./img/2-11.png)
 
 （图2-11）
 
@@ -142,19 +142,19 @@ Areas的配置界面如图2-8所示，
 
 - Graphics是从Sprite的图形数据生成导航网格。例如图2-12所示，
 
-![2-12](/IDE/Component/2D/navMesh/img/2-12.png)
+![2-12](./img/2-12.png)
 
 （图2-12）
 
 - Physics是从物理碰撞器数据生成导航网格。例如图2-13所示，
 
-![2-13](/IDE/Component/2D/navMesh/img/2-13.jpg)
+![2-13](./img/2-13.jpg)
 
 （图2-13）
 
 - MeshRender是从网格数据生成导航网格。例如图2-14所示，
 
-![2-14](/IDE/Component/2D/navMesh/img/2-14.jpg)
+![2-14](./img/2-14.jpg)
 
 （图2-14）
 
@@ -182,7 +182,7 @@ Areas的配置界面如图2-8所示，
 
 表示导航系统中用于在某片区域内修改导航网格属性的组件。它允许在场景中定义一个区域，并且可以调整其大小、形状、位置等，并且设置后不需要重新烘焙，参数如图2-15所示。
 
-![2-15](/IDE/Component/2D/navMesh/img/2-15.png)
+![2-15](./img/2-15.png)
 
 （图2-15）
 
@@ -202,7 +202,7 @@ Areas的配置界面如图2-8所示，
 
 比如图2-16所示，代理从A点移动到B点，中间有一个动态区域，其区域标记为unwalk，表示不可走（橙色部分表示walk区域）。那么代理在寻路时，则会绕开此区域。
 
-![2-16](/IDE/Component/2D/navMesh/img/2-16.png)
+![2-16](./img/2-16.png)
 
 （图2-16）
 
@@ -212,7 +212,7 @@ Areas的配置界面如图2-8所示，
 
 用于表示寻路过程中视为障碍物的区域。通过在场景中放置障碍物区域，以及设置障碍物的大小与形状，影响导航网格的生成和寻路计算，参数如图2-17所示。
 
-![2-17](/IDE/Component/2D/navMesh/img/2-17.png)
+![2-17](./img/2-17.png)
 
 （图2-17）
 
@@ -230,7 +230,7 @@ Areas的配置界面如图2-8所示，
 
 如图2-18所示，box类型的障碍物，不需要再次烘焙就可以改变导航网格（橙色部分为之前烘焙好的导航网格）。
 
-![2-18](/IDE/Component/2D/navMesh/img/2-18.png)
+![2-18](./img/2-18.png)
 
 （图2-18）
 
@@ -240,7 +240,7 @@ Areas的配置界面如图2-8所示，
 
 用于连接两个不同导航网格表面的组件。它允许在导航网格之间创建链接，通过指定移动时的起点和终点，使得角色可以在这些链接上移动，从而在不同的导航区域之间进行寻路。参数如图2-19所示，
 
-![2-19](/IDE/Component/2D/navMesh/img/2-19.png)
+![2-19](./img/2-19.png)
 
 （图2-19）
 
@@ -256,7 +256,7 @@ Areas的配置界面如图2-8所示，
 
 如图2-20所示，当代理需要从左边的区域寻路到右边的区域时，就需要用到导航区域链接组件了。
 
-![2-20](/IDE/Component/2D/navMesh/img/2-20.png)
+![2-20](./img/2-20.png)
 
 （图2-20）
 
@@ -266,19 +266,19 @@ Areas的配置界面如图2-8所示，
 
 要在图2-1的场景中实现寻路导航，首先要根据地形生成寻路区域，以烘焙graphics区域为例，需要先使用sprite的graphics属性勾勒出地形，如图2-21所示，使用sprite将山路勾勒出来（这里只做演示，没有严格的控制边界）。
 
-![2-21](/IDE/Component/2D/navMesh/img/2-21.png)
+![2-21](./img/2-21.png)
 
 （图2-21）
 
 节点sprite(7)的graphics与背景的大小相同，并且在节点surface上添加了2D导航网格表面组件，区域标记设置为walk，烘焙时的设置如图2-22所示，
 
-![2-22](/IDE/Component/2D/navMesh/img/2-22.png)
+![2-22](./img/2-22.png)
 
 （图2-22）
 
 最终烘焙的效果如图2-23所示，就是全部的可通行区域。
 
-<img src="/IDE/Component/2D/navMesh/img/2-23.png" alt="2-23" style="zoom:67%;" />
+<img src="./img/2-23.png" alt="2-23" style="zoom:67%;" />
 
 （图2-23）
 
@@ -294,7 +294,7 @@ Areas的配置界面如图2-8所示，
 
 在场景中创建一个节点，为其添加2D导航代理组件，如图3-1所示，
 
-![3-1](/IDE/Component/2D/navMesh/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -315,7 +315,7 @@ Areas的配置界面如图2-8所示，
 
 可以先在场景中创建一个Sprite节点（Hit），绘制图形用于显示鼠标点击的位置。用另一个Sprite节点（allow），绘制图形表示寻路的角色，如图3-2所示，
 
-![3-2](/IDE/Component/2D/navMesh/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
@@ -383,7 +383,7 @@ export class TestSprite extends Laya.Script {
 
 这样，鼠标点击的位置就是终点，角色会自动规避障碍到达终点，效果如动图3-3所示，
 
-<img src="/IDE/Component/2D/navMesh/img/3-3.gif" alt="3-3" style="zoom: 50%;" />
+<img src="./img/3-3.gif" alt="3-3" style="zoom: 50%;" />
 
 （动图3-2）
 

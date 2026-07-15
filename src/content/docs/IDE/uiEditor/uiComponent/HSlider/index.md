@@ -12,19 +12,19 @@ HSlider与VSlider组件都是Slider组件的子类，它们分别表示横向滑
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/HSlider/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
 滑动条可由两部分或三部分组成。如果是两部分，则包含底图资源`hslider.png`、滑块资源`hslider$bar.png`，如图1-2所示。资源至少应当有这两个，否则无法实现滑动功能。
 
-![1-2](/IDE/uiEditor/uiComponent/HSlider/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
 如果是三部分组成的滑动条，则包含滑块资源`hslider$bar.png`、进度条资源`hslider$progress.png` 、底图资源`hslider.png`，如图1-3所示。如果缺少了进度条资源组件也不会报错，只是不显示进度。
 
-<img src="/IDE/uiEditor/uiComponent/HSlider/img/1-3.png" alt="1-3" style="zoom:80%;" />
+<img src="./img/1-3.png" alt="1-3" style="zoom:80%;" />
 
 （图1-3）
 
@@ -32,7 +32,7 @@ HSlider与VSlider组件都是Slider组件的子类，它们分别表示横向滑
 
 LayaAir默认创建的HSlider组件是由两部分组成的，如动图1-4所示，HSlider组件采用水平方向。滑块轨道从左向右扩展，鼠标拖动滑块会显示数值的标签。
 
-<img src="/IDE/uiEditor/uiComponent/HSlider/img/1-4.gif" alt="1-4" style="zoom:50%;" />
+<img src="./img/1-4.gif" alt="1-4" style="zoom:50%;" />
 
 （动图1-4）
 
@@ -42,7 +42,7 @@ LayaAir默认创建的HSlider组件是由两部分组成的，如动图1-4所示
 
 HSlider的特有属性如下：
 
-![1-5](/IDE/uiEditor/uiComponent/HSlider/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
@@ -60,19 +60,19 @@ HSlider的特有属性如下：
 
 设置HSlider的属性max的值为20、属性min的值为0、属性value的值为5后，显示效果如下：
 
-![1-6](/IDE/uiEditor/uiComponent/HSlider/img/1-6.png)
+![1-6](./img/1-6.png)
 
 （图1-6）
 
 设置属性showLabel为true、属性showProgress为true、属性tick值为3，效果如下动图所示：
 
-![1-7](/IDE/uiEditor/uiComponent/HSlider/img/1-7.gif)
+![1-7](./img/1-7.gif)
 
 （动图1-7）
 
 进度条资源`hslider$progress.png`可以与底图资源`hslider.png`互换，效果如下：
 
-![1-8](/IDE/uiEditor/uiComponent/HSlider/img/1-8.gif)
+![1-8](./img/1-8.gif)
 
 （动图1-8）
 
@@ -151,6 +151,6 @@ export class UI_HSlider extends Laya.Script {
 
 运行效果：
 
-![2-1](/IDE/uiEditor/uiComponent/HSlider/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）

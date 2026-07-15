@@ -20,7 +20,7 @@ slug: "ide/assets/lmat/unlit"
 - **无高光和阴影**：材质表面不会产生高光反射、漫反射、阴影等光照效果；
 - **显示原始颜色**：直接输出纹理颜色与反照率颜色的乘积结果。
 
-![](/IDE/assets/lmat/Unlit/img/1-1.png)
+![](./img/1-1.png)
 （图1-1）
 
 ### 1.2 适用场景
@@ -50,14 +50,14 @@ Material → UnlitMaterial
 
 `albedoColor` 属性定义材质表面的固有颜色，类型为 `Color`（RGBA）。由于不受光材质不参与光照计算，反照率颜色就是物体最终显示的颜色（与纹理颜色相乘）。
 
-![](/IDE/assets/lmat/Unlit/img/2-1.png)
+![](./img/2-1.png)
 （图2-1）
 
 ### 2.2 反照率贴图（albedoTexture）
 
 `albedoTexture` 属性用于设置反照率贴图，提供逐像素的颜色细节。贴图颜色与 `albedoColor` 相乘后直接输出为最终渲染颜色。
 
-![](/IDE/assets/lmat/Unlit/img/2-2.png)
+![](./img/2-2.png)
 （图2-2）
 
 ### 2.3 反照率强度（albedoIntensity）

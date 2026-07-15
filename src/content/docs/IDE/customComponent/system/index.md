@@ -20,7 +20,7 @@ slug: "ide/customcomponent/system"
 
 组件脚本主要由四个部分组成，分别是生命周期方法、鼠标事件方法、键盘事件方法、物理事件方法。如图1-1所示：
 
-![](/IDE/customComponent/system/img/1-1.png)
+![](./img/1-1.png)
 
 （图1-1）
 
@@ -320,7 +320,7 @@ class DemoScript extends Laya.Script {
 
 基于上面的代码示例，为3D模型添加脚本。如动图3-1所示。
 
-![2-2](/IDE/customComponent/system/img/3-1.gif)
+![2-2](./img/3-1.gif)
 
 （动图3-1）
 
@@ -417,13 +417,13 @@ export class Script extends Laya.Script {
 
 如图3-2所示，将组件脚本添加到Scene2D的属性面板后，先不勾选 Mouse Through，因为如果勾选它，Scene2D下鼠标事件将不会响应。如果是一个3D场景，它会传递到Scene3D中。
 
-![2-3](/IDE/customComponent/system/img/3-2.gif)
+![2-3](./img/3-2.gif)
 
 （图3-2）
 
 运行项目，如动图3-3所示，当鼠标按下时执行onMouseDown，打印“onMouseDown”；松开鼠标，鼠标弹起时执行onMouseUp，打印“onMouseUp”。
 
-![](/IDE/customComponent/system/img/3-3.gif)
+![](./img/3-3.gif)
 
 （动图3-3）
 

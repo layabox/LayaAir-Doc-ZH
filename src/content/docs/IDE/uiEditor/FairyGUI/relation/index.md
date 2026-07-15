@@ -12,13 +12,13 @@ Author: 谷主
 
 设置关联的属性位置如下图1-1所示：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-1.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:100%;" />
 
 （图1-1）
 
 在第一个输入框中选择目标节点，点击第二个输入框，显示以下界面。在这个界面选择或取消对目标节点的关联，如下图1-2所示：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-2.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-2.png" alt="1-1" style="zoom:100%;" />
 
 （图1-2）
 
@@ -29,13 +29,13 @@ Author: 谷主
 
   举例说明，下面的文本是自动增大的，图标与文本建立了一个左->中的关联，所以当文字变化时，图标保持在了文本的中心，如下图1-3：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-3.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-3.png" alt="1-1" style="zoom:100%;" />
 
 （图1-3）
 
 注意：关联只有在目标的位置或大小发生变化时才起作用。比如上例，设置图标关联文本的左->中，并不意味着就是居中，图标的初始位置是要自己设置的。这是初学者比较容易犯的错误。再强调一下，它只是保持T的中心点和A的左侧距离。那么看下面这个示范：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-4.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-4.png" alt="1-1" style="zoom:100%;" />
 
 （图1-4）
 
@@ -48,14 +48,14 @@ Author: 谷主
 
 举例说明，如图1-5所示：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-5.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-5.png" alt="1-1" style="zoom:100%;" />
 
 （图1-5）
 
 文本建立了一个与容器组件的左右居中关联，可以看到，当组件变宽时，文本依然保持了中间的位置。这里再提醒一次，左右居中关联并不等同与居中，文本可以放置在任何位置。关联只是保证中线距离一直不变。
 - `右->左` 假设原来T的左侧和A的右侧距离是X，当T的左侧发生位移时，保持T的左侧和A的右侧距离为X。”右“系列的关联还有一个特点，就是如果A的宽度发生改变时，A也会自动移动以保持X不变。举例说明，如图1-6所示：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-6.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-6.png" alt="1-1" style="zoom:100%;" />
 
 （图1-6）
 
@@ -65,7 +65,7 @@ Author: 谷主
 - `左延展->左` 假设T的左侧和A的左侧的距离是X，当T的左侧发生位移时，A的左侧会发生移动，但保持A的右侧不变，也就是A产生一个延展（宽度变化）的效果。举例说明：
   绿色方块建立了一个与白色方块左延展->左的关联。
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-1.gif" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-1.gif" alt="1-1" style="zoom:100%;" />
 
 （动图1-1）
 
@@ -84,13 +84,13 @@ Author: 谷主
 - 举例说明，如下图1-,7：
 背景图片与容器组件建立了宽->宽关联。
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-7.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-7.png" alt="1-1" style="zoom:100%;" />
 
 （图1-7）
 
 现在我们把制作好的组件拿出来使用，可以看到，当组件被拉宽时，图标的宽度也随之被拉宽。如果我们没有设置关联，那么效果是这样的，如下图1-,8：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-8.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-8.png" alt="1-1" style="zoom:100%;" />
 
 （图1-8）
 
@@ -100,14 +100,14 @@ Author: 谷主
 从上面的论述可以看到，关联总是在保持设定好的距离，这个距离是绝对距离，是像素的距离。有时候我们需要的是成比例的距离。关联系统提供了这样一个功能，在设置关联时，可以使用比例距离。只需要勾选关联关系旁边的“%”即可。
 百分比关系的功能举例说明，如下图1-9：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-9.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-9.png" alt="1-1" style="zoom:100%;" />
 
 （图1-9）
 
 笑脸图标增加了一个到容器组件的“**左->中**”关联，并勾选”使用百分比“。容器组件的宽度是200像素，现在笑脸图标的x坐标是50像素。也就是说，笑脸图标在容器组件的1/4位置，与容器组件的中心距离也是1/4的宽度。
 现在把设计好的组件拖出来使用，并且把组件的宽度拉长为400像素。可以看到，笑脸图标依照左->中的关联规则发生了位移，它现在所在的位置是100像素，仍然保持了与容器组件中心距离1/4的宽度。如图1-10所示：
 
-<img src="/IDE/uiEditor/FairyGUI/relation/img/1-10.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/1-10.png" alt="1-1" style="zoom:100%;" />
 
 （图1-10）
 

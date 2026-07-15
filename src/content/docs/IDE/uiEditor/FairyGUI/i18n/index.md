@@ -8,11 +8,11 @@ Author: 谷主
 
 本UI系统提供的国际化功能，可以方便的让你的UI界面支持多国语言。首先我们需要一个新建一个国际化配置文件，这个文件放置在你的所有界面文件所在的目录或上级目录。如图1-1,1-2所示
 
-<img src="/IDE/uiEditor/FairyGUI/i18n/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
-<img src="/IDE/uiEditor/FairyGUI/i18n/img/1-2.png" alt="1-2" style="zoom:50%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom:50%;" />
 
 （图1-2）
 
@@ -32,19 +32,19 @@ Author: 谷主
 
 除了自动收集界面上的文字，我们也可以手动设定，例如一个按钮的标题，如图1-3所示：
 
-<img src="/IDE/uiEditor/FairyGUI/i18n/img/1-3.png" alt="1-3" style="zoom:50%;" />
+<img src="./img/1-3.png" alt="1-3" style="zoom:50%;" />
 
 （图1-3）
 
 点击右上角的按钮，将弹出界面，如图1-4所示：
 
-<img src="/IDE/uiEditor/FairyGUI/i18n/img/1-4.png" alt="1-4" style="zoom:50%;" />
+<img src="./img/1-4.png" alt="1-4" style="zoom:50%;" />
 
 （图1-4）
 
 在这里可以选择，或者新建语言文件中的条目。选择一项后，输入框更新显示为，如图1-,5所示：
 
-<img src="/IDE/uiEditor/FairyGUI/i18n/img/1-5.png" alt="1-5" style="zoom:70%;" />
+<img src="./img/1-5.png" alt="1-5" style="zoom:70%;" />
 
 （图1-5）
 
@@ -56,7 +56,7 @@ Author: 谷主
 
 翻译参考功能可以忽略，因为无需从界面上收集。如图1-所示
 
-<img src="/IDE/uiEditor/FairyGUI/i18n/img/1-6.png" alt="1-6" style="zoom:70%;" />
+<img src="./img/1-6.png" alt="1-6" style="zoom:70%;" />
 
 （图1-6）
 

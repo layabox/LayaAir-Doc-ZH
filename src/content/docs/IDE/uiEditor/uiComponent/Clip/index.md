@@ -12,13 +12,13 @@ Clip 组件可以用来播放切片动画，和显示切片动画的某一帧图
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-![1-1](/IDE/uiEditor/uiComponent/Clip/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
 在创建的工程中，LayaAir会自带一个Clip 组件的资源示例（clip_num.png），效果如图1-2。
 
-![1-2](/IDE/uiEditor/uiComponent/Clip/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -28,7 +28,7 @@ Clip 组件可以用来播放切片动画，和显示切片动画的某一帧图
 
 Clip组件的特有属性如下：
 
-![1-3](/IDE/uiEditor/uiComponent/Clip/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -48,13 +48,13 @@ Clip组件的特有属性如下：
 
 点击依据宽高切片可以切换位图切片分割模式，根据宽高分割切片，这里我们输入宽为26即可把原本260像素宽的原图分割为10份。如图1-4所示：
 
-![1-5](/IDE/uiEditor/uiComponent/Clip/img/1-4.png)
+![1-5](./img/1-4.png)
 
 （图1-4）
 
 如果不勾选依据宽高切片，设置X轴数量为10，会将十个数字等分，同样能达到期望效果，效果如下：
 
-![1-5](/IDE/uiEditor/uiComponent/Clip/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
@@ -92,13 +92,13 @@ export class NewScript extends Laya.Script {
 
 通过代码创建计数器，运行示例效果:
 
-![2-1](/IDE/uiEditor/uiComponent/Clip/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 
 示例说明：
 
-![2-2](/IDE/uiEditor/uiComponent/Clip/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 

@@ -16,7 +16,7 @@ slug: "ide/layapackage/exporttostore"
 
 在LayaAir的资源商店里，我们的分类有：项目源码、美术素材、音乐音效、IDE插件、工具、其它。如图1-1所示。
 
-![](/IDE/layapackage/exportToStore/img/1-1.png) 
+![](./img/1-1.png) 
 
 > 上传资源的时候，请尽量按照功能区分进行上传，否则有可能会被审核时拒绝
 
@@ -49,7 +49,7 @@ slug: "ide/layapackage/exporttostore"
 
 通过点击IDE菜单的 “工具”  -> "导出资源包"，在弹出的资源导出面板中，勾选对应的导出资源，选择导出本地或上传到商店即可。操作流程如图2-1所示：
 
-![](/IDE/layapackage/exportToStore/img/2-1.png) 
+![](./img/2-1.png) 
 
 (图2-1)
 
@@ -102,7 +102,7 @@ package.json的核心内容示例如下：
 
 安装后的效果如图3-1所示
 
-![](/IDE/layapackage/exportToStore/img/3-1.png) 
+![](./img/3-1.png) 
 
 （图3-1）
 
@@ -180,13 +180,13 @@ LayaAirProject/
 3. 点击右上角“导入本地模板”按钮；
 4. 选择打包好的 `.zip` 模板文件，点击“确认”，如图 4-1 所示；
 
-![](/IDE/layapackage/exportToStore/img/4-1.png) 
+![](./img/4-1.png) 
 
 (图4-1)
 
 模板导入成功后，会出现在本地模板列表中，如图 4-2 所示。此时可像常规项目一样，通过模板创建一个新项目进行测试。
 
-![](/IDE/layapackage/exportToStore/img/4-2.png)
+![](./img/4-2.png)
 
 (图4-2)
 
@@ -214,7 +214,7 @@ LayaAirProject/
 
 填写完成后，点击 **“创建我的资源”**，如图5-1所示。
 
-![](/IDE/layapackage/exportToStore/img/5-1.png)
+![](./img/5-1.png)
 
 (图5-1) 
 
@@ -222,7 +222,7 @@ LayaAirProject/
 
 接下来，需要继续完善资源的各项信息，包括版本说明、资源描述、资源的基本信息以及展示用的图片和视频内容。页面上所有标有“必填”的字段都需要填写完整。填写过程中，系统会根据填写情况进行校验，全部信息填写无误后，页面上会显示绿色对勾，如图5-2所示。此时，就可以点击“提交”按钮，将资源提交给官方进行审核。
 
-![](/IDE/layapackage/exportToStore/img/5-2.png) 
+![](./img/5-2.png) 
 
 (图5-2)
 
@@ -244,19 +244,19 @@ LayaAirProject/
 
 无论是采用哪种方式上传，开发者都需要先参照 5.1 小节所述流程，在资源商店后台创建一个资源包草稿，并填写好除资源文件外的所有基础信息。填写完成后，点击保存，即可在资源列表中看到这份未提交的资源草稿，如图5-3所示。
 
-![](/IDE/layapackage/exportToStore/img/5-3.png) 
+![](./img/5-3.png) 
 
 (图5-3)
 
 完成网页端的信息填写后，可切换回 `LayaAir3-IDE`。在工具菜单栏中选择“导出资源包”，在弹出的面板中指定资源包的目录和资源内容。然后点击面板中的“上传到商店”按钮，在弹出的界面中选择刚刚在网页端保存好的资源包草稿，点击“确定”即可完成上传操作，如图5-4所示。
 
-![](/IDE/layapackage/exportToStore/img/5-4.png) 
+![](./img/5-4.png) 
 
 (图5-4)
 
 点击确定后，IDE会弹出一个显示上传进度的窗口，当进度条结束，会提示上传成功，说明资源已被成功提交到商店，如图5-5所示。
 
-![](/IDE/layapackage/exportToStore/img/5-5.png) 
+![](./img/5-5.png) 
 
 (图5-5)
 
@@ -264,7 +264,7 @@ LayaAirProject/
 
 在上传资源的页面中可以看到，资源的更新时间已更新为刚才上传的时间，资源文件的大小也同步显示为上传后的实际值，如图5-6所示。
 
-![](/IDE/layapackage/exportToStore/img/5-6.png) 
+![](./img/5-6.png) 
 
 (图5-6) 
 

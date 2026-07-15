@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gscrollbar"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GScrollBar/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 - `Fixed Grip Size` 是否使用固定的滑块大小。一般来说，滚动条中间的滚动滑块会随着滚动区域的大小的不同而伸缩。如果滚动区域比较小，则滑块会比较大；如果滚动区域比较大，则滑块会比较小。如果你需要任何时候滑块都相同大小，那么可以勾选这个选项。勾选后，滑块的大小将保持他原来的大小。
 

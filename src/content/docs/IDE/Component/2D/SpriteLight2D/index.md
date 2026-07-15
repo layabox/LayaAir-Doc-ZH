@@ -32,7 +32,7 @@ slug: "ide/component/2d/spritelight2d"
 
 在LayaAir-IDE中，添加一个sprite，然后在sprite上添加一个2D精灵光组件，如图2-1所示。
 
-<img src="/IDE/Component/2D/SpriteLight2D/img/2-1.png" alt="2-1" style="zoom:80%;" /> 
+<img src="./img/2-1.png" alt="2-1" style="zoom:80%;" /> 
 
 （图2-1）
 
@@ -40,13 +40,13 @@ slug: "ide/component/2d/spritelight2d"
 
 该属性用于设置精灵贴图，用于定义灯光的形状和外观。这里设置的图片需要在导入后设置为精灵纹理，如图2-2所示。
 
-<img src="/IDE/Component/2D/SpriteLight2D/img/2-2.png" alt="2-2" style="zoom:80%;" /> 
+<img src="./img/2-2.png" alt="2-2" style="zoom:80%;" /> 
 
 （图2-2）
 
 例如，需要在场景中的某一处通过光源进行提示，如图2-3所示， 
 
-<img src="/IDE/Component/2D/SpriteLight2D/img/2-3.png" alt="2-3" style="zoom:80%;" /> 
+<img src="./img/2-3.png" alt="2-3" style="zoom:80%;" /> 
 
 （图2-3）
 
@@ -156,7 +156,7 @@ export class SpriteLight extends Laya.Script {
 
 最终的效果如图3-1所示，
 
-<img src="/IDE/Component/2D/SpriteLight2D/img/3-1.png" alt="3-1" style="zoom: 67%;" /> 
+<img src="./img/3-1.png" alt="3-1" style="zoom: 67%;" /> 
 
 （图3-1）
 

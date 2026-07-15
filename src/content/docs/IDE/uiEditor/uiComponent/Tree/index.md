@@ -34,7 +34,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
   切片数为2，切片索引从0开始依次代表：单元格悬停状态图（白色）、单元格未选中状态图。
 
-![1-1](/IDE/uiEditor/uiComponent/Tree/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -42,7 +42,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
   切片数为2，切片索引从0开始依次代表：文件夹节点折叠状态图、文件夹节点展开状态图。
 
-![1-2](/IDE/uiEditor/uiComponent/Tree/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -50,7 +50,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
   切片数为3，切片索引从0开始依次代表：文件夹节点折叠状态图、文件夹节点展开状态图、非文件夹节点状态图；
 
-![1-3](/IDE/uiEditor/uiComponent/Tree/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -64,7 +64,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
 > 注意：此处的选择状态切片动画 （Clip 组件）对象的 name 属性值必须设置为 selectBox，只有这样程序才能识别它，并实现此 Clip 组件对象的显示状态跟随单元项的选择状态而改变的功能，否则此 Clip 对象将会被识别为此单元项的普通显示对象。
 
-![1-4](/IDE/uiEditor/uiComponent/Tree/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
@@ -72,7 +72,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
 > 注意：此处的折叠箭头切片动画 （Clip 组件）的 name 属性值必须设置为 arrow，只有这样程序才能识别它，并实现点击此 Clip 对象打开或折叠树形节点的功能。否则此 Clip 对象将会被识别为此单元项的普通显示对象。
 
-![1-5](/IDE/uiEditor/uiComponent/Tree/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
@@ -80,7 +80,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
 > 注意：此处的文件状态切片动画（Clip 组件）的 name 属性值必须设置为 folder，只有这样程序才能识别它，并实现此 Clip 组件对象的显示状态跟随单元项的折叠、展开、节点类型（是否有子节点）而改变的功能。否则此 Clip 对象将会被识别为此单元项的普通显示对象。
 
-![1-6](/IDE/uiEditor/uiComponent/Tree/img/1-6.png)
+![1-6](./img/1-6.png)
 
 （图1-6）
 
@@ -88,13 +88,13 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
 > 注意：此name 属性值自定义即可（但要与给 Tree 对象赋值中的名称相同）。
 
-![1-7](/IDE/uiEditor/uiComponent/Tree/img/1-7.png)
+![1-7](./img/1-7.png)
 
 （图1-7）
 
 然后，将（1）~（4）步骤创建的节点，拖入一个Box容器组件，并将它们进行合理的排版，如图1-8所示。
 
-![1-8](/IDE/uiEditor/uiComponent/Tree/img/1-8.png)
+![1-8](./img/1-8.png)
 
 （图1-8）
 
@@ -104,7 +104,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
 创建一个Tree组件，设置Tree组件的Item Template属性为刚刚1.2.1创建Box，如图1-9所示。
 
-![1-9](/IDE/uiEditor/uiComponent/Tree/img/1-9.png)
+![1-9](./img/1-9.png)
 
 （图1-9）
 
@@ -114,7 +114,7 @@ Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的
 
 当Tree的列表项太多时，就需要添加一个滚动条。如图1-10所示，给Tree组件属性scrollBarSkin添加滚动条皮肤。
 
-![1-10](/IDE/uiEditor/uiComponent/Tree/img/1-10.png)
+![1-10](./img/1-10.png)
 
 （图1-10）
 
@@ -183,7 +183,7 @@ export class NewScript extends Laya.Script {
 
 运行的效果如下：
 
-![1-11](/IDE/uiEditor/uiComponent/Tree/img/1-11.gif)
+![1-11](./img/1-11.gif)
 
 （动图1-11）
 
@@ -195,7 +195,7 @@ export class NewScript extends Laya.Script {
 
 Tree组件的特有属性如下图：
 
-![1-12](/IDE/uiEditor/uiComponent/Tree/img/1-12.png)
+![1-12](./img/1-12.png)
 
 （图1-12）
 
@@ -216,7 +216,7 @@ Tree组件的特有属性如下图：
 
 **运行示例效果：**
 
-![2-1](/IDE/uiEditor/uiComponent/Tree/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

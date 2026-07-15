@@ -52,7 +52,7 @@ setShaderData//设置shader数据，可以设置shader中的texture vector numbe
 
 ##### 效果图
 
- <img src="/3D/advanced/CommandBuffer/img/image-20221222111440722.png" alt="image-20221222111440722" style="zoom:67%;" />
+ <img src="./img/image-20221222111440722.png" alt="image-20221222111440722" style="zoom:67%;" />
 
 ##### 示例原理
 
@@ -118,7 +118,7 @@ var shaderValue:ShaderData = new ShaderData();
 
 ##### 效果图：
 
- ![image-20221222111753897](/3D/advanced/CommandBuffer/img/image-20221222111753897.png)
+ ![image-20221222111753897](./img/image-20221222111753897.png)
 
 ##### 示例原理：
 

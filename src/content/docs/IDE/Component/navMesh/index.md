@@ -14,7 +14,7 @@ slug: "ide/component/navmesh"
 
 在LayaAir-IDE中实现导航网格需要通过添加navMesh相应的组件来实现。开发者在使用前，需要先在项目设置面板中，勾选相应的模块，如图1-1所示。
 
-![1-1](/IDE/Component/navMesh/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -30,7 +30,7 @@ slug: "ide/component/navmesh"
 
 如图2-1所示，有一个简单的地形场景，由一个Plane和一些cube组成的Gates构成，在这个场景中实现寻路导航，首先要在地形节点的根节点上添加`静态导航表面`组件。
 
-![2-1](/IDE/Component/navMesh/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -38,7 +38,7 @@ slug: "ide/component/navmesh"
 
 在LayaAir-IDE中添加的静态导航表面组件如图2-2所示，
 
-![2-2](/IDE/Component/navMesh/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -52,13 +52,13 @@ slug: "ide/component/navmesh"
 
 如图2-3所示，开发者可以通过选择`open Agent Settings`选项，打开配置界面，新增自定义的代理类型。
 
-![2-3](/IDE/Component/navMesh/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
 Agents的配置页面如图2-4所示，
 
-![2-4](/IDE/Component/navMesh/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -68,7 +68,7 @@ Agents的配置页面如图2-4所示，
 
 导航网格表面适用的Agent类型的名称。此处填写的名称将与代理类型处选项的名称一致，如图2-5所示。
 
-![2-5](/IDE/Component/navMesh/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -76,7 +76,7 @@ Agents的配置页面如图2-4所示，
 
 这个值决定了Agent在导航过程中与障碍物之间的最小距离。较大的半径会使Agent与障碍物保持更大的距离。该参数调节的是图2-6中的参数R。
 
-![2-6](/IDE/Component/navMesh/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
@@ -84,7 +84,7 @@ Agents的配置页面如图2-4所示，
 
 这个值决定了Agent能够通过的空间的高度。Agent只能在高度大于等于其高度的区域中导航。该参数调节的是图2-7中的参数H。
 
-![2-7](/IDE/Component/navMesh/img/2-7.png)
+![2-7](./img/2-7.png)
 
 （图2-7）
 
@@ -92,7 +92,7 @@ Agents的配置页面如图2-4所示，
 
 Agent能够导航的最大斜率角度。超过这个角度的斜坡将被视为不可通过的区域。
 
-![2-8](/IDE/Component/navMesh/img/2-8.png)
+![2-8](./img/2-8.png)
 
 （图2-8）
 
@@ -108,7 +108,7 @@ Agent能够攀爬的最大高度。这个值决定了Agent能够攀爬的垂直�
 
 导航网格中每个单元格的高度。较小的单元格高度会生成更精确的导航网格，允许角色在垂直方向上更准确地导航，如跨越台阶或斜坡，但会增加内存占用。
 
-![2-9](/IDE/Component/navMesh/img/2-9.png)
+![2-9](./img/2-9.png)
 
 （图2-9）
 
@@ -124,13 +124,13 @@ Agent能够攀爬的最大高度。这个值决定了Agent能够攀爬的垂直�
 
 如图2-10所示，开发者可以通过点击`open Area Settings`选项，打开配置界面，新增自定义的区域标记类型。
 
-![2-10](/IDE/Component/navMesh/img/2-10.png)
+![2-10](./img/2-10.png)
 
 （图2-10）
 
 Areas的配置界面如图2-11所示，
 
-![2-11](/IDE/Component/navMesh/img/2-11.png)
+![2-11](./img/2-11.png)
 
 （图2-11）
 
@@ -140,7 +140,7 @@ Areas的配置界面如图2-11所示，
 
 区域类型的名称，此处填写的名称将与区域标记处选项的名称一致，如图2-12所示。
 
-![2-12](/IDE/Component/navMesh/img/2-12.png)
+![2-12](./img/2-12.png)
 
 （图2-12）
 
@@ -164,7 +164,7 @@ Areas的配置界面如图2-11所示，
 
 用于指定导航网格的分区方式，如图2-13所示，有Monotone（单调分割）、Watershed（流域分割）和Layer（层次分割）三个选项。
 
-![2-13](/IDE/Component/navMesh/img/2-13.png)
+![2-13](./img/2-13.png)
 
 （图2-13）
 
@@ -188,7 +188,7 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 点击`Bake NavMesh`按钮后，可以对所有除动态节点外的、所有可渲染节点及子节点模型进行烘焙。也就是说，手动触发导航网格的生成（烘焙），会在点击`Bake NavMesh`按钮后立即开始生成导航网格。生成的结果（.bin文件）会保存到assets目录下新建的文件夹中（以模型所在场景命名）。最终，如图2-14所示，该文件会自动添加到datas属性中。
 
-![2-14](/IDE/Component/navMesh/img/2-14.png)
+![2-14](./img/2-14.png)
 
 （图2-14）
 
@@ -206,13 +206,13 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 如图3-1所示，在场景Geometry中增加一个Plane2平面，给其添加一个动态导航表面组件。
 
-![3-1](/IDE/Component/navMesh/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
 需要注意的时，Plane2需要放在Geometry的子节点下，在项目运行前与Geometry一起烘焙。这样，Plane2才会生成导航网格，如图3-2所示，
 
-![3-2](/IDE/Component/navMesh/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
@@ -230,7 +230,7 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 如图3-3所示，当前实现了盒子和圆柱体形状的障碍物。其中，bounds为地形区域，不需要手动配置，烘焙完之后自动生成。
 
-![3-3](/IDE/Component/navMesh/img/3-3.png)
+![3-3](./img/3-3.png)
 
 （图3-3）
 
@@ -238,7 +238,7 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 如图3-4所示，盒子形状的障碍物可以设置中心点和大小两个参数，
 
-![3-4](/IDE/Component/navMesh/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
@@ -250,7 +250,7 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 如图3-5所示，圆柱体形状的障碍物可以设置中心点、高度、半径三个参数，
 
-![3-5](/IDE/Component/navMesh/img/3-5.png)
+![3-5](./img/3-5.png)
 
 （图3-5）
 
@@ -270,7 +270,7 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 如图4-1所示，选定代理类型后，开发者可以调节该导航代理的一些属性。
 
-![4-1](/IDE/Component/navMesh/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 
@@ -298,7 +298,7 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 如图5-1所示，当代理需要从下方的平面寻路到上方的平面时，就需要用到导航区域链接组件了。
 
-![5-1](/IDE/Component/navMesh/img/5-1.png)
+![5-1](./img/5-1.png)
 
 （图5-1）
 
@@ -322,7 +322,7 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 比如图6-1所示，代理从A点移动到B点，中间有一个动态区域体积，其区域标记为unwalk，表示不可走。那么代理在寻路时，则会绕开此区域。
 
-![6-1](/IDE/Component/navMesh/img/6-1.png)
+![6-1](./img/6-1.png)
 
 （图6-1）
 
@@ -336,31 +336,31 @@ Layer分割算法会将NavMesh表面按照指定的层次结构进行划分。�
 
 如图7-1所示，给场景的Geometry增加两个静态导航表面组件，分别设置为人和坦克的代理类型。
 
-![7-1](/IDE/Component/navMesh/img/7-1.png)
+![7-1](./img/7-1.png)
 
 （图7-1）
 
 然后，在场景中增加一个坦克类型的代理，如图7-2所示，
 
-![7-2](/IDE/Component/navMesh/img/7-2.png)
+![7-2](./img/7-2.png)
 
 （图7-2）
 
 分别烘焙两个静态导航表面，如图7-3所示。
 
-![7-3](/IDE/Component/navMesh/img/7-3.jpg)
+![7-3](./img/7-3.jpg)
 
 （图7-3）
 
 烘焙完成后，因为只给人类型的代理添加了导航区域链接，
 
-![7-4](/IDE/Component/navMesh/img/7-4.png)
+![7-4](./img/7-4.png)
 
 （图7-4）
 
 所以，最终的效果如动图7-5所示，人和坦克都可以在Plane上进行寻路，但坦克的寻路无法到达Gates上，而人的寻路可以通过导航区域链接到达Gates。
 
-<img src="/IDE/Component/navMesh/img/7-5.gif" alt="7-5" style="zoom:50%;" />
+<img src="./img/7-5.gif" alt="7-5" style="zoom:50%;" />
 
 （动图7-5）
 

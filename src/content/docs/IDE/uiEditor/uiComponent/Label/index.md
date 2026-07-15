@@ -12,19 +12,19 @@ Label 组件用来显示一段文字。Label 组件的脚本接口请参考 [Lab
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/Label/img/1-1.png" alt="1-1" style="zoom:67%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:67%;" />
 
 （图1-1）
 
 Label组件拖放到编辑区后，设置 text 属性的值为 LayaAir IDE 后的显示效果如下：
 
-![1-2](/IDE/uiEditor/uiComponent/Label/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
 ###  1.2 Label 属性
 
-<img src="/IDE/uiEditor/uiComponent/Label/img/1-3.png" alt="1-3" style="zoom:100%;" />
+<img src="./img/1-3.png" alt="1-3" style="zoom:100%;" />
 
 （图1-3）
 
@@ -158,7 +158,7 @@ export class UI_Label extends Laya.Script {
 
 **效果预览：**
 
-![2-1](/IDE/uiEditor/uiComponent/Label/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 

@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/glist"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GList/img/1-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:60%;" />
 
 - `Template Node` item节点模版。从层级面板拖入一个节点。这个节点必须为GList节点的孩子。
 - `Init Item Num` 初始item数量。如果大于0，将自动创建指定数量的item。

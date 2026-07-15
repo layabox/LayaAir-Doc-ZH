@@ -8,6 +8,8 @@ import { fileURLToPath } from 'node:url';
 import generatedSidebar from './src/sidebar.generated.json' with { type: 'json' };
 // 页内编辑器：仅 astro dev 生效，build 时集成内部直接 return，正式产物零残留
 import devEditor from './dev-editor/integration.mjs';
+// 相对图片路径（本地 Markdown 预览用）→ 站内绝对路径（public）
+import { remarkDocImages } from './tools/remark-doc-images.mjs';
 
 // —— 未完成文档的目录裁剪 ——
 // 两类页面不进正式版目录：
@@ -74,8 +76,9 @@ export default defineConfig({
   outDir: './_book',
   // 预取：鼠标移到链接上即提前加载目标页，点击瞬间显示（配合无刷新切换）
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
-  // 站外链接自动新标签打开 + 安全 rel
+  // 站外链接自动新标签打开 + 安全 rel；图片相对路径在 remark 阶段转绝对（见 remark-doc-images）
   markdown: {
+    remarkPlugins: [remarkDocImages],
     rehypePlugins: [
       [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
       rehypeLazyImages,

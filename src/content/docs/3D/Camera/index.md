@@ -20,7 +20,7 @@ slug: "3d/camera"
 
 下面我们先来了解一个3D场景中的摄像机的参数都有哪些，通过创建3D-RPG项目来参考，如图2-1所示
 
-<img src="/3D/Camera/img/2-1.png" alt="2-1" style="zoom: 50%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom: 50%;" />
 
 （图2-1）
 
@@ -28,7 +28,7 @@ slug: "3d/camera"
 
 通过图2-2所示，LayaAir中摄像机具备如下一些参数设置，这些参数能够很好的满足项目的需要，红色的参数会是我们常用的设置
 
-<img src="/3D/Camera/img/2-2.png" alt="2-2" style="zoom:80%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:80%;" />
 
 （图2-2）
 
@@ -42,13 +42,13 @@ slug: "3d/camera"
 
 通常我们可以通过Scene窗口下的移动和旋转，来调整摄像机的位置，如动图3-1所示。
 
-<img src="/3D/Camera/img/3-1.gif" alt="3-1" style="zoom:80%;" />
+<img src="./img/3-1.gif" alt="3-1" style="zoom:80%;" />
 
 （动图3-1）
 
 也可以用另外一种方式定位摄像机，如动图3-2所示， 先在Scene窗口中移动场景， 找到合适你的位置和角度，点Main Camera节点，同时按下 Ctrl+Shift+F ，此时摄像机的位置和角度就会变更到你所定位的点。
 
-<img src="/3D/Camera/img/3-2.gif" alt="3-2" style="zoom:80%;" />
+<img src="./img/3-2.gif" alt="3-2" style="zoom:80%;" />
 
 （动图3-2）
 
@@ -60,7 +60,7 @@ slug: "3d/camera"
 
 在3D游戏中，往往我们需要通过代码来调整摄像机的位置，比如摄像机一直跟随主角的移动和旋转来做调整，如动图3-3所示。
 
-![3-3](/3D/Camera/img/3-3.gif)
+![3-3](./img/3-3.gif)
 
 （动图3-3）
 
@@ -123,7 +123,7 @@ export default class CameraControll extends Laya.Script {
 
 ## 四、Projection
 
-<img src="/3D/Camera/img/4-1.png" alt="4-1" style="zoom:80%;" />
+<img src="./img/4-1.png" alt="4-1" style="zoom:80%;" />
 
 （图4-1）
 
@@ -133,7 +133,7 @@ export default class CameraControll extends Laya.Script {
 
 当我们没有勾选Orthographic，就是采用Perspective方式，也是最常用的方式。透视投影的观察体是视锥体，它使用一组由投影中心产生的放射投影线，将三维对象投影到投影平面上去。这种透视模式，是一种模拟了人眼近大远小视觉效果的摄像机成相模式，如动图4-2所示。
 
-<img src="/3D/Camera/img/4-2.gif" alt="4-2" style="zoom:80%;" />
+<img src="./img/4-2.gif" alt="4-2" style="zoom:80%;" />
 
 （动图4-2）
 
@@ -147,7 +147,7 @@ export default class CameraControll extends Laya.Script {
 
 这两个参数也是只有使用透视投影时才有效。如动图4-3所示，我们来看看修改这两个参数的效果，
 
-<img src="/3D/Camera/img/4-3.gif" alt="4-3" style="zoom:80%;" />
+<img src="./img/4-3.gif" alt="4-3" style="zoom:80%;" />
 
 （动图4-3） 
 
@@ -157,13 +157,13 @@ export default class CameraControll extends Laya.Script {
 
 正交投影模式的观察体是规则的长方体，它使用一组平行投影，将三维对象投影到投影平面上去，如图4-4所示。
 
-<img src="/3D/Camera/img/4-4.png" alt="4-4" style="zoom:80%;" />
+<img src="./img/4-4.png" alt="4-4" style="zoom:80%;" />
 
 （图4-4）
 
 `Orthographic Vertical Size`是视野大小，用于设置正交模式下的视野大小，如动图4-5所示。只有在正交模式下，Orthographic Vertical Size才有效。
 
-<img src="/3D/Camera/img/4-5.gif" alt="4-5" style="zoom:80%;" />
+<img src="./img/4-5.gif" alt="4-5" style="zoom:80%;" />
 
 （动图4-5） 
 
@@ -171,7 +171,7 @@ export default class CameraControll extends Laya.Script {
 
 ## 五、Render
 
-<img src="/3D/Camera/img/5-1.png" alt="5-1" style="zoom:80%;" />
+<img src="./img/5-1.png" alt="5-1" style="zoom:80%;" />
 
 （图5-1）
 
@@ -207,7 +207,7 @@ export default class CameraControll extends Laya.Script {
 
 如果第一摄像机的Clear Flags设置的是Skybox，那第二摄像机的Clear Flags设置DepthOnly，这时需要第一摄像机的渲染顺序在第二摄像机的渲染顺序之前，如图5-2所示，Main Camera节点在Camera2节点之上，所以两个摄像机的渲染画面才会合并到一起。
 
-![5-2](/3D/Camera/img/5-2.png)
+![5-2](./img/5-2.png)
 
 （图5-2）
 
@@ -242,7 +242,7 @@ export default class CameraControll extends Laya.Script {
 
 在LayaAir中，可以为每个节点设置所属的Layer(层)，不设置就是默认的Default层。如图5-3所示，是主角这个节点，默认使用Default层，
 
-<img src="/3D/Camera/img/5-3.png" alt="5-3" style="zoom:80%;" />
+<img src="./img/5-3.png" alt="5-3" style="zoom:80%;" />
 
 （图5-3）
 
@@ -250,7 +250,7 @@ export default class CameraControll extends Laya.Script {
 
 例如，将Cube节点设置到一个独立的cube层上，Culling Mask选择cube层，那渲染的时候，将会剔除该摄像机其它的节点物体，像遮罩效果一样，只保留cube层上的节点物体，这样，摄像机合并显示的时候，就只合并保留层上的节点物体。如图5-4所示，
 
-![5-4](/3D/Camera/img/5-4.png)
+![5-4](./img/5-4.png)
 
 （图5-4）
 
@@ -262,7 +262,7 @@ export default class CameraControll extends Laya.Script {
 
 ## 六、Output
 
-<img src="/3D/Camera/img/6-1.png" alt="6-1" style="zoom:80%;" />
+<img src="./img/6-1.png" alt="6-1" style="zoom:80%;" />
 
 （图6-1）
 
@@ -279,13 +279,13 @@ export default class CameraControll extends Laya.Script {
 
 需要注意的是，在LayaAir中表示屏幕左上角(0,0)位置。如图6-2所示，
 
-<img src="/3D/Camera/img/6-2.png" alt="6-2" style="zoom:60%;" />
+<img src="./img/6-2.png" alt="6-2" style="zoom:60%;" />
 
 （图6-2） 
 
 假如我们将屏幕水平位置起点X设置为0.25，屏幕垂直位置起点Y设置为0.25，宽度W设为0.5，高度H设为0.5，在LayaAir中效果如图6-3所示。
 
-<img src="/3D/Camera/img/6-3.png" alt="6-3" style="zoom:60%;" />
+<img src="./img/6-3.png" alt="6-3" style="zoom:60%;" />
 
 （图6-3） 
 
@@ -302,7 +302,7 @@ export default class CameraControll extends Laya.Script {
 
 `Depth Texture Format`：摄像机深度格式与深度纹理的默认值是DEPTH_16，随着深度广泛的使用，有的开发者会发现16位的深度已然不够用，现在增加了24位和32位深度模式的值。用于设置**depthTextureFormat**属性。
 
-![6-4](/3D/Camera/img/6-4.png)
+![6-4](./img/6-4.png)
 
 （图6-4）
 
@@ -378,7 +378,7 @@ export default class CameraControll extends Laya.Script {
 	}
 ```
 
-<img src="/3D/Camera/img/7-1.gif" alt="7-1" style="zoom:80%;" />
+<img src="./img/7-1.gif" alt="7-1" style="zoom:80%;" />
 
 （动图7-1）
 
@@ -390,17 +390,17 @@ export default class CameraControll extends Laya.Script {
 
 还是用3D-RPG项目为例，我们先设置两个Layer。
 
-![7-2](/3D/Camera/img/7-2.png)
+![7-2](./img/7-2.png)
 
 （图7-2）
 
 再把这两个屋子的Layer改为Building1和Building2，如图7-3，7-4所示，
 
-<img src="/3D/Camera/img/7-3.png" alt="7-3" style="zoom:80%;" />
+<img src="./img/7-3.png" alt="7-3" style="zoom:80%;" />
 
 （图7-3）
 
-![7-4](/3D/Camera/img/7-4.png)
+![7-4](./img/7-4.png)
 
 （图7-4）
 
@@ -420,7 +420,7 @@ export default class CameraControll extends Laya.Script {
 
 效果如动图7-5所示，
 
-![7-5](/3D/Camera/img/7-5.gif)
+![7-5](./img/7-5.gif)
 
 （动图7-5）
 
@@ -476,7 +476,7 @@ export default class CameraControll extends Laya.Script {
 
 效果如下：
 
-![7-6](/3D/Camera/img/7-6.gif)
+![7-6](./img/7-6.gif)
 
 （动图7-6）
 
@@ -502,7 +502,7 @@ camera.aspectRatio = 0;
 
 我们依然用3D-RPG项目为例，Main Camera为场景主渲染摄像机，添加一个新的 renderTargetCamera 为开启 RenderTarget 属性的摄像机。同时在场景中添加一个Plane，面向主摄像机，如图7-7所示。
 
-<img src="/3D/Camera/img/7-7.png" alt="7-7" style="zoom:70%;" />
+<img src="./img/7-7.png" alt="7-7" style="zoom:70%;" />
 
 （图7-7）
 
@@ -538,7 +538,7 @@ camera.aspectRatio = 0;
 
 运行效果如动图7-8所示，场景中多了一个摄像机的视图放在Plane上作为纹理，
 
-![7-8](/3D/Camera/img/7-8.gif)
+![7-8](./img/7-8.gif)
 
 （动图7-8）
 

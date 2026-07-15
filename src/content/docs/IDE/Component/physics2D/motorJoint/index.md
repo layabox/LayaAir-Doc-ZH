@@ -14,7 +14,7 @@ slug: "ide/component/physics2d/motorjoint"
 
 线性偏移的作用在于试图将连接的另一刚体与自身刚体保持在某一个相对的位置上，而这个相对的位置正是基于自身刚体锚点的偏移位置。默认的偏移是0，表示与另一刚体的位置会与自身刚体重合，通过调整线性偏移值，我们可以使得其中一个刚体到达预期的目标位置，例如实现自动门的效果，如动图1所示：
 
-<img src="/IDE/Component/physics2D/motorJoint/img/1.gif" alt="以自动门效果为例，展示设置了线性偏移和不设置的对比效果" style="zoom:80%;" />
+<img src="./img/1.gif" alt="以自动门效果为例，展示设置了线性偏移和不设置的对比效果" style="zoom:80%;" />
 
 (动图1)
 
@@ -26,13 +26,13 @@ slug: "ide/component/physics2d/motorjoint"
 
 角度偏移值以X轴正方向为起始，顺时针计算角度。该功能可以适用于关卡中的旋转门或板桥开合等效果的实现，效果如动图2所示：
 
-![展示角度偏移设置与设置的效果，以及破坏角度偏移后仍能恢复到该角度](/IDE/Component/physics2D/motorJoint/img/2.gif)
+![展示角度偏移设置与设置的效果，以及破坏角度偏移后仍能恢复到该角度](./img/2.gif)
 
 （动图2）
 
 这里有一个细节需要注意，当力作用于自身刚体时，正角度是顺时针方向。如果自身刚体是静态刚体，基于力的相互性，力作用于另一刚体时，另一刚体则会与自身刚体处于逆时针的角度。效果如动图3所示：
 
-<img src="/IDE/Component/physics2D/motorJoint/img/3.gif" alt="对比马达添加到静态刚体和动态刚体上的区别" style="zoom:80%;" />
+<img src="./img/3.gif" alt="对比马达添加到静态刚体和动态刚体上的区别" style="zoom:80%;" />
 
 （动图3）
 
@@ -49,7 +49,7 @@ slug: "ide/component/physics2d/motorjoint"
 
 效果如动图4所示：
 
-<img src="/IDE/Component/physics2D/motorJoint/img/4.gif" alt="对比过小的力和正常的最大力设置效果" style="zoom:80%;" />
+<img src="./img/4.gif" alt="对比过小的力和正常的最大力设置效果" style="zoom:80%;" />
 
 （动图4）
 
@@ -63,7 +63,7 @@ slug: "ide/component/physics2d/motorjoint"
 
 效果如动图5所示：
 
-<img src="/IDE/Component/physics2D/motorJoint/img/5.gif" alt="对比过小的扭矩和正常的最大扭矩设置效果" style="zoom:80%;" />
+<img src="./img/5.gif" alt="对比过小的扭矩和正常的最大扭矩设置效果" style="zoom:80%;" />
 
 （动图5）
 
@@ -77,6 +77,6 @@ slug: "ide/component/physics2d/motorjoint"
 
 效果如动图6所示：
 
-<img src="/IDE/Component/physics2D/motorJoint/img/6.gif" alt="不产生振荡的系数和产生振荡的系数设置对比" style="zoom:80%;" />
+<img src="./img/6.gif" alt="不产生振荡的系数和产生振荡的系数设置对比" style="zoom:80%;" />
 
 （动图6）

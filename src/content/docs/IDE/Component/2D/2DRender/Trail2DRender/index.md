@@ -6,7 +6,7 @@ slug: "ide/component/2d/2drender/trail2drender"
 
 2D拖尾渲染器可以在移动的游戏对象后创建一条多边形轨迹。通过这个组件，我们可以增强游戏对象的运动感，也可以突出对象移动的路径或位置。
 
-![0](/IDE/Component/2D/2DRender/Trail2DRender/img/0.gif)
+![0](./img/0.gif)
 
 ## 一、通过LayaAir IDE创建Trail2DRender组件
 
@@ -14,11 +14,11 @@ slug: "ide/component/2d/2drender/trail2drender"
 
 通过IDE可视化操作，可以直接在属性设置面板中为2D节点添加2D拖尾渲染器(Trail2DRender)。
 
-![1-1-1](/IDE/Component/2D/2DRender/Trail2DRender/img/1-1-1.gif)
+![1-1-1](./img/1-1-1.gif)
 
 2D拖尾渲染器需要启用引擎模块中的2D拖尾模块才能使用，当开发者向节点上添加2D拖尾渲染器时，这个模块会自动启用，开发者也可以手动启动这一模块。
 
-![1-1-2](/IDE/Component/2D/2DRender/Trail2DRender/img/1-1-2.png)
+![1-1-2](./img/1-1-2.png)
 
 
 
@@ -26,7 +26,7 @@ slug: "ide/component/2d/2drender/trail2drender"
 
 如图1-2-1所示，2D拖尾渲染器上有以下这些属性：
 
-![1-2-1](/IDE/Component/2D/2DRender/Trail2DRender/img/1-2-1.png)
+![1-2-1](./img/1-2-1.png)
 
 （图1-2-1）
 
@@ -55,13 +55,13 @@ slug: "ide/component/2d/2drender/trail2drender"
 
 `minVertexDistance`设置为`0.1`时，如图1-3-1-1所示：
 
-![1-3-1-1](/IDE/Component/2D/2DRender/Trail2DRender/img/1-3-1-1.gif)
+![1-3-1-1](./img/1-3-1-1.gif)
 
 （图1-3-1-1）
 
 `minVertexDistance`设置为`100`时，如图1-3-1-2所示：
 
-![1-3-1-2](/IDE/Component/2D/2DRender/Trail2DRender/img/1-3-1-2.gif)
+![1-3-1-2](./img/1-3-1-2.gif)
 
 （图1-3-1-2）
 
@@ -71,13 +71,13 @@ slug: "ide/component/2d/2drender/trail2drender"
 
 `widthMultiplier`属性决定了拖尾的整体宽度，而`widthCurve`属性则在`widthMultiplier`属性的基础上定义了拖尾每一部分的实际宽度。在IDE中，开发者可以通过双击连接线来创建一个新的关键帧，并通过拖动关键帧的点来设置宽度曲线。拖尾在创建顶点时会在宽度曲线上采样，因此拖尾宽度的精度也与`minVertexDistance`属性有关。
 
-![1-3-2-1](/IDE/Component/2D/2DRender/Trail2DRender/img/1-3-2-1.gif)
+![1-3-2-1](./img/1-3-2-1.gif)
 
 （图1-3-2-1）
 
 运行效果如图：
 
-![1-3-2-2](/IDE/Component/2D/2DRender/Trail2DRender/img/1-3-2-2.gif)
+![1-3-2-2](./img/1-3-2-2.gif)
 
 （图1-3-2-2）
 
@@ -89,17 +89,17 @@ slug: "ide/component/2d/2drender/trail2drender"
 
 **Stretch**：拉伸模式。此模式下纹理会被拉伸到覆盖整个拖尾长度，无论拖尾的长度如何变化，纹理只会显示一次。拖尾越长，纹理被拉伸得越多。适用于光效等连续纹理表现，避免出现纹理的断裂感。
 
-![1-3-3-1](/IDE/Component/2D/2DRender/Trail2DRender/img/1-3-3-1.gif)
+![1-3-3-1](./img/1-3-3-1.gif)
 
 
 
 **Tile**: 平铺模式。此模式下纹理在拖尾长度上以重复的方式进行铺设。拖尾越长，纹理重复的次数越多，纹理会保持原始比例不变。适用于需要拖尾呈现连续的图案或纹理，如条纹、渐变或重复性图案。保证纹理细节在拖尾长度变化时不失真。
 
-![1-3-3-2](/IDE/Component/2D/2DRender/Trail2DRender/img/1-3-3-2.gif)
+![1-3-3-2](./img/1-3-3-2.gif)
 
 注意：如果要使用拖尾的`Tile`模式，则拖尾纹理的平铺模式需要设置为`重复`模式，纹理只有在宽高均为2的n次方时才能设置为`重复`模式。开发者可以通过设置纹理的`非2次幂缩放`属性来将纹理变成2的n次方。
 
-![1-3-3-3](/IDE/Component/2D/2DRender/Trail2DRender/img/1-3-3-3.png)
+![1-3-3-3](./img/1-3-3-3.png)
 
 
 
@@ -211,19 +211,19 @@ export class NewScript extends Laya.Script {
 
 设置宽度曲线属性：在打开的场景文件中，搜索widthCurve，找到属性后将图(2-1)中所示的的属性值复制给脚本中的`_widthCurve`属性。
 
-![2-1](/IDE/Component/2D/2DRender/Trail2DRender/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
 设置颜色梯度属性：在打开的场景文件中，搜索colorGradient，找到属性后将图(2-2)中所示的的属性值复制给脚本中的`_gradient`属性。
 
-![2-2](/IDE/Component/2D/2DRender/Trail2DRender/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
 运行后查看效果，上方拖尾是通过代码创建的拖尾，下方拖尾是通过IDE创建的拖尾，可以看到两者效果一致。
 
-![2-3](/IDE/Component/2D/2DRender/Trail2DRender/img/2-3.gif)
+![2-3](./img/2-3.gif)
 
 （图2-3）
 

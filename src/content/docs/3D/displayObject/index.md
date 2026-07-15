@@ -17,7 +17,7 @@ slug: "3d/displayobject"
 - **Cone（锥体）**
 - **Plane（平面）**
 
-<img src="/3D/displayObject/img/1-1.png" alt="img" style="zoom: 33%;" /> 
+<img src="./img/1-1.png" alt="img" style="zoom: 33%;" /> 
 
 （图1-1）
 
@@ -35,7 +35,7 @@ slug: "3d/displayobject"
 
 在一个3D场景的`层级`面板中，任何节点下，或者是空白位置，都可以通过鼠标右键来创建3D显示对象，如动图2-1所示
 
-<img src="/3D/displayObject/img/2-1.gif" style="zoom: 43%;" /> 
+<img src="./img/2-1.gif" style="zoom: 43%;" /> 
 
 （动图2-1）
 
@@ -43,7 +43,7 @@ slug: "3d/displayobject"
 
 创建这六种基础对象就不一一演示了，我们可以通过如图2-2的菜单选择创建，
 
-<img src="/3D/displayObject/img/2-2.png" alt="2-2" style="zoom: 50%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom: 50%;" />
 
 （图2-2）
 
@@ -53,7 +53,7 @@ slug: "3d/displayobject"
 
 移动，旋转，缩放是对3D对象来说最基础的变换操作，如动图2-3所示，
 
-<img src="/3D/displayObject/img/2-3.gif" alt="2-3" style="zoom:50%;" />
+<img src="./img/2-3.gif" alt="2-3" style="zoom:50%;" />
 
 （动图2-3）
 
@@ -63,7 +63,7 @@ slug: "3d/displayobject"
 
 每个3D基础对象，都具有 `MeshRenderer` 组件，通过给接收阴影的平面设置`Receive Shadow`和给产生阴影的立方体设置`Cast Shadow `来创建阴影效果，如动图2-4所示，
 
-<img src="/3D/displayObject/img/2-4.gif" alt="2-4" style="zoom:50%;" />
+<img src="./img/2-4.gif" alt="2-4" style="zoom:50%;" />
 
 （动图2-4）
 
@@ -75,13 +75,13 @@ slug: "3d/displayobject"
 
 每个3D基础对象，都可以添加组件来实现高级的功能，通过对立方体添加3D物理组件 Rigidbody3D ，勾选重力属性，最后添加碰撞盒，可以实现模拟自由落体的效果，如动图2-5所示，
 
-<img src="/3D/displayObject/img/2-5.gif" alt="2-5" style="zoom:50%;" />
+<img src="./img/2-5.gif" alt="2-5" style="zoom:50%;" />
 
 （动图2-5）
 
 运行时可以看到立方体下落的效果，
 
-<img src="/3D/displayObject/img/2-6.gif" alt="2-6" style="zoom:50%;" />
+<img src="./img/2-6.gif" alt="2-6" style="zoom:50%;" />
 
 （动图2-6） 
 
@@ -93,7 +93,7 @@ slug: "3d/displayobject"
 
 每个3D基础对象，都可以通过创建 `Material`，并在 `MeshRenderer` 组件中指定新创建的材质，来设置 `albedo Texture` 纹理 ，如动图2-7所示，
 
-<img src="/3D/displayObject/img/2-7.gif" alt="2-7" style="zoom:50%;" />
+<img src="./img/2-7.gif" alt="2-7" style="zoom:50%;" />
 
 （动图2-7）
 
@@ -247,7 +247,7 @@ this.scene.addChild(plane);
 
 运行时效果如下：
 
-<img src="/3D/displayObject/img/3-1.png" alt="3-1" style="zoom:80%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom:80%;" />
 
 （图3-1）
 
@@ -324,6 +324,6 @@ boxRender.sharedMaterial = boxMaterial;
 
 运行时效果如下：
 
-<img src="/3D/displayObject/img/3-2.png" alt="3-2" style="zoom:50%;" />
+<img src="./img/3-2.png" alt="3-2" style="zoom:50%;" />
 
 （图3-2）

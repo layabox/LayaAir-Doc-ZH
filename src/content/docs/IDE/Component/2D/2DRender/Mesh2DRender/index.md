@@ -18,13 +18,13 @@ slug: "ide/component/2d/2drender/mesh2drender"
 
 在LayaAir-IDE中，创建一个sprite，在sprite上添加2D网格渲染器组件，如动图2-1所示。
 
-<img src="/IDE/Component/2D/2DRender/Mesh2DRender/img/2-1.gif" alt="2-1" style="zoom:70%;" /> 
+<img src="./img/2-1.gif" alt="2-1" style="zoom:70%;" /> 
 
 （动图2-1）
 
 添加后的组件属性如图2-2所示，
 
-![2-2](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-2.png) 
+![2-2](./img/2-2.png) 
 
 （图2-2）
 
@@ -34,7 +34,7 @@ slug: "ide/component/2d/2drender/mesh2drender"
 
 2D网格渲染器支持添加自定义的材质，在LayaAir-IDE中，创建默认的材质为基础2D渲染（BaseRender2D），如图2-3所示，
 
-![2-3](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -44,7 +44,7 @@ slug: "ide/component/2d/2drender/mesh2drender"
 
 如图2-4所示，使用自定义的Shader实现了一个渐变的效果，
 
-![2-4](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -147,7 +147,7 @@ GLSL End
 
 2D网格可以通过两种方式进行创建。一种方法是LayaAir-IDE内置的方法，如图2-5所示，在项目资源面板中，在需要创建网格的图片上右键，选择“创建2D网格”即可。
 
-![2-5](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -159,25 +159,25 @@ GLSL End
 
 纹理的选择不一定要与创建网格时选择的图片相同。例如，创建网格使用的是图2-6中的图片，
 
-![2-6](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
 纹理可以使用图2-7中的图片，
 
-![2-7](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-7.png)
+![2-7](./img/2-7.png)
 
 （图2-7）
 
 最终的效果如图2-8所示，
 
-![2-8](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-8.png)
+![2-8](./img/2-8.png)
 
 （图2-8）
 
 还可以更改颜色，效果如图2-9所示，
 
-![2-9](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-9.png)
+![2-9](./img/2-9.png)
 
 （图2-9）
 
@@ -185,11 +185,11 @@ GLSL End
 
 平铺偏移属性可以更改纹理的位置，缩放。位置改变效果如动图2-10所示。
 
-![2-10](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-10.gif)
+![2-10](./img/2-10.gif)
 
 缩放改变效果如动图2-11所示。
 
-![2-11](/IDE/Component/2D/2DRender/Mesh2DRender/img/2-11.gif)
+![2-11](./img/2-11.gif)
 
 ## 三、通过代码使用
 
@@ -274,7 +274,7 @@ export class Mesh2DRender extends Laya.Script {
 
 最终的效果如图3-1所示，
 
-![3-1](/IDE/Component/2D/2DRender/Mesh2DRender/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -331,7 +331,7 @@ export class Mesh2DRender extends Laya.Script {
 
 只需替换示例代码中的`generateCircleVerticesAndUV`即可，效果如图3-2所示。
 
-![3-2](/IDE/Component/2D/2DRender/Mesh2DRender/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 

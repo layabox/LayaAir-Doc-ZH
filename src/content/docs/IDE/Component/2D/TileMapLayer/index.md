@@ -16,7 +16,7 @@ slug: "ide/component/2d/tilemaplayer"
 
 在制作瓦片地图前，开发者需要先设置好[**瓦片地图的资源**](/ide/assets/tileset/)，然后在层级面板中加入一个节点，给其添加一个瓦片地图层（TileMapLayer）组件，如图2-1所示，
 
-![2-1](/IDE/Component/2D/TileMapLayer/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -30,7 +30,7 @@ slug: "ide/component/2d/tilemaplayer"
 
 `编辑`：点击编辑按钮后，场景面板会变为网格状，如图2-2所示，用于编辑瓦片地图。
 
-<img src="/IDE/Component/2D/TileMapLayer/img/2-2.png" alt="2-2" style="zoom:67%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:67%;" />
 
 （图2-2）
 
@@ -40,31 +40,31 @@ slug: "ide/component/2d/tilemaplayer"
 
 编辑瓦片地图时，需要结合瓦片地图面板进行操作，如图3-1所示，
 
-<img src="/IDE/Component/2D/TileMapLayer/img/3-1.png" alt="3-1" style="zoom: 67%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom: 67%;" />
 
 （图3-1）
 
 绘制：可以在场景中直接绘制瓦片，如动图3-2所示。
 
-![3-2](/IDE/Component/2D/TileMapLayer/img/3-2.gif)
+![3-2](./img/3-2.gif)
 
 （动图3-2）
 
 删除：可以如橡皮擦一样，清楚不需要的瓦片，如动图3-3所示。
 
-![3-3](/IDE/Component/2D/TileMapLayer/img/3-3.gif)
+![3-3](./img/3-3.gif)
 
 （动图3-3）
 
 线条：可以使用选中的瓦片绘制一条直线，如图3-4所示。
 
-![3-4](/IDE/Component/2D/TileMapLayer/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
 矩形：如图3-5所示，可以使用瓦片框选出一篇矩形区域。
 
-![3-5](/IDE/Component/2D/TileMapLayer/img/3-5.png)
+![3-5](./img/3-5.png)
 
 （图3-5）
 
@@ -76,13 +76,13 @@ slug: "ide/component/2d/tilemaplayer"
 
 如图4-1所示，在底层用瓦片绘制背景，
 
-![4-1](/IDE/Component/2D/TileMapLayer/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 
 如图4-2所示，在上面一层添加人物。
 
-![4-2](/IDE/Component/2D/TileMapLayer/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 
