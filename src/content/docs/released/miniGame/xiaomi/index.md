@@ -22,7 +22,7 @@ slug: "released/minigame/xiaomi"
 
 在构建发布面板中，侧边栏选择目标平台为小米快游戏。如图2-1所示，
 
-![2-1](/released/miniGame/xiaomi/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -74,7 +74,7 @@ slug: "released/minigame/xiaomi"
 
 发布后的目录结构如图2-2所示： 
 
-<img src="/released/miniGame/xiaomi/img/2-2.png" alt="2-2" style="zoom:80%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:80%;" />
 
 （图2-2）
 
@@ -124,7 +124,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 先在手机上安装好小米快游戏的调试APP（快应用调试器），如图3-1所示。然后点击进入。
 
-<img src="/released/miniGame/xiaomi/img/3-1.png" alt="图3" style="zoom:67%;" /> 
+<img src="./img/3-1.png" alt="图3" style="zoom:67%;" /> 
 
 （图3-1）
 
@@ -132,7 +132,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 进入快应用调试器之后，我们可以看到如图3-2所示的APP操作界面。 
 
-<img src="/released/miniGame/xiaomi/img/3-2.png" alt="3-2" style="zoom: 33%;" />
+<img src="./img/3-2.png" alt="3-2" style="zoom: 33%;" />
 
 (图3-2)
 
@@ -148,7 +148,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 此时，我们要关注手机端，是否出现如图3-3所示的提示，如果有，则点 确定 允许调试。
 
-<img src="/released/miniGame/xiaomi/img/3-3.png" alt="图5-1" style="zoom:67%;" />  
+<img src="./img/3-3.png" alt="图5-1" style="zoom:67%;" />  
 
 （图3-3）
 
@@ -156,7 +156,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 当USB调试模式授权成功之后，我们在PC端打开cmd窗口，输入adb devices，应该如图3-4所示。
 
-![图5-2](/released/miniGame/xiaomi/img/3-4.png) 
+![图5-2](./img/3-4.png) 
 
 （图3-4）
 
@@ -166,19 +166,19 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 小米快游戏在PC上没有工具的开发调试环境，是通过USB联接到手机设备，然后在PC命令行模式下，通过 `npm run debug` 命令调起Chrome调试器（前提要保障PC是已安装了Chrome浏览器的）来联调手机真机环境的rpk包，如图3-5所示。当我们能看到`Debugger URL opened in Chrome.`这个提示的时候，说明chrome已被成功调起。
 
-![图6](/released/miniGame/xiaomi/img/3-5.png) 
+![图6](./img/3-5.png) 
 
 (图3-5)
 
 或者在Chrome浏览器中输入`chrome://inspect/#devices`，进入后找到连接的手机选项，点击`inspect`，如图3-6所示：
 
-<img src="/released/miniGame/xiaomi/img/3-6.png" alt="3-6" style="zoom:67%;" />
+<img src="./img/3-6.png" alt="3-6" style="zoom:67%;" />
 
 （图3-6）
 
 操作完成后，如图3-7所示，就可以按Chrome的调试方式来调试小米快游戏项目。
 
-![3-7](/released/miniGame/xiaomi/img/3-7.png)
+![3-7](./img/3-7.png)
 
 (图3-7)
 
@@ -198,7 +198,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 如图4-1所示，点击开启分包后，选择要进行分包的文件夹即可。
 
-![4-1](/released/miniGame/xiaomi/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 

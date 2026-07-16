@@ -28,19 +28,19 @@ slug: "ide/assets/prefab"
 
 如动图2-1所示，在IDE中项目资源的assets下，开发者可以选择希望预制体存放的目录，在此目录下，鼠标右键的菜单中创建预制体(2D/UI)这里我们创建一个预制体（UI）
 
-<img src="/IDE/assets/prefab/img/2-1.gif" style="zoom:70%;" /> 
+<img src="./img/2-1.gif" style="zoom:70%;" /> 
 
 （动图2-1）
 
 创建好的预制体，通常开发者是需要重新命名的，这样才能通过名字来识别预制体的功能，如动图2-2所示
 
-<img src="/IDE/assets/prefab/img/2-2.gif" style="zoom:50%;" /> 
+<img src="./img/2-2.gif" style="zoom:50%;" /> 
 
 （动图2-2）
 
 点击Title预制体，可以看到有一个根节点“Box”，如图2-3所示
 
-<img src="/IDE/assets/prefab/img/2-3.png" style="zoom:50%;" /> 
+<img src="./img/2-3.png" style="zoom:50%;" /> 
 
 （图2-3）
 
@@ -48,7 +48,7 @@ slug: "ide/assets/prefab"
 
 而预制体(2D)的根节点为“Sprite”。如图2-4所示
 
-<img src="/IDE/assets/prefab/img/2-6.png" style="zoom:100%;" /> 
+<img src="./img/2-6.png" style="zoom:100%;" /> 
 
 （图2-4）
 
@@ -56,13 +56,13 @@ slug: "ide/assets/prefab"
 
 创建预制体3D的过程同预制体2D一样，如动图2-5所示
 
-<img src="/IDE/assets/prefab/img/2-4.gif" style="zoom:70%;" />  
+<img src="./img/2-4.gif" style="zoom:70%;" />  
 
 （动图2-5）
 
 不同的是，双击打开预制体3D，根节点是“Sprite3D”，也就是我们需要创建的3D精灵对象。同时图2-6右面是默认的IDE场景，用了IDE自带的天空盒
 
-<img src="/IDE/assets/prefab/img/2-5.png" style="zoom:50%;" /> 
+<img src="./img/2-5.png" style="zoom:50%;" /> 
 
 （图2-6）
 
@@ -72,7 +72,7 @@ slug: "ide/assets/prefab"
 
 开发者可以通过如下的方式来更换3D预制体的编辑场景，如动图2-6所示
 
-<img src="/IDE/assets/prefab/img/2-6.gif" style="zoom:50%;" /> 
+<img src="./img/2-6.gif" style="zoom:50%;" /> 
 
 （动图2-6）
 
@@ -90,7 +90,7 @@ slug: "ide/assets/prefab"
 
 由于创建的预制体默认是Box根节点，如果在Box下面创建标题的话，那么这个Box节点是多余的，如果界面中创建大量的标题，那么会创建很多的Box，对于性能的考虑来说是强烈不推荐的，因此我们希望使用转换节点来把Box改为Label组件。如动图3-1所示
 
-<img src="/IDE/assets/prefab/img/3-1.gif" style="zoom:50%;" /> 
+<img src="./img/3-1.gif" style="zoom:50%;" /> 
 
 （动图3-1）
 
@@ -100,7 +100,7 @@ slug: "ide/assets/prefab"
 
 接下来，这里就不多介绍标题的制作过程了，如图3-2所示，我们暂时制作一个黄色的30号黑体的字体，作为标题，并改名为Title
 
-<img src="/IDE/assets/prefab/img/3-2.png" style="zoom:50%;" />
+<img src="./img/3-2.png" style="zoom:50%;" />
 
 （图3-2）
 
@@ -110,7 +110,7 @@ slug: "ide/assets/prefab"
 
 当预制体制作好之后，可以在IDE中拖入到我们希望使用到的界面中，如动图3-3所示
 
-<img src="/IDE/assets/prefab/img/3-3.gif" style="zoom:50%;" /> 
+<img src="./img/3-3.gif" style="zoom:50%;" /> 
 
 （动图3-3）
 
@@ -122,7 +122,7 @@ slug: "ide/assets/prefab"
 
 当需求说想把所有的标题都改为红色时，也就是修改一次，多个界面跟着一起变化。那么只需要在Title预制体中修改文字的颜色即可，如动图3-4所示
 
-<img src="/IDE/assets/prefab/img/3-4.gif" style="zoom:50%;" /> 
+<img src="./img/3-4.gif" style="zoom:50%;" /> 
 
 （动图3-4）
 
@@ -138,7 +138,7 @@ slug: "ide/assets/prefab"
 
 如果我们在场景中操作了预制体节点，比如新增加了UI组件，修改了UI组件的属性，UI组件上挂了脚本，如图3-3所示
 
-<img src="/IDE/assets/prefab/img/3-3.png" style="zoom:50%;" /> 
+<img src="./img/3-3.png" style="zoom:50%;" /> 
 
 （图3-3）
 
@@ -152,7 +152,7 @@ slug: "ide/assets/prefab"
 
 这些修改也可以覆盖到预制体中，我们来看看如何操作。如图3-4所示
 
-<img src="/IDE/assets/prefab/img/3-4.png" style="zoom:50%;" /> 
+<img src="./img/3-4.png" style="zoom:50%;" /> 
 
 （图3-4）
 
@@ -160,7 +160,7 @@ slug: "ide/assets/prefab"
 
 由于之前有三个操作，那么我们点击 item，LabelScript，Button，可以看到，如图3-8所示
 
-<img src="/IDE/assets/prefab/img/3-8.png" style="zoom: 40%;" /> 
+<img src="./img/3-8.png" style="zoom: 40%;" /> 
 
 （图3-8） 
 
@@ -168,7 +168,7 @@ IDE记录了这三个修改操作，我们可以分别对每一项进行`撤销`
 
 当每个操作点击应用或者使用应用全部后，回到item预制体窗口后，三个修改都会更新并保存到预制体中，如图3-9所示
 
-<img src="/IDE/assets/prefab/img/3-9.png" style="zoom:50%;" /> 
+<img src="./img/3-9.png" style="zoom:50%;" /> 
 
 （图3-9） 
 
@@ -186,7 +186,7 @@ IDE记录了这三个修改操作，我们可以分别对每一项进行`撤销`
 
 通过代码添加预制体的方式，就像使用一个组件一样简单，如图3-5所示，我们希望把Title预制体放到Box下
 
-<img src="/IDE/assets/prefab/img/3-5.png" style="zoom:50%;" /> 
+<img src="./img/3-5.png" style="zoom:50%;" /> 
 
 （动图3-5）
 
@@ -221,7 +221,7 @@ export class ScriptA extends Laya.Script {
 
 运行效果如图3-6所示
 
-<img src="/IDE/assets/prefab/img/3-6.png" style="zoom:50%;" /> 
+<img src="./img/3-6.png" style="zoom:50%;" /> 
 
 （图3-6）
 
@@ -235,7 +235,7 @@ export class ScriptA extends Laya.Script {
 
 假设我们已经创建了3D预制体，并通过添加模型，材质，动画状态机等组件，制作了LayaMonkey，如图3-7所示
 
-<img src="/IDE/assets/prefab/img/3-7.png" style="zoom:50%;" /> 
+<img src="./img/3-7.png" style="zoom:50%;" /> 
 
 （图3-7）
 
@@ -243,7 +243,7 @@ export class ScriptA extends Laya.Script {
 
 此时，制作好的LayaMonkey可以拖入任何场景中，如动图3-8所示
 
-<img src="/IDE/assets/prefab/img/3-8.gif" style="zoom:50%;" /> 
+<img src="./img/3-8.gif" style="zoom:50%;" /> 
 
 （动图3-8）
 
@@ -281,7 +281,7 @@ export class Main extends Laya.Script {
 
 运行效果如动图3-9
 
-<img src="/IDE/assets/prefab/img/3-9.gif" style="zoom:50%;" /> 
+<img src="./img/3-9.gif" style="zoom:50%;" /> 
 
 （动图3-9）
 

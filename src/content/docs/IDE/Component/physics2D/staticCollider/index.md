@@ -18,7 +18,7 @@ slug: "ide/component/physics2d/staticcollider"
 
 创建静态碰撞器如动图1-1所示
 
-![](/IDE/Component/physics2D/staticCollider/img/1-1.gif)
+![](./img/1-1.gif)
 
 ## 二、碰撞形状
 

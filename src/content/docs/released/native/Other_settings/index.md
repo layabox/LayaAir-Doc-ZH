@@ -70,7 +70,7 @@ if (window.conch)
 在iOS平台下对接微信SDK，微信1.77版本以后需要增加-Objc的参数，微信的官方文档中默认让增加`-Objc -all_load`,但是这样会导致编译报错。
 遇到到这种情况可以把参数变成 `-Objc -force_load libWeChatSDK.a`，配置后，如图1所示：
 
-![1](/released/native/Other_settings/img/1.png)
+![1](./img/1.png)
 
 ## 5. 关于iOS模拟器
 
@@ -105,7 +105,7 @@ if (window.conch)
 项目运行过程中有时会弹出一些错误的提示，这些提示都是项目中有代码写错了。我们的建议是解决掉这些错误弹框里边的错，如果实在是解决不掉再去屏蔽。  
 是否显示报错弹框在IDE`项目设置`--> `杂项`--> `弹窗显示全局错误`选项进行设置，如图2所示：
 
-![2](/released/native/Other_settings/img/2.png)
+![2](./img/2.png)
 
 
 ## 8. 引擎初始化或加载启动脚本过程中的异常处理

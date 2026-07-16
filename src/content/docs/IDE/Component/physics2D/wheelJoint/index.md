@@ -20,7 +20,7 @@ slug: "ide/component/physics2d/wheeljoint"
 
 效果如动图1所示：
 
-![体现出不同轮子驱动效果的对比](/IDE/Component/physics2D/wheelJoint/img/1.gif)
+![体现出不同轮子驱动效果的对比](./img/1.gif)
 
 (动图1）
 
@@ -34,7 +34,7 @@ slug: "ide/component/physics2d/wheeljoint"
 
 弹性方向的设置，只是定义了悬挂模拟的弹簧方向，移动限制勾选后，定义了在这个方向上的移动范围。如图2所示：
 
-![](/IDE/Component/physics2D/wheelJoint/img/2.png)
+![](./img/2.png)
 
 (图2)
 
@@ -42,13 +42,13 @@ slug: "ide/component/physics2d/wheeljoint"
 
 当运行后，如果我们勾选了绘制关节，那我们可以直观的看到移动的范围区间，如图3所示：
 
-![](/IDE/Component/physics2D/wheelJoint/img/3.png)
+![](./img/3.png)
 
 （图3）
 
 有了这个范围区间，我们就可以爬坡、落地的时候，直观的感受到悬挂模拟效果受这个范围的限制后，会更加的稳定。否则可能会出现不真实的弹性效果。对比效果如动图4所示：
 
-<img src="/IDE/Component/physics2D/wheelJoint/img/4.gif" alt="对比设置限制和不限制的悬挂震荡的效果" style="zoom:80%;" />
+<img src="./img/4.gif" alt="对比设置限制和不限制的悬挂震荡的效果" style="zoom:80%;" />
 
 (动图4)
 
@@ -56,6 +56,6 @@ slug: "ide/component/physics2d/wheeljoint"
 
 如果移动上限与移动下限均为0，那即便是设置了弹性的方向，也无法得到悬挂的效果。对比效果如动图5所示：
 
-<img src="/IDE/Component/physics2D/wheelJoint/img/5.gif" alt="对比正常限制与上下限都为0的效果" style="zoom:80%;" />
+<img src="./img/5.gif" alt="对比正常限制与上下限都为0的效果" style="zoom:80%;" />
 
 （动图5）

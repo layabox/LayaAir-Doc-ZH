@@ -18,13 +18,13 @@ slug: "ide/component/2d/spotlight2d"
 
 在LayaAir-IDE中，添加一个sprite，然后在sprite上添加一个2D聚光灯组件，如图2-1所示。
 
-<img src="/IDE/Component/2D/SpotLight2D/img/2-1.png" alt="2-1" style="zoom: 80%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom: 80%;" />
 
 （图2-1）
 
 一个2D网格渲染器接收的聚光灯的效果如图2-2所示，
 
-![2-2](/IDE/Component/2D/SpotLight2D/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -46,7 +46,7 @@ slug: "ide/component/2d/spotlight2d"
 
 为了更直观的理解，用R表示外半径，r表示内半径，β表示外角度，α表示内角度，各个属性的示意图如下：
 
-<img src="/IDE/Component/2D/SpotLight2D/img/2-3.png" alt="2-3" style="zoom:80%;" />
+<img src="./img/2-3.png" alt="2-3" style="zoom:80%;" />
 
 （图2-3）
 
@@ -88,7 +88,7 @@ export class SpotLight extends Laya.Script {
 
 让此聚光灯照亮一个2D网格，最终的效果如图3-1所示，
 
-![3-1](/IDE/Component/2D/SpotLight2D/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 

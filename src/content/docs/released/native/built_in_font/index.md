@@ -16,13 +16,13 @@ LayaNative的策略是根据Android的系统版本号，枚举出字体文件的
 
 构建好Android项目，找到assets目录，再创建一个font目录，把要植入的字体文件改名为“layabox.ttf”，放到该目录下。如图1所示：
 
-![图1](/released/native/built_in_font/img/1.jpg)
+![图1](./img/1.jpg)
 
 ## 3. iOS嵌入字体
 
 LayaNative支持iOS嵌入默认字体，具体做法同Android，在resource下创建font目录，把要嵌入的字体改名为layabox.ttf即可，如下图2所示：   
 
-![图2](/released/native/built_in_font/img/2.png)
+![图2](./img/2.png)
 
 
 ## 4. LayaAir3.1版本后的字体修改

@@ -1,625 +1,91 @@
 ---
 title: "Unity资源导出插件"
-description: "采用Unity插件方案的主要原因，主要是为了支持开发者在Unity资源商城中购买的资源可以无感的迁移到LayaAir IDE中进行相关的开发工作，Unity资源商城拥有一定数量的精美且高质量的美术资源，采用Untiy资源导出插件能将这些精美的美术资源迁移到LayaAir引擎的IDE中进行开发…"
+description: "Unity资源导出插件的介绍页：说明插件的定位与下载方式，提供系列文档导读（安装、能力一览、导出流程与各专题详情页），并介绍导出产物在LayaAir-IDE中的加载与显示。"
 slug: "3d/advanced/unity"
 ---
 
 ## 一、关于插件
-采用Unity插件方案的主要原因，主要是为了支持开发者在Unity资源商城中购买的资源可以无感的迁移到LayaAir IDE中进行相关的开发工作，Unity资源商城拥有一定数量的精美且高质量的美术资源，采用Untiy资源导出插件能将这些精美的美术资源迁移到LayaAir引擎的IDE中进行开发，对一些小而美的项目来说无疑是一种无形的帮助，更可以让有Unity经验的优质开发者可以更低学习成本进入HTML5和小游戏产业中来。
+
+采用Unity插件方案的主要原因，主要是为了支持开发者在Unity资源商城中购买的资源可以无感的迁移到LayaAir IDE中进行相关的开发工作，Unity资源商城拥有一定数量的精美且高质量的美术资源，采用Unity资源导出插件能将这些精美的美术资源迁移到LayaAir引擎的IDE中进行开发，对一些小而美的项目来说无疑是一种无形的帮助，更可以让有Unity经验的优质开发者可以更低学习成本进入HTML5和小游戏产业中来。
 
 插件的下载地址：https://github.com/layabox/LayaAir3.0UnityPlugin/releases
 
-![1-1](/3D/advanced/Unity/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
-> 开发者下载最新版的插件即可。
-
-
-
-## 二、导入LayaAir的Unity插件
-
-Unity里有一个导入自定义包的功能，通过这个功能，可以在Unity里导入LayaAir引擎提供的专属功能包，用来导出Unity里编辑好的场景和资源，然后再用以LayaAir引擎3D的开发。在Unity里导入这个自定义的LayaAir功能包的过程，我们可以视为安装了一个LayaAir引擎资源导出的Unity插件。本小节会针对这个过程进行详细介绍。
-
-### 2.1 创建一个空项目
-
-除非是在已经安装过LayaAir3D插件的Unity项目上进行升级安装，否则，我们建议去创建一个新的空项目。
-
-因为直接打开一个Unity已有项目进行插件的安装，可能会有冲突，会导致插件安装不成功。
-
-如果想使用已有Unity项目的场景资源和编辑好的场景，建议先在一个Unity空项目里安装好LayaAir引擎的插件后，再把旧项目的资源目录（也就是Unity项目中的Assets目录）复制到新建的项目里。
-
-> Tips: 旧项目中的其他文件对于导出插件而言都用不上，只复制Assets目录即可
-
-
-
-### 2.2 两种插件导入方式（项目中首次安装）
-
-#### 2.2.1 菜单式导入
-
-在Unity的资源菜单Assets（如图2-1）或者资源面板的Assets（如图2-2），右键`import Package-> custom Package`。
-
-<img src="/3D/advanced/Unity/img/2-1.png" alt="2-1" style="zoom:80%;" />
-
-（图2-1）从菜单导入
-
-<img src="/3D/advanced/Unity/img/2-2.png" alt="2-2" style="zoom:80%;" />
-
-（图2-2）从资源面板导入
-
-以上的两种导入方式，任选一种点开后，选择之前下载好的LayaAir引擎unity插件（xx.unitypackage）打开，如图2-3所示。
-
-<img src="/3D/advanced/Unity/img/2-3.png" alt="2-3" style="zoom: 50%;" />
-
-（图2-3）
-
-点击`打开`后，如图2-4所示，会有插件包含的内容列表展示，如果有不想要的功能，比如在Unity里直接预览这个功能不想要，也可以把相关默认的勾选去掉，但是建议全部导入（默认是全选）。
-
-所以，直接点击`Import`按钮，开始全部导入，即可。
-
-<img src="/3D/advanced/Unity/img/2-4.png" alt="2-4" style="zoom:80%;" />
-
-（图2-4）
-
-导入完成后，可以看到菜单栏多出一个`LayaAir3D`，如图2-5所示。此时说明，已经导入成功。
-
-![2-5](/3D/advanced/Unity/img/2-5.png)
-
-（图2-5）
-
-
-
-#### 2.2.2 拖拽式导入
-
-拖拽式安装的操作方式是把下载好的插件（xx.unitypackage）直接拖拽到Assets面板下，如图2-6所示。其他后续操作与菜单式安装一样。就不重复介绍了。
-
-<img src="/3D/advanced/Unity/img/2-6.png" alt="2-6" style="zoom:70%;" />
-
-（图2-6）
-
-
-
-### 2.3 插件导入安装的提醒
-
-对于Unity还不太熟悉的开发者，需要提醒的是，LayaAir引擎Unity资源导出插件，不是一次导入所有项目通用。在每次创建新的项目工程后，都要重复上面导入LayaAir插件包的过程。
-
-另外需要注意：
-
-**1.关于颜色空间的提醒：**
-
-LayaAir为线性颜色空间，对于Unity颜色空间设置为Gamma的开发者可能会出现导出效果与LayaAir不一致的情况，开发者需要确认Unity是否设置为Linear颜色空间。
-
-可以使用以下步骤查看Unity颜色空间的设置：`Editor -> Project Setting -> Player -> Other Setting -> Color Space`，操作如图2-7所示。
-
-<img src="/3D/advanced/Unity/img/2-7.png" alt="2-7" style="zoom:80%;" />
-
-（图2-7）
-
-**2.关于法线贴图的提醒**
-
-Unity的法线贴图经过了压缩，在导出的时候可能会存在LayaAir IDE预览与Unity不一致的情况，对于自定义Shader的用户需要注意法线的变换。
-
-
-
-## 三、资源导出插件的功能
-
-### 3.1 场景导出
-
-![3-1](/3D/advanced/Unity/img/3-1.png)
-
-（图3-1）场景导出面板
-
-#### 3.1.1 节点设置
-
-**忽略未激活节点**：如果勾选此选项，类似图3-2中Camera这类未激活的节点将不会被导出。
-
-![3-2](/3D/advanced/Unity/img/3-2.png)
-
-（图3-2）
-
-
-
-#### 3.1.2 模型设置
-
-**忽略顶点UV**：如果勾选此选项，导出的Mesh数据不存在UV信息。
-
-**忽略顶点颜色**：如果勾选此选项，导出的Mesh数据不存在顶点颜色信息。
-
-**忽略顶点法线**：如果勾选此选项，导出的Mesh数据不存在顶点法线信息。
-
-**忽略顶点切线**：如果勾选此选项，导出的Mesh数据不存在顶点切线信息。
-
-**自动生成UV1**：如果勾选此选项，导出的Mesh数据UV Set设置为UV1。
-
-
-
-#### 3.1.3 其他设置
-
-**自定义导出根目录**：如果勾选此选项，如图3-3所示，可以设置插件导出的资源路径(文本框填取绝对路径)。
-
-![3-3](/3D/advanced/Unity/img/3-3.png)
-
-（图3-3）
-
-
-
-### 3.2 预设导出
-
-![3-4](/3D/advanced/Unity/img/3-4.png)
-
-（图3-4）预设导出面板
-
-#### 3.2.1 节点设置
-
-**忽略未激活节点**：如果勾选此选项，类似图3-5中Camera这类未激活的节点将不会被导出。
-
-![3-5](/3D/advanced/Unity/img/3-5.png)
-
-（图3-5）
-
-**批量导出一级节点**：如果勾选此选项，类似图3-6中这类节点最终导出的为LayaMonkey根节点。
-
-![3-6](/3D/advanced/Unity/img/3-6.png)
-
-（图3-6）
-
-
-
-#### 3.2.2 模型设置
-
-**忽略顶点UV**：如果勾选此选项，导出的Mesh数据不存在UV信息。
-
-**忽略顶点颜色**：如果勾选此选项，导出的Mesh数据不存在顶点颜色信息。
-
-**忽略顶点法线**：如果勾选此选项，导出的Mesh数据不存在顶点法线信息。
-
-**忽略顶点切线**：如果勾选此选项，导出的Mesh数据不存在顶点切线信息。
-
-**自动生成UV1**：如果勾选此选项，导出的Mesh数据UV Set设置为UV1。
-
-
-
-#### 3.2.3 其他设置
-
-**自定义导出根目录**：如果勾选此选项，如图3-7所示，可以设置插件导出的资源路径(文本框填取绝对路径)。
-
-![3-7](/3D/advanced/Unity/img/3-7.png)
-
-（图3-7）
-
-
-
-### 3.3 帮助 help
-
-帮助菜单项里，下级菜单有`学习文档Study`、`问答社区Answsers`这些外链菜单项，方便开发者快速进入对应的官网页面中。还有`插件版本About LayaAir`，如图3-8所示。
-
-![3-8](/3D/advanced/Unity/img/3-8.png)
-
-（图3-8）
-
-## 四、场景对象导出支持列表
-
-除了LayaAir引擎插件自身面板上的导出设置项，我们还要注意并且必须要了解Unity的功能面板有哪些是可以导出使用，哪些是不支持的。
-
-因为LayaAir引擎的Unity插件并非是将Unity所有的功能全都支持导出。毕竟我们的LayaAir引擎设计与结构与Unity的引擎并不相同，虽然3D场景基于Unity编辑器进行编辑和导出，但我们需要按LayaAir引擎插件的支持规则来使用。
-
-在本小节，我们就全面介绍LayaAir引擎与插件支持哪些Unity中的功能。如果在本小节支持清单中未提及的，都是当前不支持的。所以，如果是刚接触Unity的开发者，在学习Unity工具使用的时候，也不必要全部学习，可以把本小节中所涉及的支持内容，作为关键字搜索学习即可。
-
-> LayaAir引擎插件也会不断在更新，当升级新的引擎版本后，可以关注版本更新日志以及该文档的变化。
-
-### 4.1 Inspector面板的基础属性
-
-在Unity的Inspector面板中，可以查看和编辑Unity编辑器中几乎所有内容，下面，我们先了解一下Inspector面板的基础通用属性。
-
-![4-1](/3D/advanced/Unity/img/4-1.png)
-
-（图4-1）
-
-在图4-1的基础属性里，LayaAir导出支持情况如下：
-
-| Unity的Inspector基础属性    | LayaAir是否支持导出的说明                                |
-| :-------------------------- | :------------------------------------------------------- |
-| GameObject Name（节点名称） | 支持                                                     |
-| Static（静态）              | 只支持勾选 或 不勾选                                     |
-| Layer（层）                 | 只支持层的序号导出，开发者也可以在LayaAir引擎中设置Layer |
-| Position（位置）            | 支持（包括：X、Y、Z）                                    |
-| Rotation（旋转）            | 支持（包括：X、Y、Z）                                    |
-| Scale（缩放）               | 支持（包括：X、Y、Z）                                    |
-
-> 对比上面的图和表格，我们看到`Tag`是不支持的。`Static`与`Layer`是部分支持。后续将不再提醒，关注表格中的支持状态即可。
-
-这里特别说一下，静态Static勾选后是全选，也就是Everything，如图4-2所示。但实际上LayaAir引擎只支持了Lightmap Static和Batching Static，那开发者不选Everything，只勾选这两个行不行。当然是不行的，我们其实只认Static勾选或不勾选这个状态，如果此处单独选择，导出并没有效果。
-
-![4-2](/3D/advanced/Unity/img/4-2.png)
-
-（图4-2）
-
-
-
-### 4.2 相机的属性
-
-![4-3](/3D/advanced/Unity/img/4-3.png)
-
-（图4-3）
-
-在图4-3中的Unity相机属性里，LayaAir导出支持情况如下：
-
-| Unity的相机属性                     | LayaAir是否支持导出的说明                                    |
-| :---------------------------------- | :----------------------------------------------------------- |
-| Clear Flags（清除标志）             | 支持 （包括：Skybox天空盒（Background背景色）、Solid Color纯色（Background背景色）、Depth only仅深度、Don’t Clear不清除） |
-| Projection（投射方式）              | 支持（包括：Perspective透视（Field of View视野范围），Orthographic正交（size视野大小）） |
-| Clipping Planes（剪裁平面）         | 支持（包括：Near近点、Far远点）                              |
-| Viewport Rect（标准视图矩形）       | 支持（包括：X、Y、W、H）                                     |
-| Allow HDR（允许渲染高动态色彩画面） | 支持                                                         |
-
-> Culling Mask在Unity中设置无效，但是layaAir引擎中是支持的，默认值相当于Unity中的Everything，也可以通过引擎的cullingMask进行设置层ID。
-
-### 4.3 光照相关的属性
-
-#### 4.3.1 灯光的属性Light
-
-![4-4](/3D/advanced/Unity/img/4-4.png)
-
-（图4-4）
-
-在图4-4中的Unity灯光属性里，LayaAir导出支持情况如下：
-
-| Unity的灯光属性         | LayaAir是否支持导出的说明                                    |
-| :---------------------- | :----------------------------------------------------------- |
-| Type（灯光类型）        | 部分支持（包括：Spot聚光（Range照射范围、Spot Angle聚光灯锥形角度）、Directional平行光、Point点光（Range照射范围）） |
-| Color（灯光颜色）       | 支持                                                         |
-| Mode（灯光模式）        | 支持（包括：Realtime实时灯光、Baked烘焙光照贴图、Mixed混合光源） |
-| Intensity（灯光强度）   | 支持                                                         |
-| Shadow Type（阴影类型） | 支持（包括：Soft Shadows、Hard Shadows）                     |
-
-
-
-#### 4.3.2 反射探针的属性 Reflection Probe
-
-![4-5](/3D/advanced/Unity/img/4-5.png)
-
-（图4-5）
-
-当Unity中添加Reflection Probe（反射探针）组件后，在图4-5中的属性里，LayaAir导出支持情况如下：
-
-| Unity的反射探针相关配置属性                    | LayaAir是否支持导出的说明                                    |
-| :--------------------------------------------- | :----------------------------------------------------------- |
-| Type（类型）                                   | 部分支持（包括：Baked烘焙模式、Custom自定义模式）            |
-| Runtime settings （运行时设置）                | 部分支持（包括：Importance权重参数、Intensity亮度、Box projection盒式偏移反射、Box Size反射探针大小、Box Offset反射探针偏移） |
-| Cubemap capture settings（立方体贴图捕捉设置） | 支持                                                         |
-
-### 4.4 模型相关的属性
-
-关于模型的属性，分别支持普通模型和骨骼模型。
-
-#### 4.4.1 普通模型
-
-普通模型需要Mesh Filter组件Mesh Render组件，下面分别进行介绍。
-
-**网格过滤器Mesh Filter**
-
-![4-6](/3D/advanced/Unity/img/4-6.png)
-
-（图4-6）
-
-在图4-6中的Unity网格过滤器属性里，LayaAir导出支持情况如下：
-
-| Unity的蒙皮网格渲染属性 | LayaAir是否支持导出的说明 |
-| :---------------------- | :------------------------ |
-| Mesh（网格）            | 支持                      |
-
-**网格渲染器Mesh Renderer**
-
-![4-7](/3D/advanced/Unity/img/4-7.png)
-
-（图4-7）
-
-![4-8](/3D/advanced/Unity/img/4-8.png)
-
-（图4-8）
-
-在图4-7中Unity的Mesh Render组件属性里，LayaAir导出支持情况如下：
-
-| Unity的网格渲染属性              | LayaAir是否支持导出的说明                                    |
-| :------------------------------- | :----------------------------------------------------------- |
-| Materials（材质）                | 支持（包括：Size大小、Element材质球元素）                    |
-| Lightmap Static（ 静态光照贴图） | 部分支持（包括：Lightmaps贴图（Baked Lightmap烘焙光照贴图（Lightmap Index、Tiling X、Tiling Y、Offset X、Offset Y））） |
-
-
-#### 4.4.2 骨骼模型
-
-骨骼模型的Mesh与Mesh Renderer不再分开，合并在组件`Skinned Mesh Renderer`里，如下图所示：
-
-![4-9](/3D/advanced/Unity/img/4-9.png)
-
-（图4-9）
-
-在图4-9中Unity的Skinned Mesh Renderer组件属性里，LayaAir导出支持情况如下：
-
-| Unity的蒙皮网格渲染属性 | LayaAir是否支持导出的说明                                  |
-| :---------------------- | :--------------------------------------------------------- |
-| Mesh（网格）            | 支持                                                       |
-| Root Bone（骨骼根节点） | 支持                                                       |
-| Bounds（包围盒）        | 支持（包括：Center中心（X、Y、Z）、Extent范围（X、Y、Z）） |
-| Materials（材质）       | 支持（包括：Size大小、Element材质球元素）                  |
-
-#### 4.4.3 材质
-
-对于模型的材质，这里我们介绍一下常见支持的材质类型。
-
-|              **分类**              |                   **材质**                   |
-| :--------------------------------: | :------------------------------------------: |
-|           Build in 管线            |                Standard 材质                 |
-|                                    | Ulit Color/Texture/Cut Out/ Transparent 材质 |
-|              URP 管线              |                 URP Lit材质                  |
-|                                    |                 URP Ulit材质                 |
-|               天空盒               |           Procedural 程序化天空盒            |
-|                                    |                   6 Sideed                   |
-|                                    |               Panoramic 全景图               |
-| 旧版着色器（只做兼容考虑, 不建议） |                 Diffuse Fast                 |
-|                                    |                   Diffuse                    |
-|                                    |                Diffuse Detail                |
-|                                    |                Bumped Diffuse                |
-|                                    |               Bumped Specular                |
-
-> 除了上述提供的材质Shader外，Unity里的其他材质，都不能在LayaAir引擎中使用。
-
-
-### 4.5 纹理的属性
-
-在`Assets（资源）`面板里，找到2D图片资源，可以为其设置纹理的属性。
-
-![4-10](/3D/advanced/Unity/img/4-10.png)
-
-（图4-10）
-
-在图4-10中的Unity纹理属性里，LayaAir导出支持情况如下：
-
-| Unity的纹理属性                 | LayaAir是否支持导出的说明                                    |
-| :------------------------------ | :----------------------------------------------------------- |
-| Generate Mip Maps（生成Mipmap） | 部分支持（仅支持是否勾选的状态）                             |
-| Wrap Mode（循环模式）           | 部分支持（包括：Repeat重复、Clamp强制拉伸）                  |
-| Filter Mode（过滤模式）         | 支持（包括：Point点过滤、Bilinear双线性过滤、Trilinear三线性过滤） |
-| Aniso Level（各向异性等级）     | 支持                                                         |
-
-### 4.6 动画的属性
-
-在动画方面，LayaAir支持`Animator`组件和关联的`Animator Controller`面板的部分属性导出和使用。
-
-#### 4.6.1 Aniamtor组件
-
-![4-11](/3D/advanced/Unity/img/4-11.png)
-
-（图4-11）
-
-在图4-11中的Unity动画属性里，LayaAir导出支持情况如下：
-
-| Unity的动画属性           | LayaAir是否支持导出的说明                                    |
-| :------------------------ | :----------------------------------------------------------- |
-| Controller（动画控制器）  | 支持                                                         |
-| Culling Mode（ 剔除模式） | 部分支持（包括：Always Animate 总是播放、Cull Completely完全剔除） |
-
-#### 4.6.2 Animator Controller State
-
-在Aniamtor组件属性中双击Controller打开动画控制器的面板，选中`State`(状态)，可以看到图4-12所示的面板。
-
-![4-12](/3D/advanced/Unity/img/4-12.png)
-
-（图4-12）
-
-在图4-12中的Unity动画控制器State属性里，LayaAir导出支持情况如下：
-
-| Unity的动画控制器State属性 | LayaAir是否支持导出的说明 |
-| :------------------------- | :------------------------ |
-| Motion（选定动画）         | 支持                      |
-| Speed（动画播放速度）      | 支持                      |
-
-
-
-### 4.7 预制体
-
-如图4-13所示，Unity中的预制体支持导出，但是导出的预制体所包含的属性（灯光、材质等），必须是插件支持的属性，即本节所列出的属性。
-
-![4-13](/3D/advanced/Unity/img/4-13.png)
-
-（图4-13）
-
-
-
-### 4.8 着色器Shader
-
-#### 4.8.1 unity内置的Shader
-
-插件只支持了部分unity内置shader的导出，支持的shader如下：
-
-- Skybox："Skybox/6 Sided"、"Skybox/Procedural"、"Skybox/Panoramic"、"SkyBox/Cubemap"
-
-- Particles："Particles/Standard Surface"、"Particles/Standard Unlit"
-- Unlit："Unlit/Texture"、"Unlit/Transparent Cutout"、"Unlit/Transparent"、"Unlit/Color"
-- "Standard"
-
-- Legacy："Legacy Shaders/Diffuse Fast"、"Legacy Shaders/Diffuse"、"Legacy Shaders/Diffuse Detail"、"Legacy Shaders/Bumped Diffuse"、"Legacy Shaders/Bumped Specular"
-
-
-
-#### 4.8.2 自定义的unityshader
-
-这里要注意，插件导出的shader并不是将unity的.shader文件转化为LayaAir可用的.shader文件，它只是导出了shader在材质上的参数配置。因此，对于在unity中的自定义shader，在导出前，需要先把unityshader手动写成一个layashader，然后才能导出配置。
-
-> layashader的格式参考[自定义Shader](/3d/advanced/customshader/)。
-
-  > [!Tip]
-  >
-  > Unity中的“Properties”对应LayaAir中的“uniformMap”；Unity中的“SubShader”对应LayaAir中的“shaderPass”。
-
-导出自定义unityshader需要在插件里面找到`MetarialPropData.json`文件，在里面添加自定义的shader的配置。
-
-打开这个文件可以看到，里面已经有很多的shader配置了，这些就是上一节中提到的内置shader。如果想添加自定义的导出配置，需要按照以下格式：
-
-```json
-"GAPH Custom Shader/Shader_IntegradedEffect": {
-        "targeName": "Shader_IntegradedEffect",
-        "textures": [
-            {
-                "uName": "_MainTex",
-                "layaName": "u_AlbedoTexture",
-                "defind": "ALBEDOTEXTURE"
-            },
-            ......
-        ],
-        "tillOffset": [
-            {
-                "uName": "_MainTex_ST",
-                "layaName": "u_TilingOffset"
-            },
-            ......
-        ],
-        "colors": [
-            {
-                "uName": "_TintColor",
-                "layaName": "u_TintColor",
-                "hdrName": "u_TintColorIntensity"
-            },
-            ......
-        ],
-        "floats": [
-            {
-                "uName": "_MaskOffsetFactor",
-                "layaName": "u_MaskOffsetFactor"
-            },
-            ......
-        ],
-        "defineds": [
-            {
-                "uName": "_SecondColor",
-                "layaName": "IS_USE_SECOND_COLOR",
-                "from": 0,
-                "deflat": 1.0
-            },
-            ......
-        ]
-    }
-```
-
-其中，
-
-- "GAPH Custom Shader/Shader_IntegradedEffect"是定义unityshader的路径，如图4-14所示。
-
-![4-14](/3D/advanced/Unity/img/4-14.png)
-
-（图4-14）
-
-- "targeName"：对应layaShader中定义的名称，如图4-15所示。
-
-![4-15](/3D/advanced/Unity/img/4-15.png)
-
-（图4-15）
-
-- "textures"：需要导出的贴图配置。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-    "defind": defind
-}
-```
-
-- "tillOffset"：材质球贴图的参数。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-}
-```
-
-- "colors"：颜色。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-    "hdrName": unity 中是hdr颜色则laya会生成这个参数，否则不需要。
-}
-```
-
-- floats：浮点数。
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-}
-```
-
-- defineds
-
-```json
-{
-    "uName": unity 属性名,
-    "layaName": layaair 属性名,
-    "from": 0:浮点数，1：keyWorld，2：材质是否有属性，3：是否有贴图,
-    "deflat": 对应属性检查
-}
-```
-
-- ......（开发者可以导出更多自定义的配置）
-
-
-
-### 4.9 粒子
-
-为实现快速将unity粒子资源导出到LayaAir-IDE场景，插件做了对unity粒子系统导出的支持。但是，导出的粒子在LayaAir内置的粒子系统中并不支持。
-
-因此，LayaAir推出了CPU粒子系统，在这个版本的粒子系统上，支持unity粒子的参数导出。
-
-说明：”CPU粒子系统“属于[企业会员的功能](https://layaair.com/3.2/doc/IDE/layapackage/enterprise/readme.html)。
-
-
-
-## 五、模型的导出文件与加载显示
-
-当了解完插件的功能和使用规则后，我们就可以在Unity中进行编辑并导出了，但是导出后的文件名分别代表着什么，又是怎么进行加载使用的。本小节开始为大家介绍。
-
-### 5.1 导出文件类型的说明
+> 开发者下载最新版的插件即可。安装与导入步骤见[安装与导出窗口介绍](/unity-plugin/install/)。
+
+:::tip[插件迁移的是美术资产]
+导出插件解决的是几何 / 材质 / 动画等美术资源数据的迁移；MonoBehaviour 脚本只导出序列化属性值，不转换逻辑代码。交互与玩法逻辑需要在 LayaAir 工程内用 TypeScript 重新实现。
+:::
+
+## 二、文档导读
+
+本篇是插件系列文档的介绍页，完整内容按以下顺序阅读：
+
+| 文档 | 内容 |
+| --- | --- |
+| [安装与导出窗口](/unity-plugin/install/) | 环境要求、两种安装方式、安装注意事项（颜色空间等）、菜单与导出窗口各控件说明、典型导出流程 |
+| [导出能力一览](/unity-plugin/) | 逐模块核查的能力对照总表：场景 / 节点 / 组件、网格、材质、粒子、动画、2D 精灵、纹理、自定义脚本，以及明确不支持的组件 |
+| [整体导出流程](/unity-plugin/overview/) | 从点击导出到文件落盘的主链路全景：组件分发、坐标系转换、产物文件类型 |
+| [网格导出](/unity-plugin/mesh/) | 顶点结构、坐标翻转、子网格、蒙皮骨骼分组等 `.lm` 导出细节 |
+| [材质与Shader导出](/unity-plugin/material-shader/) | 按 Shader 名查表映射到 `.lmat`、HDR 分解、天空盒特例，以及手动注册自定义 Shader 映射的方法 |
+| [自定义Shader导出](/unity-plugin/custom-shader/) | 未注册 Shader 的 HLSL→GLSL 自动转换流水线与能力边界 |
+| [粒子系统导出](/unity-plugin/particle/) | LayaAir 三套粒子系统（GPU / CPU / VFX）总览，Shuriken 粒子的 GPU / CPU 双路径导出，VFX Graph 导出支持 |
+| [动画导出](/unity-plugin/animation/) | 属性曲线 `.lani`、Animator 状态机、2D 色彩动画分流 |
+| [2D精灵导出](/unity-plugin/sprite-2d/) | SpriteRenderer → UI3D + 图集的导出结构 |
+| [疑似问题清单](/unity-plugin/known-issues/) | 基于源码核查与实测发现的疑似问题记录与绕过方法 |
+
+### 快速上手
+
+1. **安装插件**：下载后按[安装步骤](/unity-plugin/install/)导入 Unity 项目。
+2. **确认支持范围**：对照[导出能力一览](/unity-plugin/)确认场景中用到的功能是否可导出，未在清单中的功能均不支持。
+3. **配置并导出**：在导出窗口选择场景 / 预设模式，设置保存路径后导出，流程详见[整体导出流程](/unity-plugin/overview/)。
+4. **导入 LayaAir-IDE**：将产物放入 LayaAir 工程的 `assets` 目录后加载显示，见下文第三、四小节。
+
+> LayaAir引擎插件也会不断更新，升级新的引擎版本后，可以关注版本更新日志以及该系列文档的变化。
+
+## 三、导出文件类型的说明
 
 | **文件的后缀** | **导出文件类型的说明**                                       |
 | :------------- | :----------------------------------------------------------- |
 | **.ls**        | 场景文件，选择导出`场景Scene3D`类别时生成的文件类型。会导出完整的场景信息，其中包含了场景需要的各种数据、光照贴图、模型、位置等。所以，需要导出场景相关的设置时，必须要使用Scene3D类别导出，就可以看到`.ls`后缀的文件。 |
 | **.lh**        | 预设文件，选择导出`预设Sprite3D`类别时生成的文件类型。相对于`.ls`后缀的场景文件，会缺少环境光、环境反射、场景雾效等等与场景渲染相关的信息。 |
 | **.lm**        | 模型数据文件，通常是FBX格式的转换而成。                      |
-| **.lmat**      | 材质数据文件，是在unity中为模型设置的材质信息。加载`.ls`或`.lh`文件时会自动加载.lmat文件来产生材质。可以使用 BaseMaterial 类来加载。 |
+| **.lmat**      | 材质数据文件，是在unity中为模型设置的材质信息。加载`.ls`或`.lh`文件时会自动加载.lmat文件来产生材质。可以使用 Material 类来加载。 |
 | **.lani**      | 动画数据文件，如果模型上有动画，导出后将生成的动画配置文件，其中包含了动画帧数据。加载可以使用 AnimationClip 类来加载。 |
 | **.jpg**       | JPEG格式的纹理图片文件。                                     |
 | **.png**       | PNG格式的纹理图片文件。                                      |
 | **.hdr**       | 全景天空盒需要的HDR格式图片文件                              |
 
-### 5.2 加载显示
+> 完整的产物类型（含 2D 图集、`.cubemap`、运行时脚本等）见[整体导出流程](/unity-plugin/overview/#四产物文件类型)。
+
+## 四、导出后的加载显示
+
 导出的Unity资源，在不考虑其它逻辑的情况下，要通过LayaAir引擎显示出来，就需要先加载资源。
 
-#### 5.2.1 场景的加载显示
-当我们想导出整个场景时，可以选择场景，设置导出路径。如图5-1所示，导出路径建议设置为在LayaAir IDE项目工程目录下的`assets`文件夹，至于是assets目录下的什么目录，由开发者自行决定。
+### 4.1 场景的加载显示
 
-![5-1](/3D/advanced/Unity/img/5-1.png)
+当我们想导出整个场景时，可以选择场景，设置导出路径。如图4-1所示，导出路径建议设置为在LayaAir IDE项目工程目录下的`assets`文件夹，至于是assets目录下的什么目录，由开发者自行决定。
 
-（图5-1）
+![5-1](./img/5-1.png)
+
+（图4-1）
 
 导出之后只需在IDE中打开其中的`.ls`文件，即可加载场景。
 
-打开场景后，导出的场景并不具有环境光sh信息，需要找到在Scene3D层级下的烘焙开关。如图5-2所示，点击`烘焙`，对当前场景的环境光sh数据进行预计算，
+打开场景后，导出的场景并不具有环境光sh信息，需要找到在Scene3D层级下的烘焙开关。如图4-2所示，点击`烘焙`，对当前场景的环境光sh数据进行预计算，
 这样烘焙完成后的效果就是我们想要的效果了。
 
-![5-2](/3D/advanced/Unity/img/5-2.png)
+![5-2](./img/5-2.png)
 
-（图5-2）
+（图4-2）
 
-#### 5.2.2 预设的加载显示
-如图5-3所示，预设的导出，主要是用于当不需要完整导出使用整个场景，只需要某些节点资源。又或者某些节点资源需要独立导出复用或代码动态使用等需求。
+### 4.2 预设的加载显示
 
-![5-3](/3D/advanced/Unity/img/5-3.png)
+如图4-3所示，预设的导出，主要是用于当不需要完整导出使用整个场景，只需要某些节点资源。又或者某些节点资源需要独立导出复用或代码动态使用等需求。
 
-（图5-3）
+![4-3](./img/5-3.png)
 
-
-
+（图4-3）

@@ -10,13 +10,13 @@ Spine动画烘焙插件是一款为游戏开发者设计的高效工具，旨在
 
 在LayaAir-IDE中，从包管理器中安装Spine动画烘焙插件，如图1-1所示，
 
-![1-1](/IDE/layapackage/enterprise/spineBake/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
 安装完成后，会打开此工具面板。
 
-![1-2](/IDE/layapackage/enterprise/spineBake/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -28,19 +28,19 @@ Spine动画烘焙插件是一款为游戏开发者设计的高效工具，旨在
 
 存储路径：选择在resources目录下的自定义目录即可。
 
-![2-1](/IDE/layapackage/enterprise/spineBake/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
 点击`烘焙动作`按钮后，会有弹窗提示烘焙完成。
 
-![2-2](/IDE/layapackage/enterprise/spineBake/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
 如果选择的spine和IDE设置的spine版本不符，或者spine文件损坏会提示错误弹框。spine的版本设置在图2-3所示的项目设置中，
 
-![2-3](/IDE/layapackage/enterprise/spineBake/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -48,13 +48,13 @@ Spine动画烘焙插件是一款为游戏开发者设计的高效工具，旨在
 
 
 
-![2-4](/IDE/layapackage/enterprise/spineBake/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 生成的预制体文件增加了一个烘焙组件（参数没有暴露）和spine组件。
 
-![2-5](/IDE/layapackage/enterprise/spineBake/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -64,7 +64,7 @@ Spine动画烘焙插件是一款为游戏开发者设计的高效工具，旨在
 
 2、烘焙时会输出哪些满足了instance渲染条件（中途没有换vb ib，即spine没有换插槽、没有显示隐藏、没有修改blend）。
 
-![2-6](/IDE/layapackage/enterprise/spineBake/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
@@ -76,7 +76,7 @@ Spine动画烘焙插件是一款为游戏开发者设计的高效工具，旨在
 
 在IDE中，将预制体拖入到场景，勾选预览，选择皮肤动画，就可以在IDE中预览。
 
-![3-1](/IDE/layapackage/enterprise/spineBake/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 

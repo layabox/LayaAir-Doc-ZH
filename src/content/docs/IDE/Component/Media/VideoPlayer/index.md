@@ -18,7 +18,7 @@ slug: "ide/component/media/videoplayer"
 
 选中一个节点后，在右侧属性面板中点击 `增加组件`，选择 `VideoPlayer` 即可添加视频播放组件。
 
-<img src="/IDE/Component/Media/VideoPlayer/img/1-1.gif" style="zoom:50%;" />
+<img src="./img/1-1.gif" style="zoom:50%;" />
 
 （动图2-1）
 
@@ -28,7 +28,7 @@ slug: "ide/component/media/videoplayer"
 
 VideoPlayer 组件的属性面板如图3-1所示，与视频节点（VideoNode）的属性基本一致。
 
-<img src="/IDE/Component/Media/VideoPlayer/img/1-2.png" style="zoom:100%;" />
+<img src="./img/1-2.png" style="zoom:100%;" />
 
 （图3-1）
 
@@ -47,13 +47,13 @@ VideoPlayer 组件的属性面板如图3-1所示，与视频节点（VideoNode�
 
 - **解码器（decoder）**：视频被解码为纹理（Texture）显示，与节点的宽高一致，可以参与引擎的渲染流程。适合需要将视频作为游戏画面一部分的场景。如动图3-2所示：
 
-<img src="/IDE/Component/Media/VideoPlayer/img/1-3.gif" style="zoom:50%;" />
+<img src="./img/1-3.gif" style="zoom:50%;" />
 
 （动图3-2）
 
 - **播放器（player）**：视频直接浮动在主画布上方显示，维持视频原本的宽高比。适合全屏播放视频的场景。如动图3-3所示：
 
-<img src="/IDE/Component/Media/VideoPlayer/img/1-4.gif" style="zoom:50%;" />
+<img src="./img/1-4.gif" style="zoom:50%;" />
 
 （动图3-3）
 

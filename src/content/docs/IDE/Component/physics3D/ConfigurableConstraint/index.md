@@ -14,11 +14,11 @@ slug: "ide/component/physics3d/configurableconstraint"
 
 在 IDE 中添加可配置约束组件后，属性面板如图1-1和图1-2所示：
 
-<img src="/IDE/Component/physics3D/ConfigurableConstraint/img/1-2.png" style="zoom:80%;" />
+<img src="./img/1-2.png" style="zoom:80%;" />
 
 （图1-1）
 
-<img src="/IDE/Component/physics3D/ConfigurableConstraint/img/1-3.png" style="zoom:80%;" />
+<img src="./img/1-3.png" style="zoom:80%;" />
 
 （图1-2）
 
@@ -114,7 +114,7 @@ slug: "ide/component/physics3d/configurableconstraint"
 
 动图1-3演示了可配置约束的运行效果：
 
-<img src="/IDE/Component/physics3D/ConfigurableConstraint/img/2-1.gif" style="zoom:50%;" />
+<img src="./img/2-1.gif" style="zoom:50%;" />
 
 （动图1-3）
 

@@ -30,7 +30,7 @@ slug: "released/minigame/bytedance"
 
 在构建发布面板中，侧边栏选择目标平台为抖音小游戏。如图2-1所示，
 
-![2-1](/released/miniGame/byteDance/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -48,7 +48,7 @@ slug: "released/minigame/bytedance"
 
 发布后的目录结构如图2-2所示 ：
 
-![2-2](/released/miniGame/byteDance/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -86,7 +86,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 关于抖音开发平台的帐号创建与登录，以及小游戏项目的创建，工具的使用，产品的发布，可以查看抖音的小游戏开发者[文档](https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/guide/minigame/sign)。打开”抖音开发者工具“，用“抖音”APP扫码登录。然后选择**小游戏**点击进入项目设置，选择新建，如图3-1所示。
 
-<img src="/released/miniGame/byteDance/img/3-1.png" alt="image-20230105105443511" style="zoom:50%;" /> 
+<img src="./img/3-1.png" alt="image-20230105105443511" style="zoom:50%;" /> 
 
 （图3-1）
 
@@ -94,13 +94,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 选择导入目录，就是在LayaAir IDE发布后的目标目录（通常在项目根目录下的release\bytedancegame）
 
-<img src="/released/miniGame/byteDance/img/3-2.png" style="zoom:50%;" /> 
+<img src="./img/3-2.png" style="zoom:50%;" /> 
 
 （图3-2）
 
 选择bytedancegame目录之后，如图3-3所示
 
-<img src="/released/miniGame/byteDance/img/3-3.png" style="zoom:50%;" /> 
+<img src="./img/3-3.png" style="zoom:50%;" /> 
 
 （图3-3）
 
@@ -110,7 +110,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 完成小游戏项目的创建后，即可在工具内预览效果和调试。如图3-4所示
 
-![](/released/miniGame/byteDance/img/3-4.png)
+![](./img/3-4.png)
 
 （图3-4）
 
@@ -118,7 +118,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 由于LayaAir IDE里也可以调试项目效果，除非是适配相关的问题，基本上两边的效果不会有不一一致的情况。所以这里最重要的是点击**预览**功能，通过抖音扫码，在抖音内进行真机测试与调试。如图3-5所示
 
-<img src="/released/miniGame/byteDance/img/3-5.png" style="zoom:50%;" /> 
+<img src="./img/3-5.png" style="zoom:50%;" /> 
 
 （图3-5）
 
@@ -126,7 +126,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 下面来介绍LayaAir IDE给抖音小游戏分包的方法，开发者可以先看一下[通用](/released/generalsetting/)设置的分包。可以通过以下步骤进行分包加载，如图4-1所示，点击构建发布后，勾选开启分包，然后选择要分包的文件夹即可。开发者还可以选择是否开启远程包。
 
-![4-1](/released/miniGame/byteDance/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 
@@ -182,7 +182,7 @@ export class Script extends Laya.Script {
 
 这里主要介绍一下`printProgress`打印的内容，在抖音开发者工具打开并编译我们导出的项目后，会打印如下日志：
 
-![4-2](/released/miniGame/byteDance/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 

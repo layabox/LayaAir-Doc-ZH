@@ -25,7 +25,7 @@ LayaAir IDE的动画状态机，适用于2D与3D。
 
 通过下图，可以清晰了解这四个部分的关系，如图1-1所示：
 
-![1-1](/IDE/animationEditor/aniController/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -41,7 +41,7 @@ LayaAir IDE的动画状态机，适用于2D与3D。
 
 场景中添加的任一节点都可以添加动画状态机组件，下述介绍以cube为例。首先在场景创建一个cube节点，**选中cube节点**后，就可以在编辑器的`增加组件`面板中添加 `Animator` 组件。如动图2-1所示： 
 
-![2-1](/IDE/animationEditor/aniController/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 
@@ -66,7 +66,7 @@ LayaAir IDE的动画状态机，适用于2D与3D。
 
 某些情况下，`Animator` 组件会自动添加到节点下，如图2-2所示，当我们导入一个FBX模型文件到场景中时，已经默认添加好了 `Animator` 组件。
 
-![2-2](/IDE/animationEditor/aniController/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -76,7 +76,7 @@ LayaAir IDE的动画状态机，适用于2D与3D。
 
 `Animator` 组件的属性如图2-3所示：
 
-![2-3](/IDE/animationEditor/aniController/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -86,7 +86,7 @@ LayaAir IDE的动画状态机，适用于2D与3D。
 
 `Sleep`：动画完成是否停止更新。因为在LayaAir中，动画播放完成以后还依然会不停的循环最后一帧，所以勾选Sleep可以停止更新。例如，给场景中一个立方体添加平移的动画，如动图2-4所示，最后看到这个立方体已经不再移动了。
 
-![2-4](/IDE/animationEditor/aniController/img/2-4.gif)
+![2-4](./img/2-4.gif)
 
 （动图2-4）
 
@@ -135,7 +135,7 @@ export class AnimationScript extends Laya.AnimatorStateScript {
 
 Project面板中，任何目录下都可以创建一个动画状态机文件。如动图3-1所示：  
 
-![3-1](/IDE/animationEditor/aniController/img/3-1.gif)
+![3-1](./img/3-1.gif)
 
 （动图3-1）
 
@@ -145,13 +145,13 @@ Project面板中，任何目录下都可以创建一个动画状态机文件。�
 
 对于一个带网格和动画信息的Fbx模型文件来说，如图3-2所示，Fbx文件导入过程中，LayaAir 3.0编辑器已经识别出这个Fbx文件具有`Animator`属性，并可以设置是否可开启压缩。
 
-![3-2](/IDE/animationEditor/aniController/img/3-2.png)
+![3-2](./img/3-2.png)
 
  （图3-2）
 
 当我们拖Fbx模型到场景中时，会自动添加动画状态机组件。打开`时间轴动画`面板，会自动创建动画状态机文件，如图3-3所示：
 
-![3-3](/IDE/animationEditor/aniController/img/3-3.gif)
+![3-3](./img/3-3.gif)
 
 （图3-3）
 
@@ -163,7 +163,7 @@ Project面板中，任何目录下都可以创建一个动画状态机文件。�
 
 当我们点击动画状态机文件后，可以点击 `动画状态机` 面板来打开动画状态机，如图3-4所示。
 
-![3-4](/IDE/animationEditor/aniController/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
@@ -182,7 +182,7 @@ this.animator = this.target.getComponent<Laya.Animator>(Laya.Animator);
 
  `动画状态机` 面板中，可以做一些常规的操作，如动图3-5所示，下面一章，我们将引入动画状态的介绍和操作。 
 
-![3-5](/IDE/animationEditor/aniController/img/3-5.gif)
+![3-5](./img/3-5.gif)
 
 （动图3-5） 
 
@@ -192,13 +192,13 @@ this.animator = this.target.getComponent<Laya.Animator>(Laya.Animator);
 
 默认情况下，一个动画状态机文件只有一个默认的层 `BaseLayer`，如图3-6所示，比如一个角色模型的常规动作（待机，跑，攻击），我们只需要一个默认层就可以了。
 
-<img src="/IDE/animationEditor/aniController/img/3-6.png" alt="image-20221205162952720" style="zoom: 80%;" /> 
+<img src="./img/3-6.png" alt="image-20221205162952720" style="zoom: 80%;" /> 
 
 （图3-6）
 
 但是我们也可以创建更多的分层，多个分层可以用来解决什么样的问题呢？试想一下如果你要开发一款第三人称的射击游戏，那么肯定是希望身体的动画分为上下两部分，上方根据瞄准的位置和是否射击进行动画播放，下方根据移动播放动画。所以更多复杂的需求可以用分层来解决，如图3-7所示，我们又添加了一个分层，并命名为Layer1。
 
-<img src="/IDE/animationEditor/aniController/img/3-7.png" alt="image-20221205164319707" style="zoom: 80%;" /> 
+<img src="./img/3-7.png" alt="image-20221205164319707" style="zoom: 80%;" /> 
 
 （图3-7）
 
@@ -206,7 +206,7 @@ this.animator = this.target.getComponent<Laya.Animator>(Laya.Animator);
 
 每个图层是有一些参数属性的，如图3-8所示：
 
-<img src="/IDE/animationEditor/aniController/img/3-8.png" alt="image-20221205164500506" style="zoom: 80%;" /> 
+<img src="./img/3-8.png" alt="image-20221205164500506" style="zoom: 80%;" /> 
 
 （图3-8）
 
@@ -245,37 +245,37 @@ let defaultState = animatorControllerLayer.defaultState;
 
 假设有两个图层，如图3-9所示，fight和congratulate，
 
-![3-9](/IDE/animationEditor/aniController/img/3-9.png)
+![3-9](./img/3-9.png)
 
 （图3-9）
 
 将Blending Mode属性设置为覆盖后，congratulate层的动作会覆盖fight层的动作，congratulate效果如动图3-10所示。
 
-![3-10](/IDE/animationEditor/aniController/img/3-10.gif)
+![3-10](./img/3-10.gif)
 
 （动图3-10）
 
 此时的覆盖，是将fight动作全都覆盖掉了，如果想上半身是fight动作，下半身是congratulate动作，这就需要动作遮罩了，先来看一下动图3-11的fight动作，方便进行对比。
 
-![3-11](/IDE/animationEditor/aniController/img/3-11.gif)
+![3-11](./img/3-11.gif)
 
 （动图3-11）
 
 在项目资源面板中，添加`AvatarMask`后，如图3-12所示，可以添加预制体或模型资源，这里选择预制体，然后点击`导入骨架`按钮。
 
-![3-12](/IDE/animationEditor/aniController/img/3-12.png)
+![3-12](./img/3-12.png)
 
 （图3-12）
 
 导入后的骨架，勾选的部位，就是要进行遮罩的地方。如图3-13所示，这里勾选了下半身的骨架，那么就是要对下半身的动作进行遮挡。
 
-<img src="/IDE/animationEditor/aniController/img/3-13.png" alt="3-13" style="zoom: 80%;" />
+<img src="./img/3-13.png" alt="3-13" style="zoom: 80%;" />
 
 （图3-13）
 
 原本，congratulate层的动作会遮挡fight层的动作，并且会全部遮挡。现在，在congratulate层添加AvatarMask，按照刚刚的设置，congratulate层只遮挡fight层的下半身动作，也就是上半身仍然是fight层的动作不被覆盖，下半身的动作被遮挡变为congratulate层的动作。效果如动图3-14所示。
 
-![3-14](/IDE/animationEditor/aniController/img/3-14.gif)
+![3-14](./img/3-14.gif)
 
 （动图3-14）
 
@@ -289,7 +289,7 @@ let defaultState = animatorControllerLayer.defaultState;
 
 每个图层是可以添加一些参数的，如图3-15所示，具体这些参数是在动画切换中会用到，我们将在第五章动画切换中介绍。
 
-<img src="/IDE/animationEditor/aniController/img/3-15.gif" style="zoom:50%;" /> 
+<img src="./img/3-15.gif" style="zoom:50%;" /> 
 
 （动图3-15）
 
@@ -311,7 +311,7 @@ let defaultState = animatorControllerLayer.defaultState;
 
 动画状态机创建时，会默认创建2个系统状态，如图4-1所示：
 
-<img src="/IDE/animationEditor/aniController/img/4-1.png" alt="image-20221205174722419" style="zoom:33%;" /> 
+<img src="./img/4-1.png" alt="image-20221205174722419" style="zoom:33%;" /> 
 
 （图4-1）
 
@@ -321,7 +321,7 @@ let defaultState = animatorControllerLayer.defaultState;
 
 当创建**子状态机**时，会默认多创建一个退出状态，如图4-2所示： 
 
-![4-2](/IDE/animationEditor/aniController/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 
@@ -337,7 +337,7 @@ let defaultState = animatorControllerLayer.defaultState;
 
 在动画状态机面板中，鼠标右键点击空白处，点击创建空节点即可。如动图4-3所示：
 
-![4-3](/IDE/animationEditor/aniController/img/4-3.gif)
+![4-3](./img/4-3.gif)
 
 （动图4-3）
 
@@ -345,13 +345,13 @@ let defaultState = animatorControllerLayer.defaultState;
 
 在Project面板中，可以拖动一个Fbx下的动作文件到Animator面板中，如动图4-4所示  ：
 
-![4-4](/IDE/animationEditor/aniController/img/4-4.gif)
+![4-4](./img/4-4.gif)
 
 （动图4-4）
 
 此时，我们已经可以自动播放一个动画了，这是最基本最简单的用法，不需要做额外的工作，可以让LayaMonkey动起来！
 
-<img src="/IDE/animationEditor/aniController/img/4-5.gif" style="zoom:50%;" /> 
+<img src="./img/4-5.gif" style="zoom:50%;" /> 
 
 （动图4-5）
 
@@ -361,7 +361,7 @@ let defaultState = animatorControllerLayer.defaultState;
 
 作为动画状态机里的每一个动画状态，我们都可以对此状态做单独的设置，如图4-6：
 
-![4-6](/IDE/animationEditor/aniController/img/4-6.png)
+![4-6](./img/4-6.png)
 
 （图4-6）
 
@@ -385,7 +385,7 @@ let defaultState = animatorControllerLayer.defaultState;
 
 通常Fbx文件中包含的动画文件，通过拖入Animator中，会自动把动画文件关联进来，如图4-7所示：
 
-![4-7](/IDE/animationEditor/aniController/img/4-7.png)
+![4-7](./img/4-7.png)
 
 （图4-7）
 
@@ -393,13 +393,13 @@ let defaultState = animatorControllerLayer.defaultState;
 
 `AnimatorTransition`：列出了所有此动画状态连接其它动画状态的动画切换，如图4-8所示： 
 
-![4-8](/IDE/animationEditor/aniController/img/4-8.png)
+![4-8](./img/4-8.png)
 
 （图4-8）
 
 单机`New State -> New State 0`可以打开AnimatorTransition详细面板，双击` New State -> New State 0`，可以改名，如动图4-9所示：
 
-![4-9](/IDE/animationEditor/aniController/img/4-9.gif)
+![4-9](./img/4-9.gif)
 
 （动图4-9） 
 
@@ -407,7 +407,7 @@ let defaultState = animatorControllerLayer.defaultState;
 
 solo与mute：两个选框，Solo表示只生效这一条切换，Mute相当于把这条动画切换禁用掉，如图4-10所示：
 
-![4-10](/IDE/animationEditor/aniController/img/4-10.png)
+![4-10](./img/4-10.png)
 
 （图4-10）
 
@@ -429,7 +429,7 @@ solo与mute：两个选框，Solo表示只生效这一条切换，Mute相当于�
 
 当我们创建好动画状态后，通过在前一个状态上点击鼠标右键，选择连线，此时会创建一点连线，拖动鼠标到后面的动画状态上抬起鼠标，即可创建动画切换，点击此连线时，点击键盘的delete键可以删除此连线。如动图5-1所示：
 
-<img src="/IDE/animationEditor/aniController/img/5-1.gif" style="zoom:50%;" /> 
+<img src="./img/5-1.gif" style="zoom:50%;" /> 
 
 （动图5-1）
 
@@ -441,7 +441,7 @@ solo与mute：两个选框，Solo表示只生效这一条切换，Mute相当于�
 
 当我们创建好多个动画状态时，如果想设置某个动画状态为进入状态，可以鼠标右键点击此动画状态，选择设置为默认即可，如动图5-2所示：
 
-<img src="/IDE/animationEditor/aniController/img/5-2.gif" style="zoom:50%;" /> 
+<img src="./img/5-2.gif" style="zoom:50%;" /> 
 
 （动图5-2）
 
@@ -453,7 +453,7 @@ solo与mute：两个选框，Solo表示只生效这一条切换，Mute相当于�
 
 点击一条连线时，可以看到动画切换的属性，如图5-3所示，用来处理动画切换的动画调整效果。
 
-![5-3](/IDE/animationEditor/aniController/img/5-3.png)
+![5-3](./img/5-3.png)
 
 （图5-3）
 
@@ -474,7 +474,7 @@ solo与mute：两个选框，Solo表示只生效这一条切换，Mute相当于�
 
 动图5-3-1和动图5-3-2分别是勾选Exit Time和不勾选的对比效果，明显来看，不勾选会出现动画不衔接的情况。
 
-<img src="/IDE/animationEditor/aniController/img/5-3-1.gif" style="zoom:40%;" /> <img src="/IDE/animationEditor/aniController/img/5-3-2.gif" style="zoom:40%;" /> 
+<img src="./img/5-3-1.gif" style="zoom:40%;" /> <img src="./img/5-3-2.gif" style="zoom:40%;" /> 
 
 （动图5-3-1）													（动图5-3-2）
 
@@ -492,7 +492,7 @@ solo与mute：两个选框，Solo表示只生效这一条切换，Mute相当于�
 
 > 注意：当定义这个Float参数时，可以设置默认值，比如1，那么如果条件是Float参数 Greater 0.5，则条件直接打成，运行时会直接切换状态
 
-![5-4](/IDE/animationEditor/aniController/img/5-4.gif)
+![5-4](./img/5-4.gif)
 
  （动图5-4）
 
@@ -505,7 +505,7 @@ this.animator.setParamsNumber( "Float" , 2 );
 
 运行效果如动图5-5：
 
-<img src="/IDE/animationEditor/aniController/img/5-5.gif" alt="5-5" style="zoom:67%;" />
+<img src="./img/5-5.gif" alt="5-5" style="zoom:67%;" />
 
 （动图5-5）
 
@@ -515,7 +515,7 @@ this.animator.setParamsNumber( "Float" , 2 );
 
 > 注意：当定义这个Bool参数时，可以设置默认值，比如true，那么如果条件是Bool参数 true，则条件直接打成，运行时会直接切换状态 
 
-![5-6](/IDE/animationEditor/aniController/img/5-6.gif)
+![5-6](./img/5-6.gif)
 
 （动图5-6）
 
@@ -528,7 +528,7 @@ this.animator.setParamsBool( "Bool" , true );
 
 运行效果如动图5-7：
 
-<img src="/IDE/animationEditor/aniController/img/5-7.gif" alt="5-7" style="zoom:67%;" />
+<img src="./img/5-7.gif" alt="5-7" style="zoom:67%;" />
 
 （动图5-7）
 
@@ -536,7 +536,7 @@ this.animator.setParamsBool( "Bool" , true );
 
 如动图5-8所示，我们来看看Trigger条件怎么设置，首先要定义一个Trigger的参数（有true或false），其次在条件中，可以选择这个Trigger参数。那么后面我们可以通过代码来使用触发器，切换New State到New State0 。
 
-![5-8](/IDE/animationEditor/aniController/img/5-8.gif)
+![5-8](./img/5-8.gif)
 
 （图5-8）
 
@@ -549,7 +549,7 @@ this.animator.setParamsTrigger( "Trigger" );
 
 运行效果如动图5-9：
 
-<img src="/IDE/animationEditor/aniController/img/5-9.gif" alt="5-9" style="zoom:67%;" />
+<img src="./img/5-9.gif" alt="5-9" style="zoom:67%;" />
 
 （动图5-9）
 
@@ -557,13 +557,13 @@ this.animator.setParamsTrigger( "Trigger" );
 
 当然我们可以定义多个参数，但是这种情况下需要对参数进行命名会更有效。如动图5-10所示来修改名字 ：
 
-![5-10](/IDE/animationEditor/aniController/img/5-10.gif)
+![5-10](./img/5-10.gif)
 
 （动图5-10）
 
 修改好名字后，可以比较清晰的来编辑切换条件，如图5-11所示：
 
-![5-11](/IDE/animationEditor/aniController/img/5-11.png)
+![5-11](./img/5-11.png)
 
 （图5-11）
 
@@ -577,7 +577,7 @@ this.animator.setParamsTrigger( "Trigger" );
 
 - 当没有任何条件时或者条件都满足时，没有选择solo和mute的情况下，如图5-12：
 
-![5-12](/IDE/animationEditor/aniController/img/5-12.png)
+![5-12](./img/5-12.png)
 
 （图5-12）
 
@@ -587,7 +587,7 @@ this.animator.setParamsTrigger( "Trigger" );
 
 - 当没有任何条件时或者条件都满足时，如果某个选了solo时，如图5-13：
 
-![5-13](/IDE/animationEditor/aniController/img/5-13.png)
+![5-13](./img/5-13.png)
 
 （图5-13）
 
@@ -597,7 +597,7 @@ this.animator.setParamsTrigger( "Trigger" );
 
 - 当没有任何条件时或者条件都满足时，如果都选了solo时，如图5-14：
 
-![5-14](/IDE/animationEditor/aniController/img/5-14.png)
+![5-14](./img/5-14.png)
 
 （图5-14）
 
@@ -613,7 +613,7 @@ this.animator.setParamsTrigger( "Trigger" );
 
 - 当没有任何条件时或者条件都满足时，如果都选了solo时，并Attack-> Stand选了mute，如图5-15：
 
-![5-15](/IDE/animationEditor/aniController/img/5-15.png)
+![5-15](./img/5-15.png)
 
 （图5-15）
 
@@ -623,7 +623,7 @@ this.animator.setParamsTrigger( "Trigger" );
 
 - 当没有任何条件时或者条件都满足时，如果都选了solo和mute时，如图5-16 ：
 
-![5-16](/IDE/animationEditor/aniController/img/5-16.png)
+![5-16](./img/5-16.png)
 
 （图5-16）
 
@@ -664,7 +664,7 @@ this.animator.play("Run");
 
 看看运行效果，如动图6-1所示：
 
-<img src="/IDE/animationEditor/aniController/img/6-1.gif" style="zoom:50%;" /> 
+<img src="./img/6-1.gif" style="zoom:50%;" /> 
 
 （动图6-1） 
 
@@ -677,7 +677,7 @@ this.animator.play("Stand", 0 , 0.5);
 
 看看运行效果，如动图6-2，每次鼠标点击按钮，可以从50%的位置开始播放Stand动画。
 
- <img src="/IDE/animationEditor/aniController/img/6-2.gif" style="zoom:50%;" /> 
+ <img src="./img/6-2.gif" style="zoom:50%;" /> 
 
 （动图6-2） 
 
@@ -702,7 +702,7 @@ this.animator.play("Stand_new");
 
 看看运行效果，如动图6-3所示：
 
-<img src="/IDE/animationEditor/aniController/img/6-3.gif" style="zoom:50%;" /> 
+<img src="./img/6-3.gif" style="zoom:50%;" /> 
 
 （动图6-3） 
 
@@ -732,7 +732,7 @@ this.animator.crossFade("Run", 0.3);
 
 看看运行效果，如动图6-4，将待机动画和跑步动画混合起来。
 
-<img src="/IDE/animationEditor/aniController/img/6-4.gif" style="zoom:50%;" /> 
+<img src="./img/6-4.gif" style="zoom:50%;" /> 
 
 （动图6-4） 
 
@@ -751,7 +751,7 @@ this.animator.speed = 0.5;
 
 看看运行效果，如动图6-5所示：
 
- <img src="/IDE/animationEditor/aniController/img/6-5.gif" style="zoom:50%;" /> 
+ <img src="./img/6-5.gif" style="zoom:50%;" /> 
 
 （动图6-5） 
 
@@ -847,7 +847,7 @@ export class Main extends Laya.Script {
 
 看看运行效果，如动图6-6所示：
 
- <img src="/IDE/animationEditor/aniController/img/6-6.gif" style="zoom:50%;" /> 
+ <img src="./img/6-6.gif" style="zoom:50%;" /> 
 
 （动图6-6） 
 
@@ -857,7 +857,7 @@ export class Main extends Laya.Script {
 
 对我们的开发需求来说，能够播放和切换动画状态还不够，可能还需要在每一个状态内实现更多的需求，例如当进入或者离开下一个状态时，播放不同的音效，那么通过添加动画状态脚本可以很容易实现，如图6-7所示，每个状态都可以添加一个或者多个状态脚本 。
 
-![6-7](/IDE/animationEditor/aniController/img/6-7.png)
+![6-7](./img/6-7.png)
 
 （图6-7）
 
@@ -865,7 +865,7 @@ export class Main extends Laya.Script {
 
 我们通过动图6-8，来看看如何为一个站立状态创建一个动画脚本。首先在`项目资源->src`目录中，创建一个动画脚本，然后选中Stand状态，在`Scripts`下点击`+`按钮，即可挂上刚刚创建的动画脚本。
 
-![6-8](/IDE/animationEditor/aniController/img/6-8.gif)
+![6-8](./img/6-8.gif)
 
 （动图6-8）
 
@@ -1015,7 +1015,7 @@ export class AnimationScript extends Laya.AnimatorStateScript {
 
 实际运行效果，如动图6-9所示
 
-<img src="/IDE/animationEditor/aniController/img/6-9.gif" style="zoom:40%;" /> 
+<img src="./img/6-9.gif" style="zoom:40%;" /> 
 
 （动图6-9）
 
@@ -1033,13 +1033,13 @@ export class AnimationScript extends Laya.AnimatorStateScript {
 
 如动图7-1所示，在状态机的空白位置，点击鼠标右键，选择创建节点目录，将会生成一个名为“New StateMachine”的节点，这就是子状态机。双击子状态机可进入子状态机面板，在这个面板中可以看到三个状态， 进入、任何状态和退出 ，这三种状态是属于子状态机的，而非父状态机。父状态机只有进入和任何状态。 
 
-![7-1](/IDE/animationEditor/aniController/img/7-1.gif)
+![7-1](./img/7-1.gif)
 
 （动图7-1）
 
 同样，我们可以对子状态机进行新的命名，如动图7-2所示 ：
 
-![7-2](/IDE/animationEditor/aniController/img/7-2.gif)
+![7-2](./img/7-2.gif)
 
 （动图7-2）
 
@@ -1049,7 +1049,7 @@ export class AnimationScript extends Laya.AnimatorStateScript {
 
 比如我们想把角色的所有攻击和技能动画，都放到子状态机中，归为一类作为角色的攻击状态，而父状态机只用来处理待机，跑，眩晕，死亡，胜利等状态。那么我们进入子状态机中，拖入攻击和技能等动画并连线，同之前的父状态机的操作一样。如动图7-3所示：
 
-<img src="/IDE/animationEditor/aniController/img/7-3.gif" style="zoom:50%;" /> 
+<img src="./img/7-3.gif" style="zoom:50%;" /> 
 
 （动图7-3）
 
@@ -1059,13 +1059,13 @@ export class AnimationScript extends Laya.AnimatorStateScript {
 
 拖入一个 Attack（Take 001） 动画进去，此时 `进入` 状态会连接到此动画，表示该子状态机的默认状态是Attack。如图7-4所示：
 
-<img src="/IDE/animationEditor/aniController/img/7-4.png" alt="image-20221222153958334" style="zoom:45%;" /> 
+<img src="./img/7-4.png" alt="image-20221222153958334" style="zoom:45%;" /> 
 
 （图7-4）
 
 接着回到父状态机，将Idle连接子状态机，实际上相当于连接子状态机中的 `进入` 状态。如动图7-5操作：
 
-<img src="/IDE/animationEditor/aniController/img/7-5.gif" style="zoom:50%;" /> 
+<img src="./img/7-5.gif" style="zoom:50%;" /> 
 
 （动图7-5）
 
@@ -1077,7 +1077,7 @@ export class AnimationScript extends Laya.AnimatorStateScript {
 
 在父状态机里，回到子状态机的状态后，需要继续连线到其它状态，才能让动画连续，如动图7-6所示：
 
-![7-6](/IDE/animationEditor/aniController/img/7-6.gif)
+![7-6](./img/7-6.gif)
 
 （动图7-6）
 

@@ -14,7 +14,7 @@ Spine3D渲染器是LayaAir引擎中用于在3D场景中播放Spine动画的组�
 
 Spine3D渲染器与2D Spine渲染器共享相同的Spine运行时库。当前，LayaAir支持Spine 3.7、3.8、4.0、4.1、4.2版本的运行时库，开发者可以通过IDE的`项目设置` -> `引擎模块` -> 3D -> Spine3D，选择Spine动画相应版本的Spine运行时，操作界面如图1-1所示。
 
-![1-1](/IDE/Component/3DRender/Spine3DRenderer/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -24,7 +24,7 @@ Spine3D渲染器与2D Spine渲染器共享相同的Spine运行时库。当前，
 
 开发者需要在已创建的3D节点上，通过添加组件的方式，为节点添加`Spine3D渲染器`的组件，操作如动图1-2所示。
 
-![1-2](/IDE/Component/3DRender/Spine3DRenderer/img/1-2.gif)
+![1-2](./img/1-2.gif)
 
 （动图1-2）
 
@@ -73,7 +73,7 @@ Spine3D组件默认会开启快速渲染，此状态下，会采用GPU运算等�
 
 当Spine里存在多套皮肤的话，通过切换不同的皮肤名称，可以在IDE里预览不同皮肤的效果，如图2-1所示。
 
-![2-1](/IDE/Component/3DRender/Spine3DRenderer/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -109,7 +109,7 @@ export class NewScript extends Laya.Script {
 
 使得开发者可以在IDE面板中，直接查看当前Spine3D动画的所有名称，用于切换和查看不同名称的动画效果。效果如图2-2所示。
 
-![2-2](/IDE/Component/3DRender/Spine3DRenderer/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -127,7 +127,7 @@ export class NewScript extends Laya.Script {
 
 启用`面向相机`后，无论相机如何移动或旋转，Spine3D动画都会自动调整朝向，保持面向相机。效果如图2-3所示。
 
-![2-3](/IDE/Component/3DRender/Spine3DRenderer/img/2-3.gif)
+![2-3](./img/2-3.gif)
 
 （动图2-3）
 
@@ -217,7 +217,7 @@ Laya.loader.load(["aa.json", "bb.json"], Laya.Loader.SPINE);
 
 以上操作如图3-1所示：
 
-![3-1](/IDE/Component/3DRender/Spine3DRenderer/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 

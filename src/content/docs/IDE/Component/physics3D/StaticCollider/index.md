@@ -22,7 +22,7 @@ slug: "ide/component/physics3d/staticcollider"
 
 当我们勾选`是否为触发器`后，碰撞器作为触发器，只会触发事件但不会产生实际的物理阻挡效果，如动图7-1所示，将斜坡设置为触发器后，方块直接穿透斜坡，掉落在不是触发器地板上。
 
-![](/IDE/Component/physics3D/StaticCollider/img/7-1.gif)  
+![](./img/7-1.gif)  
 
 (动图7-1)
 

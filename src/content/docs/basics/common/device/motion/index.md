@@ -35,17 +35,17 @@ laya.device.motion中共有四个类供开发者使用，分别为加速信息Ac
 
 1. #### 以设备坐标系z轴为轴，旋转`alpha`度。`alpha`的作用域为[0, 360]。
 
-![blob.png](/basics/common/device/motion/img/1.png)<br/>
+![blob.png](./img/1.png)<br/>
 （图1）
 
 2. #### 以设备坐标系x轴为轴，旋转`beta`度。`beta`的作用域为[-180, 180]。
 
-![blob.png](/basics/common/device/motion/img/2.png)<br/>
+![blob.png](./img/2.png)<br/>
 （图2）
 
 3. #### 已设备坐标系y轴为轴，旋转`gamma`度。`gamma`的作用域为[-90, 90]。
 
-![blob.png](/basics/common/device/motion/img/3.png)<br/>
+![blob.png](./img/3.png)<br/>
 （图3）
 下面演示获取旋转方位信息：
 

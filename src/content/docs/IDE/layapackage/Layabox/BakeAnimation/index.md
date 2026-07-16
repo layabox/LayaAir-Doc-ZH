@@ -20,19 +20,19 @@ slug: "ide/layapackage/layabox/bakeanimation"
 
 当将IDE资源商店的资源`添加至我的资源`后，在`已购资源`的列表中，点击`在LayaAirIDE中打开`，会弹出浏览器调用IDE的控件，再次点击`打开LayaAirIDE`，如图2-1所示。
 
-<img src="/IDE/layapackage/Layabox/BakeAnimation/img/2-1.png" alt="2-1" style="zoom:50%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom:50%;" />
 
 （图2-1）
 
 之后，控件会调起LayaAir3-IDE并弹出导入资源的窗口。点击窗口的`导入`，当导入完成后，会弹出导入完成的提示面板，点击`确定`即完成了插件的导入。如图2-2所示。
 
-<img src="/IDE/layapackage/Layabox/BakeAnimation/img/2-2.png" alt="2-2" style="zoom: 80%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom: 80%;" />
 
 （图2-2）
 
 导入完成后的界面如图2-3所示：
 
-![2-3](/IDE/layapackage/Layabox/BakeAnimation/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 

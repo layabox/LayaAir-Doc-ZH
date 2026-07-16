@@ -776,3 +776,14 @@ html.laya-sepia .version-switch select {
   background: #5a4a32;
   color: #fff7e8;
 }
+
+/* —— 页脚「本文更新于」：与分页区拉开间距，弱化但不难读 —— */
+footer .meta {
+  align-items: center;
+}
+footer .meta .laya-last-updated {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sl-color-gray-6) 55%, transparent);
+  border: 1px solid var(--sl-color-hairline);
+}

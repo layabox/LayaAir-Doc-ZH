@@ -4,9 +4,40 @@
 // 正式产物 _book/ 中不含任何编辑按钮、脚本或接口。
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import {
+  collectImgRefs,
+  contentRefsImg,
+  imgNameFromReplaceUrl,
+  pageDirFromFilePath,
+  toSiteAbsolute,
+} from '../tools/lib/doc-images.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+
+/** docs 旁的 img 目录联接到 public，便于本地 Markdown 相对路径预览 */
+function ensureImgLink(docsDir, publicDir, relDir) {
+  const publicImg = path.join(publicDir, relDir, 'img');
+  const docsImg = path.join(docsDir, relDir, 'img');
+  if (!fs.existsSync(publicImg)) return;
+  try {
+    if (fs.existsSync(docsImg) && fs.realpathSync(docsImg) === fs.realpathSync(publicImg)) return;
+  } catch { /* continue */ }
+  try {
+    if (fs.existsSync(docsImg)) {
+      try {
+        if (fs.lstatSync(docsImg).isSymbolicLink()) fs.unlinkSync(docsImg);
+        else return; // 真实目录，不覆盖
+      } catch { return; }
+    }
+    if (process.platform === 'win32') {
+      execFileSync('cmd', ['/c', 'mklink', '/J', docsImg, publicImg], { stdio: 'pipe' });
+    } else {
+      fs.symlinkSync(publicImg, docsImg, 'dir');
+    }
+  } catch { /* 联接失败不阻断上传 */ }
+}
 
 export default function devEditor() {
   return {
@@ -109,7 +140,9 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
   if (req.method === 'POST' && url.pathname === '/preview') {
     const body = JSON.parse(await readBody(req));
     if (typeof body.content !== 'string') return send(res, 400, { error: 'invalid content' });
-    return send(res, 200, { html: await renderPreview(body.content) });
+    // body.file 相对 docs（如 2D/dom/index.md），用于把 ./img/x 转成站内绝对路径
+    const pageDir = body.file ? pageDirFromFilePath(String(body.file).replace(/\\/g, '/')) : '';
+    return send(res, 200, { html: await renderPreview(body.content, pageDir || '') });
   }
   if (req.method === 'POST' && url.pathname === '/upload') {
     const body = JSON.parse(await readBody(req));
@@ -126,33 +159,35 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     const relDir = path.relative(docsDir, path.dirname(docAbs)).split(path.sep).join('/');
     const imgDir = path.join(publicDir, relDir, 'img');
     fs.mkdirSync(imgDir, { recursive: true });
+    ensureImgLink(docsDir, publicDir, relDir);
     // 序号按【文档内容】定，不按目录定：目录里没被文档引用的孤儿文件（粘贴后撤销留下的）
     // 允许被覆盖，所以「粘贴→撤销→再粘贴」得到同一个号，序号不会白白上涨。
     // 规范名 = 每段 1–3 位数字（文档惯例 1.png / 3-1.png）；时间戳、哈希等大数字按乱名重编。
     const CONV = /^\d{1,3}(-\d{1,3})*\.(png|jpe?g|gif|webp)$/i;
     const content = typeof body.content === 'string' ? body.content : '';
     const caret = Number.isFinite(body.caret) ? body.caret : content.length;
-    const prefix = '/' + (relDir ? relDir + '/' : '') + 'img/';
-    const refRe = new RegExp(
-      prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(\\d{1,3}(?:-\\d{1,3})*\\.(?:png|jpe?g|gif|webp))', 'gi');
-    const refs = [];
-    for (let m; (m = refRe.exec(content)); ) refs.push({ name: m[1].toLowerCase(), idx: m.index });
+    // 正文落盘用相对路径，站点/预览再转绝对（兼顾本地 Markdown 预览）
+    const relUrlPrefix = './img/';
+    const sitePrefix = '/' + (relDir ? relDir + '/' : '') + 'img/';
+    const refs = collectImgRefs(content, relDir);
     // 换图模式：客户端检测到选区是一条图片引用时传来 replaceUrl → 沿用原名原地覆盖，
     // 不产生新序号、不进会话回收名单（历史图刻意不追踪）
     const replaceUrl = typeof body.replaceUrl === 'string' ? body.replaceUrl : '';
-    if (replaceUrl.toLowerCase().startsWith(prefix.toLowerCase())) {
-      const rname = replaceUrl.slice(prefix.length);
-      if (/^[\w.-]+\.(png|jpe?g|gif|webp)$/i.test(rname)) {
-        const target = path.join(imgDir, rname);
-        // 备份原图（只存最初版本），供「还原原图」和不保存关闭时回滚
-        if (fs.existsSync(target)) {
-          if (!replaceBackups.has(docAbs)) replaceBackups.set(docAbs, new Map());
-          const bak = replaceBackups.get(docAbs);
-          if (!bak.has(rname)) bak.set(rname, fs.readFileSync(target));
-        }
-        fs.writeFileSync(target, Buffer.from(body.data, 'base64'));
-        return send(res, 200, { url: prefix + rname, replaced: true });
+    const rname = imgNameFromReplaceUrl(replaceUrl, relDir);
+    if (rname) {
+      const target = path.join(imgDir, rname);
+      // 备份原图（只存最初版本），供「还原原图」和不保存关闭时回滚
+      if (fs.existsSync(target)) {
+        if (!replaceBackups.has(docAbs)) replaceBackups.set(docAbs, new Map());
+        const bak = replaceBackups.get(docAbs);
+        if (!bak.has(rname)) bak.set(rname, fs.readFileSync(target));
       }
+      fs.writeFileSync(target, Buffer.from(body.data, 'base64'));
+      return send(res, 200, {
+        url: relUrlPrefix + rname,
+        siteUrl: sitePrefix + rname,
+        replaced: true,
+      });
     }
     const refSet = new Set(refs.map((r) => r.name));
     const firstSeg = (n) => Number(n.match(/^(\d+)/)[1]);
@@ -172,7 +207,10 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     fs.writeFileSync(path.join(imgDir, final), Buffer.from(body.data, 'base64'));
     if (!sessionUploads.has(docAbs)) sessionUploads.set(docAbs, new Set());
     sessionUploads.get(docAbs).add(final);
-    return send(res, 200, { url: prefix + final });
+    return send(res, 200, {
+      url: relUrlPrefix + final,
+      siteUrl: sitePrefix + final,
+    });
   }
   if (req.method === 'POST' && (url.pathname === '/restore' || url.pathname === '/discard')) {
     const body = JSON.parse(await readBody(req));
@@ -203,9 +241,8 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     const uploads = sessionUploads.get(docAbs);
     if (uploads) {
       const diskContent = fs.readFileSync(docAbs, 'utf8');
-      const prefix = '/' + (relDir ? relDir + '/' : '') + 'img/';
       for (const name of [...uploads]) {
-        if (diskContent.includes(prefix + name)) continue;
+        if (contentRefsImg(diskContent, relDir, name)) continue;
         try { fs.unlinkSync(path.join(imgDir, name)); } catch {}
         uploads.delete(name);
         removed.push(name);
@@ -229,9 +266,8 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     const uploads = sessionUploads.get(abs);
     if (uploads) {
       const relDir = path.relative(docsDir, path.dirname(abs)).split(path.sep).join('/');
-      const prefix = '/' + (relDir ? relDir + '/' : '') + 'img/';
       for (const name of [...uploads]) {
-        if (body.content.includes(prefix + name)) continue;
+        if (contentRefsImg(body.content, relDir, name)) continue;
         try { fs.unlinkSync(path.join(publicDir, relDir, 'img', name)); } catch {}
         uploads.delete(name);
         removed.push(name);
@@ -321,9 +357,31 @@ function getProcessor() {
 const ASIDE_LABEL = { note: '注意', tip: '提示', caution: '警告', danger: '危险' };
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-async function renderPreview(content) {
+/** 预览前把相对图片路径改成站内绝对路径（markdown-remark 管线不含我们的 remark 插件） */
+function rewritePreviewImages(md, pageDir) {
+  if (pageDir == null) return md;
+  const convert = (url) => {
+    // 只动图片，避免把相对文档链接误改成 /pageDir/...
+    if (!/\.(png|jpe?g|gif|webp|svg|bmp)(\?|#|$)/i.test(url)) return url;
+    return toSiteAbsolute(url, pageDir);
+  };
+  let out = md.replace(
+    /(!?\[[^\]]*\]\()([^)\s]+)(\))/g,
+    (_, a, url, c) => a + convert(url) + c,
+  );
+  out = out.replace(
+    /(\bsrc\s*=\s*["'])([^"']+)(["'])/gi,
+    (_, a, url, c) => a + convert(url) + c,
+  );
+  return out;
+}
+
+async function renderPreview(content, pageDir = '') {
   const proc = await getProcessor();
-  const body = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+  const body = rewritePreviewImages(
+    content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, ''),
+    pageDir,
+  );
   // 按顶层 :::type[标题] … ::: 切段，提示块内层 markdown 单独渲染后包壳
   const lines = body.split('\n');
   const segs = []; // { aside?: {type,title}, md }

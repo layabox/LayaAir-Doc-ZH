@@ -23,7 +23,7 @@ vivo小游戏中没有可视化开发调试工具，所以只能是在LayaAir ID
 
 在构建发布面板中，侧边栏选择目标平台为vivo小游戏。如图2-1所示，
 
-![2-1](/released/miniGame/vivo/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -75,11 +75,11 @@ vivo目前在官网支持的最小平台版本号可以点击[这里](https://mi
 
 发布后的目录结构如图2-3所示，图2-2是`build`文件夹下的目录。
 
- ![2-2](/released/miniGame/vivo/img/2-2.png)
+ ![2-2](./img/2-2.png)
 
 （图2-2）
 
- ![2-3](/released/miniGame/vivo/img/2-3.png)
+ ![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -145,7 +145,7 @@ ADB可以用于授权，以及发布推送等，可以前往ADB的官网下载�
 
 要启动电脑PC的chrome调试环境，我们要先安装好vivo小游戏的调试APP（快应用调试器），如图3-1所示。然后点击进入。
 
-<img src="/released/miniGame/vivo/img/3-1.png" alt="图3-1" style="zoom:50%;" />  
+<img src="./img/3-1.png" alt="图3-1" style="zoom:50%;" />  
 
 （图3-1）
 
@@ -153,7 +153,7 @@ ADB可以用于授权，以及发布推送等，可以前往ADB的官网下载�
 
 进入快应用调试器之后，我们可以看到如图3-2所示的APP操作界面。
 
-<img src="/released/miniGame/vivo/img/3-2.png" alt="图3-2" style="zoom:50%;" />   
+<img src="./img/3-2.png" alt="图3-2" style="zoom:50%;" />   
 
 (图3-2)
 
@@ -169,13 +169,13 @@ ADB可以用于授权，以及发布推送等，可以前往ADB的官网下载�
 
 2、在之前打开的命令行下，输入adb shell，如图3-3所示。则是未获得USB调试模式授权。
 
-![图5-1](/released/miniGame/vivo/img/3-3.png) 
+![图5-1](./img/3-3.png) 
 
 （图3-3）
 
 此时，我们要关注手机端，是否出现如图3-4所示的提示，如果有，则点 确定 允许USB调试。
 
-![图5-2](/released/miniGame/vivo/img/3-4.png) 
+![图5-2](./img/3-4.png) 
 
 （图3-4）
 
@@ -183,7 +183,7 @@ ADB可以用于授权，以及发布推送等，可以前往ADB的官网下载�
 
 当USB调试模式授权成功之后，我们再次输入adb shell，应该如图3-5所示。
 
-![图5-3](/released/miniGame/vivo/img/3-5.png) 
+![图5-3](./img/3-5.png) 
 
 （图3-5）
 
@@ -197,7 +197,7 @@ ADB可以用于授权，以及发布推送等，可以前往ADB的官网下载�
 
 然后，如图3-6所示，点击**开始调试**，进入vivo小游戏的调试模式。
 
-<img src="/released/miniGame/vivo/img/3-6.png" alt="图6" style="zoom: 67%;" />  
+<img src="./img/3-6.png" alt="图6" style="zoom: 67%;" />  
 
 （图3-6）
 
@@ -215,7 +215,7 @@ chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws={IP}:5086/00010
 
 将{IP}替换为手机IP地址即可，如图3-7所示。
 
-![图7](/released/miniGame/vivo/img/3-7.png) 
+![图7](./img/3-7.png) 
 
 (图3-7)
 
@@ -229,7 +229,7 @@ chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws={IP}:5086/00010
 
 开发者可以先看一下[通用](/released/generalsetting/)设置的分包。可以通过以下步骤进行分包加载，如图4-1所示，点击构建发布后，勾选开启分包，然后选择要进行分包的文件夹即可，IDE自动加载分包需要在发布时勾选分包的“启动时自动加载”选项。
 
-<img src="/released/miniGame/vivo/img/4-1.png" alt="4-1" style="zoom:80%;" />
+<img src="./img/4-1.png" alt="4-1" style="zoom:80%;" />
 
 （图4-1）
 
@@ -290,7 +290,7 @@ export class Script extends Laya.Script {
 
 这里介绍一下`printProgress`打印的内容，在小游戏调试器平台打我们导出的项目后，连接vivo官网提供的调试地址会打印如下日志：
 
-![4-2](/released/miniGame/vivo/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 

@@ -12,7 +12,7 @@ slug: "2d/displayobject/sprite"
 
 另外，在LayaAir 2D UI中，Sprite是所有节点对象的基础类，如图1-1所示，Sprite 类的基础功能会被继承到所有继承的节点对象中（由于篇幅有限，图中只列出了Sprite类部分的子类，全部的继承关系请参考[API文档](https://layaair.com/3.x/api/Chinese/index.html?version=3.0.0&type=Core&category=display&class=laya.display.Sprite)），因此本篇会详解介绍 Sprite 类的基础功能，后续的节点对象重复的将不再介绍。
 
-![img](/2D/displayObject/Sprite/img/1-1.png) 
+![img](./img/1-1.png) 
 
 （图1-1）
 
@@ -26,7 +26,7 @@ slug: "2d/displayobject/sprite"
 
 在一个Scene2D的`层级`窗口中，任何节点下，或者是空白位置，都可以通过鼠标右键来创建精灵，如动图2-1所示： 
 
-![2-1](/2D/displayObject/Sprite/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 
@@ -38,7 +38,7 @@ slug: "2d/displayobject/sprite"
 
 在`小部件`的2D标签下，可以在任何节点下，创建精灵，如动图2-2所示： 
 
-![2-2](/2D/displayObject/Sprite/img/2-2.gif)
+![2-2](./img/2-2.gif)
 
 （动图2-2）
 
@@ -48,7 +48,7 @@ slug: "2d/displayobject/sprite"
 
 如图2-3所示，精灵有如下基础属性:
 
-![2-3](/2D/displayObject/Sprite/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -65,7 +65,7 @@ slug: "2d/displayobject/sprite"
 
 我们通过一组操作，来看看这些属性是如何操作的，如动图2-4： 
 
-![2-4](/2D/displayObject/Sprite/img/2-4.gif)
+![2-4](./img/2-4.gif)
 
 （动图2-4）
 
@@ -119,7 +119,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 ### 2.3 Sprite的特有属性
 
-![2-5](/2D/displayObject/Sprite/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5） 
 
@@ -135,7 +135,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 如动图2-6所示，来了解下拖入一张图片到Texture属性中的过程：
 
-![2-6](/2D/displayObject/Sprite/img/2-6.gif)
+![2-6](./img/2-6.gif)
 
 （动图2-6）
 
@@ -149,7 +149,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 如动图2-7所示，是把一张创建好的渲染纹理（制作方法参看[混合使用3D](/ide/uieditor/use3d/)）拖入到Sprite的Texture属性中的。
 
-![2-7](/2D/displayObject/Sprite/img/2-7.gif)
+![2-7](./img/2-7.gif)
 
 （动图2-7）
 
@@ -161,7 +161,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 通过使用Graphics属性，我们可以绘制矩形，圆形，多边形等图形，如动图2-8所示 ：
 
-![2-8](/2D/displayObject/Sprite/img/2-8.gif)
+![2-8](./img/2-8.gif)
 
 （动图2-8）
 
@@ -173,7 +173,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 `杂项`属性面板中包括了精灵的其它属性，如图2-9所示：   
 
-![2-9](/2D/displayObject/Sprite/img/2-9.png)
+![2-9](./img/2-9.png)
 
 （图2-9）
 
@@ -201,7 +201,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 如果开发者想让节点在运行时改变显示层级，则可以在**代码中**设置`ZOrder`（Z排序，更改此值，则会按照值的大小对同一容器的所有对象重新排序。值越大，越靠上。默认都为0），参考后面的3.4.1节。
 
-![2-10](/2D/displayObject/Sprite/img/2-10.png)
+![2-10](./img/2-10.png)
 
 （图2-10）
 
@@ -211,7 +211,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 如动图2-11所示，我们在IDE中设置了两个Sprite，原本Sprite2是覆盖Sprite1的，当使用BlendMode为“lighter”后，看看运行的效果，两个Sprite的图的颜色叠加了。
 
-![2-11](/2D/displayObject/Sprite/img/2-11.gif)
+![2-11](./img/2-11.gif)
 
 （动图2-11）
 
@@ -225,7 +225,7 @@ Skew的X和Y是以锚点/轴心点为中心进行水平、垂直角度倾斜。
 
 > DrawCall的内容请参考[《性能统计与优化》](/basics/common/stat/)。
 
-![2-4-3-1](/2D/displayObject/Sprite/img/2-4-3-1.png)
+![2-4-3-1](./img/2-4-3-1.png)
 
 LayaAir3.3新2D系统具有动态合批功能，即连续两个或多个渲染元素，如果他们满足一定条件（例如图片在同一个图集，后续统称为具有相同材质），则会自动合并为一个DrawCall（后续简称DC）。引擎提供的这种机制能有效降低DC。
 
@@ -235,17 +235,17 @@ LayaAir3.3新2D系统具有动态合批功能，即连续两个或多个渲染�
 
 场景中有四个按钮，每个按钮都是一个预制体实例，每个预制体里包含一个图片和一个文字对象，如图中所示：
 
-![2-4-3-2](/2D/displayObject/Sprite/img/2-4-3-2.PNG)
+![2-4-3-2](./img/2-4-3-2.PNG)
 
 LayaAir是树状的显示对象结构，那么他们按深度展开后应该是：
 
-![2-4-3-3](/2D/displayObject/Sprite/img/2-4-3-3.PNG)
+![2-4-3-3](./img/2-4-3-3.PNG)
 
 因为文字和图片的材质并不相同，所以每次从文字到图片都产生上下文切换，最后产生了6个DC。
 
 观察一下，其实四个按钮之间并不相交，所以如果能智能地将渲染顺序调整为：
 
-![2-4-3-4](/2D/displayObject/Sprite/img/2-4-3-4.PNG)
+![2-4-3-4](./img/2-4-3-4.PNG)
 
 这样，DC就降低到了2个，达到了优化的目的，并且显示效果是一致的。实际情况会比这个复杂很多，但LayaAir能在不改变最终显示效果的前提下，尽可能的把相同材质的物体调整到连续的渲染顺序上，以促使他们能够被动态合批优化。而对开发者来说，这些底层上的调整是透明的，也就是不会影响原来的显示对象层次。
 
@@ -253,11 +253,11 @@ LayaAir是树状的显示对象结构，那么他们按深度展开后应该是�
 
 drawCallOptimize=false, DrawCall = 65
 
-![2-4-3-5](/2D/displayObject/Sprite/img/2-4-3-5.PNG)
+![2-4-3-5](./img/2-4-3-5.PNG)
 
 drawCallOptimize=true, DrawCall = 5
 
-![2-4-3-6](/2D/displayObject/Sprite/img/2-4-3-6.PNG)
+![2-4-3-6](./img/2-4-3-6.PNG)
 
 
 
@@ -275,7 +275,7 @@ drawCallOptimize=true, DrawCall = 5
 
 #### 2.4.4 设置Cache As
 
-![2-12](/2D/displayObject/Sprite/img/2-12.png)
+![2-12](./img/2-12.png)
 
 （图2-12）
 
@@ -309,7 +309,7 @@ drawCallOptimize=true, DrawCall = 5
 
 如动图2-13所示，我们来看看设置mask的操作过程，比如我们在Sprite1绘制的图形上设置一个圆形的遮罩Sprite2，其中Sprite2是Sprite1的子节点。
 
-![2-13](/2D/displayObject/Sprite/img/2-13.gif)
+![2-13](./img/2-13.gif)
 
 （动图2-13）
 
@@ -332,7 +332,7 @@ drawCallOptimize=true, DrawCall = 5
 
 下面来举一个例子说明这一特殊情况。如图2-14所示，“Sprite1”为父节点，“Sprite2”为子节点，在IDE中默认MouseEnabled属性值为false。
 
-![2-14](/2D/displayObject/Sprite/img/2-14.png)
+![2-14](./img/2-14.png)
 
 （图2-14）
 
@@ -371,7 +371,7 @@ export class NewScript extends Laya.Script {
 
 虽然默认的MouseEnabled属性值为false，但是由于在脚本中设置了监听鼠标事件`this.sprite2.on`，所以此时父节点“Sprite1“和子节点”Sprite2”的MouseEnabled值会自动变为true。代码执行效果如下：
 
-![2-15](/2D/displayObject/Sprite/img/2-15.gif)
+![2-15](./img/2-15.gif)
 
 （动图2-15）
 
@@ -425,7 +425,7 @@ export class NewScript extends Laya.Script {
 
 如果我们对一个图片设置点击事件，那么这个Sprite的长宽所组成的矩形就是它的点击区域。也可以用HitArea为其设置自定义的点击区域`Hit`（圆形、矩形、多边形）和非点击区域`UnHit`，如动图2-16设置点击区域：
 
-![2-16](/2D/displayObject/Sprite/img/2-16.gif)
+![2-16](./img/2-16.gif)
 
 （动图2-16）
 
@@ -435,7 +435,7 @@ export class NewScript extends Laya.Script {
 
 以一个例子来说明这个属性。如图2-17所示，场景中有两个Sprite节点，为了方便观察效果，给Sprite1的”Graphics”加一个矩形并设为白色。Sprite2在Sprite1的上层，它的大小比Sprite1稍小一点，不给它设置“Texture”、“Graphics”等，即Sprite2就是一个**空白区域**。
 
-![2-17](/2D/displayObject/Sprite/img/2-17.png)
+![2-17](./img/2-17.png)
 
 （图2-17）
 
@@ -456,7 +456,7 @@ onAwake(): void {
 
 在运行时，由于Sprite2是空白区域，所以我们无法观察到，但是，Sprite2覆盖在Sprite1的上层，如果点击Sprite2的点击区域，是会被监听到的，效果如动图2-18所示：
 
-![2-18](/2D/displayObject/Sprite/img/2-18.gif)
+![2-18](./img/2-18.gif)
 
 （动图2-18）
 
@@ -464,7 +464,7 @@ onAwake(): void {
 
 勾选Sprite2的“Mouse Through”，再次运行，效果如下：
 
-![2-19](/2D/displayObject/Sprite/img/2-19.gif)
+![2-19](./img/2-19.gif)
 
 （动图2-19）
 
@@ -478,13 +478,13 @@ onAwake(): void {
 
 下面以一个例子来说明，如图2-20所示，Sprite1是父节点，绘制了一个白色矩形，子节点Sprite2在父节点的外面，绘制了一个红色矩形。
 
-![2-20](/2D/displayObject/Sprite/img/2-20.png)
+![2-20](./img/2-20.png)
 
 （图2-20）
 
 上述“**3. Mouse Through**”中的脚本代码不变，先不勾选Sprite1的“Hit Test Prior”，点击子节点Sprite2，控制台打印Sprite1和Sprite2的两个日志，效果如下：
 
-![2-21](/2D/displayObject/Sprite/img/2-21.gif)
+![2-21](./img/2-21.gif)
 
 （图2-21）
 
@@ -492,7 +492,7 @@ onAwake(): void {
 
 再勾选Sprite1的“Hit Test Prior”，这时，子节点Sprite2不在父节点Sprite1的鼠标碰撞区域内，如果鼠标放在子节点Sprite2上，就会直接中断Sprite1和Sprite2的检测，无法响应鼠标事件，效果如动图2-22所示。
 
-![2-22](/2D/displayObject/Sprite/img/2-22.gif)
+![2-22](./img/2-22.gif)
 
 （动图2-22）
 
@@ -506,15 +506,15 @@ onAwake(): void {
 
 点击创建一个后期处理实例：
 
-![2-4-7-1](/2D/displayObject/Sprite/img/2-4-7-1.png)
+![2-4-7-1](./img/2-4-7-1.png)
 
 勾选启用属性后，后期处理效果才会生效，默认状态下此属性会被勾选：
 
-![2-4-7-2](/2D/displayObject/Sprite/img/2-4-7-2.png)
+![2-4-7-2](./img/2-4-7-2.png)
 
 点击效果列表右侧的加号即可选择我们要创建的后期处理效果：
 
-![2-4-7-3](/2D/displayObject/Sprite/img/2-4-7-3.png)
+![2-4-7-3](./img/2-4-7-3.png)
 
 有关后期处理的具体用法，我们在[后期处理](/ide/uieditor/postprocess/)这篇文章中进行了讲解，开发者可参考这篇文章。
 
@@ -524,7 +524,7 @@ onAwake(): void {
 
 在Scene2D的属性设置面板中，增加一个自定义组件脚本。然后，将Sprite节点拖入到其暴露的属性入口中，如动图2-23所示。
 
-![2-23](/2D/displayObject/Sprite/img/2-23.gif)
+![2-23](./img/2-23.gif)
 
 （动图2-23）
 
@@ -661,7 +661,7 @@ Laya.loader.load("atlas/comp/image.png").then(() => {
 
 3.2.1和3.2.2这两个示例代码的运行效果是一样的，如图3-1所示，开发者可以根据自己的需要来使用。
 
-<img src="/2D/displayObject/Sprite/img/3-1.png" style="zoom: 33%;" /> 
+<img src="./img/3-1.png" style="zoom: 33%;" /> 
 
 （图3-1）
 
@@ -691,7 +691,7 @@ Laya.stage.addChild(sprite);
 
 运行效果如图3-2所示：
 
-<img src="/2D/displayObject/Sprite/img/3-2.png" alt="3-2" style="zoom:67%;" />
+<img src="./img/3-2.png" alt="3-2" style="zoom:67%;" />
 
 （图3-2） 
 
@@ -705,7 +705,7 @@ Laya.stage.addChild(sprite);
 
 zIndex属性用于调整Sprite的渲染顺序，我们可以在IDE中直接设置这个值：
 
-![3-4-1-1](/2D/displayObject/Sprite/img/3-4-1-1.png)
+![3-4-1-1](./img/3-4-1-1.png)
 
 也可以通过代码来设置这个值：
 
@@ -722,7 +722,7 @@ zIndex属性用于调整Sprite的渲染顺序，我们可以在IDE中直接设�
 
 假设这里存在这样的节点树：
 
-![3-4-1-2](/2D/displayObject/Sprite/img/3-4-1-2.png)
+![3-4-1-2](./img/3-4-1-2.png)
 
 默认的顺序是按照节点树深度遍历的顺序，即：
 
@@ -752,7 +752,7 @@ C在最后渲染，因为C的有效zIndex值是2。
 
 为了解决这个问题，Sprite中引入了另一个属性stackingRoot：
 
-![3-4-1-3](/2D/displayObject/Sprite/img/3-4-1-3.png)
+![3-4-1-3](./img/3-4-1-3.png)
 
 勾选此属性后，本节点所有的孩子孙子节点的zIndex值都只影响它在本节点内部的渲染顺序。
 
@@ -793,7 +793,7 @@ Sprite上还有一个属性zOrder，这个属性会改变子节点在父节点�
 
 运行效果如下：
 
-![3-4-1-4](/2D/displayObject/Sprite/img/3-4-1-4.png)
+![3-4-1-4](./img/3-4-1-4.png)
 
 可以看到，虽然代码中是先将节点sp1添加到了场景上，但因为sp1的zOrder值较大，因此它的层级比sp2更深。
 
@@ -819,7 +819,7 @@ sp2.blendMode = "lighter";
 
 我们来看看运行结果：  
 
-![3-4](/2D/displayObject/Sprite/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
@@ -875,7 +875,7 @@ setTimeout(() => {
 
 运行效果如下： 
 
-![3-5](/2D/displayObject/Sprite/img/3-5.gif)
+![3-5](./img/3-5.gif)
 
 （动图3-5）
 
@@ -902,7 +902,7 @@ sp.hitArea = hitArea;
 
 我们来看看运行结果： 
 
-![3-6](/2D/displayObject/Sprite/img/3-6.gif)
+![3-6](./img/3-6.gif)
 
 （动图3-6）
 

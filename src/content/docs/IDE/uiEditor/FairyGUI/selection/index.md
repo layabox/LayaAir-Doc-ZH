@@ -9,7 +9,7 @@ Author: 谷主
 GPanel以及它的派生类（GList、GTree）都提供了选择（Selection）功能，当孩子节点的类型为GButton，并且它的模式是单选按钮时，就会参与到这个功能。
 
 ### 一、编辑器操作
-<img src="/IDE/uiEditor/FairyGUI/selection/img/1-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:60%;" />
 - `Mode` 选择模式。
   - `None` 无。
   - `Single` 单选。即选择其中一个就会清空其它选择。

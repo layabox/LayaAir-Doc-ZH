@@ -12,17 +12,17 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 在LayaAir-IDE中，打开包管理器，安装CPU粒子系统。
 
-![1-1](/IDE/layapackage/enterprise/cpuParticle/img/1-1.png)
+![1-1](./img/1-1.png)
 
 > 注：CPU粒子系统属于LayaAir会员功能。
 
 导入插件之后，即可在层级面板中添加CPU粒子。
 
-![1-2](/IDE/layapackage/enterprise/cpuParticle/img/1-2.png)
+![1-2](./img/1-2.png)
 
 也可以在属性设置面板中的渲染栏添加CPU粒子。
 
-![1-3](/IDE/layapackage/enterprise/cpuParticle/img/1-3.png)
+![1-3](./img/1-3.png)
 
 
 
@@ -32,37 +32,37 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 对于粒子系统，一个属性可能存在多种参数模式，这里我们以`StartLifetime`为例：
 
-![2-1-1](/IDE/layapackage/enterprise/cpuParticle/img/2-1-1.png)
+![2-1-1](./img/2-1-1.png)
 
 点击属性最右侧的箭头，即可选择属性的参数模式，共有四种：
 
-![2-1-2](/IDE/layapackage/enterprise/cpuParticle/img/2-1-2.png)
+![2-1-2](./img/2-1-2.png)
 
 **常量**：参数值在属性所属的生命周期中为一个常量值，不会发生变化。
 
-![2-1-3](/IDE/layapackage/enterprise/cpuParticle/img/2-1-3.png)
+![2-1-3](./img/2-1-3.png)
 
 
 
 **曲线**：参数值在属性所属的生命周期中随时间变化，具体值为曲线在这一时刻对应的值。
 
-![2-1-4](/IDE/layapackage/enterprise/cpuParticle/img/2-1-4.png)
+![2-1-4](./img/2-1-4.png)
 
 点击即可打开曲线编辑面板，面板中可以编辑参数值的范围与曲线的形状。
 
-![2-1-5](/IDE/layapackage/enterprise/cpuParticle/img/2-1-5.png)
+![2-1-5](./img/2-1-5.png)
 
 
 
 **双曲线间随机**：参数值在属性所属的生命周期中随时间变化，具体值在这一时刻对应的取值范围上下限中随机取值。
 
-![2-1-6](/IDE/layapackage/enterprise/cpuParticle/img/2-1-6.png)
+![2-1-6](./img/2-1-6.png)
 
 
 
 **双常量间随机**：参数值在属性所属的生命周期中不断变化，取值范围由设置的常量来决定。
 
-![2-1-7](/IDE/layapackage/enterprise/cpuParticle/img/2-1-7.png)
+![2-1-7](./img/2-1-7.png)
 
 
 
@@ -74,7 +74,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 粒子系统属性是影响整个系统的全局属性，其中大部分属性用于控制粒子的初始状态，少部分属性用于控制系统的运行规则。粒子系统属性包含以下内容：
 
-![2-2-1](/IDE/layapackage/enterprise/cpuParticle/img/2-2-1.png)
+![2-2-1](./img/2-2-1.png)
 
 `Duration（运行时长）`：粒子系统运行的时间长度。
 
@@ -176,7 +176,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 发射器用于控制粒子的发射速率和时间。发射器包含以下内容：
 
-![2-3-1](/IDE/layapackage/enterprise/cpuParticle/img/2-3-1.png)
+![2-3-1](./img/2-3-1.png)
 
 `Enable（启用）`：是否启用发射器，勾选后粒子系统才会正常发射粒子。
 
@@ -186,7 +186,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 `Bursts（爆发）`：爆发是产生粒子的事件。用于控制粒子系统在指定时间一次性发射多个粒子。
 
-![2-3-2](/IDE/layapackage/enterprise/cpuParticle/img/2-3-2.png)
+![2-3-2](./img/2-3-2.png)
 
 ​	`Time（时间）`：设置发射爆发粒子的时间（粒子系统开始播放后的秒数）。如果设置的值大于粒子系统的`Duration（运行时长）`，则爆发不会生效。
 
@@ -204,7 +204,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 形状用于定义粒子系统可发射粒子的体积或表面，以及粒子起始速度的方向。
 
-![2-4-0-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-0-1.png)
+![2-4-0-1](./img/2-4-0-1.png)
 
 形状模块有以下这些通用的属性：
 
@@ -232,7 +232,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.1 Sphere（球形）、Hemisphere（半球形）
 
-![2-4-1-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-1-1.png)
+![2-4-1-1](./img/2-4-1-1.png)
 
 这两种形状的属性完全相同，因此一同讲解。
 
@@ -264,7 +264,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.2 Cone（锥形）
 
-![2-4-2-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-2-1.png)
+![2-4-2-1](./img/2-4-2-1.png)
 
 此形状下，所有粒子从圆锥体的顶部出发，沿着圆锥的角度向外扩散。
 
@@ -294,7 +294,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.3 Box（盒形）
 
-![2-4-3-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-3-1.png)
+![2-4-3-1](./img/2-4-3-1.png)
 
 盒形发射器的形状是一个立方体，粒子在发射器体积内的任意位置出发。盒型发射器没有特殊属性，这里不再介绍。
 
@@ -302,7 +302,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.4 ConeVolume（锥形体积）
 
-![2-4-4-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-4-1.png)
+![2-4-4-1](./img/2-4-4-1.png)
 
 此形状下，粒子会在圆锥体内部空间的随机位置生成，而不是仅在圆锥体顶部生成。`ConeVolume（锥形体积）`的大多数属性和`Cone（锥形）`相同，这里不再重复介绍，只有`Length（长度）`这一属性是`Cone（锥形）`没有的：
 
@@ -312,7 +312,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.5 Circle（圆形）
 
-![2-4-5-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-5-1.png)
+![2-4-5-1](./img/2-4-5-1.png)
 
 圆形发射器是一个平面发射器，粒子的发射趋势是沿着圆面发射，默认状态下粒子处于同一平面内，调整Scale.z的值不会影响发射器的形状。
 
@@ -340,7 +340,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.6 SingleSideEdge（边缘形）
 
-![2-4-6-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-6-1.png)
+![2-4-6-1](./img/2-4-6-1.png)
 
 边缘形发射器的形状是一条线。粒子在发射器对象的向上 (Y) 方向上移动。
 
@@ -364,7 +364,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.7 BoxShell（盒形外壳）
 
-![2-4-7-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-7-1.png)
+![2-4-7-1](./img/2-4-7-1.png)
 
 与`Box（盒形）`发射器类似，`BoxShell（盒形外壳）`同样也是一个立方体形状的发射器，粒子会在发射器立方体的表面出发。它有一个特殊属性。
 
@@ -374,7 +374,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.8 BoxEdge（盒型边缘）
 
-![2-4-8-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-8-1.png)
+![2-4-8-1](./img/2-4-8-1.png)
 
 `BoxEdge（盒型边缘）`也是一个立方体形状的发射器，粒子会在发射器立方体的每条边出发。
 
@@ -384,7 +384,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.9 Donut（甜甜圈）
 
-![2-4-9-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-9-1.png)
+![2-4-9-1](./img/2-4-9-1.png)
 
 `Donut（甜甜圈）`形粒子发射器是一个圆环形的发射器，粒子会从圆环的环面出发并向外移动。
 
@@ -414,7 +414,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 #### 2.4.10 Rectangle（矩形）
 
-![2-4-10-1](/IDE/layapackage/enterprise/cpuParticle/img/2-4-10-1.png)
+![2-4-10-1](./img/2-4-10-1.png)
 
 从矩形发射粒子，所有粒子会从同一个矩形平面的随机位置出发，默认状态下沿z轴正方向移动。
 
@@ -426,7 +426,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块控制粒子在其生命周期内的速度。
 
-![2-5-1](/IDE/layapackage/enterprise/cpuParticle/img/2-5-1.png)
+![2-5-1](./img/2-5-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -450,7 +450,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块控制粒子的速度在其生命周期内如何降低。
 
-![2-6-1](/IDE/layapackage/enterprise/cpuParticle/img/2-6-1.png)
+![2-6-1](./img/2-6-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -474,7 +474,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块控制粒子的速度如何随时间推移而受到其父对象移动的影响。
 
-![2-7-1](/IDE/layapackage/enterprise/cpuParticle/img/2-7-1.png)
+![2-7-1](./img/2-7-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -492,7 +492,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 该模块根据粒子生成时发射器的速度控制每个粒子的初始生命周期。它将粒子的初始生命周期乘以一个值，该值取决于产生它们的对象的速度。对于大多数粒子系统，此为游戏对象速度，但对于子发射器，速度来自子发射器粒子所源自的父粒子。
 
-![2-8-1](/IDE/layapackage/enterprise/cpuParticle/img/2-8-1.png)
+![2-8-1](./img/2-8-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -514,7 +514,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 通过指定的力对粒子加速。
 
-![2-9-1](/IDE/layapackage/enterprise/cpuParticle/img/2-9-1.png)
+![2-9-1](./img/2-9-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -530,7 +530,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块指定粒子的颜色和透明度在其生命周期中如何变化。
 
-![2-10-1](/IDE/layapackage/enterprise/cpuParticle/img/2-10-1.png)
+![2-10-1](./img/2-10-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -542,7 +542,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块指定粒子的颜色随粒子速度产生的变化。
 
-![2-11-1](/IDE/layapackage/enterprise/cpuParticle/img/2-11-1.png)
+![2-11-1](./img/2-11-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -556,7 +556,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块指定粒子的大小随粒子生命周期而产生的变化。
 
-![2-12-1](/IDE/layapackage/enterprise/cpuParticle/img/2-12-1.png)
+![2-12-1](./img/2-12-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -570,7 +570,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块指定粒子的大小随粒子速度产生的变化。
 
-![2-13-1](/IDE/layapackage/enterprise/cpuParticle/img/2-13-1.png)
+![2-13-1](./img/2-13-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -594,7 +594,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块指定粒子的旋转随粒子生命周期而产生的变化。
 
-![2-14-1](/IDE/layapackage/enterprise/cpuParticle/img/2-14-1.png)
+![2-14-1](./img/2-14-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -608,7 +608,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块指定粒子的旋转随粒子速度产生的变化。
 
-![2-15-1](/IDE/layapackage/enterprise/cpuParticle/img/2-15-1.png)
+![2-15-1](./img/2-15-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -632,7 +632,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此属性用于修改风区和粒子系统立场对系统发射粒子的影响。
 
-![2-16-1](/IDE/layapackage/enterprise/cpuParticle/img/2-16-1.png)
+![2-16-1](./img/2-16-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -652,7 +652,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块用于为粒子的运动轨迹添加随机扰动，让粒子不再生硬地直线飞出。
 
-![2-17-1](/IDE/layapackage/enterprise/cpuParticle/img/2-17-1.png)
+![2-17-1](./img/2-17-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -690,7 +690,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块控制粒子如何与场景中的游戏对象碰撞。
 
-![2-18-1](/IDE/layapackage/enterprise/cpuParticle/img/2-18-1.png)
+![2-18-1](./img/2-18-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -720,13 +720,13 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 在此模块中可设置子发射器。这些子发射器是在粒子生命周期的某些阶段在粒子位置处创建的附加粒子发射器。
 
-![2-19-1](/IDE/layapackage/enterprise/cpuParticle/img/2-19-1.png)
+![2-19-1](./img/2-19-1.png)
 
 `Enable`：是否启用此模块。
 
 `Sub Emitters`：配置一个子发射器列表，并选择它们的触发条件以及它们从父粒子继承的属性。
 
-![2-19-2](/IDE/layapackage/enterprise/cpuParticle/img/2-19-2.png)
+![2-19-2](./img/2-19-2.png)
 
 `Particle System`：选择粒子发射器要继承的粒子系统。
 
@@ -752,7 +752,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块使用一张包含多个帧的图集，让每个粒子在生命周期内播放这张图集中的动画。
 
-![2-20-1](/IDE/layapackage/enterprise/cpuParticle/img/2-20-1.png)
+![2-20-1](./img/2-20-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -784,7 +784,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 此模块可将拖尾添加到粒子上。
 
-![2-21-1](/IDE/layapackage/enterprise/cpuParticle/img/2-21-1.png)
+![2-21-1](./img/2-21-1.png)
 
 `Enable`：是否启用此模块。
 
@@ -836,7 +836,7 @@ CPU粒子系统的一个重要功能是支持Unity项目导出的粒子效果。
 
 渲染器模块的设置决定了粒子如何着色和绘制。
 
-![3-0-1](/IDE/layapackage/enterprise/cpuParticle/img/3-0-1.png)
+![3-0-1](./img/3-0-1.png)
 
 `Render Mode`：渲染模式。
 

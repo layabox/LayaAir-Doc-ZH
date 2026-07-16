@@ -8,7 +8,7 @@ slug: "released/crazygames"
 
 如图1-1所示，使用LayaAir-IDE将项目发布为CrazyGames平台。
 
-![1-1](/released/CrazyGames/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -16,7 +16,7 @@ slug: "released/crazygames"
 
 发布完毕后，在项目根目录/release/下，会新增一个crazygames文件夹包含发布的项目内容。
 
-![1-2](/released/CrazyGames/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -32,11 +32,11 @@ slug: "released/crazygames"
 
 可以将发布出来的项目上传到CrazyGames平台。
 
-<img src="/released/CrazyGames/img/3-1.png" alt="3-1" style="zoom:50%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom:50%;" />
 
 （图3-1）
 
-<img src="/released/CrazyGames/img/3-2.png" alt="3-2" style="zoom:50%;" />
+<img src="./img/3-2.png" alt="3-2" style="zoom:50%;" />
 
 （图3-2）
 
@@ -48,13 +48,13 @@ slug: "released/crazygames"
 
 在web端CrazyGames中运行API项目示例的3D：
 
-![4-1](/released/CrazyGames/img/4-1.png)
+![4-1](./img/4-1.png)
 
 （图4-1）
 
 在web端CrazyGames中运行API项目示例的2D：
 
-![4-2](/released/CrazyGames/img/4-2.png)
+![4-2](./img/4-2.png)
 
 （图4-2）
 

@@ -6,13 +6,13 @@ slug: "basics/ide/importjslibrary"
 
 AStar寻路算法是本节举例中用到的内容，所以写在前面，大致介绍一下。在LayaAir3.0引擎的2D入门示例中，如图1所示，
 
-![1](/basics/IDE/importJsLibrary/img/1.png)
+![1](./img/1.png)
 
 （图1）
 
 其中有一个2D的A*寻路的示例，开发者可以先通过此示例来了解2D项目中是怎么使用的，如动图2所示，
 
-![2](/basics/IDE/importJsLibrary/img/2.gif)
+![2](./img/2.gif)
 
 （动图2）
 
@@ -65,7 +65,7 @@ license：发行项目需要的证书（这里就不写了）；
 
 如图1-1所示，
 
-<img src="/basics/IDE/importJsLibrary/img/1-1.png" alt="image-20230109150639651" style="zoom:50%;" /> 
+<img src="./img/1-1.png" alt="image-20230109150639651" style="zoom:50%;" /> 
 
 （图1-1）
 
@@ -75,7 +75,7 @@ license：发行项目需要的证书（这里就不写了）；
 
 以npm安装AStar为例，如图1-2所示，
 
-<img src="/basics/IDE/importJsLibrary/img/1-2.png" style="zoom:50%;" /> 
+<img src="./img/1-2.png" style="zoom:50%;" /> 
 
 （图1-2）
 
@@ -148,13 +148,13 @@ export class Main extends Laya.Script {
 
 通过在IDE中运行此脚本，可以获得从 0,0 点到 7,7 点的最短路线，如图1-3所示
 
-<img src="/basics/IDE/importJsLibrary/img/1-3.png" style="zoom: 67%;" /> 
+<img src="./img/1-3.png" style="zoom: 67%;" /> 
 
 （图1-3）
 
 到此为止，第三方模块已经成功导入到项目中了，在IDE中会自动加载，预览和运行都能正常使用。通过开发者工具调试可以看到，引入的AStarFinder类已经成功的集成到发布的代码中了，如图1-4所示
 
-<img src="/basics/IDE/importJsLibrary/img/1-4.png" style="zoom: 50%;" /> 
+<img src="./img/1-4.png" style="zoom: 50%;" /> 
 
 （图1-4）
 
@@ -172,7 +172,7 @@ export class Main extends Laya.Script {
 
 在属性设置里勾选“导入为插件”。如动图2-1所示，
 
-![2-1](/basics/IDE/importJsLibrary/img/2-1.gif) 
+![2-1](./img/2-1.gif) 
 
 （动图2-1）
 
@@ -198,13 +198,13 @@ export class Main extends Laya.Script {
 
 在2D入门示例中，如果在没有导入astar.js的情况下，运行“进阶使用”下的“A*寻路”，点击任何区域，人物没有任何移动，如图2-2所示
 
-<img src="/basics/IDE/importJsLibrary/img/2-2.png" style="zoom:50%;" /> 
+<img src="./img/2-2.png" style="zoom:50%;" /> 
 
 （图2-2）
 
 由于IDE本身不支持Astar的类库，同时也没有导入Astar类库，运行时会报错，如图2-3所示
 
-<img src="/basics/IDE/importJsLibrary/img/2-3.png" style="zoom:50%;" /> 
+<img src="./img/2-3.png" style="zoom:50%;" /> 
 
 （图2-3）
 
@@ -212,13 +212,13 @@ export class Main extends Laya.Script {
 
 将 astar.js 放入 assets 目录下，或者 src 目录下，这里以 assets 为例，如图2-4所示
 
-<img src="/basics/IDE/importJsLibrary/img/2-4.png" style="zoom:50%;" /> 
+<img src="./img/2-4.png" style="zoom:50%;" /> 
 
 （图2-4）
 
 点击 astar.js ，在属性面板中，勾选“导入为插件”，并点击“应用”，如图2-5所示
 
-<img src="/basics/IDE/importJsLibrary/img/2-5.png"  /> 
+<img src="./img/2-5.png"  /> 
 
 （图2-5）
 
@@ -226,13 +226,13 @@ export class Main extends Laya.Script {
 
 再次运行2D示例查看A*寻路示例，如动图2-6所示
 
-<img src="/basics/IDE/importJsLibrary/img/2-6.gif" style="zoom:50%;" /> 
+<img src="./img/2-6.gif" style="zoom:50%;" /> 
 
 （动图2-6）
 
 运行正常了，接下来我们测试一下发布，如图2-7所示，在发布后的web目录下，astar.js 已经发布到js目录下，
 
-<img src="/basics/IDE/importJsLibrary/img/2-7.png" style="zoom:50%;" /> 
+<img src="./img/2-7.png" style="zoom:50%;" /> 
 
 （图2-7）
 
@@ -240,7 +240,7 @@ export class Main extends Laya.Script {
 
 > 这里index.html中的代码是IDE发布时自动加入的，开发者在实际开发时，除非是没别的方案了，尽量不要修改index.html。
 
-![2-8](/basics/IDE/importJsLibrary/img/2-8.png)
+![2-8](./img/2-8.png)
 
 （图2-8）
 

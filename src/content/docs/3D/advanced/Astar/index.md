@@ -8,7 +8,7 @@ slug: "3d/advanced/astar"
 
 本篇将讲解3D场景的寻路问题，以动图1-1为参考示例，我们来讲解3D场景中寻路和移动时需要考虑的问题
 
-<img src="/3D/advanced/Astar/img/1-1.gif" alt="image-20221226152358932" style="zoom:50%;" /> 
+<img src="./img/1-1.gif" alt="image-20221226152358932" style="zoom:50%;" /> 
 
 （动图1-1）
 
@@ -26,13 +26,13 @@ slug: "3d/advanced/astar"
 
 在LayaAir3.0引擎的2D入门示例中，如图2-1所示，有一个2D的A*寻路的示例，开发者也可以先通过此示例来了解2D项目中是怎么使用的，如动图2-2所示
 
-<img src="/3D/advanced/Astar/img/1-1.png" alt="image-20221226192808400" style="zoom: 50%;" /> 
+<img src="./img/1-1.png" alt="image-20221226192808400" style="zoom: 50%;" /> 
 
 （图2-1）
 
 
 
-<img src="/3D/advanced/Astar/img/2-2.gif" style="zoom:50%;" /> 
+<img src="./img/2-2.gif" style="zoom:50%;" /> 
 
 （动图2-2）
 
@@ -90,7 +90,7 @@ A*算法的工作原理是怎样的，在这里就不做介绍了，开发者可
 
 如图2-3所示，此图只有64x64像素，可以存放4096个地块信息，白色代表可以行走的区域，黑色代表不可以行走的区域
 
-<img src="/3D/advanced/Astar/img/2-3.png" alt="2-3" style="zoom:200%;" /> 
+<img src="./img/2-3.png" alt="2-3" style="zoom:200%;" /> 
 
 （图2-3） 
 
@@ -171,13 +171,13 @@ Laya.stage.on(Event.MOUSE_UP, this, function (): void {
 
 地形上每个点的高度被表示为一个矩阵中的一列值。这个矩阵可以用一个被称为高度图（`heightmap`）的灰度图来表示。灰度图是一种使用二维图形来表示三维的高度变化的图片。近黑色的、较暗的颜色表示较低的点，接近白色的、较亮的颜色表示较高的点。
 
-<img src="/3D/advanced/Astar/img/3-1.png" alt="3-1" style="zoom:40%;" /> 
+<img src="./img/3-1.png" alt="3-1" style="zoom:40%;" /> 
 
 （图3-1） 
 
 如图3-1所示，左上角接近纯黑色，为地形的最低点，右下角为接近纯白色，为地形最高点，对应场景地图如图3-2所示
 
-<img src="/3D/advanced/Astar/img/3-2.png" alt="image-20221227190954586" style="zoom:40%;" /> 
+<img src="./img/3-2.png" alt="image-20221227190954586" style="zoom:40%;" /> 
 
 （图3-2）  
 

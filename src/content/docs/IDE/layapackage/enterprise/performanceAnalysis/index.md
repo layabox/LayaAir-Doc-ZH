@@ -16,7 +16,7 @@ slug: "ide/layapackage/enterprise/performanceanalysis"
 
 如图1-1所示，在LayaAir-IDE的包管理器中，安装性能分析插件。
 
-![1-1](/IDE/layapackage/enterprise/performanceAnalysis/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -24,7 +24,7 @@ slug: "ide/layapackage/enterprise/performanceanalysis"
 
 点击[这里](https://layame-1251285021.cos.ap-shanghai.myqcloud.com/maker_union/master-asset/performance/index.html#/home)登录后端平台，如图1-2所示，进入后端界面后，创建项目。
 
-![1-2](/IDE/layapackage/enterprise/performanceAnalysis/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -55,7 +55,7 @@ export class NewScript extends Laya.Script {
 
 `projectId`使用后端给项目分配的项目id，如图1-3所示，在后端界面可以看到id的值。
 
-![1-3](/IDE/layapackage/enterprise/performanceAnalysis/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -67,17 +67,17 @@ export class NewScript extends Laya.Script {
 
 性能分析插件是用于运行中的项目，运行时，游戏左上角会出现录制相关的按钮。点击圆形的录制按钮，如图2-1所示，会出现图2-2所示的提示弹窗，点击“确定”则开始录制性能。
 
-![2-1](/IDE/layapackage/enterprise/performanceAnalysis/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
-![2-2](/IDE/layapackage/enterprise/performanceAnalysis/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
 录制开始后，点击“自动化测试”按钮，系统会自动对关键指标（灯光、阴影、相机、物理、粒子等）打开/关闭，进行自动化测试。并且录制时，录制按钮会变成图2-3所示的方形，此时想要停止录制，则点击这个方形按钮就会停止录制，
 
-![2-3](/IDE/layapackage/enterprise/performanceAnalysis/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -85,7 +85,7 @@ export class NewScript extends Laya.Script {
 
 停止录制后，会弹出是否上传录制结果的对话框，如图2-4所示。
 
-![2-4](/IDE/layapackage/enterprise/performanceAnalysis/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -103,7 +103,7 @@ export class NewScript extends Laya.Script {
 
 > 如果鼠标无法点击报告，则说明报告正在分析中，稍后刷新页面，点击对应的报告就可以正常显示报告内容了。
 
-![2-5](/IDE/layapackage/enterprise/performanceAnalysis/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -115,9 +115,9 @@ export class NewScript extends Laya.Script {
 
 性能总览给出了录制过程中的整体分析，可以查看测试过程中各参数的均值或峰值，如图3-1所示，点击“？”图标可以查看优化建议。
 
-![3-1a](/IDE/layapackage/enterprise/performanceAnalysis/img/3-1a.png)
+![3-1a](./img/3-1a.png)
 
-![3-1b](/IDE/layapackage/enterprise/performanceAnalysis/img/3-1b.png)
+![3-1b](./img/3-1b.png)
 
 （图3-1）
 
@@ -127,7 +127,7 @@ export class NewScript extends Laya.Script {
 
 通常用于标记某段时间内的性能开销。例如，不同关卡或者用户自定的时间段。统计完成后，在后端"区间概况"的页面中，可以看到这段分析的性能开销，如图3-2所示，
 
-![3-2](/IDE/layapackage/enterprise/performanceAnalysis/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
@@ -162,7 +162,7 @@ export class NewScript extends Laya.Script {
 
 分析了项目运行时CPU的性能。
 
-![3-3](/IDE/layapackage/enterprise/performanceAnalysis/img/3-3.png)
+![3-3](./img/3-3.png)
 
 （图3-3）
 
@@ -172,7 +172,7 @@ export class NewScript extends Laya.Script {
 
 分析了内存峰值，以及各时间内存占用总量。
 
-![3-4](/IDE/layapackage/enterprise/performanceAnalysis/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
@@ -182,7 +182,7 @@ export class NewScript extends Laya.Script {
 
 此模块分析了游戏运行过程中的主要模块，包括：渲染模块、物理模块、动画模块、加载模块、粒子系统、shader、ui模块。
 
-![3-5](/IDE/layapackage/enterprise/performanceAnalysis/img/3-5.png)
+![3-5](./img/3-5.png)
 
 （图3-5）
 
@@ -208,7 +208,7 @@ export class NewScript extends Laya.Script {
 
 资源统计包含了纹理资源和几何数据。
 
-![3-6](/IDE/layapackage/enterprise/performanceAnalysis/img/3-6.png)
+![3-6](./img/3-6.png)
 
 （图3-6）
 
@@ -222,7 +222,7 @@ export class NewScript extends Laya.Script {
 
 此模块主要是各种DrawCall的统计。
 
-![3-7](/IDE/layapackage/enterprise/performanceAnalysis/img/3-7.png)
+![3-7](./img/3-7.png)
 
 （图3-7）
 
@@ -232,7 +232,7 @@ export class NewScript extends Laya.Script {
 
 在2.1节中，开启录制时，点击自动化测试后的性能分析。
 
-![3-8](/IDE/layapackage/enterprise/performanceAnalysis/img/3-8.png)
+![3-8](./img/3-8.png)
 
 （图3-8）
 
@@ -303,7 +303,7 @@ export class NewScript extends Laya.Script {
 
 录制后，后端的数据统计如下图所示，
 
-![3-9-1](/IDE/layapackage/enterprise/performanceAnalysis/img/3-9-1.png)
+![3-9-1](./img/3-9-1.png)
 
 （图3-9-1）
 
@@ -332,7 +332,7 @@ export class NewScript extends Laya.Script {
 
 录制后，后端的数据统计如下图所示，
 
-![3-9-2](/IDE/layapackage/enterprise/performanceAnalysis/img/3-9-2.png)
+![3-9-2](./img/3-9-2.png)
 
 （图3-9-2）
 

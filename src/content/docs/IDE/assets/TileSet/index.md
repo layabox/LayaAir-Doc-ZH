@@ -12,7 +12,7 @@ slug: "ide/assets/tileset"
 
 本节内容中，我们使用下图这张瓦片表作为示例：
 
-<img src="/IDE/assets/TileSet/img/1-1.png" alt="1-1" style="zoom:200%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:200%;" />
 
 这张图片来源于[Pixel Line Platformer · Kenney](https://kenney.nl/assets/pixel-line-platformer) 
 
@@ -24,15 +24,15 @@ slug: "ide/assets/tileset"
 
 在项目资源面板创建一个TileSet：
 
-![2-1-1](/IDE/assets/TileSet/img/2-1-1.png)
+![2-1-1](./img/2-1-1.png)
 
 创建好之后，在面板栏中打开瓦片集面板：
 
-![2-1-2](/IDE/assets/TileSet/img/2-1-2.png)
+![2-1-2](./img/2-1-2.png)
 
 我们可以在瓦片集面板中设置TileSet的各项属性：
 
-![2-1-3](/IDE/assets/TileSet/img/2-1-3.png)
+![2-1-3](./img/2-1-3.png)
 
 TileSet中的各项属性都与瓦片有关，因此下面我们先来学习如何创建一个瓦片集。
 
@@ -40,15 +40,15 @@ TileSet中的各项属性都与瓦片有关，因此下面我们先来学习如�
 
 首先我们要准备一个图集，这里我们使用第一节中的示例图，将这个tilesheet拖到瓦片集面板中的瓦片区域，如图所示：
 
-![2-2-1](/IDE/assets/TileSet/img/2-2-1.gif)
+![2-2-1](./img/2-2-1.gif)
 
 添加图集后，面板中就出现了按属性分割好的瓦片集，我们还需要将其创建为瓦片才能正常使用，选中要创建的部分，右键-创建瓦片：
 
-![2-2-2](/IDE/assets/TileSet/img/2-2-2.gif)
+![2-2-2](./img/2-2-2.gif)
 
 这里我们来了解一下与创建瓦片有关的属性：
 
-![2-2-3](/IDE/assets/TileSet/img/2-2-3.png)
+![2-2-3](./img/2-2-3.png)
 
 **`ID`**：一个TileSet中可以创建多个瓦片集，此属性为每一个瓦片集的索引。
 
@@ -66,15 +66,15 @@ TileSet中的各项属性都与瓦片有关，因此下面我们先来学习如�
 
 TileSet的属性会作用于每一个瓦片：
 
-![2-3-1](/IDE/assets/TileSet/img/2-3-1.png)
+![2-3-1](./img/2-3-1.png)
 
 **`Tile Shape`**：瓦片形状。这个属性决定了场景中瓦片的形状以及系统分割图集的方式。默认瓦片形状是`TILE_SHAPE_SQUARE(矩形)`，开发者也可以根据瓦片形状选择其它属性：`TILE_SHAPE_ISOMETRIC(菱形)`，`TILE_SHAPE_HALF_OFFSET_SQUARE(半偏移矩形)`和`TILE_SHAPE_HEXAGON(六边形)`。
 
 下图中，我们将此属性设置为了`TILE_SHAPE_HEXAGON(六边形)`，可以看到此属性的效果：
 
-![2-3-2](/IDE/assets/TileSet/img/2-3-2.png)
+![2-3-2](./img/2-3-2.png)
 
-![2-3-3](/IDE/assets/TileSet/img/2-3-3.png)
+![2-3-3](./img/2-3-3.png)
 
 **`Tile Size`**：场景中每个瓦片的大小，一般来说这个值要和`Texture Region Size`保持一致。
 
@@ -82,29 +82,29 @@ TileSet的属性会作用于每一个瓦片：
 
 首先，在TileSet的属性设置面板中创建一个`Custom Layers`，并设置名称与属性类型：
 
-![2-3-4](/IDE/assets/TileSet/img/2-3-4.gif)
+![2-3-4](./img/2-3-4.gif)
 
 接着在瓦片集面板中选择一个瓦片，并点击选择，在面板的底部，可以看到我们设置的属性，每个瓦片的属性是相互独立的，开发者可自行设置属性值：
 
-![2-3-5](/IDE/assets/TileSet/img/2-3-5.gif)
+![2-3-5](./img/2-3-5.gif)
 
 
 
 **`Physics Layers`**：物理层。使瓦片可以产生物理效果，其属性值如下所示：
 
-![2-3-6](/IDE/assets/TileSet/img/2-3-6.png)
+![2-3-6](./img/2-3-6.png)
 
 `Friction`：摩擦系数。`Restitution`：恢复系数。`Density`：密度。`Group`：碰撞组。`Category`：碰撞类别。`Mask`：碰撞掩码。
 
 添加物理层后，开发者可以为瓦片添加碰撞形状：在瓦片集面板中选择一个瓦片，点击选择，在面板最下方可为瓦片添加碰撞形状：
 
-![2-3-7](/IDE/assets/TileSet/img/2-3-7.gif)
+![2-3-7](./img/2-3-7.gif)
 
 如果希望物理效果生效，还需要开启Tile Map Layer组件中的Physics Enable属性
 
 此时，我们在场景中设置瓦片，就可以看到物理效果：
 
-![2-3-8](/IDE/assets/TileSet/img/2-3-8.gif)
+![2-3-8](./img/2-3-8.gif)
 
 
 
@@ -112,17 +112,17 @@ TileSet的属性会作用于每一个瓦片：
 
 在TileSet的属性设置面板中创建一个`Light Info Layers`，并为其设置一个名称：
 
-![2-3-9](/IDE/assets/TileSet/img/2-3-9.gif)
+![2-3-9](./img/2-3-9.gif)
 
 在瓦片集面板中选择一个瓦片，点击选择，在面板最下方可为瓦片添加形状：
 
-![2-3-10](/IDE/assets/TileSet/img/2-3-10.gif)
+![2-3-10](./img/2-3-10.gif)
 
 如果希望此属性生效，需要在Tile Map Layer中启用`Light Occluder Enable`属性。
 
 接下来，在场景中添加这个瓦片，与光照有关的部分可以参考文档[2D灯光与网格](/ide/component/2d/baselight2d/)，效果如图：
 
-![2-3-11](/IDE/assets/TileSet/img/2-3-11.png)
+![2-3-11](./img/2-3-11.png)
 
 可以看到光照产生的阴影。
 
@@ -132,17 +132,17 @@ TileSet的属性会作用于每一个瓦片：
 
 本节内容我们来了解一下瓦片的属性。在瓦片集面板中选中一个瓦片，在选则界面中可以看到这个瓦片的属性：
 
-![2-4-1](/IDE/assets/TileSet/img/2-4-1.png)
+![2-4-1](./img/2-4-1.png)
 
 **`Size By Atlas`**：设置一个瓦片将由图集中的几块组成。
 
 这里我们选中一个瓦片，将这个瓦片的`Size By Atlas`属性设置为（2，3），
 
-![2-4-2](/IDE/assets/TileSet/img/2-4-2.gif)
+![2-4-2](./img/2-4-2.gif)
 
 可以看到，图集中一块2*3的区域组成了一个瓦片，将这个瓦片放置到场景中：
 
-![2-4-3](/IDE/assets/TileSet/img/2-4-3.gif)
+![2-4-3](./img/2-4-3.gif)
 
 
 
@@ -150,19 +150,19 @@ TileSet的属性会作用于每一个瓦片：
 
 使用Animation，首先，我们创建一个瓦片集，但不要创建瓦片，如图所示：
 
-![2-4-4](/IDE/assets/TileSet/img/2-4-4.gif)
+![2-4-4](./img/2-4-4.gif)
 
 接下来，我们选择一个瓦片并创建，动画信息会保存在这个瓦片上，这里我们选择了第五行第一列的图片：
 
-![2-4-5](/IDE/assets/TileSet/img/2-4-5.gif)
+![2-4-5](./img/2-4-5.gif)
 
 选中这个瓦片，为其添加帧，这里我们添加了五帧，瓦片地图会自动从这个瓦片开始，向右选取五个瓦片作为动画帧，帧属性的参数就是这一帧持续的时间：
 
-![2-4-6](/IDE/assets/TileSet/img/2-4-6.gif)
+![2-4-6](./img/2-4-6.gif)
 
 将这个瓦片添加到场景中，可以观察到效果：
 
-![2-4-7](/IDE/assets/TileSet/img/2-4-7.gif)
+![2-4-7](./img/2-4-7.gif)
 
 接下来我们来介绍一下Animation中的其它属性：
 
@@ -190,9 +190,9 @@ TileSet的属性会作用于每一个瓦片：
 
 **`Texture_origin`**：纹理中心位置。当瓦片添加到场景中时，瓦片的中心会一直处于瓦片块的中心，但其纹理的位置可以改变。
 
-![2-4-8](/IDE/assets/TileSet/img/2-4-8.png)
+![2-4-8](./img/2-4-8.png)
 
-![2-4-9](/IDE/assets/TileSet/img/2-4-9.png)
+![2-4-9](./img/2-4-9.png)
 
 可以看到，纹理的位置出现了偏移。
 
@@ -210,11 +210,11 @@ TileSet的属性会作用于每一个瓦片：
 
 对于一个已经创建好的瓦片块，开发者可以将这个瓦片块创建一个备选瓦片：
 
-![2-5-1](/IDE/assets/TileSet/img/2-5-1.gif)
+![2-5-1](./img/2-5-1.gif)
 
 备选瓦片有三个独有的属性：
 
-![2-5-2](/IDE/assets/TileSet/img/2-5-2.png)
+![2-5-2](./img/2-5-2.png)
 
 **`Flip_h`**：垂直翻转。
 

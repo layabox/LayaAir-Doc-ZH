@@ -14,7 +14,7 @@ slug: "ide/uieditor/uicomponent/button"
 
 使用LayaAir IDE创建Button非常简单，通过IDE的可视化操作，完全不需要程序基础，即可实现组件的创建与布局，也是推荐使用的组件创建方式。如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/Button/img/1-1.png" alt="1-1" style="zoom:80%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:80%;" />
 
 （图1-1）
 
@@ -26,7 +26,7 @@ slug: "ide/uieditor/uicomponent/button"
 
 Button组件的特有属性如下：
 
-<img src="/IDE/uiEditor/uiComponent/Button/img/1-2.png" alt="1-2" style="zoom: 80%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom: 80%;" />
 
 （图1-2）
 
@@ -57,7 +57,7 @@ Button组件的特有属性如下：
 
 三态常用于PC浏览器中，是将皮肤图片按竖直方向以等比分割的形式分为3部分。图1-3所示是LayaAir中自带的按钮皮肤（button.png），从上至下依次为：鼠标弹起或离开时的状态皮肤、鼠标经过时的状态皮肤、鼠标按下和选中时的状态皮肤。
 
-![1-3](/IDE/uiEditor/uiComponent/Button/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -71,7 +71,7 @@ stateNum的属性值决定皮肤资源图片的切割方式。默认值为3，�
 
 这里需要注意的是，指定按钮状态，需要与按钮皮肤对应好。如果是三态的按钮皮肤，stateNum设置为2，切割后如图1-4所示，是错误的。
 
-![1-4](/IDE/uiEditor/uiComponent/Button/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
@@ -81,13 +81,13 @@ labelStrokeColor可以为按钮的文本描边设置一个统一的颜色（不�
 
 如图1-5所示，strokeColors颜色的先后设置顺序格式为：upColor（弹起或离开状态的颜色）、overColor（经过状态的颜色）、downColor（按下和选中状态的颜色）。
 
-![1-5](/IDE/uiEditor/uiComponent/Button/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
 如果想要更清晰的感受描边颜色的变化，可以将按钮大小、文本标签的字体大小和描边宽度等属性值设置大一些，效果如动图1-6所示。
 
-<img src="/IDE/uiEditor/uiComponent/Button/img/1-6.gif" alt="1-6" style="zoom:80%;" />
+<img src="./img/1-6.gif" alt="1-6" style="zoom:80%;" />
 
 （动图1-6）
 
@@ -187,7 +187,7 @@ export class UI_Button extends Laya.Script {
 
 上述代码运行效果如动图2-1所示：
 
-![2-1](/IDE/uiEditor/uiComponent/Button/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
  (动图2-1)
 

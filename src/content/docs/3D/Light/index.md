@@ -31,7 +31,7 @@ slug: "3d/light"
 
 如图7-1所示，在IDE的项目设置中，可以对支持多光源做设置
 
-<img src="/3D/Light/img/7-1.png" style="zoom:60%;" />
+<img src="./img/7-1.png" style="zoom:60%;" />
 
 （图7-1）
 
@@ -43,7 +43,7 @@ Light Cluster Count： X、Y、Z轴的光照集群数量
 
 X、Y、Z轴的光照集群数量，Z值会影响Cluster接受区域光(点光、聚光)影响的数量，Math.floor(2048 / lightClusterCount.z - 1) * 4 为每个Cluster的最大平均接受区域光数量，如果每个Cluster所接受光源影响的平均数量大于该值，则较远的Cluster会忽略其中多余的光照影响。
 
-<img src="/3D/Light/img/7-2.gif" style="zoom: 50%;" />
+<img src="./img/7-2.gif" style="zoom: 50%;" />
 
 （动图7-2）
 

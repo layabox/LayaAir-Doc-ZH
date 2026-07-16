@@ -8,7 +8,7 @@ slug: "ide/component/3drender/trailrenderer"
 
 拖尾渲染器（`TrailRenderer`）用于在3D场景中制作跟随物体运动的拖尾效果，例如残影、烟雾轨迹、光剑拖尾等。它会在物体经过的路径上生成带状网格，并随时间逐渐淡出消失。
 
-<img src="/IDE/Component/Trail/img/1-1.gif" alt="img" style="zoom: 50%;" />
+<img src="../../Trail/img/1-1.gif" alt="img" style="zoom: 50%;" />
 
 （动图1-1）
 
@@ -22,7 +22,7 @@ slug: "ide/component/3drender/trailrenderer"
 
 在3D场景的 Hierarchy 窗口中，可以在任何节点下或空白位置通过鼠标右键创建拖尾对象，如动图2-1所示：
 
-<img src="/IDE/Component/Trail/img/2-1.gif" style="zoom: 43%;" />
+<img src="../../Trail/img/2-1.gif" style="zoom: 43%;" />
 
 （动图2-1）
 
@@ -36,11 +36,11 @@ slug: "ide/component/3drender/trailrenderer"
 
 TrailRenderer 继承自 BaseRender，因此具备基础渲染器属性，如图2-2和图2-3所示：
 
-<img src="/IDE/Component/Trail/img/2-2.png" style="zoom:50%;" />
+<img src="../../Trail/img/2-2.png" style="zoom:50%;" />
 
 （图2-2）
 
-<img src="/IDE/Component/Trail/img/2-3.png" style="zoom:50%;" />
+<img src="../../Trail/img/2-3.png" style="zoom:50%;" />
 
 （图2-3）
 
@@ -62,7 +62,7 @@ TrailRenderer 继承自 BaseRender，因此具备基础渲染器属性，如图2
 
 在 Assets 面板中新建一个 Material，默认 Shader 为 BlinnPhong。将 Shader 切换为 `Laya.Trail`，如动图3-1所示：
 
-<img src="/IDE/Component/Trail/img/2-4.gif" style="zoom: 50%;" />
+<img src="../../Trail/img/2-4.gif" style="zoom: 50%;" />
 
 （动图3-1）
 
@@ -70,7 +70,7 @@ TrailRenderer 继承自 BaseRender，因此具备基础渲染器属性，如图2
 
 Laya.Trail Shader 的材质属性如图3-2所示：
 
-<img src="/IDE/Component/Trail/img/2-5.png" alt="image-20221226104854987" style="zoom:50%;" />
+<img src="../../Trail/img/2-5.png" alt="image-20221226104854987" style="zoom:50%;" />
 
 （图3-2）
 
@@ -85,13 +85,13 @@ Laya.Trail Shader 的材质属性如图3-2所示：
 
 要制作拖尾效果，需要一张拖尾纹理贴图。例如下图是一张常用的拖尾纹理：
 
-![](/IDE/Component/Trail/img/2-6.jpg)
+![](../../Trail/img/2-6.jpg)
 
 （图3-3）
 
 将纹理贴图拖入材质的 Main Texture 属性中：
 
-<img src="/IDE/Component/Trail/img/2-7.gif" style="zoom:50%;" />
+<img src="../../Trail/img/2-7.gif" style="zoom:50%;" />
 
 （动图3-4）
 
@@ -99,19 +99,19 @@ Laya.Trail Shader 的材质属性如图3-2所示：
 
 为实现烟雾等半透明效果，可以调整材质颜色和透明度。例如设置为灰色半透明：
 
-<img src="/IDE/Component/Trail/img/2-8.png" alt="image-20221226105620269" style="zoom: 50%;" />
+<img src="../../Trail/img/2-8.png" alt="image-20221226105620269" style="zoom: 50%;" />
 
 （图3-5）
 
 同时需要将 `Material Render Mode` 设为 `Additive` 模式（使贴图中黑色区域变为透明），并将 `Cull` 设为 `Off`（双面显示）：
 
-<img src="/IDE/Component/Trail/img/2-9.png" alt="image-20221226115732845" style="zoom:50%;" />
+<img src="../../Trail/img/2-9.png" alt="image-20221226115732845" style="zoom:50%;" />
 
 （图3-6）
 
 配置完成后效果如动图3-7：
 
-<img src="/IDE/Component/Trail/img/2-10.gif" style="zoom:50%;" />
+<img src="../../Trail/img/2-10.gif" style="zoom:50%;" />
 
 （动图3-7）
 
@@ -121,7 +121,7 @@ Laya.Trail Shader 的材质属性如图3-2所示：
 
 拖尾过滤器（TrailFilter）控制拖尾的几何形状，包括时间、轨迹、宽度等。在 Inspector 面板中，这些属性显示在 Trail Renderer 组件下方，如图4-1所示：
 
-<img src="/IDE/Component/Trail/img/2-11.png" alt="image-20221226105829772" style="zoom:55%;" />
+<img src="../../Trail/img/2-11.png" alt="image-20221226105829772" style="zoom:55%;" />
 
 （图4-1）
 
@@ -131,13 +131,13 @@ Laya.Trail Shader 的材质属性如图3-2所示：
 
 默认值为 5 秒：
 
-<img src="/IDE/Component/Trail/img/2-12.gif" style="zoom:50%;" />
+<img src="../../Trail/img/2-12.gif" style="zoom:50%;" />
 
 （动图4-2）
 
 调整为 1 秒后效果明显缩短：
 
-<img src="/IDE/Component/Trail/img/2-13.gif" style="zoom:50%;" />
+<img src="../../Trail/img/2-13.gif" style="zoom:50%;" />
 
 （动图4-3）
 
@@ -168,7 +168,7 @@ Laya.Trail Shader 的材质属性如图3-2所示：
 
 在 IDE 中可以通过双击曲线上的红线添加节点，拖动白色旋转手柄调整曲线，双击节点可删除：
 
-<img src="/IDE/Component/Trail/img/2-14.gif" style="zoom:50%;" />
+<img src="../../Trail/img/2-14.gif" style="zoom:50%;" />
 
 （动图4-4）
 
@@ -183,7 +183,7 @@ Laya.Trail Shader 的材质属性如图3-2所示：
 
 如图4-5所示，设置从半透明到白色再到半透明的渐变效果：
 
-<img src="/IDE/Component/Trail/img/2-15.png" alt="image-20221226111319095" style="zoom:50%;" />
+<img src="../../Trail/img/2-15.png" alt="image-20221226111319095" style="zoom:50%;" />
 
 （图4-5）
 
@@ -198,13 +198,13 @@ Laya.Trail Shader 的材质属性如图3-2所示：
 
 Tile 平铺效果：
 
-<img src="/IDE/Component/Trail/img/2-16.gif" style="zoom:50%;" />
+<img src="../../Trail/img/2-16.gif" style="zoom:50%;" />
 
 （动图4-6）
 
 Stretch 拉伸效果（推荐）：
 
-<img src="/IDE/Component/Trail/img/2-17.gif" style="zoom:50%;" />
+<img src="../../Trail/img/2-17.gif" style="zoom:50%;" />
 
 （动图4-7）
 

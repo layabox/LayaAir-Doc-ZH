@@ -20,7 +20,7 @@ Unity 动画数据按类型走不同导出路径：① 属性曲线写入 `.lani
 
 **基础——将各属性动画曲线按类型分类，写入 `.lani` 二进制；后续状态机组织的即此处产出的动画片段。** Transform 类曲线按 `propertyName` 归到一个 `KeyFrameValueType`，再写进 `.lani` 二进制（path 索引表 + propertyName 索引表 + 关键帧）；材质类（Color / MaterialSwap）则按**shader 属性配置表**匹配分发，并非纯属性名命中。坐标系转换在曲线层完成（左手系 → 右手系），**各属性按下表对相应分量取负**，并非整套 xyz 重排（与[网格导出](/unity-plugin/mesh/)的 X 镜像同源）。
 
-![Unity 动画曲线列表](/unity-plugin/img/animation-clip-curves.png)
+![Unity 动画曲线列表](./img/animation-clip-curves.png)
 
 **导出前 · Unity：** 一个 clip 的曲线绑定——每根骨骼带**位置 / 旋转 / 缩放**（即下表的 Position / Rotation / Scale）。这些逐条转成 `.lani` 的关键帧。
 
@@ -39,11 +39,11 @@ Unity 动画数据按类型走不同导出路径：① 属性曲线写入 `.lani
 
 **将上一步产出的片段组织为「状态 + 转换」的状态机。** 每层（layer）导出状态列表 + 转换。**状态**：`speed` / `clipStart=0` / `clipEnd=1` / 位置 x,y / `clip`（指向 `.lani` 的 uuid）/ id。取 clip 用 `state.motion as AnimationClip`。**转换**（soloTransitions）：`exitByTime` / `exitTime` / `transduration` / `transstartoffset` / `solo` / `mute`；目标状态 null 或不存在 → 警告跳过。
 
-![Unity Animator 状态机](/unity-plugin/img/animation-controller.png)
+![Unity Animator 状态机](./img/animation-controller.png)
 
 **导出前 · Unity：** Ellen 状态机——`Respawn`（默认）/ `BeginResapwn` / `EllenDeath` / `Hurt` + Any State。
 
-![Laya 导出的状态机](/unity-plugin/img/animation-laya-controller.png)
+![Laya 导出的状态机](./img/animation-laya-controller.png)
 
 **导出后 · LayaAir：** 状态机结构**前后一致**——状态、连线、默认状态（Respawn）都忠实转移。（`Hurt` 的 BlendTree 内容例外，见 ④）
 
@@ -59,7 +59,7 @@ Unity 动画数据按类型走不同导出路径：① 属性曲线写入 `.lani
 
 **能力边界——当前版本不导出 BlendTree。** 插件**不导出 Animator 的 BlendTree（混合树）**。状态机中 motion 为 BlendTree 的状态会被导成**空状态（无动画）**，混合树内引用的 clip 也**不会随之导出**。其余「直接挂单个 AnimationClip」的状态（如本例 Death / Spawn）导出正常。
 
-![Ellen Hurt BlendTree](/unity-plugin/img/animation-blendtree.png)
+![Ellen Hurt BlendTree](./img/animation-blendtree.png)
 
 Ellen 的 `Hurt` 状态是 `HurtBlendTree`（含 8 个方向受击）——这类混合树及其内部 clip **不会被导出**，`Hurt` 在 Laya 端为空状态。
 

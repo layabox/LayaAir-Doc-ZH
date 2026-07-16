@@ -18,7 +18,7 @@ Tiled Map Editor是一个免费的地图编辑器，可以用来编辑2D游戏�
 
 打开官方首页（http://www.mapeditor.org/）后，直接点击`DownLoad at itch.io`按钮进入下载链接（https://thorbjorn.itch.io/tiled）。
 
-<img src="/2D/TiledMap/img/2-1.png" alt="image-20221222102655189" style="zoom:40%;" /> 
+<img src="./img/2-1.png" alt="image-20221222102655189" style="zoom:40%;" /> 
 
 （图2-1） 
 
@@ -42,13 +42,13 @@ Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度�
 
 然而，图块层格式需要特别注意，由于**LayaAir引擎不支持Tiled Map地图为Base64的图块层格式。**所以在创建新地图时**必须**为`CSV格式`，如图2-2所示。
 
-<img src="/2D/TiledMap/img/2-2.png" alt="image-20221222103428230" style="zoom: 50%;" /> 
+<img src="./img/2-2.png" alt="image-20221222103428230" style="zoom: 50%;" /> 
 
 （图2-2）
 
 如果创建的时候选错了，也可以在属性面板里，将图块层格式改为CSV或者是XML，如图2-3所示，Base64相关的格式都不支持。
 
-<img src="/2D/TiledMap/img/2-3.png" alt="image-20221222103707000" style="zoom:60%;" /> 
+<img src="./img/2-3.png" alt="image-20221222103707000" style="zoom:60%;" /> 
 
 （图2-3）
 
@@ -58,7 +58,7 @@ Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度�
 
 本例中，我们直接打开Tiled Map的示例地图 orthogonal-outside.tmx（*位于Tiled Map地图安装目录的 examples目录下*），如图2-4所示
 
-<img src="/2D/TiledMap/img/2-4.png" alt="image-20221222104447474" style="zoom:50%;" /> 
+<img src="./img/2-4.png" alt="image-20221222104447474" style="zoom:50%;" /> 
 
 （图2-4）
 
@@ -66,7 +66,7 @@ Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度�
 
 在Tiled工具的文件菜单里，点击另存为，将已完成的Tiled地图，另存为json文件类型，本例命名为 `orthogonal.json`（文件名开发者随意，后面保持一致即可），点击保存，存到**项目目录内**（本例为项目根目录\assets\resources\TiledMap\），如图2-5所示。
 
-<img src="/2D/TiledMap/img/2-5.png" alt="image-20221222104657547" style="zoom:50%;" /> 
+<img src="./img/2-5.png" alt="image-20221222104657547" style="zoom:50%;" /> 
 
 （图2-5）
 
@@ -78,7 +78,7 @@ Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度�
 
 我们通过IDE，打开刚刚保存的 `orthogonal.json`，搜索关键字 `image` 我们会发现默认的图集路径位于Tiled安装目录中。如图2-6所示。
 
-<img src="/2D/TiledMap/img/2-6.png" alt="image-20221222110030369" style="zoom:50%;" /> 
+<img src="./img/2-6.png" alt="image-20221222110030369" style="zoom:50%;" /> 
 
 （图2-6）
 
@@ -88,19 +88,19 @@ Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度�
 
 如图2-7所示。
 
-<img src="/2D/TiledMap/img/2-7.png" alt="image-20221222111025554" style="zoom:60%;" /> 
+<img src="./img/2-7.png" alt="image-20221222111025554" style="zoom:60%;" /> 
 
 （图2-7）
 
 同时，我们要把图片文件在IDE里的格式做修改，支持透明通道
 
-<img src="/2D/TiledMap/img/2-8.png" alt="image-20221222113237225" style="zoom:50%;" /> 
+<img src="./img/2-8.png" alt="image-20221222113237225" style="zoom:50%;" /> 
 
 （图2-8）
 
 然后将 `orthogonal.json` 中的图集路径修改为相对路径，如图2-9所示
 
-<img src="/2D/TiledMap/img/2-9.png" alt="image-20221222113834115" style="zoom:50%;" /> 
+<img src="./img/2-9.png" alt="image-20221222113834115" style="zoom:50%;" /> 
 
 （图2-9）
 
@@ -112,7 +112,7 @@ Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度�
 
 ### 3.1 IDE勾选laya.tiledmap组件
 
-<img src="/2D/TiledMap/img/3-1.png" alt="image-20221222112120899" style="zoom:50%;" /> 
+<img src="./img/3-1.png" alt="image-20221222112120899" style="zoom:50%;" /> 
 
 （图3-1）
 
@@ -126,7 +126,7 @@ Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度�
 
 laya.TiledMap类中的`createMap`方法可以创建一个 `TiledMap` 地图。基础的参数说明如图3-2所示。
 
- <img src="/2D/TiledMap/img/3-2.png" style="zoom: 50%;" />
+ <img src="./img/3-2.png" style="zoom: 50%;" />
 
 （图3-2）
 
@@ -167,7 +167,7 @@ export class Main extends Laya.Script {
 
 编译运行代码，效果如图3-3所示，说明地图已创建成功。
 
-![image-20221222115834524](/2D/TiledMap/img/3-3.png)
+![image-20221222115834524](./img/3-3.png)
 
 （图3-3）
 
@@ -195,7 +195,7 @@ private onLoaded():void
 
 运行效果如图3-4所示。
 
-<img src="/2D/TiledMap/img/3-4.png" style="zoom: 33%;" /> 
+<img src="./img/3-4.png" style="zoom: 33%;" /> 
 
 （图3-4）
 
@@ -220,19 +220,19 @@ this.tMap.createMap("resources/TiledMap/orthogonal.json", viewRect, new Laya.Han
 
 通过查看代码，我们发现视口被设置为（ `Laya.stage.designWidth, Laya.stage.designHeight`）。而控制缩放的方法 `setViewPortPivotByScale` 默认值为0.5。那么中心点位置如图3-5所图。
 
-![图9-1](/2D/TiledMap/img/3-5.png) 
+![图9-1](./img/3-5.png) 
 
 （图3-5）
 
 当地图放大两倍时（`this.tMap.scale = 2;`）由于是以视口区域的x与y轴的中心点进行的缩放，所以放大后，会产生图3-6的效果。
 
-![图9-2](/2D/TiledMap/img/3-6.png) 
+![图9-2](./img/3-6.png) 
 
 （图3-6）
 
 下面我们通过动图3-7，从原图比例的0.1到2倍的缩放变化效果，来进一步理解scale属性的中心点。
 
-![动图9-3](/2D/TiledMap/img/3-7.gif) 
+![动图9-3](./img/3-7.gif) 
 
 （动图3-7）
 
@@ -242,7 +242,7 @@ this.tMap.createMap("resources/TiledMap/orthogonal.json", viewRect, new Laya.Han
 
 前文中介绍的是默认的缩放中心点效果。那如何设置和改变缩放中心点呢。在`laya.map.TiledMap`类中的`setViewPortPivotByScale()`方法可以设置视口的中心点。API基础说明如图3-8所示。
 
-<img src="/2D/TiledMap/img/3-8.png" alt="image-20221222121322690" style="zoom:50%;" /> 
+<img src="./img/3-8.png" alt="image-20221222121322690" style="zoom:50%;" /> 
 
 （图3-8）
 
@@ -283,7 +283,7 @@ private onLoaded(): void {
 
 将缩放中心点设置在视口的左上角，再放大2倍时，效果如图3-9所示。
 
-<img src="/2D/TiledMap/img/3-9.png" alt="image-20221222121558879" style="zoom: 33%;" /> 
+<img src="./img/3-9.png" alt="image-20221222121558879" style="zoom: 33%;" /> 
 
 （图3-9）
 
@@ -295,11 +295,11 @@ private onLoaded(): void {
 
 拖动地图除了前文中介绍的方法外，还需要用到`moveViewPort()`（移动视口）方法和`changeViewPort()`（改变视口大小）方法。 这两个API的基础说明如图3-10与3-11所示。
 
-<img src="/2D/TiledMap/img/3-10.png" alt="image-20221222121903934" style="zoom: 50%;" /> 
+<img src="./img/3-10.png" alt="image-20221222121903934" style="zoom: 50%;" /> 
 
 （图3-10）
 
-<img src="/2D/TiledMap/img/3-11.png" alt="image-20221222121947758" style="zoom:50%;" /> 
+<img src="./img/3-11.png" alt="image-20221222121947758" style="zoom:50%;" /> 
 
 （图3-11）
 
@@ -385,7 +385,7 @@ export class Main extends Laya.Script {
 
 代码运行效果如动图3-12所示。
 
-<img src="/2D/TiledMap/img/3-12.gif" style="zoom: 33%;" /> 
+<img src="./img/3-12.gif" style="zoom: 33%;" /> 
 
 （动图3-12）
 
@@ -480,7 +480,7 @@ this.tMap.enableMergeLayer = true;
 
 打开 `TiledMap` 地图编辑器，选中要分组的图层，在图层的自定义属性栏，添加一个名为`layer`的`string`类型属性。操作如图4-1所示。
 
-![图14-1](/2D/TiledMap/img/4-1.png) 
+![图14-1](./img/4-1.png) 
 
 （图4-1）
 
@@ -488,7 +488,7 @@ this.tMap.enableMergeLayer = true;
 
 例如，我们将块层2与块层3的分组名称设置为 layaAir，那么名为 layaAir 的图层，开启 `enableMergeLayer` 后，会合并到同一个图层。操作如图4-2所示。
 
-![图14-2](/2D/TiledMap/img/4-2.png) 
+![图14-2](./img/4-2.png) 
 
 (图4-2)
 
@@ -519,19 +519,19 @@ this.tMap.removeCoveredTile = true;
 
 在图块面板中，点击图块编辑，打开图块地形编辑面板。操作如图4-3所示。
 
-![图15-1](/2D/TiledMap/img/4-3.png) 
+![图15-1](./img/4-3.png) 
 
 (图4-3)
 
 在图块地形编辑面板内，选中地形，在自定义属性栏，点击`+`号图标，添加`int`类型的`type`属性。然后点击OK，完成添加。操作如图4-4所示。
 
-![图15-2](/2D/TiledMap/img/4-4.png) 
+![图15-2](./img/4-4.png) 
 
 (图4-4)
 
 完成添加后，设置`type`属性值为1。操作如图4-5所示。
 
-![图15-3](/2D/TiledMap/img/4-5.png) 
+![图15-3](./img/4-5.png) 
 
 (图4-5)
 

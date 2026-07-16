@@ -8,7 +8,7 @@ slug: "ide/uieditor/uicomponent/opendatacontextview"
 
 开放数据域是一个封闭、独立的 JavaScript 作用域。在设计小游戏时，为了使游戏的可玩性更强，开发者需要实现一些社交玩法，例如排行榜，游戏中邀请其它玩家对战等。这些功能需要用到一些玩家的隐私数据，但微信官方出于安全性考虑不会直接提供这些数据。
 
-![1-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/1-1.png)
+![1-1](./img/1-1.png)
 
 图1-1 排行榜示例
 
@@ -30,7 +30,7 @@ slug: "ide/uieditor/uicomponent/opendatacontextview"
 
 我们可以在层级面板中右键进行创建，也可以在小部件面板中拖拽创建一个开放数据域节点：
 
-![2-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/2-1.png)
+![2-1](./img/2-1.png)
 
 
 
@@ -65,15 +65,15 @@ export class NewScript extends Laya.Script {
 
 来到构建发布界面，在微信小游戏构建页勾选生成开放数据域工程模板选项，然后进行构建：
 
-![2-2](/IDE/uiEditor/uiComponent/OpenDataContextView/img/2-2.png)
+![2-2](./img/2-2.png)
 
 打开构建好的项目文件夹，可以看到其中有一个openDataContext文件夹，这个就是开放数据域工程文件：
 
-![2-3](/IDE/uiEditor/uiComponent/OpenDataContextView/img/2-3.png)
+![2-3](./img/2-3.png)
 
 引擎创建好的开放数据域工程文件中包含一个可直接运行的示例，开发者可以在微信小游戏开发者工具中打开这个示例，就可以看到开发数据域的效果，后续开发的过程中我们也会在这个示例的基础上进行修改：
 
-![2-4](/IDE/uiEditor/uiComponent/OpenDataContextView/img/2-4.png)
+![2-4](./img/2-4.png)
 
 有关生成开放数据域工程模板这一选项，有三点需要注意：
 
@@ -122,11 +122,11 @@ export class Script extends Laya.Script {
 
 在代码编辑器中打开上一节创建好的开放数据域工程文件，找到index.js文件，在文件的init方法中我们可以看到，模板已经执行了onMessage方法，开发者可以自行实现onMessage中的逻辑。
 
-![3-1-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/3-1-1.png)
+![3-1-1](./img/3-1-1.png)
 
 这里的onMessage方法的回调函数打印了此方法获取到的值，我们可以在微信开发者工具中运行一下项目，就可以看到打印出的信息。
 
-![3-1-2](/IDE/uiEditor/uiComponent/OpenDataContextView/img/3-1-2.png)
+![3-1-2](./img/3-1-2.png)
 
 > 注：这里我们可以看到打印了两次信息，这是因为引擎在运行时也会调用postMessage方法。
 
@@ -231,21 +231,21 @@ function init() {
 
 来到微信小程序管理后台，打开账号设置页面，点击服务内容声明--用户隐私保护指引：
 
-![3-2-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/3-2-1.png)
+![3-2-1](./img/3-2-1.png)
 
 点击增加信息类型，勾选微信朋友关系这一项，并确认
 
-![3-2-2](/IDE/uiEditor/uiComponent/OpenDataContextView/img/3-2-2.png)
+![3-2-2](./img/3-2-2.png)
 
 然后继续填写其它内容，完成后点击确定并生成协议。
 
 接下来在服务内容声明中开启隐私授权弹窗，即可获取用户的个人信息了。
 
-![3-2-3](/IDE/uiEditor/uiComponent/OpenDataContextView/img/3-2-3.png)
+![3-2-3](./img/3-2-3.png)
 
 来到微信开发者工具中，可以看到我们成功获取了已经玩过这款游戏的朋友的信息，到此，我们成功的完成了主域和开放数据域通信这一目标。
 
-![3-2-4](/IDE/uiEditor/uiComponent/OpenDataContextView/img/3-2-4.png)
+![3-2-4](./img/3-2-4.png)
 
 
 
@@ -315,7 +315,7 @@ init();
 
 运行效果如下图所示：
 
-![4-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/4-1.png)
+![4-1](./img/4-1.png)
 
 下面我们来了解一下Layout引擎的使用方法。
 
@@ -339,11 +339,11 @@ init();
 
 标签：
 
-![4-1-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/4-1-1.png)
+![4-1-1](./img/4-1-1.png)
 
 属性：
 
-![4-1-2](/IDE/uiEditor/uiComponent/OpenDataContextView/img/4-1-2.png)
+![4-1-2](./img/4-1-2.png)
 
 `style`决定了标签的布局方式，以键值对的形式存储数据。开发者可以在[Layout文档](https://wechat-miniprogram.github.io/minigame-canvas-engine/components/overview.html)中查看具体的样式属性，这里我们不详细讲解。
 
@@ -365,11 +365,11 @@ init();
 
 在网页的左上角我们可以看到这个示例的“源码”，这是一段类似于XML格式的字符串，与XML格式不同的是，其标签中的 `value`属性并不是一个具体的值，而是一个以特定格式传入的参数，
 
-<img src="/IDE/uiEditor/uiComponent/OpenDataContextView/img/4-2-1.png" alt="4-2-1" style="zoom: 50%;" />
+<img src="./img/4-2-1.png" alt="4-2-1" style="zoom: 50%;" />
 
 点击Layout工具箱中的doT按钮，模板引擎就会将这段“源码”编译成一个模板函数：
 
-![4-2-2](/IDE/uiEditor/uiComponent/OpenDataContextView/img/4-2-2.png)
+![4-2-2](./img/4-2-2.png)
 
 模板函数的内容如下所示：
 
@@ -425,7 +425,7 @@ console.log(template);
 
 创建一个新的2D空项目，在场景中添加三个节点：
 
-<img src="/IDE/uiEditor/uiComponent/OpenDataContextView/img/5-1-1.png" alt="5-1-1" style="zoom: 50%;" />
+<img src="./img/5-1-1.png" alt="5-1-1" style="zoom: 50%;" />
 
 这三个节点的用途分别是：
 
@@ -535,31 +535,31 @@ export class Script extends Laya.Script {
 
 打开[RankList](https://codepen.io/yuanzm/pen/QWZybox)，这是一个列表排名示例，本文中我们以这个示例来演示开放数据域的效果：
 
-![5-3-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/5-3-1.png)
+![5-3-1](./img/5-3-1.png)
 
 
 
 开发者可以自行编辑开放数据域效果，也可以在这个示例的基础上进行修改，例如我们不想要列表最下方展示第一名的内容，就可以删除对应位置的代码：
 
-![5-3-2](/IDE/uiEditor/uiComponent/OpenDataContextView/img/5-3-2.png)
+![5-3-2](./img/5-3-2.png)
 
 
 
 调整好效果后，点击doT按纽来导出模板函数：
 
-![5-3-3](/IDE/uiEditor/uiComponent/OpenDataContextView/img/5-3-3.png)
+![5-3-3](./img/5-3-3.png)
 
 
 
 打开开放数据域文件夹，找到tplfn.js文件，用刚才导出的函数替换原有的函数：
 
-<img src="/IDE/uiEditor/uiComponent/OpenDataContextView/img/5-3-4.png" alt="5-3-4" style="zoom:80%;" />
+<img src="./img/5-3-4.png" alt="5-3-4" style="zoom:80%;" />
 
 
 
 接下来将示例中的style也同样复制过来：
 
-<img src="/IDE/uiEditor/uiComponent/OpenDataContextView/img/5-3-5.png" alt="5-3-5" style="zoom:80%;" />
+<img src="./img/5-3-5.png" alt="5-3-5" style="zoom:80%;" />
 
 
 
@@ -656,7 +656,7 @@ init();
 
 开发者需要自行准备一个账号，账号需要成功注册小程序开发与管理权限，同时小程序也要有获取用户个人信息的权限（参考第三节第二小节），使用这个账号登录微信开发者工具，并打开我们设置好的项目，此时就可以看到开放数据域的效果了：
 
-![5-5-1](/IDE/uiEditor/uiComponent/OpenDataContextView/img/5-5-1.png)
+![5-5-1](./img/5-5-1.png)
 
 
 

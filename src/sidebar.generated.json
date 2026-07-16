@@ -35,7 +35,37 @@
     "items": [
       {
         "label": "程序新手路线",
-        "link": "/guides/roadmap/beginner/"
+        "collapsed": false,
+        "items": [
+          {
+            "label": "路线总览",
+            "link": "/guides/roadmap/beginner/"
+          },
+          {
+            "label": "准备环境与语言",
+            "link": "/guides/roadmap/beginner/prepare/"
+          },
+          {
+            "label": "创建第一个项目",
+            "link": "/guides/roadmap/beginner/first-project/"
+          },
+          {
+            "label": "掌握核心概念",
+            "link": "/guides/roadmap/beginner/core-concepts/"
+          },
+          {
+            "label": "2D 入门方向",
+            "link": "/guides/roadmap/beginner/path-2d/"
+          },
+          {
+            "label": "3D 入门方向",
+            "link": "/guides/roadmap/beginner/path-3d/"
+          },
+          {
+            "label": "自检与下一步",
+            "link": "/guides/roadmap/beginner/checklist/"
+          }
+        ]
       },
       {
         "label": "程序进阶路线",
@@ -146,7 +176,7 @@
         "collapsed": true,
         "items": [
           {
-            "label": "插件介绍与导入",
+            "label": "插件介绍与快速上手",
             "link": "/3d/advanced/unity/"
           },
           {
@@ -198,6 +228,10 @@
       {
         "label": "AI开发环境：LayaAir-MCP",
         "link": "/basics/developmentenvironment/ide-mcp/"
+      },
+      {
+        "label": "AI命令行工具：LayaAir CLI",
+        "link": "/basics/developmentenvironment/cli/"
       },
       {
         "label": "AI开发工具：LayaIdea",

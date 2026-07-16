@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gtree"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GTree/img/1-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:60%;" />
 
 - `Template Node` item节点模版。从层级面板拖入一个节点。这个节点必须为GTree节点的孩子。
 - `Indent` 每级缩进。树节点的深度每增加一级，向右缩进的像素距离。例如，如果每级缩进是15像素，树节点的层级是3级，那么树节点的缩进是15*3=45像素。

@@ -14,13 +14,13 @@ Direction Light（方向光/平行光）与点光区别较大，它有固定的�
 
 如图3-1所示，在一个场景中，通过调整平行光的角度，可以调整场景的光照效果
 
-<img src="/IDE/Component/Light/DirectionLightCom/img/3-1.gif" style="zoom: 50%;" />
+<img src="./img/3-1.gif" style="zoom: 50%;" />
 
 （动图3-1）
 
 ## 一、创建方向光
 
-<img src="/IDE/Component/Light/DirectionLightCom/img/3-2.gif" style="zoom:50%;" />
+<img src="./img/3-2.gif" style="zoom:50%;" />
 
 （动图3-2）
 
@@ -32,19 +32,19 @@ Direction Light（方向光/平行光）与点光区别较大，它有固定的�
 
 如图3-3所示，当创建一个DirectionLight后，在Inspector属性面板中会有如下几个属性
 
-<img src="/IDE/Component/Light/DirectionLightCom/img/3-3.png" alt="image-20221221104220653" style="zoom:50%;" />
+<img src="./img/3-3.png" alt="image-20221221104220653" style="zoom:50%;" />
 
 （图3-3）
 
 `Color`：方向光的颜色
 
-<img src="/IDE/Component/Light/DirectionLightCom/img/3-4.png" alt="image-20221221114439371" style="zoom: 40%;" />
+<img src="./img/3-4.png" alt="image-20221221114439371" style="zoom: 40%;" />
 
 （图3-4）
 
 `Intensity`：方向光的强度
 
-<img src="/IDE/Component/Light/DirectionLightCom/img/3-5.png" alt="image-20221221114555840" style="zoom:40%;" />
+<img src="./img/3-5.png" alt="image-20221221114555840" style="zoom:40%;" />
 
 （图3-5）
 
@@ -54,7 +54,7 @@ Direction Light（方向光/平行光）与点光区别较大，它有固定的�
 
 `Shadow Cascades Mode`：阴影的级联模式
 
-<img src="/IDE/Component/Light/DirectionLightCom/img/3-6.gif" style="zoom:50%;" />
+<img src="./img/3-6.gif" style="zoom:50%;" />
 
 （动图3-6）
 
@@ -64,7 +64,7 @@ Direction Light（方向光/平行光）与点光区别较大，它有固定的�
 
 如图3-7所示，当选择Lightmap Bake Type为Baked时，下面会出现烘焙相关参数。
 
- <img src="/IDE/Component/Light/DirectionLightCom/img/3-7.png" alt="image-20221221104220653" style="zoom:55%;" />
+ <img src="./img/3-7.png" alt="image-20221221104220653" style="zoom:55%;" />
 
 （图3-7）
 
@@ -91,7 +91,7 @@ directlightSprite.transform.worldMatrix = mat;
 
  **setForward** 平行光的方向，分别代表x、y、z轴上的方向，负数为负轴，正数为正轴，值的范围为 -1 ~ 0 ~ 1，超过范围后为-1或1，初学者们可以在这个范围内设值观察方向的变化。
 
-<img src="/IDE/Component/Light/DirectionLightCom/img/3-8.gif" style="zoom:50%;" />
+<img src="./img/3-8.gif" style="zoom:50%;" />
 
 （动图3-8）
 

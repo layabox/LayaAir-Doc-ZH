@@ -32,7 +32,7 @@ slug: "basics/performanceoptimization/vip-texture"
 
 图1 左侧是一张宽高为`512*313`的PNG图像，右侧是通过LayaAir引擎提供的纹理压缩工具导出的PVRTC格式图像。
 
-![图1](/basics/PerformanceOptimization/VIP_Texture/img/1.png) 
+![图1](./img/1.png) 
 
 （图1）
 
@@ -46,7 +46,7 @@ LayaAirIDE中的纹理压缩工具 与 LayaAir Unity插件中的纹理压缩工�
 
 在LayaAir Unity插件，资源发布平台的选项中，每一个选项在导出后，会对应一个独立的完整目录，如图2所示。每一个目录内都有着完整的导出资源，只是纹理资源与相关路径信息的差异。
 
-![图2](/basics/PerformanceOptimization/VIP_Texture/img/2.png) 
+![图2](./img/2.png) 
 
 （图2) 
 
@@ -76,7 +76,7 @@ iOS选项是针对iOS平台的纹理压缩，无论是JPG还是PNG，都会被�
 
 LayaAirIDE中依次点击 菜单 ->> 工具 ->> 纹理图片转换，可以打开图3所示界面。
 
-![图3](/basics/PerformanceOptimization/VIP_Texture/img/3.png) 
+![图3](./img/3.png) 
 
 （图3）
 
@@ -122,7 +122,7 @@ iOS分别是`pvrtcfastest\pvrtcfast\pvrtcnormal\pvrtchigh\pvrtcbest`，这和 La
 
 当舞台上什么显示也没有的时候，初始显存占用是2.31M，使用纹理压缩格式，只增加170K，加上初始大小最终为2.48M。而原图则增加1024K，达到3.31M。如图4所示。所以显存优化效果还是非常明显的，减少约83%。
 
-![图4](/basics/PerformanceOptimization/VIP_Texture/img/4.png) 
+![图4](./img/4.png) 
 
 （图4）
 
@@ -132,7 +132,7 @@ iOS分别是`pvrtcfastest\pvrtcfast\pvrtcnormal\pvrtchigh\pvrtcbest`，这和 La
 
 那纹理压缩的显存占用，怎么计算呢，除了统计面板上的信息外，也有一种比较简单的统计方案。你直接查看纹理压缩文件的大小就好了，比如纹理压缩文件是170k，那显存占用也是170k。例如图5所示。
 
-![图5](/basics/PerformanceOptimization/VIP_Texture/img/5.png) 
+![图5](./img/5.png) 
 
 ### 四、纹理压缩的使用示例
 

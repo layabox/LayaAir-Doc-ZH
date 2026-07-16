@@ -40,7 +40,7 @@ LayaAir引擎中的Shader主要是围绕着.shader文件为核心，在引擎核
 
 在项目资源窗口右键菜单栏 -> 选择创建 -> 选择着色器（如图1-1所示），有五种内置Shader可选。
 
-<img src="/3D/advanced/customShader/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -57,7 +57,7 @@ LayaAir引擎内置的默认Shader有：BlinnPhong（布林冯），Unlit（不�
 
 下图2-1展示的是顶点、多边形、边缘的可视化三种形态，
 
-![2-1](/3D/advanced/customShader/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -69,7 +69,7 @@ LayaAir引擎内置的默认Shader有：BlinnPhong（布林冯），Unlit（不�
 
 下图2-2展示的是物体对象的transform和物体顶点坐标的可视化形态。
 
-![2-2](/3D/advanced/customShader/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -81,7 +81,7 @@ LayaAir引擎内置的默认Shader有：BlinnPhong（布林冯），Unlit（不�
 
 下图2-3展示的是物体对象的法线可视化的结果。
 
-![2-3](/3D/advanced/customShader/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -89,13 +89,13 @@ LayaAir引擎内置的默认Shader有：BlinnPhong（布林冯），Unlit（不�
 
 纹理坐标，也称UV坐标，映射了纹理的宽度和高度；在UV坐标上定位顶点的过程称为“UV映射”。这是一个创建、编辑和组织显示为对象网格的平面二维表示的UV的过程。在我们的着色器中，我们可以访问此属性，以在三维模型上定位纹理或在其中保存信息，图2-4展示了Mesh和UV坐标的形态关系。
 
-![2-4](/3D/advanced/customShader/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 UV坐标的面积等于0.0f到1.0f的范围，其中0.0f表示起点，1.0表示终点，下图2-5展示了UV坐标的可视化表达。
 
-![2-5](/3D/advanced/customShader/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -283,7 +283,7 @@ Shader3D End
 
 探针的捕获环境可由CubeMap表示，CubeMap在概念上很像一个在内部表面绘制有立方体六个面图像的盒子，需要Shader必须能够采样CubeMap的图像。对象表面的每个点都可在表面朝向的方向（即表面法向矢量的方向）上“看到”立方体贴图的一小块区域。着色器在此处使用立方体贴图的颜色来计算对象表面应该是什么颜色，下图5-1展示了CubeMap和天空盒的对比结果。
 
-![5-1](/3D/advanced/customShader/img/5-1.png)
+![5-1](./img/5-1.png)
 
 (图5-1)
 
@@ -343,11 +343,11 @@ private：当private值为false时，在材质的属性设置面板，Shader窗�
 
 （下图5-2展示了勾选开关在Shader窗口的展示，图5-3展示了defines在Shader文件中的具体使用方法）
 
-![5-2](/3D/advanced/customShader/img/5-2.png)
+![5-2](./img/5-2.png)
 
 (图5-2)
 
-![5-3](/3D/advanced/customShader/img/5-3.jpg)
+![5-3](./img/5-3.jpg)
 
 (图5-3)
 
@@ -372,7 +372,7 @@ defines中的宏开关可与uniformMap中的全局属性进行联动设置，例
 
 在材质的属性设置面板中，给u_AlbedoTexture1添加纹理，会使A被勾选；给u_AlbedoTexture2添加纹理，会使A和B被勾选，效果如动图5-4所示。
 
-![5-4](/3D/advanced/customShader/img/5-4.gif)
+![5-4](./img/5-4.gif)
 
 （动图5-4）
 
@@ -422,7 +422,7 @@ styles更重要的功能是可以定义只用于UI而不属于uniform和define�
 
 RAIN和SNOWY在defines中，但是在styles中RAIN的inspector为null，所以不显示。SNOWY正常显示。weather是只用于UI而不属于uniform和define的属性，效果如图5-5所示。
 
-![5-5](/3D/advanced/customShader/img/5-5.png)
+![5-5](./img/5-5.png)
 
 （图5-5）
 
@@ -550,7 +550,7 @@ GLSL  End
 
 在LayaAir IDE界面，找到项目资源窗口 -> 右键打开菜单界面 -> 选择创建选项 -> 选择着色器选项（如下图9-1所示）。可以创建一个“不受光”类型的.shader文件，然后用编辑器打开，编写自定义的Shader。
 
-<img src="/3D/advanced/customShader/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图9-1）
 
@@ -570,7 +570,7 @@ GLSL  End
 
 下图9-2展示了一个基本Shader3D Start/Shader3D End 结构中包含的基本信息：
 
-![9-2](/3D/advanced/customShader/img/9-2.png)
+![9-2](./img/9-2.png)
 
 （图9-2）
 
@@ -584,7 +584,7 @@ GLSL  End
 
 `UniformMap`： 创建了四个Uniform变量，下图9-3显示了材质与Shader绑定后在IDE面板上显示的结果。当材质与Shader绑定之后，UniformMap中的变量就会成为IDE材质编辑器上的一个面板接口，可以在面板接口上对uniform值进行修改。
 
-![9-3](/3D/advanced/customShader/img/9-3.png)
+![9-3](./img/9-3.png)
 
 （图9-3）
 
@@ -604,25 +604,25 @@ GLSL  End
 
 （1）给物体填一个纯色，将gl_FragColor设置为一个带有透明通道的vec4变量，实际的结果如下图9-4所示，
 
-![9-4](/3D/advanced/customShader/img/9-4.png)
+![9-4](./img/9-4.png)
 
 （图9-4）
 
 （2）给物体填上纹理的颜色，将gl_FragColor设置为采样纹理的颜色值，具体效果如下图9-5所示，图中左上角为原始纹理示意图，
 
-![9-5](/3D/advanced/customShader/img/9-5.png)
+![9-5](./img/9-5.png)
 
 （图9-5）
 
 （3）给物体颜色填充为uniform变量的颜色，在IDE中调节颜色，具体效果如下图9-6所示，
 
-![9-6](/3D/advanced/customShader/img/9-6.png)
+![9-6](./img/9-6.png)
 
 （图9-6）
 
 （4）使用TilingOffset对UV纹理的采样进行偏移，具体效果如下图9-7所示，
 
-![9-7](/3D/advanced/customShader/img/9-7.png)
+![9-7](./img/9-7.png)
 
 （图9-7）
 
@@ -630,7 +630,7 @@ GLSL  End
 
 对UV纹理的采样进行偏移时，需要使用二次幂的纹理图才能显示出图9-7的效果。如果是非二次幂的图像，需要按照图9-8所示进行设置，将图像进行二次幂缩放设置后，点击应用。
 
-![9-8](/3D/advanced/customShader/img/9-8.png)
+![9-8](./img/9-8.png)
 
 （图9-8）
 
@@ -716,19 +716,19 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 顶点着色器的主要功能是对输入的顶点进行变换，从模型空间变换到裁剪空间下输出到片段着色器，图10-1展示了一个顶点着色器简单的输入与输出。
 
-<img src="/3D/advanced/customShader/img/10-1.png" alt="10-1" style="zoom: 80%;" />
+<img src="./img/10-1.png" alt="10-1" style="zoom: 80%;" />
 
 （图10-1）
 
 读者不必深入了解WebGL的运行细节，只需要专注于GLSL的语句的内容，就可以轻松的完成Shader内容的创作，前面章节简述了GLSL的一些内容，下图10-2展示了顶点着色器在图形渲染管线中的运行阶段图示。
 
-<img src="/3D/advanced/customShader/img/10-2.png" alt="10-2" style="zoom: 50%;" />
+<img src="./img/10-2.png" alt="10-2" style="zoom: 50%;" />
 
 （图10-2）
 
 在上图所示的阶段，从模型中的顶点经过了图10-3的一系列变换内容。
 
-![10-3](/3D/advanced/customShader/img/10-3.png)
+![10-3](./img/10-3.png)
 
 （图10-3）
 
@@ -744,7 +744,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 片段着色器的主要功能是计算每个像素片段的颜色，从顶点着色器获得颜色的差值，从纹理中采样出颜色数据。图11-1展示了模型采样纹理的着色结果。
 
-![11-1](/3D/advanced/customShader/img/11-1.png)
+![11-1](./img/11-1.png)
 
 （图11-1）
 
@@ -756,7 +756,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 模型在应用处理阶段被整合为基本片元（三角形），从模型中获取到不同的属性坐标信息，图12-1红色框选部分为应用处理阶段。
 
-<img src="/3D/advanced/customShader/img/12-1.png" alt="12-1" style="zoom:50%;" />
+<img src="./img/12-1.png" alt="12-1" style="zoom:50%;" />
 
 （图12-1）
 
@@ -766,7 +766,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 应用阶段完成计算后的一些值作为uniform传入顶点着色器参与计算，然后再通过varing类型的形式传入到光栅化以及后面的片段着色器部分，图12-2红色框选部分为顶点着色器阶段。 
 
-<img src="/3D/advanced/customShader/img/12-2.png" alt="12-2" style="zoom:50%;" />
+<img src="./img/12-2.png" alt="12-2" style="zoom:50%;" />
 
 （图12-2）
 
@@ -777,7 +777,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 在光栅化阶段完成颜色插值之后的varing类型结果，传入到片段着色器中，片段着色器对颜色值进行处理，将结果输出到对应的缓冲区（分为颜色缓冲区和深度缓冲区），这个步骤为图12-3中的红色框选部分。
 
-<img src="/3D/advanced/customShader/img/12-3.png" alt="12-3" style="zoom:50%;" />
+<img src="./img/12-3.png" alt="12-3" style="zoom:50%;" />
 
 （图12-3）
 
@@ -787,7 +787,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 在LayaAir中不同的材质有着不同的渲染模式，不同的模式下的渲染结果是不相同的，常见的渲染模式如下图13-1红色框选内容所示：
 
-<img src="/3D/advanced/customShader/img/13-1.png" alt="13-1" style="zoom: 80%;" />
+<img src="./img/13-1.png" alt="13-1" style="zoom: 80%;" />
 
 （图13-1）
 
@@ -799,7 +799,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 - CUTOUT（镂空）
 
-   ![13-2](/3D/advanced/customShader/img/13-2.png)
+   ![13-2](./img/13-2.png)
 
   （图13-2）
 
@@ -813,7 +813,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
    主要用于一些透明并颜色亮度较高的材质，它会根据贴图像素的亮度进行加色混合，模型正面与背面贴图颜色、相重叠的模型的贴图颜色会相互叠加，形成高亮半透明效果。
 
-   ![13-3](/3D/advanced/customShader/img/13-3.png)
+   ![13-3](./img/13-3.png)
 
   （图13-3）
 
@@ -821,7 +821,7 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
   这意味着对象为半透明的模式，但是最终像素的着色的混合模式不同，AlphaBlended混合方式为SrcAlpha * SrcColor + （1 - SRCAlpha）* DstColor，通常来说SrcAlpha来自纹理的Alpha值。
   
-  ![13-4](/3D/advanced/customShader/img/13-4.png)
+  ![13-4](./img/13-4.png)
   
   （图13-4）
 

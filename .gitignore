@@ -1,1 +1,8 @@
 node_modules/
+.gstack/
+
+# 本地 Markdown 预览用：docs 旁指向 public 的图片目录联接（npm run link:images 生成，勿提交）
+src/content/docs/**/img
+src/content/docs/**/images
+src/content/docs/**/gif
+src/content/docs/basics/index

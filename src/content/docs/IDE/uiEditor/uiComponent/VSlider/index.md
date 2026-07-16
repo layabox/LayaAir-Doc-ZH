@@ -12,19 +12,19 @@ HSlider与VSlider组件都是Slider组件的子类，它们分别表示横向滑
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/VSlider/img/1-1.png" alt="1-1" style="zoom: 50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom: 50%;" />
 
 （图1-1）
 
 滑动条可由两部分或三部分组成。如果是两部分，则包含底图资源`vslider.png`、滑块资源`vslider$bar.png`，如图1-2所示。资源至少应当有这两个，否则无法实现滑动功能。
 
-![1-2](/IDE/uiEditor/uiComponent/VSlider/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
 如果是三部分组成的滑动条，则包含滑块资源`vslider$bar.png`、进度条资源`vslider$progress.png` 、底图资源`vslider.png`，如图1-3所示。如果缺少了进度条资源组件也不会报错，只是不显示进度。
 
-![1-3](/IDE/uiEditor/uiComponent/VSlider/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -32,7 +32,7 @@ HSlider与VSlider组件都是Slider组件的子类，它们分别表示横向滑
 
 LayaAir默认创建的VSlider组件是由两部分组成的，如动图1-4所示，VSlider组件采用纵向排列。滑块轨道从上向下扩展，鼠标拖动滑块会显示数值的标签。
 
-<img src="/IDE/uiEditor/uiComponent/VSlider/img/1-4.gif" alt="1-4" style="zoom:50%;" />
+<img src="./img/1-4.gif" alt="1-4" style="zoom:50%;" />
 
 （动图1-4）
 
@@ -42,7 +42,7 @@ LayaAir默认创建的VSlider组件是由两部分组成的，如动图1-4所示
 
 VSlider的特有属性如下：
 
-![1-5](/IDE/uiEditor/uiComponent/VSlider/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
@@ -60,19 +60,19 @@ VSlider的特有属性如下：
 
 设置VSlider的属性max的值为20、属性min的值为0、属性value的值为5后，显示效果如下：
 
-<img src="/IDE/uiEditor/uiComponent/VSlider/img/1-6.png" alt="1-6" style="zoom: 50%;" />
+<img src="./img/1-6.png" alt="1-6" style="zoom: 50%;" />
 
 （图1-6）
 
 设置属性showLabel为true、属性showProgress为true、属性tick值为3，效果如下动图所示：
 
-<img src="/IDE/uiEditor/uiComponent/VSlider/img/1-7.gif" alt="1-7" style="zoom:80%;" />
+<img src="./img/1-7.gif" alt="1-7" style="zoom:80%;" />
 
 （动图1-7）
 
 进度条资源`vslider$progress.png`可以与底图资源`vslider.png`互换，效果如下：
 
-<img src="/IDE/uiEditor/uiComponent/VSlider/img/1-8.gif" alt="1-8" style="zoom:80%;" />
+<img src="./img/1-8.gif" alt="1-8" style="zoom:80%;" />
 
 （动图1-8）
 
@@ -151,7 +151,7 @@ export class UI_VSlider extends Laya.Script {
 
 运行效果：
 
-<img src="/IDE/uiEditor/uiComponent/VSlider/img/2-1.gif" alt="2-1" style="zoom: 50%;" />
+<img src="./img/2-1.gif" alt="2-1" style="zoom: 50%;" />
 
 （动图2-1）
 

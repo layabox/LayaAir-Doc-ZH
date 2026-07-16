@@ -20,7 +20,7 @@ slug: "ide/component/media/soundplayer"
 
 选中一个节点后，在右侧属性面板中点击 `增加组件`，选择 `SoundPlayer` 即可添加音频播放组件。
 
-<img src="/IDE/Component/Media/SoundPlayer/img/1-1.gif" style="zoom:50%;" />
+<img src="./img/1-1.gif" style="zoom:50%;" />
 
 （动图2-1）
 
@@ -30,7 +30,7 @@ slug: "ide/component/media/soundplayer"
 
 SoundPlayer 组件的属性面板如图3-1所示，与音频节点（SoundNode）的属性一致。
 
-<img src="/IDE/Component/Media/SoundPlayer/img/1-2.png" style="zoom:100%;" />
+<img src="./img/1-2.png" style="zoom:100%;" />
 
 （图3-1）
 

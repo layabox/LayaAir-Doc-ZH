@@ -73,7 +73,7 @@ class Test {
 
 下面是笔者电脑上的运行时截图，FPS稳定于52上下。
 
-![1](/basics/PerformanceOptimization/rendering/img/1.png)</br>
+![1](./img/1.png)</br>
 
 （图1）
 
@@ -86,7 +86,7 @@ class Test {
 //...省略其他代码
 ```
 
-![2](/basics/PerformanceOptimization/rendering/img/2.png)</br>
+![2](./img/2.png)</br>
 
  （图2）
 

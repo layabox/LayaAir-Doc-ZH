@@ -1,0 +1,127 @@
+---
+title: "2D 入门方向"
+description: "程序新手路线第 4 阶段：从 2D 基础概念到显示对象、UI、交互与屏幕适配，推荐用入门模板跑通一个 2D 小游戏闭环，并给出可读的扩展清单。"
+lastUpdated: 2026-07-15
+slug: "guides/roadmap/beginner/path-2d"
+---
+
+import { Steps, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+本阶段面向选择 **2D 主路线** 的新手。目标不是读完所有 UI 组件页，而是：**能自己摆界面、绑交互、改脚本控制玩法**。
+
+:::note[若你主攻 3D]
+可先跳到 [3D 入门方向](/guides/roadmap/beginner/path-3d/)，本页只需浏览「基础概念」一节，建立名词即可。
+:::
+
+## 本阶段目标
+
+- 理解 2D 显示对象与常用 UI 的摆放方式
+- 会处理点击 / 触控等基础交互
+- 知道屏幕适配大致怎么配
+- 能打开 2D 相关示例 / 模板，对照改出自己的一版
+
+## 推荐步骤
+
+<Steps>
+
+1. **打牢 2D 基础概念**
+
+   结合通用概念，理解 2D 显示相关名词（若阶段 3 已读过基础概念，可快进）。
+
+   → [引擎基础概念](/basics/common/basicconcepts/)
+
+2. **熟悉场景里的 2D 操作**
+
+   在场景面板练习选中、拖拽、对齐、父子关系。手感决定后续效率。
+
+   → [2D 场景交互工具](/basics/ide/scene/2dinteraction/) · [场景面板概述](/basics/ide/scene/)
+
+3. **认识常用显示对象与 Area2D**
+
+   从 Sprite、文本、图像等基础对象入手；需要相机跟随或分区时可再学 Area2D / Camera2D。
+
+   → [2D 基础显示对象](/2d/displayobject/) · [2D 区域 Area2D](/ide/uieditor/area2d/)
+
+4. **学一点点 UI（够用即可）**
+
+   先掌握 Image、Label/Text、Button、Box/Panel、List 的基本用途。其余组件「用到再查」。
+
+   → 从侧栏「UI 编辑」相关组件页按需进入；也可以从 [小部件面板](/ide/uieditor/widgets/) 对照 IDE 里的可拖拽项。
+
+5. **把交互跑起来**
+
+   点击、穿透、滚轮/手势等是 2D 项目的高频坑点，建议尽早读性能优化章节里的鼠标交互说明（其中含新手向讲解）。
+
+   → [事件管理](/basics/common/event/) · [鼠标交互与常见坑](/basics/performanceoptimization/mouse/)
+
+6. **屏幕适配（别拖到最后）**
+
+   真机一拉开就变形，多半是适配没配好。读懂设计宽高与适配模式。
+
+   → [屏幕适配](/basics/common/adaptscreen/)
+
+7. **用实例闭环一次**
+
+   打开 2D 入门游戏文档 / IDE 模板，对照节点与脚本，尝试改数值、换图、加一个简单规则。
+
+   → [游戏入门实例概述](/basics/ide/gamedevelopment/) · [一个 2D 入门游戏](/2d/advanced/2dgame/)
+
+</Steps>
+
+## 必读清单
+
+<CardGrid>
+  <LinkCard
+    title="2D 场景交互"
+    href="/basics/ide/scene/2dinteraction/"
+    description="场景编辑手感从这里练起。"
+  />
+  <LinkCard
+    title="2D 基础显示对象"
+    href="/2d/displayobject/"
+    description="Sprite 等核心显示节点。"
+  />
+  <LinkCard
+    title="事件管理"
+    href="/basics/common/event/"
+    description="点击与自定义事件的通用基础。"
+  />
+  <LinkCard
+    title="屏幕适配"
+    href="/basics/common/adaptscreen/"
+    description="多机型显示的关键配置。"
+  />
+  <LinkCard
+    title="鼠标交互说明"
+    href="/basics/performanceoptimization/mouse/"
+    description="含新手向交互与穿透讲解。"
+  />
+  <LinkCard
+    title="2D 入门游戏"
+    href="/2d/advanced/2dgame/"
+    description="实战闭环：跟着模板改出自己的版本。"
+  />
+</CardGrid>
+
+## 扩展阅读（用到再打开）
+
+| 主题 | 何时需要 | 入口 |
+|---|---|---|
+| 图集与动态合图 | 碎图多、DrawCall 变高 | [动态图集](/2d/dynamicatlas/) |
+| 缓动 / 时间轴动画 | 需要出场动效、UI 动效 | [缓动](/basics/common/tween/) · 动画编辑相关侧栏 |
+| 2D 物理 | 要碰撞、弹跳、关节 | IDE 物理编辑 / physics2D 相关文档 |
+| TiledMap | 做横版 / 俯视角地图 | [TiledMap](/2d/tiledmap/) |
+
+## 建议练习
+
+1. 做一个主菜单：标题 + 开始按钮 + 点击后隐藏菜单、显示游戏层。
+2. 做一个可点击道具：点击后播放缩放缓动并销毁（或回收）。
+3. 在两种长宽比下预览，确认适配策略可接受。
+
+## 进入下一阶段前，请确认
+
+- 能在场景中搭出一个简单 UI 层级
+- 能用脚本响应按钮或节点点击
+- 知道设计分辨率与适配模式在哪配置
+- 至少对着模板改通过一个可运行的小改动
+

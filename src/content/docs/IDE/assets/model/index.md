@@ -20,7 +20,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 操作如动图1-1所示：
 
-![1-1](/IDE/assets/model/img/1-1.gif)
+![1-1](./img/1-1.gif)
 
 （动图1-1）
 
@@ -30,7 +30,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 操作如图1-2所示：
 
-![1-2](/IDE/assets/model/img/1-2.png)  
+![1-2](./img/1-2.png)  
 
 （图1-2）
 
@@ -42,7 +42,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 所以，我们建议使用右键菜单中`提取模型内部资源`的功能，将模型提取出来，如图1-3所示。
 
-![](/IDE/assets/model/img/1-3.png) 
+![](./img/1-3.png) 
 
 (图1-3)
 
@@ -60,13 +60,13 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 例如，**将单位改为厘米**，默认会有一个 **已勾选** 的关联选项 `模型尺寸不变`(normalizeMesh)，如图2-1所示。勾选的作用是为了保持当前模型的视觉大小，仅仅变更模型的单位。
 
-![](/IDE/assets/model/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
 **如果勾选去掉**，会被放大100倍（例如100厘米变成100米）。效果对比如图2-2所示：
 
-![2-2](/IDE/assets/model/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -84,7 +84,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 当开发者存在使用模型的这些内置数据需求时，也可以通过勾选这些选项，如图2-3所示。通过点击**应用**重新导入进来。
 
-![2-3](/IDE/assets/model/img/2-3.png) 
+![2-3](./img/2-3.png) 
 
 (图2-3)
 
@@ -92,7 +92,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 当模型中存在Lod数据时，勾选该选项，会导出Lod的数据，并在使用该模型的时候自动创建一个Lod Group组件来设置Lod数据。添加后的效果如动图2-4所示。
 
-![2-4](/IDE/assets/model/img/2-4.gif)
+![2-4](./img/2-4.gif)
 
 （动图2-4）
 
@@ -102,7 +102,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 有一些属性的设置比较好理解，如图3-1所示，
 
-![3-1](/IDE/assets/model/img/3-1.png) 
+![3-1](./img/3-1.png) 
 
 （图3-1）
 
@@ -121,7 +121,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 如图3-2所示，该属性有**自动、UInt16位、UInt32**位这三种选项。
 
-![3-2](/IDE/assets/model/img/3-2.png) 
+![3-2](./img/3-2.png) 
 
 （图3-2）
 
@@ -135,7 +135,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 在处理法线效果的能力方面，主要有三个相关属性构成，分别是**法线**、**法线计算模式**、**切线**，如图3-3所示：
 
-![3-3](/IDE/assets/model/img/3-3.png) 
+![3-3](./img/3-3.png) 
 
 (图3-3)
 
@@ -143,7 +143,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 **法线**属性有三个选项，**导入**`import`、**计算**`calculate`、**无**`none`。如图3-4所示。
 
-![3-4](/IDE/assets/model/img/3-4.png) 
+![3-4](./img/3-4.png) 
 
 (图3-4)
 
@@ -157,7 +157,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 **法线计算模式**有**非加权**unweight与**面积加权**areaWeight这两个选项。如图3-5所示。
 
-![3-5](/IDE/assets/model/img/3-5.png) 
+![3-5](./img/3-5.png) 
 
 （图3-5）
 
@@ -171,7 +171,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 切线用于定义模型表面上每个顶点的切线向量。分别为**无**`none`、**计算**`calculate`、**导入**`import`。如图3-6所示。
 
-![3-6](/IDE/assets/model/img/3-6.png) 
+![3-6](./img/3-6.png) 
 
 (图3-6)
 
@@ -185,7 +185,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 在模型导入时，默认可以将模型中自带的UV1导入进来。如图3-7所示，
 
-![3-7](/IDE/assets/model/img/3-7.png) 
+![3-7](./img/3-7.png) 
 
 （图3-7）
 
@@ -193,7 +193,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 有时，模型只有一个默认的UV，如果想再生成一个UV1来支持光照贴图，如图3-8所示，可以选择`生成`选项。
 
-![3-8](/IDE/assets/model/img/3-8.png) 
+![3-8](./img/3-8.png) 
 
 （图3-8）
 
@@ -259,13 +259,13 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 模型导入时的骨骼绑定选项，可以对**皮肤权重**进行设置，默认为标准模式，如图4-1所示。
 
-![4-1](/IDE/assets/model/img/4-1.png)  
+![4-1](./img/4-1.png)  
 
 （图4-1）
 
 当我们选择自定义模式时，有 `每顶点最大骨骼数` 和 `骨骼影响最小权重`两个设置子选项，如图4-2所示。
 
-![](/IDE/assets/model/img/4-2.png) 
+![](./img/4-2.png) 
 
 （图4-2）
 
@@ -285,7 +285,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 勾选 `动画数据压缩`后，如图5-1所示。可以根据配置对动画数据的体积进行压缩。
 
-![5-1](/IDE/assets/model/img/5-1.png) 
+![5-1](./img/5-1.png) 
 
 （图5-1）
 
@@ -303,7 +303,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 当点击按钮 `提取所有材质` 后，会弹出**材质输出的目标文件夹选择**窗口，如图6-1所示。
 
-![6-1](/IDE/assets/model/img/6-1.png) 
+![6-1](./img/6-1.png) 
 
 （图6-1）
 
@@ -311,7 +311,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 提取完成后，会自动把提取的材质关联到材质映射表，如图6-2所示。当然，开发者也可以手动选择更改材质映射关系。
 
-![](/IDE/assets/model/img/6-2.png)  
+![](./img/6-2.png)  
 
 （图6-2）
 
@@ -323,7 +323,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 名称匹配规则有两种，分别是，仅按 **材质名称** 匹配 ，或者是按 **模型名称 + 材质名称** 匹配，如图6-3所示。
 
-![](/IDE/assets/model/img/6-3.png) 
+![](./img/6-3.png) 
 
 （图6-3）
 
@@ -338,7 +338,7 @@ LayaAir3-IDE支持**obj、fbx、gltf、glb**这几种后缀的模型格式导入
 
 **限定查找目录**就是指定哪个目录中查找，也是有两种方式，如图6-4所示：
 
-![](/IDE/assets/model/img/6-4.png) 
+![](./img/6-4.png) 
 
 (图6-4)
 

@@ -15,7 +15,7 @@ slug: "basics/common/math/beziercurve"
 
 ## 二、二次贝塞尔曲线
 
-![图2-1](/basics/common/math/BezierCurve/img/2-1.png)
+![图2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -28,7 +28,7 @@ let bezier = Laya.Bezier.I;
 
 ## 三、三次贝塞尔曲线
 
-![图3-1](/basics/common/math/BezierCurve/img/3-1.png)
+![图3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -58,7 +58,7 @@ let points = bezier.getBezierPoints(controlPoints, 10, 2);
 
 ## 五、缓动插值 getRate
 
-![图5-1](/basics/common/math/BezierCurve/img/5-1.png)
+![图5-1](./img/5-1.png)
 
 （图5-1）
 

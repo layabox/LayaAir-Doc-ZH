@@ -8,7 +8,7 @@ slug: "ide/component/3danimation/boneconstraints"
 
 骨骼约束是一种用于控制和限制骨骼行为的机制。它就像是在骨骼上加了一层“规则”，让骨骼能够根据特定的逻辑自动运动，避免出现不自然的姿态。在引擎中骨骼约束组件需要与IK系统配合使用。
 
-![1-1](/IDE/Component/3DAnimation/BoneConstraints/img/1-1.png)
+![1-1](./img/1-1.png)
 
 在阅读本文之前，建议开发者先了解[IK链](/ide/component/3danimation/boneconstraints/chainsik/)。
 
@@ -20,13 +20,13 @@ slug: "ide/component/3danimation/boneconstraints"
 
 在属性设置面板中，点击增加组件，就可以在动画选项中找到骨骼约束组件。
 
-![2-1](/IDE/Component/3DAnimation/BoneConstraints/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 
 
 添加好组件之后，还需要创建骨骼约束，点击加号即可创建：
 
-![2-2](/IDE/Component/3DAnimation/BoneConstraints/img/2-2.png)
+![2-2](./img/2-2.png)
 
 
 
@@ -34,7 +34,7 @@ slug: "ide/component/3danimation/boneconstraints"
 
 骨骼约束有以下这些属性：
 
-![3-1](/IDE/Component/3DAnimation/BoneConstraints/img/3-1.png)
+![3-1](./img/3-1.png)
 
 `启用`：是否启用该约束。
 
@@ -68,7 +68,7 @@ slug: "ide/component/3danimation/boneconstraints"
 
 hinge（铰链）模式：
 
-![4-1](/IDE/Component/3DAnimation/BoneConstraints/img/4-1.gif)
+![4-1](./img/4-1.gif)
 
 此模式下只能设置X轴旋转角度范围，因此编辑工具只显示了一组角，点击并拖动白球即可调整旋转范围的上限和下限。
 
@@ -76,7 +76,7 @@ hinge（铰链）模式：
 
 euler（欧拉角）模式：
 
-![4-2](/IDE/Component/3DAnimation/BoneConstraints/img/4-2.gif)
+![4-2](./img/4-2.gif)
 
 此模式下可对三个轴分别设置旋转范围，因此编辑工具也显示了三组角，点击拖动对应颜色的球即可改变对应轴的旋转范围。
 
@@ -84,7 +84,7 @@ euler（欧拉角）模式：
 
 swingtwist（摆动扭转）模式
 
-![4-3](/IDE/Component/3DAnimation/BoneConstraints/img/4-3.png)
+![4-3](./img/4-3.png)
 
 此模式下不能通过点击并拖动的方式改变范围，编辑工具只提供预览范围的效果。
 

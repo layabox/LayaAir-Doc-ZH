@@ -20,11 +20,11 @@ slug: "basics/performanceoptimization/memory"
 
 LayaAir引擎提供了对象池类[laya.utils.Pool](https://layaair.com/3.x/api/Chinese/index.html?version=3.0.0&type=Core&category=Utils&class=laya.utils.Pool)，用于对象的存贮、重复使用。比较常用的是`对象池创建`方法`getItemByClass()`与`回收到对象池`方法`recover()`。 如图1-1、图1-2所示。
 
-![1](/basics/PerformanceOptimization/memory/img/1.png)</br>
+![1](./img/1.png)</br>
 
 （图1）对象池创建方法
 
-![2](/basics/PerformanceOptimization/memory/img/2.png)</br>
+![2](./img/2.png)</br>
 
 （图2）回收到对象池方法，将使用的对象放回对象池中。
 
@@ -117,7 +117,7 @@ new PoolTest();
 
 #### 使用Handler.create需要注意的地方
 
-![3](/basics/PerformanceOptimization/memory/img/3.png)</br>
+![3](./img/3.png)</br>
 
 在一些特殊情况我们需要注意`Laya.Hanlder.create()`的使用方式，我们仔细看图3中的`Laya.Hanlder.create()`方法说明。
 
@@ -145,7 +145,7 @@ Laya.loader.load(urls, Laya.Handler.create(this,this.onAssetLoaded), Laya.Handle
 
 **Handler() API参考如图2-2所示**：
 
-![4](/basics/PerformanceOptimization/memory/img/4.png)</br>
+![4](./img/4.png)</br>
 
 （图4）
 
@@ -196,7 +196,7 @@ function onAssetsLoaded():void
 
    尝试尽量减少使用滤镜效果。将滤镜（BlurFilter和GlowFilter）应用于显示对象时，运行时将在内存中创建两张位图。其中每个位图的大小与显示对象相同。将第一个位图创建为显示对象的栅格化版本，然后用于生成应用滤镜的另一个位图：
 
-   ![5](/basics/PerformanceOptimization/memory/img/5.png)</br>
+   ![5](./img/5.png)</br>
 
 （图5）
 

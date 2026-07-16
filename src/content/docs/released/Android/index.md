@@ -12,13 +12,13 @@ slug: "released/android"
 
 在构建发布Android之前，我们需要先添加Android的发布环境模块，如图1-1所示，点击`文件`菜单栏下的`添加模块`选项，
 
-<img src="/released/Android/img/1-1.png" style="zoom:67%;" />  
+<img src="./img/1-1.png" style="zoom:67%;" />  
 
 （图1-1）
 
 如果我们不先添加发布环境，当点击构建Android时，也会弹出安装模块的提示，如图1-2所示。
 
-<img src="/released/Android/img/1-2.png" style="zoom:67%;" /> 
+<img src="./img/1-2.png" style="zoom:67%;" /> 
 
 （图1-2）
 
@@ -32,7 +32,7 @@ slug: "released/android"
 
 在`文件`菜单中，打开“`构建发布`”选项，选择`Android`平台标签，如图2-1所示，
 
-<img src="/released/Android/img/2-1.png" style="zoom:67%;" />  
+<img src="./img/2-1.png" style="zoom:67%;" />  
 
 （图2-1）
 
@@ -128,7 +128,7 @@ x86-64: 也称为x64或AMD64，是Intel处理器的64位版本。用于较新的
 
 默认不勾选`导出项目`，如图3-1所示，此时会直接生成apk安装包，如果勾选，则会导出Android Studio工程。所以这里重点说明一下。
 
-<img src="/released/Android/img/3-1.png" alt="3-1" style="zoom:80%;" /> 
+<img src="./img/3-1.png" alt="3-1" style="zoom:80%;" /> 
 
 （图3-1）
 
@@ -136,7 +136,7 @@ x86-64: 也称为x64或AMD64，是Intel处理器的64位版本。用于较新的
 
 当`资源选项`的`资源服器URL`为空时，如图3-1所示，会直接打出一个单机版的apk安装包，如图3-2所示，
 
-![3-2](/released/Android/img/3-2.png) 
+![3-2](./img/3-2.png) 
 
 （图3-2）
 

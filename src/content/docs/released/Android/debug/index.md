@@ -37,7 +37,7 @@ LayaAir-IDE发布后的代码，最终都会被编译为JS。而JavaScript代码
 
 打开`android_studio/app/src/main/assets/config.ini`，修改`JSDebugMode`的值,设置需要的调试模式。如图2-1所示，
 
-![2-1](/released/Android/debug/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -57,14 +57,14 @@ JSDebugMode的取值和含义如下：
 
 - 如果选择的是Debug/Normal模式，等待Android测试机成功**启动并运行**项目。
 
-<img src="/released/Android/debug/img/2-2.png" alt="2-2" style="zoom:70%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:70%;" />
 
 （图2-2）
 
 - 如果选择的是Debug/Wait模式，等待Android测试机成功**启动**项目。
 
 
-<img src="/released/Android/debug/img/2-3.png" alt="2-3" style="zoom:150%;" />
+<img src="./img/2-3.png" alt="2-3" style="zoom:150%;" />
 
 （图2-3）
 
@@ -102,13 +102,13 @@ devtools://devtools/bundled/js_app.html?v8only=true&ws=192.168.31.43:5959/laya
 
 打开调试机上的Chrome浏览器，输入网址`chrome://inspect/#devices`后，可以看到LayaNative，表示连接成功。
 
-<img src="/released/Android/debug/img/2-4.png" alt="2-4" style="zoom:80%;" />
+<img src="./img/2-4.png" alt="2-4" style="zoom:80%;" />
 
 （图2-4）
 
 需要注意，需要在`Configure`中，配置设备地址，图2-5中的地址192.168.31.43就是测试机的ip，端口号5959是config.ini文件（图2-1）中的JSDebugPort值。
 
-![2-5](/released/Android/debug/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -120,7 +120,7 @@ devtools://devtools/bundled/js_app.html?v8only=true&ws=192.168.31.43:5959/laya
 
 点击图2-4中的`inspect`后，便可以使用Chrome对项目中JavaScript进行调试。如图2-6所示，
 
-<img src="/released/Android/debug/img/2-6.png" alt="2-6" style="zoom:80%;" />
+<img src="./img/2-6.png" alt="2-6" style="zoom:80%;" />
 
 （图2-6）
 

@@ -20,11 +20,11 @@ slug: "unity-plugin/sprite-2d"
 
 **外层结构——SpriteRenderer 导为 UI3D（节点仍是 Sprite3D、保留 3D 变换），UI3D 引用一个 2D 预制。** SpriteRenderer 导出成 **UI3D 组件**（节点仍是 Sprite3D，保留 3D 变换，`localScale.x` 取负做左右手坐标补偿）。UI3D 引用一个 `.lh` 2D 预制，预制里是带 **Mesh2DRender** 的精灵：贴图来自导出的图，颜色取自 `SpriteRenderer.color`，2D 材质用自动生成的默认材质 `Mesh2DRender_DefaultMaterial.lmat`（一次生成、复用）。
 
-![Unity SpriteRenderer](/unity-plugin/img/sprite-2d-renderer.png)
+![Unity SpriteRenderer](./img/sprite-2d-renderer.png)
 
 **导出前 · Unity：** `SpriteRenderer`——精灵 `EllenHealth Empty`、颜色、绘制模式（简单）、材质 Sprites-Default。
 
-![Laya UI3D 组件](/unity-plugin/img/sprite-2d-laya.png)
+![Laya UI3D 组件](./img/sprite-2d-laya.png)
 
 **导出后 · LayaAir：** 同一节点带 **3D UI（UI3D）** 组件，预制体指向 `..._sprite`，UI3D 渲染模式 = `透明(AlphaBlend)`——精灵在 3D 场景中渲染。
 
@@ -43,7 +43,7 @@ slug: "unity-plugin/sprite-2d"
 
 本例 `EllenHealth` 是 spritesheet → 走**图集模式**，导出 `EllenHealth.atlas`，同母图的多个子图**累加到同一个 atlas**：
 
-![导出的 atlas](/unity-plugin/img/sprite-2d-atlas.png)
+![导出的 atlas](./img/sprite-2d-atlas.png)
 
 **导出后 · LayaAir：** `EllenHealth.atlas` 的帧列表——Empty / Full / Gaining00–03 / Losing00–02 共 9 个子图，都映射到母图 `EllenHealth.png`。
 
@@ -51,7 +51,7 @@ slug: "unity-plugin/sprite-2d"
 
 **UI3D 所引用的 2D 预制的内部结构（带 Mesh2DRender 的精灵）。** UI3D 引用的 `.lh` 预制就是一个标准的 Laya 2D 节点（带 Mesh2DRender 的精灵）。世界尺寸按精灵自然边界（像素 / pixelsPerUnit，Simple 绘制模式）或 size 属性换算，另算渲染分辨率。
 
-![导出的 2D 预制](/unity-plugin/img/sprite-2d-prefab.png)
+![导出的 2D 预制](./img/sprite-2d-prefab.png)
 
 **导出后 · LayaAir：** 2D 预制 `EllenHealth_EllenHealth_Empty_sprite.lh`——一个带 Mesh2DRender 的精灵节点，UI3D 把它当画面内容渲染到 3D 场景里。
 

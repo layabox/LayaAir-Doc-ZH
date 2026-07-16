@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gbutton"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GButton/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 - `Title` 标题。必须先设置好`Title Widget`。
 - `Selected Title` 选中状态时的标题，对单选或多选按钮有意义。
@@ -47,6 +47,6 @@ Author: 谷主
 
 在控制器设计页面中，可以通过下面红框标注的按钮快速添加上述的页面，如下图1-1所示：
 
-<img src="/IDE/uiEditor/FairyGUI/GButton/img/1-2.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-2.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）

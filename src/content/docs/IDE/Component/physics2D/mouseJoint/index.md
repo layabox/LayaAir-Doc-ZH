@@ -20,7 +20,7 @@ slug: "ide/component/physics2d/mousejoint"
 
 当振动频率较低时，更容易观察鼠标锚点与关节自身刚体锚点的连接关系，效果如动图1所示。
 
-![](/IDE/Component/physics2D/mouseJoint/img/1.gif)
+![](./img/1.gif)
 
 (动图1)
 
@@ -30,7 +30,7 @@ slug: "ide/component/physics2d/mousejoint"
 
 例如10牛顿可以勉强提起的物体，用100牛顿的力可以快速使得该鼠标关节的刚体跟随鼠标移动。效果如动图2所示。
 
-![不同牵引力的效果对比](/IDE/Component/physics2D/mouseJoint/img/2.gif)
+![不同牵引力的效果对比](./img/2.gif)
 
 （动图2）
 

@@ -10,7 +10,7 @@ MeshRenderer（网格渲染器）组件用于渲染3D网格模型。它继承自
 
 在 IDE 的组件面板中，添加 MeshRenderer 组件后的效果如图1-1所示：
 
-![1-1](/IDE/Component/Mesh/MeshRenderer/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 

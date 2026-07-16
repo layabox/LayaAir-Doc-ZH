@@ -10,19 +10,19 @@ slug: "ide/uieditor/3dui"
 
 3D UI也是UI，也承担UI的交互职能。例如，当点击UI上的按钮时，按钮会带来交互反馈，并触发设定的事件，以达到逻辑运行的目的。 
 
-<img src="/IDE/uiEditor/3DUI/img/1-1.gif" alt="1-1" style="zoom: 67%;" />
+<img src="./img/1-1.gif" alt="1-1" style="zoom: 67%;" />
 
 （动图1-1）
 
 3D UI 可以是一个位于3D场景中的物件，并带有UI的交互特征。
 
-<img src="/IDE/uiEditor/3DUI/img/1-2.gif" alt="1-2" style="zoom: 80%;" />
+<img src="./img/1-2.gif" alt="1-2" style="zoom: 80%;" />
 
 （动图1-2）
 
 并且，3D UI 始终位于窗口上，就和常规的UI一样。但可以进行XYZ三个轴上的运动，带来明显的透视变化。
 
-<img src="/IDE/uiEditor/3DUI/img/1-3.gif" alt="1-3" style="zoom: 39%;" />
+<img src="./img/1-3.gif" alt="1-3" style="zoom: 39%;" />
 
 （动图1-3）
 
@@ -34,13 +34,13 @@ slug: "ide/uieditor/3dui"
 
 在LayaAir-IDE的层级面板中，添加一个Sprite3D节点，如图2-1所示，
 
-![2-1](/IDE/uiEditor/3DUI/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
 然后在节点的属性上增加一个3D UI组件，如动图2-2所示，在属性面板中，点击添加组件，选择渲染->3D UI组件。
 
-![2-2](/IDE/uiEditor/3DUI/img/2-2.gif)
+![2-2](./img/2-2.gif)
 
 （动图2-2）
 
@@ -50,7 +50,7 @@ slug: "ide/uieditor/3dui"
 
 对于3D UI组件，如图2-3所示，有如下一些属性： 
 
-![2-3](/IDE/uiEditor/3DUI/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -76,7 +76,7 @@ slug: "ide/uieditor/3dui"
 
 在IDE中使用3D UI，首先需要创建一个用于在3D场景中展示的2D UI，这里必须使用2D预制体（Prefab2D）来实现。然后在预制体中搭建一个希望实现的2D UI，例如，做一个游戏中人物战斗中头顶的血条，如图3-1所示。
 
-![3-1](/IDE/uiEditor/3DUI/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -90,7 +90,7 @@ slug: "ide/uieditor/3dui"
 
 可以看到，当添加3D UI组件后，场景中在Sprite3D节点的位置，多了一个显示的纹理（黑色），如图3-2所示，这个纹理就是用来显示UI的。
 
-![3-2](/IDE/uiEditor/3DUI/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 
@@ -100,7 +100,7 @@ slug: "ide/uieditor/3dui"
 
 准备好3D UI组件后，下一步就是要把之前做好的Prefab2D拖入到3D UI组件的Prefab属性中，如动图3-3所示。
 
-<img src="/IDE/uiEditor/3DUI/img/3-3.gif" alt="3-3" style="zoom:67%;" />
+<img src="./img/3-3.gif" alt="3-3" style="zoom:67%;" />
 
 （动图3-3）
 
@@ -112,7 +112,7 @@ slug: "ide/uieditor/3dui"
 
 设置材质渲染模式为TRANSPARENT，也就是支持透明色，如图3-4所示，背景变成透明的了。 
 
-<img src="/IDE/uiEditor/3DUI/img/3-4.png" alt="3-4" style="zoom:80%;" />
+<img src="./img/3-4.png" alt="3-4" style="zoom:80%;" />
 
 （图3-4）
 
@@ -122,19 +122,19 @@ slug: "ide/uieditor/3dui"
 
 需求是做人物的血条，那首先把做好的但丁人物拖入到场景中，并设置好位置，如图3-5所示。 
 
-<img src="/IDE/uiEditor/3DUI/img/3-5.png" alt="3-5" style="zoom: 50%;" />
+<img src="./img/3-5.png" alt="3-5" style="zoom: 50%;" />
 
 （图3-5）
 
 但是Sprite3D的位置在人物脚下，这时需要调整Sprite3D的位置，来符合血条的效果，如动图3-6所示。 
 
-<img src="/IDE/uiEditor/3DUI/img/3-6.gif" alt="3-6" style="zoom:50%;" />
+<img src="./img/3-6.gif" alt="3-6" style="zoom:50%;" />
 
 （动图3-6）
 
 这时来看看运行的效果：
 
-<img src="/IDE/uiEditor/3DUI/img/3-7.gif" alt="3-7" style="zoom:50%;" />
+<img src="./img/3-7.gif" alt="3-7" style="zoom:50%;" />
 
 （动图3-7）
 
@@ -146,7 +146,7 @@ slug: "ide/uieditor/3dui"
 
 广告牌（Billboard）模式下，3D UI会始终朝向摄像机。例如，在上面的例子中，可以将“模式”选择为“广告牌”，调整XYZ轴的旋转，让血条随着人物的旋转而改变朝向。 
 
-<img src="/IDE/uiEditor/3DUI/img/3-8.gif" alt="3-8" style="zoom:50%;" />
+<img src="./img/3-8.gif" alt="3-8" style="zoom:50%;" />
 
 （动图3-8）
 
@@ -156,7 +156,7 @@ slug: "ide/uieditor/3dui"
 
 相机空间（CameraSpace）模式下，3D UI会始终保持在相机视野中的固定位置，并且UI的大小不会随距离变化。与2D UI相比，这个模式下的3D UI会受到3D场景中其他物体的遮挡，如图3-9所示，3D UI具有深度信息。
 
-<img src="/IDE/uiEditor/3DUI/img/3-9.gif" alt="3-9" style="zoom: 67%;" />
+<img src="./img/3-9.gif" alt="3-9" style="zoom: 67%;" />
 
 （图3-9）
 
@@ -166,13 +166,13 @@ slug: "ide/uieditor/3dui"
 
 - 绑定的相机（Attach Camera）：如图3-10所示，选择场景中的相机即可。
 
-![3-10](/IDE/uiEditor/3DUI/img/3-10.png)
+![3-10](./img/3-10.png)
 
 （图3-10）
 
 - 距离相机的距离（Camera Plane Distance）：这个距离需要在相机的“近平面”和“远平面”之间，如图3-11所示，距离需要大于0.3且小于1000。
 
-<img src="/IDE/uiEditor/3DUI/img/3-11.png" alt="3-11" style="zoom: 67%;" />
+<img src="./img/3-11.png" alt="3-11" style="zoom: 67%;" />
 
 （图3-11）
 
@@ -184,7 +184,7 @@ slug: "ide/uieditor/3dui"
 
 在3.1节中的Prefab2D中，添加一个Text节点，命名为“value”，并将进度条命名为“bar”，接着勾选value、bar的`定义变量`选项。如图4-1所示，
 
-<img src="/IDE/uiEditor/3DUI/img/4-1.png" alt="4-1" style="zoom:80%;" />
+<img src="./img/4-1.png" alt="4-1" style="zoom:80%;" />
 
 （图4-1）
 
@@ -248,7 +248,7 @@ export class Main extends Laya.Script {
 
 最后来看看运行效果： 
 
-![4-2](/IDE/uiEditor/3DUI/img/4-2.gif)
+![4-2](./img/4-2.gif)
 
 （动图4-2）
 

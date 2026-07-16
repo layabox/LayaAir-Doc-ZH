@@ -20,7 +20,7 @@ slug: "basics/developmentenvironment/layaidea"
 
 使用 **LayaAir 3.3.9** 或以上版本，按需创建项目（例如：选择3D空白项目）。
 
-![1-1](/basics/developmentEnvironment/LayaIdea/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -30,13 +30,13 @@ slug: "basics/developmentenvironment/layaidea"
 
 [LayaIdea 插件获取链接]()
 
-![2-1](/basics/developmentEnvironment/LayaIdea/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
 点击右上角导航按钮【已购资源】，查看是否已经包含了 LayaIdea 插件，插件右侧有更新提示的，需要点击一下更新按钮，将插件更新至最新版本。
 
-![2-2](/basics/developmentEnvironment/LayaIdea/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -46,7 +46,7 @@ slug: "basics/developmentenvironment/layaidea"
 
 上一步没点更新且已经购买过的，这里也会出现更新按钮需要点击一下更新/安装。
 
-![3-1](/basics/developmentEnvironment/LayaIdea/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -56,7 +56,7 @@ LayaIdea：组件安装过程需要消耗几分钟，请耐心等待。安装完
 
 | 配置过 API_KEY 的用户 | 未配置过 API_KEY 的用户 |
 | --- | --- |
-| ![3-2](/basics/developmentEnvironment/LayaIdea/img/3-2.png) | ![3-3](/basics/developmentEnvironment/LayaIdea/img/3-3.png) |
+| ![3-2](./img/3-2.png) | ![3-3](./img/3-3.png) |
 
 （图3-2）（图3-3）
 
@@ -68,7 +68,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 在接口密钥界面，点击 **新建 API_KEY** 即可获取，然后将复制到的 API_KEY 回填至IDE界面中的输入框内。
 
-| ![4-1](/basics/developmentEnvironment/LayaIdea/img/4-1.png) | ![4-2](/basics/developmentEnvironment/LayaIdea/img/4-2.png) |
+| ![4-1](./img/4-1.png) | ![4-2](./img/4-2.png) |
 
 （图4-1）（图4-2）
 
@@ -76,7 +76,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 新用户配置完 API_KEY 需要刷新 IDE，`Alt+Ctrl+R` 进行刷新，也可以依次点击顶部菜单栏【开发者——刷新编辑器】。
 
-![4-3](/basics/developmentEnvironment/LayaIdea/img/4-3.png)
+![4-3](./img/4-3.png)
 
 （图4-3）
 
@@ -92,7 +92,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - Laya-ide-mcp-server
 - laya_mcp_server
 
-![5-1](/basics/developmentEnvironment/LayaIdea/img/5-1.png)
+![5-1](./img/5-1.png)
 
 （图5-1）
 
@@ -100,7 +100,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 根据项目的实际需求，在【运行配置】中，按需设置好当前项目的分辨率尺寸及横竖屏设置等属性。
 
-![5-2](/basics/developmentEnvironment/LayaIdea/img/5-2.png)
+![5-2](./img/5-2.png)
 
 （图5-2）
 
@@ -112,7 +112,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 例如：3D粒子、3D物理等。
 
-![5-3](/basics/developmentEnvironment/LayaIdea/img/5-3.png)
+![5-3](./img/5-3.png)
 
 （图5-3）
 
@@ -124,7 +124,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 点击工作区右上角的【查看/订阅】文字链按钮，可进行功能的开通或查看相应服务信息。
 
-![6-1](/basics/developmentEnvironment/LayaIdea/img/6-1.png)
+![6-1](./img/6-1.png)
 
 （图6-1）
 
@@ -136,7 +136,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - **订阅赠送通用代币**：部分平台提供的订阅服务，会赠送一定数额的通用代币，这种通用代币可以用于平台内各种消耗代币的服务。
 - **代币扣除规则**：赠送的通用代币 ＞ 充值获取的代币。
 
-| ![6-2](/basics/developmentEnvironment/LayaIdea/img/6-2.png) | ![6-3](/basics/developmentEnvironment/LayaIdea/img/6-3.png) |
+| ![6-2](./img/6-2.png) | ![6-3](./img/6-3.png) |
 
 （图6-2）（图6-3）
 
@@ -148,7 +148,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - **样式**：齿轮图标按钮
 - **默认状态**：首次使用时默认为普通模式
 
-![7-1](/basics/developmentEnvironment/LayaIdea/img/7-1.png)
+![7-1](./img/7-1.png)
 
 （图7-1）
 
@@ -160,7 +160,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 普通模式时，可使用【AI生成2D图片】和【AI生成3D模型】技能。
 
-![8-1](/basics/developmentEnvironment/LayaIdea/img/8-1.png)
+![8-1](./img/8-1.png)
 
 （图8-1）
 
@@ -168,7 +168,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 ### 3.4 专业模式功能界面说明
 
-![9-1](/basics/developmentEnvironment/LayaIdea/img/9-1.png)
+![9-1](./img/9-1.png)
 
 （图9-1）
 
@@ -178,7 +178,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 右侧可看到一个蓝色侧边按钮，鼠标移动到上面时会显示 **设置偏好**、**需求分析**、**资源管理** 3个功能入口。
 
-![9-2](/basics/developmentEnvironment/LayaIdea/img/9-2.png)
+![9-2](./img/9-2.png)
 
 （图9-2）
 
@@ -188,7 +188,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 切换模型设置时，**保存设置** 按钮会变为 **重启IDE后生效**，点击即可立即重启。
 
-| ![10-1](/basics/developmentEnvironment/LayaIdea/img/10-1.png) | ![10-2](/basics/developmentEnvironment/LayaIdea/img/10-2.png) |
+| ![10-1](./img/10-1.png) | ![10-2](./img/10-2.png) |
 
 （图10-1）（图10-2）
 
@@ -206,7 +206,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 然后在底部聊天窗口输入 `/build`，或者点击底部的 `/` 按钮，选择箭头所示技能，发送给聊天就可以自动开始你的游戏制作了。
 
-| ![11-1](/basics/developmentEnvironment/LayaIdea/img/11-1.png) | ![11-2](/basics/developmentEnvironment/LayaIdea/img/11-2.png) |
+| ![11-1](./img/11-1.png) | ![11-2](./img/11-2.png) |
 
 （图11-1）（图11-2）
 
@@ -217,7 +217,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - `我要制作一个游戏，需求如下：xxxxx......。请先帮我细化一下游戏需求。`
 - `帮我生成一个游戏，需求如下：xxxxx......。`
 
-![11-3](/basics/developmentEnvironment/LayaIdea/img/11-3.png)
+![11-3](./img/11-3.png)
 
 （图11-3）
 
@@ -233,7 +233,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 在资源管理界面底部点击【批量对标资源】按钮。
 
-| ![12-1](/basics/developmentEnvironment/LayaIdea/img/12-1.png) | ![12-2](/basics/developmentEnvironment/LayaIdea/img/12-2.png) |
+| ![12-1](./img/12-1.png) | ![12-2](./img/12-2.png) |
 
 （图12-1）（图12-2）
 
@@ -252,7 +252,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 在 **匹配本地资源** 为启用状态，且绑定了本地资源目录的情况下，AI会优先从绑定的目录内选取适合的素材应用到游戏中。
 
-![12-3](/basics/developmentEnvironment/LayaIdea/img/12-3.png)
+![12-3](./img/12-3.png)
 
 （图12-3）
 
@@ -266,7 +266,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 **方式2**：右键点击目录图标，在展开菜单中选择 **在文件管理器中打开**，通过复制粘贴的方式将本地资源存放到 `resources` 文件内。
 
-![12-4](/basics/developmentEnvironment/LayaIdea/img/12-4.png)
+![12-4](./img/12-4.png)
 
 （图12-4）
 
@@ -278,13 +278,13 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - **downloads**：用于存放从资源商店下载的资源。
 - **match**：用于存放从本地资源目录匹配成功后拷贝过来的资源。
 
-![12-5](/basics/developmentEnvironment/LayaIdea/img/12-5.png)
+![12-5](./img/12-5.png)
 
 （图12-5）
 
 #### 3.4.4 资源替换
 
-![13-1](/basics/developmentEnvironment/LayaIdea/img/13-1.png)
+![13-1](./img/13-1.png)
 
 （图13-1）
 
@@ -299,7 +299,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - **步骤1. 重新导入**：此操作执行后，选中的模型源文件右侧属性窗口应该就可以看到带贴图的效果了。
 - **步骤2. 提取模型内部资源**：如果实际使用的不是源文件，而是提取后的预制体文件，则需要此操作。
 
-| ![13-2](/basics/developmentEnvironment/LayaIdea/img/13-2.png) | ![13-3](/basics/developmentEnvironment/LayaIdea/img/13-3.png) |
+| ![13-2](./img/13-2.png) | ![13-3](./img/13-3.png) |
 
 （图13-2）（图13-3）
 
@@ -314,7 +314,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - **编辑**：重新编辑消息内容。
 - **重新发送**：重新发送一次消息，本操作会重置本条消息下方的所有聊天内容。
 
-![14-1](/basics/developmentEnvironment/LayaIdea/img/14-1.png)
+![14-1](./img/14-1.png)
 
 （图14-1）
 
@@ -329,7 +329,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 > 注意：重新生成会覆盖当前已有的回复内容。
 
-![14-2](/basics/developmentEnvironment/LayaIdea/img/14-2.png)
+![14-2](./img/14-2.png)
 
 （图14-2）
 
@@ -345,13 +345,13 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 | 输入时 | 输入完毕后 |
 | --- | --- |
-| ![15-1](/basics/developmentEnvironment/LayaIdea/img/15-1.png) | ![15-2](/basics/developmentEnvironment/LayaIdea/img/15-2.png) |
+| ![15-1](./img/15-1.png) | ![15-2](./img/15-2.png) |
 
 （图15-1）（图15-2）
 
 ##### 资源引用
 
-![15-3](/basics/developmentEnvironment/LayaIdea/img/15-3.png)
+![15-3](./img/15-3.png)
 
 （图15-3）
 
@@ -371,7 +371,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 点击自定义快捷指令时，可以将指令内容快速插入到聊天输入框中，用户可以进行二次编辑或直接发送给AI。
 
-| ![16-1](/basics/developmentEnvironment/LayaIdea/img/16-1.png) | ![16-2](/basics/developmentEnvironment/LayaIdea/img/16-2.png) |
+| ![16-1](./img/16-1.png) | ![16-2](./img/16-2.png) |
 
 （图16-1）（图16-2）
 
@@ -388,7 +388,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - 普通 `/` 技能，按键盘 `[backspace]` 键删除。
 - 资源生成技能，点击技能名称右侧X号。
 
-| ![16-3](/basics/developmentEnvironment/LayaIdea/img/16-3.png) | ![16-4](/basics/developmentEnvironment/LayaIdea/img/16-4.png) |
+| ![16-3](./img/16-3.png) | ![16-4](./img/16-4.png) |
 
 （图16-3）（图16-4）
 
@@ -398,7 +398,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 **作用**：将图片作为上下文发送给AI，支持同时发送多张图片。
 
-![16-5](/basics/developmentEnvironment/LayaIdea/img/16-5.png)
+![16-5](./img/16-5.png)
 
 （图16-5）
 
@@ -406,7 +406,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 #### 3.6.1 聊天窗口使用 / 技能生成
 
-![17-1](/basics/developmentEnvironment/LayaIdea/img/17-1.png)
+![17-1](./img/17-1.png)
 
 （图17-1）
 
@@ -418,7 +418,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 ##### 2D图片生成
 
-![17-2](/basics/developmentEnvironment/LayaIdea/img/17-2.png)
+![17-2](./img/17-2.png)
 
 （图17-2）
 
@@ -434,7 +434,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 已上传的图片会依次排列展示，达到当前模型的图片数量上限后，上传按钮将自动隐藏。
 
-![17-3](/basics/developmentEnvironment/LayaIdea/img/17-3.png)
+![17-3](./img/17-3.png)
 
 （图17-3）
 
@@ -442,11 +442,11 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 点击聊天底部功能栏中的 **专业生成模式** 按钮，可打开独立的资源生成界面。在该界面中可以使用完整的生成参数进行精细控制。
 
-![18-1](/basics/developmentEnvironment/LayaIdea/img/18-1.png)
+![18-1](./img/18-1.png)
 
 （图18-1）
 
-![18-2](/basics/developmentEnvironment/LayaIdea/img/18-2.png)
+![18-2](./img/18-2.png)
 
 （图18-2）
 
@@ -460,7 +460,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 > 注意：目前历史记录仅保留2天，请在资源生成完毕后及时下载。
 
-| ![18-3](/basics/developmentEnvironment/LayaIdea/img/18-3.png) | ![18-4](/basics/developmentEnvironment/LayaIdea/img/18-4.png) |
+| ![18-3](./img/18-3.png) | ![18-4](./img/18-4.png) |
 
 （图18-3）（图18-4）
 
@@ -473,7 +473,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 - 图片可以在预览窗口中放大、缩小、拖动查看。
 - 模型可以在预览窗口中放大、缩小、拖动、旋转查看。
 
-![19-1](/basics/developmentEnvironment/LayaIdea/img/19-1.png)
+![19-1](./img/19-1.png)
 
 （图19-1）
 
@@ -481,7 +481,7 @@ API_KEY 的获取入口如下图所示，有2个，都可以进入。
 
 【aigc_res】文件夹内包含 `2d` 和 `3d` 两个子目录，分别用于存放对应类型的资源。
 
-![19-2](/basics/developmentEnvironment/LayaIdea/img/19-2.png)
+![19-2](./img/19-2.png)
 
 （图19-2）
 

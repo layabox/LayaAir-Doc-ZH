@@ -16,7 +16,7 @@ slug: "ide/component/physics3d/rigidbody3d"
 
 LayaAir引擎支持的碰撞形状包括盒子碰撞形状、球体碰撞形状、胶囊碰撞形状、圆柱体碰撞形状、圆锥体碰撞形状、网格碰撞形状，每种碰撞形状适用于不同类型的物体，如图1-1所示：
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-1.png) 
+![](./img/1-1.png) 
 
 (图1-1)
 
@@ -28,13 +28,13 @@ LayaAir引擎支持的碰撞形状包括盒子碰撞形状、球体碰撞形状�
 
 盒子碰撞形状是一个长方体或立方体，如图1-2所示，适用于简单的方形物体，例如箱子、建筑物的墙壁等。它可以用于大多数规则形状的物体。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-2.png) 
+![](./img/1-2.png) 
 
 （图1-2）
 
 我们可以通过偏移localOffset和尺寸size，来设置盒子碰撞形状的位置与尺寸，如图1-3所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-3.png) 
+![](./img/1-3.png) 
 
 （图1-3）
 
@@ -44,25 +44,25 @@ LayaAir引擎支持的碰撞形状包括盒子碰撞形状、球体碰撞形状�
 
 由于其计算简单，更节省性能。球体碰撞形状适用于体积较小且形状接近球形的物体，如弹丸、球类以及简单的物体等。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-4.png) 
+![](./img/1-4.png) 
 
 （图1-4）
 
 我们可以通过偏移localOffset和半径radius，来设置球体碰撞形状的位置与大小，如图1-5所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-5.png) 
+![](./img/1-5.png) 
 
 #### 1.1.3 胶囊碰撞形状
 
 胶囊碰撞形状是由一个圆柱体和两个半球形的端点组成，类似于一个胶囊的形状。如图1-6所示。它通常用于模拟垂直方向较高但宽度较小的物体，常见的应用场景是人物角色的控制器。除此之外，胶囊形状也适用于其他柱状物体，例如立柱或类似形状的机械部件。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-6.png) 
+![](./img/1-6.png) 
 
 (图1-6)
 
 我们可以通过偏移localOffset、半径radius、长度length、方向orientation，来设置胶囊碰撞形状的位置、胶囊粗细、胶囊长短、胶囊朝向，如图1-7所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-7.png) 
+![](./img/1-7.png) 
 
 (图1-7)
 
@@ -70,13 +70,13 @@ LayaAir引擎支持的碰撞形状包括盒子碰撞形状、球体碰撞形状�
 
 圆柱体碰撞形状用于表示一个圆柱形物体的碰撞边界，通常用于那些具有对称形状的物体。它适合用于模拟一些较高的、但形状较为规则的物体，如管道、柱子等。如图1-8所示。圆柱形状也常用于需要旋转的物体，比如旋转的齿轮、滚筒等。由于其简单的几何结构，计算相对高效。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-8.png) 
+![](./img/1-8.png) 
 
 （图1-8）
 
 我们可以通过偏移localOffset、半径radius、高度height、方向orientation，来设置圆柱体碰撞形状的位置、圆柱粗细、圆柱高矮、胶囊朝向，如图1-9所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-9.png) 
+![](./img/1-9.png) 
 
 （图1-9）
 
@@ -84,13 +84,13 @@ LayaAir引擎支持的碰撞形状包括盒子碰撞形状、球体碰撞形状�
 
 圆锥体碰撞形状用于表示一个锥体物体的碰撞边界，它有一个圆形底面和一个顶点，适合用于那些形状为圆锥体的物体，如图1-10所示。圆锥体常用于模拟一些具有锥体结构的物体，如锥形石块、圆锥状的机械部件、尖刺、导弹等，能够确保物体碰撞时具有自然的物理反应。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-10.png) 
+![](./img/1-10.png) 
 
 (图1-10)
 
 我们可以通过偏移localOffset、半径radius、高度height、方向orientation，来设置圆锥体碰撞形状的位置、圆锥底大小、圆锥高矮、圆锥朝向，如图1-11所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-11.png) 
+![](./img/1-11.png) 
 
 （图1-11）
 
@@ -98,13 +98,13 @@ LayaAir引擎支持的碰撞形状包括盒子碰撞形状、球体碰撞形状�
 
 网格碰撞形状使用物体的3D模型（网格）作为碰撞边界，如图1-12所示，能够精确地与物体的形状匹配。它适用于那些复杂或不规则形状的物体，能够提供非常高的碰撞精度。由于网格碰撞器的计算量较大，它通常只用于静态物体（静态碰撞器），而不适用于动态物体（3D刚体）。如果一定要应用于动态物体，LayaAir引擎会强制应用为凸多边形外观，以优化性能。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-12.png) 
+![](./img/1-12.png) 
 
 (图1-12)
 
 我们可以通过偏移localOffset、网格mesh、凸多边形convex，来设置网格碰撞形状的位置、网格资源、是否引擎自动处理为凸多边形（优化性能），如图1-13所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-13.png) 
+![](./img/1-13.png) 
 
 (图1-13)
 
@@ -114,7 +114,7 @@ LayaAir引擎支持的碰撞形状包括盒子碰撞形状、球体碰撞形状�
 
 在IDE中，我们添加完组合碰撞形状后，只有一个设置，就是形态组合(shapes)，通过点击 `+` 号按钮添加子形状，如图1-14所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-14-2.png) 
+![](./img/1-14-2.png) 
 
 (图1-14)
 
@@ -126,7 +126,7 @@ LayaAir3.2.4开始，对于碰撞形状，除了通过属性的调整外，还�
 
 具体操作也很简单，直接点击碰撞形状顶部的“显示碰撞形状编辑工具”即可，进入编辑模式后，可以看到几个白色方块，这些就是编辑点，如图1-15所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/1-15.png) 
+![](./img/1-15.png) 
 
 (图1-15)
 
@@ -138,7 +138,7 @@ LayaAir3.2.4开始，对于碰撞形状，除了通过属性的调整外，还�
 
 所属碰撞组用于指定当前碰撞器属于哪个碰撞组，在IDE中，可以通过点击`编辑组`Editor Group跳转到`项目设置`的`物理系统`栏目，添加碰撞分组以及分组的名称。如图1-15所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/2-1-2.png)
+![](./img/2-1-2.png)
 
 （图1-15）
 
@@ -159,7 +159,7 @@ xxx.collisionGroup = 1 << 3  ;// 值为2 的 3 次幂（8），可以简单理�
 
 在IDE中可以通过多选分组名称的方式，将值设置给**可碰撞组**，如图1-16所示，用于指定可以与哪些分组的碰撞器发生碰撞。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/3-1-2.png) 
+![](./img/3-1-2.png) 
 
 (图1-16)
 
@@ -182,7 +182,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 恢复系数用于描述物体碰撞时的弹性。恢复系数越大，碰撞后物体反弹的程度越强，能量损失较少；恢复系数越小，则碰撞后的反弹程度越小，物体会有更大的能量损失。例如动图1-17中，下落方块（3D刚体）从左至右的恢复系数分别为0、0.5、1。地板（静态碰撞器）的恢复系数为0.5。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/4-1.gif) 
+![](./img/4-1.gif) 
 
 (动图1-17)
 
@@ -196,13 +196,13 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 我们将方块（3D刚体）的摩擦力从左至右分别设为0.1、0.3、0.5、1。斜坡（静态碰撞器）的摩擦力设为0，地板（静态碰撞器）的摩擦力设为0.5，效果如动图1-18所示，
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/5-1.gif) 
+![](./img/5-1.gif) 
 
 (动图1-18)
 
 当我们将斜坡（静态碰撞器）的摩擦力设为0.8，其它摩擦力保持不变，效果如动图1-19所示，
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/5-2.gif) 
+![](./img/5-2.gif) 
 
 (动图1-19)
 
@@ -212,13 +212,13 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 我们将球体（3D刚体）的滚动摩擦力从左至右分别设为0、0.2、0.3。斜坡（静态碰撞器）的滚动摩擦力设为0。效果如动图1-20所示，
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/6-1.gif) 
+![](./img/6-1.gif) 
 
 (动图1-20)
 
 球体的滚动摩擦力保持不变，斜坡（静态碰撞器）的滚动摩擦力设为0.1。效果如动图1-21所示，只有左侧球还保持着滚动，最右侧的滑动缓慢，近乎静止。
 
- ![](/IDE/Component/physics3D/Rigidbody3D/img/6-2.gif)
+ ![](./img/6-2.gif)
 
 (动图1-21)
 
@@ -252,7 +252,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 在 3D 刚体中，勾选触发器后，不会参与物理模拟中的碰撞交互，即不会产生碰撞力，也不会影响刚体的运动轨迹。如动图2-1右侧所示。下落的盒子无视地面（静态碰撞器），直接穿透而过。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/7-1.gif)  
+![](./img/7-1.gif)  
 
 （动图2-1）
 
@@ -270,7 +270,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 基于运动学刚体的特性，当勾选运动学刚体后，与力相关的属性会自动隐藏，如图2-2所示。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/8-1.png) 
+![](./img/8-1.png) 
 
 (图2-2)
 
@@ -284,7 +284,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 动力学刚体在同等的质量下，重力越大，下落的加速度越大。对比效果如动图2-3所示。
 
-<img src="/IDE/Component/physics3D/Rigidbody3D/img/9-1.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/9-1.gif" alt="img" style="zoom:33%;" />  
 
 （动图2-3）
 
@@ -300,7 +300,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 如动图2-4所示，左侧箱子质量明显要大于右侧的箱子。
 
- <img src="/IDE/Component/physics3D/Rigidbody3D/img/10-1.gif" alt="img" style="zoom: 33%;" />  
+ <img src="./img/10-1.gif" alt="img" style="zoom: 33%;" />  
 
 （动图2-4）
 
@@ -310,7 +310,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 动图2-5，是在同样重力值为0的情况下，没有设置线速度，和y轴设置了线速度值的对比效果。
 
-<img src="/IDE/Component/physics3D/Rigidbody3D/img/2-5.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/2-5.gif" alt="img" style="zoom:33%;" />  
 
 （动图2-5）
 
@@ -322,7 +322,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 动图2-6，是同样`重力为0`和`y轴线速度为-1`的情况下，左侧箱子线速度阻尼为0.9，右侧箱子线速度阻尼为1的对比效果。
 
-<img src="/IDE/Component/physics3D/Rigidbody3D/img/2-6.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/2-6.gif" alt="img" style="zoom:33%;" />  
 
 （动图2-6）
 
@@ -336,7 +336,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 动图2-7，是角速度的x轴分别设置了3.14与31.4的对比效果。
 
-<img src="/IDE/Component/physics3D/Rigidbody3D/img/2-7.gif" alt="1-2" style="zoom:33%;" />  
+<img src="./img/2-7.gif" alt="1-2" style="zoom:33%;" />  
 
 （动图2-7）
 
@@ -346,7 +346,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 动图2-8，是在同样的31.4角速度下，左侧为1的的角阻尼值，右侧为0.9的角阻尼值，对比效果。
 
-<img src="/IDE/Component/physics3D/Rigidbody3D/img/2-8.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/2-8.gif" alt="img" style="zoom:33%;" />  
 
 （动图2-8）
 
@@ -361,7 +361,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 图2-9中的设置表示，X、Z 轴方向可自由移动。Y轴方向被锁定，无法移动。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/2-9.png) 
+![](./img/2-9.png) 
 
 （图2-9）
 
@@ -378,7 +378,7 @@ xxx.canCollideWith = -1 ^ (1 << 3) ^ (1 << 6)  //不与分组3、6进行碰撞�
 
 图2-10中的设置表示，Y 轴方向可自由旋转。X、Z轴方向被锁定，无法旋转。
 
-![](/IDE/Component/physics3D/Rigidbody3D/img/2-10.png) 
+![](./img/2-10.png) 
 
 （图2-10）
 

@@ -1,0 +1,36 @@
+---
+/**
+ * 覆写 Starlight LastUpdated：
+ * - 固定中文前缀「本文更新于」
+ * - 使用 Asia/Shanghai 日期，避免 UTC 导致日期偏差一天
+ */
+const { lastUpdated } = Astro.locals.starlightRoute;
+---
+
+{
+  lastUpdated && (
+    <p class="laya-last-updated">
+      本文更新于{' '}
+      <time datetime={lastUpdated.toISOString()}>
+        {lastUpdated.toLocaleDateString('zh-CN', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          timeZone: 'Asia/Shanghai',
+        })}
+      </time>
+    </p>
+  )
+}
+
+<style>
+  .laya-last-updated {
+    margin: 0;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+  }
+  .laya-last-updated time {
+    color: var(--sl-color-gray-2);
+    font-variant-numeric: tabular-nums;
+  }
+</style>

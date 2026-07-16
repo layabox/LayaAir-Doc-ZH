@@ -44,7 +44,7 @@ LayaAir3.1引擎版本中，我们对于物理引擎的接口架构进行了重�
 
 刚体的质量越大，运动状态改变越难，比如，不同质量的两个物体相撞，质量大的一方改变更小一些，如动图1的左侧所示：
 
- <img src="/IDE/physicsEditor/physics3D/img/1.gif" alt="img" style="zoom: 33%;" />  
+ <img src="./img/1.gif" alt="img" style="zoom: 33%;" />  
 
 （动图1）
 
@@ -56,7 +56,7 @@ LayaAir3.1引擎版本中，我们对于物理引擎的接口架构进行了重�
 
 动力学刚体在同等的质量下，重力越大，下落的加速度越大。对比效果如动图1-1。
 
-<img src="/IDE/physicsEditor/physics3D/img/1-1.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/1-1.gif" alt="img" style="zoom:33%;" />  
 
 （动图1-1）
 
@@ -64,7 +64,7 @@ LayaAir3.1引擎版本中，我们对于物理引擎的接口架构进行了重�
 
 刚体的angularVelocity属性是角速度， 角速度简单理解就是单位时间的角位移，以弧度每秒进行旋转 。当我们设置动力学刚体angularVelocity属性为正值的时候，则按顺时针旋转位移。angularVelocity属性为负值的时候，则按逆时针旋转位移。属性值的绝对值越大，旋转位移速度越快。
 
-<img src="/IDE/physicsEditor/physics3D/img/1-2.gif" alt="1-2" style="zoom:33%;" />  
+<img src="./img/1-2.gif" alt="1-2" style="zoom:33%;" />  
 
 （动图1-2）
 
@@ -76,7 +76,7 @@ angularVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉�
 
 动图1-3，是在同样的31.4角速度下，左侧为1的的角阻尼值，右侧为0.9的角阻尼值，对比效果。
 
-<img src="/IDE/physicsEditor/physics3D/img/1-3.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/1-3.gif" alt="img" style="zoom:33%;" />  
 
 （动图1-3）
 
@@ -86,7 +86,7 @@ angularVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉�
 
 动图1-4，是在同样的31.4角速度下，左侧为1的的角度因子，右侧为2的角度因子，对比效果。
 
-<img src="/IDE/physicsEditor/physics3D/img/1-4.gif" alt="img" style="zoom:33%;" />   
+<img src="./img/1-4.gif" alt="img" style="zoom:33%;" />   
 
 （动图1-4）
 
@@ -98,7 +98,7 @@ angularVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉�
 
 动图1-5，是动力学刚体在同样重力值为0的情况下，没有设置线速度和y轴设置了线速度值的对比效果。
 
-<img src="/IDE/physicsEditor/physics3D/img/1-5.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/1-5.gif" alt="img" style="zoom:33%;" />  
 
 （动图1-5）
 
@@ -108,7 +108,7 @@ angularVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉�
 
 动图1-6，是动力学刚体在重力为0并且y轴设置了同样为-1的线速度值情况下，左侧为0.9线性阻尼值和右侧为1线性阻尼值的对比效果。
 
-<img src="/IDE/physicsEditor/physics3D/img/1-6.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/1-6.gif" alt="img" style="zoom:33%;" />  
 
 （动图1-6）
 
@@ -118,7 +118,7 @@ angularVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉�
 
 动图1-7，是动力学刚体在重力为0并且y轴设置了同样为-1的线速度值情况下，左侧为1线性因子和右侧为2线性因子的对比效果。
 
-<img src="/IDE/physicsEditor/physics3D/img/1-7.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/1-7.gif" alt="img" style="zoom:33%;" />  
 
 （动图1-7）
 
@@ -143,7 +143,7 @@ angularVelocity属性的值是3维向量`Vector3`类型值，Bullet使用欧拉�
 
 这些碰撞器必须要添加三维碰撞器形状（例如：盒形、球形、圆锥形、圆柱形、胶囊形、平面、混合、模型网格），才可以实现有范围的物理碰撞。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-1.png" alt="img" style="zoom:38%;" />  
+<img src="./img/2-1.png" alt="img" style="zoom:38%;" />  
 
 （图2-1）
 
@@ -155,7 +155,7 @@ LayaAir 3D物理的触发器相当于2D物理里的传感器。
 
 触发器是碰撞器的一个属性，任何碰撞器的触发器属性设置生效后，当前的碰撞器即转变为触发器（比如，刚体碰撞器设置触发器后可称为刚体触发器）。即使发生物体接触，也不会产生碰撞的物理反馈。例如，动图3-1右侧所示。下落的盒子无视物理引擎，直接穿透而过。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-1.gif" alt="img" style="zoom:33%;" />  
+<img src="./img/2-1.gif" alt="img" style="zoom:33%;" />  
 
 （动图2-1）
 
@@ -165,7 +165,7 @@ LayaAir 3D物理的触发器相当于2D物理里的传感器。
 
 当触发器`isTrigger`设置为true时，如图2-2所示。触发器即可设置生效。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-2.png" alt="img" style="zoom:42%;" />  
+<img src="./img/2-2.png" alt="img" style="zoom:42%;" />  
 
 （图2-2）
 
@@ -203,7 +203,7 @@ LayaAir的3D物理碰撞器类是`PhysicsCollider`，为了便于记忆和理解
 
 这种碰撞器可以用于不需要物理受力位移的物体，只需要触发碰撞逻辑的应用场景。例如墙体，撞墙后判定游戏结束。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-3.png" alt="image-20221114173326345" style="zoom:50%;" /> 
+<img src="./img/2-3.png" alt="image-20221114173326345" style="zoom:50%;" /> 
 
 （图2-3）
 
@@ -240,7 +240,7 @@ this.rigidbody.isKinematic = true;
 
 在LayaAir中设置运动类型刚体的方式，如图2-4所示：
 
-<img src="/IDE/physicsEditor/physics3D/img/2-4.png" alt="img" style="zoom:43%;" />  
+<img src="./img/2-4.png" alt="img" style="zoom:43%;" />  
 
 （图2-4）
 
@@ -254,7 +254,7 @@ this.rigidbody.isKinematic = true;
 
 与静态碰撞器和刚体碰撞器都继承自物理触发器组件`PhysicsTriggerComponent`不同，角色控制器直接继承于物理组件的父类`PhysicsComponent`。所以，角色控制器是无法设置为触发器的。但是，角色碰撞器与触发器进行接触，仍然可以激活触发器的生命周期方法。
 
-  <img src="/IDE/physicsEditor/physics3D/img/2-5.png" alt="img" style="zoom:43%;" /> 
+  <img src="./img/2-5.png" alt="img" style="zoom:43%;" /> 
 
 （图2-4）
 
@@ -278,12 +278,12 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 盒形碰撞形状是通过设置XYZ调整长宽高的长方体（含立方体）形状。常用于盒子外形的长方体物体，如图2-6所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-6.png" alt="img" style="zoom:33%;" />  
+<img src="./img/2-6.png" alt="img" style="zoom:33%;" />  
 
 （图2-6）
 在LayaAir中，设置盒形碰撞XYZ各轴的大小，如图2-7所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-7.png" alt="img" style="zoom:50%;" />  
+<img src="./img/2-7.png" alt="img" style="zoom:50%;" />  
 
 （图2-7）
 
@@ -291,13 +291,13 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 球形碰撞形状是通过设置半径调整球体大小的碰撞形状。常用于球形外观的物体，如图2-8所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-8.png" alt="img" style="zoom:35%;" />  
+<img src="./img/2-8.png" alt="img" style="zoom:35%;" />  
 
 （图2-8）
 
 在LayaAir中，设置球形碰撞半径，如图2-9所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-9.png" alt="img" style="zoom: 50%;" /> 
+<img src="./img/2-9.png" alt="img" style="zoom: 50%;" /> 
 
 （图2-9）
 
@@ -305,13 +305,13 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 胶囊形碰撞形状是由两个半球和一个圆柱体组成，需要通过设置球体半径和圆柱体的高来组成胶囊形状。常用于角色碰撞器。如图2-10所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-10.png" alt="img" style="zoom:33%;" />   
+<img src="./img/2-10.png" alt="img" style="zoom:33%;" />   
 
 （图2-10）
 
 在LayaAir中，设置胶囊形碰撞半径和高，轴方向，如图2-11所示，导出后即可使用。
 
-  <img src="/IDE/physicsEditor/physics3D/img/2-11.png" alt="img" style="zoom:50%;" /> 
+  <img src="./img/2-11.png" alt="img" style="zoom:50%;" /> 
 
 （图2-11）
 
@@ -319,13 +319,13 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 圆柱形碰撞形状是通过设置半径和高调整球体大小的碰撞形状。如图2-12所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-12.png" alt="img" style="zoom:35%;" />  
+<img src="./img/2-12.png" alt="img" style="zoom:35%;" />  
 
 （图2-12）
 
 在LayaAir中，设置圆柱形碰撞半径和高，如图2-13所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-13.png" alt="img" style="zoom: 50%;" /> 
+<img src="./img/2-13.png" alt="img" style="zoom: 50%;" /> 
 
 （图2-13）
 
@@ -333,13 +333,13 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 圆锥形形碰撞形状是通过设置半径和高调整球体大小的碰撞形状。如图2-14所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-14.png" alt="img" style="zoom:35%;" />  
+<img src="./img/2-14.png" alt="img" style="zoom:35%;" />  
 
 （图2-14）
 
 在LayaAir中，设置圆锥形碰撞半径和高，如图2-15所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-15.png" alt="img" style="zoom: 50%;" /> 
+<img src="./img/2-15.png" alt="img" style="zoom: 50%;" /> 
 
 （图2-15）
 
@@ -347,13 +347,13 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 网格形碰撞形状是利用模型网格资源构建的形状，如图2-16-1的猴子所示。相对于其它固定规则的碰撞形状（LayaAir内置的3D碰撞基础形状），网格形碰撞形状属于自定义任意外观的碰撞形状，可以适用于任何模型网格。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-16.jpg" alt="img" style="zoom: 41%;" /> 
+<img src="./img/2-16.jpg" alt="img" style="zoom: 41%;" /> 
 
 （图2-16-1）
 
 在LayaAir中，设置模型网格，如图2-16-2所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-16.png" alt="image-20221114211401062" style="zoom: 50%;" /> 
+<img src="./img/2-16.png" alt="image-20221114211401062" style="zoom: 50%;" /> 
 
 （图2-16-2）
 
@@ -365,7 +365,7 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 平面碰撞形状，是一种无限大的2D平面碰撞形状。通常用于整个场景地面的碰撞形状。通过法线来确定在3维世界的平面朝向，可以通过偏移值来调整距离原点的偏移多少。API说明如图2-17所示。
 
-![img](/IDE/physicsEditor/physics3D/img/2-17.png) 
+![img](./img/2-17.png) 
 
 （图2-17）
 
@@ -373,7 +373,7 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 图2-18和2-19是法线同样位于Y轴正方向，偏移值offset分别为0（左侧）和为1（右侧）的效果对比。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-18.png" alt="img" style="zoom:31%;" />   <img src="/IDE/physicsEditor/physics3D/img/2-19.png" alt="img" style="zoom:38%;" />
+<img src="./img/2-18.png" alt="img" style="zoom:31%;" />   <img src="./img/2-19.png" alt="img" style="zoom:38%;" />
 
 （图2-18）																				（图2-19）
 
@@ -428,7 +428,7 @@ LayaAir引擎支持8种3D碰撞形状，分别为：
 
 复合碰撞形状是由多个基础形状组合而成的碰撞器形状。例如桌子或者凳子等，可以由多个盒形碰撞形状组成，如图2-20所示。
 
-<img src="/IDE/physicsEditor/physics3D/img/2-20.png" alt="img" style="zoom:81%;" /> 
+<img src="./img/2-20.png" alt="img" style="zoom:81%;" /> 
 
 （图2-20）
 
@@ -856,7 +856,7 @@ _camera.viewportPointToRay(point, ray);
 
 检测一个和所有的区别比较容易理解，就是碰到第一个物体后射线立即结束，和射线可穿透所有碰撞物体一直不结束，这两种区别。如图4-1所示。
 
-![](/IDE/physicsEditor/physics3D/img/4-1.png) 
+![](./img/4-1.png) 
 
 （图4-1）
 
@@ -923,7 +923,7 @@ _scene3D.physicsSimulation.raycastFromTo(this.from, this.to, this.out);
 
 与普通的射线检测一样，异形射线也是有检测第一个和检测所有两个检测方法，分别是`shapeCast`和`shapeCastAll`。
 
-![15](/IDE/physicsEditor/physics3D/img/4-2.png) 
+![15](./img/4-2.png) 
 
 （图4-2）
 

@@ -8,7 +8,7 @@ slug: "ide/component/pixelline"
 
 像素线（Pixel Line ）也可以称之为像素线3D精灵，是通过渲染一组带有颜色的线，来绘制3D精灵的方式，如图1-1所示
 
-<img src="/IDE/Component/PixelLine/img/1-1.png" alt="image-20221226152358932" style="zoom:50%;" /> 
+<img src="./img/1-1.png" alt="image-20221226152358932" style="zoom:50%;" /> 
 
 （图1-1）
 
@@ -22,7 +22,7 @@ slug: "ide/component/pixelline"
 
 在一个3D场景的Hierarchy窗口中，任何节点下，或者是空白位置，都可以通过鼠标右键来创建像素线3D精灵，如动图2-1所示
 
-<img src="/IDE/Component/PixelLine/img/2-1.gif" style="zoom: 43%;" /> 
+<img src="./img/2-1.gif" style="zoom: 43%;" /> 
 
 （动图2-1）
 
@@ -34,13 +34,13 @@ slug: "ide/component/pixelline"
 
 如图2-2所示，像素线渲染器有如下的属性
 
-<img src="/IDE/Component/PixelLine/img/2-2.png" alt="image-20221226153832052" style="zoom:50%;" /> 
+<img src="./img/2-2.png" alt="image-20221226153832052" style="zoom:50%;" /> 
 
 （图2-2）
 
 由于 `Pixel Line Renderer` 组件是继承自 `Base Renderer` 组件，因此像素线渲染器本身具备一些基础属性，如图2-3所示
 
-<img src="/IDE/Component/PixelLine/img/2-3.png" alt="image-20221226154023186" style="zoom:50%;" /> 
+<img src="./img/2-3.png" alt="image-20221226154023186" style="zoom:50%;" /> 
 
 （图2-3）
 
@@ -52,13 +52,13 @@ slug: "ide/component/pixelline"
 
 首先我们在Asset下新建一个Material，默认情况下 Material 的 Shader 是 `BlinnPhone`，接下来我们先把这个Material拖入像素线渲染器的材质属性中，如动图2-4所示
 
-<img src="/IDE/Component/PixelLine/img/2-4.gif" style="zoom: 50%;" /> 
+<img src="./img/2-4.gif" style="zoom: 50%;" /> 
 
 （动图2-4）
 
 第二步要修改 `BlinnPhone` 的 shader 为 `Laya.Unlit` shader ，并勾选 `Vertex Color` 
 
-<img src="/IDE/Component/PixelLine/img/2-5.gif" style="zoom:50%;" /> 
+<img src="./img/2-5.gif" style="zoom:50%;" /> 
 
 （动图2-5）
 
@@ -70,7 +70,7 @@ slug: "ide/component/pixelline"
 
 像素线数据就两点，像素线的最大线数量和像素线数据，如图2-6所示
 
-<img src="/IDE/Component/PixelLine/img/2-6.png" alt="image-20221226105829772" style="zoom:55%;" />   
+<img src="./img/2-6.png" alt="image-20221226105829772" style="zoom:55%;" />   
 
 （图2-6）
 
@@ -84,13 +84,13 @@ Pixel Lines Datas：像素线数据
 
 我们可以通过修改 End Position 和颜色，如图2-7所示
 
-<img src="/IDE/Component/PixelLine/img/2-7.png" alt="image-20221226160058800" style="zoom:55%;" /> 
+<img src="./img/2-7.png" alt="image-20221226160058800" style="zoom:55%;" /> 
 
 （图2-7）
 
 修改之后，我们可以看到一条最基本的像素线，如图2-8所示
 
-<img src="/IDE/Component/PixelLine/img/2-8.png" alt="image-20221226161136136" style="zoom:50%;" /> 
+<img src="./img/2-8.png" alt="image-20221226161136136" style="zoom:50%;" /> 
 
 （图2-8） 
 
@@ -216,7 +216,7 @@ onAwake(): void {
 
 如动图3-1所示，展示外部模型的像素线效果
 
-<img src="/IDE/Component/PixelLine/img/3-1.gif" style="zoom:50%;" /> 
+<img src="./img/3-1.gif" style="zoom:50%;" /> 
 
 （动图3-1） 
 

@@ -6,7 +6,7 @@ slug: "ide/uieditor/uicomponent/radiogroup"
 
 RadioGroup是单选框按钮组，按钮组之内的组件选项互相排斥，用户每次只能选择一个单选框（Radio）组件，如动图1所示。
 
-![1](/IDE/uiEditor/uiComponent/RadioGroup/img/1.gif)
+![1](./img/1.gif)
 
 （动图1）
 
@@ -20,13 +20,13 @@ Radio与RadioGroup不同的是，Radio是一个单选框，而RadioGroup可以�
 
 如图1-1所示，点击选择小部件面板里的RadioGroup组件，拖放到页面编辑区，或者在层级窗口中通过右键创建，即可添加RadioGroup组件到页面上。
 
-<img src="/IDE/uiEditor/uiComponent/RadioGroup/img/1-1.png" alt="1-1" style="zoom:80%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:80%;" />
 
 （图1-1）
 
 RadioGroup组件的默认皮肤资源如下图所示：
 
-![1-2](/IDE/uiEditor/uiComponent/RadioGroup/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -38,7 +38,7 @@ RadioGroup组件的默认皮肤资源如下图所示：
 
 RadioGroup的特有属性如下：
 
-<img src="/IDE/uiEditor/uiComponent/RadioGroup/img/1-3.png" alt="1-3" style="zoom:100%;" />
+<img src="./img/1-3.png" alt="1-3" style="zoom:100%;" />
 
 （图1-3）
 
@@ -63,19 +63,19 @@ RadioGroup的特有属性如下：
 
 可通过设置labels属性增加单选框个数，如动图1-4中所示，默认的单选框组中只有两个单选框。如想增加单选框，只需在labels属性中增加新的标签即可，且修改文本标签的内容也在该属性中设置。
 
-<img src="/IDE/uiEditor/uiComponent/RadioGroup/img/1-4.gif" alt="1-4" style="zoom:80%;" />
+<img src="./img/1-4.gif" alt="1-4" style="zoom:80%;" />
 
 （动图1-4）
 
 还可以改变单选框组RadioGroup的布局方向与间距，RadioGroup默认是水平布局（horizontal），通过更改direction属性，实现垂直布局（vertical）。设置间距可以通过space属性实现，如图1-5所示。
 
-<img src="/IDE/uiEditor/uiComponent/RadioGroup/img/1-5.png" alt="1-5" style="zoom:80%;" />
+<img src="./img/1-5.png" alt="1-5" style="zoom:80%;" />
 
 （图1-5）
 
 设置单选框组RadioGroup默认选择的选项，需要通过selectedIndex属性设置。该属性改变单选框组的索引值，默认设置为-1时，不选择任何选项框。设置为0是第1个单选框，1是第2个单选框……以此类推。假设将属性值设置为1时，效果如图1-6所示。
 
-<img src="/IDE/uiEditor/uiComponent/RadioGroup/img/1-6.png" alt="1-6" style="zoom:80%;" />
+<img src="./img/1-6.png" alt="1-6" style="zoom:80%;" />
 
 （图1-6）
 
@@ -116,7 +116,7 @@ export class NewScript extends Laya.Script {
 
 用三张不同的Raido单选框美术资源，组成自定义的RadioGroup组件，资源如图2-1所示。
 
-![2-1](/IDE/uiEditor/uiComponent/RadioGroup/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -132,7 +132,7 @@ export class NewScript extends Laya.Script {
 
 当设置完各个Radio组件的皮肤、文本、大小、位置等属性后，效果如图2-2所示。
 
-![2-2](/IDE/uiEditor/uiComponent/RadioGroup/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -142,19 +142,19 @@ export class NewScript extends Laya.Script {
 
 当修改好子项属性后，全选子组件，右键单击调出设置面板，点击`转换为容器->RadioGroup`，最终转换成RadioGroup容器类型，步骤如动图2-3所示。
 
-<img src="/IDE/uiEditor/uiComponent/RadioGroup/img/2-3.gif" alt="2-3" style="zoom:80%;" />
+<img src="./img/2-3.gif" alt="2-3" style="zoom:80%;" />
 
 （动图2-3）
 
 转换成功后，如图2-4所示，需要保证RadioGroup的skin属性值为空。这样，在同一个RadioGroup组件中的三个单选框样式都不同了。
 
-![2-4](/IDE/uiEditor/uiComponent/RadioGroup/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 开发者还可以调节RadioGroup组件的属性，最终效果如下动图所示：
 
-![2-5](/IDE/uiEditor/uiComponent/RadioGroup/img/2-5.gif)
+![2-5](./img/2-5.gif)
 
 （动图2-5）
 
@@ -220,7 +220,7 @@ export class UI_RadioGroup extends Laya.Script {
 
 效果如图所示：
 
-![3-1](/IDE/uiEditor/uiComponent/RadioGroup/img/3-1.gif)
+![3-1](./img/3-1.gif)
 
 （图3-1）
 

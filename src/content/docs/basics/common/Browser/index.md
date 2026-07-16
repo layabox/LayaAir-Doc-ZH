@@ -24,13 +24,13 @@ https://learn.microsoft.com/zh-cn/microsoft-edge/devtools-guide-chromium/overvie
 
 如图2-1所示，浏览器提供了设备仿真模式，利于方便查看和调试
 
-<img src="/basics/common/Browser/img/2-1.png" alt="在仿真移动电话中显示本文的 DevTools。" style="zoom: 80%;" /> 
+<img src="./img/2-1.png" alt="在仿真移动电话中显示本文的 DevTools。" style="zoom: 80%;" /> 
 
 （图2-1）
 
 上图中选择的是iphone 6/7/8 Plus设备，但是以iphone为例，随着型号的提升，屏幕设备的分辨率也在不断变化，如图2-2所示
 
-<img src="/basics/common/Browser/img/2-2.png"  /> 
+<img src="./img/2-2.png"  /> 
 
 （图2-2）
 

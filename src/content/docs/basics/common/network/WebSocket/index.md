@@ -185,13 +185,13 @@ export class WebSocketDemo extends Laya.Script {
 
 示例代码成功连接后，控制台打印效果，如图1-1所示：
 
-![](/basics/common/network/WebSocket/img/1-1.png) 
+![](./img/1-1.png) 
 
 （图1-1）
 
 如果连接出错和关闭，控制台打印效果，如图1-2所示：
 
-![](/basics/common/network/WebSocket/img/1-2.png)
+![](./img/1-2.png)
 
 （图1-2）
 
@@ -277,7 +277,7 @@ export class ArrayBufferSocketDemo extends Laya.Script {
 
 将脚本添加到场景中运行，我们看到控制台中的打印如图2-1所示。
 
-![](/basics/common/network/WebSocket/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
@@ -343,7 +343,7 @@ export class ArrayBufferSocketDemo extends Laya.Script {
 
 运行效果如图3-1所示。
 
-![](/basics/common/network/WebSocket/img/3-1.png)
+![](./img/3-1.png)
 
 (图3-1)
 
@@ -538,7 +538,7 @@ export class WebSocketDemo extends Laya.Script {
 
 运行效果如图4-1所示，通过Laya.Byte成功发送和接收了二进制数据，并将数据读取打印出来。
 
-![](/basics/common/network/WebSocket/img/4-1.png) 
+![](./img/4-1.png) 
 
 （图4-1）
 

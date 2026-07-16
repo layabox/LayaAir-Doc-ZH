@@ -22,7 +22,7 @@ Protocol Buffers（简称 Protobuf）是谷歌开发的一种高效、灵活且�
 npm install protobufjs-cli --save-dev
 ```
 
-![](/libs/Protobuf/img/1-1.png) 
+![](./img/1-1.png) 
 
 (图1-1)
 
@@ -72,7 +72,7 @@ message ChatMessage {
 
 效果如图1-2所示：
 
-![](/libs/Protobuf/img/1-2.png) 
+![](./img/1-2.png) 
 
 **`pbjs`指令参数的作用：**
 
@@ -129,7 +129,7 @@ npm run pbts
 
 两次指令执行完，可以看到指定的输出路径下生成了`protobuf.js`和`protobuf.d.ts`两个文件，如图1-3所示
 
-![](/libs/Protobuf/img/1-3.png) 
+![](./img/1-3.png) 
 
 （图1-3）
 
@@ -141,7 +141,7 @@ npm run pbts
 
 我们先为场景添加一个空的脚本，命名为`ProtobufDemo`，如图2-1所示。
 
-![](/libs/Protobuf/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
@@ -249,7 +249,7 @@ npm install protobufjs ws
 
 执行完安装命令后，我们可以看到多出来的node_modules目录下已经成功的完成了protobufjs和ws模块的安装，如图3-1所示。
 
-![](/libs/Protobuf/img/3-1.png)  
+![](./img/3-1.png)  
 
 （图3-1）
 
@@ -259,7 +259,7 @@ npm install protobufjs ws
 
 示例的目录结构如图3-2所示。
 
-![](/libs/Protobuf/img/3-2.png) 
+![](./img/3-2.png) 
 
 (图3-2)
 
@@ -320,19 +320,19 @@ node server.js
 
 运行后效果如图3-3所示。
 
-![](/libs/Protobuf/img/3-3.png) 
+![](./img/3-3.png) 
 
 (图3-3) 
 
 由于客户端的脚本我们在前文中是基于场景创建的，那么我们也可以直接运行场景，在`预览运行`界面，我们打开`开发者工具`的控制台，可以看到客户端成功联结上服务端，并且还收到了来自服务端返回的消息。如图3-4所示。
 
-![](/libs/Protobuf/img/3-4.png)  
+![](./img/3-4.png)  
 
 (图3-4)
 
 我们再切回到服务端的命令行界面，也可以看到来自客户端消息的打印信息，如图3-5所示。
 
-![](/libs/Protobuf/img/3-5.png) 
+![](./img/3-5.png) 
 
 (图3-5)
 

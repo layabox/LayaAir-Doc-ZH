@@ -8,7 +8,7 @@ slug: "ide/uieditor/uicomponent/viewstack"
 
 ViewStack组件是导航容器组件，主要用于多页面视图切换。它包含多个子页面，但默认只显示一个，可以通过子页面索引进行显示切换。一般情况下，用它与Tab标签组合制作标签切换页面，效果如动图1所示。ViewStack组件的详细用法请查看[ViewStack API](https://layaair.com/3.x/api/Chinese/index.html?version=3.0.0&type=2D&category=UI&class=laya.ui.ViewStack)。
 
-![1](/IDE/uiEditor/uiComponent/ViewStack/img/1.gif)
+![1](./img/1.gif)
 
 （动图1） 
 
@@ -20,7 +20,7 @@ ViewStack组件是导航容器组件，主要用于多页面视图切换。它�
 
 准备好页面背景图以及需要切换的页面美术资源，如图1-1所示，放到LayaAir IDE的项目目录中。
 
-![1-1](/IDE/uiEditor/uiComponent/ViewStack/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -28,7 +28,7 @@ ViewStack组件是导航容器组件，主要用于多页面视图切换。它�
 
 然后设置背景的九宫格属性，如图1-2所示。
 
-<img src="/IDE/uiEditor/uiComponent/ViewStack/img/1-2.png" alt="1-2" style="zoom:80%;" />
+<img src="./img/1-2.png" alt="1-2" style="zoom:80%;" />
 
 （图1-2）
 
@@ -38,7 +38,7 @@ ViewStack组件是导航容器组件，主要用于多页面视图切换。它�
 
 如图1-3所示，将刚刚设置过九宫格的背景图拖拽到场景中，然后创建子节点ViewStack页面，再将页面中涉及的UI基础组件拖拽到ViewStack组件下，作为其子页面，并调整页面的UI布局。
 
-<img src="/IDE/uiEditor/uiComponent/ViewStack/img/1-3.png" alt="1-3" style="zoom:80%;" />
+<img src="./img/1-3.png" alt="1-3" style="zoom:80%;" />
 
 （图1-3）
 
@@ -50,7 +50,7 @@ ViewStack组件是容器类组件，没有独立的组件资源规范。本例�
 
 ViewStack子页面name属性的命名规则为item0、item1、item2.....”如果有更多页面以此类推，如图1-4所示。
 
-![1-4](/IDE/uiEditor/uiComponent/ViewStack/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
@@ -62,7 +62,7 @@ ViewStack子页面name属性的命名规则为item0、item1、item2.....”如�
 
 ViewStack组件默认显示item0，可以通过调整selectedIndex属性值来改变ViewStack组件的默认显示页面，效果如动图1-5所示。
 
-<img src="/IDE/uiEditor/uiComponent/ViewStack/img/1-5.gif" alt="1-5" style="zoom:80%;" />
+<img src="./img/1-5.gif" alt="1-5" style="zoom:80%;" />
 
 （动图1-5）
 
@@ -74,7 +74,7 @@ ViewStack组件默认显示item0，可以通过调整selectedIndex属性值来�
 
 点击选择资源面板里的Tab资源，拖拽到场景中生成Tab组件。然后，调整位置与背景图适配对齐。设置labels为“页面0,页面1,页面2”，选择的按钮索引selectedIndex设置为0。最后设置字体大小、粗体、字体状态颜色等属性。设置之后的显示效果如图1-6所示：
 
-<img src="/IDE/uiEditor/uiComponent/ViewStack/img/1-6.png" alt="1-6" style="zoom:80%;" />
+<img src="./img/1-6.png" alt="1-6" style="zoom:80%;" />
 
 （图1-6）
 
@@ -139,7 +139,7 @@ export class NewScript extends Laya.Script {
 
 两种方案最终的效果相同，如动图1-8所示：
 
-<img src="/IDE/uiEditor/uiComponent/ViewStack/img/1-7.gif" alt="1-8" style="zoom:80%;" />
+<img src="./img/1-7.gif" alt="1-8" style="zoom:80%;" />
 
 （动图1-8）
 
@@ -149,7 +149,7 @@ export class NewScript extends Laya.Script {
 
 ViewStack的特有属性如下：
 
-![2-1](/IDE/uiEditor/uiComponent/ViewStack/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 

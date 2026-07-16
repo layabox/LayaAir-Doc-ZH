@@ -5,7 +5,7 @@ import { getGithubSourceUrl } from '../utils/github-source-url';
 
 const links = config.social || [];
 const route = Astro.locals.starlightRoute;
-const githubHref = getGithubSourceUrl(route?.entry?.filePath, undefined, route?.entry?.slug);
+const githubHref = getGithubSourceUrl(route?.entry?.filePath);
 ---
 
 {

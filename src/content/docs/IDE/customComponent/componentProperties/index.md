@@ -14,7 +14,7 @@ LayaAir分为2D节点与3D节点类型，当设置为2D节点Laya.Sprite时，�
 
 首先，如动图1-1所示，将场景中已经添加好的2D节点Sprite拖入到@property暴露的属性入口中，这样就获取到了此节点。
 
-![1-1](/IDE/customComponent/componentProperties/images/1-1.gif)
+![1-1](./images/1-1.gif)
 
 （动图1-1）
 
@@ -39,7 +39,7 @@ export class NewScript extends Laya.Script {
 
 效果如图1-2所示：
 
-![1-2](/IDE/customComponent/componentProperties/images/1-2.png)
+![1-2](./images/1-2.png)
 
 （图1-2）
 
@@ -49,7 +49,7 @@ export class NewScript extends Laya.Script {
 
 首先，如动图1-3所示，将场景中已经添加好的3D节点Cube拖入到@property暴露的属性入口中，这样就获取到了此节点。
 
-![1-3](/IDE/customComponent/componentProperties/images/1-3.gif)
+![1-3](./images/1-3.gif)
 
 （动图1-3）
 
@@ -76,7 +76,7 @@ export class NewScript extends Laya.Script {
 
 效果如动图1-4所示：
 
-![1-4](/IDE/customComponent/componentProperties/images/1-4.gif)
+![1-4](./images/1-4.gif)
 
 （动图1-4）
 
@@ -132,7 +132,7 @@ private prefabFromResource: Laya.Prefab;
 
 此时，需要按动图3-1所示，从assets目录下，拖入prefab资源。运行时会直接获取到加载实例化后的prefab。
 
-![3-1](/IDE/customComponent/componentProperties/images/3-1.gif)
+![3-1](./images/3-1.gif)
 
 （动图3-1）
 

@@ -10,7 +10,7 @@ slug: "released/native/splashscreensettings"
 
 在 LayaAir IDE 中，可以通过项目设置界面直观地配置启动页。
 
-![IDE启动页设置](/released/native/SplashScreenSettings/ide.jpg)
+![IDE启动页设置](./ide.jpg)
 
 ### 配置步骤
 1.  打开 LayaAir IDE。

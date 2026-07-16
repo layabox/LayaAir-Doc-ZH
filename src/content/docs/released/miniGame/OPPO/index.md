@@ -22,7 +22,7 @@ OPPO官方提供了可视化开发者工具，点击[这里](https://ie-activity
 
 在构建发布面板中，侧边栏选择目标平台为OPPO小游戏。如图2-1所示，
 
-![2-1](/released/miniGame/OPPO/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -74,7 +74,7 @@ OPPO官方提供了可视化开发者工具，点击[这里](https://ie-activity
 
 发布后的目录结构如图2-2所示，
 
-<img src="/released/miniGame/OPPO/img/2-2.png" style="zoom:50%;" /> 
+<img src="./img/2-2.png" style="zoom:50%;" /> 
 
 （图2-2）
 
@@ -132,25 +132,25 @@ OPPO发布时，是通过 ADB 把rpk包推到手机的games目录上去，所以
 
 第二、在OPPO的手机里，进入`设置-> 其它设置-> 开发者选项` ，开发者选项与USB调试必须开启，如图3-1所示。
 
-<img src="/released/miniGame/OPPO/img/3-1.png" alt="图1" style="zoom:67%;" /> 
+<img src="./img/3-1.png" alt="图1" style="zoom:67%;" /> 
 
 (图3-1)
 
 另外要确保安装好OPPO小游戏调试环境“快应用”，如图3-2所示。
 
-<img src="/released/miniGame/OPPO/img/3-2.png" alt="图2" style="zoom: 67%;" /> 
+<img src="./img/3-2.png" alt="图2" style="zoom: 67%;" /> 
 
 (图3-2)
 
 第三、将PC电脑与手机用USB数据线相连，电脑里，可以出现类似图3-3一样的界面。比如，点击图3-3左上角的OPPO R9m，就可以进入手机存储。
 
-![图3](/released/miniGame/OPPO/img/3-3.png) 
+![图3](./img/3-3.png) 
 
 (图3-3)
 
 手机里要注意的是，屏幕保持点亮打开，在PC的IDE发布OPPO小游戏时，如果手机出现授权信息请求的时候，一定要点确定允许。如图3-4所示。
 
-<img src="/released/miniGame/OPPO/img/3-4.png" alt="图4" style="zoom:50%;" />  
+<img src="./img/3-4.png" alt="图4" style="zoom:50%;" />  
 
 （图3-4）
 
@@ -162,7 +162,7 @@ OPPO的调试必须基于真机调试，PC的chrome只能输出信息，看不�
 
 如果准备工作没问题的话，正常情况下，LayaAirIDE里成功发布OPPO小游戏之后，是rpk的包会自动出现在小游戏的OPPO小游戏列表中的（IDE通过调用ADB推到指定的目录中），如图3-5所示。
 
-![图5](/released/miniGame/OPPO/img/3-5.png) 
+![图5](./img/3-5.png) 
 
 （图3-5）
 
@@ -178,7 +178,7 @@ devtools://devtools/bundled/inspector.html?v8only=true&ws=10.10.82.111:12345/000
 
 如果没问题，效果如图3-6所示，会打印出调试日志。
 
-![3-6](/released/miniGame/OPPO/img/3-6.png)
+![3-6](./img/3-6.png)
 
 （图3-6）
 
@@ -198,7 +198,7 @@ devtools://devtools/bundled/inspector.html?v8only=true&ws=10.10.82.111:12345/000
 
 **1.连接非正常情况：**
 
-![图7-1](/released/miniGame/OPPO/img/3-7-1.png) 
+![图7-1](./img/3-7-1.png) 
 
 （图3-7-1）
 
@@ -206,7 +206,7 @@ devtools://devtools/bundled/inspector.html?v8only=true&ws=10.10.82.111:12345/000
 
 **2.在连接正常情况下：**
 
-![图7-1](/released/miniGame/OPPO/img/3-7-2.png) 
+![图7-1](./img/3-7-2.png) 
 
 （图3-7-2）
 
@@ -224,7 +224,7 @@ rpk包位于项目的release/OPPOgame/dist 目录下。
 
  将发布生成的rpk文件，复制到手机存储的games目录下，如图3-8所示。
 
-![3-8](/released/miniGame/OPPO/img/3-8.png)
+![3-8](./img/3-8.png)
 
 （图3-8）
 
@@ -240,25 +240,25 @@ rpk包位于项目的release/OPPOgame/dist 目录下。
 
 除了Chrome调试，开发者还可以使用官方提供的开发者工具。如图4-1所示，打开OPPO开发者工具，点击导入游戏引擎工程，然后选择路径即可。
 
-<img src="/released/miniGame/OPPO/img/4-1.png" alt="4-1" style="zoom:50%;" />
+<img src="./img/4-1.png" alt="4-1" style="zoom:50%;" />
 
 （图4-1）
 
 然后选择编译方式，如图4-2所示，默认为普通编译，如果进行了分包，则选择“编译分包”，选择后点击“编译”。
 
-<img src="/released/miniGame/OPPO/img/4-2.png" alt="4-2" style="zoom:50%;" />
+<img src="./img/4-2.png" alt="4-2" style="zoom:50%;" />
 
 （图4-2）
 
 编译成功后，usb连接真机，然后点击真机运行：
 
-<img src="/released/miniGame/OPPO/img/4-3.png" alt="4-3" style="zoom:50%;" />
+<img src="./img/4-3.png" alt="4-3" style="zoom:50%;" />
 
 （图4-3）
 
 真机效果如图4-4所示：
 
-<img src="/released/miniGame/OPPO/img/4-4.png" alt="4-4" style="zoom:50%;" />
+<img src="./img/4-4.png" alt="4-4" style="zoom:50%;" />
 
 （图4-4）
 

@@ -30,7 +30,7 @@ LayaAir智能资源管理插件是一个用于管理和打包程序资源的插�
 
 在构建发布 - 智能资源管理栏中打开配置面板。
 
-![2-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/2-1-1.png)
+![2-1-1](./img/2-1-1.png)
 
 #### 2.1.1全局参数及配置
 
@@ -60,7 +60,7 @@ LayaAir智能资源管理插件是一个用于管理和打包程序资源的插�
 
 在智能资源管理面板内，点击任意一个组，即可在右侧面板中对此组进行配置管理。
 
-![2-2-1](/IDE/layapackage/enterprise/addressable/instruction/img/2-2-1.png)
+![2-2-1](./img/2-2-1.png)
 
 **阻止更新：**启用此属性后，在执行更新上一个构建时, 不再对该资源组进行资源构建。如果开发者修改了该资源组下的资源，插件会提醒开发者将修改过的资源移动到新组中。新构建时不受该属性影响。
 
@@ -72,9 +72,9 @@ LayaAir智能资源管理插件是一个用于管理和打包程序资源的插�
 
 在智能资源管理 - 工具栏中打开智能资源管理构建配置面板。
 
-![2-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/2-3-1.png)
+![2-3-1](./img/2-3-1.png)
 
-![2-3-2](/IDE/layapackage/enterprise/addressable/instruction/img/2-3-2.png)
+![2-3-2](./img/2-3-2.png)
 
 **构建目标：**此构建配置会在哪个平台生效，可以是全部平台，也可以自定义组合多个平台。
 
@@ -92,12 +92,12 @@ LayaAir智能资源管理插件是一个用于管理和打包程序资源的插�
 
 当选择本地模式时，资源不会通过包文件加载，而是通过 assets 目录加载资源；
 
-![2-4-1](/IDE/layapackage/enterprise/addressable/instruction/img/2-4-1.png)
+![2-4-1](./img/2-4-1.png)
 
 当选择远端模式时，插件将在本地启动一个HTTP服务用于模拟外网资源加载。
 **注意：**修改模式后，需要使用 `Ctrl + Shift + R` 刷新编辑器，才可以开启/关闭此HTTP服务。
 
-![2-4-2](/IDE/layapackage/enterprise/addressable/instruction/img/2-4-2.png)
+![2-4-2](./img/2-4-2.png)
 
 ## 3. 资源管理
 
@@ -107,25 +107,25 @@ LayaAir智能资源管理插件是一个用于管理和打包程序资源的插�
 
 点击面板上方的“新建”按钮，新建一个资源组
 
-![3-1-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-1-1-1.gif)
+![3-1-1-1](./img/3-1-1-1.gif)
 
 #### 3.1.2 资源组重命名
 
 可以通过右键组名 - 重命名、慢速双击、或选中需要重命名的组并按键盘上的 `F2` 键这三种方式来为组重命名
 
-![3-1-2-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-1-2-1.gif)
+![3-1-2-1](./img/3-1-2-1.gif)
 
 #### 3.1.3 删除资源组
 
 可以通过右键组名 - 移除组、或选中需要删除的组并按键盘上的 `Del` 键这两种方法来删除组
 
-![3-1-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-1-3-1.gif)
+![3-1-3-1](./img/3-1-3-1.gif)
 
 #### 3.1.4 改变组顺序
 
 通过拖动改变组的排列顺序, 以方便用户管理
 
-![3-1-4-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-1-4-1.gif)
+![3-1-4-1](./img/3-1-4-1.gif)
 
 ### 3.2 组内资源管理
 
@@ -133,70 +133,70 @@ LayaAir智能资源管理插件是一个用于管理和打包程序资源的插�
 
 第一种方式：将需要打包的资源拖入到新建的资源组中，生成资源条目。可以拖动单个资源或文件夹到资源组中。
 
-![3-2-1-0](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-1-0.gif)
+![3-2-1-0](./img/3-2-1-0.gif)
 
 当拖动文件夹到资源组中时，插件会自动将该文件夹下（包括该文件下所有子文件夹下）的所有资源加入到该资源组。
 
-![3-2-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-1-1.gif)
+![3-2-1-1](./img/3-2-1-1.gif)
 
 第二种方式：在项目资源面板中选中要添加的资源，在右侧面板中勾选“智能资源管理”这一选项，并应用，此时资源将被自动添加到默认组中。
 
-![3-2-1-2](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-1-2.gif)
+![3-2-1-2](./img/3-2-1-2.gif)
 
 #### 3.2.2 移除资源
 
 第一种方式：在可寻址资源管理面板中，右击想要移除的资源，点击移除。
 
-![3-2-2-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-2-1.gif)
+![3-2-2-1](./img/3-2-2-1.gif)
 
 第二种方式：在项目资源面板中选中要移除的资源，在右侧面板中将“智能资源管理”这一选项取消勾选，并应用
 
-![3-2-2-2](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-2-2.gif)
+![3-2-2-2](./img/3-2-2-2.gif)
 
 #### 3.2.3 资源别名重命名  
 
 通过右键资源 - 重命名、慢速双击、或选中需要重命名的资源并按键盘上的 `F2` 键这三种方式来更改资源的资源别名
 
-![3-2-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-3-1.gif)
+![3-2-3-1](./img/3-2-3-1.gif)
 
 #### 3.2.4 更改资源所在的资源组
 
 通过拖动更改资源所在的资源组
 
-![3-2-4-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-4-1.gif)
+![3-2-4-1](./img/3-2-4-1.gif)
 
 也可以将项目资源面板中的资源拖入不同组来更改资源所在的资源组
 
-![3-2-4-2](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-4-2.gif)
+![3-2-4-2](./img/3-2-4-2.gif)
 
 #### 3.2.5 资源标签管理
 
 在标签管理界面对标签进行增加，移除，重命名操作
 
-![3-2-5-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-5-1.gif)
+![3-2-5-1](./img/3-2-5-1.gif)
 
 为资源添加标签。一个资源可以有多个标签，一个标签也可以对应多个资源。
 
-![3-2-5-2](/IDE/layapackage/enterprise/addressable/instruction/img/3-2-5-2.gif)
+![3-2-5-2](./img/3-2-5-2.gif)
 
 ### 3.3 构建配置管理
 
 在智能资源管理面板，点击工具栏，打开智能资源构建配置管理。
 
-![3-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/3-3-1.gif)
+![3-3-1](./img/3-3-1.gif)
 
 开发者可管理构建配置，包括新建，删除，重命名，激活这些操作。
 
-![3-3-2](/IDE/layapackage/enterprise/addressable/instruction/img/3-3-2.gif)
+![3-3-2](./img/3-3-2.gif)
 
 对于每一个构建配置，开发者可自行设置其属性。
 **注意：**默认配置的构建平台属性始终为 `全部` 且不可以修改，这是为了用户在发布项目时，始终有一个可用的构建配置文件。
 
-![3-3-3](/IDE/layapackage/enterprise/addressable/instruction/img/3-3-3.gif)
+![3-3-3](./img/3-3-3.gif)
 
 构建发布前，开发者需选择正确的构建配置，如果激活的构建配置的构建目标中不包含此次构建的平台，插件会提醒开发者更换构建配置。
 
-![3-3-4](/IDE/layapackage/enterprise/addressable/instruction/img/3-3-4.gif)
+![3-3-4](./img/3-3-4.gif)
 
 ## 4. 构建内容
 
@@ -218,23 +218,23 @@ LayaAir智能资源管理插件是一个用于管理和打包程序资源的插�
 
 进行构建时，开发者可通过新构建单独对智能资源管理中的资源进行构建，而不构建整个项目。
 
-![4-2-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/4-2-1-1.png)
+![4-2-1-1](./img/4-2-1-1.png)
 
 #### 4.2.2 构建发布
 
 构建发布时，如果开发者启用了发布时自动构建这一配置，插件会对资源进行构建，此时生成的 `.dcc` 文件会保存在项目输出目录中，开发者可根据激活的构建配置，将 `.dcc` 文件和 `head.json` 文件移动到对应的服务器中。
 
-![4-2-2-1](/IDE/layapackage/enterprise/addressable/instruction/img/4-2-2-1.png)
+![4-2-2-1](./img/4-2-2-1.png)
 
 ### 4.3 更新资源
 
 当开发者需要更新资源时，可以使用更新上一次构建的功能。
 
-![4-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/4-3-1.png)
+![4-3-1](./img/4-3-1.png)
 
 更新上一次构建会根据资源组是否启用阻止更新这一属性，决定是否对该资源组进行资源构建。
 
-![4-3-2](/IDE/layapackage/enterprise/addressable/instruction/img/4-3-2.png)
+![4-3-2](./img/4-3-2.png)
 
 完成构建后，生成的文件会存放在构建输出目录中，开发者需要将新打包的资源、`.dcc`目录 和 `head.json` 文件转移到指定的服务器中。
 
@@ -298,11 +298,11 @@ Addressables.loadAssetAsync ，此方法会根据关键字加载第一个找到�
         });
     }
 
-![5-2-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-2-1-1.png)
+![5-2-1-1](./img/5-2-1-1.png)
 
 输出结果：
 
-![5-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-1-1.png)
+![5-1-1](./img/5-1-1.png)
 
 ### 5.2 加载多个资源
 
@@ -322,7 +322,7 @@ Addressables.loadAssetsAsync，此方法根据不同的 options 值有三种加�
 
 在使用此加载选项时，插件会根据传入的第一个关键字，加载所有包含此资源别名或标签的资源，如果此时传入多个关键字，只有第一个关键字生效。
 
-![5-2-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-2-1-1.png)
+![5-2-1-1](./img/5-2-1-1.png)
 
 ```typescript
 onStart(): void {
@@ -339,13 +339,13 @@ onStart(): void {
 
 输出结果：
 
-![5-2-1-2](/IDE/layapackage/enterprise/addressable/instruction/img/5-2-1-2.png)
+![5-2-1-2](./img/5-2-1-2.png)
 
 #### 5.2.2 Union
 
 插件会筛选出每个关键字所对应的所有资源，并对这些资源求并集。
 
-![5-2-2-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-2-2-1.png)
+![5-2-2-1](./img/5-2-2-1.png)
 
 ```typescript
 onStart(): void {
@@ -362,13 +362,13 @@ onStart(): void {
 
 输出结果：
 
-![5-2-2-2](/IDE/layapackage/enterprise/addressable/instruction/img/5-2-2-2.png)
+![5-2-2-2](./img/5-2-2-2.png)
 
 #### 5.2.3 Intersection
 
 插件会筛选出每个关键字所对应的所有资源，并对这些资源求交集。
 
-![5-2-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-2-3-1.png)
+![5-2-3-1](./img/5-2-3-1.png)
 
 ```typescript
 onStart(): void {
@@ -385,7 +385,7 @@ onStart(): void {
 
 输出结果：
 
-![5-2-3-2](/IDE/layapackage/enterprise/addressable/instruction/img/5-2-3-2.png)
+![5-2-3-2](./img/5-2-3-2.png)
 
 #### 5.2.4 options
 
@@ -457,7 +457,7 @@ static async instantiateAsync(key: string, options?: InstantiateOptions): Promis
 
 Addressables.instantiateAsync， 插件会根据传入的关键字，将检索到的第一个预制体资源直接转换为对应的节点，其他资源会被忽略
 
-![5-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-3-1.png)
+![5-3-1](./img/5-3-1.png)
 
 ```typescript
 onStart(): void {
@@ -473,7 +473,7 @@ onStart(): void {
 
 输出结果：
 
-![5-3-2](/IDE/layapackage/enterprise/addressable/instruction/img/5-3-2.png)
+![5-3-2](./img/5-3-2.png)
 
 ### **5.4 加载场景**
 
@@ -490,7 +490,7 @@ static async loadSceneAsync(key: string, options?: LoadSceneOptions): Promise<Lo
 
 Addressables.loadSceneAsync， 插件会根据传入的关键字，加载检索到的第一个场景资源，非场景资源会被忽略。
 
-![5-4-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-4-1.png)
+![5-4-1](./img/5-4-1.png)
 
 ```typescript
 onStart(): void {
@@ -503,7 +503,7 @@ onStart(): void {
 
 输出结果：
 
-![5-4-2](/IDE/layapackage/enterprise/addressable/instruction/img/5-4-2.png)
+![5-4-2](./img/5-4-2.png)
 
 ### 5.5 获取资源的描述信息列表
 
@@ -521,7 +521,7 @@ static async getLocationAsync(key: string | string[], mode?: MergeMode): Promise
 
 与加载多个资源的方法相同，Addressable.getLocationAsync 也可以根传入的关键字的不同，使用不同的加载选项。
 
-![5-5-1](/IDE/layapackage/enterprise/addressable/instruction/img/5-5-1.png)
+![5-5-1](./img/5-5-1.png)
 
 ```typescript
 onStart(): void {
@@ -531,7 +531,7 @@ onStart(): void {
 }
 ```
 
-![5-5-2](/IDE/layapackage/enterprise/addressable/instruction/img/5-5-2.png)
+![5-5-2](./img/5-5-2.png)
 
 ## 6. 构建报告
 
@@ -541,19 +541,19 @@ onStart(): void {
 
 概要页面中包含了本次报告的编译时间、版本号、资源量统计、冲突问题等信息。
 
-![6-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/6-1-1.png)
+![6-1-1](./img/6-1-1.png)
 
 ### 6.2 浏览
 
 浏览页面中，显示了每个包中包含的资源，资源之间的依赖关系、包之间的依赖关系等信息。
 
-![6-2-1](/IDE/layapackage/enterprise/addressable/instruction/img/6-2-1.png)
+![6-2-1](./img/6-2-1.png)
 
 ### 6.3 潜在问题
 
 不同包内的多个资源同时引用了相同的资源，且该资源没有加入资源管理，此时这个被引用的资源会同时存在于多个包内，造成空间浪费。
 
-![6-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/6-3-1.png)
+![6-3-1](./img/6-3-1.png)
 
 ## 7. 日志查看器
 
@@ -563,11 +563,11 @@ onStart(): void {
 
 在智能资源管理面板，选择工具栏，点击事件查看器，即可打开日志查看器。
 
-![7-1-1](/IDE/layapackage/enterprise/addressable/instruction/img/7-1-1.gif)
+![7-1-1](./img/7-1-1.gif)
 
 ### 7.2 预览时生成日志
 
-![7-2-1](/IDE/layapackage/enterprise/addressable/instruction/img/7-2-1.gif)
+![7-2-1](./img/7-2-1.gif)
 
 开始预览时，插件会自动清除上一次预览时生成的日志。
 
@@ -575,7 +575,7 @@ onStart(): void {
 
 在远端预览模式下，插件会生成资源包下载日志，开发者可根据日志，优化资源管理模式。
 
-![7-3-1](/IDE/layapackage/enterprise/addressable/instruction/img/7-3-1.png)
+![7-3-1](./img/7-3-1.png)
 
 
 

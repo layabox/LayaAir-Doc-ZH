@@ -26,7 +26,7 @@ slug: "released/native/native-index"
 
 通过LayaAir-IDE的菜单栏`文件`--> `构建发布` ，打开的窗口里，`资源服务器URL`配置好即可，配置方式如图1-1所示。在图1-1里，入口默认为index.js。
 
-![1-1](/released/native/native_index/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -38,7 +38,7 @@ slug: "released/native/native-index"
 
 如果使用项目的index.js作为LayaNative的启动入口文件，在点击构建发布后，在resource目录下找到index.js，
 
-![2-1](/released/native/native_index/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 

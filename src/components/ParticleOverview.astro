@@ -1,0 +1,183 @@
+---
+// 「LayaAir 粒子系统总览」三卡片组件 —— GPU / CPU / VFX 三套粒子的
+// 性能 / 功能 / 表现力对比。数据为固定内容，直接 <ParticleOverview /> 使用。
+interface Metric {
+  name: string;   // 维度名
+  score: number;  // 1–5 档
+  label: string;  // 档位文字
+}
+interface Card {
+  key: string;      // 用于配色的类名
+  badge: string;    // 左上角小徽章
+  title: string;    // 卡片标题
+  sub: string;      // 英文副标题
+  metrics: Metric[];
+  descHl: string;   // 描述中高亮的关键词
+  desc: string;     // 描述正文
+  req: string;      // 可用条件（引擎内置 / 所需插件）
+}
+const cards: Card[] = [
+  {
+    key: 'gpu', badge: 'GPU', title: 'GPU 粒子', sub: 'GPU PARTICLES',
+    metrics: [
+      { name: '性能', score: 5, label: '高' },
+      { name: '功能', score: 2, label: '低' },
+      { name: '表现力', score: 3, label: '一般' },
+    ],
+    descHl: 'GPU 全程驱动',
+    desc: '，大规模粒子无 CPU 开销，适合海量简单粒子（火花、雨雪、星点等）。',
+    req: '引擎内置',
+  },
+  {
+    key: 'cpu', badge: 'CPU', title: 'CPU 粒子', sub: 'CPU PARTICLES',
+    metrics: [
+      { name: '性能', score: 3, label: '中等' },
+      { name: '功能', score: 5, label: '丰富' },
+      { name: '表现力', score: 5, label: '高' },
+    ],
+    descHl: '对标 Unity Particle System',
+    desc: '，模块丰富、可编程性强，适合复杂行为与精细特效。',
+    req: '需企业会员 CPU 粒子插件',
+  },
+  {
+    key: 'vfx', badge: 'VFX · 程序化', title: 'VFX 粒子', sub: 'VFX GRAPH',
+    metrics: [
+      { name: '性能', score: 5, label: '高' },
+      { name: '功能', score: 5, label: '程序化' },
+      { name: '表现力', score: 5, label: '极高' },
+    ],
+    descHl: '百万级粒子 + 程序化生成',
+    desc: '，节点蓝图驱动，表现力极致，适合次世代场景与电影级特效。',
+    req: '需免费 VFX 粒子插件',
+  },
+];
+---
+
+<div class="po-grid not-content">
+  {cards.map((c) => (
+    <div class={`po-card po-${c.key}`}>
+      <div class="po-head">
+        <span class="po-badge">{c.badge}</span>
+        <div class="po-title">{c.title}</div>
+        <div class="po-sub">{c.sub}</div>
+      </div>
+      <div class="po-body">
+        {c.metrics.map((m) => (
+          <div class="po-metric">
+            <span class="po-metric-name">{m.name}</span>
+            <span class="po-segs">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <i class={`po-seg${i <= m.score ? ' on' : ''}`} />
+              ))}
+            </span>
+            <span class="po-metric-label">{m.label}</span>
+          </div>
+        ))}
+        <p class="po-desc"><b class="po-hl">{c.descHl}</b>{c.desc}</p>
+        <div class="po-req"><span class="po-req-tag">{c.req}</span></div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .po-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  @media (max-width: 72rem) {
+    .po-grid { grid-template-columns: 1fr; }
+  }
+  .po-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--sl-color-bg-nav);
+  }
+  .po-head {
+    padding: 1rem 1.1rem 0.9rem;
+    color: #fff;
+    background: var(--po-grad);
+  }
+  .po-gpu { --po-accent: #3f93ad; --po-grad: linear-gradient(120deg, #3f93ad, #67b6c8); }
+  .po-cpu { --po-accent: #7b5cf0; --po-grad: linear-gradient(120deg, #7b5cf0, #9a6ff5); }
+  .po-vfx { --po-accent: #c9366f; --po-grad: linear-gradient(120deg, #c9366f, #a45ae0); }
+  .po-badge {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .po-title {
+    margin-top: 0.45rem;
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .po-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    opacity: 0.85;
+  }
+  .po-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0.9rem 1.1rem 1rem;
+  }
+  .po-metric {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.28rem 0;
+    font-size: 0.85rem;
+  }
+  .po-metric-name {
+    flex: 0 0 3.2em;
+    color: var(--sl-color-gray-2);
+  }
+  .po-segs {
+    display: flex;
+    flex: 1;
+    gap: 0.28rem;
+  }
+  .po-seg {
+    flex: 1;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: var(--sl-color-gray-6);
+  }
+  .po-seg.on { background: var(--po-accent); }
+  .po-metric-label {
+    flex: 0 0 3.5em;
+    text-align: right;
+    font-weight: 700;
+    color: var(--po-accent);
+  }
+  .po-desc {
+    margin: 0.7rem 0 0;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--sl-color-gray-6);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--sl-color-gray-2);
+  }
+  .po-hl { color: var(--po-accent); }
+  .po-req { margin-top: auto; padding-top: 0.7rem; }
+  .po-req-tag {
+    display: inline-block;
+    padding: 0.12rem 0.6rem;
+    border: 1px solid var(--po-accent);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--po-accent);
+  }
+</style>

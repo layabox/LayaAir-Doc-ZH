@@ -22,7 +22,7 @@ Laya.Vector2.ONE;    // (1, 1)
 
 ### 1.2 常用方法
 
-![图1-1](/basics/common/math/Vector234/img/1-1.png)
+![图1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -215,7 +215,7 @@ Laya.Vector3.normalize(direction, direction);
 
 ### 4.2 计算两向量夹角
 
-![图4-1](/basics/common/math/Vector234/img/4-1.png)
+![图4-1](./img/4-1.png)
 
 （图4-1）
 
@@ -240,7 +240,7 @@ let dot = Laya.Vector3.dot(forward, toTarget);
 
 ### 4.4 计算法线（叉积）
 
-![图4-2](/basics/common/math/Vector234/img/4-2.png)
+![图4-2](./img/4-2.png)
 
 （图4-2）
 

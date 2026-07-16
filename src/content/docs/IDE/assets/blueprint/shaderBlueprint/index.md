@@ -12,13 +12,13 @@ slug: "ide/assets/blueprint/shaderblueprint"
 
 > 在蓝图文件未打开时，蓝图文件对应的Shader文件并未创建；打开蓝图文件时才会创建Shader文件，完成蓝图与Shader的映射对应
 
- ![image-20221109201659272](/IDE/assets/blueprint/shaderBlueprint/img/image-20221109201659272.png)
+ ![image-20221109201659272](./img/image-20221109201659272.png)
 
 图1-1
 
 ### 1.2 蓝图界面预览
 
-![image-20221109202804652](/IDE/assets/blueprint/shaderBlueprint/img/image-20221109202804652.png)
+![image-20221109202804652](./img/image-20221109202804652.png)
 
 图1-2
 
@@ -73,7 +73,7 @@ slug: "ide/assets/blueprint/shaderblueprint"
 
 图2-1展示了PBR材质类型是Shader蓝图的片段着色器内容
 
- ![image-20221109114315663](/IDE/assets/blueprint/shaderBlueprint/img/PBRfs.png)
+ ![image-20221109114315663](./img/PBRfs.png)
 
 图2-1
 
@@ -97,7 +97,7 @@ Alpha
 
 图2-2展示了UnLit材质类型是Shader蓝图的片段着色器内容
 
- ![image-20221109144301512](/IDE/assets/blueprint/shaderBlueprint/img/unlit.png)
+ ![image-20221109144301512](./img/unlit.png)
 
 图2-2
 
@@ -133,7 +133,7 @@ Aplha
 
 图2-3展示了Blinnphong材质类型是Shader蓝图的片段着色器内容
 
- ![image-20221109144324042](/IDE/assets/blueprint/shaderBlueprint/img/blinphong.png)
+ ![image-20221109144324042](./img/blinphong.png)
 
 图2-3
 
@@ -183,7 +183,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 ### 3.1 显示一个简单的模型
 
- ![image-20221108113419944](/IDE/assets/blueprint/shaderBlueprint/img/simple.png)
+ ![image-20221108113419944](./img/simple.png)
 
 图3-1
 
@@ -197,13 +197,13 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 蓝图的结果展示如下
 
- ![image-20221108113238028](/IDE/assets/blueprint/shaderBlueprint/img/show1.png)
+ ![image-20221108113238028](./img/show1.png)
 
 图3-2
 
 ### 3.2 显示一个简单的Blinnphong材质球
 
-![image-20221109173541755](/IDE/assets/blueprint/shaderBlueprint/img/blinphongShow.png)
+![image-20221109173541755](./img/blinphongShow.png)
 
 图3-3
 
@@ -214,7 +214,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 蓝图的结果展示如图
 
- ![image-20221109173504079](/IDE/assets/blueprint/shaderBlueprint/img/image-20221109173504079.png)
+ ![image-20221109173504079](./img/image-20221109173504079.png)
 
 图3-4
 
@@ -224,7 +224,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 输入数据可以来自一个源数据、Params变量或者其他节点的输出
 
-  ![image-20221108141934874](/IDE/assets/blueprint/shaderBlueprint/img/data.png)
+  ![image-20221108141934874](./img/data.png)
 
 图4-1
 
@@ -234,56 +234,56 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 | 坐标类型   | 坐标释义                                                     |
 | ---------- | ------------------------------------------------------------ |
-| PositionWS | ![image-20221110114949954](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114949954.png)<br>世界空间下的顶点世界坐标 |
-| normalWS   | ![image-20221110114232930](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114232930.png)<br />世界空间下的顶点法线世界坐标 |
-| tangentWS  | ![image-20221110114258098](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114258098.png)<br />世界空间下的顶点切线世界标 |
-| biNormalWS | ![image-20221110114313020](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114313020.png)<br />世界空间下的顶点副切线世界坐标 |
-| worldMat   | ![image-20221110114326370](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114326370.png)<br />世界空间矩阵 |
+| PositionWS | ![image-20221110114949954](./img/image-20221110114949954.png)<br>世界空间下的顶点世界坐标 |
+| normalWS   | ![image-20221110114232930](./img/image-20221110114232930.png)<br />世界空间下的顶点法线世界坐标 |
+| tangentWS  | ![image-20221110114258098](./img/image-20221110114258098.png)<br />世界空间下的顶点切线世界标 |
+| biNormalWS | ![image-20221110114313020](./img/image-20221110114313020.png)<br />世界空间下的顶点副切线世界坐标 |
+| worldMat   | ![image-20221110114326370](./img/image-20221110114326370.png)<br />世界空间矩阵 |
 
 ### 5.2 相机类
 
 | 属性类型        | 属性释义                                                     |
 | --------------- | ------------------------------------------------------------ |
-| viewDirection   | ![image-20221110114359754](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114359754.png)<br />视线向量（3D世界空间下的视线数学化表达) |
-| cameraPosition  | ![image-20221110114413242](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114413242.png)<br />相机位置世界空间坐标 |
-| cameraDirection | ![image-20221110114430610](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114430610.png)<br />相机forward方向 |
-| cameraUp        | ![image-20221110114500835](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110114500835.png)<br />相机Up方向 |
-| cameraNear      | ![image-20221110115017386](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115017386.png)<br />相机近平面大小 |
-| cameraFar       | ![image-20221110115029665](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115029665.png)<br />相机远平面大小 |
+| viewDirection   | ![image-20221110114359754](./img/image-20221110114359754.png)<br />视线向量（3D世界空间下的视线数学化表达) |
+| cameraPosition  | ![image-20221110114413242](./img/image-20221110114413242.png)<br />相机位置世界空间坐标 |
+| cameraDirection | ![image-20221110114430610](./img/image-20221110114430610.png)<br />相机forward方向 |
+| cameraUp        | ![image-20221110114500835](./img/image-20221110114500835.png)<br />相机Up方向 |
+| cameraNear      | ![image-20221110115017386](./img/image-20221110115017386.png)<br />相机近平面大小 |
+| cameraFar       | ![image-20221110115029665](./img/image-20221110115029665.png)<br />相机远平面大小 |
 
 ### 5.3 数学类
 
 | 属性类型                        | 属性释义                                                     |
 | ------------------------------- | ------------------------------------------------------------ |
-| add / minus / multiply / divide | ![image-20221110115105618](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115105618.png)<br />四则运算 |
-| sin / cos / tan                 | ![image-20221110115131475](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115131475.png)<br />三角函数 |
-| clamp                           | ![image-20221110115154811](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115154811.png)<br />钳取值在min和max范围内 |
-| mix / max                       | ![image-20221110115210217](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115210217.png)<br />最小值，最大值 |
-| step  / smoothstep              | ![image-20221110115224545](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115224545.png)<br />x > value : 0.0 : 1.0 |
-| pow                             | ![image-20221110115316442](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115316442.png)<br />幂次方 |
-| dot / cross                     | ![image-20221110115329467](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115329467.png)<br />点乘向量，叉乘向量 |
+| add / minus / multiply / divide | ![image-20221110115105618](./img/image-20221110115105618.png)<br />四则运算 |
+| sin / cos / tan                 | ![image-20221110115131475](./img/image-20221110115131475.png)<br />三角函数 |
+| clamp                           | ![image-20221110115154811](./img/image-20221110115154811.png)<br />钳取值在min和max范围内 |
+| mix / max                       | ![image-20221110115210217](./img/image-20221110115210217.png)<br />最小值，最大值 |
+| step  / smoothstep              | ![image-20221110115224545](./img/image-20221110115224545.png)<br />x > value : 0.0 : 1.0 |
+| pow                             | ![image-20221110115316442](./img/image-20221110115316442.png)<br />幂次方 |
+| dot / cross                     | ![image-20221110115329467](./img/image-20221110115329467.png)<br />点乘向量，叉乘向量 |
 
 ### 5.4 纹理类
 
 | 属性类型                  | 属性释义                                                     |
 | ------------------------- | ------------------------------------------------------------ |
-| sampler2D                 | ![image-20221110115416842](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115416842.png)<br />普通采样2D纹理贴图 |
-| samplerCube               | ![image-20221110115429042](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115429042.png)<br />采样3D CubeMap |
-| sampler2DNormal（OpenGL） | ![image-20221110115451690](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115451690.png)<br />采样法线贴图（GL在左下角) |
-| sampler2DNormal(Directx)  | ![image-20221110115504884](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115504884.png)<br />采样法线贴图（DX在左上角) |
+| sampler2D                 | ![image-20221110115416842](./img/image-20221110115416842.png)<br />普通采样2D纹理贴图 |
+| samplerCube               | ![image-20221110115429042](./img/image-20221110115429042.png)<br />采样3D CubeMap |
+| sampler2DNormal（OpenGL） | ![image-20221110115451690](./img/image-20221110115451690.png)<br />采样法线贴图（GL在左下角) |
+| sampler2DNormal(Directx)  | ![image-20221110115504884](./img/image-20221110115504884.png)<br />采样法线贴图（DX在左上角) |
 
 ### 5.5 颜色类
 
 | 属性释义      | 属性类型                                                     |
 | ------------- | ------------------------------------------------------------ |
-| GammaToLinear | ![image-20221110115541500](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115541500.png)<br />伽马空间转换到线性空间 |
-| LinearToGamma | ![image-20221110115552505](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110115552505.png)<br />线性空间转换到伽马空间 |
+| GammaToLinear | ![image-20221110115541500](./img/image-20221110115541500.png)<br />伽马空间转换到线性空间 |
+| LinearToGamma | ![image-20221110115552505](./img/image-20221110115552505.png)<br />线性空间转换到伽马空间 |
 
 ## 6.常见的Params类型
 
  添加一个Params变量。在Params窗口下选中"＋"，选择相应的Parmas变量类型
 
- ![image-20221108155907654](/IDE/assets/blueprint/shaderBlueprint/img/pararms.png)
+ ![image-20221108155907654](./img/pararms.png)
 
 图6-1
 
@@ -291,7 +291,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 定义一个float值，在检视面板中先试用一个float类型的对象
 
- ![image-20221110142339130](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110142339130.png)
+ ![image-20221110142339130](./img/image-20221110142339130.png)
 
 图6-2
 
@@ -299,7 +299,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 定义一个2D纹理的值，在检视面板中显示一个2D纹理类型的对象
 
- ![image-20221110142630085](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110142630085.png)
+ ![image-20221110142630085](./img/image-20221110142630085.png)
 
 图6-3
 
@@ -307,7 +307,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 定义一个向量类型，根据不同的分量数量分为Vector2、Vector3、Vector4
 
- ![image-20221110142656598](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110142656598.png)
+ ![image-20221110142656598](./img/image-20221110142656598.png)
 
 图6-4
 
@@ -315,7 +315,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 定义一个颜色值，通常存在RGBA四种分量的数据
 
- ![image-20221110142723775](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110142723775.png)
+ ![image-20221110142723775](./img/image-20221110142723775.png)
 
 图6-5
 
@@ -323,7 +323,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 宏定义，用于对宏条件的不同触发结果来执行不同的结果内容，效率高于if-else
 
- ![image-20221110142746677](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110142746677.png)
+ ![image-20221110142746677](./img/image-20221110142746677.png)
 
 图6-6
 
@@ -333,7 +333,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 在Project窗口右键Create菜单，选择Shader BluePrint Function创建一个蓝图函数
 
- ![image-20221110104114705](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110104114705.png)
+ ![image-20221110104114705](./img/image-20221110104114705.png)
 
 图7-1
 
@@ -341,7 +341,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 在蓝图编辑窗口下，右键空白处，选择ShaderFunction选项，选择Input In选项卡
 
- ![image-20221108110248738](/IDE/assets/blueprint/shaderBlueprint/img/func.png)
+ ![image-20221108110248738](./img/func.png)
 
 图7-2
 
@@ -349,9 +349,9 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 在最后的Default Output Result节点，输入的数据类型决定了该Shader函数的输出类型，函数蓝图会自动判断输出类型，如下图所示
 
- ![image-20221110105721791](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110105721791.png)
+ ![image-20221110105721791](./img/image-20221110105721791.png)
 
- ![image-20221110105826038](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110105826038.png)
+ ![image-20221110105826038](./img/image-20221110105826038.png)
 
 图7-3
 
@@ -359,7 +359,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 在蓝图函数界面，在需要放置蓝图函数节点的位置右键，在CustomFun-BlueMap项选择创建蓝图函数时定义的函数（蓝图函数文件名）
 
- ![image-20221110105132325](/IDE/assets/blueprint/shaderBlueprint/img/image-20221110105132325.png)
+ ![image-20221110105132325](./img/image-20221110105132325.png)
 
 图7-4
 
@@ -369,7 +369,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 > 简单的草
 
- ![image-20221108113822608](/IDE/assets/blueprint/shaderBlueprint/img/simple2.png)
+ ![image-20221108113822608](./img/simple2.png)
 
 图8-1
 
@@ -377,7 +377,7 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 1. 使用柏林噪声模拟出一个Vec4的向量
 
- ![image-20221111115321264](/IDE/assets/blueprint/shaderBlueprint/img/image-20221111115321264.png)
+ ![image-20221111115321264](./img/image-20221111115321264.png)
 
 图8-2
 
@@ -385,13 +385,13 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 把生成的噪声值缩小0.016，分别与外部传入的Color的g通道和a通道相乘，将分别乘完的结果求和，将得到的和与一个干扰值相加，最后与世界矩阵相乘
 
-![image-20221111162359520](/IDE/assets/blueprint/shaderBlueprint/img/image-20221111162359520.png)
+![image-20221111162359520](./img/image-20221111162359520.png)
 
 图8-3
 
 3.将于世界矩阵相乘完的结果取出xz分量与positionOS的xz分量相加为新的positionOS的xz分量
 
- ![image-20221111170752684](/IDE/assets/blueprint/shaderBlueprint/img/image-20221111170752684.png)
+ ![image-20221111170752684](./img/image-20221111170752684.png)
 
 图8-4
 
@@ -399,25 +399,25 @@ Alpha测试开关，开启此开关的时，启用片段着色器的AlphaTest变
 
 1. 判断是否启用了SNOW宏，宏启用的时候计算 1- 顶点颜色g值的2次方在（0,1）的结果，宏关闭是值为0
 
- ![image-20221111172019508](/IDE/assets/blueprint/shaderBlueprint/img/image-20221111172019508.png)
+ ![image-20221111172019508](./img/image-20221111172019508.png)
 
 图8-5
 
 2. 将UV坐标偏移与一个三角函数组成的2x2矩阵相乘再偏移回原来的位置
 
-![image-20221111173037213](/IDE/assets/blueprint/shaderBlueprint/img/image-20221111173037213.png)
+![image-20221111173037213](./img/image-20221111173037213.png)
 
 图8-6
 
 3. 采样草体纹理贴图，提取其中A通道转换为伽马值作为草体的Alpha值传入PBR函数，Albedo值为传入颜色值 * 纹理采样值 + 宏判断的值
 
-![image-20221111195609867](/IDE/assets/blueprint/shaderBlueprint/img/image-20221111195609867.png)
+![image-20221111195609867](./img/image-20221111195609867.png)
 
 图8-7
 
 蓝图的结果展示如下
 
- ![image-20221109154947714](/IDE/assets/blueprint/shaderBlueprint/img/show2.png)
+ ![image-20221109154947714](./img/show2.png)
 
 图8-7
 

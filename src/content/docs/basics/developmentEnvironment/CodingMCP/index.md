@@ -54,25 +54,25 @@ LayaAir引擎推出了LayaAir-CodingMCP服务，让AI编码环境下，再也不
 
 要使用 LayaAir-CodingMCP 服务，首先需要获取通信密钥。开发者可以通过 LayaAir 3.3.6 及以上版本的 IDE，打开菜单 `AI 服务 -> CodingMCP 服务`，如图 2-1所示，或者直接在浏览器中输入网址（https://ai-console.layaair.com/）访问。
 
-![](/basics/developmentEnvironment/CodingMCP/img/2-1.jpg) 
+![](./img/2-1.jpg) 
 
 （图 2-1）
 
 打开页面后，点击右上角的登录按钮，选择账号登录或微信扫码登录方式，完成注册或登录。如图 2-2 所示。
 
-![img](/basics/developmentEnvironment/CodingMCP/img/2-2.png) 
+![img](./img/2-2.png) 
 
 （图 2-2）
 
 登录成功后，点击订阅选项上的按钮，或者点击顶部导航的API Keys，进入 **API Keys** 页面。如图 2-3 所示。
 
-![img](/basics/developmentEnvironment/CodingMCP/img/2-3.png) 
+![img](./img/2-3.png) 
 
 （图 2-3）
 
 在**API Keys** 页面，点击“创建 API Key”按钮。在弹出的窗口中输入 Key 的名称，然后确认创建，即可立即生成密钥值。如图 2-4 所示。
 
-![img](/basics/developmentEnvironment/CodingMCP/img/2-4.png) 
+![img](./img/2-4.png) 
 
 （图 2-4）
 
@@ -84,7 +84,7 @@ LayaAir引擎推出了LayaAir-CodingMCP服务，让AI编码环境下，再也不
 
 配置之前，开发者需要先下载安装 **Cursor 编辑器**。在编辑器中，打开 “`Tools & MCP”` 配置栏目，点击 ”**New MCP Server“**，添加 LayaAir-CodingMCP 服务的配置。如图 2-5 所示。
 
- ![图片](/basics/developmentEnvironment/CodingMCP/img/2-5.png) 
+ ![图片](./img/2-5.png) 
 
 （图 2-5）
 
@@ -122,7 +122,7 @@ LayaAir引擎推出了LayaAir-CodingMCP服务，让AI编码环境下，再也不
 
 在 Cursor 编辑器中，进入 “**Rules and Commands”** 配置栏目，点击 ”`Project Rules -> Add Rule`“ 创建规则文件。如图2-6所示。将提供的规则模板内容复制到 `.mdc` 后缀的规则文件中即可生效。
 
-![图片](/basics/developmentEnvironment/CodingMCP/img/2-6.png) 
+![图片](./img/2-6.png) 
 
 （图2-6） 
 

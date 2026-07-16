@@ -24,11 +24,11 @@ Unity是移动端的3D引擎龙头。LayaAir是小游戏与HTML5市场的主流3
 
 使用LayaAir进行开发，高度依赖LayaAir-IDE。其中，Unity编辑器（图1-1）和LayaAir-IDE（图1-2）各区域的功能对比如下，相同颜色表示相同的功能。
 
-![1-1](/basics/UnityToLayaAir/img/1-1.jpg)
+![1-1](./img/1-1.jpg)
 
 （图1-1 ）Unity编辑器
 
-![1-2](/basics/UnityToLayaAir/img/1-2.jpg)
+![1-2](./img/1-2.jpg)
 
 （图1-2）LayaAir3-IDE编辑器
 
@@ -219,7 +219,7 @@ LayaAir3[资源商店](https://store.layaair.com/)使得开发者可以在资源
 
 如果安装了虚拟机等软件，可能会创建虚拟网卡，导致手机和PC不在同一局域网下。可以禁用虚拟机网卡，或者通过`ipconfig`命令查到IP后，在LayaAir-IDE的项目设置面板中，设置预览地址。
 
-![5-1](/basics/UnityToLayaAir/img/5-1.png)
+![5-1](./img/5-1.png)
 
 （图5-1）
 
@@ -229,7 +229,7 @@ LayaAir3[资源商店](https://store.layaair.com/)使得开发者可以在资源
 
 如果想让属性名显示的也是中文，需要在菜单栏中的“编辑->首选项”面板中，勾选“允许翻译引擎符号”。
 
-![5-2](/basics/UnityToLayaAir/img/5-2.png)
+![5-2](./img/5-2.png)
 
 （图5-2）
 
@@ -239,7 +239,7 @@ LayaAir3[资源商店](https://store.layaair.com/)使得开发者可以在资源
 
 在LayaAir-IDE的项目设置面板中，可以自定义长度单位转换比率。
 
-![5-3](/basics/UnityToLayaAir/img/5-3.png)
+![5-3](./img/5-3.png)
 
 （图5-3）
 
@@ -249,7 +249,7 @@ LayaAir3[资源商店](https://store.layaair.com/)使得开发者可以在资源
 
 在LayaAir-IDE中，使用相应的模块需要在项目设置面板中进行勾选，否则在运行时会报找不到模块或方法的错误。
 
-![5-4](/basics/UnityToLayaAir/img/5-4.png)
+![5-4](./img/5-4.png)
 
 （图5-4）
 
@@ -259,7 +259,7 @@ LayaAir3[资源商店](https://store.layaair.com/)使得开发者可以在资源
 
 支持，需要在项目设置面板中进行勾选。
 
-![5-5](/basics/UnityToLayaAir/img/5-5.png)
+![5-5](./img/5-5.png)
 
 （图5-5）
 

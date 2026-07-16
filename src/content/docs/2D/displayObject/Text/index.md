@@ -12,7 +12,7 @@ Text继承于Sprite，是静态文本的基础组件。这里我们介绍一下T
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-![1-1](/2D/displayObject/Text/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -20,7 +20,7 @@ Text继承于Sprite，是静态文本的基础组件。这里我们介绍一下T
 
 在IDE中，我们将Text组件添加到场景编辑的视图区后，属性面板中Text组件的专属属性如下图所示： 
 
-![1-2](/2D/displayObject/Text/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -76,7 +76,7 @@ Text继承于Sprite，是静态文本的基础组件。这里我们介绍一下T
 | `<i>Text</i>`                                   | `<i>这是斜体字</i>`                                          | 定义斜体字                                   |
 | `<u>Text</u>`                                   | `<u>这是下划线文本</u>`                                      | 定义下划线                                   |
 | `<li>Text1</li> <li>Text2</li> <li>Text3</li>`  | `<li>苹果</li> <li>香蕉</li> <li>橘子</li>`                  | 定义列表                                     |
-| `<img src='/2D/displayObject/Text/image_url' width = 200 height=100/>` | `<img src='/2D/displayObject/Text/atlas/comp/image.png' width = 200 height=100/>`   | 显示一张图片，还可以使用百分比指定图片的大小 |
+| `<img src='/2D/displayObject/Text/image_url' width = 200 height=100/>` | `<img src='./atlas/comp/image.png' width = 200 height=100/>`   | 显示一张图片，还可以使用百分比指定图片的大小 |
 | `<a href='xxx'>link text</a>`                   | `<a href='www.layabox.com'>蓝亚盒子</a>`                     | 显示一个超级链接                             |
 | `<div> Text </div>`                             | `<div>文本的最外层</div>`                                    | div容器标签                                  |
 | `<span> Text </span>`                           | `<span> 多个span之间不会自动换行，除非是达到了宽度限制</span>` | 行内元素                                     |
@@ -86,14 +86,14 @@ Text继承于Sprite，是静态文本的基础组件。这里我们介绍一下T
 
 下面来看一个具体的例子，如图1-3所示，勾选HTML和UBB后，就可以在Text属性中输入符合语法的语句：
 
-![1-3](/2D/displayObject/Text/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
 Text中输入的示例语句如下：
 
 ```html
-<img src='/2D/displayObject/Text/atlas/comp/image.png' width = 200 height=100/>
+<img src='./atlas/comp/image.png' width = 200 height=100/>
 
 [url='www.layabox.com']蓝亚盒子[/url]
 
@@ -112,13 +112,13 @@ Text中输入的示例语句如下：
 
 “syntax”属性还可以勾选`模板`选项，勾选后，就可以在字符串中使用变量了。比如，在Text属性中输入`Text{n=100}`，效果如图1-4所示：
 
-![1-4](/2D/displayObject/Text/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）
 
 变量n还可以是字符串，例如，输入`Text{n=你好}`,显示的效果就是图1-5所示的了。当然，这个变量不一定必须是n，开发者可以自定义变量名。
 
-![1-5](/2D/displayObject/Text/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
@@ -154,7 +154,7 @@ export class NewScript extends Laya.Script {
 
 效果如动图1-6所示：
 
-![1-6](/2D/displayObject/Text/img/1-6.gif)
+![1-6](./img/1-6.gif)
 
 （动图1-6）
 
@@ -162,7 +162,7 @@ export class NewScript extends Laya.Script {
 
 在游戏中比较常用的情况就是，如图1-7所示，当每个玩家进入游戏，都会遇到一段对白，只有不同玩家的角色名称不同。那么，采用文本模板功能之后，无需再去整体修改文本，直接改变文本模板中的变量即可。让局部文本的动态改变更加易用。
 
-![1-7](/2D/displayObject/Text/img/1-7.png)
+![1-7](./img/1-7.png)
 
 （图1-7）
 
@@ -289,7 +289,7 @@ export class UI_Text extends Laya.Script {
 
 效果如下：
 
-![1-8](/2D/displayObject/Text/img/1-8.gif)
+![1-8](./img/1-8.gif)
 
 （动图1-8）
 

@@ -8,13 +8,13 @@ slug: "ide/uieditor/graphics"
 
 LayaAir中可以在Sprite对象中通过使用图形组件来绘制各种图形，如动图1-1所示。
 
-<img src="/IDE/uiEditor/graphics/img/1-1.gif" style="zoom: 80%;" />
+<img src="./img/1-1.gif" style="zoom: 80%;" />
 
 （动图1-1）
 
 在IDE中可以通过这些选项来绘制Graphics，如图1-2所示，
 
-![1-2](/IDE/uiEditor/graphics/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -41,7 +41,7 @@ LayaAir引擎中 `laya.display.Graphics` 类可以查看到API的各种矢量绘
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择第一个选项 `创建 矩形（DrawRectCmd）`，创建后如图2-1所示。
 
-<img src="/IDE/uiEditor/graphics/img/2-1.png" alt="2-1" style="zoom:80%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom:80%;" />
 
 （图2-1）
 
@@ -60,7 +60,7 @@ LayaAir引擎中 `laya.display.Graphics` 类可以查看到API的各种矢量绘
 动图2-2演示了这些属性的操作过程：
 
 
- <img src="/IDE/uiEditor/graphics/img/2-2.gif"alt="2-2" style="zoom:50%;" /> 
+ <img src="./img/2-2.gif"alt="2-2" style="zoom:50%;" /> 
 
 
 （动图2-2）
@@ -101,7 +101,7 @@ this.owner.addChild(sp);
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/2-3.png" alt="2-3" style="zoom:50%;" />
+<img src="./img/2-3.png" alt="2-3" style="zoom:50%;" />
 
 （图2-3）
 
@@ -150,7 +150,7 @@ drawPath 第一和第二位的坐标点“20,20”是控制整体位置的起始
 
 运行效果（A、B、C、D四个点在运行时并不显示，这是截图后为了方便描述加上去的）：
 
-<img src="/IDE/uiEditor/graphics/img/2-4.png" alt="2-4" style="zoom:50%;" />  
+<img src="./img/2-4.png" alt="2-4" style="zoom:50%;" />  
 
 （图2-4） 
 
@@ -160,7 +160,7 @@ drawPath 第一和第二位的坐标点“20,20”是控制整体位置的起始
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令，如图2-5所示，选择 `创建 圆角矩形（DrawRoundRectCmd）` 绘制圆角矩形。
 
-<img src="/IDE/uiEditor/graphics/img/2-5.png" alt="2-5" style="zoom: 70%;" />
+<img src="./img/2-5.png" alt="2-5" style="zoom: 70%;" />
 
 （图2-5）
 
@@ -218,7 +218,7 @@ this.owner.addChild(sp);
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/2-6.png" alt="2-6" style="zoom:80%;" />
+<img src="./img/2-6.png" alt="2-6" style="zoom:80%;" />
 
 （图2-6）
 
@@ -238,7 +238,7 @@ LayaAir引擎中可以使用 graphics 的 `drawPath` 方法绘制圆角或弧线
 
 上述参数运行效果如图2-7所示：
 
-![2-7](/IDE/uiEditor/graphics/img/2-7.png)
+![2-7](./img/2-7.png)
 
 （图2-7）
 
@@ -275,7 +275,7 @@ this.owner.addChild(sp);
 
 代码运行效果： 
 
-<img src="/IDE/uiEditor/graphics/img/2-8.png" alt="2-8" style="zoom:50%;" />
+<img src="./img/2-8.png" alt="2-8" style="zoom:50%;" />
 
 （图2-8） 
 
@@ -288,7 +288,7 @@ sp.graphics.drawPath(100, 100, path, {fillStyle: "#ff0000"},{"strokeStyle":"#fff
 
 修改后运行效果如图2-9所示，由于画线的时候，从画笔的起始点`0,0`开始的，所以并不是我们想要的结果。
 
-<img src="/IDE/uiEditor/graphics/img/2-9.png" alt="2-9" style="zoom:50%;" />
+<img src="./img/2-9.png" alt="2-9" style="zoom:50%;" />
 
 （图2-9） 
 
@@ -315,7 +315,7 @@ this.owner.addChild(sp);
 
 运行效果如图2-10所示：
 
-<img src="/IDE/uiEditor/graphics/img/2-10.png" alt="2-10" style="zoom:50%;" />
+<img src="./img/2-10.png" alt="2-10" style="zoom:50%;" />
 
 （图2-10） 
 
@@ -327,7 +327,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 圆形（DrawCircleCmd）` 绘制圆形，创建后如图3-1所示。 
 
-<img src="/IDE/uiEditor/graphics/img/3-1.png" alt="3-1" style="zoom: 70%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom: 70%;" />
 
 （图3-1）
 
@@ -377,7 +377,7 @@ this.owner.addChild(sp);
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/3-2.png" alt="3-2" style="zoom:50%;" />
+<img src="./img/3-2.png" alt="3-2" style="zoom:50%;" />
 
 （图3-2）
 
@@ -387,7 +387,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 椭圆形（DrawEllipseCmd）` 绘制椭圆，创建后如图3-3所示。 
 
-<img src="/IDE/uiEditor/graphics/img/3-3.png" alt="3-3" style="zoom:70%;" />
+<img src="./img/3-3.png" alt="3-3" style="zoom:70%;" />
 
 （图3-3）
 
@@ -441,7 +441,7 @@ this.owner.addChild(sp);
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/3-4.png" alt="3-4" style="zoom:50%;" />
+<img src="./img/3-4.png" alt="3-4" style="zoom:50%;" />
 
 （图3-4）
 
@@ -479,7 +479,7 @@ this.owner.addChild(sp);
 
 代码运行效果如下图所示：
 
-<img src="/IDE/uiEditor/graphics/img/3-5.png" alt="3-5" style="zoom:50%;" />
+<img src="./img/3-5.png" alt="3-5" style="zoom:50%;" />
 
 （图3-5） 
 
@@ -493,7 +493,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 多边形（DrawPolyCmd）` 绘制三角形、多边形，创建后如图4-1所示。
 
-<img src="/IDE/uiEditor/graphics/img/4-1.png" alt="4-1" style="zoom:60%;" />
+<img src="./img/4-1.png" alt="4-1" style="zoom:60%;" />
 
 （图4-1）
 
@@ -509,7 +509,7 @@ this.owner.addChild(sp);
 
 动图4-2演示了如何创建一个多边形：
 
-<img src="/IDE/uiEditor/graphics/img/4-2.gif" style="zoom:50%;" /> 
+<img src="./img/4-2.gif" style="zoom:50%;" /> 
 
 （动图4-2）
 
@@ -545,7 +545,7 @@ this.owner.addChild(sp);
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/4-3.png" alt="4-3" style="zoom:50%;" />  
+<img src="./img/4-3.png" alt="4-3" style="zoom:50%;" />  
 
 （图4-3） 
 
@@ -566,7 +566,7 @@ this.owner.addChild(sp);
 
 代码运行效果如下图所示：
 
-<img src="/IDE/uiEditor/graphics/img/4-4.png" alt="4-4" style="zoom:50%;" /> 
+<img src="./img/4-4.png" alt="4-4" style="zoom:50%;" /> 
 
 （图4-4）
 
@@ -598,7 +598,7 @@ this.owner.addChild(sp);
 
 代码运行效果如下图所示：
 
-<img src="/IDE/uiEditor/graphics/img/4-5.png" style="zoom:50%;" /> 
+<img src="./img/4-5.png" style="zoom:50%;" /> 
 
  （图4-5）
 
@@ -612,7 +612,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 线段（DrawLineCmd）` 绘制线段，创建后如图5-1所示。
 
-<img src="/IDE/uiEditor/graphics/img/5-1.png" alt="5-1" style="zoom:50%;" />
+<img src="./img/5-1.png" alt="5-1" style="zoom:50%;" />
 
 （图5-1）
 
@@ -659,7 +659,7 @@ this.owner.addChild(sp);
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/5-2.png" alt="5-2" style="zoom:50%;" />
+<img src="./img/5-2.png" alt="5-2" style="zoom:50%;" />
 
 （图5-2）
 
@@ -669,7 +669,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 折线（DrawLinesCmd）` 绘制折线，创建后如图5-3所示。 
 
-<img src="/IDE/uiEditor/graphics/img/5-3.png" alt="5-3" style="zoom:50%;" />
+<img src="./img/5-3.png" alt="5-3" style="zoom:50%;" />
 
 （图5-3）
 
@@ -713,7 +713,7 @@ this.owner.addChild(sp);
 
 运行效果：  
 
-<img src="/IDE/uiEditor/graphics/img/5-4.png" alt="5-4" style="zoom:50%;" />
+<img src="./img/5-4.png" alt="5-4" style="zoom:50%;" />
 
 （图5-4） 
 
@@ -735,7 +735,7 @@ this.owner.addChild(sp);
 
 #### **6.1.1 一次贝塞尔曲线**
 
- ![1.gif](/IDE/uiEditor/graphics/img/6-1.gif)
+ ![1.gif](./img/6-1.gif)
 
 （动图6-1）
 
@@ -743,11 +743,11 @@ this.owner.addChild(sp);
 
 #### 6.1.2 二次贝塞尔曲线
 
- ![2.gif](/IDE/uiEditor/graphics/img/6-2.gif)
+ ![2.gif](./img/6-2.gif)
 
  （动图6-2）
 
- ![blob.png](/IDE/uiEditor/graphics/img/6-3.png)
+ ![blob.png](./img/6-3.png)
 
  （动图6-3）
 
@@ -755,11 +755,11 @@ this.owner.addChild(sp);
 
 #### 6.1.3 三次贝塞尔曲线
 
- ![3.gif](/IDE/uiEditor/graphics/img/6-4.gif)
+ ![3.gif](./img/6-4.gif)
 
  （动图6-4）
 
- ![blob.png](/IDE/uiEditor/graphics/img/6-5.png)
+ ![blob.png](./img/6-5.png)
 
  （动图6-5）
 
@@ -769,11 +769,11 @@ this.owner.addChild(sp);
 
 由于高阶贝塞尔曲线并不常见，本文将不再详细说明，想对贝塞尔曲线原理了解更多的可以查看其它相关文章。
 
- ![4.gif](/IDE/uiEditor/graphics/img/6-6.gif)
+ ![4.gif](./img/6-6.gif)
 
  （动图6-6） 四次贝塞尔曲线
 
- ![5.gif](/IDE/uiEditor/graphics/img/6-7.gif)
+ ![5.gif](./img/6-7.gif)
 
  （动图6-7） 五次贝塞尔曲线
 
@@ -808,7 +808,7 @@ this.owner.addChild(sp);
 
 运行效果如下：
 
-<img src="/IDE/uiEditor/graphics/img/6-8.png" alt="6-8" style="zoom:50%;" />
+<img src="./img/6-8.png" alt="6-8" style="zoom:50%;" />
 
 （图6-8）
 
@@ -821,7 +821,7 @@ sp.graphics.drawCurves(10, 58, [0, 0, 19, -100, 39, 0, 58, 100, 78, 0], "#ff0000
 
 运行效果如下： 
 
-<img src="/IDE/uiEditor/graphics/img/6-9.png" alt="6-9" style="zoom:50%;" />
+<img src="./img/6-9.png" alt="6-9" style="zoom:50%;" />
 
 （图6-9）
 
@@ -837,7 +837,7 @@ sp.graphics.drawCurves(10, 58, [0, 0, 19, -100, 39, 0, 58, 100, 78, 0], "#ff0000
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 文本（FillTextCmd）` 绘制文本，创建后如图7-1所示。
 
-<img src="/IDE/uiEditor/graphics/img/7-1.png" alt="7-1" style="zoom:80%;" />
+<img src="./img/7-1.png" alt="7-1" style="zoom:80%;" />
 
 （图7-1）
 
@@ -891,7 +891,7 @@ this.owner.addChild(sp);
 
 运行效果：
 
-![7-2](/IDE/uiEditor/graphics/img/7-2.png)
+![7-2](./img/7-2.png)
 
 （图7-2）
 
@@ -903,7 +903,7 @@ this.owner.addChild(sp);
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 填充纹理（FillTextureCmd）` 绘制填充纹理，创建后如图8-1所示。 
 
-<img src="/IDE/uiEditor/graphics/img/8-1.png" alt="8-1" style="zoom: 80%;" />
+<img src="./img/8-1.png" alt="8-1" style="zoom: 80%;" />
 
 （图8-1）
 
@@ -961,7 +961,7 @@ Laya.loader.load("resources/layaAir.png").then((res: Laya.Texture) => {
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/8-2.png" alt="8-2" style="zoom:50%;" />
+<img src="./img/8-2.png" alt="8-2" style="zoom:50%;" />
 
 （图8-2）
 
@@ -973,7 +973,7 @@ Laya.loader.load("resources/layaAir.png").then((res: Laya.Texture) => {
 
 在Sprite对象的 Graphics 组件中，可以通过点击 `+` 来创建一个绘制图形命令。选择 `创建 九宫格纹理（Draw9GridTextureCmd）` 绘制九宫格纹理，创建后如图9-1所示。
 
-<img src="/IDE/uiEditor/graphics/img/9-1.png" alt="9-1" style="zoom: 80%;" />
+<img src="./img/9-1.png" alt="9-1" style="zoom: 80%;" />
 
 （图9-1）
 
@@ -1025,7 +1025,7 @@ Laya.loader.load("atlas/comp/image.png").then((res: Laya.Texture) => {
 
 运行效果：
 
-<img src="/IDE/uiEditor/graphics/img/9-2.png" alt="9-2" style="zoom:50%;" />
+<img src="./img/9-2.png" alt="9-2" style="zoom:50%;" />
 
 （图9-2）
 
@@ -1037,7 +1037,7 @@ Laya.loader.load("atlas/comp/image.png").then((res: Laya.Texture) => {
 
 如果有追求完美的开发者，可以通过开启 Laya.Config.isAntialias=true 开设置，也可以在项目设置中开启，如图10-1所示。
 
-![10-1](/IDE/uiEditor/graphics/img/10-1.png)
+![10-1](./img/10-1.png)
 
  （图10-1）
 

@@ -22,7 +22,7 @@ slug: "ide/assets/atlascfg"
 
 在该工具中拖拽或选择 **图片所在文件夹**，点击**制作**按钮，即可将其中的多张小图合并生成图集，如图1-1所示。
 
-![](/IDE/assets/atlascfg/img/1-1.png) 
+![](./img/1-1.png) 
 
 (图1-1)
 
@@ -41,7 +41,7 @@ slug: "ide/assets/atlascfg"
 
 要创建自动图集配置，只需在资源面板中选中目标图片目录，**右键菜单**  → **创建 → 自动图集配置**，即可生成 `AutoAtlas.atlascfg` 文件，如图1-2所示。
 
-![](/IDE/assets/atlascfg/img/1-2.png) 
+![](./img/1-2.png) 
 
 (图1-2) 
 
@@ -49,7 +49,7 @@ slug: "ide/assets/atlascfg"
 
 需要注意的是，被纳入自动图集的小图资源，必须是 **精灵纹理（`spriteTexture`）** 类型，如图1-3所示。只有符合此类型的资源，才会在打包时被正确识别并合并到图集中。
 
-![](/IDE/assets/atlascfg/img/1-3.png) 
+![](./img/1-3.png) 
 
 (图1-3) 
 
@@ -61,7 +61,7 @@ slug: "ide/assets/atlascfg"
 
  针对文件夹的处理包含两个配置项：**包含子文件夹**与**子文件夹处理**。如图2-1所示，
 
-![](/IDE/assets/atlascfg/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
@@ -135,7 +135,7 @@ slug: "ide/assets/atlascfg"
 
 不论散图位于哪个子目录，生成的图集文件（`.png` 与 `.atlas`）都会统一输出到**自动图集配置所在目录**。如图 3-1 所示。
 
-![](/IDE/assets/atlascfg/img/3-1.png) 
+![](./img/3-1.png) 
 
 （图3-1）
 
@@ -159,7 +159,7 @@ slug: "ide/assets/atlascfg"
 
 在实际使用时，可以直接将某个小图从资源面板拖拽到组件的纹理属性中。如图 3-2 所示。
 
-![](/IDE/assets/atlascfg/img/3-2.png) 
+![](./img/3-2.png) 
 
 (图3-2)
 

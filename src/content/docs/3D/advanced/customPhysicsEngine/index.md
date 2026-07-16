@@ -16,13 +16,13 @@ LayaAir引擎内置了第三方的物理引擎，例如，2D内置了Box2D，3D�
 
 LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm库，对应了引擎源码Physics目录下的类，如图1-1所示：
 
-![](/3D/advanced/customPhysicsEngine/img/1-1.png) 
+![](./img/1-1.png) 
 
 (图1-1)
 
 在3D方面我们内置了Bullet与PhysX物理引擎，对应了引擎源码Physics3D目录下的类，如图1-2所示。
 
-![](/3D/advanced/customPhysicsEngine/img/1-2.png) 
+![](./img/1-2.png) 
 
  （图1-2）
 
@@ -40,19 +40,19 @@ LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm�
 
 首先，我们打开gulp脚本中的`build`任务，仅通过子任务名称，就可以清晰的看出用于复制第三方引擎库的任务`copyJsLibs`以及各种物理引擎库处理的子任务，如图1-3所示。
 
-![](/3D/advanced/customPhysicsEngine/img/1-3.png) 
+![](./img/1-3.png) 
 
 （图1-3）
 
 如果查看任务的代码，会更加清晰的看出，`copyJsLibs`任务中通过`gulp.src()`指定要处理的文件规则，然后按这个规则把符合条件的文件通过`gulp.dest()`复制到指定的目录中去。在物理引擎库的任务代码中，也可以直观的看出，每一个LayaAir物理引擎库都是LayaAir引擎的物理引擎对接代码与第三方物理引擎JS库合并后的一个新库。
 
-![](/3D/advanced/customPhysicsEngine/img/1-4.png) 
+![](./img/1-4.png) 
 
 (图1-4)
 
 当然，一个完整的物理引擎实现，除了对应第三方的物理引擎库之外，还是存在物理组件等基础的物理功能。这些作为物理引擎基础库来使用，2D与3D均存在物理引擎基础库，分别为`laya.physics2D.js`与`laya.physics3D.js`，如图1-5所示。
 
-![](/3D/advanced/customPhysicsEngine/img/1-5.png) 
+![](./img/1-5.png) 
 
 （图1-5）
 
@@ -90,7 +90,7 @@ LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm�
 
 在这个项目源码中，`src`目录下就没那么复杂了，这里只包括了物理引擎适配的代码。如图2-1所示：
 
-![](/3D/advanced/customPhysicsEngine/img/2-1.png) 
+![](./img/2-1.png) 
 
 (图2-1)
 
@@ -98,7 +98,7 @@ LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm�
 
 在适配的过程中，有一点需要重点提醒一下。如果开发者需要在场景初始化流程插入自己的初始化流程，例如有些物理引擎使用了wasm，需要在初始化阶段去下载资源，那么就需要使用`Laya.addBeforeInitCallback()`来注册方法，代码使用示例如图2-2所示。
 
-![](/3D/advanced/customPhysicsEngine/img/2-2.png)   
+![](./img/2-2.png)   
 
 (图2-2)
 
@@ -114,7 +114,7 @@ LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm�
 
 本例中的`cannon.js`就是第三方物理引擎的原始库文件，如图2-3所示，开发者可以修改gulp替换为自己的第三方物理引擎库。
 
-![](/3D/advanced/customPhysicsEngine/img/2-3.png) 
+![](./img/2-3.png) 
 
 （图2-3）
 
@@ -172,7 +172,7 @@ LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm�
 
 点击IDE的 `开发者` 菜单下的 `包管理器` 选项，在弹出的面板，点击左上角的 `+` 号，选中安装包的目录，如图3-1所示。
 
-![](/3D/advanced/customPhysicsEngine/img/3-1.png) 
+![](./img/3-1.png) 
 
 （图3-1）
 
@@ -180,7 +180,7 @@ LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm�
 
 安装包导入成功后，安装包列表中已出现 package.json 对应的安装包信息，如图3-2所示。说明已成功安装。
 
-![](/3D/advanced/customPhysicsEngine/img/3-2.png) 
+![](./img/3-2.png) 
 
 (图3-2)
 
@@ -188,7 +188,7 @@ LayaAir3引擎在2D方面内置了Box2D物理引擎，支持JS引擎库和Wasm�
 
 安装成功后，我们再回到`项目设置` 的 `引擎模块`，可以看到，`3D` -> `物理系统`  下已新增了一个Cannon.js的配置，如图3-3所示。
 
-  ![](/3D/advanced/customPhysicsEngine/img/3-3.png)  
+  ![](./img/3-3.png)  
 
 （图3-3）
 
@@ -228,7 +228,7 @@ Cannon.js 插件地址：[https://store.layaair.com/info.php?id=10180](https://s
 
 添加之后，直接在IDE的包管理器列表中就可以找到，然后直接点击安装即可，如图3-4所示。
 
-![](/3D/advanced/customPhysicsEngine/img/3-4.png) 
+![](./img/3-4.png) 
 
 （图3-4）
 

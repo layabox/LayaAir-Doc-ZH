@@ -15,23 +15,23 @@ Author: 谷主
 控制器是GWidget类的属性，因此，所有UI组件都可以拥有控制器。
 如下图1-1,1-2所示展示的方式创建控制器：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/1-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:60%;" />
 
 （图1-1）
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/1-2.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-2.png" alt="1-1" style="zoom:60%;" />
 
 （图1-2）
 
 创建成功后，如果节点是预制体的根节点，则可以在场景视图顶部快速切换这个控制器的页面，如图1-3所示：
 
- <img src="/IDE/uiEditor/FairyGUI/controller/img/1-3.png" alt="1-1" style="zoom:60%;" />
+ <img src="./img/1-3.png" alt="1-1" style="zoom:60%;" />
 
 （图1-3）
 
 点击‘Edit’按钮，或者上图的‘c’图标，进入控制器编辑页面，如图1-4所示：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/1-4.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-4.png" alt="1-1" style="zoom:60%;" />
 
 （图1-4）
 
@@ -42,19 +42,19 @@ Author: 谷主
 ## 二、属性控制
 每个UI节点都可以在任意控制器（可以是自己的，也可以是其他节点的）切换不同页面时，改变自己的属性，这称为属性控制，每一条属性控制我们用‘Gear'这个名字表达。如下图2-1的Gears部分。
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/2-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/2-1.png" alt="1-1" style="zoom:60%;" />
 
 （图2-1）
 
 点击‘+’图标后，选择需要受控制的属性，如图2-2所示：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/2-2.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/2-2.png" alt="1-1" style="zoom:60%;" />
 
 （图2-2）
 
 举例，选择‘X’属性，表示需要在不同控制器页面下设置不同的坐标X值，显示如下图2-3：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/2-3.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/2-3.png" alt="1-1" style="zoom:60%;" />
 
 （图2-3）
 
@@ -63,7 +63,7 @@ Author: 谷主
 - `Property` 表示当前受控的属性，这是不可修改的。
 - `Tween` 使用动画效果。举例，页面1和页面2的X坐标分别是100和200，当从页面1切换到页面2时，如果不使用动画效果，则X坐标立即变成200；如果使用动画效果，那X值将经历从100到200的缓动变化。点击创建实例后显示下图：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/2-4.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/2-4.png" alt="1-1" style="zoom:100%;" />
 
 （图2-4）
 
@@ -75,7 +75,7 @@ Author: 谷主
 在Gear界面上，我们并没有看X值的设置。当我们需要为不同页面设置不同的X值时，只需要切换不同的控制器页面，然后直接调整组件的X坐标即可，IDE会自动记录组件在不同页面的X坐标值，无需额外操作。
 特别地，如果选择的是‘Visible’属性，则显示的界面和操作的方式有所不同。‘Visible’属性控制的显示界面如下图2-5：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/2-5.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/2-5.png" alt="1-1" style="zoom:100%;" />
 
 （图2-5）
 
@@ -88,7 +88,7 @@ Author: 谷主
 
 控制器可以与按钮联动，当普通按钮被按下，或单选/复选按钮选中状态变化时，控制器的页面随之改变。相关属性位置如下图3-1：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/3-1.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/3-1.png" alt="1-1" style="zoom:100%;" />
 
 （图3-1）
 
@@ -117,7 +117,7 @@ Author: 谷主
 
 控制器可以与下拉框联动，当下拉框选择发生改变时，控制器也同时跳转到相同索引的页面。反之亦然，如果控制器跳转到某个页面，那么下拉框也同时选定相同索引的项目，如图4-1所示：
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/4-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/4-1.png" alt="1-1" style="zoom:60%;" />
 
 （图4-1）
 
@@ -125,7 +125,7 @@ Author: 谷主
 
 控制器可以与Selection联动，当Selection发生改变时，控制器也同时跳转到相同索引的页面。反之亦然，如果控制器跳转到某个页面，那么也会同时选定相同索引的项目。
 
-<img src="/IDE/uiEditor/FairyGUI/controller/img/5-1.png" alt="1-1" style="zoom:100%;" />
+<img src="./img/5-1.png" alt="1-1" style="zoom:100%;" />
 
 （图5-1）
 

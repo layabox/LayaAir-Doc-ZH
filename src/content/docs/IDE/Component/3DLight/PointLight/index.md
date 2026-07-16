@@ -12,13 +12,13 @@ PointLight（点光源）是向四面八方发射光线的光源，又称全向�
 
 如图2-1所示，在一个建筑中，周围都是墙壁，其中创建的点光源，可以通过设置强度，颜色，半径来设置光源效果
 
-<img src="/IDE/Component/3DLight/PointLight/img/2-1.png" alt="image-20221221102723221" style="zoom: 50%;" />
+<img src="./img/2-1.png" alt="image-20221221102723221" style="zoom: 50%;" />
 
 （图2-1）
 
 ## 一、创建点光源
 
-<img src="/IDE/Component/3DLight/PointLight/img/2-2.gif" style="zoom:50%;" />
+<img src="./img/2-2.gif" style="zoom:50%;" />
 
 （动图2-2）
 
@@ -30,25 +30,25 @@ PointLight（点光源）是向四面八方发射光线的光源，又称全向�
 
 如图2-3所示，当创建一个PointLight后，在Inspector属性面板中会有如下几个属性
 
-<img src="/IDE/Component/3DLight/PointLight/img/2-3.png" alt="image-20221221104220653" style="zoom:55%;" />
+<img src="./img/2-3.png" alt="image-20221221104220653" style="zoom:55%;" />
 
 （图2-3）
 
 `Color`：点光源的颜色
 
-<img src="/IDE/Component/3DLight/PointLight/img/2-4.png" alt="image-20221221114439371" style="zoom: 40%;" />
+<img src="./img/2-4.png" alt="image-20221221114439371" style="zoom: 40%;" />
 
 （图2-4）
 
 `Intensity`：点光源的强度
 
-<img src="/IDE/Component/3DLight/PointLight/img/2-5.png" alt="image-20221221114555840" style="zoom:40%;" />
+<img src="./img/2-5.png" alt="image-20221221114555840" style="zoom:40%;" />
 
 （图2-5）
 
 `Range`：设置点光源的范围，相当于点光源的照射范围，数值越大，光照范围越大。
 
-<img src="/IDE/Component/3DLight/PointLight/img/2-6.png" alt="image-20221221114650095" style="zoom:42%;" />
+<img src="./img/2-6.png" alt="image-20221221114650095" style="zoom:42%;" />
 
 （图2-6）
 
@@ -64,7 +64,7 @@ PointLight（点光源）是向四面八方发射光线的光源，又称全向�
 
 如图2-7所示，当选择Lightmap Bake Type为Baked时，下面会出现烘焙相关参数。
 
- <img src="/IDE/Component/3DLight/PointLight/img/2-7.png" alt="image-20221221104220653" style="zoom:55%;" />
+ <img src="./img/2-7.png" alt="image-20221221104220653" style="zoom:55%;" />
 
 （图2-7）
 
@@ -74,7 +74,7 @@ PointLight（点光源）是向四面八方发射光线的光源，又称全向�
 
 `Max Bounces`：烘焙的光照最大反弹数
 
-<img src="/IDE/Component/3DLight/PointLight/img/2-8.png" alt="image-20221221115124169" style="zoom:50%;" />
+<img src="./img/2-8.png" alt="image-20221221115124169" style="zoom:50%;" />
 
 （图2-8）
 

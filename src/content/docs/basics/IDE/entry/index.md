@@ -27,7 +27,7 @@ LayaAir3的项目入口设置有两种方式，
 
 通过输入框右侧的场景选择器选择目标场景，或者直接拖拽场景到输入框即可。
 
- ![1-1](/basics/IDE/entry/img/1-1.png) 
+ ![1-1](./img/1-1.png) 
 
 （图1-1）
 
@@ -35,7 +35,7 @@ LayaAir3的项目入口设置有两种方式，
 
 所以在运行的时候，我们可以选择是运行当前场景还是启动场景。如图1-2所示。
 
-![](/basics/IDE/entry/img/1-2.png) 
+![](./img/1-2.png) 
 
 （图1-2）
 
@@ -60,7 +60,7 @@ export async function main() {
 
 通过输入框右侧的脚本选择器选择目标脚本，或者直接拖拽脚本到输入框即可。如图1-3所示。
 
-![1-7](/basics/IDE/entry/img/1-3.png) 
+![1-7](./img/1-3.png) 
 
 （图1-3）
 
@@ -89,7 +89,7 @@ export async function main() {
 
 编辑（macOS 为应用程序菜单）→ 首选项 → 快捷键 → 全局，通过点击目标命令旁的“+”号，为其绑定所需快捷键，如图 1-4 所示。
 
-![](/basics/IDE/entry/img/1-4.png) 
+![](./img/1-4.png) 
 
 （图1-4）
 
@@ -99,7 +99,7 @@ export async function main() {
 
 例如，默认按钮设置为播放（运行预览）当前场景。如图1-5所示。
 
-![](/basics/IDE/entry/img/1-5.png) 
+![](./img/1-5.png) 
 
 (图1-5)
 
@@ -107,7 +107,7 @@ export async function main() {
 
 这样，开发者就可以通过点击不同的按钮，快捷实现不同启动入口的需求。
 
-![](/basics/IDE/entry/img/1-6.png) 
+![](./img/1-6.png) 
 
 (图1-6)
 
@@ -146,7 +146,7 @@ class PlayButton {
 
 通常，我们直接在`项目设置`面板中配置即可，如图2-1所示。
 
-![1-4](/basics/IDE/entry/img/2-1.png)  
+![1-4](./img/2-1.png)  
 
 （图2-1） 
 
@@ -218,13 +218,13 @@ export class Main extends Laya.Script {
 
 动图2-1演示了如何添加自定义的组件脚本。在`属性设置`面板中，点击`增加组件`->`新建组件脚本`，然后可以对要新建的脚本进行重命名（图中重命名为aaa），最后点击`创建并添加`即可创建脚本。
 
-![2-2](/basics/IDE/entry/img/2-2.gif)
+![2-2](./img/2-2.gif)
 
 （动图2-2）
 
  按以上动图添加的自定义组件脚本aaa.ts，生成了名称为aaa的脚本模板类，如图2-3所示，直接在该脚本中编写代码即可。
 
-![2-2](/basics/IDE/entry/img/2-3.png)  
+![2-2](./img/2-3.png)  
 
 （图2-3）
 
@@ -240,13 +240,13 @@ UI运行时的应用场景是，需要管理的节点比较多的时候，以及
 
 UI运行时需要在`UI运行时（Runtime）`属性入口进行添加，如图2-4所示。并且，只能添加在2D场景根节点（Scene2D）或2D预制体根节点。
 
-![2-4](/basics/IDE/entry/img/2-4.png) 
+![2-4](./img/2-4.png) 
 
 （图2-4）
 
 先双击`UI运行时`输入框，然后在弹出的面板中，选择好目录，以及重命名脚本的文件名，点击`保存`即可，如动图2-5所示。
 
-<img src="/basics/IDE/entry/img/2-5.gif" style="zoom:80%;" /> 
+<img src="./img/2-5.gif" style="zoom:80%;" /> 
 
 （动图2-5）
 

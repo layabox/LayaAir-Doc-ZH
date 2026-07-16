@@ -20,7 +20,7 @@ slug: "released/windows"
 
 在构建发布面板中，侧边栏选择目标平台为Windows。如图2-1所示，
 
-![2-1](/released/Windows/img/2-1.png) 
+![2-1](./img/2-1.png) 
 
 （图2-1）
 
@@ -48,25 +48,25 @@ slug: "released/windows"
 
 按如图2-2的方式发布，勾选打包资源，填写资源服务器URL，
 
-![2-2](/released/Windows/img/2-2.png) 
+![2-2](./img/2-2.png) 
 
 （图2-2）
 
 发布后的目录结构如图2-3所示，
 
-![2-3](/released/Windows/img/2-3.png) 
+![2-3](./img/2-3.png) 
 
 （图2-3）
 
 其中，resource目录是打包的资源，如图2-4所示，js目录和libs目录是项目代码和引擎库，fileconfig.json是项目配置文件，index.js是项目的入口文件。
 
-![2-4](/released/Windows/img/2-4.png) 
+![2-4](./img/2-4.png) 
 
 （图2-4）
 
 release目录是发布Windows后的项目目录，可以看到.exe文件已经自动生成好了。
 
-![2-5](/released/Windows/img/2-5.png) 
+![2-5](./img/2-5.png) 
 
 （图2-5）
 
@@ -76,19 +76,19 @@ release目录是发布Windows后的项目目录，可以看到.exe文件已经�
 
 首先，将资源传入服务器中，这里使用anywhere模拟一个本地服务器，如图3-1所示，
 
-![3-1](/released/Windows/img/3-1.png) 
+![3-1](./img/3-1.png) 
 
 （图3-1）
 
 接着，双击图3-2所示的.exe文件即可运行发布后的Windows项目。
 
-![3-2](/released/Windows/img/3-2.png) 
+![3-2](./img/3-2.png) 
 
 （图3-2）
 
 运行效果如动图3-3所示， 
 
-<img src="/released/Windows/img/3-3.gif" alt="3-3" style="zoom: 60%;" /> 
+<img src="./img/3-3.gif" alt="3-3" style="zoom: 60%;" /> 
 
 （动图3-3）
 

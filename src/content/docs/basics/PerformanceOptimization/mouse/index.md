@@ -1,10 +1,8 @@
 ---
-title: "readme"
+title: "鼠标交互的使用与优化"
 description: "无论是PC端的鼠标交互还是移动端的触摸交互，我们暂且都泛称为鼠标交互。这是游戏引擎实现人机交互的基础。本文从LayaAir引擎鼠标交互的基础使用开始（包括2D与3D），到进阶级的使用，进行全面介绍，希望对使用LayaAir的新老朋友都有所帮助。"
 slug: "basics/performanceoptimization/mouse"
 ---
-
-## 鼠标交互的使用与优化
 
 > Author: charley           Data:  2022-04-14
 
@@ -12,7 +10,7 @@ slug: "basics/performanceoptimization/mouse"
 
 [TOC]
 
-### 一、鼠标交互的基础使用
+## 一、鼠标交互的基础使用
 
 > 非新手开发者，可以跳过本小节
 
@@ -64,7 +62,7 @@ slug: "basics/performanceoptimization/mouse"
 
 如果开发者在某些情况下，想自己派发事件，然后侦听自己定义的事件类型，LayaAir引擎提供了event方法。API如图1所示：
 
-![](/basics/PerformanceOptimization/mouse/img/1.png)    
+![](./img/1.png)    
 
 (图1)
 
@@ -144,7 +142,7 @@ onClosed(): void {
 
 ##### off：删除指定的某个侦听器
 
-![img](/basics/PerformanceOptimization/mouse/img/2.png) 
+![img](./img/2.png) 
 
 （图2） 
 
@@ -166,7 +164,7 @@ this.xxx.off(Laya.Event.CLICK, this, this.xxxOnClicked);
 
 ##### offAll：删除对象中指定事件类型的全部侦听器
 
-![img](/basics/PerformanceOptimization/mouse/img/3.png) 
+![img](./img/3.png) 
 
 (图3)
 
@@ -181,7 +179,7 @@ this.xxx.offAll(Laya.Event.CLICK);
 
 ##### offAllCaller：删除指定执行域的全部侦听器
 
-![](/basics/PerformanceOptimization/mouse/img/4.png)  
+![](./img/4.png)  
 
 (图4)
 
@@ -260,7 +258,7 @@ export default class Script2DTest extends Laya.Script {
 
 控制对象是否接收鼠标事件的属性参数是mouseEnabled，我们可以在代码里设置，也可以在IDE里的属性面板里设置，如图5所示：
 
-![img](/basics/PerformanceOptimization/mouse/img/5.png) 
+![img](./img/5.png) 
 
 （图5）
 
@@ -449,14 +447,14 @@ export default class XX extends Laya.Script {
 }
 ```
 
-### 二、穿透与鼠标碰撞区域
+## 二、穿透与鼠标碰撞区域
 
 > 之所以把穿透单独拉出一个小节来介绍，是因为这块比较容易引起开发者的使用误区，是新手踩坑的一个常见地方。
 >
 
 是否穿透的API是mouseThrough，可以通过代码设置，也可以在IDE属性面板里直观的进行设置，如图6所示。
 
-![img](/basics/PerformanceOptimization/mouse/img/6.png) 
+![img](./img/6.png) 
 
 (图6)
 
@@ -497,13 +495,13 @@ mouseThrough的默认值为false，为false时，可以理解为不穿透，这�
 
 引擎还可以通过graphics绘制图形来实现自定义的鼠标碰撞区域。如图9所示，想要通过Graphics绘制图形首先需要创建一个sprite，在sprite属性中来使用Graphics，我们为Sprite节点添加了一个圆形的graphics绘制区域。
 
-![img](/basics/PerformanceOptimization/mouse/img/9.png)  
+![img](./img/9.png)  
 
 （图9）
 
 然后，我们还需要将这个圆形绘制区域的渲染类型(Hit Area)设置为碰撞区域（hit），如动图10所示。这样哪怕是个空节点，也会依据这个绘制的碰撞区为不可穿透区域。
 
-![img](/basics/PerformanceOptimization/mouse/img/10.gif) 
+![img](./img/10.gif) 
 
 (动图10)
 
@@ -527,7 +525,7 @@ graphics绘制区域的使用有三种形式，分别是：通过IDE的创建、
 
 如图11所示：
 
-![img](/basics/PerformanceOptimization/mouse/img/11.png) 
+![img](./img/11.png) 
 
 （图11）
 
@@ -572,7 +570,7 @@ LayaAir的一些图像UI组件，通过继承自Graphics的AutoBitmap实现的�
 
 当mouseThrough为false时（不穿透设置），在这些图像UI组件对象上添加任意的绘制图形，然后将该对象的graphics图形渲染类型Hit Area设置为unHit，如图12所示。那么该组件就处于穿透状态了。
 
-![img](/basics/PerformanceOptimization/mouse/img/12.png) 
+![img](./img/12.png) 
 
 (图12)
 
@@ -586,7 +584,7 @@ LayaAir的一些图像UI组件，通过继承自Graphics的AutoBitmap实现的�
 
 不穿透主要以宽高设置碰撞区，图像UI组件会自动获得宽高。容器组件要手动设置或者依据子节点自动获取。如果矩形碰撞区不能满足的，可以采用graphics绘制图形并作为碰撞区（设置Hit Area为hit）。存在graphics绘制的鼠标碰撞区时，不再以宽高为鼠标碰撞区。
 
-### 三、鼠标交互的使用优化
+## 三、鼠标交互的使用优化
 
 #### 3.1 阻止事件流冒泡：stopPropagation
 
@@ -600,7 +598,7 @@ LayaAir的一些图像UI组件，通过继承自Graphics的AutoBitmap实现的�
 
 下面，我们通过图13的事件流示意图来理解一下，
 
-![13](/basics/PerformanceOptimization/mouse/img/13.png) 
+![13](./img/13.png) 
 
 （图13）
 
@@ -616,7 +614,7 @@ LayaAir的一些图像UI组件，通过继承自Graphics的AutoBitmap实现的�
 
 需要注意的是，假如，两个孙节点都是某个节点的子节点，其中一个孙节点使用了stopPropagation，不会影响另一个孙节点的冒泡路径。冒泡流程如图14所示。
 
-![img](/basics/PerformanceOptimization/mouse/img/14.png) 
+![img](./img/14.png) 
 
 （图14） 
 
@@ -663,7 +661,7 @@ onMouseDown(e: Laya.Event): void {
 
 优先检测本对象（true），是一种优化模式，未命中本对象时，提前中断检测可以减少子节点递归检测带来的消耗。但是也因此，导致子节点对象在本对象的碰撞区域外，检测不到。
 
-![img](/basics/PerformanceOptimization/mouse/img/15.png) 
+![img](./img/15.png) 
 
 （图15）
 
@@ -695,7 +693,7 @@ onMouseDown(e: Laya.Event): void {
 
 穿透是比较常用的属性功能。例如图16中，我们为背景（rightBG）与角色（role）均开启了穿透，那么侦听背景的时候，只有按钮（btn2）才会触发鼠标事件。否则，在背景上的任意区域都会触发鼠标事件。
 
-![img](/basics/PerformanceOptimization/mouse/img/16.png) 
+![img](./img/16.png) 
 
 （图16）
 
@@ -707,7 +705,7 @@ onMouseDown(e: Laya.Event): void {
 
 > 如果一定要使用Image对象实现穿透，可以先设置为不穿透，再设置绘制图形的渲染类型为unHit（具体参照2.3.3小节）。
 
-### 四、3D鼠标交互
+## 四、3D鼠标交互
 
 #### 4.1 2D鼠标交互与3D鼠标交互的区别
 
@@ -725,7 +723,7 @@ onMouseDown(e: Laya.Event): void {
 
 然后是碰撞检测，必须要引入3D物理引擎库，如图17所示。
 
-![img](/basics/PerformanceOptimization/mouse/img/17.png) 
+![img](./img/17.png) 
 
 (图17)
 

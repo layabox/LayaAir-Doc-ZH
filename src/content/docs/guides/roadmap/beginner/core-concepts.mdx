@@ -1,0 +1,123 @@
+---
+title: "掌握核心概念"
+description: "程序新手路线第 3 阶段：建立节点、场景、舞台、显示列表与 ECS 组件脚本心智模型，弄清事件、定时器与资源加载在项目中的位置，为分入 2D 或 3D 方向打牢通用基础。"
+lastUpdated: 2026-07-15
+slug: "guides/roadmap/beginner/core-concepts"
+---
+
+import { Steps, LinkCard, CardGrid, Tabs, TabItem } from '@astrojs/starlight/components';
+
+从这里开始，学习会从「会点按钮」变成「理解引擎在干什么」。请把本阶段当作**词典 + 地图**：先建立名词关系，细节以后按需回查。
+
+## 本阶段目标
+
+- 能用自己的话解释：节点、场景、舞台、显示列表
+- 明白「节点 + 组件脚本」如何分工（ECS 在 LayaAir 里怎么落地）
+- 知道事件、定时器、加载器分别解决什么问题
+- 遇到新功能时，能判断它属于「编辑器配置」还是「脚本逻辑」
+
+## 先建立一张总图
+
+```
+场景 Scene
+ └─ 节点树（Node）
+     ├─ 2D：Sprite / UI 组件 …
+     └─ 3D：Sprite3D / Camera / Light …
+         └─ 组件脚本（Laya.Script）← 你的游戏逻辑主要写这里
+```
+
+记住两句就够用很久：
+
+1. **能摆在层级面板里的，大多是节点。**
+2. **挂在节点上、带生命周期的逻辑，大多是组件脚本。**
+
+## 推荐阅读顺序
+
+<Steps>
+
+1. **引擎在做什么（可选速览）**
+
+   花 15～30 分钟扫一遍功能概述与架构概述，只求「见过名词」。
+
+   → [引擎功能概述](/basics/) · [引擎架构概述](/basics/architecture/)
+
+2. **基础概念：画布 / 舞台 / 节点 / 显示列表**
+
+   这是理解一切显示与交互的地基。
+
+   → [引擎基础概念](/basics/common/basicconcepts/)
+
+3. **场景与节点**
+
+   搞清场景如何组织，节点如何增删、父子、激活。
+
+   → [场景管理](/basics/common/scene/) · [节点管理](/basics/common/node/)
+
+4. **组件与脚本生命周期**
+
+   重点看：何时创建、何时启用、每帧更新、碰撞/触发、销毁。再对照 IDE 自定义脚本写法。
+
+   → [实体组件系统（ECS）](/basics/common/component/) · [自定义脚本组件](/basics/ide/script/) · [组件化开发说明](/basics/scriptuse/componentdevelopment/)
+
+5. **三条通用「工具链」**
+
+   几乎所有项目都会碰到，建议建立索引级认知：
+
+   | 能力 | 你用它做什么 | 文档 |
+   |---|---|---|
+   | 事件 | 点击、派发自定义消息 | [事件管理](/basics/common/event/) |
+   | 定时器 | 延时、帧循环、倒计时 | [定时器](/basics/common/timer/) |
+   | 加载 | 图集、场景、模型、配置 | [资源加载](/basics/common/loader/) |
+
+</Steps>
+
+## 必读清单
+
+<CardGrid>
+  <LinkCard
+    title="引擎基础概念"
+    href="/basics/common/basicconcepts/"
+    description="画布、舞台、节点、显示列表。"
+  />
+  <LinkCard
+    title="实体组件系统"
+    href="/basics/common/component/"
+    description="节点实体 + 组件脚本的核心开发范式。"
+  />
+  <LinkCard
+    title="自定义脚本组件"
+    href="/basics/ide/script/"
+    description="IDE 里挂脚本、暴露属性的日常写法。"
+  />
+  <LinkCard
+    title="事件 · 定时器 · 加载"
+    href="/basics/common/event/"
+    description="先从事件进，再按需跳到 timer / loader。"
+  />
+</CardGrid>
+
+## 用「问题驱动」巩固
+
+<Tabs>
+  <TabItem label="我想控制一个物体移动">
+    优先路径：给节点挂脚本 → 在 `onUpdate` 改 `transform` / 坐标 → 需要输入时再接事件。别一上来写全局单例乱跳。
+  </TabItem>
+  <TabItem label="我想按钮按下后开门">
+    优先路径：UI 按钮事件 → 派发或直接调用目标脚本方法 → 目标脚本改节点状态。逻辑放在「门」或「关卡管理」脚本里，不要全塞进按钮。
+  </TabItem>
+  <TabItem label="我想切换关卡 / 界面">
+    优先路径：先理解 [场景管理](/basics/common/scene/) 与预加载；UI 多可用视图/弹窗节点显隐，不必每个界面都硬切场景。
+  </TabItem>
+</Tabs>
+
+## 进入下一阶段前，请确认
+
+- 能区分「节点属性」与「脚本逻辑」分别在哪改
+- 知道脚本至少两个生命周期方法的用途（例如启用与每帧更新）
+- 能解释为什么推荐「一个脚本只管一件事」
+- 遇到点击、延时、加载资源，知道各去哪章查
+
+:::tip[学完就可以分岔了]
+下一阶段开始请**主攻 2D 或 3D 之一**。另一条可以稍后补，避免两边同时深挖导致挫败感。
+:::
+

@@ -10,7 +10,7 @@ slug: "2d/displayobject/soundnode"
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/2D/displayObject/SoundNode/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -18,7 +18,7 @@ slug: "2d/displayobject/soundnode"
 
 在IDE中，将SoundNode节点添加到场景编辑的视图区后，属性面板中SoundNode的专属属性如下图所示： 
 
-![1-2](/2D/displayObject/SoundNode/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 

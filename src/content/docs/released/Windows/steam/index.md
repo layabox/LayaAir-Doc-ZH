@@ -90,7 +90,7 @@ extern "C" {
 
 生成的动态链接库`steam_demo.dll`如图2-1所示，
 
-![2-1](/released/Windows/steam/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -139,13 +139,13 @@ export class NewScript extends Laya.Script {
 
 构建发布Windows后，需要在exe的同级目录下，新建一个`steam_appid.txt` 文件，其中只包含 AppID。
 
-![2-2](/released/Windows/steam/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
 在Steam客户端登录的前提下，双击可执行文件，如果返回值为“1”，如图2-3所示，则表示初始化成功。
 
-![2-3](/released/Windows/steam/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -161,7 +161,7 @@ export class NewScript extends Laya.Script {
 
 首先需要在后端的 Steamworks 应用程序管理的[成就配置](https://partner.steamgames.com/apps/achievements/)页面进行设置。这里给出一个成就列表的示例，如图3-1所示，
 
-![3-1](/released/Windows/steam/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -357,25 +357,25 @@ export class NewScript extends Laya.Script {
 
 最终的运行效果如动图3-2所示，先初始化，再解锁成就，
 
-<img src="/released/Windows/steam/img/3-2.gif" alt="3-2" style="zoom:67%;" />
+<img src="./img/3-2.gif" alt="3-2" style="zoom:67%;" />
 
 （动图3-2）
 
 点击完成成就按钮后，桌面会显示弹框，如图3-3所示，
 
-![3-3](/released/Windows/steam/img/3-3.png)
+![3-3](./img/3-3.png)
 
 （图3-3）
 
 在成就完成前，Steam客户端显示的状态如图3-4所示，
 
-![3-4](/released/Windows/steam/img/3-4.png)
+![3-4](./img/3-4.png)
 
 （图3-4）
 
 解锁成就后，状态如图3-5所示，
 
-![3-5](/released/Windows/steam/img/3-5.png)
+![3-5](./img/3-5.png)
 
 （图3-5）
 

@@ -6,7 +6,7 @@ slug: "ide/uieditor/fairygui/gloader"
 
 Author: 谷主
 
-<img src="/IDE/uiEditor/FairyGUI/GLoader/img/1-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:60%;" />
 
 - `Src` 图片资源或者表达序列帧动画的图集资源。
 - `Is Demo` Src设置的内容只作为Demo，也就是只在IDE编辑时显示，发布时将自动清空。

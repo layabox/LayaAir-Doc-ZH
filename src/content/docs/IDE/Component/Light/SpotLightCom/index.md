@@ -12,13 +12,13 @@ SpotLight（聚光灯）指的是从特定光源方向射出的光，比如手�
 
 如图4-1所示，在一个场景中，通过调整聚光的锥形角度，可以调整场景的光照效果
 
-<img src="/IDE/Component/Light/SpotLightCom/img/4-1.gif" style="zoom: 50%;" />
+<img src="./img/4-1.gif" style="zoom: 50%;" />
 
 （动图4-1）
 
 ## 一、创建聚光灯
 
-<img src="/IDE/Component/Light/SpotLightCom/img/4-2.gif" style="zoom:50%;" />
+<img src="./img/4-2.gif" style="zoom:50%;" />
 
 （动图4-2）
 
@@ -30,13 +30,13 @@ SpotLight（聚光灯）指的是从特定光源方向射出的光，比如手�
 
 如图4-3所示，当创建一个SpotLight后，在Inspector属性面板中会有如下几个属性
 
-<img src="/IDE/Component/Light/SpotLightCom/img/4-3.png" alt="image-20221221104220653" style="zoom:50%;" />
+<img src="./img/4-3.png" alt="image-20221221104220653" style="zoom:50%;" />
 
 （图4-3）
 
 `Color`：聚光灯的颜色
 
-<img src="/IDE/Component/Light/SpotLightCom/img/4-4.png" alt="image-20221221114439371" style="zoom: 40%;" />
+<img src="./img/4-4.png" alt="image-20221221114439371" style="zoom: 40%;" />
 
 （图4-4）
 
@@ -44,13 +44,13 @@ SpotLight（聚光灯）指的是从特定光源方向射出的光，比如手�
 
 `Range`：聚光灯的照射范围，与点光类似，区别只是聚光有方向，而点光无方向
 
-<img src="/IDE/Component/Light/SpotLightCom/img/4-5.png" alt="image-20221221114439371" style="zoom: 40%;" />
+<img src="./img/4-5.png" alt="image-20221221114439371" style="zoom: 40%;" />
 
 （图4-5）
 
 `Spot Angle`：聚光灯的锥形角度，设置的值越小，聚光光圈的越小，反之光圈越大。
 
-<img src="/IDE/Component/Light/SpotLightCom/img/4-6.png" alt="image-20221221114439371" style="zoom: 40%;" />
+<img src="./img/4-6.png" alt="image-20221221114439371" style="zoom: 40%;" />
 
 （图4-6）
 
@@ -60,7 +60,7 @@ SpotLight（聚光灯）指的是从特定光源方向射出的光，比如手�
 
 如图4-7所示，当选择Lightmap Bake Type为Baked时，下面会出现烘焙相关参数。
 
- <img src="/IDE/Component/Light/SpotLightCom/img/4-7.png" alt="image-20221221104220653" style="zoom:55%;" />
+ <img src="./img/4-7.png" alt="image-20221221104220653" style="zoom:55%;" />
 
 （图4-7）
 
@@ -95,7 +95,7 @@ spotcom.intensity = 8.0;
 spotcom.spotAngle = 32;
 ```
 
-<img src="/IDE/Component/Light/SpotLightCom/img/4-8.gif" style="zoom:50%;" />
+<img src="./img/4-8.gif" style="zoom:50%;" />
 
 （动图4-8）
 

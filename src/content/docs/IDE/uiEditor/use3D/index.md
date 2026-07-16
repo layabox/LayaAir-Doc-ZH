@@ -8,7 +8,7 @@ slug: "ide/uieditor/use3d"
 
 在2D项目开发过程中，开发者往往需要在UI界面显示3D场景或者3D物体，比如游戏开发中，3D人物在2D背景地图上跑动，英雄属性界面里会展示3D的英雄模型等等，如动图1-1所示，
 
-<img src="/IDE/uiEditor/use3D/img/1-1.gif" style="zoom:50%;" /> 
+<img src="./img/1-1.gif" style="zoom:50%;" /> 
 
 （动图1-1）
 
@@ -26,13 +26,13 @@ slug: "ide/uieditor/use3d"
 
 如图2-1所示，先在IDE的 assets 资源中创建一个渲染纹理（RenderTexture）文件。
 
-<img src="/IDE/uiEditor/use3D/img/2-1.png" alt="2-1" style="zoom: 80%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom: 80%;" />
 
 （图2-1）
 
 点击新创建的RenderTexture文件，在属性面板中，会显示属性信息，如图2-2所示。 
 
-![2-2](/IDE/uiEditor/use3D/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -66,7 +66,7 @@ WrapModeV：V方向采样模式。
 
 在IDE中的3D场景中，添加希望显示的3D物体，此例中把LayaMonkey添加到3D场景中，如图2-3所示。
 
-![2-3](/IDE/uiEditor/use3D/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -74,7 +74,7 @@ WrapModeV：V方向采样模式。
 
 然后如图2-4所示，改摄像机为正交投影，并调整好摄像机的显示比例。
 
-![2-4](/IDE/uiEditor/use3D/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -84,7 +84,7 @@ WrapModeV：V方向采样模式。
 
 把之前创建好的渲染纹理文件（RenderTexture），拖入摄像机的目标纹理（Render Target）属性中。此时摄像机就会渲染到纹理， 而不是渲染到屏幕了。如图2-5所示，
 
-<img src="/IDE/uiEditor/use3D/img/2-5.png" alt="2-5" style="zoom:80%;" />
+<img src="./img/2-5.png" alt="2-5" style="zoom:80%;" />
 
 （图2-5）
 
@@ -94,7 +94,7 @@ WrapModeV：V方向采样模式。
 
 在Scene2D中创建一个Sprite，作为显示3D物体的载体，把之前创建的渲染纹理拖入Sprite的Texture属性中，如动图2-6所示，
 
-![2-6](/IDE/uiEditor/use3D/img/2-6.gif)
+![2-6](./img/2-6.gif)
 
 （动图2-6）
 
@@ -108,19 +108,19 @@ WrapModeV：V方向采样模式。
 
 （注意，在2.2节中，摄像机Render组件中的Clear Color的A值要设为0）。
 
-<img src="/IDE/uiEditor/use3D/img/2-7.gif" alt="2-7" style="zoom:80%;" />
+<img src="./img/2-7.gif" alt="2-7" style="zoom:80%;" />
 
 （动图2-7）
 
 仔细观察LayaMonkey，图像比较粗糙，主要原因是渲染纹理的分辨率（Width×Height）是256x256太低导致，下面修改分辨率为1024x1024，如动图2-8所示。
 
-<img src="/IDE/uiEditor/use3D/img/2-8.gif" style="zoom:80%;" />
+<img src="./img/2-8.gif" style="zoom:80%;" />
 
 （动图2-8）
 
 这样，LayaMonkey一下变清晰了，到此我们就把3D对象通过渲染纹理的方式，混合到UI界面了。运行效果如动图2-9所示：
 
-<img src="/IDE/uiEditor/use3D/img/2-9.gif" alt="2-9" style="zoom:80%;" />
+<img src="./img/2-9.gif" alt="2-9" style="zoom:80%;" />
 
 （动图2-9）
 

@@ -76,97 +76,97 @@ TwoGradients:2 个颜色渐变之间的随机；
 
 - writeBaseNode解析基础模块，对应LayaAir-IDE中的“通用”，如图2-1所示，Unity（左）与LayaAir（右）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-1.png" alt="2-1" style="zoom: 60%;" />
+<img src="./img/2-1.png" alt="2-1" style="zoom: 60%;" />
 
 （图2-1）
 
 - writeEmission解析Emission模块，对应LayaAir-IDE中的“发射”，如图2-2所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-2.png" alt="2-2" style="zoom:80%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:80%;" />
 
 （图2-2）
 
 - writeShape解析Shape模块，对应LayaAir-IDE中的“形状”，如图2-3所示，Unity（左）与LayaAir（右）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-3.png" alt="2-3" style="zoom:67%;" />
+<img src="./img/2-3.png" alt="2-3" style="zoom:67%;" />
 
 （图2-3）
 
 - writeVelocityOverLifetime解析 Velocity over LifeTime 模块，对应LayaAir-IDE中的“生命周期-速度随生命周期变化”，如图2-4所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-4.png" alt="2-4" style="zoom:67%;" />
+<img src="./img/2-4.png" alt="2-4" style="zoom:67%;" />
 
 （图2-4）
 
 - writeLimitVelocityOverLifetime解析 Limit Velocity over Lifetime 模块，对应LayaAir-IDE中的“生命周期-限制速度随生命周期变化”，如图2-5所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-5.png" alt="2-5" style="zoom:67%;" />
+<img src="./img/2-5.png" alt="2-5" style="zoom:67%;" />
 
 （图2-5）
 
 - writeInheritVelocity解析 Inherit Velocity 模块，对应LayaAir-IDE中的“生命周期-继承速度”，如图2-6所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-6.png" alt="2-6" style="zoom:67%;" />
+<img src="./img/2-6.png" alt="2-6" style="zoom:67%;" />
 
 （图2-6）
 
 - writeForceOverLifetime解析 Force over Lifetime 模块，对应LayaAir-IDE中的“生命周期-力随生命周期变化”，如图2-7所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-7.png" alt="2-7" style="zoom:67%;" />
+<img src="./img/2-7.png" alt="2-7" style="zoom:67%;" />
 
 （图2-7）
 
 - writeRotationOverLifetime解析 Rotation over Lifetime 模块，对应LayaAir-IDE中的“生命周期-旋转随生命周期变化”，如图2-8所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-8.png" alt="2-8" style="zoom:67%;" />
+<img src="./img/2-8.png" alt="2-8" style="zoom:67%;" />
 
 （图2-8）
 
 - writeRotationBySpeed解析 Rotation by Speed 模块，对应LayaAir-IDE中的“生命周期-旋转随速度变化”，如图2-9所示，Unity（上）与LayaAir（下）的对应关系。
 
-![2-9](/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-9.png)
+![2-9](./img/2-9.png)
 
 （图2-9）
 
 - writeSizeOverLifetime解析Size over Lifetime模块，对应LayaAir-IDE中的“生命周期-大小随生命周期变化”，如图2-10所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-10.png" alt="2-10" style="zoom:67%;" />
+<img src="./img/2-10.png" alt="2-10" style="zoom:67%;" />
 
 （图2-10）
 
 - writeSizeBySpeed解析 Size by Speed 模块，对应LayaAir-IDE中的“生命周期-大小随速度变化”，如图2-11所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-11.png" alt="2-11" style="zoom:67%;" />
+<img src="./img/2-11.png" alt="2-11" style="zoom:67%;" />
 
 （图2-11）
 
 - writeColorOverLifetime解析 Color over Lifetime 模块，对应LayaAir-IDE中的“生命周期-颜色随生命周期变化”，如图2-12所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-12.png" alt="2-12" style="zoom:67%;" />
+<img src="./img/2-12.png" alt="2-12" style="zoom:67%;" />
 
 （图2-12）
 
 - writeColorBySpeed解析 Color by Speed 模块，对应LayaAir-IDE中的“生命周期-颜色随速度变化”，如图2-13所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-13.png" alt="2-13" style="zoom:67%;" />
+<img src="./img/2-13.png" alt="2-13" style="zoom:67%;" />
 
 （图2-13）
 
 - writeTextureSheetAnimation解析 Texture Sheet Animation 模块，对应LayaAir-IDE中的“贴图动画”，如图2-14所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-14.png" alt="2-14" style="zoom:67%;" />
+<img src="./img/2-14.png" alt="2-14" style="zoom:67%;" />
 
 （图2-14）
 
 - writeNoise解析 Noise 模块，对应LayaAir-IDE中的“绕动”，如图2-15所示，Unity（左）与LayaAir（右）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-15.png" alt="2-15" style="zoom:67%;" />
+<img src="./img/2-15.png" alt="2-15" style="zoom:67%;" />
 
 （图2-15）
 
 - writeSubEmittersModule解析 Sub Emitters 模块，对应LayaAir-IDE中的“子发射器”，如图2-16所示，Unity（上）与LayaAir（下）的对应关系。
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/2-16.png" alt="2-16" style="zoom:67%;" />
+<img src="./img/2-16.png" alt="2-16" style="zoom:67%;" />
 
 （图2-16）
 
@@ -196,7 +196,7 @@ TwoGradients:2 个颜色渐变之间的随机；
     }
 ```
 
-<img src="/IDE/layapackage/enterprise/cpuParticle/unityCPUPartical/img/3-1.png" alt="3-1" style="zoom:67%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom:67%;" />
 
 （图3-1）
 

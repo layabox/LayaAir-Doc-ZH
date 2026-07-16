@@ -18,7 +18,7 @@ slug: "ide/component/2d/lightoccluder2d"
 
 在LayaAir-IDE中使用2D光遮挡器，首先需要添加[2D灯光](/ide/component/2d/baselight2d/)（方向光、精灵光、自由形态光、聚光灯）并勾选“启用阴影”，如图2-1所示，才能显示出效果，
 
-![2-1](/IDE/Component/2D/LightOccluder2D/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -35,13 +35,13 @@ slug: "ide/component/2d/lightoccluder2d"
 
 然后在节点上添加2D光遮挡器组件，如图2-2所示，这样该节点就有遮光效果了。
 
-![2-2](/IDE/Component/2D/LightOccluder2D/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
 如图2-3所示，是一个添加了光遮挡器的节点，在方向光的照射下，产生阴影的效果。
 
-![2-3](/IDE/Component/2D/LightOccluder2D/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -53,7 +53,7 @@ slug: "ide/component/2d/lightoccluder2d"
 
 `内部挡光`：当光源位于光遮挡器内部时，是否产生遮挡效果。勾选后，光源在光遮挡器内部时也会产生遮挡，如图2-4（左）所示；如果不勾选，光源在光遮挡器内部时不会产生遮光效果，如图2-4（右）所示。（图2-4中，小正方形为2D自由形态光，大三角形为2D光遮挡器）
 
-![2-4](/IDE/Component/2D/LightOccluder2D/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -61,7 +61,7 @@ slug: "ide/component/2d/lightoccluder2d"
 
 `外部挡光`：控制是否只有光遮挡器的外轮廓产生遮挡效果。勾选后，只有外轮廓产生遮挡，如图2-5（左）；如果不勾选，整个光遮挡器区域都产生遮挡，如图2-5（右）。（图2-5中的三角形区域是2D光遮挡器）
 
-![2-5](/IDE/Component/2D/LightOccluder2D/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -71,13 +71,13 @@ slug: "ide/component/2d/lightoccluder2d"
 
 第一种是点击顶点列表，输入顶点坐标进行编辑（按顺时针顺序），如图2-6所示，
 
-![2-6](/IDE/Component/2D/LightOccluder2D/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
 第二种是点击“编辑形状”按钮，如动图2-7所示，点击后进入编辑模式。将鼠标放在顶点上可以拖拽改变顶点位置，按住键盘Ctrl+鼠标左键点击可以增加顶点，按住键盘Alt+鼠标左键点击顶点可以将其删除。编辑完成后点击空白区域，就会退出编辑模式。
 
-![2-7](/IDE/Component/2D/LightOccluder2D/img/2-7.gif)
+![2-7](./img/2-7.gif)
 
 （动图2-7）
 
@@ -201,7 +201,7 @@ export class LightOccluder extends Laya.Script {
 
 最终的效果如图3-1所示，
 
-<img src="/IDE/Component/2D/LightOccluder2D/img/3-1.png" alt="3-1" style="zoom:67%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom:67%;" />
 
 （图3-1）
 

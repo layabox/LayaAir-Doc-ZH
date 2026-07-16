@@ -10,7 +10,7 @@ slug: "ide/component/reflectionprobe"
 
 反射探针使用CubeMap的贴图形式来从六个方向来收集并保存在CubeMap中，如下图中所示六个方向的反射结果
 
- <img src="/IDE/Component/ReflectionProbe/img/image-20221205193331021.png" alt="image-20221205193331021" style="zoom:50%;" />
+ <img src="./img/image-20221205193331021.png" alt="image-20221205193331021" style="zoom:50%;" />
 
 图1-1
 
@@ -18,19 +18,19 @@ slug: "ide/component/reflectionprobe"
 
 LayaAir引擎中的探针类型为Bake，烘焙探针捕获的反射只能为包含标记为Static的对象，具体的操作为选择需要烘焙反射的对象，选中该对象，在Inspector面板右上角勾选对象Static选项。
 
- ![image-20221205194259415](/IDE/Component/ReflectionProbe/img/image-20221205194259415.png)
+ ![image-20221205194259415](./img/image-20221205194259415.png)
 
 图1-2
 
 在将需要烘焙反射信息的对象设置为Static完毕后，在Sprite3D对象添加Reflection Probe组件
 
- ![image-20221205194637497](/IDE/Component/ReflectionProbe/img/image-20221205194637497.png)
+ ![image-20221205194637497](./img/image-20221205194637497.png)
 
 图1-3
 
 在Reflection Probe组件选择适合的采样等级采样大小，点击Bake按钮就可以开始反射探针的烘焙
 
- ![image-20221205194731410](/IDE/Component/ReflectionProbe/img/image-20221205194731410.png)
+ ![image-20221205194731410](./img/image-20221205194731410.png)
 
 图1-4
 
@@ -40,7 +40,7 @@ LayaAir引擎中的探针类型为Bake，烘焙探针捕获的反射只能为包
 
 环境光模式有两种，一种是球谐模式一种是纯色模式
 
- ![image-20221205195707213](/IDE/Component/ReflectionProbe/img/image-20221205195707213.png)
+ ![image-20221205195707213](./img/image-20221205195707213.png)
 
 图2-1
 
@@ -64,7 +64,7 @@ LayaAir引擎中的探针类型为Bake，烘焙探针捕获的反射只能为包
 
 通常情况下，假设反射立方体贴图处于与任何给定对象之间无限远的距离。当对象转动时，立方体贴图的不同角度都将变为可见状态，但是对象不能进一步靠近或远离反射环境。这种状态通常对于室外场景表现良好，但其局限性表现在室内场景中；房间的内部墙壁显然不是无限远的距离，物体越靠近墙壁，墙壁的反射应该越大。
 
- ![image-20221206195134465](/IDE/Component/ReflectionProbe/img/image-20221206195134465.png)
+ ![image-20221206195134465](./img/image-20221206195134465.png)
 
 图2-2
 
@@ -78,7 +78,7 @@ Bounds Max：包围盒最大值坐标
 
 包围盒Size = Max — Min
 
- ![image-20221206192416819](/IDE/Component/ReflectionProbe/img/image-20221206192416819.png)
+ ![image-20221206192416819](./img/image-20221206192416819.png)
 
 图2-3
 
@@ -94,7 +94,7 @@ Bounds Max：包围盒最大值坐标
 
 烘焙反射探针采样质量：决定了烘焙CubeMap的单张RT的写入质量（高中低三挡）
 
- ![image-20221206195420283](/IDE/Component/ReflectionProbe/img/image-20221206195420283.png)
+ ![image-20221206195420283](./img/image-20221206195420283.png)
 
 图2-4
 
@@ -104,7 +104,7 @@ Bounds Max：包围盒最大值坐标
 
 清除颜色：当填充内容选择为SolidColor时，在ClearColor选项中选择填充的颜色
 
- ![image-20221206195513356](/IDE/Component/ReflectionProbe/img/image-20221206195513356.png)
+ ![image-20221206195513356](./img/image-20221206195513356.png)
 
 图2-5
 
@@ -114,7 +114,7 @@ IBL Tex：烘焙的反射探针IBL Texture
 
 IBL Tex RGBD：烘焙的纹理格式（颜色通道+深度通道）
 
- ![image-20221206204042371](/IDE/Component/ReflectionProbe/img/image-20221206204042371.png)
+ ![image-20221206204042371](./img/image-20221206204042371.png)
 
 图2-6
 

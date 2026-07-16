@@ -75,7 +75,7 @@ export class NewScript extends Laya.Script {
 
 效果如图1-1所示，其中1是原位置，2是平移后的位置。
 
-<img src="/basics/3D/Transform/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
@@ -154,7 +154,7 @@ export class NewScript extends Laya.Script {
 
 旋转的效果如动图2-1所示：
 
-<img src="/basics/3D/Transform/img/2-1.gif" alt="2-1" style="zoom:50%;" />
+<img src="./img/2-1.gif" alt="2-1" style="zoom:50%;" />
 
 （动图2-1）
 
@@ -191,7 +191,7 @@ export class NewScript extends Laya.Script {
 
 旋转后的效果如图2-2所示：
 
-<img src="/basics/3D/Transform/img/2-2.png" alt="2-2" style="zoom:50%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom:50%;" />
 
 （图2-2）
 
@@ -268,7 +268,7 @@ export class NewScript extends Laya.Script {
 
 效果如图3-1所示：
 
-<img src="/basics/3D/Transform/img/3-1.png" alt="3-1" style="zoom:50%;" />
+<img src="./img/3-1.png" alt="3-1" style="zoom:50%;" />
 
 （图3-1）
 
@@ -302,13 +302,13 @@ export class NewScript extends Laya.Script {
 
 举一个例子来说明，当立方体绕x轴旋转45度后，在局部空间中移动立方体，是指按照其自身的坐标系方向进行移动，如动图5-1所示：
 
-<img src="/basics/3D/Transform/img/5-1.gif" alt="5-1" style="zoom:50%;" />
+<img src="./img/5-1.gif" alt="5-1" style="zoom:50%;" />
 
 （动图5-1）
 
 相对应的，在世界空间中移动立方体，是指按照全局的、固定的坐标系方向进行移动，如动图5-2所示：
 
-<img src="/basics/3D/Transform/img/5-2.gif" alt="5-2" style="zoom:50%;" />
+<img src="./img/5-2.gif" alt="5-2" style="zoom:50%;" />
 
 （动图5-2）
 
@@ -322,12 +322,12 @@ export class NewScript extends Laya.Script {
 
 例如，”引擎API使用示例“中的Sprite3DParent场景，如动图6-1所示，旋转父节点，子节点会跟着旋转。
 
-<img src="/basics/3D/Transform/img/6-1.gif" alt="6-1" style="zoom:50%;" />
+<img src="./img/6-1.gif" alt="6-1" style="zoom:50%;" />
 
 （动图6-1）
 
 旋转子节点，父节点不受子节点的影响，如动图6-2所示。
 
-<img src="/basics/3D/Transform/img/6-2.gif" alt="6-2" style="zoom:50%;" />
+<img src="./img/6-2.gif" alt="6-2" style="zoom:50%;" />
 
 （动图6-2）

@@ -12,7 +12,7 @@ slug: "ide/component/2d/freeformlight2d"
 
 **2D自由形态光（FreeformLight2D）** 是一种支持自定义光源形状的2D灯光类型。通过设置多个顶点位置，开发者可以自由定义光源的几何形态，从而实现非规则的光照效果，如图1-1所示。这种灯光类型非常适合表现复杂或不规则的光影场景，提供了极大的灵活性和创作空间。
 
-<img src="/IDE/Component/2D/FreeformLight2D/img/1-1.png" style="zoom:67%;" /> 
+<img src="./img/1-1.png" style="zoom:67%;" /> 
 
 （图1-1）
 
@@ -38,7 +38,7 @@ slug: "ide/component/2d/freeformlight2d"
 
 2D自由形态光可以直接在层面板中右键添加，“2D灯光” -> "2D自由形态光"，如图2-1所示。
 
-<img src="/IDE/Component/2D/FreeformLight2D/img/2-1.png" alt="2-1" style="zoom:80%;" />  
+<img src="./img/2-1.png" alt="2-1" style="zoom:80%;" />  
 
 （图2-1）
 
@@ -50,19 +50,19 @@ slug: "ide/component/2d/freeformlight2d"
 
 添加自由形态光的组件后，IDE默认设置了一个矩形灯光形状，开发者可以通过顶点数据列表按钮查看和编辑顶点。如图2-2所示：
 
-![2-2](/IDE/Component/2D/FreeformLight2D/img/2-2.png) 
+![2-2](./img/2-2.png) 
 
 （图2-2）
 
 矩形灯光的效果如图2-3所示。
 
-![2-3](/IDE/Component/2D/FreeformLight2D/img/2-3.png)  
+![2-3](./img/2-3.png)  
 
 （图2-3）
 
 除了在顶点列表中修改顶点数据外，我们还可以点击“编辑形状”按钮，进行可视化的顶点形状编辑。如动图2-4所示，
 
-<img src="/IDE/Component/2D/FreeformLight2D/img/2-4.gif" alt="2-4" style="zoom:50%;" /> 
+<img src="./img/2-4.gif" alt="2-4" style="zoom:50%;" /> 
 
 （动图2-4）
 
@@ -74,7 +74,7 @@ slug: "ide/component/2d/freeformlight2d"
 
 衰减范围用于控制光线从中心向外逐渐减弱直至完全消失的距离，值越小光线衰减得越快，光照范围越小，适合局部光源效果；值越大光线衰减得越慢，光照范围越大，适合覆盖更大区域的场景。取值范围为0-10。效果如动图2-5所示。
 
-![](/IDE/Component/2D/FreeformLight2D/img/2-5.gif) 
+![](./img/2-5.gif) 
 
 (动图2-5)
 
@@ -136,7 +136,7 @@ export class LightEffectDemo extends Laya.Script {
 
 运行的效果如动图3-1所示，
 
-![](/IDE/Component/2D/FreeformLight2D/img/3-1.gif) 
+![](./img/3-1.gif) 
 
 （动图3-1）
 

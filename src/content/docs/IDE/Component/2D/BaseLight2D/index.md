@@ -14,7 +14,7 @@ slug: "ide/component/2d/baselight2d"
 
 2D灯光必须作用于2D网格才能产生效果。要启用灯光效果，需要在目标精灵节点上添加2D网格渲染器（Mesh2DRender）组件，并勾选"接受光照"选项，这样该节点就能接收光照了。如图1-1所示。
 
-![](/IDE/Component/2D/BaseLight2D/img/1-1.png) 
+![](./img/1-1.png) 
 
 （图1-1）
 
@@ -22,7 +22,7 @@ slug: "ide/component/2d/baselight2d"
 
 添加任意类型的光源都可以照亮这些黑色区域，不同类型的光源会产生不同的照明效果。例如，**方向光**会从特定方向提供全局照明，而**聚光灯**则产生局部范围的照明效果。效果如图1-2所示。
 
-![](/IDE/Component/2D/BaseLight2D/img/1-2.png) 
+![](./img/1-2.png) 
 
 (图1-2)
 
@@ -38,7 +38,7 @@ slug: "ide/component/2d/baselight2d"
 
 灯光强度用于控制光照的亮度。如动图2-1所示，intensity值越大，光照亮度越高。
 
-![](/IDE/Component/2D/BaseLight2D/img/2-1.gif) 
+![](./img/2-1.gif) 
 
 （动图2-1）
 
@@ -46,7 +46,7 @@ slug: "ide/component/2d/baselight2d"
 
 每个网格渲染器都拥有一个渲染层属性。通过设置灯光的图层遮罩，可以指定该光源影响哪些渲染层。如图2-2所示，可以通过多选来设置受影响的层。
 
-![](/IDE/Component/2D/BaseLight2D/img/2-2.png) 
+![](./img/2-2.png) 
 
 （图2-2）
 

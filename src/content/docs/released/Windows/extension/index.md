@@ -26,13 +26,13 @@ npm install laya-ext-creator -g
 
 安装完成后，接着执行命令`laya-ext-creator`创建LayaNative扩展模板项目。按要求输入项目名称和目录，如图2-1所示，
 
-![2-1](/released/Windows/extension/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
 创建的项目如图2-2所示，双击.sln可以打开项目（需要使用Visual Studio2022），继续编辑和编译。
 
-![2-2](/released/Windows/extension/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -60,19 +60,19 @@ LayaExt
 
 打开项目后，点击图2-3中的“生成解决方案”，
 
-![2-3](/released/Windows/extension/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
 控制台的输出如下图2-4所示，
 
-![2-4](/released/Windows/extension/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
 最终在对应的目录中可以看到生成的动态链接库，
 
-![2-5](/released/Windows/extension/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -177,7 +177,7 @@ extern "C" {
 
 使用扩展工具导出动态链接库（.dll）后，可以将该文件放置到assets或src的任意目录，并且勾选“导入为插件”，如图3-1所示。
 
-![3-1](/released/Windows/extension/img/3-1.png)
+![3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -208,7 +208,7 @@ export class Main extends Laya.Script {
 
 因为LayaNative的扩展功能只支持Windows平台，所以只能通过Windows预览或发布为Windows项目才能得到正确的结果。运行效果如图3-2所示，
 
-![3-2](/released/Windows/extension/img/3-2.png)
+![3-2](./img/3-2.png)
 
 （图3-2）
 

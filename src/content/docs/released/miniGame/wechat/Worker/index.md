@@ -16,13 +16,13 @@ slug: "released/minigame/wechat/worker"
 
 ​	我们在微信小游戏适配库laya.wxmini.js中增加了MiniWorkerLoader类，继承自Laya.WorkerLoader，并重定向WorkerLoader的enable属性到MiniWorkerLoader类的enable属性中进行微信Worker的初始化，使用wx.createWorker方法创建Worker线程，如下图所示：
 
-<img src="/released/miniGame/wechat/Worker/img/1.png" alt="image-20241121154748169" style="zoom:50%;" /> 
+<img src="./img/1.png" alt="image-20241121154748169" style="zoom:50%;" /> 
 
 ​		并在微信Worker线程的onMessage回调中注册为MiniWorkerLoader的workerMessage，在回调中我们需要将网络图片下载后的本地缓存地址传入给创建好的nativeImage中，并派发完成事件；在这一步中我们也将图片的缓存地址写入到了资源映射表中。
 
 ​		在加载过程中会执行下图中MiniWorkLoader基类的load方法，将url传入到woker线程中进行处理：
 
-<img src="/released/miniGame/wechat/Worker/img/3.png" style="zoom: 67%;" /> 
+<img src="./img/3.png" style="zoom: 67%;" /> 
 
 ## 2、微信小游戏Worker的处理
 
@@ -34,7 +34,7 @@ slug: "released/minigame/wechat/worker"
 
 ​		我们在示例项目目录中增加worker目录与game.json中worker的配置目录，如下图所示：
 
-<img src="/released/miniGame/wechat/Worker/img/5.png" style="zoom:67%;" /> 
+<img src="./img/5.png" style="zoom:67%;" /> 
 
 ### 2.2 workers目录下index.js的处理
 

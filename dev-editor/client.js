@@ -413,7 +413,7 @@
       const r = await fetch(API + '/preview', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: ui.ta.value }),
+        body: JSON.stringify({ content: ui.ta.value, file: ui.file }),
       });
       if (!r.ok) return;
       const j = await r.json();
@@ -448,14 +448,30 @@
     }
   }
 
+  /** 正文中的图片 URL（./img/x 或 /Dir/img/x）→ 页面里 <img src> 使用的站内绝对路径 */
+  function toSiteImgUrl(url) {
+    if (!url) return url;
+    if (/^(https?:|data:|\/\/)/i.test(url) || url.startsWith('/')) return url.split('?')[0];
+    const pageDir = (ui.file || '').replace(/\\/g, '/').replace(/\/[^/]+$/, '');
+    const joined = (pageDir ? pageDir + '/' : '') + url.replace(/^\.\//, '');
+    const parts = joined.split('/');
+    const out = [];
+    for (const p of parts) {
+      if (!p || p === '.') continue;
+      if (p === '..') out.pop();
+      else out.push(p);
+    }
+    return '/' + out.join('/');
+  }
+
   async function uploadImages(files) {
     // 换图模式:粘贴时若选区里恰好是一条图片引用,则沿用原名原地覆盖,不产生新序号
     let replaceUrl = null;
     {
       const selText = ui.ta.value.slice(ui.ta.selectionStart, ui.ta.selectionEnd);
-      const m = selText.match(/!\[[^\]]*\]\((\/[^)\s]+\.(?:png|jpe?g|gif|webp))\)/gi);
+      const m = selText.match(/!\[[^\]]*\]\(((?:\.\/)?(?:img\/)?[^)\s]+\.(?:png|jpe?g|gif|webp)|\/[^)\s]+\.(?:png|jpe?g|gif|webp))\)/gi);
       if (m && m.length === 1 && files.length === 1) {
-        replaceUrl = m[0].match(/\((\/[^)\s]+)\)/)[1];
+        replaceUrl = m[0].match(/\(([^)\s]+)\)/)[1];
       }
     }
     for (const f of files) {
@@ -485,14 +501,15 @@
         // 用 execCommand 插入以进入原生撤销栈——「撤回」/Ctrl+Z 可以退掉这次插入
         ui.ta.focus();
         document.execCommand('insertText', false, `![](${j.url})`);
+        const siteUrl = j.siteUrl || toSiteImgUrl(j.url);
         if (j.replaced) {
-          // 原地换图:URL 没变,预览里的 <img> 要手动刷缓存才能看到新图（markdown 里保持干净 URL）
-          bustImgCache(j.url);
+          // 原地换图:正文 URL 可能是相对路径,预览里是绝对路径——刷缓存用 siteUrl
+          bustImgCache(siteUrl);
           const rname = j.url.split('/').pop();
           ui.replaced.add(rname);
           // 入换图动作栈。必须在 insertText 之后压栈——insertText 触发的 input 事件
           // 会先更新 lastInputTime,这里的 time 要比它新,撤回才会优先还原图而不是撤文字
-          ui.replaceStack.push({ name: rname, url: j.url, time: performance.now() });
+          ui.replaceStack.push({ name: rname, url: siteUrl, time: performance.now() });
           // 换图前后引用文字相同,Ctrl+Z 无从撤起 —— 给一个显式的「还原原图」
           setStatus('已替换图片：' + j.url + '（保存后生效）');
           const a = document.createElement('a');
@@ -506,7 +523,7 @@
             });
             if (rr.ok) {
               ui.replaced.delete(rname);
-              bustImgCache(j.url);
+              bustImgCache(siteUrl);
               setStatus('已还原原图：' + j.url);
             } else setStatus('还原失败：' + ((await rr.json()).error || rr.status));
           };
@@ -525,8 +542,12 @@
   // 定位到预览中的第 occ 张 src 匹配的图片,滚动并加高亮框
   let imgFlashTimer;
   function locateImage(url, occ) {
+    const site = toSiteImgUrl(url);
     const imgs = [...document.querySelectorAll('.sl-markdown-content img')]
-      .filter((im) => (im.getAttribute('src') || '').split('?')[0] === url);
+      .filter((im) => {
+        const src = (im.getAttribute('src') || '').split('?')[0];
+        return src === site || src === url;
+      });
     const im = imgs[Math.min(occ || 0, imgs.length - 1)];
     if (!im) return;
     try { CSS.highlights.delete('de-locate'); } catch {}

@@ -8,7 +8,7 @@ slug: "basics/common/math/quaternion"
 
 ## 一、概述
 
-![图1-1](/basics/common/math/Quaternion/img/1-1.png)
+![图1-1](./img/1-1.png)
 
 （图1-1）
 

@@ -12,13 +12,13 @@ CheckBox是多选框组件，继承自Button。它由两部分组成，选择状
 
 如图1-1所示，点击选择小部件面板里的CheckBox组件，拖放到页面编辑区，或者在层级窗口中通过右键创建，即可添加CheckBox组件到页面上。
 
-<img src="/IDE/uiEditor/uiComponent/CheckBox/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
 CheckBox组件的选择状态框是图片资源，通常是三态或两态的图片资源。默认皮肤资源如下图所示：
 
-![1-2](/IDE/uiEditor/uiComponent/CheckBox/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -28,7 +28,7 @@ CheckBox组件的选择状态框是图片资源，通常是三态或两态的图
 
 CheckBox的特有属性如下：
 
-<img src="/IDE/uiEditor/uiComponent/CheckBox/img/1-3.png" alt="1-3" style="zoom:100%;" />
+<img src="./img/1-3.png" alt="1-3" style="zoom:100%;" />
 
 （图1-3）
 
@@ -50,7 +50,7 @@ CheckBox的特有属性如下：
 
 相对于单选框组件，多选框组件的特点是，选中之后可以恢复状态，如动图1-4所示。
 
-![1-4](/IDE/uiEditor/uiComponent/CheckBox/img/1-4.gif)
+![1-4](./img/1-4.gif)
 
 （动图1-4）
 
@@ -168,7 +168,7 @@ export class UI_CheckBox extends Laya.Script {
 
 运行效果如下动图所示：
 
-![2-1](/IDE/uiEditor/uiComponent/CheckBox/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）
 

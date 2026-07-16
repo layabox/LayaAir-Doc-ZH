@@ -58,7 +58,7 @@ GPU 实例在相同的绘制调用中呈现相同的网格。要添加变化并�
 
 GPU Instance需要硬件的支持，确保你当前所使用的硬件可以支持GPU Instance渲染
 
- ![image-20230217113033073](/3D/advanced/performanceOptimization/img/image-20230217113033073.png)
+ ![image-20230217113033073](./img/image-20230217113033073.png)
 
 上图展示了一个GPU Instance测试场景和测试场景相对应的详细绘制信息，图中红-绿-蓝-黄为四种不同的材质
 
@@ -96,7 +96,7 @@ GPU Instance需要硬件的支持，确保你当前所使用的硬件可以支�
 
 在引擎的Config3D.ts文件中enableDynamicBatch值选项，true为开启动态合批，false为关闭动态合批
 
- ![image-20221226101159327](/3D/advanced/performanceOptimization/img/image-20221226101159327.png)
+ ![image-20221226101159327](./img/image-20221226101159327.png)
 
 图4-1
 
@@ -108,7 +108,7 @@ GPU Instance需要硬件的支持，确保你当前所使用的硬件可以支�
 
 在引擎的Config3D.ts文件中enableStaticBatch值选项，true为开启动态合批，false为关闭动态合批
 
- ![image-20221226103109634](/3D/advanced/performanceOptimization/img/image-20221226103109634.png)
+ ![image-20221226103109634](./img/image-20221226103109634.png)
 
 图5-1
 
@@ -117,7 +117,7 @@ GPU Instance需要硬件的支持，确保你当前所使用的硬件可以支�
 - 物体为Static（包括子物体）
 - 使用同种材质的统一模型
 
- ![image-20221226103613220](/3D/advanced/performanceOptimization/img/image-20221226103613220.png)
+ ![image-20221226103613220](./img/image-20221226103613220.png)
 
 图5-2
 
@@ -125,25 +125,25 @@ GPU Instance需要硬件的支持，确保你当前所使用的硬件可以支�
 
 在Object的inspect面板，增加组件，选择Rendering选项，找到Static Batch Volume组件
 
- ![image-20221226103902624](/3D/advanced/performanceOptimization/img/image-20221226103902624.png)
+ ![image-20221226103902624](./img/image-20221226103902624.png)
 
 图6-1
 
 在Scene视窗中拖动小白点选择合适的Volume大小
 
- ![image-20221226104054399](/3D/advanced/performanceOptimization/img/image-20221226104054399.png)
+ ![image-20221226104054399](./img/image-20221226104054399.png)
 
 图6-2
 
 Static Batch Volume组件的使用: 上面的Volume框选到合适的大小后，在组件的详情面板中，勾选Static Instance Batch，再点击reBatch，Volume中所框选的物件就会执行Batch操作，优化Draw Call，提升运行效率。勾选了CheckLOD选项的Batch组件, 会自动检查Volume中的物体LOD属性信息, 然后将Volume中的所有物体按照LOD Cull Rate Array的物体LOD等级划分为不同的LOD渲染对象
 
- ![image-20221226104233853](/3D/advanced/performanceOptimization/img/image-20221226104233853.png)
+ ![image-20221226104233853](./img/image-20221226104233853.png)
 
 图6-3
 
 
 
- ![image-20230117103118514](/3D/advanced/performanceOptimization/img/image-20230117103118514.png)
+ ![image-20230117103118514](./img/image-20230117103118514.png)
 
 图6-4
 
@@ -155,11 +155,11 @@ Static Batch Volume组件的使用: 上面的Volume框选到合适的大小后�
 
 基于节点的材质合批功能可以通过图7-1和图7-2来展示其表现，本测试案例的场景中一共有200个小球和1个平板。经过合批处理后， 最终场景内的**不透明绘制批次**
 
-![1](/3D/advanced/performanceOptimization/img/1.png)
+![1](./img/1.png)
 
 图7-1 场景截图
 
-![2](/3D/advanced/performanceOptimization/img/2.png)
+![2](./img/2.png)
 
 图7-2 Stat面板
 

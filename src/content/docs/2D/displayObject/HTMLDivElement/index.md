@@ -16,7 +16,7 @@ HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中�
 
 使用HTML文本之前，在项目设置中，需要勾选laya.html类库，如图2所示
 
-<img src="/2D/displayObject/HTMLDivElement/img/2.png" alt="image-20230103180521572" style="zoom:50%;" /> 
+<img src="./img/2.png" alt="image-20230103180521572" style="zoom:50%;" /> 
 
 （图2）
 
@@ -26,7 +26,7 @@ HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中�
 
 在一个Scene2D的Hierarchy窗口中，任何节点下，或者是空白位置，都可以通过鼠标右键来创建HTML文本，如动图2-1所示
 
- <img src="/2D/displayObject/HTMLDivElement/img/2-1.gif" style="zoom:50%;" />
+ <img src="./img/2-1.gif" style="zoom:50%;" />
 
 （动图2-1）
 
@@ -38,7 +38,7 @@ HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中�
 
 在控件的2D标签下，可以在任何节点下，创建HTML文本，如动图2-2所示
 
- <img src="/2D/displayObject/HTMLDivElement/img/2-2.gif" style="zoom:50%;" />
+ <img src="./img/2-2.gif" style="zoom:50%;" />
 
 （动图2-2）
 
@@ -46,7 +46,7 @@ HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中�
 
 ### 2.4 InnerHTML属性
 
-<img src="/2D/displayObject/HTMLDivElement/img/2-3.png" alt="image-20230103174335912" style="zoom: 60%;" /> 
+<img src="./img/2-3.png" alt="image-20230103174335912" style="zoom: 60%;" /> 
 
 （图2-3）
 
@@ -54,7 +54,7 @@ HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中�
 
 文本内容参照HTML语言，我们来看看一个示例，如图2-4所示
 
-<img src="/2D/displayObject/HTMLDivElement/img/2-4.png" alt="image-20230103175011177" style="zoom:50%;" /> 
+<img src="./img/2-4.png" alt="image-20230103175011177" style="zoom:50%;" /> 
 
 （图2-4）
 
@@ -81,7 +81,7 @@ HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中�
  * div:div容器标签，比如:<div>abc</div>
  * span:行内元素标签，比如:<span style='color:#ff0000'>abc</span>
  * p:行元素标签，p标签会自动换行，div不会，比如:<p>abc</p>
- * img:图片标签，比如:<img src='/2D/displayObject/HTMLDivElement/res/boy.png'></img>
+ * img:图片标签，比如:<img src='./res/boy.png'></img>
  * br:换行标签，比如:<div>abc<br/>def</div>
  * style:样式标签，比如:<div style='width:130px;height:50px;color:#ff0000'>abc</div>
  * link:外链样式标签，可以加载一个css文件来当style使用，比如:<link type='text/css' href='html/test.css'/>
@@ -107,7 +107,7 @@ HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中�
  *
  * 示例用法：
  * var div:HTMLDivElement=new HTMLDivElement();
- * div.innerHTML = "<link type='text/css' href='html/test.css'/><a href='alink'>a</a><div style='width:130px;height:50px;color:#ff0000'>div</div><br/><span style='font-weight:bold;color:#ffffff;font-size:30px;stroke:2px;italic:true;'>span</span><span style='letter-spacing:5px'>span2</span><p>p</p><img src='/2D/displayObject/HTMLDivElement/res/boy.png'></img>";
+ * div.innerHTML = "<link type='text/css' href='html/test.css'/><a href='alink'>a</a><div style='width:130px;height:50px;color:#ff0000'>div</div><br/><span style='font-weight:bold;color:#ffffff;font-size:30px;stroke:2px;italic:true;'>span</span><span style='letter-spacing:5px'>span2</span><p>p</p><img src='./res/boy.png'></img>";
  */
  export class HTMLDivElement extends Sprite {
 ```
@@ -135,7 +135,7 @@ Laya.stage.addChild(div);
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-1.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-1.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 
 
 
@@ -151,7 +151,7 @@ htmlD.innerHTML = "<font style='fontSize:30' color='#67fc2c'>测试</font><font 
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-2.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-2.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 
 
 
@@ -173,7 +173,7 @@ Laya.stage.addChild(htmlDiv);
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-3.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-3.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 
 运行输出：文本的实际宽度为158.677734375 文本的实际高度为24
 
@@ -195,7 +195,7 @@ Laya.stage.addChild(html3);
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-4.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-4.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 
 
 
@@ -214,7 +214,7 @@ Laya.stage.addChild(div);
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-5.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-5.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 
 点击文字链接可以打开浏览器访问网址
 
@@ -232,7 +232,7 @@ iHtml.href="test.html";
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-6.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-6.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 
 
 
@@ -252,7 +252,7 @@ t.innerHTML = "akshfkjashfkjhakshjdfhkasjdfhsaf";
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-7.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-7.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 
 
 
@@ -268,5 +268,5 @@ Laya.stage.addChild(html);
 
 运行效果：
 
-<img src="/2D/displayObject/HTMLDivElement/img/3-8.png" alt="image-20230103180840626" style="zoom:50%;" /> 
+<img src="./img/3-8.png" alt="image-20230103180840626" style="zoom:50%;" /> 
 

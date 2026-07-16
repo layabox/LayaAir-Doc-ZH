@@ -213,13 +213,13 @@ export class Network_GET extends Laya.Script {
 
 通过上面的示例代码，我们可以看出，如果正常响应的话，可以收到进度更新以及请求完成的响应，如图1-1所示：
 
-![](/basics/common/network/HTTP/img/1-1.png) 
+![](./img/1-1.png) 
 
 (图1-1) 
 
 如果我们的地址无效等问题出现时，则会触发错误的事件响应，如图1-2所示：
 
-![](/basics/common/network/HTTP/img/1-2.png) 
+![](./img/1-2.png) 
 
 （图1-2） 
 

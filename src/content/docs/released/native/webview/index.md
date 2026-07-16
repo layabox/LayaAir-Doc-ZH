@@ -46,7 +46,7 @@ slug: "released/native/webview"
 
     webview显示出来后就无法关闭，效果如下：  
 
-    ![ios webview](/released/native/webview/img/1.png)
+    ![ios webview](./img/1.png)
 
     图1
 
@@ -69,13 +69,13 @@ slug: "released/native/webview"
 
  在ios下，会有一个小关闭按钮，点击这个按钮，就可以关闭webview。 效果如下：
 
-![ios webview](/released/native/webview/img/2.png) 
+![ios webview](./img/2.png) 
     
 图2
 
  因为关闭按钮会覆盖部分页面内容，且Android设备上提供了后退键，因此Android设备上webview显示后没有关闭按钮，可以通过**后退键**关闭webview。如下图：
 
-![android webview](/released/native/webview/img/3.png)
+![android webview](./img/3.png)
     
 图3  
 

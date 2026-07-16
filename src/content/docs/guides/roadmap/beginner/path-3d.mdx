@@ -1,0 +1,137 @@
+---
+title: "3D 入门方向"
+description: "程序新手路线第 5 阶段：从 3D 坐标系与变换入手，掌握相机、灯光、网格的基础用法，学会导入模型并在 IDE 中预览，再用 3D 入门模板完成一次可运行的小闭环。"
+lastUpdated: 2026-07-15
+slug: "guides/roadmap/beginner/path-3d"
+---
+
+import { Steps, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+本阶段面向选择 **3D 主路线** 的新手。三维概念比 2D 稍多，但路径同样清晰：**坐标与变换 → 相机灯光 → 网格模型 → 场景环境 → 小示例**。
+
+:::note[若你主攻 2D]
+可先完成 [2D 入门方向](/guides/roadmap/beginner/path-2d/)。本页至少读完「3D 概念入门 + 变换」，避免以后协作或混用 3D UI 时完全听不懂。
+:::
+
+## 本阶段目标
+
+- 理解左手/右手相关注意点与本地/世界变换直觉
+- 会在场景里放置相机、灯光、网格物体并看到正确画面
+- 知道模型如何进工程、如何挂到场景
+- 能打开 3D 入门示例，定位关键节点与脚本
+
+## 推荐步骤
+
+<Steps>
+
+1. **3D 概念入门（必读）**
+
+   坐标系、向量、相机成像等先建立正确直觉，否则后面调位置会非常痛苦。
+
+   → [3D 概念入门](/basics/3d/beginner/)
+
+2. **学会三维变换**
+
+   位移、旋转、缩放，以及本地空间与世界空间。这是 3D 编程的「四则运算」。
+
+   → [3D 变换](/basics/3d/transform/)
+
+3. **练熟 3D 场景交互**
+
+   在 IDE 中旋转视角、移动物体、使用快捷操作。
+
+   → [3D 场景交互工具](/basics/ide/scene/3dinteraction/) · [3D 场景编辑基础交互](/ide/sceneeditor/basic/)
+
+4. **相机 · 灯光 · 网格**
+
+   没有相机看不见，没有灯光多数材质发黑，没有网格就没有形体。把三者当最小可运行三元组。
+
+   → [3D 摄像机](/3d/camera/) · [3D 灯光](/3d/light/) · [网格组件](/ide/component/mesh/)
+
+5. **认识 3D 精灵与模型使用**
+
+   理解 Sprite3D、如何使用导入的模型资源。
+
+   → [3D 精灵](/3d/sprite3d/) · [使用模型](/3d/usemodel/) · [3D 基础显示对象](/3d/displayobject/)
+
+6. **场景环境（天空 / 雾 / 环境光）**
+
+   让画面不只是「灰底 + 模型」。先会改，不必深究烘焙。
+
+   → [3D 场景环境设置](/ide/sceneeditor/environment/)
+
+7. **用实例闭环一次**
+
+   打开 3D 入门游戏 / 示例模板，跟随关键流程：找玩家控制、相机跟随、场景节点结构。
+
+   → [一个 3D 入门游戏](/3d/advanced/3dgame/) · [游戏入门实例概述](/basics/ide/gamedevelopment/)
+
+</Steps>
+
+## 必读清单
+
+<CardGrid>
+  <LinkCard
+    title="3D 概念入门"
+    href="/basics/3d/beginner/"
+    description="坐标系与基础数学工具，3D 第一课。"
+  />
+  <LinkCard
+    title="3D 变换"
+    href="/basics/3d/transform/"
+    description="位移旋转缩放的日常操作基础。"
+  />
+  <LinkCard
+    title="3D 摄像机"
+    href="/3d/camera/"
+    description="看得见世界的前提。"
+  />
+  <LinkCard
+    title="3D 灯光"
+    href="/3d/light/"
+    description="方向光 / 点光 / 聚光与阴影入门。"
+  />
+  <LinkCard
+    title="使用模型"
+    href="/3d/usemodel/"
+    description="把美术资源接到场景里。"
+  />
+  <LinkCard
+    title="3D 入门游戏"
+    href="/3d/advanced/3dgame/"
+    description="用模板完成一次可运行闭环。"
+  />
+</CardGrid>
+
+## 来自 Unity ？
+
+若你有 Unity 经验，可对照差异说明，避免把旧习惯硬套过来（坐标、单位、组件命名都有不同）。
+
+→ [Unity 转 LayaAir 差异说明](/basics/unitytolayaair/) · 系统迁移见 [Unity/Cocos 迁移路线](/guides/roadmap/migration/)
+
+有 Unity 场景/资源时，也可尽早了解导出插件，但新手阶段建议先在 Laya 内手搭一个最小场景。
+
+→ [Unity 资源导出插件](/3d/advanced/unity/)
+
+## 扩展阅读（用到再打开）
+
+| 主题 | 何时需要 | 入口 |
+|---|---|---|
+| 材质与 PBR | 要调金属度/粗糙度外观 | IDE 材质相关资产文档 |
+| 动画状态机 | 角色移动/攻击切换 | 动画编辑器相关侧栏 |
+| 3D 物理 | 碰撞、角色控制器 | physics3D 组件文档 |
+| 自定义 Shader | 特殊风格效果 | 进阶内容，新手可先跳过 |
+
+## 建议练习
+
+1. 空场景中放置：地面网格 + 方向光 + 相机，保证预览明亮可见。
+2. 导入或使用示例模型，用脚本让它绕 Y 轴缓慢旋转。
+3. 在示例模板里找到「控制角色移动」的脚本，改一个手感参数（速度/转向）。
+
+## 进入下一阶段前，请确认
+
+- 能解释本地坐标与世界坐标的区别（自己的话即可）
+- 能搭出「相机 + 灯 + 物体」的最小可见场景
+- 知道模型资源进入场景的基本路径
+- 至少在模板里成功改过一处玩法或手感参数
+

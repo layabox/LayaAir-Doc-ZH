@@ -10,13 +10,13 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 在LayaAir 3.0编辑器中，我们可以通过鼠标右键来创建一个Sprite3D，如动图1-1所示
 
-![1-1](/3D/Sprite3D/img/1-1.gif)
+![1-1](./img/1-1.gif)
 
 （动图1-1）
 
 创建好的Sprite3D，在编辑器场景中，Scene3D下会是一个空节点，如图1-2所示
 
-![1-2](/3D/Sprite3D/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2） 
 
@@ -26,7 +26,7 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 ## 二、属性和功能
 
-![2-1](/3D/Sprite3D/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -36,7 +36,7 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 ### 2.1 节点的名字
 
-![2-2](/3D/Sprite3D/img/2-2.png)
+![2-2](./img/2-2.png)
 
 （图2-2）
 
@@ -76,7 +76,7 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 ### 2.2 是否激活
 
-![2-3](/3D/Sprite3D/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -100,7 +100,7 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 ### 2.3 是否为静态
 
-![2-4](/3D/Sprite3D/img/2-4.png)
+![2-4](./img/2-4.png)
 
 （图2-4）
 
@@ -110,7 +110,7 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 另外，当勾选Static时，编辑器会询问是否同时改变所有子对象的静态标志，如图2-5所示
 
-![2-5](/3D/Sprite3D/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -132,19 +132,19 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 ### 2.4 蒙版层
 
-![2-6](/3D/Sprite3D/img/2-6.png)
+![2-6](./img/2-6.png)
 
 （图2-6）
 
 图2-6中，是精灵所在的图层 `Layer`。渲染相机可进行可视遮罩层的控制，对精灵的渲染与否进行控制，可以参考摄像机文档，其中有对设置不同物体蒙版层后，摄像机选择不同蒙版层的示例。如动图2-7所示
 
-![2-7](/3D/Sprite3D/img/2-7.gif)
+![2-7](./img/2-7.gif)
 
 （动图2-7）
 
 如图2-8所示，通过点击Layer，可以选择编辑器已经自定义好的Default，Layer1等等，也可以再次编辑Layer层
 
-![2-8](/3D/Sprite3D/img/2-8.png)
+![2-8](./img/2-8.png)
 
 （图2-8）
 
@@ -168,23 +168,23 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
 
 变换组件确定场景中每个精灵的位置，旋转和缩放。同时和Node节点一样具备子父节点的关联关系，使变换操作更灵活，每个精灵都有一个`Transform3D`。 
 
-![2-9](/3D/Sprite3D/img/2-9.png)
+![2-9](./img/2-9.png)
 
 （图2-9）
 
 我们也可以在编辑器里手动调整精灵的变换
 
-<img src="/3D/Sprite3D/img/2-10.png" alt="2-10" style="zoom:80%;" />
+<img src="./img/2-10.png" alt="2-10" style="zoom:80%;" />
 
 （图2-10）
 
-<img src="/3D/Sprite3D/img/2-11.png" alt="2-11" style="zoom:80%;" />
+<img src="./img/2-11.png" alt="2-11" style="zoom:80%;" />
 
 （图2-11）
 
 图2-10用来调整精灵的旋转，图2-11用来调整精灵的缩放
 
-<img src="/3D/Sprite3D/img/2-12.png" alt="2-12" style="zoom:80%;" />
+<img src="./img/2-12.png" alt="2-12" style="zoom:80%;" />
 
 （图2-12）
 
@@ -211,7 +211,7 @@ this.sprite3d.localScale = scale;
 
 Sprite3D继承自Node节点，是LayaAir3D中所有3D对象的父类。通过一些示例，我们可以了解子父级关系。 
 
-![3-1](/3D/Sprite3D/img/3-1.gif)
+![3-1](./img/3-1.gif)
 
 （动图3-1）
 
@@ -221,7 +221,7 @@ Sprite3D继承自Node节点，是LayaAir3D中所有3D对象的父类。通过一
 this.layaMonkeyParent.transform.translate(new Laya.Vector3(-0.2, 0, 0);
 ```
 
- ![3-2](/3D/Sprite3D/img/3-2.gif)
+ ![3-2](./img/3-2.gif)
 
  （动图3-2）
 
@@ -249,7 +249,7 @@ this.layaMonkeySon.transform.translate(new Laya.Vector3(-0.2, 0, 0);
     }
 ```
 
-![4-1](/3D/Sprite3D/img/4-1.gif)
+![4-1](./img/4-1.gif)
 
 （动图4-1）
 
@@ -304,7 +304,7 @@ this.scene.addChild(sp);
 
 该方法可以在克隆时携带父节点信息，世界位置信息和世界旋转信息。
 
-![4-2](/3D/Sprite3D/img/4-2.gif)
+![4-2](./img/4-2.gif)
 
 （动图4-2）
 
@@ -322,7 +322,7 @@ this.scene.addChild(layaMonkey_clone1);
 
 LayaAir中，可以对任何3D对象添加`Component` 组件，如动图5-1所示 
 
-![5-1](/3D/Sprite3D/img/5-1.gif)
+![5-1](./img/5-1.gif)
 
 （动图5-1）
 
@@ -343,7 +343,7 @@ rigidBody.overrideGravity = true;
 rigidBody.gravity = new Laya.Vector3(0,-10,0);
 ```
 
-![5-2](/3D/Sprite3D/img/5-2.gif)
+![5-2](./img/5-2.gif)
 
 （动图5-2）
 
@@ -355,13 +355,13 @@ rigidBody.gravity = new Laya.Vector3(0,-10,0);
 
 在3D世界的开发中，脚本类会在很多地方被使用，给Sprite3D添加一个脚本。如动图6-1所示。 
 
-<img src="/3D/Sprite3D/img/6-1.gif" alt="6-1" style="zoom:80%;" />
+<img src="./img/6-1.gif" alt="6-1" style="zoom:80%;" />
 
 （动图6-1） 
 
 我们可以给Main Camera添加一个通过鼠标和键盘来控制摄像机的脚本，这个脚本在实际开发过程中非常的实用，图6-2中，显示摄像机添加了这个脚本。
 
-<img src="/3D/Sprite3D/img/6-2.png" alt="6-2" style="zoom: 70%;" />
+<img src="./img/6-2.png" alt="6-2" style="zoom: 70%;" />
 
 （图6-2） 
 
@@ -497,7 +497,7 @@ export class CameraMoveScript extends Laya.Script3D {
 
 运行时效果如动图6-3所示 
 
-<img src="/3D/Sprite3D/img/6-3.gif" alt="6-3" style="zoom:80%;" />
+<img src="./img/6-3.gif" alt="6-3" style="zoom:80%;" />
 
 （动图6-3） 
 
@@ -511,13 +511,13 @@ export class CameraMoveScript extends Laya.Script3D {
 
 Mesh精灵是引擎中最常用的 **静态网格精灵**，可根据于美术软件预制作或自定义的网格数据渲染模型。例如图7-1场景中的各种建筑模型、山体岩石一般均为Mesh精灵。
 
-<img src="/3D/Sprite3D/img/7-1.png" alt="7-1" style="zoom:80%;" />
+<img src="./img/7-1.png" alt="7-1" style="zoom:80%;" />
 
 （图7-1）
 
 通常我们在实践中会创建简单的Mesh网格3D对象，如图7-2所示 
 
-<img src="/3D/Sprite3D/img/7-2.png" alt="7-2" style="zoom:80%;" />
+<img src="./img/7-2.png" alt="7-2" style="zoom:80%;" />
 
 （图7-2）
 
@@ -527,7 +527,7 @@ Mesh精灵是引擎中最常用的 **静态网格精灵**，可根据于美术�
 
 SkinnedMesh精灵是引擎中的 **蒙皮动画网格精灵**，可根据美术软件预制作的网格数据和Animator组件的动画数据产生动作形变。常用于带蒙皮动画的角色、怪物等。和Mesh精灵相比具产生网格形变的能力。
 
-<img src="/3D/Sprite3D/img/7-3.png" alt="7-3" style="zoom:80%;" />
+<img src="./img/7-3.png" alt="7-3" style="zoom:80%;" />
 
 （图7-3）
 
@@ -537,7 +537,7 @@ SkinnedMesh精灵是引擎中的 **蒙皮动画网格精灵**，可根据美术�
 
 `Particle3D` 是引擎中的 3D**粒子精灵**,可根据美术人员编辑的粒子参数产生奇妙炫酷的粒子特效。一般用于各种角色技能特效或火焰、烟雾等场景特效。  
 
-<img src="/3D/Sprite3D/img/7-4.gif" alt="7-4" style="zoom:80%;" />
+<img src="./img/7-4.gif" alt="7-4" style="zoom:80%;" />
 
 （动图7-4）
 
@@ -547,7 +547,7 @@ SkinnedMesh精灵是引擎中的 **蒙皮动画网格精灵**，可根据美术�
 
  `PixelLine` 是引擎中的 **像素线精灵**,可根据脚本的绘制数据产生任意颜色的像素线。一般用于场景中的引导效果或项目调试数据用途。 
 
-<img src="/3D/Sprite3D/img/7-5.png" alt="7-5" style="zoom:80%;" />
+<img src="./img/7-5.png" alt="7-5" style="zoom:80%;" />
 
 （图7-5）
 
@@ -557,7 +557,7 @@ SkinnedMesh精灵是引擎中的 **蒙皮动画网格精灵**，可根据美术�
 
 `Trail` 是引擎中的 **拖尾精灵**,可根据精灵运动轨迹产生动态的拖尾特效。一般用于各种轨迹拖尾效果的展示。 
 
-<img src="/3D/Sprite3D/img/7-6.gif" alt="7-6" style="zoom:80%;" />
+<img src="./img/7-6.gif" alt="7-6" style="zoom:80%;" />
 
 （动图7-6）
 

@@ -61,7 +61,7 @@ Laya.Quaternion.slerp(startRot, endRot, 0.5, out);
 
 ### Lerp 与 Slerp 对比
 
-![图3-1](/basics/common/math/Interpolation/img/3-1.png)
+![图3-1](./img/3-1.png)
 
 （图3-1）
 
@@ -99,7 +99,7 @@ let rounded = Laya.MathUtil.roundTo(3.14159, 2);  // 3.14
 
 ### 5.1 平滑跟随
 
-![图5-1](/basics/common/math/Interpolation/img/5-1.png)
+![图5-1](./img/5-1.png)
 
 （图5-1）
 

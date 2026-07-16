@@ -33,14 +33,14 @@ Material → TrailMaterial
 
 `color` 属性设置拖尾的颜色，类型为 `Color`。颜色会与纹理颜色相乘产生最终效果。
 
-![](/IDE/assets/lmat/Trail/img/2-1.gif)
+![](./img/2-1.gif)
 （图2-1）
 
 ### 2.2 贴图（texture）
 
 `texture` 属性用于设置拖尾的纹理贴图，类型为 `BaseTexture`。纹理会沿着拖尾的延伸方向进行贴图映射。
 
-![](/IDE/assets/lmat/Trail/img/2-2.jpg)
+![](./img/2-2.jpg)
 （图2-2）
 
 ### 2.3 纹理平铺和偏移（tilingOffset）

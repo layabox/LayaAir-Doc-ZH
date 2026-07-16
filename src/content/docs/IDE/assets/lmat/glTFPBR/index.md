@@ -49,7 +49,7 @@ Material → PBRMaterial → PBRStandardMaterial
 
 `albedoColor` 属性定义材质表面的基础颜色，类型为 `Color`。对应glTF标准中的 `baseColorFactor`。
 
-![](/IDE/assets/lmat/glTFPBR/img/2-1.png)
+![](./img/2-1.png)
 （图2-1）
 
 ### 2.2 反照率贴图（albedoTexture）

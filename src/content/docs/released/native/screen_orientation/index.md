@@ -10,13 +10,13 @@ slug: "released/native/screen-orientation"
 
 如果想设置屏幕方向，通过LayaAir-IDE的构建发布面板 ，在Android/iOS发布的选项里，如图1-1所示，屏幕方向这里配置好即可，
 
-![1-1](/released/native/screen_orientation/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
 建议开发者设置的方向与项目设置面板中的一致。
 
-![1-2](/released/native/screen_orientation/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）
 
@@ -46,7 +46,7 @@ iOS项目构建成功后，打开XCode工程设置页面，根据需要勾选相
 
 
 
-<img src="/released/native/screen_orientation/img/2-2.png" alt="2-2" style="zoom: 50%;" />
+<img src="./img/2-2.png" alt="2-2" style="zoom: 50%;" />
 
 （图2-1）
 
@@ -55,7 +55,7 @@ iOS项目构建成功后，打开XCode工程设置页面，根据需要勾选相
 
 Android项目构建成功后，打开`AndroidManifest.xml`文件，在activity标签内有一个screenOrientation参数，开发者可以根据自己需求进行修改，如图2-3所示：
 
-<img src="/released/native/screen_orientation/img/2-3.png" alt="2-3" style="zoom:80%;" />
+<img src="./img/2-3.png" alt="2-3" style="zoom:80%;" />
 
 （图2-3）
 

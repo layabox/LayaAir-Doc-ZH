@@ -20,13 +20,13 @@ LayaAir IDE的时间轴动画编辑器，适用于2D与3D动画的编辑。
 
 场景中添加的任一节点都可以创建动画，下述介绍以cube（立方体）为例。首先在场景创建一个cube节点，**选中cube节点**后，就可以在编辑器下方的`时间轴动画面板（Timeline）` 中看到“`创建`”按钮。如图1-1所示：
 
-![1-1](/IDE/animationEditor/timelineGUI/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
 点击图1-1的`创建`按钮，会弹出如图1-2所示界面，提醒用户设置动画名称（这里重命名为“ani3d.lani”）。
 
-![1-2](/IDE/animationEditor/timelineGUI/img/1-2.png) 
+![1-2](./img/1-2.png) 
 
 （图1-2）
 
@@ -37,7 +37,7 @@ LayaAir IDE的时间轴动画编辑器，适用于2D与3D动画的编辑。
 
 保存名称后，可以看到时间轴动画编辑面板、动画组件、状态机、动画文件，即代表动画创建成功。如图1-3所示：
 
-![1-3](/IDE/animationEditor/timelineGUI/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）
 
@@ -69,7 +69,7 @@ LayaAir IDE的时间轴动画编辑器，适用于2D与3D动画的编辑。
 
 状态机文件命名是由`动画节点名_动画名`组成。效果如图1-4所示。
 
-![](/IDE/animationEditor/timelineGUI/img/1-4.png) 
+![](./img/1-4.png) 
 
 （图1-4）
 
@@ -77,7 +77,7 @@ LayaAir IDE的时间轴动画编辑器，适用于2D与3D动画的编辑。
 
 如果节点上已经绑定了动画组件，那么无需再创建动画，直接点击下方的**启动动画面板**按钮即可。如图1-5所示：
 
-![1-5](/IDE/animationEditor/timelineGUI/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）
 
@@ -96,13 +96,13 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 操作顺序如动图1-6所示：
 
-![1-6](/IDE/animationEditor/timelineGUI/img/1-6.gif)
+![1-6](./img/1-6.gif)
 
 （图1-6）
 
 然后，在属性面板中可看到Animator组件。点击Animator组件中的Controller，选择已有的动画状态机。如图1-7所示：
 
-![1-7](/IDE/animationEditor/timelineGUI/img/1-7.png)
+![1-7](./img/1-7.png)
 
 （图1-7）
 
@@ -110,7 +110,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 以选择“Sphere_ani3d1”动画状态机为例，选择后，即将此动画绑定在Sphere节点上，在有动画状态机且有动画文件的情况下，刷新后点击动画编辑面板中的启动动画即可。如图1-8所示：
 
-![1-8](/IDE/animationEditor/timelineGUI/img/1-8.png)
+![1-8](./img/1-8.png)
 
 （图1-8）
 
@@ -120,13 +120,13 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 如图1-9所示： 
 
-![1-9](/IDE/animationEditor/timelineGUI/img/1-9.png)
+![1-9](./img/1-9.png)
 
 （图1-9）
 
 如果想使用已有的动画，直接从资源窗口中拖拽动画文件到状态机视图窗口即可，效果如图1-10所示。 
 
-![1-10](/IDE/animationEditor/timelineGUI/img/1-10.png)
+![1-10](./img/1-10.png)
 
 （图1-10）
 
@@ -138,7 +138,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 关键帧指物体运动变化中关键动作所处的那一帧，即存储了属性值的帧。
 
-![2-1](/IDE/animationEditor/timelineGUI/img/2-1.png)
+![2-1](./img/2-1.png)
 
 （图2-1）
 
@@ -146,7 +146,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 空帧指这个帧里没有设置任何内容，通常指相邻两个关键帧之间的帧。
 
-![2-2](/IDE/animationEditor/timelineGUI/img/2-2.png) 
+![2-2](./img/2-2.png) 
 
 （图2-2）
 
@@ -162,7 +162,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 并且，编辑器窗口下方也会显示出当前帧指针所在的位置。以图2-3所示为例，当前帧位于第6帧的位置。
 
-![2-3](/IDE/animationEditor/timelineGUI/img/2-3.png)
+![2-3](./img/2-3.png)
 
 （图2-3）
 
@@ -170,7 +170,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 指每秒播放的动画帧数。如图2-4所示，默认值为60。
 
-![2-4](/IDE/animationEditor/timelineGUI/img/2-4.png) 
+![2-4](./img/2-4.png) 
 
 （图2-4）
 
@@ -178,7 +178,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 动画节点的属性如图2-5左侧所示，当指向某一个关键帧，再通过调节属性值，即可将调整后的属性值存储在该帧中，用于关键帧效果改变的依据。 
 
-![2-5](/IDE/animationEditor/timelineGUI/img/2-5.png)
+![2-5](./img/2-5.png)
 
 （图2-5）
 
@@ -198,7 +198,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 曲线线条是关键帧之间的属性数值的过渡算法效果，IDE采用三次贝塞尔曲线（也称三阶贝塞尔曲线）算法绘制，绘制原理如动图2-6所示。
 
-![](/IDE/animationEditor/timelineGUI/img/2-6.gif)  
+![](./img/2-6.gif)  
 
 (动图2-6)
 
@@ -208,7 +208,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 曲线外观的表现有曲线形态，也有直线形态，如图2-7所示，均是采用三次贝塞尔曲线算法绘制。
 
-![](/IDE/animationEditor/timelineGUI/img/2-7.png)  
+![](./img/2-7.png)  
 
 （图2-7）
 
@@ -223,7 +223,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 对应到动画编辑器的效果如动图2-8所示， 
 
-![2-8](/IDE/animationEditor/timelineGUI/img/2-8.gif)
+![2-8](./img/2-8.gif)
 
 （动图2-8）
 
@@ -233,7 +233,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 注意观察动图2-9，当改变权重长度时，tips的第三行也会显示出当前权重的数值。 
 
-![2-9](/IDE/animationEditor/timelineGUI/img/2-9.gif)
+![2-9](./img/2-9.gif)
 
 （动图2-9）
 
@@ -243,7 +243,7 @@ Animator2D是2D动画组件，Animator是3D动画组件。
 
 刻度分为横向刻度和纵向刻度，横向刻度是指动画帧的刻度，纵向刻度是指动画属性值刻度。如图2-10所示。
 
-![2-10](/IDE/animationEditor/timelineGUI/img/2-10.png) 
+![2-10](./img/2-10.png) 
 
 （图2-10）
 
@@ -273,7 +273,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 曲线：显示所选的最高属性值与最低属性值，以及首帧与尾帧。如图3-1所示：
 
-![3-1](/IDE/animationEditor/timelineGUI/img/3-1.png) 
+![3-1](./img/3-1.png) 
 
 （图3-1）
 
@@ -289,7 +289,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 双击如图3-2所示区域添加动画事件。一帧可派发多个动画事件。
 
-![3-2](/IDE/animationEditor/timelineGUI/img/3-2.png) 
+![3-2](./img/3-2.png) 
 
 （图3-2）
 
@@ -297,7 +297,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 双击如图3-3所示区域添加关键帧。
 
-![3-3](/IDE/animationEditor/timelineGUI/img/3-3.png) 
+![3-3](./img/3-3.png) 
 
 （图3-3）
 
@@ -317,25 +317,25 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 1、添加关键帧：右键点击关键帧面板区域，可调出关键帧添加菜单。例如，图3-4所示的红1区域，括号内的数字代表是在第几帧上添加。
 
-![3-4](/IDE/animationEditor/timelineGUI/img/3-4.png) 
+![3-4](./img/3-4.png) 
 
 （图3-4）
 
 2、添加动画事件：右键点击帧刻度与关键帧面板中间的区域，如图3-5所示，可调出添`加动画事件`菜单，括号内的数字代表是在第几帧上添加。
 
-![3-5](/IDE/animationEditor/timelineGUI/img/3-5.png) 
+![3-5](./img/3-5.png) 
 
 （图3-5）
 
 3、点击选中某一关键帧，单击右键调出当前关键帧功能菜单。如图3-6所示： 
 
-![3-6](/IDE/animationEditor/timelineGUI/img/3-6.png)
+![3-6](./img/3-6.png)
 
 （图3-6）
 
 4、右键点击（3）区域，调出属性添加菜单。如图3-7所示：
 
-![3-7](/IDE/animationEditor/timelineGUI/img/3-7.png) 
+![3-7](./img/3-7.png) 
 
 （图3-7）
 
@@ -343,19 +343,19 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 1、在曲线模式下，右键单击空白区域，调出曲线自动定位菜单。如图3-8所示：
 
-![3-8](/IDE/animationEditor/timelineGUI/img/3-8.png) 
+![3-8](./img/3-8.png) 
 
 （图3-8）
 
 2、在曲线模式下，右键单击关键帧，调出曲线功能菜单。如图3-9所示：
 
-![3-9](/IDE/animationEditor/timelineGUI/img/3-9.png) 
+![3-9](./img/3-9.png) 
 
 （图3-9）
 
 3、在曲线模式下，右键单击曲线，调出曲线定位菜单。如图3-10所示：
 
-![3-10](/IDE/animationEditor/timelineGUI/img/3-10.png) 
+![3-10](./img/3-10.png) 
 
 （图3-10）
 
@@ -365,7 +365,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 关键帧模式下，直接滚轮，将以鼠标指针为中心，对帧刻度面板进行缩放。如动图3-11所示：
 
-![](/IDE/animationEditor/timelineGUI/img/3-11.gif) 
+![](./img/3-11.gif) 
 
 （动图3-11）
 
@@ -373,7 +373,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 曲线模式下，使用 `Ctrl+滚轮` ， 将以鼠标指针为中心，对属性刻度面板进行缩放。如动图3-12所示：
 
-![img](/IDE/animationEditor/timelineGUI/img/3-12.gif) 
+![img](./img/3-12.gif) 
 
 （动图3-12）
 
@@ -381,7 +381,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 曲线模式下，直接滚轮，将以鼠标指针为中心，对帧与属性刻度面板同时缩放。如动图3-13所示：
 
-![动图3-13](/IDE/animationEditor/timelineGUI/img/3-13.gif) 
+![动图3-13](./img/3-13.gif) 
 
 （动图3-13）
 
@@ -389,7 +389,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 当有多个属性超出属性面板的显示区域时，为方便操作可直接通过鼠标滚轮对属性面板进行纵向滚动调节。如动图3-14所示：
 
-![](/IDE/animationEditor/timelineGUI/img/3-14.gif) 
+![](./img/3-14.gif) 
 
 （动图3-14）
 
@@ -399,7 +399,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 那我们也需要纵向滚动时，可以在动画帧面板按住`Ctrl+滚动鼠标滚轮`进行纵向滚动操作，如动图3-15所示：
 
-![](/IDE/animationEditor/timelineGUI/img/3-15.gif) 
+![](./img/3-15.gif) 
 
 （动图3-15）
 
@@ -413,7 +413,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 如图4-1所示：
 
-![4-1](/IDE/animationEditor/timelineGUI/img/4-1.png) 
+![4-1](./img/4-1.png) 
 
 （图4-1）
 
@@ -421,7 +421,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 如图4-2所示：
 
-![4-2](/IDE/animationEditor/timelineGUI/img/4-2.png) 
+![4-2](./img/4-2.png) 
 
 （图4-2）
 
@@ -429,7 +429,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 首先，点击红色的录制按钮，在刻度条变为红色时，代表此时进入到录制状态，此时通过调节右侧的Transform参数，即可在时间轴动画编辑器中添加对应的属性。操作如图4-3所示：
 
-![4-3](/IDE/animationEditor/timelineGUI/img/4-3.png) 
+![4-3](./img/4-3.png) 
 
 （图4-3）
 
@@ -448,7 +448,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 直接在输入框输入数值。如图4-4所示：
 
-![4-4](/IDE/animationEditor/timelineGUI/img/4-4.png) 
+![4-4](./img/4-4.png) 
 
 （图4-4）
 
@@ -459,13 +459,13 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 #### 4.2.3 录制模式的同步输入
 
 方式1：在录制模式下，在视图窗口拖拽输入。如图4-5所示：
-![4-5](/IDE/animationEditor/timelineGUI/img/4-5.png) 
+![4-5](./img/4-5.png) 
 
 （图4-5）
 
 方式2：在录制模式下，在属性窗口的输入。如图4-6所示：
 
-![](/IDE/animationEditor/timelineGUI/img/4-6.png)
+![](./img/4-6.png)
 
 （图4-6）
 
@@ -479,7 +479,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 在动画帧面板中已有属性的情况下，通过双击或鼠标右键单击如图5-1所示的区域来添加关键帧。
 
-![5-1](/IDE/animationEditor/timelineGUI/img/5-1.png) 
+![5-1](./img/5-1.png) 
 
 （图5-1）
 
@@ -487,7 +487,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 在动画属性面板中点击属性右侧的 “+” 号添加，如图5-2所示：
 
-![5-2](/IDE/animationEditor/timelineGUI/img/5-2.png) 
+![5-2](./img/5-2.png) 
 
 （图5-2）
 
@@ -515,7 +515,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 操作方式是对关键帧进行批量选中，然后桉住鼠标左键不放，即可进行批量平移。如动图5-3所示：
 
-![5-3](/IDE/animationEditor/timelineGUI/img/5-3.gif) 
+![5-3](./img/5-3.gif) 
 
 （动图5-3）
 
@@ -527,7 +527,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 选中多个关键帧，执行插入空白帧操作。如动图5-4所示：
 
-![5-4](/IDE/animationEditor/timelineGUI/img/5-4.gif) 
+![5-4](./img/5-4.gif) 
 
 （动图5-4）
 
@@ -537,7 +537,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 选中多个关键帧，执行删除空白帧操作。当两个关键帧之间的空白帧全部删除后，会停止删除。但不影响其它关键帧的继续删除操作。如动图5-5所示：
 
-![5-5](/IDE/animationEditor/timelineGUI/img/5-5.gif) 
+![5-5](./img/5-5.gif) 
 
 （动图5-5）
 
@@ -547,7 +547,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 对关键帧进行批量选中，然后通过快捷键 “delete” 或右键菜单中的`删除选中关键帧`选项即可进行批量删除。如动图5-6所示：
 
-![5-6](/IDE/animationEditor/timelineGUI/img/5-6.gif) 
+![5-6](./img/5-6.gif) 
 
 （动图5-6）
 
@@ -571,7 +571,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 在帧面板中如图5-7所示的区域中，可以通过双击或右键菜单中的 “添加动画事件” 按钮来添加动画事件。
 
-![5-7](/IDE/animationEditor/timelineGUI/img/5-7.png)  
+![5-7](./img/5-7.png)  
 
 （图5-7）
 
@@ -583,7 +583,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 ### 5.5 关键帧跳转 
 
-![5-8](/IDE/animationEditor/timelineGUI/img/5-8.png) 
+![5-8](./img/5-8.png) 
 
 （图5-8）
 
@@ -613,7 +613,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 滚动条如动图5-9所示：
 
-![5-9](/IDE/animationEditor/timelineGUI/img/5-9.gif) 
+![5-9](./img/5-9.gif) 
 
 （动图5-9）
 
@@ -621,13 +621,13 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 1、鼠标放在帧刻度上滑动滚轮，此时帧刻度以当前鼠标所在刻度处为中心进行缩放。如动图5-10所示：
 
-![5-10](/IDE/animationEditor/timelineGUI/img/5-10.gif) 
+![5-10](./img/5-10.gif) 
 
 （动图5-10）
 
 2、鼠标放在属性刻度上滑动滚轮，此时属性刻度以当前鼠标所在刻度处为中心进行缩放。如动图5-11所示：
 
-![5-11](/IDE/animationEditor/timelineGUI/img/5-11.gif) 
+![5-11](./img/5-11.gif) 
 
 （动图5-11）
 
@@ -656,25 +656,25 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 **Linear：**线性动画，也就是匀速。以相同的速度开始以相同的速度结束。动画曲线如图6-1所示：
 
-![6-1](/IDE/animationEditor/timelineGUI/img/6-1.png) 
+![6-1](./img/6-1.png) 
 
 （图6-1）
 
 **EaseIn：**入口缓动曲线，动画以低速开始，进行过程中一直加速。动画曲线如图6-2所示：
 
-![6-2](/IDE/animationEditor/timelineGUI/img/6-2.png) 
+![6-2](./img/6-2.png) 
 
 （图6-2）
 
 **EaseOut：**出口缓动曲线，动画进行过程中一直减速，以低速结束。动画曲线如图6-3所示：
 
-![6-3](/IDE/animationEditor/timelineGUI/img/6-3.png) 
+![6-3](./img/6-3.png) 
 
 （图6-3）
 
 **EaseInOut：**两边缓动曲线，动画以低速开始，加速后再减速，以低速退出。动画曲线如图6-4所示：
 
-![6-4](/IDE/animationEditor/timelineGUI/img/6-4.png) 
+![6-4](./img/6-4.png) 
 
 （图6-4）
 
@@ -686,13 +686,13 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 修改后可以将其保存下来，以便复用。
 
-![6-5](/IDE/animationEditor/timelineGUI/img/6-5.png) 
+![6-5](./img/6-5.png) 
 
 （图6-5）
 
 #### 6.1.2 切线调节
 
-![6-6](/IDE/animationEditor/timelineGUI/img/6-6.png) 
+![6-6](./img/6-6.png) 
 
 （图6-6）
 
@@ -700,19 +700,19 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 - 默认权重：曲线权重默认值是权重总长度的三分之一处，该处为引擎优化位置，采用的是埃尔米特(Hermite)插值算法，性能较好。推荐使用。
 
-  ![6-7](/IDE/animationEditor/timelineGUI/img/6-7.png)  
+  ![6-7](./img/6-7.png)  
 
   （图6-7）
 
 - 自定义权重：当不勾选锁定权重时，就是自定义权重。自定义权重更加灵活，但是性能不如默认权重的性能好。
 
-  ![6-8](/IDE/animationEditor/timelineGUI/img/6-8.gif) 
+  ![6-8](./img/6-8.gif) 
 
   （动图6-8）
 
 - 锁定权重：当使用了自定义权重后，如果想保持这个权重，可以锁定该权重，只调节切线位置。
 
-  ![6-9](/IDE/animationEditor/timelineGUI/img/6-9.gif) 
+  ![6-9](./img/6-9.gif) 
   
   （动图6-9）
 
@@ -726,20 +726,20 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 - linear：调整曲线角度，让曲线表现为直线形态。
 
-  ![6-10](/IDE/animationEditor/timelineGUI/img/6-10.gif) 
+  ![6-10](./img/6-10.gif) 
 
   （图6-10）
 
 - constant：调整曲线角度，让曲线表现为直角折线形态。
 
-  ![6-11](/IDE/animationEditor/timelineGUI/img/6-11.gif) 
+  ![6-11](./img/6-11.gif) 
   
   （图6-11）
 
 #### 6.1.3 平滑
 
 不勾选状态：关键帧俩侧可分别设置曲线左、右切线来调节，互不影响。但是可能会出现过渡不够平滑，形成尖锐角度情况。如图6-12所示：
-![6-12](/IDE/animationEditor/timelineGUI/img/6-12.png)  
+![6-12](./img/6-12.png)  
 
 （图6-12）
 
@@ -751,7 +751,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 勾选状态：勾选后，使曲线切线快速恢复到水平位置。
 
-![6-13](/IDE/animationEditor/timelineGUI/img/6-13.gif) 
+![6-13](./img/6-13.gif) 
 
 （动图6-13）
 
@@ -761,7 +761,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 右键单击曲线，在右键菜单中点击 “定位到输入” 选项，即可快速定位到该曲线代表的参数。以绿色曲线为例，点击 “定位到输入” 后，即可发现绿色曲线代表的是X参数的变化。如图6-14所示：
 
-![6-14](/IDE/animationEditor/timelineGUI/img/6-14.gif)  
+![6-14](./img/6-14.gif)  
 
 （动图6-14）
 
@@ -769,7 +769,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 当由于鼠标的一系列操作在曲线面板的显示区域中看不到曲线时，单击右键选择 “自动定位” 就可以使曲线快速显示出来。如动图6-15所示：
 
-![6-15](/IDE/animationEditor/timelineGUI/img/6-15.gif)   
+![6-15](./img/6-15.gif)   
 
 （动图6-15）
 
@@ -779,7 +779,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 在动画属面板中双击参数，可快速找到指定曲线。如动图6-16所示：
 
-![6-16](/IDE/animationEditor/timelineGUI/img/6-16.gif)  
+![6-16](./img/6-16.gif)  
 
 （动图6-16）
 
@@ -787,7 +787,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 在曲线面板中，选中某一曲线右键单击，在右键菜单中选择 “只显示当前曲线” 即可筛选到指定曲线。如动图6-17所示：
 
-![6-17](/IDE/animationEditor/timelineGUI/img/6-17.gif) 
+![6-17](./img/6-17.gif) 
 
 （动图6-17）
 
@@ -799,22 +799,22 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 创建2D时间轴动画以后（3D同理），在面板上会看到引导线的按钮，如图7-1，点击引导线，就会初步创建引导线动画出来，属性名称叫PathPoint（如果想编辑动画曲线，需要选中PathPoint这个动画面板上的属性），如图7-2。
 
-![7-1](/IDE/animationEditor/timelineGUI/img/10-1.png) 
+![7-1](./img/10-1.png) 
 
 （图7-1）
 
-![7-2](/IDE/animationEditor/timelineGUI/img/10-2.png) 
+![7-2](./img/10-2.png) 
 
 （图7-2）
 
 ### 7.2 引导线编辑
 选中后就可以在场景中对于曲线进行调整，双击线的中间位置可以增加关键点（场景中每个节点都可以单独创建引导线进行编辑）按住alt，然后点击曲线的关键点的时候可以删除曲线关键点，双击关键点，会弹出关键点修改的输入框，更细致和精确的调整关键点的位置，如图7-3（2D）7-4（3D）
 
-![7-3](/IDE/animationEditor/timelineGUI/img/10-3.png) 
+![7-3](./img/10-3.png) 
 
 （图7-3）
 
-![7-4](/IDE/animationEditor/timelineGUI/img/10-4.png) 
+![7-4](./img/10-4.png) 
 
 （图7-4）
 
@@ -822,13 +822,13 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 两者的区别是
 路径动画跟随路径旋转：不管动画是正着播放还是倒着播放，在某个点上的角度永远是一致的，如动图7-5
 
-![7-5](/IDE/animationEditor/timelineGUI/img/10-5.gif) 
+![7-5](./img/10-5.gif) 
 
 （图7-5）
 
 跟随动画旋转：旋转角度是根据上一帧的位置和这一帧的位置自动计算出两帧之间的角度，所以正播放和倒播放角度会不同，如动图7-6
 
-![7-6](/IDE/animationEditor/timelineGUI/img/10-6.gif) 
+![7-6](./img/10-6.gif) 
 
 （图7-6）
 ## 八、播放动画
@@ -841,7 +841,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 单击如图8-1所示按钮，即可播放动画。
 
-![8-1](/IDE/animationEditor/timelineGUI/img/7-1.png) 
+![8-1](./img/7-1.png) 
 
 （图8-1）
 
@@ -849,13 +849,13 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 动画预览默认是单次播放模式，当我们看到循环图标中间有个数字1的时候，就表示处于单次播放的模式。如图8-2所示。
 
-![8-2](/IDE/animationEditor/timelineGUI/img/7-2.png) 
+![8-2](./img/7-2.png) 
 
 （图8-2）
 
 点击单次播放状态按钮后，按钮处于循环图标状态，如图7-3所示，此时可无限循环播放动画。
 
-![](/IDE/animationEditor/timelineGUI/img/7-3.png) 
+![](./img/7-3.png) 
 
 (图8-3)
 
@@ -863,7 +863,7 @@ ctrl + 鼠标点击，在已选中的情况下，按住ctrl + 鼠标点击即可
 
 点击循环播放状态按钮后，会停止当前循环播放状态，此时循环图标中间又可以看到数字1，说明已取消循环播放，恢复到单次播放模式。
 
-![7-2](/IDE/animationEditor/timelineGUI/img/7-2.png) 
+![7-2](./img/7-2.png) 
 
 （图8-3）
 
@@ -875,7 +875,7 @@ IDE内的播放预览只是动画基础效果，多数情况下，动画还配�
 
 点击如图8-4所示按钮，查看在不同平台的预览效果。
 
-![8-4](/IDE/animationEditor/timelineGUI/img/7-4.png)  
+![8-4](./img/7-4.png)  
 
 （图8-4）
 
@@ -889,7 +889,7 @@ IDE里的循环播放预览，与运行时是否循环播放无关。
 
 如果需要在运行时循环播放，需要勾选图7-5中的loop状态。
 
-![8-5](/IDE/animationEditor/timelineGUI/img/7-5.png)  
+![8-5](./img/7-5.png)  
 
 （图8-5）
 
@@ -901,7 +901,7 @@ IDE里的循环播放预览，与运行时是否循环播放无关。
 
 如图9-1所示，点击时间轴动画编辑器下方的保存图标即可。这里要注意，如果不保存，那么运行时会按照没有保存的效果播放动画。
 
-![9-1](/IDE/animationEditor/timelineGUI/img/8-1.png) 
+![9-1](./img/8-1.png) 
 
 （图9-1）
 
@@ -909,7 +909,7 @@ IDE里的循环播放预览，与运行时是否循环播放无关。
 
 点击时间轴动画编辑器下方的退出图标即可退出动画编辑器。如图9-2所示：
 
-![9-2](/IDE/animationEditor/timelineGUI/img/8-2.png) 
+![9-2](./img/8-2.png) 
 
 （图9-2）
 
@@ -936,7 +936,7 @@ IDE里的循环播放预览，与运行时是否循环播放无关。
 
 当添加动画事件后，点击白色事件图标，可以在IDE后侧属性面板中设置动画事件属性，如图10-1所示
 
-<img src="/IDE/animationEditor/timelineGUI/img/9-1.png" style="zoom:50%;" /> 
+<img src="./img/9-1.png" style="zoom:50%;" /> 
 
 （图10-1）
 
@@ -946,7 +946,7 @@ Params：在脚本中调用事件方式时的传参（字符串），可以设�
 
 如图10-2所示，例如对此事件添加一个 “event1” 方法名，添加两个参数，"a", "1"，点击下面的保存
 
-<img src="/IDE/animationEditor/timelineGUI/img/9-2.png" style="zoom:50%;" /> 
+<img src="./img/9-2.png" style="zoom:50%;" /> 
 
 （图10-2）
 
@@ -956,7 +956,7 @@ Params：在脚本中调用事件方式时的传参（字符串），可以设�
 
 我们通过动图10-3，来看看如何为一个动画节点添加脚本
 
-![10-3](/IDE/animationEditor/timelineGUI/img/9-3.gif)
+![10-3](./img/9-3.gif)
 
 （动图10-3）
 
@@ -981,6 +981,6 @@ export class Script extends Laya.Script {
 
 在脚本中创建event1的方法和接收两个参数，最后我们来运行动画，看看运行结果：
 
-<img src="/IDE/animationEditor/timelineGUI/img/9-4.png" style="zoom:50%;" /> 
+<img src="./img/9-4.png" style="zoom:50%;" /> 
 
 （图10-4）

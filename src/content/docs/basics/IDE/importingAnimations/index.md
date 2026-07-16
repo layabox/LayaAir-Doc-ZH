@@ -20,7 +20,7 @@ slug: "basics/ide/importinganimations"
 
 将Fbx放入Assets目录下
 
-<img src="/basics/IDE/importingAnimations/images/1.png" alt="image-20221109105123759" style="zoom:50%;" /> 
+<img src="./images/1.png" alt="image-20221109105123759" style="zoom:50%;" /> 
 
 （图1）
 
@@ -28,7 +28,7 @@ slug: "basics/ide/importinganimations"
 
 将Fbx拖入Scene3D场景下，可以看到模型，但是没有贴图和动画，下面先介绍如何为LayaMonkey添加材质和贴图
 
-<img src="/basics/IDE/importingAnimations/images/2.png" alt="image-20221109110840280" style="zoom: 35%;" /> 
+<img src="./images/2.png" alt="image-20221109110840280" style="zoom: 35%;" /> 
 
 （图2）
 
@@ -38,31 +38,31 @@ slug: "basics/ide/importinganimations"
 
 将贴图文件放入Assets下
 
-<img src="/basics/IDE/importingAnimations/images/3.png" alt="image-20221109111236856" style="zoom:48%;" /> 
+<img src="./images/3.png" alt="image-20221109111236856" style="zoom:48%;" /> 
 
 （图3）
 
 需要创建一个材质文件，来为模型配置贴图等信息
 
-<img src="/basics/IDE/importingAnimations/images/4.jpg" alt="4" style="zoom:40%;" /> 
+<img src="./images/4.jpg" alt="4" style="zoom:40%;" /> 
 
 （图4）
 
 点击新建的Material文件，右面可以看到很多配置信息，这里我们只需要将贴图文件拖入到材质文件中，
 
-<img src="/basics/IDE/importingAnimations/images/5.png" alt="image-20221109111633571" style="zoom:30%;" /> 
+<img src="./images/5.png" alt="image-20221109111633571" style="zoom:30%;" /> 
 
 （图5） 
 
 将材质文件拖入LayaMonkey的SkinnedMeshRenderer组件的Materials中
 
-<img src="/basics/IDE/importingAnimations/images/6.png" alt="image-20221109111714022" style="zoom:30%;" /> 
+<img src="./images/6.png" alt="image-20221109111714022" style="zoom:30%;" /> 
 
 （图6） 
 
 可以看到模型已经有贴图效果了
 
-<img src="/basics/IDE/importingAnimations/images/7.png" alt="image-20221109111755944" style="zoom:39%;" /> 
+<img src="./images/7.png" alt="image-20221109111755944" style="zoom:39%;" /> 
 
 （图7）
 
@@ -74,37 +74,37 @@ slug: "basics/ide/importinganimations"
 
 当Fbx文件拖入到Scene3D场景中时，会自动添加Animator组件，如果没有可以自行添加Animator组件，并且保证AlwaysAnimate模式
 
-<img src="/basics/IDE/importingAnimations/images/8.png" alt="image-20221109111912543" style="zoom:33%;" /> 
+<img src="./images/8.png" alt="image-20221109111912543" style="zoom:33%;" /> 
 
 （图8）
 
 此时，我们需要创建一个AnimationController文件，也就是3D动画状态机
 
-<img src="/basics/IDE/importingAnimations/images/9.jpg" alt="9" style="zoom: 40%;" /> 
+<img src="./images/9.jpg" alt="9" style="zoom: 40%;" /> 
 
 （图9）
 
 将新创建的Animation Controller文件，拖入到Animator组件中
 
-<img src="/basics/IDE/importingAnimations/images/10.png" alt="image-20221109112315395" style="zoom: 33%;" /> 
+<img src="./images/10.png" alt="image-20221109112315395" style="zoom: 33%;" /> 
 
 （图10）
 
 双击AnimatorController后，将Take_001动画文件拖入Animator窗口中
 
-<img src="/basics/IDE/importingAnimations/images/11.png" alt="image-20221109112505899" style="zoom:32%;" /> 
+<img src="./images/11.png" alt="image-20221109112505899" style="zoom:32%;" /> 
 
 （图11） 
 
 再次点击Scene窗口，点击下面的动画文件预览可以看到动画效果
 
-<img src="/basics/IDE/importingAnimations/gif/2.gif" alt="2" style="zoom:33%;" /> 
+<img src="./gif/2.gif" alt="2" style="zoom:33%;" /> 
 
 （图12）  
 
 此时运行IDE，可以播放LayaMonkey动画，也可以将LayaMonkey拖入Assets目录下，作为预制体，方便重用或者代码实现
 
-<img src="/basics/IDE/importingAnimations/images/12.png" alt="image-20221109112834572" style="zoom:33%;" /> 
+<img src="./images/12.png" alt="image-20221109112834572" style="zoom:33%;" /> 
 
 （图13）  
 
@@ -116,13 +116,13 @@ slug: "basics/ide/importinganimations"
 
 图14中，以girl为例，我们将不带动画信息的Fbx文件和多个只带动画的Fbx文件放入Assets中
 
-<img src="/basics/IDE/importingAnimations/images/19.png" alt="image-20221109115632939" style="zoom: 50%;" /> 
+<img src="./images/19.png" alt="image-20221109115632939" style="zoom: 50%;" /> 
 
 （图14）
 
 创建好AnimatorController后，并将待机和跑步动画拖入Animator窗口中，可修改动画名字
 
-<img src="/basics/IDE/importingAnimations/images/20.png" alt="image-20221109115632939" style="zoom: 30%;" /> 
+<img src="./images/20.png" alt="image-20221109115632939" style="zoom: 30%;" /> 
 
 （图15）
 
@@ -130,7 +130,7 @@ slug: "basics/ide/importinganimations"
 
 如图16所示，我们可以分别预览待机和跑的动画，并设置是否循环播放
 
-<img src="/basics/IDE/importingAnimations/gif/3.gif" alt="3" style="zoom:35%;" /> 
+<img src="./gif/3.gif" alt="3" style="zoom:35%;" /> 
 
 （图16）  
 
@@ -187,13 +187,13 @@ export class Main extends MainBase {
 
 将glTF放入Assets目录下，打开LayaAir IDE，IDE会识别glTF文件并可以展开glTF文件，看到图17中的文件信息，其中Animation_0是glTF自带的刚体动画文件
 
- <img src="/basics/IDE/importingAnimations/images/21.png" alt="image-20221109170859228" style=" zoom: 50%;" /> 
+ <img src="./images/21.png" alt="image-20221109170859228" style=" zoom: 50%;" /> 
 
 （图17）
 
 将glTF拖入Scene3D场景下，可以看到模型，但是没有动画，下面先介绍如何使用动画
 
-<img src="/basics/IDE/importingAnimations/images/22.png" alt="image-20221109171201077" style="zoom:50%;" /> 
+<img src="./images/22.png" alt="image-20221109171201077" style="zoom:50%;" /> 
 
 （图18）
 
@@ -201,31 +201,31 @@ export class Main extends MainBase {
 
 当glTF文件拖入到Scene3D场景中时，会自动添加Animator组件，如果没有可以自行添加Animator组件，并且保证AlwaysAnimate模式
 
-<img src="/basics/IDE/importingAnimations/images/23.png" alt="image-20221109171352077" style="zoom:33%;" /> 
+<img src="./images/23.png" alt="image-20221109171352077" style="zoom:33%;" /> 
 
 （图19）
 
 此时，我们需要创建一个AnimationController文件，也就是3D动画状态机
 
-<img src="/basics/IDE/importingAnimations/images/24.jpg" alt="9" style="zoom: 40%;" /> 
+<img src="./images/24.jpg" alt="9" style="zoom: 40%;" /> 
 
 （图20）
 
 将新创建的Animation Controller文件，拖入到Animator组件中
 
-<img src="/basics/IDE/importingAnimations/images/25.png" alt="image-20221109171621289" style="zoom:33%;" /> 
+<img src="./images/25.png" alt="image-20221109171621289" style="zoom:33%;" /> 
 
 （图21）
 
 双击AnimatorController后，将Take_001动画文件拖入Animator窗口中
 
- <img src="/basics/IDE/importingAnimations/images/26.png" alt="image-20221109171729141" style="zoom:33%;" />
+ <img src="./images/26.png" alt="image-20221109171729141" style="zoom:33%;" />
 
 （图22） 
 
 此时运行IDE，可以播放刚体动画，也可以将BoxAnimated拖入Assets目录下，作为预制体，方便重用或者代码实现
 
-<img src="/basics/IDE/importingAnimations/gif/4.gif" alt="4" style="zoom: 35%;" /> 
+<img src="./gif/4.gif" alt="4" style="zoom: 35%;" /> 
 
 （图23）  
 

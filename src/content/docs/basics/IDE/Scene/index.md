@@ -36,12 +36,12 @@ slug: "basics/ide/scene"
 
 当事件焦点位于 **Scene2D 节点或其子节点**时，场景面板将仅显示 2D 节点内容及 2D 交互工具，如图 2-1 所示。
 
-![](/basics/IDE/Scene/img/2-1.png)
+![](./img/2-1.png)
 
 > 关于 2D 交互工具的详细使用说明，请参阅文档《[2D场景交互工具](/basics/ide/scene/2dinteraction/)》
 
 当事件焦点位于 **Scene3D 节点或其子节点**时，场景面板将仅显示 3D 节点内容及 3D 交互工具，如图 2-2 所示。
 
-![](/basics/IDE/Scene/img/2-2.png)
+![](./img/2-2.png)
 
 > 关于 3D 交互工具的详细使用说明，请参阅文档《[3D场景交互工具](/basics/ide/scene/3dinteraction/)》

@@ -1,0 +1,109 @@
+---
+title: "创建第一个项目"
+description: "程序新手路线第 2 阶段：用 LayaAir IDE 创建工程，理解目录与启动入口，完成 Hello World 预览调试闭环，并认识 DevTools，建立「所见即所得 + 脚本驱动」的工作流。"
+lastUpdated: 2026-07-15
+slug: "guides/roadmap/beginner/first-project"
+---
+
+import { Steps, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+这一阶段要把引擎工作流「跑通一遍」：看到画面、改属性立刻生效、改脚本后能再预览。跑通后，后面学任何功能都只是往这条流水线上挂新模块。
+
+## 本阶段目标
+
+- 能从模板创建 2D 或 3D 空项目
+- 说清工程里常见目录各自放什么
+- 完成一次 Hello World：场景里放东西 + 挂脚本 + 预览
+- 知道控制台报错与 DevTools 往哪看
+
+## 推荐步骤
+
+<Steps>
+
+1. **认识 IDE 主界面**
+
+   先建立面板心智：场景、层级、资源、属性、预览、控制台。不必记住所有按钮，知道「改哪里、看哪里」即可。
+
+   → [IDE 主要模块概述](/basics/ide/gui/) · [面板布局](/basics/ide/layouts/)
+
+2. **创建新项目**
+
+   建议新手选 **2D 空项目** 或 **3D 空项目**；若想先「看到能玩的成品」，也可打开示例模板，但本阶段仍以理解空项目结构为主。
+
+   → [创建新项目](/basics/ide/createnewproject/)
+
+3. **搞清工程目录与入口**
+
+   弄明白：`assets`、场景文件、脚本目录、启动场景分别是什么。这样后面不会「资源放错地方却不知道为什么找不到」。
+
+   → [项目工程目录说明](/basics/ide/projecfolders/) · [项目启动入口说明](/basics/ide/entry/)
+
+4. **照着做一遍 Hello World**
+
+   跟着官方流程：创建节点、调属性、写脚本、IDE 内预览 / 浏览器预览。这是全路线最重要的一次实操。
+
+   → [开发流程: Hello World](/basics/ide/helloworld/)
+
+5. **认识调试入口**
+
+   会看控制台报错、知道 DevTools 能查运行状态。出问题先看报错栈，再怀疑「引擎坏了」。
+
+   → [控制台面板](/basics/ide/console/) · [DevTools 调试工具](/basics/devtools/)
+
+</Steps>
+
+## 必读清单
+
+<CardGrid>
+  <LinkCard
+    title="IDE 概述"
+    href="/basics/ide/"
+    description="基础开发模块与流程总入口。"
+  />
+  <LinkCard
+    title="创建新项目"
+    href="/basics/ide/createnewproject/"
+    description="模板选择与工程创建。"
+  />
+  <LinkCard
+    title="工程目录说明"
+    href="/basics/ide/projecfolders/"
+    description="资源与脚本该放哪。"
+  />
+  <LinkCard
+    title="Hello World 流程"
+    href="/basics/ide/helloworld/"
+    description="本阶段的主线实操课。"
+  />
+  <LinkCard
+    title="DevTools"
+    href="/basics/devtools/"
+    description="运行时排查的第一工具箱。"
+  />
+  <LinkCard
+    title="快捷键与鼠标操作"
+    href="/basics/ide/shortcutkeycombinations/"
+    description="提升场景编辑手感，可随用随查。"
+  />
+</CardGrid>
+
+## 建议你亲手完成的最小练习
+
+1. 新建空项目，在场景中添加一个可见节点（如图像 / 简单 3D 物体）。
+2. 新建脚本组件，挂到该节点，在生命周期里 `console.log` 一条信息。
+3. 用 IDE 内预览确认日志出现；再故意写错一行，确认能在控制台定位。
+4. 改一个属性（位置 / 缩放 / 颜色），观察预览是否即时反映。
+
+:::caution[常见卡点]
+- **预览没变化**：确认改的是正在运行的场景，脚本已保存且已挂到节点上。
+- **找不到脚本**：检查是否放在工程约定目录，以及是否已触发编译。
+- **一打开就报红**：先从控制台第一条错误往上追，不要同时改很多处。
+:::
+
+## 进入下一阶段前，请确认
+
+- 能独立创建项目并打开场景
+- 能指出工程里「场景、资源、脚本」大概位置
+- 完成过至少一次「挂脚本 → 预览 → 看日志」
+- 知道控制台报错该怎么读第一条
+

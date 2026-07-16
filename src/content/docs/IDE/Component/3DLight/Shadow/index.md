@@ -14,7 +14,7 @@ slug: "ide/component/3dlight/shadow"
 
 ## 一、阴影模式
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-1.png" style="zoom:60%;" />
+<img src="./img/6-1.png" style="zoom:60%;" />
 
 （图6-1）
 
@@ -24,19 +24,19 @@ slug: "ide/component/3dlight/shadow"
 
 ​	`Hard`：硬阴影，对性能要求较低
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-1-1.png" alt="image-20221221175204586" style="zoom: 50%;" />
+<img src="./img/6-1-1.png" alt="image-20221221175204586" style="zoom: 50%;" />
 
 （图6-1-1）
 
 ​	`SoftLow`：低强度软阴影，对性能要求一般
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-1-2.png" alt="image-20221221175737980" style="zoom:50%;" />
+<img src="./img/6-1-2.png" alt="image-20221221175737980" style="zoom:50%;" />
 
 （图6-1-2）
 
 ​	`SoftHigh`：高强度软阴影，对性能要求较高
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-1-3.png" alt="image-20221221175849308" style="zoom:50%;" />
+<img src="./img/6-1-3.png" alt="image-20221221175849308" style="zoom:50%;" />
 
 （图6-1-3）效果最好
 
@@ -46,19 +46,19 @@ slug: "ide/component/3dlight/shadow"
 
 当我们选择一种阴影模式后，可以看到设置阴影的属性
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-2.png" style="zoom:60%;" />
+<img src="./img/6-2.png" style="zoom:60%;" />
 
 （图6-2）
 
 `shadowStrength`：阴影强度，该值越大，阴影越明显。
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-2-1.gif" style="zoom:50%;" />
+<img src="./img/6-2-1.gif" style="zoom:50%;" />
 
 （动图6-2-1）
 
 `shadowDistance`：灯光产生阴影的范围，范围是指摄像机到模型的距离，超出这个范围的模型将不会产生阴影与接受阴影，开发者可以根据场景大小进行设置。
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-2-2.png" alt="image-20221221201246233" style="zoom:50%;" />
+<img src="./img/6-2-2.png" alt="image-20221221201246233" style="zoom:50%;" />
 
 （图6-2-2）
 
@@ -72,7 +72,7 @@ slug: "ide/component/3dlight/shadow"
 
 ## 三、阴影级联模式
 
- <img src="/IDE/Component/3DLight/Shadow/img/6-3.png" style="zoom:60%;" />
+ <img src="./img/6-3.png" style="zoom:60%;" />
 
 （图6-3）
 
@@ -80,13 +80,13 @@ slug: "ide/component/3dlight/shadow"
 
 `TwoCascades`：二级级联阴影分割比例。
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-3-1.png" alt="image-20221221201556335" style="zoom:50%;" />
+<img src="./img/6-3-1.png" alt="image-20221221201556335" style="zoom:50%;" />
 
 （图6-3-1）
 
 `FourCascades`：四级级联阴影分割比例，X、Y、Z依次为其分割比例，Z必须大于Y，Y必须大于X。
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-3-2.png" alt="image-20221221201744907" style="zoom:50%;" />
+<img src="./img/6-3-2.png" alt="image-20221221201744907" style="zoom:50%;" />
 
 （图6-3-2）
 
@@ -94,7 +94,7 @@ slug: "ide/component/3dlight/shadow"
 
 除了光源的阴影设置，需要在模型上设置投影属性：如图6-4所示
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-4.png" style="zoom: 50%;" />
+<img src="./img/6-4.png" style="zoom: 50%;" />
 
 （图6-4）
 
@@ -104,13 +104,13 @@ slug: "ide/component/3dlight/shadow"
 
 如动图6-5所示，展现了平行光实时阴影的效果
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-5.gif" style="zoom: 33%;" />
+<img src="./img/6-5.gif" style="zoom: 33%;" />
 
 （动图6-5）
 
 如动图6-6所示，展现了聚光灯实时阴影的效果
 
-<img src="/IDE/Component/3DLight/Shadow/img/6-6.gif" style="zoom: 33%;" />
+<img src="./img/6-6.gif" style="zoom: 33%;" />
 
 （动图6-6）
 

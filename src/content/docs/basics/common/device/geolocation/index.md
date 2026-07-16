@@ -8,7 +8,7 @@ slug: "basics/common/device/geolocation"
 
 如果设备支持Geolocation，并且所使用的浏览器支持，就可以使用Geolocation获取设备的当前地理位置。可以打开网页[http://caniuse.com/#search=geolocation](http://caniuse.com/#search=geolocation)查看有哪些浏览器版本支持Geolocation。显示Supported表示支持。
 
-![1](/basics/common/device/geolocation/img/1.png)
+![1](./img/1.png)
 
 ​	Geolocation返回的GeolocationInfo，包含以下信息：
 

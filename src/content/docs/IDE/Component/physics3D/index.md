@@ -12,7 +12,7 @@ slug: "ide/component/physics3d"
 
 LayaAir3的物理碰撞器组件有三种，分别是3D刚体、静态碰撞器、角色控制器。如图1-1所示，
 
-![](/IDE/Component/physics3D/img/1.png) 
+![](./img/1.png) 
 
 (图1-1)
 
@@ -70,7 +70,7 @@ LayaAir3的物理碰撞器组件有三种，分别是3D刚体、静态碰撞器�
 
 LayaAir3的物理约束组件有四种，分别是，固定约束、铰链约束、弹簧约束、可配置约束，如图2-1所示，
 
-![](/IDE/Component/physics3D/img/2.png) 
+![](./img/2.png) 
 
 (图2-1)
 

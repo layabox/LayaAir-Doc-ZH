@@ -14,7 +14,7 @@ slug: "basics/developmentenvironment/cocostolayaair"
 
 插件下载地址：https://github.com/layabox/CocosMigrationPlugin/releases
 
-![2-1](/basics/developmentEnvironment/CocosToLayaAir/img/2-1.png)
+![2-1](./img/2-1.png)
 
 环境要求：
 
@@ -30,7 +30,7 @@ Cocos 版本：已知支持 Cocos Creator 3.x 系列，理论上也支持2.x系�
 
 2.导入资源包后，主菜单会新增一个选项：`迁移Cocos / 迁移Cocos项目资源`
 
-![3-1](/basics/developmentEnvironment/CocosToLayaAir/img/3-1.png)
+![3-1](./img/3-1.png)
 
 3.点击这个选项，会弹出两次对话框：
 

@@ -32,7 +32,7 @@ export class Script extends Laya.Script {
 
 添加组件的流程为：`属性设置面板 -> 增加组件 -> 自定义组件脚本`。如动图1-1所示。
 
-![1-1](/IDE/customComponent/decorators/img/1-1.gif)
+![1-1](./img/1-1.gif)
 
 （动图1-1）
 
@@ -72,7 +72,7 @@ export class NewScript extends Laya.Script {
 
 示例代码在IDE中被识别后的效果如图2-1所示：
 
-![](/IDE/customComponent/decorators/img/2-1.png) 
+![](./img/2-1.png) 
 
 (图2-1)
 
@@ -109,7 +109,7 @@ class Animal {
 
 通过装饰器定义为组件属性后，默认状态下，属性名与值都会被序列化保存到组件被添加的场景文件或预制体文件里。例如，scene.ls里添加完自定义组件，通过vscode打开这个scene.ls，可以找到序列化保存后的组件属性名称与值，效果如动图2-2所示。
 
-![2-2](/IDE/customComponent/decorators/img/2-2.gif) 
+![2-2](./img/2-2.gif) 
 
 （动图2-2）
 
@@ -255,7 +255,7 @@ export class Main extends Laya.Script {
 
 如动图2-3所示，将场景中已经添加好的Image拖入到@property暴露的Image属性入口中，这样就获取到了此节点，然后可以在脚本中使用代码控制Image的属性了。
 
-![2-3](/IDE/customComponent/decorators/img/2-3.gif)
+![2-3](./img/2-3.gif)
 
 （动图2-3）
 
@@ -299,7 +299,7 @@ export default class Animal {
 
 示例代码在IDE的效果如图2-4所示：
 
-![](/IDE/customComponent/decorators/img/2-4.png)  
+![](./img/2-4.png)  
 
 （图2-4）
 
@@ -388,7 +388,7 @@ export class Script extends Laya.Script {
 
 示例效果如动图2-5所示：
 
- ![2-5](/IDE/customComponent/decorators/img/2-5.gif)
+ ![2-5](./img/2-5.gif)
 
 （动图2-5）
 
@@ -409,7 +409,7 @@ color: string;
 
 效果如动图2-6所示：
 
-![2-6](/IDE/customComponent/decorators/img/2-6.gif)
+![2-6](./img/2-6.gif)
 
 （动图2-6）
 
@@ -421,7 +421,7 @@ color: string;
 
 组件的属性默认会统一显示在以组件脚本名称的属性分类栏目下，效果如图2-7所示：
 
-![2-7](/IDE/customComponent/decorators/img/2-7.png)  
+![2-7](./img/2-7.png)  
 
 （图2-7）
 
@@ -443,7 +443,7 @@ color: string;
 
 通过上面的代码可以看出，当为多个属性（c和d）设置相同的catalog名称（“adv”），就会按catalog名称进行分类。效果如图2-8所示：
 
-![2-8](/IDE/customComponent/decorators/img/2-8.png) 
+![2-8](./img/2-8.png) 
 
 （图2-8）
 
@@ -456,7 +456,7 @@ color: string;
 
 效果如图2-9所示：
 
-![2-9](/IDE/customComponent/decorators/img/2-9.png) 
+![2-9](./img/2-9.png) 
 
 （图2-9）
 
@@ -478,7 +478,7 @@ color: string;
 
 效果如图2-10所示：
 
-![](/IDE/customComponent/decorators/img/2-10.png) 
+![](./img/2-10.png) 
 
 （图2-10）
 
@@ -709,7 +709,7 @@ export class NewScript extends Laya.Script {
 
 开发者的自定义组件脚本默认都位于`属性设置`面板的`增加组件->自定义组件脚本`的下面，如动图4-1所示。
 
-![4-1](/IDE/customComponent/decorators/img/4-1.gif) 
+![4-1](./img/4-1.gif) 
 
 （动图4-1）
 
@@ -733,7 +733,7 @@ export class Main extends Laya.Script {
 
 然后我们保存代码，回到IDE，会发现自定义的分类已出现在组件列表中。如动图4-2所示。
 
-![4-2](/IDE/customComponent/decorators/img/4-2.gif) 
+![4-2](./img/4-2.gif) 
 
 （动图4-2）
 
@@ -741,7 +741,7 @@ export class Main extends Laya.Script {
 
 假设用装饰器暴露了A、B、C、D、E，5个属性，显示效果如下：
 
-![4-3](/IDE/customComponent/decorators/img/4-3.png) 
+![4-3](./img/4-3.png) 
 
 （图4-3）
 
@@ -785,7 +785,7 @@ export class NewScript extends Laya.Script {
 
 其中，members指定了属于这个分组的属性名称列表。如果属性较多，也可以用这种格式 [ "b~c" ]，表示从属性b到属性c之间所有的属性。position是可选的，指示这个分组显示在哪里。显示效果如下：
 
-![4-4](/IDE/customComponent/decorators/img/4-4.png) 
+![4-4](./img/4-4.png) 
 
 （图4-4）
 

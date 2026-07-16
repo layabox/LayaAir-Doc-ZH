@@ -12,7 +12,7 @@ slug: "basics/vscode"
 
 如图1-1所示，在项目目录的.vscode目录下，创建launch.json文件，用来配置vscode工程的启动参数
 
-<img src="/basics/VsCode/img/1-1.png" alt="image-20230214161721341" style="zoom:50%;" /> 
+<img src="./img/1-1.png" alt="image-20230214161721341" style="zoom:50%;" /> 
 
 （图1-1）
 
@@ -57,7 +57,7 @@ slug: "basics/vscode"
 ## 三、更改端口号
 
 默认情况下，LayaAir 3.0项目都会使用18090作为默认端口，如果你想确定一下，可以通过点击IDE的“浏览器方式打开”可以看到端口号，如图3-1所示
-<img src="/basics/VsCode/img/3-1.png" alt="image-20230214162506543" style="zoom: 50%;" /> 
+<img src="./img/3-1.png" alt="image-20230214162506543" style="zoom: 50%;" /> 
 
 （图3-1）
 
@@ -67,6 +67,6 @@ slug: "basics/vscode"
 
 在vsCode中，在ts代码中加入断点，并在vsCode菜单“运行”中点击“启动调试”或者按F5，就可以启动Chrome打开项目，进行断点调试，如图4-1所示
 
-<img src="/basics/VsCode/img/4-1.png" alt="image-20230214163126820" style="zoom:50%;" />
+<img src="./img/4-1.png" alt="image-20230214163126820" style="zoom:50%;" />
 
 （图4-1）

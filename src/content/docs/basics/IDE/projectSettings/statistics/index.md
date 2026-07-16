@@ -20,7 +20,7 @@ slug: "basics/ide/projectsettings/statistics"
 
 统计信息面板通常用于 **IDE 开发与调试阶段**。通常，开发者只需在 IDE 面板中勾选 **“显示统计信息”** 选项，即可开启统计面板，如图 1-1 所示。
 
-![](/basics/IDE/projectSettings/statistics/img/1-1.png) 
+![](./img/1-1.png) 
 
 （图1-1）
 
@@ -39,7 +39,7 @@ slug: "basics/ide/projectsettings/statistics"
 
 如果默认显示的统计信息无法满足开发需求，开发者可以在 **IDE 的统计配置面板** 中，通过勾选或取消勾选的方式，自定义需要显示的统计项，如图 1-2 所示。
 
-![](/basics/IDE/projectSettings/statistics/img/1-2.png) 
+![](./img/1-2.png) 
 
 （图1-2）
 

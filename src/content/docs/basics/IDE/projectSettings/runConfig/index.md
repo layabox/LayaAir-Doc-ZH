@@ -14,7 +14,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 可设置属性如图1-1所示：
 
-![1-1](/basics/IDE/projectSettings/runConfig/img/1-1.png)  
+![1-1](./img/1-1.png)  
 
 （图1-1）
 
@@ -50,7 +50,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 横竖屏有三种适配模式，如图1-2所示。
 
- ![1-2](/basics/IDE/projectSettings/runConfig/img/1-2.png) 
+ ![1-2](./img/1-2.png) 
 
 （图1-2）
 
@@ -58,7 +58,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 选择`无`时，无论设备屏幕如何旋转，游戏的水平方向都不会产生跟随屏幕旋转的变化。效果如动图1-3所示。
 
-![](/basics/IDE/projectSettings/runConfig/img/1-3.gif) 
+![](./img/1-3.gif) 
 
 (动图1-3) 
 
@@ -66,7 +66,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 当然，如果我们合理运用相对布局的功能，也许也可以兼顾横竖屏的体验。效果如动图1-4所示。
 
-![](/basics/IDE/projectSettings/runConfig/img/1-4.gif) 
+![](./img/1-4.gif) 
 
 (动图1-4)
 
@@ -76,7 +76,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 当我们设计的宽高就是横屏产品时，**水平**无疑是最佳的体验。无论屏幕方向如何旋转，设计上的水平方向都会与屏幕最短的边始终保持垂直，所以用户设备竖屏时看到横屏画面，自然就会把设备横过来，从而吻合了产品的设计。效果如动图1-5所示。
 
-![](/basics/IDE/projectSettings/runConfig/img/1-5.gif)  
+![](./img/1-5.gif)  
 
 (动图1-5)
 
@@ -84,7 +84,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 当我们设计的宽高就是竖屏产品时，**垂直**无疑是最佳的体验。无论屏幕方向如何旋转，游戏的水平方向都会与屏幕较长的边始终保持垂直。所以用户哪怕是把设备横屏了，仍然看到的是竖屏画面，自然就会把设备恢复竖屏，从而吻合了产品的设计。效果如动图1-6所示。
 
-![](/basics/IDE/projectSettings/runConfig/img/1-6.gif)  
+![](./img/1-6.gif)  
 
 (动图1-6)  
 
@@ -101,7 +101,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 需要注意的是，在实际运行中，若场景中启用了 `3D` 天空盒，或 `3D` 相机本身设置了背景色，在全屏适配模式下这些内容会覆盖画布，因此画布背景色通常不会被看到。只有在画面存在未被内容填满、能够 “露出” 画布的区域时，画布背景色才会显示出来，如图 1-7 所示：
 
-![1-7](/basics/IDE/projectSettings/runConfig/img/1-7.png)
+![1-7](./img/1-7.png)
 
 （图1-7）
 
@@ -109,7 +109,7 @@ slug: "basics/ide/projectsettings/runconfig"
 
 2D选项卡下，主要是2D与通用的全局配置。如图2-1所示：
 
-![](/basics/IDE/projectSettings/runConfig/img/2-1.png) 
+![](./img/2-1.png) 
 
 （图2-1）
 
@@ -168,7 +168,7 @@ Laya.addBeforeInitCallback(() => {
 
 当启用画布透明，并将背景颜色同时设置为透明时，画布内容将不再遮挡运行平台的背景（例如浏览器页面的底色），从而可以直接透过画布看到其下方内容，如图 2-2 所示。
 
-![](/basics/IDE/projectSettings/runConfig/img/2-2.png) 
+![](./img/2-2.png) 
 
 （图2-2） 
 
@@ -210,7 +210,7 @@ Laya.addBeforeInitCallback(() => {
 
 开发者也可以在 IDE 中修改此处设置，如图2-3所示。改变引擎全局默认字体和字号，从而影响新建文本的默认显示效果。
 
-![](/basics/IDE/projectSettings/runConfig/img/2-3.png) 
+![](./img/2-3.png) 
 
 （图2-3）
 
@@ -220,7 +220,7 @@ Laya.addBeforeInitCallback(() => {
 
 环境光颜色`ambientColor` 是 2D 灯光系统中的基础环境光颜色配置，用于定义场景整体的基础照明强度与色调。环境光没有方向性，也不会产生阴影，其默认值为半透明的灰色 new Color(0.2, 0.2, 0.2, 0)，如图3-1所示。用于提供一种均匀、柔和的基础照明效果，避免画面在缺乏光源时完全变暗。
 
-![](/basics/IDE/projectSettings/runConfig/img/3-1.png) 
+![](./img/3-1.png) 
 
 （图3-1）
 
@@ -242,7 +242,7 @@ Laya.addBeforeInitCallback(() => {
 
 在 IDE 中，开发者可以在“项目设置 → 预设值 → 2D 渲染层名字定义”中为各层设置可读名称，并通过环境光遮罩`ambientLayerMask` 进行配置，如图3-2所示，从而精确控制哪些 2D 网格渲染器所在的图层会受到环境光影响，实现更灵活的光照分层管理。
 
-![](/basics/IDE/projectSettings/runConfig/img/3-2.png)  
+![](./img/3-2.png)  
 
 （图3-2）
 
@@ -340,7 +340,7 @@ maxMorphTargetCount 的值在系统中发挥着多个关键作用：在网格渲
 
 在杂项里，主要是调试相关的功能项，如图5-1所示：
 
-![](/basics/IDE/projectSettings/runConfig/img/5-1.png) 
+![](./img/5-1.png) 
 
 （图5-1）
 
@@ -350,7 +350,7 @@ maxMorphTargetCount 的值在系统中发挥着多个关键作用：在网格渲
 
 勾选显示统计信息之后，如图5-2所示。
 
-![](/basics/IDE/projectSettings/runConfig/img/5-2.png) 
+![](./img/5-2.png) 
 
 （图5-2）
 
@@ -362,7 +362,7 @@ maxMorphTargetCount 的值在系统中发挥着多个关键作用：在网格渲
 
 如果开发者不需要断点，只是一些常用的日志打印、加载等查看等，可以开启`显示VConsole`，在移动端的浏览器查看时，会出现如图 5-3 所示的调试工具面板。
 
-<img src="/basics/IDE/projectSettings/runConfig/img/5-3.png" alt="1-11" style="zoom: 50%;" /> 
+<img src="./img/5-3.png" alt="1-11" style="zoom: 50%;" /> 
 
 （图5-3）
 
@@ -381,7 +381,7 @@ Laya.Browser.window.onerror(err.message, "", "", "", err);
 
 运行时，就会弹窗抛出异常，效果如图5-4所示。 
 
-<img src="/basics/IDE/projectSettings/runConfig/img/5-4.png" alt="1-12" style="zoom:50%;" /> 
+<img src="./img/5-4.png" alt="1-12" style="zoom:50%;" /> 
 
 （图5-4）
 

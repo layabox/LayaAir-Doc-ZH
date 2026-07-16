@@ -19,7 +19,7 @@ slug: "ide/particleeditor3d/readme2"
 
 3D粒子的示例效果如动图1所示：
 
-![](/IDE/particleEditor3D/img/1.gif) 
+![](./img/1.gif) 
 
 （动图1）
 
@@ -53,7 +53,7 @@ slug: "ide/particleeditor3d/readme2"
 
 在Laya3.0编辑器中，可以使用5种类型，分别做出不同的特效。
 
-<img src="/IDE/particleEditor3D/img/1.png" alt="1" style="zoom:50%;" /> 
+<img src="./img/1.png" alt="1" style="zoom:50%;" /> 
 
 （图1.2）
 
@@ -61,7 +61,7 @@ slug: "ide/particleeditor3d/readme2"
 
 默认的是粒子系统的通用模块，用于设置粒子系统的基础性的设置。此模块为固有模块，不可禁用。该模块定义了粒子初始化时的持续时间、循环方式、发射速度、大小等一些列基本的参数。
 
-<img src="/IDE/particleEditor3D/img/4.png" alt="4" style="zoom:50%;" /> 
+<img src="./img/4.png" alt="4" style="zoom:50%;" /> 
 
 （图1.2.1）
 
@@ -85,7 +85,7 @@ slug: "ide/particleeditor3d/readme2"
 
 该模块是粒子系统组件的一部分，用来指定发射粒子的属性。当创建新的粒子系统时，Emission 模块会默认启用。
 
-<img src="/IDE/particleEditor3D/img/5.png" alt=" " style="zoom: 50%;" /> 
+<img src="./img/5.png" alt=" " style="zoom: 50%;" /> 
 
 （图1.2.2）
 
@@ -99,7 +99,7 @@ slug: "ide/particleeditor3d/readme2"
 
 该模块定义了发射粒子的体积或表面，以及起始速度的方向。
 
-<img src="/IDE/particleEditor3D/img/6.png" alt="6" style="zoom:50%;" /> 
+<img src="./img/6.png" alt="6" style="zoom:50%;" /> 
 
 （图1.2.3）
 
@@ -136,7 +136,7 @@ slug: "ide/particleeditor3d/readme2"
 
 该模块定义了发射出的粒子的生命周期内的属性
 
-<img src="/IDE/particleEditor3D/img/7.png" alt="7" style="zoom:50%;" /> 
+<img src="./img/7.png" alt="7" style="zoom:50%;" /> 
 
 （图1.2.4）
 
@@ -167,7 +167,7 @@ slug: "ide/particleeditor3d/readme2"
 
 该模块是粒子系统的一部分。当创建新的粒子系统时，Laya 3.0 将贴图动画模块添加到粒子系统。
 
-<img src="/IDE/particleEditor3D/img/8.png" alt="8" style="zoom:50%;" /> 
+<img src="./img/8.png" alt="8" style="zoom:50%;" /> 
 
 （图1.2.5）
 
@@ -197,7 +197,7 @@ slug: "ide/particleeditor3d/readme2"
 
 渲染器模块的设置决定了一个粒子的图像，模型，如何被其它粒子变换、着色和过度绘制。
 
-#### <img src="/IDE/particleEditor3D/img/9.png" alt="9" style="zoom: 50%;" />
+#### <img src="./img/9.png" alt="9" style="zoom: 50%;" />
 
 （图1.3）
 
@@ -232,7 +232,7 @@ slug: "ide/particleeditor3d/readme2"
 在材质中选择Laya的particle，可以添加Laya内置的粒子着色器（PARTICLESHURIKEN），其可渲染各种粒子系统
 效果。所有的粒子都是用使用的这个材质。
 
-#### <img src="/IDE/particleEditor3D/img/10.png" alt="10" style="zoom:50%;" />
+#### <img src="./img/10.png" alt="10" style="zoom:50%;" />
 
 （图1.4）
 
@@ -264,13 +264,13 @@ slug: "ide/particleeditor3d/readme2"
 
 在场景中的任何节点，可以通过鼠标右键来添加粒子系统。
 
-<img src="/IDE/particleEditor3D/img/2.png" alt="2" style="zoom:33%;" /> 
+<img src="./img/2.png" alt="2" style="zoom:33%;" /> 
 
 （图2.1.1-1）
 
 默认粒子系统添加完成效果
 
-<img src="/IDE/particleEditor3D/img/3.png" alt="3" style="zoom:33%;" /> 
+<img src="./img/3.png" alt="3" style="zoom:33%;" /> 
 
 （图2.1.1-2）
 
@@ -278,7 +278,7 @@ slug: "ide/particleeditor3d/readme2"
 
 拖动场景中的粒子根节点到Assets中，可以保持预制体
 
-<img src="/IDE/particleEditor3D/img/12.png" alt="image-20221102093634576" style="zoom:33%;" /> 
+<img src="./img/12.png" alt="image-20221102093634576" style="zoom:33%;" /> 
 
 （图2.1.2）
 
@@ -290,7 +290,7 @@ slug: "ide/particleeditor3d/readme2"
 
 #### 2.2.1 创建火焰预制体
 
-<img src="/IDE/particleEditor3D/img/13.png" alt="image-20221102094250016" style="zoom:50%;" /> 
+<img src="./img/13.png" alt="image-20221102094250016" style="zoom:50%;" /> 
 
 （图2.2.1）
 
@@ -298,7 +298,7 @@ slug: "ide/particleeditor3d/readme2"
 
 #### 2.2.2 火焰序列帧动画
 
-<img src="/IDE/particleEditor3D/img/15.png" alt="image-20221102095201473" style="zoom: 33%;" /> 
+<img src="./img/15.png" alt="image-20221102095201473" style="zoom: 33%;" /> 
 
 （图2.2.2）
 
@@ -306,7 +306,7 @@ slug: "ide/particleeditor3d/readme2"
 
 #### 2.2.3 设置火焰材质
 
-<img src="/IDE/particleEditor3D/img/16.png" alt="image-20221102095612863" style="zoom:33%;" /> 
+<img src="./img/16.png" alt="image-20221102095612863" style="zoom:33%;" /> 
 
 （图2.2.3）
 
@@ -314,13 +314,13 @@ slug: "ide/particleeditor3d/readme2"
 
 #### 2.2.4 设置粒子系统渲染模块
 
-<img src="/IDE/particleEditor3D/img/17.png" alt="image-20221102100047289" style="zoom:33%;" /> 
+<img src="./img/17.png" alt="image-20221102100047289" style="zoom:33%;" /> 
 
 （图2.2.4-1）
 
 创建粒子系统后，Inspector面板中默认会添加ShurikenParticleRenderer组件，选择FlameRoundYellowParticle材质
 
-<img src="/IDE/particleEditor3D/img/18.png" alt="image-20221102101151815" style="zoom:33%;" /> 
+<img src="./img/18.png" alt="image-20221102101151815" style="zoom:33%;" /> 
 
 （图2.2.4-2）
 
@@ -328,7 +328,7 @@ slug: "ide/particleeditor3d/readme2"
 
 #### 2.2.5 使用贴图动画
 
- <img src="/IDE/particleEditor3D/img/19.png" alt="image-20221102101600360" style="zoom: 33%;" /> 
+ <img src="./img/19.png" alt="image-20221102101600360" style="zoom: 33%;" /> 
 
 （图2.2.5-1）
 
@@ -342,7 +342,7 @@ slug: "ide/particleeditor3d/readme2"
 
 #### 2.2.6 设置基础属性
 
- <img src="/IDE/particleEditor3D/img/20.png" alt="image-20221102102603464" style="zoom:33%;" />
+ <img src="./img/20.png" alt="image-20221102102603464" style="zoom:33%;" />
 
 （图2.2.5） 
 
@@ -358,7 +358,7 @@ Start Speed的Constant为0，火焰发射时的初始速度为0，Start Size的C
 
 #### 2.2.7 设置形状模块
 
-<img src="/IDE/particleEditor3D/img/21.png" alt="image-20221102103453699" style="zoom:33%;" /> 
+<img src="./img/21.png" alt="image-20221102103453699" style="zoom:33%;" /> 
 
 （图2.2.7） 
 
@@ -366,25 +366,25 @@ Start Speed的Constant为0，火焰发射时的初始速度为0，Start Size的C
 
 #### 2.2.8 设置粒子生命周期
 
-<img src="/IDE/particleEditor3D/img/22.png" alt="image-20221102103927956" style="zoom:33%;" /> 
+<img src="./img/22.png" alt="image-20221102103927956" style="zoom:33%;" /> 
 
 （图2.2.8-1） 
 
 最重要一环为设置粒子生命周期，首先设置火焰生命周期内颜色的过程，创建Color Over Lifetime实例，Type设置为Gradient梯度变化曲线，打开Gradient面板，上面3个箭头向下的指示标表明颜色的透明度从 0%的不透明->80%的不透明->100%的全透明，下面的2个箭头向上的指示标表明颜色的区间变化从c99451到ff4500
 
-<img src="/IDE/particleEditor3D/img/23.png" alt="image-20221102104518054" style="zoom:33%;" /> 
+<img src="./img/23.png" alt="image-20221102104518054" style="zoom:33%;" /> 
 
 （图2.2.8-2） 
 
 由于火焰是粒子向上运动到消失，创建Velocity Over Lifetime实例，选择Curve曲线，只需要修改Y轴的位移为1秒钟从0到1，向上移动1个单位
 
-<img src="/IDE/particleEditor3D/img/24.png" alt="image-20221102104820089" style="zoom:33%;" /> 
+<img src="./img/24.png" alt="image-20221102104820089" style="zoom:33%;" /> 
 
 （图2.2.8-3） 
 
 由于火焰是会尺寸上有缩小的过程，创建Size Over Lifetime实例，选择Curve曲线，只需要修改0.5秒时间内，Size从1到0.5，缩小一倍
 
-<img src="/IDE/particleEditor3D/img/25.png" alt="image-20221102105146305" style="zoom:33%;" /> 
+<img src="./img/25.png" alt="image-20221102105146305" style="zoom:33%;" /> 
 
 （图2.2.8-4）
 

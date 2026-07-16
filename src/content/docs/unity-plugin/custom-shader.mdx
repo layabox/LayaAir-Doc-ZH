@@ -20,7 +20,7 @@ slug: "unity-plugin/custom-shader"
 
 **本节为流水线入口——决定是否走自动转换、转出的命名，以及预转换模板优先。** 材质 shader **不在** `MetarialPropData.json` 里，**且**导出面板勾了「启用自定义 Shader 自动导出」时，`MetarialUitls.WriteMetarial` 才转交 `WriteAutoCustomShaderMaterial`。**没勾**则未注册 shader 的普通材质跳过导出、粒子材质回退 Laya 内置粒子 shader（见 [材质与Shader导出](/unity-plugin/material-shader/)）。
 
-![启用自定义 Shader 自动导出开关](/unity-plugin/img/custom-shader-toggle.png)
+![启用自定义 Shader 自动导出开关](./img/custom-shader-toggle.png)
 
 **触发开关：** 导出面板「自定义 Shader 设置」→ 勾「启用自定义 Shader 自动导出」。提示语：「插件将自动识别并导出未内置支持的自定义 Shader 材质，自动把 Unity Shader 属性转换为 LayaAir 属性格式」。不勾则未注册 shader 一律跳过。
 
@@ -70,7 +70,7 @@ slug: "unity-plugin/custom-shader"
 
 **说明该自动转换的适用范围与局限。** HLSL→GLSL 转换是**启发式**的：常见的属性、贴图采样、类型映射、渲染状态能自动转换，但**复杂 Shader（尤其 Unity 表面着色器 `#pragma surface`、手写复杂片元逻辑）可能无法完整转换，导出后需在 Laya 中手动调整 Shader**。对外观要求严格的 Shader，推荐用 ① 的**预转换模板**（`Editor/Mappings/templat_Shaders/` 放手工转好的同名模板）替代自动转译。
 
-![Ellen_Shield_Effect_Mat 检视器](/unity-plugin/img/custom-shader-material.png)
+![Ellen_Shield_Effect_Mat 检视器](./img/custom-shader-material.png)
 
 **导出前 · Unity 材质示例：** `Ellen_Shield_Effect_Mat`，Shader = `Custom/Shield`（非 Standard），含 Color（青）/ Albedo / Smoothness / Metallic，渲染队列 3000（Transparent）。这类未注册 shader 的材质即由本页流程自动转换。
 

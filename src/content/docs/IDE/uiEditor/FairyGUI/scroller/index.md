@@ -10,7 +10,7 @@ Author: 谷主
 
 ### 一、编辑器操作 
 
-<img src="/IDE/uiEditor/FairyGUI/scroller/img/1-1.png" alt="1-1" style="zoom:60%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:60%;" />
 - `Direction` 滚动方向。
   - `Vertical`  垂直。
   - `Horizontal` 水平。

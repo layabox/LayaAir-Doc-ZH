@@ -10,7 +10,7 @@ Spine骨骼动画，DragonBones（龙骨）骨骼动画，都是游戏中经常�
 
 LayaAir IDE中支持骨骼动画的添加，预览和运行。使用之前，需要在 IDE 中勾选 laya.ani 类库，如图1-1所示
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/1-1.png" alt="image-20221230154858355" style="zoom:50%;" /> 
+<img src="./img/1-1.png" alt="image-20221230154858355" style="zoom:50%;" /> 
 
 （图1-1）
 
@@ -22,7 +22,7 @@ LayaAir IDE中支持骨骼动画的添加，预览和运行。使用之前，需
 
 如图2-1所示，我们将做好的动画资源放入 assets 目录下
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/2-1.png" alt="image-20221230151602985" style="zoom:50%;" /> 
+<img src="./img/2-1.png" alt="image-20221230151602985" style="zoom:50%;" /> 
 
 （图2-1）
 
@@ -34,13 +34,13 @@ IDE中通过两种方式，可以在场景中添加内置骨骼动画组件
 
 1，直接拖入骨骼动画组件，如动图2-2所示
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/2-2.gif" style="zoom:80%;" />
+<img src="./img/2-2.gif" style="zoom:80%;" />
 
 （动图2-2）
 
 2，通过Scene2D或者任何节点下，创建骨骼动画组件，如动图2-3所示
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/2-3.gif" style="zoom:80%;" />
+<img src="./img/2-3.gif" style="zoom:80%;" />
 
 （动图2-3）
 
@@ -52,7 +52,7 @@ IDE中通过两种方式，可以在场景中添加内置骨骼动画组件
 
 我们先来看看骨骼动画组件，都有什么属性，如图2-4所示
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/2-4.png" alt="image-20221230152821307" style="zoom: 50%;" /> 
+<img src="./img/2-4.png" alt="image-20221230152821307" style="zoom: 50%;" /> 
 
  （图2-4）
 
@@ -68,7 +68,7 @@ IDE中通过两种方式，可以在场景中添加内置骨骼动画组件
 
 首先，我们把 .sk 文件拖入 `Source` 属性中，在IDE中将会看到动画，如动图2-5所示
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/2-5.gif" style="zoom:80%;" />
+<img src="./img/2-5.gif" style="zoom:80%;" />
 
  （动图2-5）
 
@@ -78,7 +78,7 @@ IDE中通过两种方式，可以在场景中添加内置骨骼动画组件
 
 通过勾选Preview选项，我们就可以在IDE中直接预览骨骼动画效果，如动图2-6所示
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/2-6.gif" style="zoom:80%;" />
+<img src="./img/2-6.gif" style="zoom:80%;" />
 
  （动图2-6）
 
@@ -90,7 +90,7 @@ IDE中通过两种方式，可以在场景中添加内置骨骼动画组件
 
 在IDE中，可以对动画的位置，大小，缩放进行基础操作，如动图2-7所示
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/2-7.gif" style="zoom:80%;" />
+<img src="./img/2-7.gif" style="zoom:80%;" />
 
  （动图2-7）
 
@@ -148,7 +148,7 @@ export class Main extends Laya.Script {
 
 运行效果如下
 
-<img src="/IDE/uiEditor/uiComponent/skeleton/sk/img/3-1.gif" style="zoom:50%;" /> 
+<img src="./img/3-1.gif" style="zoom:50%;" /> 
 
 （动图3-1）
 

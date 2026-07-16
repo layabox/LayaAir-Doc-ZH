@@ -12,31 +12,31 @@ HScrollBar组件是一个水平方向滚动条组件。当数据太多以至于�
 
 如图1-1所示，可以在`层级`窗口中右键进行创建，也可以从`小部件`窗口中拖拽添加。
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-1.png" alt="1-1" style="zoom:50%;" />
+<img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
 （图1-1）
 
 滚动条由四部分组成：一个轨道图、一个滑块按钮和两个箭头按钮。HScrollBar组件图像资源的命名要符合[资源命名规则](/ide/uieditor/uicomponent/)，LayaAir自带的资源示例如下所示：
 
-![1-2](/IDE/uiEditor/uiComponent/HScrollBar/img/1-2.png)
+![1-2](./img/1-2.png)
 
 （图1-2）轨道图
 
-![1-3](/IDE/uiEditor/uiComponent/HScrollBar/img/1-3.png)
+![1-3](./img/1-3.png)
 
 （图1-3）滑块按钮
 
-![1-4](/IDE/uiEditor/uiComponent/HScrollBar/img/1-4.png)
+![1-4](./img/1-4.png)
 
 （图1-4）箭头按钮1
 
-![1-5](/IDE/uiEditor/uiComponent/HScrollBar/img/1-5.png)
+![1-5](./img/1-5.png)
 
 （图1-5）箭头按钮2
 
 创建HScrollBar后的显示效果如下：
 
-![1-6](/IDE/uiEditor/uiComponent/HScrollBar/img/1-6.png)
+![1-6](./img/1-6.png)
 
 （图1-6）
 
@@ -46,7 +46,7 @@ HScrollBar组件是一个水平方向滚动条组件。当数据太多以至于�
 
 HScrollBar的特有属性如下：
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-7.png" alt="1-7" style="zoom:100%;" />
+<img src="./img/1-7.png" alt="1-7" style="zoom:100%;" />
 
 （图1-7）
 
@@ -71,49 +71,49 @@ HScrollBar的特有属性如下：
 
 设置 HScrollBar 的属性 max 的值为 10、属性 min 的值为0、属性 value 的值为3后，显示效果如下：
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-8.png" alt="1-8" style="zoom:80%;" />
+<img src="./img/1-8.png" alt="1-8" style="zoom:80%;" />
 
 （图1-8）
 
 在运行时，可以拖动滑块或点击箭头按钮控制滚动条的值。设置属性scrollSize为1，那么每次点击滚动条箭头按钮时，滚动条的值value就改变1，效果如下所示：
 
-![1-9](/IDE/uiEditor/uiComponent/HScrollBar/img/1-9.gif)
+![1-9](./img/1-9.gif)
 
 （动图1-9）
 
 设置mouseWheelEnable属性为true后，可以开启鼠标滚轮滚动。但是该属性必须设置滚动对象后才有效，这里的滚动对象以Panel为例，效果如动图1-10所示，通过鼠标滑轮控制水平滚动条。
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-10.gif" alt="1-10" style="zoom:50%;" />
+<img src="./img/1-10.gif" alt="1-10" style="zoom:50%;" />
 
 （动图1-10）
 
 设置touchScrollEnable属性为true后，可以开启触摸滚动。该属性也必须设置滚动对象后才有效，如动图1-11所示，可以对Panel组件进行拖拽，水平滚动条会跟着进行滚动。
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-11.gif" alt="1-11" style="zoom:50%;" />
+<img src="./img/1-11.gif" alt="1-11" style="zoom:50%;" />
 
 （动图1-11）
 
 设置hide属性为true后，不显示滚动条，但是可以正常滚动。效果如下动图所示：
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-12.gif" alt="1-12" style="zoom:50%;" />
+<img src="./img/1-12.gif" alt="1-12" style="zoom:50%;" />
 
 （动图1-12）
 
 设置autoHide属性为true后，滚动条会自动隐藏。当操作内容进行滚动时，滚动条会显示出来，当停止滚动时，滚动条会自动隐藏。效果如下：
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-13.gif" alt="1-13" style="zoom: 50%;" />
+<img src="./img/1-13.gif" alt="1-13" style="zoom: 50%;" />
 
 （动图1-13）
 
 设置rollRatio属性，数值越小，滚动的速度变化越小。动图1-14左图是rollRatio设置为1的效果，右图是rollRatio设置为0.1的效果，显然rollRatio的值越大，滚动速度越快。
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-14-1.gif" alt="1-14-1" style="zoom:50%;" /><img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-14-2.gif" alt="1-14-2" style="zoom:50%;" />
+<img src="./img/1-14-1.gif" alt="1-14-1" style="zoom:50%;" /><img src="./img/1-14-2.gif" alt="1-14-2" style="zoom:50%;" />
 
 （动图1-14）
 
 水平滚动条支持橡皮筋技术。动图1-15演示的是设置橡皮筋效果极限距离elasticDistance为200、橡皮筋回弹时间elasticBackTime为500毫秒的效果。
 
-<img src="/IDE/uiEditor/uiComponent/HScrollBar/img/1-15.gif" alt="1-15" style="zoom:50%;" />
+<img src="./img/1-15.gif" alt="1-15" style="zoom:50%;" />
 
 （动图1-15）
 
@@ -198,6 +198,6 @@ export class UI_HScrollBar extends Laya.Script {
 
 **运行效果：**
 
-![2-1](/IDE/uiEditor/uiComponent/HScrollBar/img/2-1.gif)
+![2-1](./img/2-1.gif)
 
 （动图2-1）

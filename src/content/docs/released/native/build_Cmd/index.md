@@ -93,20 +93,20 @@ removeres命令用于删除native项目的资源包
 ## 2.应用实例
 1.首先建立下图所示的目录结构。jellyfish是html5项目目录
 
-![图1](/released/native/build_Cmd/img/1.jpg)  
+![图1](./img/1.jpg)  
 2.查看SDK版本信息  
-![图2](/released/native/build_Cmd/img/2.jpg)  
+![图2](./img/2.jpg)  
 3.创建native项目  
-![图3](/released/native/build_Cmd/img/3.jpg)  
+![图3](./img/3.jpg)  
 4.生成下图所示目录结构。  
-![图4](/released/native/build_Cmd/img/4.jpg)  
+![图4](./img/4.jpg)  
 5.随时刷新资源包  
 在dev目录下，通过--path指定native工程的目录    
-![图5](/released/native/build_Cmd/img/5.jpg)       
+![图5](./img/5.jpg)       
 进入native项目目录，不需要指定--path参数了  
-![图5](/released/native/build_Cmd/img/6.jpg)   
+![图5](./img/6.jpg)   
 5.如果不需要资源包，删除它    
 在dev目录下，通过--path指定native工程的目录     
-![图5](/released/native/build_Cmd/img/7.jpg)    
+![图5](./img/7.jpg)    
 进入native项目目录，不需要指定--path参数了   
-![图5](/released/native/build_Cmd/img/8.jpg)  
+![图5](./img/8.jpg)  

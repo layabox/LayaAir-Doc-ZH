@@ -10,7 +10,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 注：基于性能考虑，Graphics可以实现的情况下，建议优先使用Graphics画线。
 
-![1-1](/IDE/Component/2D/2DRender/Line2DRender/img/1-1.png)
+![1-1](./img/1-1.png)
 
 （图1-1）
 
@@ -24,7 +24,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 选中一个2D节点，在属性设置面板中为节点增加一个2D线渲染器组件(Line2DRender)。
 
-![2-1-1](/IDE/Component/2D/2DRender/Line2DRender/img/2-1-1.gif)
+![2-1-1](./img/2-1-1.gif)
 
 （图2-1-1）
 
@@ -34,7 +34,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 如图2-2-1所示，2D线渲染器上有以下这些属性：
 
-![2-2-1](/IDE/Component/2D/2DRender/Line2DRender/img/2-2-1.png) 
+![2-2-1](./img/2-2-1.png) 
 
 （图2-2-1）
 
@@ -58,7 +58,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 这里我们为了便于观察，将线段宽度设置为了100。
 
-![2-3-1](/IDE/Component/2D/2DRender/Line2DRender/img/2-3-1.gif)
+![2-3-1](./img/2-3-1.gif)
 
 （图2-3-1）
 
@@ -66,7 +66,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 当我们改变纹理偏移量的`X`属性值时，如图2-3-2所示，纹理沿线段的方向平移：
 
-![2-3-2](/IDE/Component/2D/2DRender/Line2DRender/img/2-3-2.gif)
+![2-3-2](./img/2-3-2.gif)
 
 （图2-3-2）
 
@@ -74,7 +74,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 当我们改变纹理偏移量的`Y`属性值时，如图2-3-3所示，纹理垂直于线段的方向平移：
 
-![2-3-3](/IDE/Component/2D/2DRender/Line2DRender/img/2-3-3.gif)
+![2-3-3](./img/2-3-3.gif)
 
 （图2-3-3）
 
@@ -82,7 +82,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 当我们改变纹理偏移量的`Z`属性值时，如图2-3-4所示，可以发现纹理沿线段方向缩放：
 
-![2-3-4](/IDE/Component/2D/2DRender/Line2DRender/img/2-3-4.gif)
+![2-3-4](./img/2-3-4.gif)
 
 （图2-3-4）
 
@@ -90,7 +90,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 当我们改变纹理偏移量的`W`属性值时，如图2-3-5所示，可以发现纹理沿垂直于线段的方向缩放：
 
-![2-3-5](/IDE/Component/2D/2DRender/Line2DRender/img/2-3-5.gif)
+![2-3-5](./img/2-3-5.gif)
 
 （图2-3-5）
 
@@ -100,7 +100,7 @@ slug: "ide/component/2d/2drender/line2drender"
 
 LayaAir引擎中还有另一个可以用于绘制线段的工具Graphics。
 
-![2-4-1](/IDE/Component/2D/2DRender/Line2DRender/img/2-4-1.gif)
+![2-4-1](./img/2-4-1.gif)
 
 这里我们对比一下两者的区别。
 
@@ -175,7 +175,7 @@ export class DrawLine extends Laya.Script {
 
 将以上代码保存后，拖到场景中的精灵节点上，运行即可，效果如图：
 
-![3-1](/IDE/Component/2D/2DRender/Line2DRender/img/3-1.gif)
+![3-1](./img/3-1.gif)
 
 （图3-1）
 
