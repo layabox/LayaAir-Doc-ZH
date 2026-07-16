@@ -4,7 +4,6 @@ description: "WebGPU Compute 是 WebGPU 提供的通用 GPU 计算能力，允�
 slug: "basics/webgpu/computeshader"
 ---
 
-> Author: Charley
 
 WebGPU Compute 是 WebGPU 提供的通用 GPU 计算能力，允许开发者在浏览器环境中通过计算着色器将高并行、计算密集型任务直接交由 GPU 执行，而不再局限于传统的“只为渲染服务”的图形管线。是把 Web 端引擎带入 “现代图形架构” 的关键一步。没有 Compute，WebGPU 只是 “更快的 WebGL” ，有了 Compute，它才让 Web 端图形能力逐步具备 “通用计算” 的现代特征。
 
