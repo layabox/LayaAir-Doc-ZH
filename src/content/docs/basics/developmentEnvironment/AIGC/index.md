@@ -1,130 +1,207 @@
 ---
 title: "AI协同开发环境"
-description: "在当下的软件开发领域，如果仍然固守传统的开发环境与工作模式，已经难以被视为一名具备前沿竞争力的程序员。如何掌握并善用各种 AIGC 工具，充分发挥人工智能在理解、生成与创作方面的能力，正在成为提升开发效率与创新能力的关键所在。"
+description: "面向 LayaAir 开发者梳理 2026 年 AI 协同形态：国际与国内主流问答、AIGC、智能体 IDE 与 MCP，并给出可落地的选型建议。"
+lastUpdated: 2026-07-16
 slug: "basics/developmentenvironment/aigc"
 ---
 
-> Author: Charley
+在当下的软件与游戏开发中，若仍完全依赖手工查文档、手写样板代码与纯人工产内容，效率与竞争力都会明显落后。善用大模型的理解、生成与工具调用能力，正在成为开发者的基础技能。
 
-在当下的软件开发领域，如果仍然固守传统的开发环境与工作模式，已经难以被视为一名具备前沿竞争力的程序员。如何掌握并善用各种 AIGC 工具，充分发挥人工智能在理解、生成与创作方面的能力，正在成为提升开发效率与创新能力的关键所在。
+本文面向 **LayaAir 开发者**，按能力形态介绍当前主流的 AI 协同方式，并分别给出**国际**与**国内**常用产品。产品迭代很快，下文以「形态 + 代表工具」为主，具体套餐与模型名以各官网为准。
 
-AI 协同开发的形态正在快速演进，主流类型大致可以分为四类：一是 **AI 问答**，用于知识检索与问题解答；二是 **AIGC 创作**，利用生成式模型创作文本、图像或代码内容；三是 **代码助手与智能补全**，通过上下文理解实现代码生成与优化；四是 **智能体（Agent）协作**，让 AI 具备自主执行任务与持续协同开发的能力。
-
-## 1、AI问答
-
-### 1.1 主流的AI问答模型推荐
-
-从交互方式与使用场景的角度来看，AI问答系统主要可以分为三种典型的表现形式：**网页问答型**、**开发环境内置型**以及**API调用型**。这三种形态覆盖了当下AI问答的主要使用场景，体现了人工智能在不同层面的融合方式与应用深度。
-
-其中，**开发环境内置型**将在后续章节中单独介绍；**API调用型**由于更偏向企业集成与系统开发，不太适用于个人开发者，这里暂不展开。
-
-**网页问答型**以网页为主要交互界面，用户无需编程或配置，便可直接通过自然语言与AI模型进行对话，获取技术知识（例如新手对语言与语法的困惑）、灵感或创作辅助。
-
-国际主流产品包括：[ChatGPT](https://chatgpt.com/)、[Gemini](https://gemini.google.com/)、[Perplexity AI](https://www.perplexity.ai/) 、[Claude.ai](https://claude.ai/)等；
-
-国内主流产品包括：[豆包](https://www.doubao.com/chat/)、[腾讯元宝](https://yuanbao.tencent.com/chat/)、[腾讯混元](https://hunyuan.tencent.com/)、[文心一言](https://yiyan.baidu.com/)、[通义千问](https://www.tongyi.com/)、[智谱清言](https://chatglm.cn/main/)、[Kimi](https://www.kimi.com/)等。
-
-### 1.2 推理与检索的AI模型推荐
-
-在早期的大语言模型中，由于缺乏**联网搜索能力**，模型只能依赖训练语料生成回答。这种机制容易出现“生成幻觉”（Hallucination）问题，并且也经常是老旧的信息，在查询专业技术资料时，尤其是一些新的知识，模型可能给出看似合理但实际错误的信息。
-
-因此，用户在使用AI问答时，往往仍需依赖传统搜索引擎，以确保答案的准确性。
-
-随着**联网搜索与检索增强（RAG, Retrieval-Augmented Generation）**技术的成熟，越来越多的AI模型开始具备实时访问互联网信息的能力，从而在事实准确性与推理深度之间实现了更好的平衡。
-
-总体而言，具备联网搜索能力的推理型AI问答模型，正在逐步取代传统搜索与问答的边界，为开发者与内容创作者带来更高效、更可靠的知识获取方式。
-
-在当前主流产品中，笔者认为在“**联网检索能力**”与“**逻辑推理表现**”两方面兼顾得较好的模型主要为：**[腾讯元宝](https://yuanbao.tencent.com/)**和**[DeepSeek](https://chat.deepseek.com/)**。
-
-## 2、**AIGC 创作**
-
-AIGC（Artificial Intelligence Generated Content），即**人工智能生成内容**，是指利用人工智能技术生成文本、图像、音频、视频、代码等内容的生产方式。
-
-### 2.1 常规的AIGC创作
-
-现在主流的自然语言处理（NLP）大模型都具有文本生成的AIGC能力，例如，生成商业文案、文学作品、代码等文本内容。
-
-随着AIGC的竞争与发展，图像生成的能力，也越来越多的成为了大模型的标配能力。例如：**ChatGPT、豆包、腾讯混元、文心一言、通义千问、智谱清言**等。
-
-### 2.2 垂直领域的AIGC创作
-
-除了自然语言的通用大模型之外，也有很多专门从事垂直领域的AIGC大模型。例如，文生图、文生3D模型、文生音频、文生视频、文生游戏等等、文生视频对于LayaAir开发者而言，基本用不上，这里不作介绍。重点推荐一些可用于游戏等互动产品的AIGC创作的AI模型。
-
-#### 2.2.1 文生图、图生图
-
-AI生成图片可以用于生成游戏背景图、贴图纹理、2D角色、UI等。有些需求，可以直接生成使用，有些则需要美术二次处理（也可以提升效率）。
-
-除了自带生成图片的通用大模型外，[Midjourney](https://www.midjourney.com/editor/)、Stable Diffusion、[即梦AI](https://jimeng.jianying.com/ai-tool/home)、[腾讯混元](https://hunyuan.tencent.com/image/)等都是比较优质的图像生成大模型。
-
-这些大模型，都可以通过用户输入提示（prompt）文字，生成风格化、高质量的图像。也有的大模型具备图生图的能力，通过上传参照图进行修改创作。
-
-#### 2.2.2 文生3D模型
-
-文生3D模型在当下的成熟度相对成生图像要差一些，我推荐几个当下主流的一些3D模型，大家可以进行体验与尝试。
-
-分别为：[**Tripo 3D**](https://studio.tripo3d.ai/home)、[**Fast3D**](https://fast3d.io/zh)、[**Luma AI - Genie**](https://lumalabs.ai/genie?view=create) 、[**Meshy AI**](https://www.meshy.ai/)
-
-#### 2.2.3 文生音频
-
-文生音频比较火的是**ElevenLabs SFX **和 **MusicGen**，
-
-**ElevenLabs SFX v2** 由AI音频研发公司ElevenLabs推出，在线网址为：[https://elevenlabs.io/](https://elevenlabs.io/)
-
-**MusicGen**是由Meta 研发并开源的一个大模型，Github地址为：[https://github.com/facebookresearch/audiocraft](https://github.com/facebookresearch/audiocraft)
-
-#### 2.2.4 文生游戏
-
-文生游戏在当下的难度还比较大，通用大模型生成的JS游戏代码，仅仅是基础的DEMO玩法级，很难形成商业化。
-
-目前只有LayaIdea可以做到生成游戏原型、简单游戏，以及试玩广告的商业化产品。
-
-更多介绍可以查看公众号文章：[https://mp.weixin.qq.com/s/8ANLuz4vcnexhoija9eumA](https://mp.weixin.qq.com/s/8ANLuz4vcnexhoija9eumA)
+:::tip[和 LayaAir 专用能力的关系]
+本文讲的是通用 AI 生态。接到 LayaAir 引擎后，请继续配置 [CodingMCP](/basics/developmentenvironment/codingmcp/)、[IDE-MCP](/basics/developmentenvironment/ide-mcp/)、[LayaAir CLI](/basics/developmentenvironment/cli/)、[LayaIdea](/basics/developmentenvironment/layaidea/)，减少「通用模型编造不存在的引擎 API」。完整路径见 [AI 开发路线](/guides/roadmap/ai/)。
+:::
 
 
 
-## 3、代码辅助开发
+## 一、先分清四种协同形态
 
-AI 在代码领域的应用是提升开发效率最直接的方向之一。它不仅能够辅助程序员进行自动补全、函数生成、代码优化，还逐渐发展出具备深度理解与自主改写能力的智能化编程环境。
+| 形态 | 你在做什么 | 典型工具 |
+| --- | --- | --- |
+| **AI 问答** | 查概念、排错思路、学语法、对比方案 | ChatGPT、Claude、Gemini、DeepSeek、Kimi、豆包等 |
+| **AIGC 创作** | 生成图、3D、音效/配乐等素材草稿 | Midjourney、即梦、Meshy、ElevenLabs 等 |
+| **代码助手** | 补全、改文件、多步实现功能、重构 | Copilot、Cursor、Claude Code、Trae、通义灵码等 |
+| **工具协议 / Agent** | 让模型调用外部工具与真实数据 | MCP、Skills、引擎侧 MCP / CLI |
 
-### 1.1 代码辅助开发插件
-
-代码辅助插件是最早普及的 AI 编程工具形态，其中最具代表性的产品是 **GitHub Copilot**。它基于大规模代码训练模型，能够在开发者输入代码时自动给出补全、重构与注释建议，极大提高编码效率。
-
-随后，国内也出现了多款功能类似的 AI 编程插件，例如：腾讯的CodeBuddy、百度的文心快码（Baidu Comate）等。
-
-这些插件可以通过vscode插件的形式安装到编码环境中，可以基于上下文自动补全代码、生成函数、文档、重构建议等。是比较实用的提升效率的工具。
-
-### 1.2 深度辅助开发的编辑器
-
-与传统插件不同，**智能编辑器（Agentic IDE）** 是一种更高层次的 AI 协同开发形态。它不再只是“代码建议工具”，而是一个具备更全面的上下文理解与任务规划能力的**AI编程伙伴**。
-
-其中最具代表性的产品是 **[Cursor](https://www.cursor.com/)**。
-
-Cursor 基于开源的 VS Code 架构，集成了 AI 智能体（Agent）功能，具有深度思考的能力。能够：
-
-- 全局理解项目结构与依赖关系；
-- 根据自然语言指令新增或修改代码文件；
-- 执行多步逻辑推理与代码生成；
-- 辅助进行大型项目的功能迭代与Bug修复等。
-
-这种编辑器的出现，标志着 AI 从“代码辅助”正式迈向“代码协同”。
-
-国内与 Cursor 类似的智能体编码平台产品也在迅速发展，例如：字节旗下的[Trae](https://www.trae.cn/)、阿里巴巴旗下的[Qoder](https://qoder.com/)等。
-
-推荐大家下载使用。
+新手不必一次配齐。常见路径是：**问答解惑 → 代码助手写工程 →（可选）AIGC 出素材 → 再接入 LayaAir MCP 降幻觉**。
 
 
 
-## 4、MCP
+## 二、AI 问答
 
-MCP（Model Context Protocol，模型上下文协议）是由Anthropic开发的开放标准协议，旨在标准化大型语言模型（LLM）与外部数据源、工具及应用之间的交互方式，被视为“AI界的USB-C接口”。
+问答仍是最轻量的入口：打开网页就能用，适合语言基础、报错解读、方案对比。写引擎业务代码时，务必把结论对照 [官方 API](/basics/developmentenvironment/api/) 或 CodingMCP，不要直接信任模型「凭记忆」给出的类名与参数。
 
-其核心优势在于通过统一协议打破AI与外部资源的“碎片化”壁垒，实现“一次开发、多端适配”，大幅降低AI应用与数据源/工具的集成复杂度；支持实时数据交互与多工具协同，提升AI在现实场景中的响应准确性与灵活性；
+### 2.1 交互形态
 
-目前，MCP已成为AI领域的主流协议，被Google、Notion、Figma、OpenAI等科技巨头支持，应用于跨库分析、3D设计、智能日程生成等多个场景。
+| 形态 | 特点 | 适用 |
+| --- | --- | --- |
+| **网页 / App 对话** | 零配置，支持长对话、上传截图/文件、多数已联网 | 学习、调研、出提示词与草稿 |
+| **开发环境内置** | 能看见当前文件与工程上下文 | 边写边问、就地改代码（见第三节） |
+| **API / 开放平台** | 可接入自有产品或自动化流水线 | 团队平台、批量任务；个人入门可后置 |
 
-LayaAir3-IDE中，已经支持基于MCP协议实现AI智能体的协作开发。
+### 2.2 国际主流（网页问答）
 
-LayaAir引擎的MCP插件地址与使用说明：https://store.layaair.com/info.php?id=10394
+| 产品 | 公司 | 简要特点 |
+| --- | --- | --- |
+| [ChatGPT](https://chatgpt.com/) | OpenAI | 生态最广；适合通用问答、写作、多模态；付费档常见更强推理与工具 |
+| [Claude](https://claude.ai/) | Anthropic | 长文与代码理解口碑突出；适合读长文档、拆复杂逻辑 |
+| [Gemini](https://gemini.google.com/) | Google | 与 Google 生态结合好；长上下文与多模态能力强 |
+| [Perplexity](https://www.perplexity.ai/) | — | 偏「带引用的检索问答」，适合查较新的公开资料 |
+| [Grok](https://x.ai/) | xAI | 偏实时信息与开放对话风格（视地区与账号可用性） |
 
-LayaAir-MCP插件使用文档：[LayaAir MCP 开发指南](/basics/developmentenvironment/ide-mcp/)。
+### 2.3 国内主流（网页问答）
+
+| 产品 | 公司 | 简要特点 |
+| --- | --- | --- |
+| [DeepSeek](https://chat.deepseek.com/) | 深度求索 | 推理与性价比突出，国内开发者使用率高 |
+| [Kimi](https://www.kimi.com/) | 月之暗面 | 长文本/多文件理解能力强，适合贴长日志与长文档 |
+| [豆包](https://www.doubao.com/chat/) | 字节跳动 | 综合助手，创作与日常问答覆盖面广 |
+| [通义千问](https://www.tongyi.com/) | 阿里 | 通用问答与创作；与阿里云 / 灵码生态衔接 |
+| [腾讯元宝](https://yuanbao.tencent.com/) | 腾讯 | 联网检索体验较好，适合查较新公开信息 |
+| [文心一言](https://yiyan.baidu.com/) | 百度 | 通用问答与创作，企业场景常见 |
+| [智谱清言](https://chatglm.cn/) | 智谱 | GLM 系列；亦有编程向产品线（如 CodeGeeX） |
+| [混元](https://hunyuan.tencent.com/) | 腾讯 | 通用大模型与图像等创作能力 |
+
+### 2.4 怎么选、怎么问更靠谱
+
+- **要联网查新资料**：优先选明确支持搜索/引用的产品（如 Perplexity、元宝，以及各家「联网」开关）。  
+- **要啃长文档 / 长报错**：Claude、Kimi、Gemini 等长上下文产品更合适。  
+- **要强推理拆问题**：可选用各家的「深度思考 / Reasoning」模式（名称因产品而异）。  
+- **问 LayaAir 时**：写明引擎大版本（如 3.3 / 3.4），并要求「不确定就说不知道」；关键接口再去 API 或 CodingMCP 核对。
+
+
+
+## 三、AIGC 创作 
+
+AIGC（AI Generated Content）指用模型生成文本、图像、音频、视频、代码等内容。对互动产品开发者而言，价值主要在：**加速原型与素材草稿**，而不是一次生成可上线的完整商业资源。
+
+### 3.1 通用大模型里的创作能力
+
+ChatGPT、Gemini、Claude、豆包、通义、混元、文心等，普遍已支持：
+
+- 文案、策划案、提示词、关卡说明等**文本**；  
+- 不同程度的**文生图**（质量与可控性因产品而异）；  
+- 部分支持读图、改图、简单视频草稿。
+
+做概念图、UI 草图、宣传物料时，先用通用模型往往就够；要稳定风格与批量出图，再上垂直工具。
+
+### 3.2 文生图 / 图生图
+
+可用于背景、贴图灵感、2D 角色草稿、UI 参考等。多数仍需美术或你自己二次处理后再进引擎。
+
+| 方向 | 代表产品 |
+| --- | --- |
+| 国际 | [Midjourney](https://www.midjourney.com/)、[Flux / 黑森林等](https://fal.ai/) 生态、各家 Chat 内置生图（ChatGPT、Gemini 等） |
+| 国内 | [即梦 AI](https://jimeng.jianying.com/)、[腾讯混元图像](https://hunyuan.tencent.com/)、通义万相、以及豆包/文心等内置生图 |
+
+使用建议：固定风格关键词与尺寸规范；导出后统一命名与目录，再导入 LayaAir（规范可参考 [美术路线](/guides/roadmap/artist/)）。
+
+### 3.3 文生 3D
+
+成熟度整体仍低于文生图，适合**原型、白模、占位资源**，正式项目多需 DCC 修模与重拓扑。
+
+常见可体验产品：[Tripo 3D](https://www.tripo3d.ai/)、[Meshy](https://www.meshy.ai/)、[Luma Genie](https://lumalabs.ai/genie)、[Rodin](https://hyperhuman.deemos.com/) 等。导出格式优先选引擎友好的 glTF / FBX，并控制面数与材质复杂度。
+
+### 3.4 文生音频
+
+| 类型 | 代表 | 说明 |
+| --- | --- | --- |
+| 音效 / 语音 | [ElevenLabs](https://elevenlabs.io/) | 音效、配音类能力强，适合试玩与原型 |
+| 配乐草稿 | Suno、Udio，以及开源方向如 Meta [AudioCraft / MusicGen](https://github.com/facebookresearch/audiocraft) | 快速出 BGM 灵感；商用需核对授权 |
+
+进引擎前注意采样率、时长裁剪与循环点，避免直接把带版权不明的素材用于发行。
+
+### 3.5 「文生游戏」要保持理性
+
+通用模型一次性生成「可商业化完整游戏」仍不现实；更常见的是：生成玩法草案、Demo 级逻辑、或试玩广告级小样，再由人与引擎工具收束。
+
+LayaAir 侧若希望更贴近引擎与原型生产，可关注 [LayaIdea](/basics/developmentenvironment/layaidea/)（IDE 内协同，而不是只靠网页聊天出一整款游戏）。
+
+
+
+## 四、代码辅助与智能体开发环境
+
+代码方向是提升工程效率最直接的一块。可以粗分为三层：**补全插件 → AI 原生编辑器 → 终端 / CLI Agent**。
+
+### 4.1 IDE 插件（补全与轻量对话）
+
+装在现有 VS Code / JetBrains 中，学习成本低。
+
+| 地区 | 代表产品 | 说明 |
+| --- | --- | --- |
+| 国际 | [GitHub Copilot](https://github.com/features/copilot) | 覆盖面广；已具备更强的 Agent / 多文件编辑能力 |
+| 国际 | Gemini Code Assist、Amazon Q、Tabnine 等 | 各有云厂商或隐私向定位 |
+| 国内 | [通义灵码](https://lingma.aliyun.com/) | 阿里云生态与企业知识库场景常见 |
+| 国内 | [CodeBuddy](https://www.codebuddy.cn/) | 腾讯云；插件 / IDE / CLI 多种形态 |
+| 国内 | [文心快码 Comate](https://comate.baidu.com/) | 百度；工程化与中文场景 |
+| 国内 | [CodeGeeX](https://codegeex.cn/) 等 | 智谱等厂商的编程助手 |
+
+适合：不想换编辑器、先要「写代码时有补全」。
+
+### 4.2 AI 原生编辑器（Agentic IDE）
+
+以 AI 为中心重构交互：理解仓库、多文件修改、按自然语言推进任务。
+
+| 地区 | 代表产品 | 说明 |
+| --- | --- | --- |
+| 国际 | [Cursor](https://cursor.com/) | 当前最主流的 AI IDE 之一；Agent、多文件编辑、MCP 支持完善 |
+| 国际 | [Windsurf](https://windsurf.com/) 等 | Cursor 类替代，侧重大量 Agent 工作流 |
+| 国内 | [Trae](https://www.trae.cn/) | 字节系 AI IDE；国内网络与中文模型体验友好 |
+| 国内 | [CodeBuddy IDE](https://www.codebuddy.cn/ide/)、通义系 AI IDE 等 | 大厂在「插件之外」补齐的独立工作台 |
+
+Cursor / Trae 等通常还能配置 **MCP**，从而接上 LayaAir 的 CodingMCP、IDE-MCP（见第五节）。
+
+### 4.3 终端与 CLI Agent
+
+不依赖图形界面，适合大范围重构、仓库级任务、与 CI/脚本结合。
+
+- 国际常见：[Claude Code](https://claude.ai/)（Anthropic 的终端向 Agent）、各家 Coding CLI。  
+- 国内：CodeBuddy Code 等 CLI 形态；亦可在开源 Agent（如 Cline 等）中自备 API Key。  
+- LayaAir 工程自动化：[LayaAir CLI](/basics/developmentenvironment/cli/) + [layaair-skills](https://github.com/layabox/layaair-skills)。
+
+### 4.4 使用原则（写引擎代码时尤其重要）
+
+1. **版本写清楚**：提示词里带上 LayaAir 与 TypeScript 版本。  
+2. **小步提交**：一次只让 AI 改一个可验证目标，便于回滚。  
+3. **人验收**：编译通过、预览跑通、关键逻辑人工过目。  
+4. **降幻觉**：配置 CodingMCP，或粘贴官方 API / 源码片段再让模型改。
+
+
+
+## 五、MCP：让模型连上真实工具与引擎
+
+**MCP（Model Context Protocol）** 是开放的「模型 ↔ 外部工具/数据」协议，常被比作 AI 的统一接口。编辑器或 Agent 通过 MCP 读取文档、操作 IDE、跑命令，而不是只靠参数里的静态记忆。
+
+对 LayaAir 开发者，优先关心这几条链路：
+
+| 能力 | 文档 |
+| --- | --- |
+| 按引擎版本查 API、减幻觉 | [CodingMCP](/basics/developmentenvironment/codingmcp/) |
+| 让 AI 操作 IDE（节点、组件、预制体等） | [IDE-MCP / LayaAir MCP 开发指南](/basics/developmentenvironment/ide-mcp/) |
+| 无 GUI 创建 / 构建 / 校验 | [LayaAir CLI](/basics/developmentenvironment/cli/) |
+| IDE 内一体化助手 | [LayaIdea](/basics/developmentenvironment/layaidea/) |
+
+资源商店中的 MCP 相关插件入口示例：https://store.layaair.com/info.php?id=10394  
+
+:::note
+部分产品还支持 **Skills**（技能包）等扩展形态，用于固化「怎么正确调用某套 CLI/工作流」。LayaAir CLI 的 Skills 见 [layabox/layaair-skills](https://github.com/layabox/layaair-skills)。
+:::
+
+
+
+## 六、给 LayaAir 开发者的选型建议
+
+| 你的情况 | 建议 |
+| --- | --- |
+| 只想先问问语法 / 报错 | 网页问答：国际 ChatGPT / Claude / Gemini；国内 DeepSeek / Kimi / 豆包 |
+| 不想换编辑器 | GitHub Copilot，或通义灵码 / CodeBuddy / 文心快码插件 |
+| 想要强 Agent、多文件改工程 | 国际 Cursor（或 Claude Code）；国内 Trae |
+| 必须尽量减少引擎 API 幻觉 | **CodingMCP +（Cursor / Trae 等）**，并对照官方 API |
+| 不会搭场景、想让 AI 点 IDE | IDE-MCP 或 LayaIdea |
+| 要出图 / 音 / 3D 草稿 | 第三节垂直工具；入库规范跟美术流程走 |
+| 系统学习整条 AI 链路 | 直接跟 [AI 开发路线](/guides/roadmap/ai/) |
+
+:::caution[边界]
+AI 是协作者，不是自动上线按钮。架构取舍、性能、平台兼容、账号与支付、正式美术规范，仍应由人负责验收。
+:::

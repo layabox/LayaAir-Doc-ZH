@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>AI协同开发环境 | LayaAir 引擎文档</title><link rel="canonical" href="https://www.layaair.com/basics/developmentenvironment/aigc/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon-32.ico" type="image/x-icon"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="AI协同开发环境"/><meta property="og:type" content="article"/><meta property="og:url" content="https://www.layaair.com/basics/developmentenvironment/aigc/"/><meta property="og:locale" content="zh-CN"/><meta property="og:description" content="在当下的软件开发领域，如果仍然固守传统的开发环境与工作模式，已经难以被视为一名具备前沿竞争力的程序员。如何掌握并善用各种 AIGC 工具，充分发挥人工智能在理解、生成与创作方面的能力，正在成为提升开发效率与创新能力的关键所在。"/><meta property="og:site_name" content="LayaAir 引擎文档"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="在当下的软件开发领域，如果仍然固守传统的开发环境与工作模式，已经难以被视为一名具备前沿竞争力的程序员。如何掌握并善用各种 AIGC 工具，充分发挥人工智能在理解、生成与创作方面的能力，正在成为提升开发效率与创新能力的关键所在。"/> <meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.14eF8cIR.js"></script>  <script>
+<!DOCTYPE html><html lang="zh-CN" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>AI协同开发环境 | LayaAir 引擎文档</title><link rel="canonical" href="https://www.layaair.com/basics/developmentenvironment/aigc/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon-32.ico" type="image/x-icon"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="AI协同开发环境"/><meta property="og:type" content="article"/><meta property="og:url" content="https://www.layaair.com/basics/developmentenvironment/aigc/"/><meta property="og:locale" content="zh-CN"/><meta property="og:description" content="面向 LayaAir 开发者梳理 2026 年 AI 协同形态：国际与国内主流问答、AIGC、智能体 IDE 与 MCP，并给出可落地的选型建议。"/><meta property="og:site_name" content="LayaAir 引擎文档"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="面向 LayaAir 开发者梳理 2026 年 AI 协同形态：国际与国内主流问答、AIGC、智能体 IDE 与 MCP，并给出可落地的选型建议。"/> <meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.14eF8cIR.js"></script>  <script>
   (function () {
     try {
       var d = document.documentElement, ls = localStorage;
@@ -90,70 +90,390 @@
 			scroller.scrollTop = window._starlightScrollRestore;
 			delete window._starlightScrollRestore;
 		})();
-	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt"> <a href="https://github.com/layabox/LayaAir-Doc-ZH/blob/LayaAir3.4/src/content/docs/basics/developmentEnvironment/AIGC/index.md" rel="noopener noreferrer" target="_blank" class="sl-flex astro-dv46nlzh"><span class="sr-only astro-dv46nlzh">GitHub</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" class="astro-dv46nlzh"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z" class="astro-dv46nlzh"></path></svg></a> </div> <button class="laya-tool-btn laya-theme-toggle" data-theme-toggle type="button" aria-label="切换浅色/深色模式" title="切换浅色/深色模式"> <svg aria-hidden="true" class="laya-icon-sun astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg> <svg aria-hidden="true" class="laya-icon-moon astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg> </button>    </div>  </div> <script type="module" src="/_astro/VersionSidebar.astro_astro_type_script_index_0_lang.CmVUWBUd.js"></script>  </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">本页内容<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">概述</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1ai问答" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1、AI问答</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#11-主流的ai问答模型推荐" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.1 主流的AI问答模型推荐</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#12-推理与检索的ai模型推荐" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.2 推理与检索的AI模型推荐</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2aigc-创作" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2、AIGC 创作</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#21-常规的aigc创作" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.1 常规的AIGC创作</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#22-垂直领域的aigc创作" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.2 垂直领域的AIGC创作</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3代码辅助开发" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3、代码辅助开发</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#11-代码辅助开发插件" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.1 代码辅助开发插件</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#12-深度辅助开发的编辑器" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.2 深度辅助开发的编辑器</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4mcp" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4、MCP</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">本页内容</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">概述</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1ai问答" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1、AI问答</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#11-主流的ai问答模型推荐" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.1 主流的AI问答模型推荐</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#12-推理与检索的ai模型推荐" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.2 推理与检索的AI模型推荐</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2aigc-创作" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2、AIGC 创作</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#21-常规的aigc创作" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.1 常规的AIGC创作</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#22-垂直领域的aigc创作" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.2 垂直领域的AIGC创作</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3代码辅助开发" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3、代码辅助开发</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#11-代码辅助开发插件" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.1 代码辅助开发插件</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#12-深度辅助开发的编辑器" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1.2 深度辅助开发的编辑器</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4mcp" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4、MCP</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="zh-CN" dir="ltr">   <script type="module">let a=null;function o(t){return t instanceof HTMLImageElement&&!!t.closest(".sl-markdown-content")}function r(t){const e=document.getElementById("laya-lightbox");if(!e)return;const n=e.querySelector("img");n&&(n.src=t.currentSrc||t.src,n.alt=t.alt||"放大的图片",a=document.activeElement??t,e.classList.add("open"),e.setAttribute("aria-hidden","false"),e.focus())}function c(){const t=document.getElementById("laya-lightbox");!t||!t.classList.contains("open")||(t.classList.remove("open"),t.setAttribute("aria-hidden","true"),a?.focus(),a=null)}document.addEventListener("click",t=>{if(o(t.target)){r(t.target);return}t.target?.closest?.("#laya-lightbox")&&c()});document.addEventListener("keydown",t=>{if(t.key==="Escape"){c();return}(t.key==="Enter"||t.key===" ")&&o(document.activeElement)&&(t.preventDefault(),r(document.activeElement))});function l(){document.querySelectorAll(".sl-markdown-content img").forEach(t=>{t.dataset.zoomable||(t.dataset.zoomable="1",t.tabIndex=0,t.setAttribute("role","button"),t.getAttribute("aria-label")||t.setAttribute("aria-label","放大查看图片"))})}l();document.addEventListener("astro:page-load",l);</script> <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">AI协同开发环境</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <blockquote>
-<p>Author: Charley</p>
-</blockquote>
-<p>在当下的软件开发领域，如果仍然固守传统的开发环境与工作模式，已经难以被视为一名具备前沿竞争力的程序员。如何掌握并善用各种 AIGC 工具，充分发挥人工智能在理解、生成与创作方面的能力，正在成为提升开发效率与创新能力的关键所在。</p>
-<p>AI 协同开发的形态正在快速演进，主流类型大致可以分为四类：一是 <strong>AI 问答</strong>，用于知识检索与问题解答；二是 <strong>AIGC 创作</strong>，利用生成式模型创作文本、图像或代码内容；三是 <strong>代码助手与智能补全</strong>，通过上下文理解实现代码生成与优化；四是 <strong>智能体（Agent）协作</strong>，让 AI 具备自主执行任务与持续协同开发的能力。</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="1ai问答">1、AI问答</h2><a class="sl-anchor-link" href="#1ai问答"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “1、AI问答”</span></a></div>
-<div class="sl-heading-wrapper level-h3"><h3 id="11-主流的ai问答模型推荐">1.1 主流的AI问答模型推荐</h3><a class="sl-anchor-link" href="#11-主流的ai问答模型推荐"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “1.1 主流的AI问答模型推荐”</span></a></div>
-<p>从交互方式与使用场景的角度来看，AI问答系统主要可以分为三种典型的表现形式：<strong>网页问答型</strong>、<strong>开发环境内置型</strong>以及<strong>API调用型</strong>。这三种形态覆盖了当下AI问答的主要使用场景，体现了人工智能在不同层面的融合方式与应用深度。</p>
-<p>其中，<strong>开发环境内置型</strong>将在后续章节中单独介绍；<strong>API调用型</strong>由于更偏向企业集成与系统开发，不太适用于个人开发者，这里暂不展开。</p>
-<p><strong>网页问答型</strong>以网页为主要交互界面，用户无需编程或配置，便可直接通过自然语言与AI模型进行对话，获取技术知识（例如新手对语言与语法的困惑）、灵感或创作辅助。</p>
-<p>国际主流产品包括：<a href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">ChatGPT</a>、<a href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank">Gemini</a>、<a href="https://www.perplexity.ai/" rel="noopener noreferrer" target="_blank">Perplexity AI</a> 、<a href="https://claude.ai/" rel="noopener noreferrer" target="_blank">Claude.ai</a>等；</p>
-<p>国内主流产品包括：<a href="https://www.doubao.com/chat/" rel="noopener noreferrer" target="_blank">豆包</a>、<a href="https://yuanbao.tencent.com/chat/" rel="noopener noreferrer" target="_blank">腾讯元宝</a>、<a href="https://hunyuan.tencent.com/" rel="noopener noreferrer" target="_blank">腾讯混元</a>、<a href="https://yiyan.baidu.com/" rel="noopener noreferrer" target="_blank">文心一言</a>、<a href="https://www.tongyi.com/" rel="noopener noreferrer" target="_blank">通义千问</a>、<a href="https://chatglm.cn/main/" rel="noopener noreferrer" target="_blank">智谱清言</a>、<a href="https://www.kimi.com/" rel="noopener noreferrer" target="_blank">Kimi</a>等。</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="12-推理与检索的ai模型推荐">1.2 推理与检索的AI模型推荐</h3><a class="sl-anchor-link" href="#12-推理与检索的ai模型推荐"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “1.2 推理与检索的AI模型推荐”</span></a></div>
-<p>在早期的大语言模型中，由于缺乏<strong>联网搜索能力</strong>，模型只能依赖训练语料生成回答。这种机制容易出现“生成幻觉”（Hallucination）问题，并且也经常是老旧的信息，在查询专业技术资料时，尤其是一些新的知识，模型可能给出看似合理但实际错误的信息。</p>
-<p>因此，用户在使用AI问答时，往往仍需依赖传统搜索引擎，以确保答案的准确性。</p>
-<p>随着**联网搜索与检索增强（RAG, Retrieval-Augmented Generation）**技术的成熟，越来越多的AI模型开始具备实时访问互联网信息的能力，从而在事实准确性与推理深度之间实现了更好的平衡。</p>
-<p>总体而言，具备联网搜索能力的推理型AI问答模型，正在逐步取代传统搜索与问答的边界，为开发者与内容创作者带来更高效、更可靠的知识获取方式。</p>
-<p>在当前主流产品中，笔者认为在“<strong>联网检索能力</strong>”与“<strong>逻辑推理表现</strong>”两方面兼顾得较好的模型主要为：<strong><a href="https://yuanbao.tencent.com/" rel="noopener noreferrer" target="_blank">腾讯元宝</a><strong>和</strong><a href="https://chat.deepseek.com/" rel="noopener noreferrer" target="_blank">DeepSeek</a></strong>。</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="2aigc-创作">2、<strong>AIGC 创作</strong></h2><a class="sl-anchor-link" href="#2aigc-创作"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2、AIGC 创作”</span></a></div>
-<p>AIGC（Artificial Intelligence Generated Content），即<strong>人工智能生成内容</strong>，是指利用人工智能技术生成文本、图像、音频、视频、代码等内容的生产方式。</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="21-常规的aigc创作">2.1 常规的AIGC创作</h3><a class="sl-anchor-link" href="#21-常规的aigc创作"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.1 常规的AIGC创作”</span></a></div>
-<p>现在主流的自然语言处理（NLP）大模型都具有文本生成的AIGC能力，例如，生成商业文案、文学作品、代码等文本内容。</p>
-<p>随着AIGC的竞争与发展，图像生成的能力，也越来越多的成为了大模型的标配能力。例如：<strong>ChatGPT、豆包、腾讯混元、文心一言、通义千问、智谱清言</strong>等。</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="22-垂直领域的aigc创作">2.2 垂直领域的AIGC创作</h3><a class="sl-anchor-link" href="#22-垂直领域的aigc创作"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.2 垂直领域的AIGC创作”</span></a></div>
-<p>除了自然语言的通用大模型之外，也有很多专门从事垂直领域的AIGC大模型。例如，文生图、文生3D模型、文生音频、文生视频、文生游戏等等、文生视频对于LayaAir开发者而言，基本用不上，这里不作介绍。重点推荐一些可用于游戏等互动产品的AIGC创作的AI模型。</p>
-<div class="sl-heading-wrapper level-h4"><h4 id="221-文生图图生图">2.2.1 文生图、图生图</h4><a class="sl-anchor-link" href="#221-文生图图生图"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.2.1 文生图、图生图”</span></a></div>
-<p>AI生成图片可以用于生成游戏背景图、贴图纹理、2D角色、UI等。有些需求，可以直接生成使用，有些则需要美术二次处理（也可以提升效率）。</p>
-<p>除了自带生成图片的通用大模型外，<a href="https://www.midjourney.com/editor/" rel="noopener noreferrer" target="_blank">Midjourney</a>、Stable Diffusion、<a href="https://jimeng.jianying.com/ai-tool/home" rel="noopener noreferrer" target="_blank">即梦AI</a>、<a href="https://hunyuan.tencent.com/image/" rel="noopener noreferrer" target="_blank">腾讯混元</a>等都是比较优质的图像生成大模型。</p>
-<p>这些大模型，都可以通过用户输入提示（prompt）文字，生成风格化、高质量的图像。也有的大模型具备图生图的能力，通过上传参照图进行修改创作。</p>
-<div class="sl-heading-wrapper level-h4"><h4 id="222-文生3d模型">2.2.2 文生3D模型</h4><a class="sl-anchor-link" href="#222-文生3d模型"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.2.2 文生3D模型”</span></a></div>
-<p>文生3D模型在当下的成熟度相对成生图像要差一些，我推荐几个当下主流的一些3D模型，大家可以进行体验与尝试。</p>
-<p>分别为：<a href="https://studio.tripo3d.ai/home" rel="noopener noreferrer" target="_blank"><strong>Tripo 3D</strong></a>、<a href="https://fast3d.io/zh" rel="noopener noreferrer" target="_blank"><strong>Fast3D</strong></a>、<a href="https://lumalabs.ai/genie?view=create" rel="noopener noreferrer" target="_blank"><strong>Luma AI - Genie</strong></a> 、<a href="https://www.meshy.ai/" rel="noopener noreferrer" target="_blank"><strong>Meshy AI</strong></a></p>
-<div class="sl-heading-wrapper level-h4"><h4 id="223-文生音频">2.2.3 文生音频</h4><a class="sl-anchor-link" href="#223-文生音频"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.2.3 文生音频”</span></a></div>
-<p>文生音频比较火的是**ElevenLabs SFX **和 <strong>MusicGen</strong>，</p>
-<p><strong>ElevenLabs SFX v2</strong> 由AI音频研发公司ElevenLabs推出，在线网址为：<a href="https://elevenlabs.io/" rel="noopener noreferrer" target="_blank">https://elevenlabs.io/</a></p>
-<p><strong>MusicGen</strong>是由Meta 研发并开源的一个大模型，Github地址为：<a href="https://github.com/facebookresearch/audiocraft" rel="noopener noreferrer" target="_blank">https://github.com/facebookresearch/audiocraft</a></p>
-<div class="sl-heading-wrapper level-h4"><h4 id="224-文生游戏">2.2.4 文生游戏</h4><a class="sl-anchor-link" href="#224-文生游戏"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.2.4 文生游戏”</span></a></div>
-<p>文生游戏在当下的难度还比较大，通用大模型生成的JS游戏代码，仅仅是基础的DEMO玩法级，很难形成商业化。</p>
-<p>目前只有LayaIdea可以做到生成游戏原型、简单游戏，以及试玩广告的商业化产品。</p>
-<p>更多介绍可以查看公众号文章：<a href="https://mp.weixin.qq.com/s/8ANLuz4vcnexhoija9eumA" rel="noopener noreferrer" target="_blank">https://mp.weixin.qq.com/s/8ANLuz4vcnexhoija9eumA</a></p>
-<div class="sl-heading-wrapper level-h2"><h2 id="3代码辅助开发">3、代码辅助开发</h2><a class="sl-anchor-link" href="#3代码辅助开发"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “3、代码辅助开发”</span></a></div>
-<p>AI 在代码领域的应用是提升开发效率最直接的方向之一。它不仅能够辅助程序员进行自动补全、函数生成、代码优化，还逐渐发展出具备深度理解与自主改写能力的智能化编程环境。</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="11-代码辅助开发插件">1.1 代码辅助开发插件</h3><a class="sl-anchor-link" href="#11-代码辅助开发插件"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “1.1 代码辅助开发插件”</span></a></div>
-<p>代码辅助插件是最早普及的 AI 编程工具形态，其中最具代表性的产品是 <strong>GitHub Copilot</strong>。它基于大规模代码训练模型，能够在开发者输入代码时自动给出补全、重构与注释建议，极大提高编码效率。</p>
-<p>随后，国内也出现了多款功能类似的 AI 编程插件，例如：腾讯的CodeBuddy、百度的文心快码（Baidu Comate）等。</p>
-<p>这些插件可以通过vscode插件的形式安装到编码环境中，可以基于上下文自动补全代码、生成函数、文档、重构建议等。是比较实用的提升效率的工具。</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="12-深度辅助开发的编辑器">1.2 深度辅助开发的编辑器</h3><a class="sl-anchor-link" href="#12-深度辅助开发的编辑器"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “1.2 深度辅助开发的编辑器”</span></a></div>
-<p>与传统插件不同，<strong>智能编辑器（Agentic IDE）</strong> 是一种更高层次的 AI 协同开发形态。它不再只是“代码建议工具”，而是一个具备更全面的上下文理解与任务规划能力的<strong>AI编程伙伴</strong>。</p>
-<p>其中最具代表性的产品是 <strong><a href="https://www.cursor.com/" rel="noopener noreferrer" target="_blank">Cursor</a></strong>。</p>
-<p>Cursor 基于开源的 VS Code 架构，集成了 AI 智能体（Agent）功能，具有深度思考的能力。能够：</p>
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt"> <a href="https://github.com/layabox/LayaAir-Doc-ZH/blob/LayaAir3.4/src/content/docs/basics/developmentEnvironment/AIGC/index.md" rel="noopener noreferrer" target="_blank" class="sl-flex astro-dv46nlzh"><span class="sr-only astro-dv46nlzh">GitHub</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" class="astro-dv46nlzh"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z" class="astro-dv46nlzh"></path></svg></a> </div> <button class="laya-tool-btn laya-theme-toggle" data-theme-toggle type="button" aria-label="切换浅色/深色模式" title="切换浅色/深色模式"> <svg aria-hidden="true" class="laya-icon-sun astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg> <svg aria-hidden="true" class="laya-icon-moon astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg> </button>    </div>  </div> <script type="module" src="/_astro/VersionSidebar.astro_astro_type_script_index_0_lang.CmVUWBUd.js"></script>  </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">本页内容<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">概述</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#一先分清四种协同形态" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">一、先分清四种协同形态</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#二ai-问答" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">二、AI 问答</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#21-交互形态" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.1 交互形态</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#22-国际主流网页问答" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.2 国际主流（网页问答）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#23-国内主流网页问答" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.3 国内主流（网页问答）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#24-怎么选怎么问更靠谱" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.4 怎么选、怎么问更靠谱</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#三aigc-创作" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">三、AIGC 创作</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#31-通用大模型里的创作能力" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.1 通用大模型里的创作能力</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#32-文生图--图生图" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.2 文生图 / 图生图</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#33-文生-3d" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.3 文生 3D</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#34-文生音频" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.4 文生音频</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#35-文生游戏要保持理性" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.5 「文生游戏」要保持理性</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#四代码辅助与智能体开发环境" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">四、代码辅助与智能体开发环境</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#41-ide-插件补全与轻量对话" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.1 IDE 插件（补全与轻量对话）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#42-ai-原生编辑器agentic-ide" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.2 AI 原生编辑器（Agentic IDE）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#43-终端与-cli-agent" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.3 终端与 CLI Agent</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#44-使用原则写引擎代码时尤其重要" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.4 使用原则（写引擎代码时尤其重要）</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#五mcp让模型连上真实工具与引擎" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">五、MCP：让模型连上真实工具与引擎</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#六给-layaair-开发者的选型建议" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">六、给 LayaAir 开发者的选型建议</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">本页内容</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">概述</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#一先分清四种协同形态" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">一、先分清四种协同形态</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#二ai-问答" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">二、AI 问答</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#21-交互形态" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.1 交互形态</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#22-国际主流网页问答" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.2 国际主流（网页问答）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#23-国内主流网页问答" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.3 国内主流（网页问答）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#24-怎么选怎么问更靠谱" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2.4 怎么选、怎么问更靠谱</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#三aigc-创作" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">三、AIGC 创作</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#31-通用大模型里的创作能力" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.1 通用大模型里的创作能力</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#32-文生图--图生图" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.2 文生图 / 图生图</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#33-文生-3d" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.3 文生 3D</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#34-文生音频" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.4 文生音频</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#35-文生游戏要保持理性" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3.5 「文生游戏」要保持理性</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#四代码辅助与智能体开发环境" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">四、代码辅助与智能体开发环境</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#41-ide-插件补全与轻量对话" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.1 IDE 插件（补全与轻量对话）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#42-ai-原生编辑器agentic-ide" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.2 AI 原生编辑器（Agentic IDE）</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#43-终端与-cli-agent" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.3 终端与 CLI Agent</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#44-使用原则写引擎代码时尤其重要" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4.4 使用原则（写引擎代码时尤其重要）</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#五mcp让模型连上真实工具与引擎" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">五、MCP：让模型连上真实工具与引擎</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#六给-layaair-开发者的选型建议" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">六、给 LayaAir 开发者的选型建议</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="zh-CN" dir="ltr">   <script type="module">let a=null;function o(t){return t instanceof HTMLImageElement&&!!t.closest(".sl-markdown-content")}function r(t){const e=document.getElementById("laya-lightbox");if(!e)return;const n=e.querySelector("img");n&&(n.src=t.currentSrc||t.src,n.alt=t.alt||"放大的图片",a=document.activeElement??t,e.classList.add("open"),e.setAttribute("aria-hidden","false"),e.focus())}function c(){const t=document.getElementById("laya-lightbox");!t||!t.classList.contains("open")||(t.classList.remove("open"),t.setAttribute("aria-hidden","true"),a?.focus(),a=null)}document.addEventListener("click",t=>{if(o(t.target)){r(t.target);return}t.target?.closest?.("#laya-lightbox")&&c()});document.addEventListener("keydown",t=>{if(t.key==="Escape"){c();return}(t.key==="Enter"||t.key===" ")&&o(document.activeElement)&&(t.preventDefault(),r(document.activeElement))});function l(){document.querySelectorAll(".sl-markdown-content img").forEach(t=>{t.dataset.zoomable||(t.dataset.zoomable="1",t.tabIndex=0,t.setAttribute("role","button"),t.getAttribute("aria-label")||t.setAttribute("aria-label","放大查看图片"))})}l();document.addEventListener("astro:page-load",l);</script> <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">AI协同开发环境</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>在当下的软件与游戏开发中，若仍完全依赖手工查文档、手写样板代码与纯人工产内容，效率与竞争力都会明显落后。善用大模型的理解、生成与工具调用能力，正在成为开发者的基础技能。</p>
+<p>本文面向 <strong>LayaAir 开发者</strong>，按能力形态介绍当前主流的 AI 协同方式，并分别给出<strong>国际</strong>与<strong>国内</strong>常用产品。产品迭代很快，下文以「形态 + 代表工具」为主，具体套餐与模型名以各官网为准。</p>
+<aside aria-label="和 LayaAir 专用能力的关系" class="starlight-aside starlight-aside--tip"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.43909 8.85483L1.44039 8.85354L4.96668 5.33815C5.30653 4.99386 5.7685 4.79662 6.2524 4.78972L6.26553 4.78963L12.9014 4.78962L13.8479 3.84308C16.9187 0.772319 20.0546 0.770617 21.4678 0.975145C21.8617 1.02914 22.2271 1.21053 22.5083 1.4917C22.7894 1.77284 22.9708 2.13821 23.0248 2.53199C23.2294 3.94517 23.2278 7.08119 20.1569 10.1521L19.2107 11.0983V17.7338L19.2106 17.7469C19.2037 18.2308 19.0067 18.6933 18.6624 19.0331L15.1456 22.5608C14.9095 22.7966 14.6137 22.964 14.29 23.0449C13.9663 23.1259 13.6267 23.1174 13.3074 23.0204C12.9881 22.9235 12.7011 22.7417 12.4771 22.4944C12.2533 22.2473 12.1006 21.9441 12.0355 21.6171L11.1783 17.3417L6.65869 12.822L4.34847 12.3589L2.38351 11.965C2.05664 11.8998 1.75272 11.747 1.50564 11.5232C1.25835 11.2992 1.07653 11.0122 0.979561 10.6929C0.882595 10.3736 0.874125 10.034 0.955057 9.7103C1.03599 9.38659 1.20328 9.09092 1.43909 8.85483ZM6.8186 10.8724L2.94619 10.096L6.32006 6.73268H10.9583L6.8186 10.8724ZM15.2219 5.21703C17.681 2.75787 20.0783 2.75376 21.1124 2.8876C21.2462 3.92172 21.2421 6.31895 18.783 8.77812L12.0728 15.4883L8.51172 11.9272L15.2219 5.21703ZM13.9042 21.0538L13.1279 17.1811L17.2676 13.0414V17.68L13.9042 21.0538Z"></path><path d="M9.31827 18.3446C9.45046 17.8529 9.17864 17.3369 8.68945 17.1724C8.56178 17.1294 8.43145 17.1145 8.30512 17.1243C8.10513 17.1398 7.91519 17.2172 7.76181 17.3434C7.62613 17.455 7.51905 17.6048 7.45893 17.7835C6.97634 19.2186 5.77062 19.9878 4.52406 20.4029C4.08525 20.549 3.6605 20.644 3.29471 20.7053C3.35607 20.3395 3.45098 19.9148 3.59711 19.476C4.01221 18.2294 4.78141 17.0237 6.21648 16.5411C6.39528 16.481 6.54504 16.3739 6.65665 16.2382C6.85126 16.0016 6.92988 15.678 6.84417 15.3647C6.83922 15.3466 6.83373 15.3286 6.82767 15.3106C6.74106 15.053 6.55701 14.8557 6.33037 14.7459C6.10949 14.6389 5.84816 14.615 5.59715 14.6994C5.47743 14.7397 5.36103 14.7831 5.24786 14.8294C3.22626 15.6569 2.2347 17.4173 1.75357 18.8621C1.49662 19.6337 1.36993 20.3554 1.30679 20.8818C1.27505 21.1464 1.25893 21.3654 1.25072 21.5213C1.24662 21.5993 1.24448 21.6618 1.24337 21.7066L1.243 21.7226L1.24235 21.7605L1.2422 21.7771L1.24217 21.7827L1.24217 21.7856C1.24217 22.3221 1.67703 22.7579 2.2137 22.7579L2.2155 22.7579L2.22337 22.7578L2.23956 22.7577C2.25293 22.7575 2.27096 22.7572 2.29338 22.7567C2.33821 22.7555 2.40073 22.7534 2.47876 22.7493C2.63466 22.7411 2.85361 22.725 3.11822 22.6932C3.64462 22.6301 4.36636 22.5034 5.13797 22.2464C6.58274 21.7653 8.3431 20.7738 9.17063 18.7522C9.21696 18.639 9.26037 18.5226 9.30064 18.4029C9.30716 18.3835 9.31304 18.364 9.31827 18.3446Z"></path></svg>和 LayaAir 专用能力的关系</p><div class="starlight-aside__content"><p>本文讲的是通用 AI 生态。接到 LayaAir 引擎后，请继续配置 <a href="/basics/developmentenvironment/codingmcp/">CodingMCP</a>、<a href="/basics/developmentenvironment/ide-mcp/">IDE-MCP</a>、<a href="/basics/developmentenvironment/cli/">LayaAir CLI</a>、<a href="/basics/developmentenvironment/layaidea/">LayaIdea</a>，减少「通用模型编造不存在的引擎 API」。完整路径见 <a href="/guides/roadmap/ai/">AI 开发路线</a>。</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="一先分清四种协同形态">一、先分清四种协同形态</h2><a class="sl-anchor-link" href="#一先分清四种协同形态"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “一、先分清四种协同形态”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>形态</th><th>你在做什么</th><th>典型工具</th></tr></thead><tbody><tr><td><strong>AI 问答</strong></td><td>查概念、排错思路、学语法、对比方案</td><td>ChatGPT、Claude、Gemini、DeepSeek、Kimi、豆包等</td></tr><tr><td><strong>AIGC 创作</strong></td><td>生成图、3D、音效/配乐等素材草稿</td><td>Midjourney、即梦、Meshy、ElevenLabs 等</td></tr><tr><td><strong>代码助手</strong></td><td>补全、改文件、多步实现功能、重构</td><td>Copilot、Cursor、Claude Code、Trae、通义灵码等</td></tr><tr><td><strong>工具协议 / Agent</strong></td><td>让模型调用外部工具与真实数据</td><td>MCP、Skills、引擎侧 MCP / CLI</td></tr></tbody></table>
+<p>新手不必一次配齐。常见路径是：<strong>问答解惑 → 代码助手写工程 →（可选）AIGC 出素材 → 再接入 LayaAir MCP 降幻觉</strong>。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="二ai-问答">二、AI 问答</h2><a class="sl-anchor-link" href="#二ai-问答"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “二、AI 问答”</span></a></div>
+<p>问答仍是最轻量的入口：打开网页就能用，适合语言基础、报错解读、方案对比。写引擎业务代码时，务必把结论对照 <a href="/basics/developmentenvironment/api/">官方 API</a> 或 CodingMCP，不要直接信任模型「凭记忆」给出的类名与参数。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="21-交互形态">2.1 交互形态</h3><a class="sl-anchor-link" href="#21-交互形态"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.1 交互形态”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>形态</th><th>特点</th><th>适用</th></tr></thead><tbody><tr><td><strong>网页 / App 对话</strong></td><td>零配置，支持长对话、上传截图/文件、多数已联网</td><td>学习、调研、出提示词与草稿</td></tr><tr><td><strong>开发环境内置</strong></td><td>能看见当前文件与工程上下文</td><td>边写边问、就地改代码（见第三节）</td></tr><tr><td><strong>API / 开放平台</strong></td><td>可接入自有产品或自动化流水线</td><td>团队平台、批量任务；个人入门可后置</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="22-国际主流网页问答">2.2 国际主流（网页问答）</h3><a class="sl-anchor-link" href="#22-国际主流网页问答"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.2 国际主流（网页问答）”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>产品</th><th>公司</th><th>简要特点</th></tr></thead><tbody><tr><td><a href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">ChatGPT</a></td><td>OpenAI</td><td>生态最广；适合通用问答、写作、多模态；付费档常见更强推理与工具</td></tr><tr><td><a href="https://claude.ai/" rel="noopener noreferrer" target="_blank">Claude</a></td><td>Anthropic</td><td>长文与代码理解口碑突出；适合读长文档、拆复杂逻辑</td></tr><tr><td><a href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank">Gemini</a></td><td>Google</td><td>与 Google 生态结合好；长上下文与多模态能力强</td></tr><tr><td><a href="https://www.perplexity.ai/" rel="noopener noreferrer" target="_blank">Perplexity</a></td><td>—</td><td>偏「带引用的检索问答」，适合查较新的公开资料</td></tr><tr><td><a href="https://x.ai/" rel="noopener noreferrer" target="_blank">Grok</a></td><td>xAI</td><td>偏实时信息与开放对话风格（视地区与账号可用性）</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="23-国内主流网页问答">2.3 国内主流（网页问答）</h3><a class="sl-anchor-link" href="#23-国内主流网页问答"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.3 国内主流（网页问答）”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>产品</th><th>公司</th><th>简要特点</th></tr></thead><tbody><tr><td><a href="https://chat.deepseek.com/" rel="noopener noreferrer" target="_blank">DeepSeek</a></td><td>深度求索</td><td>推理与性价比突出，国内开发者使用率高</td></tr><tr><td><a href="https://www.kimi.com/" rel="noopener noreferrer" target="_blank">Kimi</a></td><td>月之暗面</td><td>长文本/多文件理解能力强，适合贴长日志与长文档</td></tr><tr><td><a href="https://www.doubao.com/chat/" rel="noopener noreferrer" target="_blank">豆包</a></td><td>字节跳动</td><td>综合助手，创作与日常问答覆盖面广</td></tr><tr><td><a href="https://www.tongyi.com/" rel="noopener noreferrer" target="_blank">通义千问</a></td><td>阿里</td><td>通用问答与创作；与阿里云 / 灵码生态衔接</td></tr><tr><td><a href="https://yuanbao.tencent.com/" rel="noopener noreferrer" target="_blank">腾讯元宝</a></td><td>腾讯</td><td>联网检索体验较好，适合查较新公开信息</td></tr><tr><td><a href="https://yiyan.baidu.com/" rel="noopener noreferrer" target="_blank">文心一言</a></td><td>百度</td><td>通用问答与创作，企业场景常见</td></tr><tr><td><a href="https://chatglm.cn/" rel="noopener noreferrer" target="_blank">智谱清言</a></td><td>智谱</td><td>GLM 系列；亦有编程向产品线（如 CodeGeeX）</td></tr><tr><td><a href="https://hunyuan.tencent.com/" rel="noopener noreferrer" target="_blank">混元</a></td><td>腾讯</td><td>通用大模型与图像等创作能力</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="24-怎么选怎么问更靠谱">2.4 怎么选、怎么问更靠谱</h3><a class="sl-anchor-link" href="#24-怎么选怎么问更靠谱"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.4 怎么选、怎么问更靠谱”</span></a></div>
 <ul>
-<li>全局理解项目结构与依赖关系；</li>
-<li>根据自然语言指令新增或修改代码文件；</li>
-<li>执行多步逻辑推理与代码生成；</li>
-<li>辅助进行大型项目的功能迭代与Bug修复等。</li>
+<li><strong>要联网查新资料</strong>：优先选明确支持搜索/引用的产品（如 Perplexity、元宝，以及各家「联网」开关）。</li>
+<li><strong>要啃长文档 / 长报错</strong>：Claude、Kimi、Gemini 等长上下文产品更合适。</li>
+<li><strong>要强推理拆问题</strong>：可选用各家的「深度思考 / Reasoning」模式（名称因产品而异）。</li>
+<li><strong>问 LayaAir 时</strong>：写明引擎大版本（如 3.3 / 3.4），并要求「不确定就说不知道」；关键接口再去 API 或 CodingMCP 核对。</li>
 </ul>
-<p>这种编辑器的出现，标志着 AI 从“代码辅助”正式迈向“代码协同”。</p>
-<p>国内与 Cursor 类似的智能体编码平台产品也在迅速发展，例如：字节旗下的<a href="https://www.trae.cn/" rel="noopener noreferrer" target="_blank">Trae</a>、阿里巴巴旗下的<a href="https://qoder.com/" rel="noopener noreferrer" target="_blank">Qoder</a>等。</p>
-<p>推荐大家下载使用。</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="4mcp">4、MCP</h2><a class="sl-anchor-link" href="#4mcp"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “4、MCP”</span></a></div>
-<p>MCP（Model Context Protocol，模型上下文协议）是由Anthropic开发的开放标准协议，旨在标准化大型语言模型（LLM）与外部数据源、工具及应用之间的交互方式，被视为“AI界的USB-C接口”。</p>
-<p>其核心优势在于通过统一协议打破AI与外部资源的“碎片化”壁垒，实现“一次开发、多端适配”，大幅降低AI应用与数据源/工具的集成复杂度；支持实时数据交互与多工具协同，提升AI在现实场景中的响应准确性与灵活性；</p>
-<p>目前，MCP已成为AI领域的主流协议，被Google、Notion、Figma、OpenAI等科技巨头支持，应用于跨库分析、3D设计、智能日程生成等多个场景。</p>
-<p>LayaAir3-IDE中，已经支持基于MCP协议实现AI智能体的协作开发。</p>
-<p>LayaAir引擎的MCP插件地址与使用说明：<a href="https://store.layaair.com/info.php?id=10394" rel="noopener noreferrer" target="_blank">https://store.layaair.com/info.php?id=10394</a></p>
-<p>LayaAir-MCP插件使用文档：<a href="/basics/developmentenvironment/ide-mcp/">LayaAir MCP 开发指南</a>。</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">  <p class="laya-last-updated astro-asuirehi">
-本文更新于 <time datetime="2026-07-10T14:38:45.000Z" class="astro-asuirehi">2026年7月10日</time></p> </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/basics/developmentenvironment/download/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 上一页 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">搭建基础开发环境</span> </span> </a> <a href="/basics/language/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 下一页 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">TS语言基础</span> </span> </a> </div>   </footer>  <div id="laya-lightbox" role="dialog" aria-modal="true" aria-label="图片放大预览" aria-hidden="true" tabindex="-1"> <img loading="lazy" decoding="async" alt=""> </div>   </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
+<div class="sl-heading-wrapper level-h2"><h2 id="三aigc-创作">三、AIGC 创作</h2><a class="sl-anchor-link" href="#三aigc-创作"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “三、AIGC 创作”</span></a></div>
+<p>AIGC（AI Generated Content）指用模型生成文本、图像、音频、视频、代码等内容。对互动产品开发者而言，价值主要在：<strong>加速原型与素材草稿</strong>，而不是一次生成可上线的完整商业资源。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="31-通用大模型里的创作能力">3.1 通用大模型里的创作能力</h3><a class="sl-anchor-link" href="#31-通用大模型里的创作能力"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “3.1 通用大模型里的创作能力”</span></a></div>
+<p>ChatGPT、Gemini、Claude、豆包、通义、混元、文心等，普遍已支持：</p>
+<ul>
+<li>文案、策划案、提示词、关卡说明等<strong>文本</strong>；</li>
+<li>不同程度的<strong>文生图</strong>（质量与可控性因产品而异）；</li>
+<li>部分支持读图、改图、简单视频草稿。</li>
+</ul>
+<p>做概念图、UI 草图、宣传物料时，先用通用模型往往就够；要稳定风格与批量出图，再上垂直工具。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="32-文生图--图生图">3.2 文生图 / 图生图</h3><a class="sl-anchor-link" href="#32-文生图--图生图"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “3.2 文生图 / 图生图”</span></a></div>
+<p>可用于背景、贴图灵感、2D 角色草稿、UI 参考等。多数仍需美术或你自己二次处理后再进引擎。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方向</th><th>代表产品</th></tr></thead><tbody><tr><td>国际</td><td><a href="https://www.midjourney.com/" rel="noopener noreferrer" target="_blank">Midjourney</a>、<a href="https://fal.ai/" rel="noopener noreferrer" target="_blank">Flux / 黑森林等</a> 生态、各家 Chat 内置生图（ChatGPT、Gemini 等）</td></tr><tr><td>国内</td><td><a href="https://jimeng.jianying.com/" rel="noopener noreferrer" target="_blank">即梦 AI</a>、<a href="https://hunyuan.tencent.com/" rel="noopener noreferrer" target="_blank">腾讯混元图像</a>、通义万相、以及豆包/文心等内置生图</td></tr></tbody></table>
+<p>使用建议：固定风格关键词与尺寸规范；导出后统一命名与目录，再导入 LayaAir（规范可参考 <a href="/guides/roadmap/artist/">美术路线</a>）。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="33-文生-3d">3.3 文生 3D</h3><a class="sl-anchor-link" href="#33-文生-3d"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “3.3 文生 3D”</span></a></div>
+<p>成熟度整体仍低于文生图，适合<strong>原型、白模、占位资源</strong>，正式项目多需 DCC 修模与重拓扑。</p>
+<p>常见可体验产品：<a href="https://www.tripo3d.ai/" rel="noopener noreferrer" target="_blank">Tripo 3D</a>、<a href="https://www.meshy.ai/" rel="noopener noreferrer" target="_blank">Meshy</a>、<a href="https://lumalabs.ai/genie" rel="noopener noreferrer" target="_blank">Luma Genie</a>、<a href="https://hyperhuman.deemos.com/" rel="noopener noreferrer" target="_blank">Rodin</a> 等。导出格式优先选引擎友好的 glTF / FBX，并控制面数与材质复杂度。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="34-文生音频">3.4 文生音频</h3><a class="sl-anchor-link" href="#34-文生音频"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “3.4 文生音频”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>类型</th><th>代表</th><th>说明</th></tr></thead><tbody><tr><td>音效 / 语音</td><td><a href="https://elevenlabs.io/" rel="noopener noreferrer" target="_blank">ElevenLabs</a></td><td>音效、配音类能力强，适合试玩与原型</td></tr><tr><td>配乐草稿</td><td>Suno、Udio，以及开源方向如 Meta <a href="https://github.com/facebookresearch/audiocraft" rel="noopener noreferrer" target="_blank">AudioCraft / MusicGen</a></td><td>快速出 BGM 灵感；商用需核对授权</td></tr></tbody></table>
+<p>进引擎前注意采样率、时长裁剪与循环点，避免直接把带版权不明的素材用于发行。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="35-文生游戏要保持理性">3.5 「文生游戏」要保持理性</h3><a class="sl-anchor-link" href="#35-文生游戏要保持理性"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “3.5 「文生游戏」要保持理性”</span></a></div>
+<p>通用模型一次性生成「可商业化完整游戏」仍不现实；更常见的是：生成玩法草案、Demo 级逻辑、或试玩广告级小样，再由人与引擎工具收束。</p>
+<p>LayaAir 侧若希望更贴近引擎与原型生产，可关注 <a href="/basics/developmentenvironment/layaidea/">LayaIdea</a>（IDE 内协同，而不是只靠网页聊天出一整款游戏）。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="四代码辅助与智能体开发环境">四、代码辅助与智能体开发环境</h2><a class="sl-anchor-link" href="#四代码辅助与智能体开发环境"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “四、代码辅助与智能体开发环境”</span></a></div>
+<p>代码方向是提升工程效率最直接的一块。可以粗分为三层：<strong>补全插件 → AI 原生编辑器 → 终端 / CLI Agent</strong>。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="41-ide-插件补全与轻量对话">4.1 IDE 插件（补全与轻量对话）</h3><a class="sl-anchor-link" href="#41-ide-插件补全与轻量对话"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “4.1 IDE 插件（补全与轻量对话）”</span></a></div>
+<p>装在现有 VS Code / JetBrains 中，学习成本低。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>地区</th><th>代表产品</th><th>说明</th></tr></thead><tbody><tr><td>国际</td><td><a href="https://github.com/features/copilot" rel="noopener noreferrer" target="_blank">GitHub Copilot</a></td><td>覆盖面广；已具备更强的 Agent / 多文件编辑能力</td></tr><tr><td>国际</td><td>Gemini Code Assist、Amazon Q、Tabnine 等</td><td>各有云厂商或隐私向定位</td></tr><tr><td>国内</td><td><a href="https://lingma.aliyun.com/" rel="noopener noreferrer" target="_blank">通义灵码</a></td><td>阿里云生态与企业知识库场景常见</td></tr><tr><td>国内</td><td><a href="https://www.codebuddy.cn/" rel="noopener noreferrer" target="_blank">CodeBuddy</a></td><td>腾讯云；插件 / IDE / CLI 多种形态</td></tr><tr><td>国内</td><td><a href="https://comate.baidu.com/" rel="noopener noreferrer" target="_blank">文心快码 Comate</a></td><td>百度；工程化与中文场景</td></tr><tr><td>国内</td><td><a href="https://codegeex.cn/" rel="noopener noreferrer" target="_blank">CodeGeeX</a> 等</td><td>智谱等厂商的编程助手</td></tr></tbody></table>
+<p>适合：不想换编辑器、先要「写代码时有补全」。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="42-ai-原生编辑器agentic-ide">4.2 AI 原生编辑器（Agentic IDE）</h3><a class="sl-anchor-link" href="#42-ai-原生编辑器agentic-ide"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “4.2 AI 原生编辑器（Agentic IDE）”</span></a></div>
+<p>以 AI 为中心重构交互：理解仓库、多文件修改、按自然语言推进任务。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>地区</th><th>代表产品</th><th>说明</th></tr></thead><tbody><tr><td>国际</td><td><a href="https://cursor.com/" rel="noopener noreferrer" target="_blank">Cursor</a></td><td>当前最主流的 AI IDE 之一；Agent、多文件编辑、MCP 支持完善</td></tr><tr><td>国际</td><td><a href="https://windsurf.com/" rel="noopener noreferrer" target="_blank">Windsurf</a> 等</td><td>Cursor 类替代，侧重大量 Agent 工作流</td></tr><tr><td>国内</td><td><a href="https://www.trae.cn/" rel="noopener noreferrer" target="_blank">Trae</a></td><td>字节系 AI IDE；国内网络与中文模型体验友好</td></tr><tr><td>国内</td><td><a href="https://www.codebuddy.cn/ide/" rel="noopener noreferrer" target="_blank">CodeBuddy IDE</a>、通义系 AI IDE 等</td><td>大厂在「插件之外」补齐的独立工作台</td></tr></tbody></table>
+<p>Cursor / Trae 等通常还能配置 <strong>MCP</strong>，从而接上 LayaAir 的 CodingMCP、IDE-MCP（见第五节）。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="43-终端与-cli-agent">4.3 终端与 CLI Agent</h3><a class="sl-anchor-link" href="#43-终端与-cli-agent"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “4.3 终端与 CLI Agent”</span></a></div>
+<p>不依赖图形界面，适合大范围重构、仓库级任务、与 CI/脚本结合。</p>
+<ul>
+<li>国际常见：<a href="https://claude.ai/" rel="noopener noreferrer" target="_blank">Claude Code</a>（Anthropic 的终端向 Agent）、各家 Coding CLI。</li>
+<li>国内：CodeBuddy Code 等 CLI 形态；亦可在开源 Agent（如 Cline 等）中自备 API Key。</li>
+<li>LayaAir 工程自动化：<a href="/basics/developmentenvironment/cli/">LayaAir CLI</a> + <a href="https://github.com/layabox/layaair-skills" rel="noopener noreferrer" target="_blank">layaair-skills</a>。</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="44-使用原则写引擎代码时尤其重要">4.4 使用原则（写引擎代码时尤其重要）</h3><a class="sl-anchor-link" href="#44-使用原则写引擎代码时尤其重要"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “4.4 使用原则（写引擎代码时尤其重要）”</span></a></div>
+<ol>
+<li><strong>版本写清楚</strong>：提示词里带上 LayaAir 与 TypeScript 版本。</li>
+<li><strong>小步提交</strong>：一次只让 AI 改一个可验证目标，便于回滚。</li>
+<li><strong>人验收</strong>：编译通过、预览跑通、关键逻辑人工过目。</li>
+<li><strong>降幻觉</strong>：配置 CodingMCP，或粘贴官方 API / 源码片段再让模型改。</li>
+</ol>
+<div class="sl-heading-wrapper level-h2"><h2 id="五mcp让模型连上真实工具与引擎">五、MCP：让模型连上真实工具与引擎</h2><a class="sl-anchor-link" href="#五mcp让模型连上真实工具与引擎"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “五、MCP：让模型连上真实工具与引擎”</span></a></div>
+<p><strong>MCP（Model Context Protocol）</strong> 是开放的「模型 ↔ 外部工具/数据」协议，常被比作 AI 的统一接口。编辑器或 Agent 通过 MCP 读取文档、操作 IDE、跑命令，而不是只靠参数里的静态记忆。</p>
+<p>对 LayaAir 开发者，优先关心这几条链路：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>能力</th><th>文档</th></tr></thead><tbody><tr><td>按引擎版本查 API、减幻觉</td><td><a href="/basics/developmentenvironment/codingmcp/">CodingMCP</a></td></tr><tr><td>让 AI 操作 IDE（节点、组件、预制体等）</td><td><a href="/basics/developmentenvironment/ide-mcp/">IDE-MCP / LayaAir MCP 开发指南</a></td></tr><tr><td>无 GUI 创建 / 构建 / 校验</td><td><a href="/basics/developmentenvironment/cli/">LayaAir CLI</a></td></tr><tr><td>IDE 内一体化助手</td><td><a href="/basics/developmentenvironment/layaidea/">LayaIdea</a></td></tr></tbody></table>
+<p>资源商店中的 MCP 相关插件入口示例：<a href="https://store.layaair.com/info.php?id=10394" rel="noopener noreferrer" target="_blank">https://store.layaair.com/info.php?id=10394</a></p>
+<aside aria-label="注意" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12V16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16V12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11ZM12.38 7.08C12.1365 6.97998 11.8635 6.97998 11.62 7.08C11.4973 7.12759 11.3851 7.19896 11.29 7.29C11.2017 7.3872 11.1306 7.49882 11.08 7.62C11.024 7.73868 10.9966 7.86882 11 8C10.9992 8.13161 11.0245 8.26207 11.0742 8.38391C11.124 8.50574 11.1973 8.61656 11.29 8.71C11.3872 8.79833 11.4988 8.86936 11.62 8.92C11.7715 8.98224 11.936 9.00632 12.099 8.99011C12.2619 8.97391 12.4184 8.91792 12.5547 8.82707C12.691 8.73622 12.8029 8.61328 12.8805 8.46907C12.9582 8.32486 12.9992 8.16378 13 8C12.9963 7.73523 12.8927 7.48163 12.71 7.29C12.6149 7.19896 12.5028 7.12759 12.38 7.08ZM12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM12 20C10.4178 20 8.87104 19.5308 7.55544 18.6518C6.23985 17.7727 5.21447 16.5233 4.60897 15.0615C4.00347 13.5997 3.84504 11.9911 4.15372 10.4393C4.4624 8.88743 5.22433 7.46197 6.34315 6.34315C7.46197 5.22433 8.88743 4.4624 10.4393 4.15372C11.9911 3.84504 13.5997 4.00346 15.0615 4.60896C16.5233 5.21447 17.7727 6.23984 18.6518 7.55544C19.5308 8.87103 20 10.4177 20 12C20 14.1217 19.1572 16.1566 17.6569 17.6569C16.1566 19.1571 14.1217 20 12 20Z"></path></svg>注意</p><div class="starlight-aside__content"><p>部分产品还支持 <strong>Skills</strong>（技能包）等扩展形态，用于固化「怎么正确调用某套 CLI/工作流」。LayaAir CLI 的 Skills 见 <a href="https://github.com/layabox/layaair-skills" rel="noopener noreferrer" target="_blank">layabox/layaair-skills</a>。</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="六给-layaair-开发者的选型建议">六、给 LayaAir 开发者的选型建议</h2><a class="sl-anchor-link" href="#六给-layaair-开发者的选型建议"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “六、给 LayaAir 开发者的选型建议”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>你的情况</th><th>建议</th></tr></thead><tbody><tr><td>只想先问问语法 / 报错</td><td>网页问答：国际 ChatGPT / Claude / Gemini；国内 DeepSeek / Kimi / 豆包</td></tr><tr><td>不想换编辑器</td><td>GitHub Copilot，或通义灵码 / CodeBuddy / 文心快码插件</td></tr><tr><td>想要强 Agent、多文件改工程</td><td>国际 Cursor（或 Claude Code）；国内 Trae</td></tr><tr><td>必须尽量减少引擎 API 幻觉</td><td><strong>CodingMCP +（Cursor / Trae 等）</strong>，并对照官方 API</td></tr><tr><td>不会搭场景、想让 AI 点 IDE</td><td>IDE-MCP 或 LayaIdea</td></tr><tr><td>要出图 / 音 / 3D 草稿</td><td>第三节垂直工具；入库规范跟美术流程走</td></tr><tr><td>系统学习整条 AI 链路</td><td>直接跟 <a href="/guides/roadmap/ai/">AI 开发路线</a></td></tr></tbody></table>
+<aside aria-label="边界" class="starlight-aside starlight-aside--caution"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 16C11.8022 16 11.6089 16.0587 11.4444 16.1686C11.28 16.2784 11.1518 16.4346 11.0761 16.6173C11.0004 16.8001 10.9806 17.0011 11.0192 17.1951C11.0578 17.3891 11.153 17.5673 11.2929 17.7071C11.4327 17.847 11.6109 17.9422 11.8049 17.9808C11.9989 18.0194 12.2 17.9996 12.3827 17.9239C12.5654 17.8482 12.7216 17.72 12.8315 17.5556C12.9413 17.3911 13 17.1978 13 17C13 16.7348 12.8946 16.4805 12.7071 16.2929C12.5196 16.1054 12.2652 16 12 16ZM22.67 17.47L14.62 3.47003C14.3598 3.00354 13.9798 2.61498 13.5192 2.3445C13.0586 2.07401 12.5341 1.9314 12 1.9314C11.4659 1.9314 10.9414 2.07401 10.4808 2.3445C10.0202 2.61498 9.64019 3.00354 9.38 3.47003L1.38 17.47C1.11079 17.924 0.966141 18.441 0.960643 18.9688C0.955144 19.4966 1.089 20.0166 1.34868 20.4761C1.60837 20.9356 1.9847 21.3185 2.43968 21.5861C2.89466 21.8536 3.41218 21.9964 3.94 22H20.06C20.5921 22.0053 21.1159 21.8689 21.5779 21.6049C22.0399 21.341 22.4234 20.9589 22.689 20.4978C22.9546 20.0368 23.0928 19.5134 23.0895 18.9814C23.0862 18.4493 22.9414 17.9277 22.67 17.47ZM20.94 19.47C20.8523 19.626 20.7245 19.7556 20.5697 19.8453C20.4149 19.935 20.2389 19.9815 20.06 19.98H3.94C3.76111 19.9815 3.5851 19.935 3.43032 19.8453C3.27553 19.7556 3.14765 19.626 3.06 19.47C2.97223 19.318 2.92602 19.1456 2.92602 18.97C2.92602 18.7945 2.97223 18.622 3.06 18.47L11.06 4.47003C11.1439 4.30623 11.2714 4.16876 11.4284 4.07277C11.5855 3.97678 11.766 3.92599 11.95 3.92599C12.134 3.92599 12.3145 3.97678 12.4716 4.07277C12.6286 4.16876 12.7561 4.30623 12.84 4.47003L20.89 18.47C20.9892 18.6199 21.0462 18.7937 21.055 18.9732C21.0638 19.1527 21.0241 19.3312 20.94 19.49V19.47ZM12 8.00003C11.7348 8.00003 11.4804 8.10538 11.2929 8.29292C11.1054 8.48046 11 8.73481 11 9.00003V13C11 13.2652 11.1054 13.5196 11.2929 13.7071C11.4804 13.8947 11.7348 14 12 14C12.2652 14 12.5196 13.8947 12.7071 13.7071C12.8946 13.5196 13 13.2652 13 13V9.00003C13 8.73481 12.8946 8.48046 12.7071 8.29292C12.5196 8.10538 12.2652 8.00003 12 8.00003Z"></path></svg>边界</p><div class="starlight-aside__content"><p>AI 是协作者，不是自动上线按钮。架构取舍、性能、平台兼容、账号与支付、正式美术规范，仍应由人负责验收。</p></div></aside> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">  <p class="laya-last-updated astro-asuirehi">
+本文更新于 <time datetime="2026-07-16T00:00:00.000Z" class="astro-asuirehi">2026年7月16日</time></p> </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/basics/developmentenvironment/download/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 上一页 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">搭建基础开发环境</span> </span> </a> <a href="/basics/language/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 下一页 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">TS语言基础</span> </span> </a> </div>   </footer>  <div id="laya-lightbox" role="dialog" aria-modal="true" aria-label="图片放大预览" aria-hidden="true" tabindex="-1"> <img loading="lazy" decoding="async" alt=""> </div>   </div> </div>   </main> </div> </div>  </div> </div>  </body></html>

@@ -134,7 +134,7 @@ slug: "guides/roadmap/ai"
 **目标**：用生成式 AI 加速美术与音频素材生产，并建立“生成 → 入库 → 引擎使用”的规范。
 
 - **建议阅读**
-  - [AI协同开发环境](/basics/developmentenvironment/aigc/) 第 2 节 AIGC 创作
+  - [AI协同开发环境 · AIGC 创作](/basics/developmentenvironment/aigc/#aigc)
   - 美术入库规范可参考 [美术路线](/guides/roadmap/artist/) 阶段 1
 
 - **常见场景**
