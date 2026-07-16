@@ -199,6 +199,16 @@ VFX 粒子在 Laya 工程中渲染，需先安装**免费的 VFX 粒子插件**�
 
 > **怎么在场景里播放、用代码驱动？** 转换后的 VFX 与 Laya 原生 VFX 完全一致：挂 `VisualEffect` 组件、事件触发、暴露属性的运行时读写等用法，见 [VFX Graph 文档](/vfx-graph/) 系列（[IDE 操作流程](/vfx-graph/ide-workflow/)、[图级与组件](/vfx-graph/graph-and-components/)、[代码篇](/vfx-graph/code/)）。
 
+#### 转换成品对比（Unity 原版 vs LayaAir）
+
+以某治疗特效为例，把贴图 / shader 补齐后，转换产物在 LayaAir 中运行的实际画面与 Unity 原版基本一致——发射形态、十字光符、上升运动、整体观感都得到还原：
+
+![Unity 原版运行效果](/unity-plugin/img/vfx-result-unity.jpg)
+
+![LayaAir 中转换后运行效果（贴图 / shader 补齐后）](/unity-plugin/img/vfx-result-laya.jpg)
+
+> 注：图逻辑（发射、模块、曲线、渐变、运动）由转换器自动还原；贴图 / 网格 / 自定义 shader 需按上文方式在 Laya 工程里补齐后，才能得到与原版一致的最终观感。
+
 ### 6.4 转换能力与边界
 
 VFX 转换器把 Unity VFX Graph 的**节点图整体**翻译成 Laya 的 VFX 节点图，覆盖面较广——上下文、算子、块、曲线渐变、暴露属性都在转换范围内。下面按类别说明支持面。
