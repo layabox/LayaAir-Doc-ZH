@@ -4,8 +4,6 @@ description: "本文档说明 LayaNative 文件系统中 layanative:// 虚拟文
 slug: "released/native/filesystem"
 ---
 
-# LayaNative 文件系统
-
 本文档说明 LayaNative 文件系统中 `layanative://` 虚拟文件协议的路径规则、平台映射和常用 FileSystemManager 接口。
 > Version >= LayaAir 3.4.1
 ## 协议概览
