@@ -97,7 +97,11 @@ export default defineConfig({
       logo: { src: './src/assets/layabox-logo.svg', alt: 'LayaAir' },
       favicon: '/favicon-32.ico',
       customCss: ['./src/styles/custom.css'],
+      // 页脚显示本文最近更新时间（优先 frontmatter.lastUpdated，否则取该文件 Git 最近提交时间）
+      lastUpdated: true,
       components: {
+        // 更新时间展示：中文文案 + 本地时区日期
+        LastUpdated: './src/components/LastUpdated.astro',
         // 站点标题：LayaAir3 完整品牌 logo + 「文档」二字（与字标同大小同颜色）
         SiteTitle: './src/components/SiteTitle.astro',
         // 侧栏顶部加版本切换器(3.0–3.4)

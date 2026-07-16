@@ -1,0 +1,89 @@
+---
+title: "准备环境与语言"
+description: "程序新手路线第 1 阶段：安装 LayaAir IDE 与编码工具，配置可选的 AI 协同环境，掌握 TypeScript 最小语法，并学会查阅 LayaAir API，为创建第一个项目扫清障碍。"
+lastUpdated: 2026-07-15
+slug: "guides/roadmap/beginner/prepare"
+---
+
+import { Steps, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+本阶段只做一件事：**让电脑进入「能写、能跑、能查」的状态**。不要在这里追求语言专家级精通。
+
+## 本阶段目标
+
+- 能独立打开 LayaAir IDE，并关联好 VS Code（或其它编辑器）
+- 知道 TypeScript 最基础的类型、类、模块写法
+- 会用官方 API 文档 / IDE 提示查找类与方法
+
+## 推荐步骤
+
+<Steps>
+
+1. **搭建基础开发环境**
+
+   按官方步骤安装 IDE、账号登录、关联编码工具与浏览器。
+
+   → 详解：[搭建基础开发环境](/basics/developmentenvironment/download/)
+
+2. **（可选）配置 AI 协同**
+
+   若你习惯用大模型辅助写代码或查资料，可先浏览 AIGC / MCP / LayaIdea 相关说明，提高后续学习效率。完全可跳过，不影响主线。
+
+   → [AI 协同开发环境](/basics/developmentenvironment/aigc/) · [LayaAir-MCP](/basics/developmentenvironment/ide-mcp/) · [LayaIdea](/basics/developmentenvironment/layaidea/)
+
+3. **补齐语言最小集**
+
+   打开语言基础页，按「够用就走」原则阅读。重点建立下列直觉即可：
+
+   - `let` / `const`、基本类型、数组与对象
+   - `function` / 箭头函数、`class`、`import` / `export`
+   - 接口 `interface`、可选属性 `?`、类型断言（见到不慌）
+
+   → 详解：[TS 语言基础](/basics/language/)
+
+4. **学会查 API，而不是背 API**
+
+   引擎类很多，背不住也没必要。关键是：知道名字大概在哪、会看继承关系、会看参数与返回值。
+
+   → 详解：[如何阅读 LayaAir 的 API](/basics/developmentenvironment/api/)
+
+</Steps>
+
+## 必读清单
+
+<CardGrid>
+  <LinkCard
+    title="熟悉开发环境 · 概述"
+    href="/basics/developmentenvironment/"
+    description="开发环境章节总览，确认前置条件。"
+  />
+  <LinkCard
+    title="搭建基础开发环境"
+    href="/basics/developmentenvironment/download/"
+    description="安装与关联编码工具的主教程。"
+  />
+  <LinkCard
+    title="TS 语言基础"
+    href="/basics/language/"
+    description="JS / ES6 / TS 学习入口，坚持够用原则。"
+  />
+  <LinkCard
+    title="如何阅读 API"
+    href="/basics/developmentenvironment/api/"
+    description="以后所有陌生类的第一查找入口。"
+  />
+</CardGrid>
+
+## 进入下一阶段前，请确认
+
+下列条件建议都已具备（自行对照即可，无需在页面上勾选）：
+
+- IDE 能正常打开，能创建或打开工程
+- 编码工具已关联，能从 IDE 跳转到脚本文件
+- 遇到不认识的类名，知道去哪查、如何读
+- 语言方面：能看懂带类型注解的简单脚本，不怕报错红线
+
+:::tip[卡住了怎么办]
+安装类问题优先对照下载页截图逐步排查；语言卡壳时跳过细节继续往下，到 Hello World 写脚本时再回头查会更容易。
+:::
+

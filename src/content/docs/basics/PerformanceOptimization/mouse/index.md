@@ -1,10 +1,8 @@
 ---
-title: "readme"
+title: "鼠标交互的使用与优化"
 description: "无论是PC端的鼠标交互还是移动端的触摸交互，我们暂且都泛称为鼠标交互。这是游戏引擎实现人机交互的基础。本文从LayaAir引擎鼠标交互的基础使用开始（包括2D与3D），到进阶级的使用，进行全面介绍，希望对使用LayaAir的新老朋友都有所帮助。"
 slug: "basics/performanceoptimization/mouse"
 ---
-
-## 鼠标交互的使用与优化
 
 > Author: charley           Data:  2022-04-14
 
@@ -12,7 +10,7 @@ slug: "basics/performanceoptimization/mouse"
 
 [TOC]
 
-### 一、鼠标交互的基础使用
+## 一、鼠标交互的基础使用
 
 > 非新手开发者，可以跳过本小节
 
@@ -449,7 +447,7 @@ export default class XX extends Laya.Script {
 }
 ```
 
-### 二、穿透与鼠标碰撞区域
+## 二、穿透与鼠标碰撞区域
 
 > 之所以把穿透单独拉出一个小节来介绍，是因为这块比较容易引起开发者的使用误区，是新手踩坑的一个常见地方。
 >
@@ -586,7 +584,7 @@ LayaAir的一些图像UI组件，通过继承自Graphics的AutoBitmap实现的�
 
 不穿透主要以宽高设置碰撞区，图像UI组件会自动获得宽高。容器组件要手动设置或者依据子节点自动获取。如果矩形碰撞区不能满足的，可以采用graphics绘制图形并作为碰撞区（设置Hit Area为hit）。存在graphics绘制的鼠标碰撞区时，不再以宽高为鼠标碰撞区。
 
-### 三、鼠标交互的使用优化
+## 三、鼠标交互的使用优化
 
 #### 3.1 阻止事件流冒泡：stopPropagation
 
@@ -707,7 +705,7 @@ onMouseDown(e: Laya.Event): void {
 
 > 如果一定要使用Image对象实现穿透，可以先设置为不穿透，再设置绘制图形的渲染类型为unHit（具体参照2.3.3小节）。
 
-### 四、3D鼠标交互
+## 四、3D鼠标交互
 
 #### 4.1 2D鼠标交互与3D鼠标交互的区别
 

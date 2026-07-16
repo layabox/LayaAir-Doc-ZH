@@ -1,0 +1,193 @@
+---
+/**
+ * 学习路线阶段列表 —— 用于「程序新手路线」总览页。
+ * 展示编号、时长、摘要与跳转链接，形成清晰的进度地图。
+ */
+export interface Stage {
+  step: string;
+  title: string;
+  time: string;
+  href: string;
+  summary: string;
+  tags?: string[];
+}
+
+interface Props {
+  stages: Stage[];
+}
+
+const { stages } = Astro.props;
+---
+
+<ol class="rm-stages not-content">
+  {stages.map((s) => (
+    <li class="rm-stage">
+      <div class="rm-rail" aria-hidden="true">
+        <span class="rm-dot">{s.step}</span>
+      </div>
+      <a class="rm-card" href={s.href}>
+        <div class="rm-card-top">
+          <h3 class="rm-title">{s.title}</h3>
+          <span class="rm-time">{s.time}</span>
+        </div>
+        <p class="rm-summary">{s.summary}</p>
+        {s.tags && s.tags.length > 0 && (
+          <div class="rm-tags">
+            {s.tags.map((t) => (
+              <span class="rm-tag">{t}</span>
+            ))}
+          </div>
+        )}
+        <span class="rm-cta">进入本阶段 →</span>
+      </a>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .rm-stages {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .rm-stage {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .rm-rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .rm-rail::after {
+    content: '';
+    position: absolute;
+    top: 2.6rem;
+    bottom: -0.85rem;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--sl-color-accent) 55%, transparent),
+      color-mix(in srgb, var(--sl-color-hairline) 80%, transparent)
+    );
+  }
+
+  .rm-stage:last-child .rm-rail::after {
+    display: none;
+  }
+
+  .rm-dot {
+    z-index: 1;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--laya-grad, linear-gradient(135deg, #1f5f8b, #55a5d9));
+    box-shadow: 0 6px 16px -8px rgba(41, 128, 185, 0.9);
+    flex-shrink: 0;
+  }
+
+  .rm-card {
+    display: block;
+    text-decoration: none !important;
+    background-image: none !important;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 14px;
+    padding: 1rem 1.15rem 0.95rem;
+    background: var(--sl-color-bg-sidebar);
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .rm-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--sl-color-accent);
+    box-shadow: 0 16px 40px -18px rgba(41, 128, 185, 0.55);
+  }
+
+  .rm-card-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.85rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .rm-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    line-height: 1.35;
+  }
+
+  .rm-time {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--sl-color-accent-high, var(--sl-color-accent));
+    background: color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 35%, transparent);
+    border-radius: 999px;
+    padding: 0.12rem 0.55rem;
+  }
+
+  .rm-summary {
+    margin: 0;
+    color: var(--sl-color-gray-2);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .rm-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.65rem;
+  }
+
+  .rm-tag {
+    font-size: 0.72rem;
+    color: var(--sl-color-gray-2);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 6px;
+    padding: 0.1rem 0.45rem;
+    background: color-mix(in srgb, var(--sl-color-gray-6) 55%, transparent);
+  }
+
+  .rm-cta {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--sl-color-accent-high, var(--sl-color-accent));
+  }
+
+  @media (max-width: 50rem) {
+    .rm-stage {
+      grid-template-columns: 2rem 1fr;
+      gap: 0.55rem;
+    }
+    .rm-dot {
+      width: 1.9rem;
+      height: 1.9rem;
+      font-size: 0.72rem;
+    }
+    .rm-card {
+      padding: 0.9rem 0.95rem;
+    }
+  }
+</style>

@@ -1,0 +1,112 @@
+---
+title: "程序新手路线"
+description: "面向零基础与转行新手的 LayaAir3 编程学习地图：按阶段搭建环境、跑通首个项目、掌握节点与组件心智模型，再分 2D / 3D 方向入门，并附自检清单与进阶入口。"
+lastUpdated: 2026-07-15
+slug: "guides/roadmap/beginner"
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import RoadmapStages from '../../../../../components/RoadmapStages.astro';
+
+本路线把散落在「快速入门」与引擎各章的文档，整理成一条**可按天推进**的学习路径。目标不是一次读完全站，而是：用最短路径做出能跑的东西，再按需查详解。
+
+:::tip[适合谁]
+- 第一次接触 LayaAir / 游戏引擎，但有一点编程基础（或愿意同步补一点 TypeScript）
+- 想用 IDE 可视化编辑 + 脚本开发，而不是纯手写脚手架
+- 目标是 2～4 周内独立做出一个小 Demo，而不是立刻做商业大作
+:::
+
+:::caution[不适合当作]
+- Unity / Cocos 老司机的差异对照手册 → 请看 [Unity/Cocos 迁移路线](/guides/roadmap/migration/)
+- 进阶性能、Shader、发布与工程化 → 请看 [程序进阶路线](/guides/roadmap/intermediate/)
+:::
+
+## 怎么学最有效
+
+<CardGrid>
+  <Card title="先做后读" icon="rocket">
+    每阶段都有「必做动作」。先跟着做出结果，再回去读细节文档，记忆会稳很多。
+  </Card>
+  <Card title="不要啃完语言" icon="approve-check">
+    TypeScript 够用就往前走。边用引擎边查语法，比先刷完整手册快一个数量级。
+  </Card>
+  <Card title="2D / 3D 二选一为主" icon="puzzle">
+    前三个阶段通用；之后选一个主方向深入，另一个只需浏览到「能听懂」即可。
+  </Card>
+  <Card title="善用搜索与版本" icon="magnifier">
+    文档左上角切换到你的引擎分支；遇到具体问题优先用搜索，比在目录里瞎翻高效。
+  </Card>
+</CardGrid>
+
+## 学习地图（共 6 个阶段）
+
+建议节奏：**每天 1～2 小时**，约 **10～18 天**完成主线；纯新手可适当放慢。
+
+<RoadmapStages
+  stages={[
+    {
+      step: '01',
+      title: '准备环境与语言',
+      time: '约 0.5～1 天',
+      href: '/guides/roadmap/beginner/prepare/',
+      summary: '装好 IDE 与编码工具，摸清 TypeScript 最小语法集，学会查 API。',
+      tags: ['环境', 'TypeScript', 'API'],
+    },
+    {
+      step: '02',
+      title: '创建第一个项目',
+      time: '约 1～2 天',
+      href: '/guides/roadmap/beginner/first-project/',
+      summary: '从新建工程到 Hello World，把「创建 → 编辑 → 预览 → 改脚本」这条流水线跑通。',
+      tags: ['IDE', '工程目录', '预览调试'],
+    },
+    {
+      step: '03',
+      title: '掌握核心概念',
+      time: '约 2～3 天',
+      href: '/guides/roadmap/beginner/core-concepts/',
+      summary: '建立节点、场景、组件脚本、事件与资源加载的心智模型，后面所有功能都围着它转。',
+      tags: ['节点', 'ECS', '脚本生命周期'],
+    },
+    {
+      step: '04',
+      title: '2D 入门方向',
+      time: '约 3～5 天',
+      href: '/guides/roadmap/beginner/path-2d/',
+      summary: '显示对象、UI、交互与适配；用入门模板走通一个 2D 小游戏开发闭环。',
+      tags: ['Sprite', 'UI', '交互'],
+    },
+    {
+      step: '05',
+      title: '3D 入门方向',
+      time: '约 3～5 天',
+      href: '/guides/roadmap/beginner/path-3d/',
+      summary: '坐标系与变换、相机灯光网格；用 3D 示例模板建立三维项目的基础操作感。',
+      tags: ['Camera', 'Light', 'Mesh'],
+    },
+    {
+      step: '06',
+      title: '自检与下一步',
+      time: '约 0.5 天',
+      href: '/guides/roadmap/beginner/checklist/',
+      summary: '用清单核对能力是否达标，并导向进阶、美术协作与 AI 辅助开发路线。',
+      tags: ['自检', '避坑', '进阶入口'],
+    },
+  ]}
+/>
+
+## 两条分岔怎么选
+
+| 你的目标 | 建议主路线 | 阶段 4 / 5 |
+|---|---|---|
+| 休闲 2D、UI 偏重、小游戏 | 阶段 1→2→3→**4**→6 | 阶段 5 只读概念入门即可 |
+| 3D 玩法、角色场景、空间交互 | 阶段 1→2→3→**5**→6 | 阶段 4 读基础概念即可 |
+| 都想了解 | 先完整走完一条，再补另一条 | 两条都做，但避免同时深入 |
+
+:::note[和「快速入门」目录的关系]
+本路线是**阅读顺序与学习策略**；「快速入门」里的章节是**详解正文**。路线页会把你指到正确的详解页，请在两个目录间来回跳转，而不是只盯一侧栏。
+:::
+
+:::tip[从这里开始]
+打开下一篇 [准备环境与语言](/guides/roadmap/beginner/prepare/)，按步骤搭好环境与语言基础，再顺着侧栏继续向后学。
+:::
