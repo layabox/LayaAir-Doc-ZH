@@ -230,6 +230,10 @@
         "link": "/basics/developmentenvironment/ide-mcp/"
       },
       {
+        "label": "AI命令行工具：LayaAir CLI",
+        "link": "/basics/developmentenvironment/cli/"
+      },
+      {
         "label": "AI开发工具：LayaIdea",
         "link": "/basics/developmentenvironment/layaidea/"
       }

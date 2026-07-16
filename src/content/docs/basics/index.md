@@ -153,8 +153,9 @@ Native 侧可对接现代图形 API，并提供本地存储、文件系统、网
 LayaAir3 从引擎到 IDE 逐步打通 AI 工作流，便于用自然语言或 Agent 驱动开发：
 
 - **IDE-MCP / Coding-MCP**：让 AI 理解并调度 IDE 与引擎相关工作流
-- **CLI**：脚本化创建、构建、发布，便于 Agent 与自动化流水线调用
+- **[LayaAir CLI](/basics/developmentenvironment/cli/)**：脚本化创建、构建、发布与资源校验，便于 Agent 与 CI 自动化
 - **LayaIdea / AIGC**：AI 辅助创作与开发环境能力
+- **[layaair-skills](https://github.com/layabox/layaair-skills)**：提升 AI 对 CLI 命令与最佳实践的理解
 
 更细的上手路径，可参考文档中的「AI 开发路线」与「AI 协同开发环境」相关章节。
 
