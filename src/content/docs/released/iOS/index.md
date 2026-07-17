@@ -160,15 +160,15 @@ XCode工程的门槛较高。如果是新手，不具备相关知识，请先去
 
 构建完成之后，可以通过直接在项目中修改代码来切换单机版和网络版。
 
-项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.js`。
+项目目录下的 resource/scripts/index.js 脚本的最后有一个 `appUrl` 变量，脚本末尾的 `loadApp(conch.presetUrl || appUrl)` 会加载这个地址作为首页，修改 `appUrl` 的值就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.js`。
 
 例如，一开始是网络版，地址为：  
 
- `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.js");`   
+ `var appUrl = "http://10.10.20.19:7788/index.js";`   
 
 要改成单机版的话，修改这里：  
 
- `loadUrl(conch.presetUrl||"http://stand.alone.version/runtime.json");`  
+ `var appUrl = "http://stand.alone.version/index.js";`  
 
 反之亦然。  
 

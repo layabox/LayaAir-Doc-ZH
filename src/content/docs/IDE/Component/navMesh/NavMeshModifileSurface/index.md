@@ -10,7 +10,7 @@ slug: "ide/component/navmesh/navmeshmodifilesurface"
 
 `NavMeshModifileSurface`（动态导航表面）是LayaAir 3D导航系统中用于动态修改导航网格的组件。与静态导航表面（NavMeshSurface）不同，动态导航表面的导航网格会跟随其所在节点的移动而更新，使得游戏场景能够更加动态和交互。
 
-该组件继承自`NavModifleBase`，是动态节点基类的子类。在LayaAir-IDE的属性面板中，该组件显示为`动态导航表面`。
+该组件继承自`BaseNav3DModifle`，是动态节点基类的子类。在LayaAir-IDE的属性面板中，该组件显示为`动态导航表面`。
 
 > 关于3D寻路的整体介绍，请参考[3D寻路](/ide/component/navmesh/)。
 

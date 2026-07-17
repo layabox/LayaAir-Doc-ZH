@@ -44,7 +44,7 @@ slug: "basics/ide/entrance"
 
 （图5）
 
-点击Scene2D节点，可以在Inspector里看到Runtime，拖入一个代码Main.ts，保存场景后，会在同级目录下生产Main_gen.ts 文件，此文件为当前节点的生产类，不可修改。
+点击Scene2D节点，可以在Inspector里看到Runtime，拖入一个代码Main.ts，保存场景后，会在同级目录下生产Main.generated.ts 文件，此文件为当前节点的生产类，不可修改。
 
 <img src="./images/6.png" alt="image-20221102173139912" style="zoom:33%;" /> 
 
@@ -56,7 +56,7 @@ slug: "basics/ide/entrance"
 
 （图7）
 
-Main_gen.ts会再次生产，多了一个img属性，此时Main.ts代码中可以直接使用img属性，如图8。
+Main.generated.ts会再次生产，多了一个img属性，此时Main.ts代码中可以直接使用img属性，如图8。
 
 <img src="./images/8.png" alt="image-20221102173659012" style="zoom:50%;" /> 
 
@@ -91,7 +91,7 @@ export class Main extends Laya.Script {
 **Runtime**：
 
 ```
-import { MainBase } from "./Main_gen";
+import { MainBase } from "./Main.generated";
 const { regClass, property } = Laya;
 
 @regClass()

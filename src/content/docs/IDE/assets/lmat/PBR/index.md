@@ -212,8 +212,8 @@ PBR材质支持以下渲染模式，通过 `renderMode` 属性设置：
 |---|---|---|
 | Opaque | 0 | 不透明渲染，默认模式，性能最优 |
 | Cutout | 1 | Alpha裁剪，根据Alpha阈值决定像素是否可见 |
-| Transparent | 2 | 半透明渲染，支持Alpha混合 |
-| Additive | 3 | 加色法混合渲染 |
+| Fade | 2 | 透明混合，游戏中经常使用的透明 |
+| Transparent | 3 | 透明混合，物理上看似合理的透明 |
 
 ### 10.1 渲染质量（renderQuality）
 
@@ -252,7 +252,7 @@ Laya.loader.load("res/texture/normal.png").then((tex: Laya.Texture2D) => {
 });
 
 // 设置渲染模式为不透明
-pbrMat.renderMode = Laya.PBRMaterial.RENDERMODE_OPAQUE;
+pbrMat.renderMode = Laya.PBRRenderMode.Opaque;
 
 // 应用到模型
 let meshRenderer = sprite3D.getComponent(Laya.MeshRenderer);

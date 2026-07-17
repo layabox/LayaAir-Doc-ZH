@@ -200,15 +200,13 @@ Laya.Pool.recover("Bullet", bullet);
      * @return 此类型标识的一个对象。
      */
     static getItemByClass<T>(sign: string, cls: new () => T): T {
-        if (!Pool._poolDic[sign]) return new cls();
-
-        var pool = Pool.getPoolBySign(sign);
-        if (pool.length) {
-            var rst = pool.pop();
-            rst[Pool.POOLSIGN] = false;
-        } else {
+        let rst: any;
+        let pool = Pool.getPoolBySign(sign);
+        if (pool.length)
+            rst = pool.pop();
+        else
             rst = new cls();
-        }
+        rst[Pool.POOLSIGN] = false;
         return rst;
     }
 ```
@@ -238,7 +236,7 @@ export class EffectA {
     }
     
     static create(): EffectA {
-		Pool.getItemByClass(EffectA);
+		Pool.createByClass(EffectA);
 	}
 
     recover(): void {
@@ -254,7 +252,7 @@ export class EffectB {
     }
     
     static create(): EffectB {
-		Pool.getItemByClass(EffectB);
+		Pool.createByClass(EffectB);
 	}
 
     recover(): void {

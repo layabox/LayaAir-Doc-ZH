@@ -48,12 +48,8 @@ Sprite3D 是3D的基本节点对象，就像Sprite是2D的基本节点对象一�
      * @param	name 子节点的名字。
      * @return	节点对象。
      */
-    getChildByName(name: string): Node {
-        for (let child of this._children) {
-            if (child && child.name === name)
-                return child;
-        }
-        return null;
+    getChildByName<T extends Node = ChildType<this>>(name: string, classType?: new (...args: any[]) => T): T {
+        return this.getChild(name, classType);
     }
 ```
 
@@ -337,8 +333,6 @@ let rigidBody = this.layaMonkeyParent.addComponent(Laya.Rigidbody3D) as Laya.Rig
 var boxShape = new Laya.BoxColliderShape(1, 1, 1);
 //设置盒子的碰撞形状
 rigidBody.colliderShape = boxShape; 
-//使用重力
-rigidBody.overrideGravity = true;
 //重力为向下-10
 rigidBody.gravity = new Laya.Vector3(0,-10,0);
 ```
@@ -533,9 +527,9 @@ SkinnedMesh精灵是引擎中的 **蒙皮动画网格精灵**，可根据美术�
 
 
 
-### 7.3 Particle3D 精灵
+### 7.3 Particle 精灵
 
-`Particle3D` 是引擎中的 3D**粒子精灵**,可根据美术人员编辑的粒子参数产生奇妙炫酷的粒子特效。一般用于各种角色技能特效或火焰、烟雾等场景特效。  
+`Particle` 是引擎中的 3D**粒子精灵**（渲染组件类为 `ShurikenParticleRenderer`）,可根据美术人员编辑的粒子参数产生奇妙炫酷的粒子特效。一般用于各种角色技能特效或火焰、烟雾等场景特效。  
 
 <img src="./img/7-4.gif" alt="7-4" style="zoom:80%;" />
 

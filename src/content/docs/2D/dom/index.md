@@ -56,7 +56,7 @@ var data: string = "data:image/svg+xml," + '<svg xmlns="http://www.w3.org/2000/s
     '</foreignObject>' +
     '</svg>';
 var sp: Laya.Sprite = new Laya.Sprite();
-sp.loadImage(data, 0, 0, 200, 200);
+sp.loadImage(data);
 Laya.stage.addChild(sp);
 ```
 
@@ -182,7 +182,7 @@ LayaAir关于摄像头也有相应的封装，下面我们来看下用法。
 
 ```typescript
 class Main {
-    private video:Laya.Video;
+    private video:Laya.VideoNode;
     constructor() {
         //初始化引擎
         Laya.init(Laya.Browser.width,Laya.Browser.height);
@@ -213,7 +213,8 @@ class Main {
         tex.size(Laya.stage.width,Laya.stage.height);
     }
     private onSuccess(url:string):void{
-        this.video = new Laya.Video(Laya.stage.width,Laya.stage.height);
+        this.video = new Laya.VideoNode();
+        this.video.size(Laya.stage.width,Laya.stage.height);
         this.video.load(url);
         Laya.stage.addChild(this.video);
         Laya.stage.on("click",this,this.onStageClick);
@@ -250,7 +251,7 @@ new Main;
 
 ```typescript
 class Main {
-    private video:Laya.Video;
+    private video:Laya.VideoNode;
     constructor() {
         //初始化引擎
         Laya.init(100,100);
@@ -271,7 +272,7 @@ class Main {
             if(Laya.Browser.window.FileReader.DONE == fileReader.readyState)
             {
                 var sp:Laya.Sprite = new Laya.Sprite();
-                sp.loadImage(fileReader.result,0,0,300,300);
+                sp.loadImage(fileReader.result);
                 Laya.stage.addChild(sp);
             }
         }
@@ -297,7 +298,7 @@ file.style.zIndex = 999;
 
 ```typescript
 class Main {
-    private video:Laya.Video;
+    private video:Laya.VideoNode;
     constructor() {
         //初始化引擎
         Laya.init(100,100);
@@ -329,7 +330,7 @@ class Main {
             if(Laya.Browser.window.FileReader.DONE == fileReader.readyState)
             {
                 var sp:Laya.Sprite = new Laya.Sprite();
-                sp.loadImage(fileReader.result,0,0,100,100);
+                sp.loadImage(fileReader.result);
                 Laya.stage.addChild(sp);
             }
         };
@@ -358,7 +359,7 @@ script的创建可以手动添加到页面，也可以代码动态的创建。�
 
 ```typescript
 class Main {
-    private video:Laya.Video;
+    private video:Laya.VideoNode;
     constructor() {
         //初始化引擎
         Laya.init(500,500);
@@ -420,7 +421,7 @@ console.log("我被加载进来了");
 
 ```typescript
 class Main {
-    private video:Laya.Video;
+    private video:Laya.VideoNode;
     constructor() {
         //初始化引擎
         Laya.init(500,500);

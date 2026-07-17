@@ -98,7 +98,6 @@ LayaAir引擎中的物理宽高是通过`逻辑宽高*DPR`计算而来。
      * @zh 浏览器窗口的物理宽度，考虑了设备像素比。
      */
     static get width(): number {
-        Browser.__init__();
         return ((ILaya.stage && ILaya.stage.canvasRotation) ? Browser.clientHeight : Browser.clientWidth) * Browser.pixelRatio;
     }
 
@@ -107,7 +106,6 @@ LayaAir引擎中的物理宽高是通过`逻辑宽高*DPR`计算而来。
      * @zh 浏览器窗口的物理高度，考虑了设备像素比。
      */
     static get height(): number {
-        Browser.__init__();
         return ((ILaya.stage && ILaya.stage.canvasRotation) ? Browser.clientWidth : Browser.clientHeight) * Browser.pixelRatio;
     }
 ```
@@ -190,7 +188,7 @@ export default class IndexRT extends IndexRTBase {
 
 **需要注意的是，**
 
-引擎提供了`Laya.stage.useRetinalCanvas`用于控制是否采用高清分辨率的画布。默认并不开启，一旦开启后，就会采用直接修改画布宽高的方式，让画布直接获得最大的高清画布分辨率。
+引擎提供了`Laya.Config.useRetinalCanvas`用于控制是否采用高清分辨率的画布。默认并不开启，一旦开启后，就会采用直接修改画布宽高的方式，让画布直接获得最大的高清画布分辨率。
 
 ### 1.9 舞台宽高
 
@@ -198,9 +196,9 @@ export default class IndexRT extends IndexRTBase {
 
 **默认情况下，stage宽高会等于画布的宽高。**
 
-但是，如果开发者启用了`Laya.stage.useRetinalCanvas`，那画布就会采用 **缩放后** 的 高清分辨率。
+但是，如果开发者启用了`Laya.Config.useRetinalCanvas`，那画布就会采用 **缩放后** 的 高清分辨率。
 
-而stage的宽高，还是开发者未启用`Laya.stage.useRetinalCanvas`时的画布缩放前宽高。
+而stage的宽高，还是开发者未启用`Laya.Config.useRetinalCanvas`时的画布缩放前宽高。
 
 引擎的节点对象都是在stage上进行添加与控制的，在stage范围内，可以控制显示、进行事件监听，碰撞检测等，所以对stage宽高的适配还是非常重要的。
 

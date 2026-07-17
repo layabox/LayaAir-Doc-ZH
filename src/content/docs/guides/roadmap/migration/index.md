@@ -168,7 +168,7 @@ slug: "guides/roadmap/migration"
 - **建议阅读**
   - Unity：[疑似问题清单](/unity-plugin/known-issues/)
   - 性能：[性能优化](/basics/performanceoptimization/)
-  - 纹理：[VIP纹理优化说明](/basics/performanceoptimization/vip_texture/)（若从 Unity 批量导出纹理）
+  - 纹理：[VIP纹理优化说明](/basics/performanceoptimization/vip-texture/)（若从 Unity 批量导出纹理）
 
 - **产出**
   - 迁移验收 Checklist（显示、动画、物理、UI、性能各一项）
@@ -183,7 +183,7 @@ slug: "guides/roadmap/migration"
 - **建议阅读**
   - [Web 发布](/released/web/)
   - [小游戏发布总览](/released/minigame/)
-  - [Native 介绍](/released/native/layanative_introduction/)
+  - [Native 介绍](/released/native/layanative-introduction/)
   - 需要自动化时参考 [命令行构建](/released/commandline/)
 
 - **产出**

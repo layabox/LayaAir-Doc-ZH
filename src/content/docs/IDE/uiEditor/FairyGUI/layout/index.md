@@ -52,7 +52,7 @@ Author: 谷主
 aBox.layout.foldInvisibles = true;
 
 //需要手动设置脏状态
-aBox.layout.stretchParams.push(new StretchParam().setRatio(0.5));
+aBox.layout.stretchParamsX.push(new StretchParam().setRatio(0.5));
 aBox.setLayoutChangedFlag();
 
 aBox.layout.stretchParamsX[0].ratio = 0.8;

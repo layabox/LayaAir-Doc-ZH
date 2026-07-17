@@ -10,7 +10,7 @@ slug: "ide/component/physics2d/gearjoint"
 
 齿轮关节是一种模拟两个齿轮连接效果的关节类型，它可以用来将两个关节的运动通过一定的比例关系连接起来。
 
-## 一、绑定关节`joint`
+## 一、绑定关节`joint1`与`joint2`
 
 齿轮关节与其它关节不同的是，齿轮关节并非是连接绑定刚体，而是连接两个关节，如图1所示。并且关节类型只能是旋转关节（RevoluteJoint）或平移关节（PrismaticJoint）。
 

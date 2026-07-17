@@ -10,7 +10,7 @@ slug: "ide/component/3danimation/boneconstraints"
 
 ![1-1](./img/1-1.png)
 
-在阅读本文之前，建议开发者先了解[IK链](/ide/component/3danimation/boneconstraints/chainsik/)。
+在阅读本文之前，建议开发者先了解[IK链](/ide/component/3danimation/chainsik/)。
 
 
 

@@ -44,8 +44,10 @@ https://learn.microsoft.com/zh-cn/microsoft-edge/devtools-guide-chromium/overvie
      * 通过分析浏览器信息获得。浏览器多个属性值优先级为：window.innerWidth(包含滚动条宽度) > document.body.clientWidth(不包含滚动条宽度)，如果前者为0或为空，则选择后者。
      */
     static get clientWidth(): number {
-        Browser.__init__();
-        return Browser._clientWidth || Browser._window.innerWidth || Browser._document.body.clientWidth;
+        if (this._clientWidth != null)
+            return this._clientWidth;
+        else
+            return PAL.browser.getClientWidth();
     }
 
     static set clientWidth(value: number) {
@@ -57,8 +59,10 @@ https://learn.microsoft.com/zh-cn/microsoft-edge/devtools-guide-chromium/overvie
      * 通过分析浏览器信息获得。浏览器多个属性值优先级为：window.innerHeight(包含滚动条高度) > document.body.clientHeight(不包含滚动条高度) > document.documentElement.clientHeight(不包含滚动条高度)，如果前者为0或为空，则选择后者。
      */
     static get clientHeight(): number {
-        Browser.__init__();
-        return Browser._clientHeight || Browser._window.innerHeight || Browser._document.body.clientHeight || Browser._document.documentElement.clientHeight;
+        if (this._clientHeight != null)
+            return this._clientHeight;
+        else
+            return PAL.browser.getClientHeight();
     }
 
     static set clientHeight(value: number) {
@@ -67,27 +71,17 @@ https://learn.microsoft.com/zh-cn/microsoft-edge/devtools-guide-chromium/overvie
 
     /** 浏览器窗口物理宽度。考虑了设备像素比。*/
     static get width(): number {
-        Browser.__init__();
         return ((ILaya.stage && ILaya.stage.canvasRotation) ? Browser.clientHeight : Browser.clientWidth) * Browser.pixelRatio;
     }
 
     /** 浏览器窗口物理高度。考虑了设备像素比。*/
     static get height(): number {
-        Browser.__init__();
         return ((ILaya.stage && ILaya.stage.canvasRotation) ? Browser.clientWidth : Browser.clientHeight) * Browser.pixelRatio;
     }
 
     /** 获得设备像素比。*/
     static get pixelRatio(): number {
-        if (Browser._pixelRatio < 0) {
-            Browser.__init__();
-            if (Browser.userAgent.indexOf("Mozilla/6.0(Linux; Android 6.0; HUAWEI NXT-AL10 Build/HUAWEINXT-AL10)") > -1) Browser._pixelRatio = 2;
-            else {
-                Browser._pixelRatio = (Browser._window.devicePixelRatio || 1);
-                if (Browser._pixelRatio < 1) Browser._pixelRatio = 1;
-            }
-        }
-        return Browser._pixelRatio;
+        return PAL.browser.getPixelRatio();
     }
 ```
 
@@ -136,30 +130,15 @@ LayaAir引擎中的物理宽高是通过逻辑宽高*`DPR`计算而来，`DPR` �
 `Laya.Browser` 也为我们封装了对这些对象的调用，看下API：
 
 ```typescript
-    /**浏览器原生 document 对象的引用。*/
-    static get document(): any {
-        Browser.__init__();
-        return Browser._document;
-    }    
+    /**浏览器原生 document 对象的引用。只读。*/
+    static document: Document = typeof document !== undefined ? document : null;
 
-	/**浏览器原生 window 对象的引用。*/
-    static get window(): any {
-        return Browser._window || Browser.__init__();
-    }
+	/**浏览器原生 window 对象的引用。只读。*/
+    static window: Window & typeof globalThis = typeof window !== undefined ? window : null;
     
-   	/**画布容器，用来盛放画布的容器。方便对画布进行控制*/
-    static get container(): any {
-        if (!Browser._container) {
-            Browser.__init__();
-            Browser._container = Browser.createElement("div");
-            Browser._container.id = "layaContainer";
-            Browser._document.body.appendChild(Browser._container);
-        }
-        return Browser._container;
-    }
-
-    static set container(value: any) {
-        Browser._container = value;
+   	/**画布容器，用来盛放画布的容器。方便对画布进行控制。只读。*/
+    static get container(): HTMLElement {
+        return Browser.mainCanvas.source.parentElement || document.body;
     }
 ```
 
@@ -171,31 +150,29 @@ LayaAir引擎里可以通过 `Laya.Browser.document` 获取原生 document 对�
 
 ```typescript
     /**
-     * 创建浏览器原生节点。
-     * @param	type 节点类型。
+     * 创建指定类型的浏览器原生节点。
+     * @param	tagName 要创建的节点类型。
      * @return	创建的节点对象的引用。
      */
-    static createElement(type: string): any {
-        Browser.__init__();
-        return Browser._document.createElement(type);
+    static createElement<K extends keyof HTMLElementTagNameMap>(tagName: K): HTMLElementTagNameMap[K] {
+        return PAL.browser.createElement(tagName);
     }
 
     /**
-     * 返回 Document 对象中拥有指定 id 的第一个对象的引用。
-     * @param	type 节点id。
-     * @return	节点对象。
+     * 通过id获取HTMLElement。
+     * @param	id 元素的id。
+     * @return	获取到的元素。
      */
-    static getElementById(type: string): any {
-        Browser.__init__();
-        return Browser._document.getElementById(type);
+    static getElementById(id: string): HTMLElement {
+        return PAL.browser.getElementById(id);
     }
 
     /**
-     * 移除指定的浏览器原生节点对象。
-     * @param	type 节点对象。
+     * 移除指定HTMLElement元素。
+     * @param	ele 要移除的元素。
      */
-    static removeElement(ele: any): void {
-        if (ele && ele.parentNode) ele.parentNode.removeChild(ele);
+    static removeElement(ele: HTMLElement): void {
+        PAL.browser.removeElement(ele);
     }
 ```
 

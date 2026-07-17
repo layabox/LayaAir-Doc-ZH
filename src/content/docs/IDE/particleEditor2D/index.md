@@ -238,7 +238,7 @@ slug: "ide/particleeditor2d"
 
 
 
-**`SemicircleShape`**：半圆形区域。
+**`SemicircleShap`**：半圆形区域。
 
 ![3-1-4-9](./img/3-1-4-9.png)
 

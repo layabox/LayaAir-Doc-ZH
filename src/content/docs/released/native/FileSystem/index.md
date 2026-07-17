@@ -39,7 +39,7 @@ fs.readFile({
 });
 ```
 
-各平台映射（相对于 `J:\LayaNative3X\publish` 下各平台工程目录）：
+各平台映射（相对于 LayaNative 的 `publish` 目录下各平台工程目录）：
 
 | 平台 | `layanative://assets/layabox.png` |
 | --- | --- |

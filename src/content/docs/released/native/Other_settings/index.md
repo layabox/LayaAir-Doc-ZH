@@ -84,7 +84,7 @@ LayaNative支持iOS模拟器，但是由于模拟器运行效率比较低，建�
 | getUsedMem()         | 获得当前应用程序占用的内存      | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |
 | getAvalidMem()       | 获得可用的内存            | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |
 | getNetworkType()     | 获得网络状态             | 返回int值，NET_NO = 0;NET_WIFI = 1;NET_2G = 2;NET_3G = 3;NET_4G = 4;NET_UNKNOWN=5 |                                  |
-| getRuntimeVersion()  | 获得Runtime的版本       | 返回值是一个字符串，类似ios-conch5-0.9.2、android-conch5-0.9 |                                  |
+| getRuntimeVersion()  | 获得Runtime的版本       | 返回值是一个字符串，格式为`平台-conch6-release-版本号`，类似ios-conch6-release-3.4.0、android-conch6-release-3.4.0。平台前缀有ios、android、window、ohos、linux五种 |                                  |
 | getAppVersion()      | 获得iOS-App的版本号      | 返回字符串 1.1                                | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 | getAppLocalVersion() | 获得iOS-App的Local版本号 | 返回字符串1.2                                 | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 
@@ -134,7 +134,7 @@ window.onLayaInitError = function(e)
 | screenHeight | number | 屏幕高度，单位px |
 | windowWidth | number | 可使用窗口宽度，单位px |
 | windowHeight | number | 可使用窗口高度，单位px |
-| statusBarHeight | number | 状态栏的高度，单位px(LayaNative中没有小游戏中的状态栏，所以返回0) |
+| statusBarHeight | number | 状态栏的高度，单位px。LayaNative中没有小游戏中的状态栏，这里返回的是安全区域的顶部内边距(safeTop)，与safeArea.top一致 |
 | safeArea | Object | 在竖屏正方向下的安全区域。部分机型没有安全区域概念，也不会返回 safeArea 字段，开发者需自行兼容。 |
 | safeArea.left | number | 安全区域左上角横坐标 |
 | safeArea.right | number | 安全区域右下角横坐标 |
@@ -158,7 +158,7 @@ if (window.conch)
     console.log("窗口高度:", windowInfo.windowHeight);
     console.log("状态栏高度:", windowInfo.statusBarHeight);
     console.log("窗口上边缘y值:", windowInfo.screenTop);
-    if (info.safeArea) {
+    if (windowInfo.safeArea) {
         console.log("安全区域:", JSON.stringify(windowInfo.safeArea));
     }
 }
@@ -182,7 +182,7 @@ if (window.conch)
 | system | string | 操作系统及版本 |
 | platform | string | 客户端平台，合法值见下表 |
 | cpuType | string | 设备CPU型号（仅 Android 支持） |
-| memorySize | number | 设备内存大小，单位MB |
+| memorySize | string | 设备内存大小，单位MB |
 
 **platform 合法值：**
 
@@ -193,6 +193,7 @@ if (window.conch)
 | ohos | HarmonyOS 手机端平台 |
 | ohos_pc | HarmonyOS PC平台 |
 | windows | Windows 平台 |
+| linux | Linux 平台 |
 
 ### 示例代码
 

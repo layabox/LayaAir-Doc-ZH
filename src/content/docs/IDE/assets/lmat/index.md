@@ -42,7 +42,7 @@ LayaAir引擎支持多种材质类型，按用途可分为以下几类：
 | 材质类型 | 类名 | 说明 |
 |---|---|---|
 | [2D材质总览](/ide/assets/lmat/2d/) | — | 2D渲染材质体系概述 |
-| [2D基础渲染材质](/ide/assets/lmat/2d/baserender2d/) | `BaseRenderNode2D` | 2D渲染节点的基础材质 |
+| [2D基础渲染](/ide/assets/lmat/2d/baserender2d/) | `BaseRenderNode2D` | 2D渲染节点的基类（继承自 `Component`，本身不是材质类），通过 `sharedMaterial` 属性关联材质 |
 
 ## 二、材质资源的创建
 

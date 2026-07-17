@@ -40,7 +40,7 @@ slug: "ide/component/2d/2drender/trail2drender"
 | 宽度曲线(widthCurve)        | 一个归一化的值，决定了拖尾不同位置的宽度                     |
 | 拖尾颜色(color)             | 设置拖尾的颜色，会与拖尾的渐变色混合叠加形成最终颜色         |
 | 拖尾渐变色(colorGradient)   | 设置拖尾的渐变色，会与拖尾的颜色混合叠加形成最终颜色         |
-| 纹理模式(textureMode)       | 控制纹理应如何应用于拖尾。有平铺(Stretch)和拉伸(Tile)两种模式 |
+| 纹理模式(textureMode)       | 控制纹理应如何应用于拖尾。有拉伸(Stretch)和平铺(Tile)两种模式 |
 | 纹理(texture)               | 应用于拖尾的纹理，具体效果受纹理模式(textureMode)的影响。    |
 
 

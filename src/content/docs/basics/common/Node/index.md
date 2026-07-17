@@ -19,7 +19,7 @@ slug: "basics/common/node"
 
 在不考虑层级的情况下，我们可以给某个节点添加子节点，可让子节点跟随父节点显示与否，移动，以及方便管理。添加的子节点会加到所有子节点的最后面。
 
-- #### 添加子节点到指定的索引位置addChildAt(index:number)
+- #### 添加子节点到指定的索引位置addChildAt(node:Node, index:number)
 
 
 往往要考虑到节点的层级关系或者说遮挡关系，并且已经了解到需要添加到指定的层级位置可使用此方法
@@ -104,7 +104,7 @@ slug: "basics/common/node"
 
 当我们知道某个节点的索引位置时，可以用个此方法从父节点删除子节点
 
-- #### 删除指定索引区间的所有子节点removeChildren(beginIndex: number = 0, endIndex: number = 0x7fffffff)
+- #### 删除指定索引区间的所有子节点removeChildren(beginIndex?: number, endIndex?: number, destroy?: boolean)
 
 
 此方法可以快速删除指定索引区间的所有子节点

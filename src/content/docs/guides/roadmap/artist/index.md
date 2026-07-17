@@ -135,7 +135,7 @@ slug: "guides/roadmap/artist"
 
 - **建议阅读**
   - [性能优化总览](/basics/performanceoptimization/)
-  - [Stat性能面板](/basics/performanceoptimization/stat_panel/)
+  - [Stat性能面板](/basics/performanceoptimization/stat-panel/)
   - [渲染性能优化](/basics/performanceoptimization/rendering/)
   - [内存优化](/basics/performanceoptimization/memory/)
   - [Web 发布](/released/web/)

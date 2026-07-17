@@ -201,8 +201,8 @@ LayaAir引擎中的 `drawRoundRect()` 方法用于绘制圆角矩形。该方法
      * @param percent       （可选）位置和大小是否是百分比值。
      * @returns 
      */
-    drawRoundRect(x: number, y: number, width: number, height: number, lt: number, rt: number, lb: number, rb: number, fillColor: any, lineColor: any = null, lineWidth: number = 1, percent?: boolean) {
-        return this.addCmd(DrawRoundRectCmd.create(x, y, width, height, lt, rt, lb, rb, fillColor, lineColor, lineWidth, percent));
+    drawRoundRect(x: number, y: number, width: number, height: number, lt: number, rt: number, lb: number, rb: number, fillColor: any, lineColor: any = null, lineWidth: number = 1, percent?: boolean, minNum?: number, segPixel?: number) {
+        return this.addCmd(DrawRoundRectCmd.create(x, y, width, height, lt, rt, lb, rb, fillColor, lineColor, lineWidth, percent, minNum, segPixel));
     }
 ```
 
@@ -358,9 +358,10 @@ LayaAir引擎中的 `drawCircle()` 方法用于绘制矢量圆形。该方法的
      * @param fillColor	填充颜色，或者填充绘图的渐变对象。
      * @param lineColor	（可选）边框颜色，或者填充绘图的渐变对象。
      * @param lineWidth	（可选）边框宽度。
+     * @param percent	（可选）位置和大小是否是百分比值。
      */
-    drawCircle(x: number, y: number, radius: number, fillColor: any, lineColor: any = null, lineWidth: number = 1): DrawCircleCmd {
-        return this.addCmd(DrawCircleCmd.create(x, y, radius, fillColor, lineColor, lineWidth));
+    drawCircle(x: number, y: number, radius: number, fillColor: any, lineColor: any = null, lineWidth: number = 1, percent?: boolean): DrawCircleCmd {
+        return this.addCmd(DrawCircleCmd.create(x, y, radius, fillColor, lineColor, lineWidth, percent));
     }
 ```
 
@@ -517,7 +518,7 @@ this.owner.addChild(sp);
 
 ### 4.2 代码绘制三角形
 
-绘制三角形、多边形以及根据指定的路径数据绘制出图案，均可使用LayaAir引擎中 laya.display.Graphics 类的 `drawpoly()` 方法实现。该方法的详细说明如下：
+绘制三角形、多边形以及根据指定的路径数据绘制出图案，均可使用LayaAir引擎中 laya.display.Graphics 类的 `drawPoly()` 方法实现。该方法的详细说明如下：
 
 ```typescript
     /**
@@ -855,9 +856,9 @@ sp.graphics.drawCurves(10, 58, [0, 0, 19, -100, 39, 0, 58, 100, 78, 0], "#ff0000
 
 `fillColor`：文本颜色。
 
-`Stork`：文本的描边宽度，0表示不描边。
+`Stroke`：文本的描边宽度，0表示不描边。
 
-`Stork Color`：文本的描边颜色。
+`Stroke Color`：文本的描边颜色。
 
 
 
@@ -875,7 +876,7 @@ Laya引擎中 `laya.display.Graphics` 类中 `fillText()` 方法用于绘制文�
      * @param color 定义文本颜色，比如"#ff0000"。
      * @param textAlign 文本对齐方式，可选值："left"，"center"，"right"。
      */
-    fillText(text: string | WordText, x: number, y: number, font: string, color: string, textAlign: string): FillTextCmd {
+    fillText(text: string, x: number, y: number, font: string, color: string, textAlign: string): FillTextCmd {
         return this.addCmd(FillTextCmd.create(text, x, y, font, color, textAlign, 0, ""));
     }
 ```
@@ -940,9 +941,9 @@ Laya引擎中 `laya.display.Graphics` 类中 `fillTexture()` 方法用于绘制�
      * @param color	 	 （可选）颜色
      *
      */
-    fillTexture(texture: Texture, x: number, y: number, width: number = 0, height: number = 0, type: string = "repeat", offset: Point | null = null, color: string = null): FillTextureCmd | null {
+    fillTexture(texture: Texture, x: number, y: number, width: number = 0, height: number = 0, type: string = "repeat", offset: Point | null = null, color: string = null, percent: boolean = false): FillTextureCmd | null {
         if (texture && texture.bitmap)
-            return this.addCmd(FillTextureCmd.create(texture, x, y, width, height, type, offset || Point.EMPTY, color));
+            return this.addCmd(FillTextureCmd.create(texture, x, y, width, height, type, offset || Point.EMPTY, color, percent));
         else
             return null;
     }

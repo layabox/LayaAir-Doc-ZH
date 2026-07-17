@@ -14,7 +14,7 @@ slug: "released/poki"
 
 发布界面中的配置文件`File Extension`等，以及`Common`的配置可以参考[Web配置](/released/web/)与[发布通用配置](/released/generalsetting/)。
 
-发布后在项目根目录/release目录下会新增Poki目录，包含项目的发布内容。
+发布后在项目根目录/release目录下会新增poki目录，包含项目的发布内容。
 
 ![1-2](./img/1-2.png)
 

@@ -232,7 +232,7 @@ bool SteamManager::SetAchievement(const char* achievementID)
     {
         if (alreadyAchieved)
         {
-            printf("成就已经解锁", achievementID);
+            printf("成就已经解锁: %s\n", achievementID);
             return false;
         }
     }
@@ -262,6 +262,10 @@ jsvm_value jsSetAchievement(jsvm_env env, jsvm_callback_info info) {
     jsvm_value args[1];
     jsvm_value _this;
     JSVM_CALL_CHECK(jsvm_get_cb_info(env, info, &argc, args, &_this, nullptr));
+
+    char achievementID[256];
+    size_t idLen = 0;
+    JSVM_CALL_CHECK(jsvm_get_value_string_utf8(env, args[0], achievementID, sizeof(achievementID), &idLen));
 
     bool success = SteamManager::GetInstance()->SetAchievement(achievementID);
     jsvm_value result;

@@ -233,7 +233,7 @@ Laya.SkyBox材质是支持6张可以无缝相接的贴图，但是需要先创�
 
 `Ambient Mode`：环境光的模式，分为两种
 
-​	`Ambient Color`：固定颜色。使用环境光颜色 Ambient Color 作为环境光源
+​	`SolidColor`：固定颜色。使用环境光颜色 Ambient Color 作为环境光源
 
 ​	`Ambient Intensity`：颜色强度。
 

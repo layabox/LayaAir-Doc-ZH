@@ -206,4 +206,4 @@ skyRenderer.mesh = Laya.SkyDome.instance;
 
 4. **曝光控制**：`exposure` 属性对三种天空材质都很重要，合理设置曝光值可以让天空与场景中的其他物体亮度协调一致。
 
-5. **默认材质**：每种天空材质都有 `defaultMaterial` 静态属性，该默认材质仅供引擎内部使用，不应修改。
+5. **默认材质**：`SkyBoxMaterial` 与 `SkyProceduralMaterial` 提供了 `defaultMaterial` 静态属性，该默认材质仅供引擎内部使用，不应修改。`SkyPanoramicMaterial` 没有该静态属性，需要自行实例化。

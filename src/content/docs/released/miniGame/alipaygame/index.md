@@ -64,7 +64,7 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 小游戏的配置文件，开发者工具和客户端需要读取这个配置，完成相关界面渲染和属性设置。
 
-**microgame-adapter.js与my-adapter.js**: 
+**my-adapter.js**: 
 
 支付宝小游戏适配库文件，用于适配支付宝小游戏。
 

@@ -254,11 +254,9 @@ export default class DirectMove extends Laya.Script {
 }
 ```
 
-### 4.5 判断是否在地面 isGrounded() / isOnGround()
+### 4.5 判断是否在地面 isOnGround()
 
 该方法用于判断角色是否站在地面上，返回布尔值。这是角色控制中非常常用的方法，可以用来控制跳跃逻辑（例如只有在地面上才能跳跃）或切换行走/下落动画。
-
-> `isGrounded()` 和 `isOnGround()` 功能相同，都可以使用。
 
 代码设置示例如下：
 
@@ -277,7 +275,7 @@ export default class DirectMove extends Laya.Script {
         switch (evt.keyCode) {
             case Laya.Keyboard.SPACE:
                 // 只有在地面上时才能跳跃
-                if (this.characterController.isGrounded()) {
+                if (this.characterController.isOnGround()) {
                     this.characterController.jump(new Laya.Vector3(0, 5, 0));
                 }
                 break;

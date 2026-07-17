@@ -10,7 +10,7 @@ slug: "ide/component/navmesh/navmeshobstacles"
 
 `NavMeshObstacles`（导航障碍物）是LayaAir 3D导航系统中用于表示寻路过程中障碍物的组件。通过在场景中放置障碍物对象，设置障碍物的类型与形状，可以影响导航网格的生成和寻路计算。
 
-该组件继承自`NavModifleBase`，是动态节点基类的子类。障碍物的导航数据可以动态添加到NavMeshSurface类的节点下面，形成场景路径的动态变化。在LayaAir-IDE的属性面板中，该组件显示为`导航障碍物`。
+该组件继承自`BaseNav3DModifle`，是动态节点基类的子类。障碍物的导航数据可以动态添加到NavMeshSurface类的节点下面，形成场景路径的动态变化。在LayaAir-IDE的属性面板中，该组件显示为`导航障碍物`。
 
 > 关于3D寻路的整体介绍，请参考[3D寻路](/ide/component/navmesh/)。
 
@@ -24,7 +24,7 @@ slug: "ide/component/navmesh/navmeshobstacles"
 | --- | --- |
 | 代理类型 `agentType` | 指定该障碍物适用的代理类型，需与所属静态导航表面的代理类型匹配 |
 | 区域标记 `areaFlag` | 标记该障碍物的区域类型，影响代理对该区域的寻路代价 |
-| 类型 `meshType` | 障碍物的形状类型，支持`BOX`（盒子）和`CAPSULE`（胶囊体）两种 |
+| 类型 `meshType` | 障碍物的形状类型，支持`BOX`（盒子）、`CYLINDER`（圆柱体）和`CUSTOMER`（自定义）三种 |
 | 中心点 `center` | 障碍物的中心位置偏移（Vector3） |
 | 数据 `datas` | 烘焙生成的导航网格数据（TextResource类型）。烘焙后自动填充 |
 
@@ -36,14 +36,14 @@ slug: "ide/component/navmesh/navmeshobstacles"
 | --- | --- |
 | 大小 `size` | 盒子的宽度、高度、长度（Vector3）。通过这些值可以调整盒子的体积大小，来匹配障碍物的尺寸 |
 
-### 2.3 CAPSULE类型属性
+### 2.3 CYLINDER类型属性
 
-当`meshType`设置为`CAPSULE`时，可设置以下属性：
+当`meshType`设置为`CYLINDER`时，可设置以下属性：
 
 | 属性 | 说明 |
 | --- | --- |
-| 高度 `height` | 胶囊体的高度 |
-| 半径 `radius` | 胶囊体的底面半径 |
+| 高度 `height` | 圆柱体的高度 |
+| 半径 `radius` | 圆柱体的底面半径 |
 
 
 
@@ -51,12 +51,12 @@ slug: "ide/component/navmesh/navmeshobstacles"
 
 ### 3.1 基本用法
 
-在需要作为障碍物的节点上添加`导航障碍物`组件，选择合适的形状类型（BOX或CAPSULE），并调整中心点和大小参数使其匹配实际模型的尺寸。
+在需要作为障碍物的节点上添加`导航障碍物`组件，选择合适的形状类型（BOX或CYLINDER），并调整中心点和大小参数使其匹配实际模型的尺寸。
 
 使用步骤：
 
 1. 在障碍物节点上添加`导航障碍物`组件。
-2. 选择`meshType`为`BOX`或`CAPSULE`。
+2. 选择`meshType`为`BOX`或`CYLINDER`。
 3. 调整`center`和`size`/`height`/`radius`参数。
 4. 将障碍物节点放在拥有`静态导航表面`组件的节点的子节点下。
 5. 与静态导航表面一起进行烘焙。
@@ -64,7 +64,7 @@ slug: "ide/component/navmesh/navmeshobstacles"
 ### 3.2 注意事项
 
 - 障碍物节点需要放在静态导航表面节点的子节点下。
-- 障碍物的边界范围（`boundMin`/`boundMax`）不需要手动配置，烘焙完成后会自动生成。
+- 障碍物的边界范围（`min`/`max`）不需要手动配置，烘焙完成后会自动生成。
 - 障碍物是动态的，其位置变化会影响导航网格的实时更新。
 - 如需通过代码动态添加障碍物，需先提前烘焙好并存储在预制体中。
 

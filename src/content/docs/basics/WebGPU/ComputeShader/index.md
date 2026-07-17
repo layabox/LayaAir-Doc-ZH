@@ -369,7 +369,7 @@ void main()
 
 ```typescript
 let uniformMap = Laya.LayaGL.renderDeviceFactory.createGlobalUniformMap("ComputeShaderName");
-uniformMap.addShaderUniform(Laya.Shader3D.propertyNameToID("u_Image", "u_Image", Laya.ShaderDataType.StorageTexture2D, {format: "rgba8", access: "writeonly"});
+uniformMap.addShaderUniform(Laya.Shader3D.propertyNameToID("u_Image"), "u_Image", Laya.ShaderDataType.StorageTexture2D, {format: "rgba8", access: "writeonly"});
 
 let computeShader = Laya.ComputeShader.createComputeShader(`ComputeShaderName`, ComputeCode, [uniformMap]);
 ```

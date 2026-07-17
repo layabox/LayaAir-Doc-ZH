@@ -31,7 +31,7 @@ slug: "basics/ide/hierarchy"
 可以创建的2D节点有：
 
 - 基础2D节点（Sprite、Animation、Text、SoundNode、VideoNode）；
-- UI组件（Box、HBox、VBox、Image、Clip、Button、CheckBox、Radio、RadioGroup、ComboBox、Label、TextInput、TextArea、FontClip、ProgressBar、HSilder、VSlider、List、Panel、Tree、Tab、ViewStack、HScrollBar、VScrollBar、ColorPicker、View、Dialog、OpenDataContextView）；
+- UI组件（Box、HBox、VBox、Image、Clip、Button、CheckBox、Radio、RadioGroup、ComboBox、Label、TextInput、TextArea、FontClip、ProgressBar、HSlider、VSlider、List、Panel、Tree、Tab、ViewStack、HScrollBar、VScrollBar、ColorPicker、View、Dialog、OpenDataContextView）；
 - 2D骨骼动画（Spine、Skeleton）。
 
 
@@ -310,7 +310,7 @@ IDE提供了一个全部收缩按钮，如动图2-11所示，点击后可以收�
 
 [ProgressBar](/ide/uieditor/uicomponent/progressbar/)用于显示进度。
 
-[HSilder](/ide/uieditor/uicomponent/hslider/)是横向滑动条，可以通过在滑块轨道之间移动滑块来选择值。
+[HSlider](/ide/uieditor/uicomponent/hslider/)是横向滑动条，可以通过在滑块轨道之间移动滑块来选择值。
 
 [VSlider](/ide/uieditor/uicomponent/vslider/)是纵向滑动条。
 

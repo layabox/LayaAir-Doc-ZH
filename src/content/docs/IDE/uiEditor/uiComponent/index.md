@@ -95,8 +95,8 @@ this.xx.left = 0;
 this.xx.right = 0;
 this.xx.top = 0;
 this.xx.bottom = 0;
-this.xx.CenterX = 0;
-this.xx.CenterY = 0;
+this.xx.centerX = 0;
+this.xx.centerY = 0;
 ```
 
 ### 3.2 数据源dataSource

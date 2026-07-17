@@ -147,7 +147,7 @@ slug: "3d/advanced/postprocessing"
 |------|------|------|--------|------|
 | `Enable` | boolean | 是否启用 | false | true/false |
 | `Lift` | Vector3 | 暗部调整 | Vector3(0,0,0) | -1 到 1 |
-| `Gamma` | Vector3 | 中间调调整 | Vector3(1,1,1) | 999 到 0.5 |
+| `Gamma` | Vector3 | 中间调调整 | Vector3(1,1,1) | 0.5 到 50 |
 | `Gain` | Vector3 | 亮部调整 | Vector3(1,1,1) | 0 到 2 |
 
 #### Color Adjust（颜色调整）

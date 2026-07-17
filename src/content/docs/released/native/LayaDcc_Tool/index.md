@@ -75,7 +75,7 @@ LayaDCC在构建项目阶段工作。在构建Windows（如图2-1），iOS（如
 
 如果发布的是原生包（VS、XCode、Android Studio项目），不同发布平台对应的路径如下：
 
-**windows**: release\windows\windows_project\resource\cache\dcc2.0\
+**windows**: 勾选`导出项目`时为 release\windows\project\resource\cache\dcc2.0\，不导出项目时为 release\windows\release\resource\cache\dcc2.0\
 
 **android**: release\android\android_project\app\src\main\assets\cache\dcc2.0\
 

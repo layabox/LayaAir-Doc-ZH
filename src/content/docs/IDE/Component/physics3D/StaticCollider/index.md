@@ -10,7 +10,7 @@ slug: "ide/component/physics3d/staticcollider"
 
 ## 1、碰撞器基类属性
 
-静态碰撞器（PhysicsCollider）继承自物理碰撞器组件基类 PhysicsColliderComponent，因此具备与3D刚体（Rigidbody3D）相同的碰撞器基类属性，包括碰撞形状、碰撞分组、恢复系数、摩擦力、CCD连续碰撞检测等。
+静态碰撞器（PhysicsCollider）继承自物理碰撞器组件基类 PhysicsColliderComponent，因此具备与3D刚体（Rigidbody3D）相同的碰撞器基类属性，包括碰撞形状、碰撞分组、恢复系数、摩擦力等。
 
 关于碰撞器基类属性的详细说明，请参考[《3D刚体》的碰撞器基类属性章节](/ide/component/physics3d/rigidbody3d/#1碰撞器基类属性)。
 

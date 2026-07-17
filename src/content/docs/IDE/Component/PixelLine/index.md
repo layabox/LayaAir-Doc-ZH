@@ -44,19 +44,19 @@ slug: "ide/component/pixelline"
 
 （图2-3）
 
-接收阴影 `Receive Shadow` ，产生阴影的设置 `Case Shadow` 和光照贴图的缩放和偏移等基础属性，在这里就不介绍了
+接收阴影 `Receive Shadow` ，产生阴影的设置 `Cast Shadow` 和光照贴图的缩放和偏移等基础属性，在这里就不介绍了
 
 
 
 ### 2.3 像素线材质
 
-首先我们在Asset下新建一个Material，默认情况下 Material 的 Shader 是 `BlinnPhone`，接下来我们先把这个Material拖入像素线渲染器的材质属性中，如动图2-4所示
+首先我们在Asset下新建一个Material，默认情况下 Material 的 Shader 是 `BlinnPhong`，接下来我们先把这个Material拖入像素线渲染器的材质属性中，如动图2-4所示
 
 <img src="./img/2-4.gif" style="zoom: 50%;" /> 
 
 （动图2-4）
 
-第二步要修改 `BlinnPhone` 的 shader 为 `Laya.Unlit` shader ，并勾选 `Vertex Color` 
+第二步要修改 `BlinnPhong` 的 shader 为 `Laya.Unlit` shader ，并勾选 `Vertex Color` 
 
 <img src="./img/2-5.gif" style="zoom:50%;" /> 
 

@@ -119,9 +119,6 @@ videoPlayer.play();
 // 暂停
 videoPlayer.pause();
 
-// 恢复播放
-videoPlayer.resume();
-
 // 跳转到指定时间（秒）
 videoPlayer.currentTime = 10;
 ```

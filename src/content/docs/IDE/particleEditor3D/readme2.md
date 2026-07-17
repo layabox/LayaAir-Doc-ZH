@@ -77,7 +77,7 @@ slug: "ide/particleeditor3d/readme2"
 `Gravity Modifier`：设置物理重力值。零值会关闭重力。
 `Simulation Space`：控制粒子是否在父对象的本地空间（因此随父对象移动）、世界空间进行动画处理。
 `Simulation Speed`：调整整个系统更新的速度。
-`Scale Mode`：从变换中选择如何使用比例。设置为`World`、`Local`。本地仅应用粒子系统变换比例，忽略任何父项。
+`Scale Mode`：从变换中选择如何使用比例。可设置为`Hierarchy`、`Local`、`Shape`三种。`Hierarchy`同时受自己与父节点的缩放影响；`Local`仅应用粒子系统自身的变换比例，忽略任何父项；`Shape`的缩放只应用于发射形状，粒子自身的大小不受缩放影响。
 `Max Particles`：一次系统中的最大粒子数。如果达到限制，则会移除一些粒子。
 `Auto Random Seed`：如果启用，粒子系统在每次播放时看起来都不同。设置为 false 时，每次播放时系统完全相同。禁用自动随机种子时，此值用于创建独特的可重复效果。
 
@@ -215,9 +215,8 @@ slug: "ide/particleeditor3d/readme2"
 
 2，`Stretched Billboard`：粒子面向相机用了各种可能的缩放选项。
 
-​	`Camera Scale`： 相机比例
-​	`Velocity Scale`： 速度比例
-​	`Length Scale` ：长度比例
+​	`Speed Scale`： 速度比例，根据粒子的速度拉伸粒子
+​	`Length Scale` ：长度比例，根据粒子的大小拉伸粒子
 
 3，`Horizontal Billboard`：粒子平面平行于XZ“底”平面
 

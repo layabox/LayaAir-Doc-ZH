@@ -15,7 +15,7 @@ Author: 谷主
 - `Layout` 参考[布局容器](/ide/uieditor/fairygui/layout/)
 - `Clipping` 是否开启剪裁。开启后，超出容器尺寸的内容将会被隐藏。
 - `Selection` 参考[Selection支持](/ide/uieditor/fairygui/selection/)
-- `Scoller` 参考[滚动支持](/ide/uieditor/fairygui/scroller/)
+- `Scroller` 参考[滚动支持](/ide/uieditor/fairygui/scroller/)
 
 ### 一、 管理列表内容
 
@@ -40,7 +40,7 @@ Author: 谷主
 
 ```typescript
 aList.addChild(obj);
-aList.RemoveChildrenToPool();
+aList.removeChildrenToPool();
 ```
 
 添加对象时不使用池，但最后清除列表时却放到池里。这段代码持续运行，对象池将不断增大，可能造成内存溢出。
@@ -93,7 +93,7 @@ aList.numItems = 100;
 list.on(Laya.UIEvent.ClickItem, this, this.onClickItem);
 
 // 回调函数的第一个参数就是当前被点击的对象
-function onClickItem(item: GObject): void {
+function onClickItem(item: GButton): void {
     console.log("点击了对象：" + item.title);
 
     //获得这个对象在列表中的索引的方式
@@ -101,7 +101,7 @@ function onClickItem(item: GObject): void {
 }
 ```
 
-从上面的代码可以看出，事件回调里都可以方便的获得当前点击的对象。如果要获得索引，那么可以使用GetChildIndex。注意，item类型必须是按钮，即GButton，才可以触发ClickItem事件。
+从上面的代码可以看出，事件回调里都可以方便的获得当前点击的对象。如果要获得索引，那么可以使用getChildIndex。注意，item类型必须是按钮，即GButton，才可以触发ClickItem事件。
 
 ### 二、 虚拟列表
 
@@ -128,7 +128,7 @@ aList.setVirtual();
 
 在虚拟列表中，显示对象和item的数量在数量上和顺序上是不一致的，item的数量可以通过numItems获得，而显示对象的数量可以由组件的API numChildren获得。
 
-在虚拟列表中，需要注意item索引和显示对象索引的区分。通过selectedIndex获得的值是item的索引，而非显示对象的索引。AddSelection/RemoveSelection等API同样需要的是item的索引。项目索引和对象索引的转换可以通过以下两个方法完成：
+在虚拟列表中，需要注意item索引和显示对象索引的区分。通过selectedIndex获得的值是item的索引，而非显示对象的索引。selection.add/selection.remove等API同样需要的是item的索引。项目索引和对象索引的转换可以通过以下两个方法完成：
 
 ```typescript
 //转换项目索引为显示对象索引。
@@ -141,8 +141,8 @@ let itemIndex = aList.childIndexToItemIndex(1);
 使用虚拟列表时，我们很少会需要访问屏外对象。如果你确实需要获得列表中指定索引的某一个项目的显示对象，例如第500个，因为当前这个item是不在视口的，对于虚拟列表，不在视口的对象是没有对应的显示对象的，那么你需要先让列表滚动到目标位置。例如：
 
 ```typescript
-//这里要注意，因为我们要立即访问新滚动位置的对象，所以第二个参数scrollItToView不能为true，即不使用动画效果
-aList.scrollToView(500);
+//这里要注意，因为我们要立即访问新滚动位置的对象，所以第二个参数ani不能为true，即不使用动画效果
+aList.scroller.scrollTo(500, false);
 
 //转换到显示对象索引
 let index = aList.itemIndexToChildIndex(500);

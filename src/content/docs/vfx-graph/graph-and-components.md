@@ -124,7 +124,7 @@ Unity VFX 的颜色/渐变常含 **HDR 值**（分量 >1，由「基色 × 2^曝
 - **HDR 标签**：任一分量 >1 时，在色条/色块中央叠一个灰色 **`HDR`** 字样（点击穿透，不挡编辑），与 Unity 一致。
 - **编辑保留 HDR**：编辑器内部是 LDR 编辑，但**未改动的色标/颜色**在提交时会按位置匹配**还原完整 HDR 强度**，只有被你实际改过的项才落为 LDR。
 
-> 运行时这些覆盖值在加载后自动通过 `setPropertyFloat/Vec*/Texture/Gradient` 应用；代码侧也可直接调用 API 改写（见 [代码篇](/vfx-graph/code/)）。
+> 运行时这些覆盖值在加载后自动通过 `setPropertyFloat` / `setPropertyVec2` / `setPropertyVec3` / `setPropertyVec4` 应用；代码侧也可直接调用 API 改写（见 [代码篇](/vfx-graph/code/)）。
 
 ---
 

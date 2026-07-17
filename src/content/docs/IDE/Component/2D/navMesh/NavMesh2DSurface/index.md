@@ -70,7 +70,7 @@ slug: "ide/component/2d/navmesh/navmesh2dsurface"
 
 
 
-### 2.7 凸多边形区域 volumes
+### 2.7 凸多边形区域 areas
 
 用于在某片区域内修改导航网格属性，设置后不需要重新烘焙。每个区域可设置位置（Position）、缩放（Scale）、旋转（Rotation）、区域标记（AreaFlag）和形状数据（Datas）。
 

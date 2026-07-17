@@ -33,7 +33,7 @@ let frameAni = sprite.addComponent(Laya.FrameAnimation);
 
 `Images`：图片路径数组。当不使用图集时，可以手动指定一组图片路径作为动画帧。
 
-`AutoPlay`：是否在组件激活后自动播放动画，默认为 `false`。
+`AutoPlay`：是否在组件激活后自动播放动画，默认为 `true`。
 
 `Loop`：是否循环播放，默认为 `true`。
 

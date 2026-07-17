@@ -48,17 +48,17 @@ Scroller常用的API有：
 - Scroller常用的API有：
   - `viewWidth` `viewHeight` 视口宽度和高度。
   - `contentWidth` `contentHeight` 内容高度和宽度。
-  - `percX` `percY` `SetPercX` `SetPercY` 获得或设置滚动的位置，以百分比来计算，取值范围是0-1。如果希望滚动条从当前值到设置值有一个动态变化的过程，可以使用Set方法，它们提供了一个是否使用缓动的参数。
-  - `posX` `posY` `SetPosX` `SetPosY` 获得或设置滚动的位置，以绝对像素值来计算。取值范围是0-最大滚动距离。垂直最大滚动距离=（内容高度-视口高度），水平最大滚动距离=（内容宽度-视口宽度）。如果希望滚动条从当前值到设置值有一个动态变化的过程，可以使用Set方法，它们提供了一个是否使用缓动的参数。
-  - `pageX` p`ageY` `pageX` `pageY` 如果滚动设置为页面模式，那么可以通过这些方法设置或者获得当前的页面索引。如果要获得页面数量，可以用contentWidth/viewWidth或者contentHeight/viewHeight。
+  - `percX` `percY` `setPercX` `setPercY` 获得或设置滚动的位置，以百分比来计算，取值范围是0-1。如果希望滚动条从当前值到设置值有一个动态变化的过程，可以使用Set方法，它们提供了一个是否使用缓动的参数。
+  - `posX` `posY` `setPosX` `setPosY` 获得或设置滚动的位置，以绝对像素值来计算。取值范围是0-最大滚动距离。垂直最大滚动距离=（内容高度-视口高度），水平最大滚动距离=（内容宽度-视口宽度）。如果希望滚动条从当前值到设置值有一个动态变化的过程，可以使用Set方法，它们提供了一个是否使用缓动的参数。
+  - `pageX` `pageY` 如果滚动设置为页面模式，那么可以通过这些方法设置或者获得当前的页面索引。如果要获得页面数量，可以用contentWidth/viewWidth或者contentHeight/viewHeight。
   - `scrollLeft` `scrollRight` `scrollUp` `scrollDown` 向指定方向滚动N*step。例如，如果step=20，那么scrollLeft(1)表示向左滚动20像素，scrollLeft(2)表示向左滚动40像素。注意：如果滚动属性设置了贴近元件，例如元件大小为41像素，则需要滚动距离超过20像素，才能真正发生滚动，那么如果调用scrollLeft(1)，在step=20的情况下，会导致看不到任何效果。 如果滚动设置为页面模式，那这几个API也有“翻一页”的作用。
-  - `scrollToView` 调整滚动位置，使指定的元件出现在视口内。
+  - `scrollTo` 调整滚动位置，使指定的元件出现在视口内。
   - `step` 这个值是指滚动“一格”的距离。这个距离有三个用途：a）scrollUp/scrollDown/scrollLeft/scrollRight； b）点击滚动条的箭头按钮； c）鼠标滚轮，鼠标滚轮滚一次的距离是step*2。
   - `cancelDragging` 当滚动面板处于拖拽滚动状态或即将进入拖拽状态时，可以调用此方法停止或禁止本次拖拽。
 
 可以侦听滚动改变，在任何情况下滚动位置改变都会触发这个事件。
 
 ```typescript
-aPanel.scroller.on(Laya.UIEvent.Scroll, ()=> {} );
+aPanel.on(Laya.UIEvent.Scroll, ()=> {} );
 ```
 

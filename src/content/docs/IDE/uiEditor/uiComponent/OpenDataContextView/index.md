@@ -209,8 +209,8 @@ function init() {
          * fail：接口调用失败的回调函数
          * complete：接口调用结束的回调函数（调用成功、失败都会执行）
          */
-        wx.getUserCloudStorage({
-            keyList: ["test1", "test5"],
+        wx.getFriendCloudStorage({
+            keyList: ["test1", "test4"],
             success: (res) => {
                 console.log("获取数据成功：", res);
             },

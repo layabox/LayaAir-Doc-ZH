@@ -38,7 +38,7 @@ LayaAir引擎中的Shader主要是围绕着.shader文件为核心，在引擎核
 
 如何创建.shader文件？
 
-在项目资源窗口右键菜单栏 -> 选择创建 -> 选择着色器（如图1-1所示），有五种内置Shader可选。
+在项目资源窗口右键菜单栏 -> 选择创建 -> 选择着色器（如图1-1所示），有12种内置Shader可选。
 
 <img src="./img/1-1.png" alt="1-1" style="zoom:50%;" />
 
@@ -166,7 +166,7 @@ Uniform变量的常见类型：Texture2D，Color，Vector2，Vector3，Vector4�
 
 `Float`浮点类型
 
-`Matrix4X4` 4X4齐次矩阵
+`Matrix4x4` 4x4齐次矩阵
 
 `TextureCube` 用于3D纹理采样的图片类型，图片本地支持格式：PNG，JPG，HDR
 
@@ -178,13 +178,13 @@ Shader3D Start
 	name: ExampleShader
 	uniformMap : {
 		u_Color : {type: Color, default:[1,1,1,1]},
-		u_MainTex : {type: Texture, default: "white"},
+		u_MainTex : {type: Texture2D, default: "white"},
 		u_SampleTexcoord : {type: Vector2, default:[1,1]},
 		u_LightDir : {type: Vector3, default:[1,1,1]},
 		u_vecPos : {type:Vector4, default:[1,1,1,1]},
-		u_isWebGL2 : {type: bool, default: true},
-		u_spend : {type:float, default:1.0},
-		u_SkyMap : {type:TextureCube, defalue: "black"}
+		u_isWebGL2 : {type: Bool, default: true},
+		u_spend : {type:Float, default:1.0},
+		u_SkyMap : {type:TextureCube, default: "black"}
 		u_defaultMat : {type:Matrix4x4, default:[
 		1,0,0,0
 		0,1,0,0,
@@ -322,7 +322,6 @@ Shader3D End
 | 第二个uv坐标               | VertexMesh.MESH_TEXTURECOORDINATE1 |
 | 骨骼权重                   | VertexMesh.MESH_BLENDWEIGHT0       |
 | 骨骼索引                   | VertexMesh.MESH_BLENDINDICES0      |
-| MVP矩阵                    | VertexMesh.MESH_MVPMATRIX_ROW0     |
 | 世界矩阵                   | VertexMesh.MESH_WORLDMATRIX_ROW0   |
 | 顶点色                     | VertexMesh.MESH_COLOR0             |
 | 用户自定义预留位           | VertexMesh.MESH_CUSTOME0           |
@@ -489,7 +488,7 @@ Shader3D Start
     supportReflectionProbe:false,
 	uniformMap: {
 		u_MVPMatrix : {type: Matrix4x4},
-		u_OutLineWidth : {type: float, default:0.0}
+		u_OutLineWidth : {type: Float, default:0.0}
 	}
 	shaderPass:[
 		{
@@ -538,7 +537,7 @@ GLSL  Start
         mat3 worldMat=mat3(u_WorldMat); 
         v_Normal=worldMat*a_Normal; 
         v_Texcoord0 = a_Texcoord0; 
-        gl_Position=remapGLPositionZ(gl_Position); 
+        gl_Position=remapPositionZ(gl_Position); 
     }
 #endGLSL 
 GLSL  End
@@ -687,8 +686,8 @@ LayaAir Shader中的#include类似于C语言的include，xxx.glsl中内置了一
 
 - getWorldMatrix() 返回一个mat4类型的世界矩阵( ) ，模型空间坐标 * 世界矩阵 = 世界空间坐标。[ Sprite3DVertex.glsl ]
 - getVertexParams() 返回一个Vertex结构体，结构体中包含Mesh的原始数据：顶点坐标、法线、UV（UV宏）、切线（NEEDTBN宏）、副切线（NEEDTBN宏）、顶点颜色（COLOR宏）。[ VertexCommon.glsl ]
-- transfromUV() 返回一个vec2的新UV坐标，按照函数第二参数进行放缩和偏移的操作，实际的算法为：newUV = (oldUV.x · x + tilloffset.z,  oldUV.y · y + tilloffset.w) tilloffset的xy对应xy的放缩值，zw对应xy的偏移值。 [ Sprite3DCommon.glsl ]
-- 结构体PixelParams定义了一些世界空间下的顶点属性：顶点坐标、法线、UV（UV宏）、切线（NEEDTBN宏）、副切线（NEEDTBN宏）。结构体PixelParams只是定义了这些世界的顶点属性，并没有初始化，InitPixelParams() 返回初始化后的PixelPaams变量。[ BlinnPhongCommon.glsl ]
+- transformUV() 返回一个vec2的新UV坐标，按照函数第二参数进行放缩和偏移的操作，实际的算法为：newUV = (oldUV.x · x + tilloffset.z,  oldUV.y · y + tilloffset.w) tilloffset的xy对应xy的放缩值，zw对应xy的偏移值。 [ Sprite3DCommon.glsl ]
+- 结构体PixelParams定义了一些世界空间下的顶点属性：顶点坐标、法线、UV（UV宏）、切线（NEEDTBN宏）、副切线（NEEDTBN宏）。结构体PixelParams只是定义了这些世界的顶点属性，并没有初始化，initPixelParams() 返回初始化后的PixelPaams变量。[ BlinnPhongVertex.glsl ]
 - getPositionCS() 传入世界坐标返回的是裁剪空间的坐标。[ Camera.glsl ]
 - remapPositionZ() 对裁剪空间的坐标Z进行重映射。[ Camera.glsl ]
 

@@ -133,9 +133,9 @@ export default class ConfigurableConstraintDemo extends Laya.Script {
         let constraint = this.owner.getComponent(Laya.ConfigurableConstraint);
 
         // 锁定X和Z方向的平移，Y方向设为受限运动
-        constraint.XMotion = Laya.D6Axis.Locked;
-        constraint.ZMotion = Laya.D6Axis.Locked;
-        constraint.YMotion = Laya.D6Axis.Limited;
+        constraint.XMotion = Laya.D6Axis.eLOCKED;
+        constraint.ZMotion = Laya.D6Axis.eLOCKED;
+        constraint.YMotion = Laya.D6Axis.eLIMITED;
 
         // 设置Y方向的距离限制
         constraint.distanceLimit = 5;
@@ -143,9 +143,9 @@ export default class ConfigurableConstraintDemo extends Laya.Script {
         constraint.distanceDamper = 10;
 
         // 锁定所有旋转
-        constraint.angularXMotion = Laya.D6Axis.Locked;
-        constraint.angularYMotion = Laya.D6Axis.Locked;
-        constraint.angularZMotion = Laya.D6Axis.Locked;
+        constraint.angularXMotion = Laya.D6Axis.eLOCKED;
+        constraint.angularYMotion = Laya.D6Axis.eLOCKED;
+        constraint.angularZMotion = Laya.D6Axis.eLOCKED;
     }
 }
 ```

@@ -36,17 +36,13 @@ slug: "basics/common/device/media"
      * @param volume	音量。初始值为1。音量范围从 0（静音）至 1（最大音量）。
      * @param url		(default = null)声音播放地址。默认为null。为空表示设置所有音效（不包括背景音乐）的音量，不为空表示设置指定声音（背景音乐或音效）的音量。
      */
-    static setSoundVolume(volume: number, url: string = null): void {
+    static setSoundVolume(volume: number, url?: string): void {
         if (url) {
-            SoundManager._setVolume(url, volume);
+            let channel = this.findChannel(url);
+            if (channel)
+                channel.volume = volume;
         } else {
-            SoundManager.soundVolume = volume;
-            for (let i = SoundManager._channels.length - 1; i >= 0; i--) {
-                let channel = SoundManager._channels[i];
-                if (channel.url != SoundManager._bgMusic) {
-                    channel.volume = volume;
-                }
-            }
+            this.soundVolume = volume;
         }
     }
 ```

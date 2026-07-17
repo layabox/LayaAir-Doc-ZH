@@ -204,11 +204,11 @@ this.xxx.offAllCaller(this);
 export default class Script2DTest extends Laya.Script {
     constructor() { super(); }
 
-    onClick(e: Laya.Event): void {
+    onMouseClick(e: Laya.Event): void {
         console.log("点击脚本所属的节点对象时触发");
     }
 
-    onDoubleClick(e: Laya.Event): void {
+    onMouseDoubleClick(e: Laya.Event): void {
         console.log("双击脚本所属的节点对象时触发");
     }
 
@@ -230,22 +230,6 @@ export default class Script2DTest extends Laya.Script {
 
     onMouseOut(e: Laya.Event): void {
         console.log("鼠标离开脚本所属的节点对象时触发");
-    }
-
-    onStageMouseDown(e: Laya.Event): void {
-        console.log("鼠标在stage（舞台）上按下时触发");
-    }
-
-    onStageMouseUp(e: Laya.Event): void {
-        console.log("鼠标在stage（舞台）上抬起时触发");
-    }
-
-    onStageClick(e: Laya.Event): void {
-        console.log("鼠标在stage（舞台）上点击时触发");
-    }
-
-    onStageMouseMove(e: Laya.Event): void {
-        console.log("鼠标在stage（舞台）上移动时触发");
     }
 }
 ```
@@ -427,8 +411,8 @@ export default class XX extends Laya.Script {
      * @param touches 手势信息数组
      */
   setPivot(touches: Array<any>): Laya.Point {
-    let Point0: Laya.Point = this._owner.globalToLocal(new Laya.Point(touches[0].stageX, touches[0].stageY));
-    let Point1: Laya.Point = this._owner.globalToLocal(new Laya.Point(touches[1].stageX, touches[1].stageY));
+    let Point0: Laya.Point = this._owner.globalToLocal(new Laya.Point(touches[0].pos.x, touches[0].pos.y));
+    let Point1: Laya.Point = this._owner.globalToLocal(new Laya.Point(touches[1].pos.x, touches[1].pos.y));
     return new Laya.Point((Point0.x + Point1.x) / 2, (Point0.y + Point1.y) / 2);
   }
   
@@ -438,8 +422,8 @@ export default class XX extends Laya.Script {
     var distance: number = 0;
     if (touches && touches.length > 1) {
       //计算距离
-      let dx: number = touches[0].stageX - touches[1].stageX;
-      let dy: number = touches[0].stageY - touches[1].stageY;
+      let dx: number = touches[0].pos.x - touches[1].pos.x;
+      let dy: number = touches[0].pos.y - touches[1].pos.y;
       distance = Math.sqrt(dx * dx + dy * dy);
     }
     return distance;
@@ -752,7 +736,7 @@ export class MouseInteraction {
     /** 省略若干代码 */
     
     //射线初始化（必须初始化）
-    this._ray = new Ray(new Vecntetor3(0, 0, 0), new Vector3(0, 0, 0));
+    this._ray = new Laya.Ray(new Laya.Vector3(0, 0, 0), new Laya.Vector3(0, 0, 0));
     //侦听舞台上的鼠标事件
     Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onMouseDown);    
   }
@@ -807,7 +791,7 @@ export class MouseInteraction {
     /** 省略若干代码 */
     
     //射线初始化（必须初始化）
-    this._ray = new Ray(new Vecntetor3(0, 0, 0), new Vector3(0, 0, 0));
+    this._ray = new Laya.Ray(new Laya.Vector3(0, 0, 0), new Laya.Vector3(0, 0, 0));
     //侦听舞台上的鼠标事件
     Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onMouseDown);    
   }
@@ -859,7 +843,7 @@ export class MouseInteraction {
     meshCollider2.collisionGroup = Physics3DUtils.COLLISIONFILTERGROUP_CUSTOMFILTER2;
     
     //射线初始化（必须初始化）
-    this._ray = new Ray(new Vecntetor3(0, 0, 0), new Vector3(0, 0, 0));
+    this._ray = new Laya.Ray(new Laya.Vector3(0, 0, 0), new Laya.Vector3(0, 0, 0));
     //侦听舞台上的鼠标事件
     Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onMouseDown);    
   }
@@ -911,7 +895,7 @@ export default class GameUI extends ui.test.TestSceneUI {
 
         //添加方向光
         var directionLight: Laya.DirectionLight = scene.addChild(new Laya.DirectionLight()) as Laya.DirectionLight;
-        directionLight.color = new Laya.Vector3(0.6, 0.6, 0.6);
+        directionLight.color = new Laya.Color(0.6, 0.6, 0.6, 1);
         directionLight.transform.worldMatrix.setForward(new Laya.Vector3(1, -1, 0));
 
         //添加自定义模型
@@ -933,17 +917,13 @@ export default class GameUI extends ui.test.TestSceneUI {
 }
 ```
 
-脚本组件的鼠标事件生命周期方法共7个，示例代码如下：
+脚本组件常用的鼠标事件生命周期方法如下，示例代码如下：
 
 ```typescript
 export default class Script3DTest extends Laya.Script3D {
 
-    onMouseEnter(): void {
-        console.log("onMouseEnter:鼠标移动时,鼠标进入脚本所属的3D对象时触发，只在刚进入的时候触发一次");
-    }
-
     onMouseOver(): void {
-        console.log("onMouseOver:鼠标在脚本所属的3D对象时触发,每帧都在触发");
+        console.log("onMouseOver:鼠标移动时,鼠标进入脚本所属的3D对象时触发，只在刚进入的时候触发一次");
     }
 
     onMouseDown(): void {
@@ -1013,7 +993,7 @@ class SceneScript extends Script3D {
 
 因此，多点触控通常不需要使用3D物理检测，所以我们可以使用3D脚本也可以使用2D脚本。这里我们基于3D脚本以及3D的API进行介绍。
 
-Input3D类里的获得触摸点数量方法为`touchCount()`，获得触摸点的方法为`getTouch()`。
+InputManager类里获得触摸点数量的属性为`touchCount`，获得触摸点信息数组的属性为`touches`。这两个都是静态属性（而不是方法），通过`Laya.InputManager`直接访问即可。
 
 示例代码如下：
 
@@ -1021,21 +1001,21 @@ Input3D类里的获得触摸点数量方法为`touchCount()`，获得触摸点�
 /** 省略若干代码，可参照官网示例 */
 onUpdate(): void {
   //获取触摸点数量
-  var touchCount: number = this._scene.input.touchCount();
+  var touchCount: number = Laya.InputManager.touchCount;
   if (touchCount>1) {
     //获取前两个触摸点数据
-    var touch: Touch = this._scene.input.getTouch(0);
-    var touch2: Touch = this._scene.input.getTouch(1);
+    var touch = Laya.InputManager.touches[0];
+    var touch2 = Laya.InputManager.touches[1];
     //是否为刚按下时的第一次触摸
     if (this.twoFirst) {
       //获取触碰点的位置
-      this.disVector1.x = touch.position.x - touch2.position.x;
-      this.disVector1.y = touch.position.y - touch2.position.y;
+      this.disVector1.x = touch.pos.x - touch2.pos.x;
+      this.disVector1.y = touch.pos.y - touch2.pos.y;
       this.distance = Vector2.scalarLength(this.disVector1);
       this.twoFirst = false;
     } else {
-      this.disVector2.x = touch.position.x - touch2.position.x;
-      this.disVector2.y = touch.position.y - touch2.position.y;
+      this.disVector2.x = touch.pos.x - touch2.pos.x;
+      this.disVector2.y = touch.pos.y - touch2.pos.y;
       var distance2: number = Vector2.scalarLength(this.disVector2);
       //根据手势扩张移动的距离,设置z轴的变换，造成近大远小的透视效果。
       let zValue = -0.01 * (distance2 - this.distance);

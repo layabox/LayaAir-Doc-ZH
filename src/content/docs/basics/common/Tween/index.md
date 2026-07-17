@@ -218,14 +218,14 @@ Tween系统支持三种回调：启动回调、更新回调和结束回调。
             });
 ```
 
-**更新回调**：在每次更新缓动时，`onUpdata()`会被调用。下面这段代码，开启了一个纯计算的缓动，具体效果将由开发者在onUpdate中实现。
+**更新回调**：在每次更新缓动时，`onUpdate()`会被调用。下面这段代码，开启了一个纯计算的缓动，具体效果将由开发者在onUpdate中实现。
 
 ```typescript
         //创建纯计算的缓动
 		Laya.Tween.create(null).duration(1000).go(null, 0, 1000)
 			//更新回调
             .onUpdate(tweener => {
-                let value = tweener.get(null);
+                let value = tweener.value.get(null);
                 //开发者可在此实现具体的效果
             });
 ```
@@ -336,11 +336,11 @@ Tween系统支持三种回调：启动回调、更新回调和结束回调。
 
 ```typescript
         //创建缓动，并为缓动添加名称
-		Laya.Tween.create(aSprite).name("first").duration(1000).to("x", 100)
+		let tween = Laya.Tween.create(aSprite).name("first").duration(1000).to("x", 100)
             .chain().duration(2000).to("y", 100);
 
 		//根据名称找到缓动
-        let tweener = Laya.Tween.findTweener("first");
+        let tweener = tween.findTweener("first");
         if (tweener != null) //需要判空，因为如果这段缓动已经执行完毕，会返回null
             tweener.kill(); //会终止这段缓动，并立刻执行下一段
 ```
@@ -374,7 +374,7 @@ Tween系统支持三种回调：启动回调、更新回调和结束回调。
 
 
 
-这种情况下，就需要分离颜色通道，针对每个通道进行计算；引擎中内置的插值函数`Laya.Tween.sperateChannel`可以实现这个需求。
+这种情况下，就需要分离颜色通道，针对每个通道进行计算；引擎中内置的插值函数`Laya.Tween.seperateChannel`可以实现这个需求。
 
 ```typescript
         //创建缓动

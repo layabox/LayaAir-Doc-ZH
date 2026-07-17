@@ -220,7 +220,7 @@ devtools://devtools/bundled/inspector.html?v8only=true&ws=10.10.82.111:12345/000
 
 另一方案，使我们可以采用手动模式，把rpk包，复制到**手机存储的games目录下**，如果没有games目录则自己手工创建一下。
 
-rpk包位于项目的release/OPPOgame/dist 目录下。
+rpk包位于项目的release/oppogame/dist 目录下。
 
  将发布生成的rpk文件，复制到手机存储的games目录下，如图3-8所示。
 

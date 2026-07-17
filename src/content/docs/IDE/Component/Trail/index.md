@@ -44,7 +44,7 @@ slug: "ide/component/trail"
 
 （图2-3）
 
-接收阴影 `Receive Shadow` ，产生阴影的设置 `Case Shadow` 和光照贴图的缩放和偏移等基础属性，在这里就不介绍了
+接收阴影 `Receive Shadow` ，产生阴影的设置 `Cast Shadow` 和光照贴图的缩放和偏移等基础属性，在这里就不介绍了
 
 
 
@@ -54,7 +54,7 @@ slug: "ide/component/trail"
 
 #### 2.3.1 创建材质
 
-首先我们在Asset下新建一个Material，默认情况下Material的Shader是BlinnPhone，接下来我们修改下Shader，如动图2-4所示
+首先我们在Asset下新建一个Material，默认情况下Material的Shader是BlinnPhong，接下来我们修改下Shader，如动图2-4所示
 
 <img src="./img/2-4.gif" style="zoom: 50%;" /> 
 

@@ -22,7 +22,7 @@ slug: "ide/component/2d"
 
 ### [2D方向光](/ide/component/2d/directionlight2d/)
 
-### [精灵光](/IDE/Component/2D/2D/SpriteLight2D /readme.md)
+### [精灵光](/ide/component/2d/spritelight2d/)
 
 ### [2D自由形态光](/ide/component/2d/2d/freeformlight2d/)
 

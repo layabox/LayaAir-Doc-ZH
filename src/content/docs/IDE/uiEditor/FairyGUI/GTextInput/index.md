@@ -1,5 +1,5 @@
 ---
-title: "文本 （GTextField）"
+title: "输入文本 （GTextInput）"
 description: "Author: 谷主"
 slug: "ide/uieditor/fairygui/gtextinput"
 ---

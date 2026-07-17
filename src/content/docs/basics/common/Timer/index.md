@@ -191,8 +191,8 @@ export class RuntimeScript extends RuntimeScriptBase {
      * @param	method 定时器回调函数。
      * @param	args 回调参数。
      */
-    callLater(caller: any, method: Function, args: any[] = null): void {
-        CallLater.I.callLater(caller, method, args);
+    callLater(caller: any, method: Function, args?: any[]): void {
+        Timer.callLaters._create(false, false, 0, caller, method, args, true).exeTime = 0;
     }
 ```
 
@@ -230,7 +230,7 @@ export class RuntimeScript extends RuntimeScriptBase {
      * @param	method 定时器回调函数。
      */
     clear(caller: any, method: Function): void {
-        var handler: TimerHandler = this._getHandler(caller, method);
+        let handler: TimerHandler = this._map[Utils.getGID(caller, method)];
         if (handler) {
             handler.clear();
         }
@@ -268,9 +268,11 @@ export class RuntimeScript extends RuntimeScriptBase {
      * 立即执行 callLater 。
      * @param	caller 执行域(this)。
      * @param	method 定时器回调函数。
+     * @param	forceRun 是否强制执行，不管是否有注册CallLater。
      */
-    runCallLater(caller: any, method: Function): void {
-        CallLater.I.runCallLater(caller, method);
+    runCallLater(caller: any, method: Function, forceRun?: boolean): void {
+        if (!Timer.callLaters.runTimer(caller, method) && forceRun)
+            method.apply(caller);
     }
 ```
 
@@ -305,13 +307,17 @@ export class RuntimeScript extends RuntimeScriptBase {
      * 立即提前执行定时器，执行之后从队列中删除
      * @param	caller 执行域(this)。
      * @param	method 定时器回调函数。
+     * @return 调用是否成功。
      */
-    runTimer(caller: any, method: Function): void {
-        var handler: TimerHandler = this._getHandler(caller, method);
+    runTimer(caller: any, method: Function): boolean {
+        let handler: TimerHandler = this._map[Utils.getGID(caller, method)];
         if (handler && handler.method != null) {
             this._map[handler.key] = null;
             handler.run(true);
+            return true;
         }
+        else
+            return false;
     }
 ```
 

@@ -118,15 +118,15 @@ slug: "3d/displayobject"
 ```typescript
 /**
 * 创建Box网格。
-* @param long 半径
-* @param height 垂直层数
-* @param width 水平层数
+* @param long 长度
+* @param height 高度
+* @param width 宽度
 * @return
 */
 static createBox(long: number = 1, height: number = 1, width: number = 1): Mesh
 ```
 
-可以看到，通过 `createBox` 方法，可以创建Box网格，而且还可以创建不同的垂直和水平高度。
+可以看到，通过 `createBox` 方法，可以创建Box网格，而且还可以指定不同的长、高、宽（默认值均为1）。
 
 因此，可以通过代码创建不同类型的Mesh网格：
 

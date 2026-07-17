@@ -121,13 +121,13 @@ CONCH_EXPORT void CONCH_CDECL conchSendHandleMessageResult(const char *eventName
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd)
 {
     conchSetHandleMessageCallback(
-        [](/released/native/platform_communication/const char *eventName, const char *data) -> void {
+        [](const char *eventName, const char *data) -> void {
             if (strcmp(eventName, "syncMessage") == 0)
             {
                 conchSendHandleMessageResult(eventName, "sync message from platform");
             }
         },
-        [](/released/native/platform_communication/const char *eventName, const char *data) -> void {
+        [](const char *eventName, const char *data) -> void {
             if (strcmp(eventName, "asyncMessage") == 0)
             {
                 conchSendHandleMessageResult(eventName, "async message from platform");
@@ -151,13 +151,13 @@ CONCH_EXPORT void CONCH_CDECL conchSendHandleMessageResult(const char *eventName
 int main(int argc, char *argv[])
 {
     conchSetHandleMessageCallback(
-        [](/released/native/platform_communication/const char *eventName, const char *data) -> void {
+        [](const char *eventName, const char *data) -> void {
             if (strcmp(eventName, "syncMessage") == 0)
             {
                 conchSendHandleMessageResult(eventName, "sync message from platform");
             }
         },
-        [](/released/native/platform_communication/const char *eventName, const char *data) -> void {
+        [](const char *eventName, const char *data) -> void {
             if (strcmp(eventName, "asyncMessage") == 0)
             {
                 conchSendHandleMessageResult(eventName, "async message from platform");

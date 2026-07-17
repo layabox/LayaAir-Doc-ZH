@@ -106,7 +106,7 @@ GPU Instance需要硬件的支持，确保你当前所使用的硬件可以支�
 
 **关闭静态合批选项**
 
-在引擎的Config3D.ts文件中enableStaticBatch值选项，true为开启动态合批，false为关闭动态合批
+在引擎的Config3D.ts文件中enableStaticBatch值选项，true为开启静态合批，false为关闭静态合批
 
  ![image-20221226103109634](./img/image-20221226103109634.png)
 
@@ -437,7 +437,7 @@ GLSL End
 #### 7.2.2注意事项
 
 1. 目前 *BaseRender.setNodeCustomData* 方法仅有 custom_0 , custom_1 , custom_2 可选项。
-2. 材质在切换到在Instance渲染时，这三个槽位占用了顶点 VertexMesh.MESH_CUSTOME0，VertexMeshMESH_CUSTOME1，VertexMesh.MESH_CUSTOME2。
+2. 材质在切换到在Instance渲染时，这三个槽位占用了顶点 VertexMesh.MESH_CUSTOME0，VertexMesh.MESH_CUSTOME1，VertexMesh.MESH_CUSTOME2。
 3. uniform缓冲区使用时需要注意，在低端手机上过大的数据可能存在uniform超出的风险。
 
 

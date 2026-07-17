@@ -318,7 +318,7 @@ onEnable(): void {
 | -------------- | ----------------------------- |
 | text           | string                        |
 | json           | any                           |
-| xml            | XMLDocument                   |
+| xml            | XML                           |
 | arraybuffer    | ArrayBuffer                   |
 | image          | HTMLImageElement \ImageBitmap |
 | sound          | HTMLAudioElement              |
@@ -362,18 +362,20 @@ export interface ILoadOptions {
     constructParams?: TextureConstructParams; //图片属性，参考如下
     propertyParams?: TexturePropertyParams; //纹理属性，参考如下
     blob?: ArrayBuffer; //传递blob对象获得HTMLImageElement
-    noMetaFile?: boolean; //是否不去下载Meta(json)文件
     [key: string]: any;
 }
     
-TextureConstructParams {
-    width?: number,
-    height?: number,
-    format?: TextureFormat,
+//TextureConstructParams 是 Texture2D 的构造参数元组（按位置传入，非对象字面量）
+//type TextureConstructParams = ConstructorParameters<typeof Texture2D>;
+TextureConstructParams = [
+    width: number,
+    height: number,
+    format: TextureFormat,
     mipmap?: boolean,
-    canRead?: boolean,
+    canRead: boolean,
     sRGB?: boolean,
-}
+    premultiplyAlpha?: boolean,
+]
     
 TexturePropertyParams {
     wrapModeU?: number,

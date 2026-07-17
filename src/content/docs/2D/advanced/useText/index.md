@@ -70,7 +70,7 @@ fillText的代码使用方法说明如下：
      * @param color 定义文本颜色，比如"#ff0000"。
      * @param textAlign 文本对齐方式，可选值："left"，"center"，"right"。
      */
-    fillText(text: string | WordText, x: number, y: number, font: string, color: string, textAlign: string): FillTextCmd {
+    fillText(text: string, x: number, y: number, font: string, color: string, textAlign: string): FillTextCmd {
         return this.addCmd(FillTextCmd.create(text, x, y, font, color, textAlign, 0, ""));
     }
 ```
@@ -224,7 +224,7 @@ FontClip组件是LayaAir基于等份切割原理将完整的位图切分成一�
 
 上文中也讲到过，静态显示文本Text组件的性能是最好的，所以，在项目开发时，能用Text尽可能要用Text组件。当Text组件不满足的时候再用Label。
 
-对于无需改变内容的静态文本，当文本组件节点较多时，我们可以开启cacheAs，设置normal可以优化节点数，设置bitmap可以优化DrawCall数。
+对于无需改变内容的静态文本，当文本组件节点较多时，我们可以开启cacheAs，设置bitmap可以优化DrawCall数。
 
 而当文本内容需要改变时，哪怕只改变一个字符，如果FillText可以满足需求的话，那尽可能优先使用FillText文本组件。FillText不能满足时，其次考虑位图文本组件是否可以满足，最后再考虑静态文本组件。
 

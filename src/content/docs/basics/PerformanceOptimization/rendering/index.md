@@ -53,7 +53,7 @@ slug: "basics/performanceoptimization/rendering"
 class Test {
      private text:Laya.Text;
     constructor() {
-        Laya.init(550,400,Laya.WebGL);
+        Laya.init(550,400);
         Laya.Stat.show();
         var textBox=new Laya.Sprite();
 

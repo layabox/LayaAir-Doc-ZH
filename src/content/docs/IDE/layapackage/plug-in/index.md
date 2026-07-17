@@ -1584,7 +1584,7 @@ export class ABCResource extends Laya.Resource {
 ```typescript
 //因为这个类需要在实际游戏环境中使用，所有请勿和其他包含@IEditorEnv装饰器的脚本混杂在一起
 
-//第三个参数是true，表示资源支持热重载。如果资源需要支持热重载，需要在load方法里判断是否有task.obsuluteInst,
+//第三个参数是true，表示资源支持热重载。如果资源需要支持热重载，需要在load方法里判断是否有task.obsoluteInst,
 //如果有，需要使用此实例去重载资源的实际内容并返回。如果不需要支持热重载，则忽略。
 @Laya.regLoader(["abc"], null, true)
 export class DemoAssetLoader implements Laya.IResourceLoader {
@@ -1602,7 +1602,7 @@ export class DemoAssetLoader implements Laya.IResourceLoader {
 注册了Loader后，在游戏代码里就可以使用Loader加载资源：
 
 ```typescript
-let res: ABCResource = await Laya.Loader.load("xx.abc");
+let res: ABCResource = await Laya.loader.load("xx.abc");
 ```
 
 资源还需要定义保存的方式，因为保存操作只会发生在IDE内，所以这里用的是IEditorEnv，主要不要和游戏代码混合在一起。

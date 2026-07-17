@@ -26,7 +26,7 @@ slug: "ide/uieditor/uicomponent/textarea"
 
 （图1-2）
 
-> 属性：text、font、fontSize、color、style、syntax、align、bgColor、bordercolor、overflow、wordWrap（默认为true）、leading、padding、underlinecolor、stroke、strokeColor、skin、sizeGrid、type、maxchars、restrict、prompt、promptcolor、editable、multiline（默认为true）;
+> 属性：text、font、fontSize、color、style、syntax、align、bgColor、borderColor、overflow、wordWrap（默认为true）、leading、padding、underlineColor、stroke、strokeColor、skin、sizeGrid、type、maxChars、restrict、prompt、promptColor、editable、multiline（默认为true）;
 >
 > 以上属性均已在[输入文本组件](/ide/uieditor/uicomponent/textinput/)中列出过，这里不在详细描述，与之不同的地方已在括号内标出。
 
@@ -34,9 +34,9 @@ TextArea比TextInput多出的属性如下：
 
 | 属性                            | 功能说明                                                     |
 | ------------------------------- | ------------------------------------------------------------ |
-| 垂直滚动皮肤 **vscrollbarskin** | 添加垂直滚动条皮肤                                           |
-| 水平滚动皮肤**hscrollbarskin**  | 添加水平滚动条皮肤                                           |
-| 滚动条类型 **scrolltype**       | 文本域的滚动类型，需要配合对应的滚动条皮肤使用。共有四种类型：none：无滚动（默认），horizontal：水平方向滚动，vertical：垂直方向滚动，both：水平与垂直都滚动 |
+| 垂直滚动皮肤 **vScrollBarSkin** | 添加垂直滚动条皮肤                                           |
+| 水平滚动皮肤**hScrollBarSkin**  | 添加水平滚动条皮肤                                           |
+| 滚动条类型 **scrollType**       | 文本域的滚动类型，需要配合对应的滚动条皮肤使用。共有四种类型：none：无滚动（默认），horizontal：水平方向滚动，vertical：垂直方向滚动，both：水平与垂直都滚动 |
 
 TextArea是一个用于多行的文本域，相较于TextInput的区别是它可以添加垂直滚动条皮肤和水平滚动条皮肤。水平方向滚动效果如动图1-3所示，垂直方向滚动效果如动图1-4所示。
 

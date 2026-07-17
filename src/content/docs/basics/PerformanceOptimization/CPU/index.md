@@ -63,13 +63,13 @@ sp.graphics.drawRect(0,0,100,100,"#FF0000");
 Laya.stage.addChild(sp);
 ```
 
-上述代码可以在运行时正确获取宽高。autoSize在获取宽高并且显示列表的状态发生改变时会重新计算（autoSize通过getBoudns计算宽高）。所以对拥有大量子对象的容器应用autoSize是不可取的。如果设置了size，autoSize将不起效。
+上述代码可以在运行时正确获取宽高。autoSize在获取宽高并且显示列表的状态发生改变时会重新计算（autoSize通过getBounds计算宽高）。所以对拥有大量子对象的容器应用autoSize是不可取的。如果设置了size，autoSize将不起效。
 
  使用loadImage后获取宽高：
 
 ```typescript
 var sp=new Laya.Sprite();
-sp.loadImage("res/apes/monkey2.png",0,0,0,0,Laya.Handler.create(this,function()
+sp.loadImage("res/apes/monkey2.png",Laya.Handler.create(this,function()
 {
     console.log(sp.width,sp.height);  
 }));
@@ -93,11 +93,11 @@ Laya.loader.load("res/apes/monkey2.png",Laya.Handler.create(this,function()
 
 使用Graphics.drawTexture并不会自动设置容器的宽高，但是可以使用Texture的宽高赋予容器。毋庸置疑，这是最高效的方式。
 
-**注：getGraphicsBounds用于获取矢量绘图宽高。**
+**注：getGraphicBounds用于获取矢量绘图宽高。**
 
 ### **四、根据活动状态改变帧频**
 
- 帧频有三种模式，
+ 帧频有四种模式，
 
 - Stage.FRAME_FAST
 
@@ -110,6 +110,10 @@ Laya.loader.load("res/apes/monkey2.png",Laya.Handler.create(this,function()
 - Stage.FRAME_MOUSE
 
   mouse模式则选择性在fast模式与slow模式之间切换，有时并不需要让游戏以满帧速率执行，比如60帧满帧的时候，30FPS已经能够满足多数情况下人类视觉的响应，但是鼠标交互时，30FPS可能会造成画面的不连贯，于是Stage.FRAME_MOUSE应运而生。
+
+- Stage.FRAME_SLEEP
+
+  sleep模式，休眠模式，以每秒1帧的速度运行。
 
  下例展示以Stage.FRAME_SLOW的帧率，在画布上移动鼠标，使圆球跟随鼠标移动：
 

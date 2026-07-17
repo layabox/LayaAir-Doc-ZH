@@ -440,12 +440,12 @@ this.tMap.antiCrack = true;
 
 ##### 缓存区块的具体设置方法
 
-缓存区块的设置需要在 `createMap`（创建地图）的时候设置。设置第四个参数 `gridSize`，示例如下：
+缓存区块的设置需要在 `createMap`（创建地图）的时候设置。设置第五个参数 `gridSize`，示例如下：
 
 ```typescript
 //为第二个参数创建Rectangle实例，视口区域
 var viewRect:Laya.Rectangle = new Laya.Rectangle(0, 0, Laya.Browser.width, Laya.Browser.height);
-//为第四个参数gridSize创建一个512*512大小的Point对象实例
+//为第五个参数gridSize创建一个512*512大小的Point对象实例
 var gridSize:Laya.Point = new Laya.Point(512, 512);
 //创建TiledMap地图
 this.tMap.createMap("res/TiledMap/orthogonal.json",viewRect, Laya.Handler.create(this,this.onMapLoaded), null, gridSize);

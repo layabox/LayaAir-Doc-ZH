@@ -124,9 +124,31 @@ export class Scene extends Sprite {
      * @param	complete	打开完成回调，返回场景实例（可选）
      * @param	progress	加载进度回调（可选）
      */
-    static open(url: string, closeOther: boolean = true, param: any = null, complete: Handler = null, progress: Handler = null): Promise<Scene> {
-        Scene.showLoadingPage();
-        return Scene.load(url, Handler.create(null, this._onSceneLoaded, [closeOther, complete, param]), progress);
+    static open(url: string, closeOther?: boolean, param?: any, complete?: any, progress?: any): Promise<Scene> {
+        if (typeof (complete) === "function") {
+            progress = complete;
+            complete = null;
+        }
+        if (typeof (param) === "function") {
+            complete = param;
+            param = null;
+        }
+
+        if (progress instanceof Handler) {
+            let h = progress;
+            progress = (value: number) => h.runWith(value);
+        }
+
+        return Scene._load(url, progress).then(scene => {
+            scene.open(closeOther, param);
+
+            if (complete instanceof Handler)
+                complete.runWith(scene);
+            else if (complete)
+                complete(scene);
+
+            return scene;
+        });
     }
 ```
 

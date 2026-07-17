@@ -92,12 +92,3 @@ agent.destination = new Laya.Vector3(10, 0, 10);
 | `getCurrentPath()` | `Array<NavigationPathData>` | 获取代理当前的路径数据 |
 | `findDistanceToWall()` | `{dist, pos, normal}` | 查找到最近墙面的距离、位置和法线 |
 
-
-
-### 3.4 位置设置
-
-```typescript
-// 设置代理的世界坐标位置
-agent.setPosition(new Laya.Vector3(0, 0, 0));
-```
-

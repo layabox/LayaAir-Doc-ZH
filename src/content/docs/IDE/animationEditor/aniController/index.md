@@ -102,7 +102,7 @@ export class AnimationScript extends Laya.AnimatorStateScript {
     private model: Laya.Sprite3D;
     
     /**@internal */
-    setPlayScriptInfo(animator: Laya.Animator | Laya.Animator2D, layerindex: number, playstate: Laya.AnimatorState | Laya.AnimatorState2D) {
+    setPlayScriptInfo(animator: Laya.Animator, layerindex: number, playstate: Laya.AnimatorState) {
         ...
         this.model = animator.owner as Laya.Sprite3D;//得到Cube节点
     }
@@ -227,8 +227,8 @@ this.animator = this.target.getComponent<Laya.Animator>(Laya.Animator);
     /**
      * 获取控制器层。
      */
-    getControllerLayer(layerInex: number = 0): AnimatorControllerLayer {
-        return this._controllerLayers[layerInex];
+    getControllerLayer(layerIndex: number = 0): AnimatorControllerLayer {
+        return this._controllerLayers[layerIndex];
     }    
 ```
 
@@ -482,7 +482,7 @@ solo与mute：两个选框，Solo表示只生效这一条切换，Mute相当于�
 
 #### 5.4 动画切换条件
 
-状态切换可以有一个条件，多个，或者没有条件。如果切换没有条件，那么动画系统也会将Exit Time 作为唯一的条件，当到达时间时触发切换。如果有多个条件，必须所有条件都满足，才触发切换。
+状态切换可以有一个条件，多个，或者没有条件。如果切换没有条件，那么动画系统也会将Exit Time 作为唯一的条件，当到达时间时触发切换。如果有多个条件，默认为“或”的关系，即任一条件满足就会触发切换；只有勾选了`Enable And Operation`（`isAndOperEnabled`，默认关闭）后，才需要所有条件都满足才触发切换。
 
 目前LayaAir中，我们可以添加这三种参数：
 
@@ -765,8 +765,8 @@ this.animator.speed = 0.5;
     /**
      * 获取控制器层。
      */
-    getControllerLayer(layerInex: number = 0): AnimatorControllerLayer {
-        return this._controllerLayers[layerInex];
+    getControllerLayer(layerIndex: number = 0): AnimatorControllerLayer {
+        return this._controllerLayers[layerIndex];
     }    
 ```
 
@@ -876,9 +876,9 @@ export class Main extends Laya.Script {
 ```typescript
 const { regClass } = Laya;
 interface AnimatorPlayScriptInfo {
-    animator: Laya.Animator | Laya.Animator2D;
+    animator: Laya.Animator;
     layerindex: number;
-    playState: Laya.AnimatorState | Laya.AnimatorState2D;
+    playState: Laya.AnimatorState;
 }
 /**
  * 继承自AnimatorStateScript(动画状态脚本)
@@ -890,7 +890,7 @@ export class AnimationScript extends Laya.AnimatorStateScript {
     playStateInfo: AnimatorPlayScriptInfo = { animator: null, layerindex: -1, playState: null };
 
     /**@internal */
-    setPlayScriptInfo(animator: Laya.Animator | Laya.Animator2D, layerindex: number, playstate: Laya.AnimatorState | Laya.AnimatorState2D) {
+    setPlayScriptInfo(animator: Laya.Animator, layerindex: number, playstate: Laya.AnimatorState) {
         this.playStateInfo.animator = animator;
         this.playStateInfo.layerindex = layerindex;
         this.playStateInfo.playState = playstate;
@@ -928,6 +928,8 @@ export class AnimationScript extends Laya.AnimatorStateScript {
 
 AnimationScript脚本继承自Laya.AnimatorStateScript，`setPlayScriptInfo`是一个生命周期函数，可通过该函数获取当前脚本的动画组件、动画状态机层级、动画状态机。
 
+> 说明：`Laya.AnimatorStateScript` 用于3D动画状态脚本，参数类型为 `Laya.Animator` 与 `Laya.AnimatorState`。2D动画状态脚本请继承独立的 `Laya.AnimatorState2DScript` 类，其参数类型为 `Laya.Animator2D` 与 `Laya.AnimatorState2D`，两者不可混用。
+
 ```typescript
  /**说明
      * setPlayScriptInfo为生命周期函数，如果想获得动画状态机的信息，必须要调用。
@@ -935,14 +937,14 @@ AnimationScript脚本继承自Laya.AnimatorStateScript，`setPlayScriptInfo`是�
      * @param layerindex 当前脚本所处的动画状态机层级
      * @param playState  当前脚本的动画状态机
      */
-     setPlayScriptInfo(animator: Laya.Animator | Laya.Animator2D, layerindex: number, playstate: Laya.AnimatorState | Laya.AnimatorState2D) {
+     setPlayScriptInfo(animator: Laya.Animator, layerindex: number, playstate: Laya.AnimatorState) {
          this.playStateInfo.animator = animator;
          this.playStateInfo.layerindex = layerindex;
          this.playStateInfo.playState = playstate;
      }
 ```
 
-此脚本还具备三个方法：
+此脚本还具备五个方法：
 
 - onStateEnter：动画状态开始时执行；
 
@@ -950,14 +952,18 @@ AnimationScript脚本继承自Laya.AnimatorStateScript，`setPlayScriptInfo`是�
 
 - onStateExit：动画状态退出时执行；
 
+- onStateSwitch：切换到新状态时执行，方法中可以获得切换到的状态 currentState；
+
+- onStateLoop：如果动画设置了循环，则在每次循环结束时执行；
+
 我们可以通过重写这几个方法，来实现动画状态改变时执行自己的逻辑。简单加入一些代码来看效果：
 
 ```typescript
 const { regClass } = Laya;
 interface AnimatorPlayScriptInfo {
-    animator: Laya.Animator | Laya.Animator2D;
+    animator: Laya.Animator;
     layerindex: number;
-    playState: Laya.AnimatorState | Laya.AnimatorState2D;
+    playState: Laya.AnimatorState;
 }
 
 /**
@@ -972,7 +978,7 @@ export class AnimationScript extends Laya.AnimatorStateScript {
     private isShow: boolean = false;
     private _label: Laya.Label;
     /**@internal */
-    setPlayScriptInfo(animator: Laya.Animator | Laya.Animator2D, layerindex: number, playstate: Laya.AnimatorState | Laya.AnimatorState2D) {
+    setPlayScriptInfo(animator: Laya.Animator, layerindex: number, playstate: Laya.AnimatorState) {
         this.playStateInfo.animator = animator;
         this.playStateInfo.layerindex = layerindex;
         this.playStateInfo.playState = playstate;

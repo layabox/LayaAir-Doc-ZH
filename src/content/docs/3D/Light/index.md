@@ -37,7 +37,7 @@ slug: "3d/light"
 
 Enable Multi Light：是否支持多光源
 
-Max Light Count：最大支持的光源数量，目前最大是50
+Max Light Count：最大支持的光源数量，默认值为32，最大可设置为2048
 
 Light Cluster Count： X、Y、Z轴的光照集群数量
 

@@ -69,8 +69,8 @@ LayaAir 中用于 WebSocket 通信的核心类是 `Laya.Socket`。下面详细�
 ```typescript
 // 注意：host 参数不需要“ws://”前缀，默认就是ws
 let socket = new Laya.Socket("192.168.1.2", 8899);
-//如果需要wss安全协议，第5个参数需要为true。
-// let socket = new Laya.Socket("192.168.1.2", 8899, null, null, true);
+//如果需要wss安全协议，第4个参数需要为true。
+// let socket = new Laya.Socket("192.168.1.2", 8899, null, true);
 ```
 
 #### 2.1.2 **connect 方法**
@@ -81,7 +81,7 @@ let socket = new Laya.Socket("192.168.1.2", 8899);
 let socket = new Laya.Socket();
 socket.connect("192.168.1.2", 8899);
 //如果需要wss安全协议，第3个参数需要为true。
-// let socket = new Laya.Socket("192.168.1.2", 8899, true);
+// socket.connect("192.168.1.2", 8899, true);
 ```
 
 #### 2.1.3 connectByUrl 方法

@@ -102,7 +102,7 @@ self.addEventListener('message', function (e) {
 class LayaUISample {
     constructor() {
         //初始化引擎
-        Laya.init(600,400,Laya.WebGL);
+        Laya.init(600,400);
         //设置Laya提供的worker.js路径
         Laya.WorkerLoader.workerPath = "libs/worker.js";
         //开启worker线程

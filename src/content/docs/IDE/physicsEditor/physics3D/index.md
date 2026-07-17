@@ -250,9 +250,9 @@ this.rigidbody.isKinematic = true;
 
 角色控制器类`CharacterController`常用于对第一人称和第三人称游戏角色的控制，可以方便的控制角色的跳跃、跳跃速度、降落速度、行走、等。
 
-由于角色控制器继承于`PhysicsComponent`，也具有碰撞器的特性，可以添加三维碰撞形状，产生碰撞的反馈，因此也称为角色碰撞器，属于碰撞器之一。
+由于角色控制器继承于`PhysicsColliderComponent`，也具有碰撞器的特性，可以添加三维碰撞形状，产生碰撞的反馈，因此也称为角色碰撞器，属于碰撞器之一。
 
-与静态碰撞器和刚体碰撞器都继承自物理触发器组件`PhysicsTriggerComponent`不同，角色控制器直接继承于物理组件的父类`PhysicsComponent`。所以，角色控制器是无法设置为触发器的。但是，角色碰撞器与触发器进行接触，仍然可以激活触发器的生命周期方法。
+静态碰撞器、刚体碰撞器与角色控制器都继承自物理碰撞器组件`PhysicsColliderComponent`。但其中只有静态碰撞器`PhysicsCollider`提供了`isTrigger`属性，所以，角色控制器是无法设置为触发器的。但是，角色碰撞器与触发器进行接触，仍然可以激活触发器的生命周期方法。
 
   <img src="./img/2-5.png" alt="img" style="zoom:43%;" /> 
 
@@ -266,7 +266,7 @@ this.rigidbody.isKinematic = true;
 
 LayaAir引擎支持8种3D碰撞形状，分别为：
 
-盒形`BoxColliderShape`、球形`SphereColliderShape`、圆柱形`CylinderColliderShape`、胶囊形`CapsuleColliderShape`、圆锥形`ConeColliderShape`、平面形状`StaticPlaneColliderShape`、复合形状`CompoundColliderShape`、网格形状`MeshColliderShape`。
+盒形`BoxColliderShape`、球形`SphereColliderShape`、圆柱形`CylinderColliderShape`、胶囊形`CapsuleColliderShape`、圆锥形`ConeColliderShape`、高度场形状`HeightFieldColliderShape`、复合形状`CompoundColliderShape`、网格形状`MeshColliderShape`。
 
 ##### 2.3.1 LayaAir中可创建的碰撞形状
 
@@ -685,7 +685,7 @@ export default class TSDemo extends Laya.Script {
 
 当我们产生复杂的碰撞需求时，例如，想碰哪个，不碰哪个。这时候就需要进行分组，并指定可以与哪个碰撞组进行碰撞。另外，设置碰撞组过滤，还会优化性能。
 
-各种碰撞器从物理组件父类`PhysicsComponent`那里继承了collisionGroup与canCollideWith属性，用以实现碰撞分组和指定碰撞组。
+各种碰撞器从物理碰撞器组件父类`PhysicsColliderComponent`那里继承了collisionGroup与canCollideWith属性，用以实现碰撞分组和指定碰撞组。
 
 ##### 2.5.1 碰撞组 collisionGroup
 
@@ -850,9 +850,9 @@ _camera.viewportPointToRay(point, ray);
 
 #### 4.3 使用物理射线
 
-在LayaAir 3D中实现射线检测是使用物理模拟器类`PhysicsSimulation`。
+在LayaAir 3D中实现射线检测，是通过场景的 `physicsSimulation` 属性，它返回物理管理器接口 `IPhysicsManager`。
 
-射线检测的方法有4个，分别为射线检测第一个碰撞物体的方法`raycast` 和 `raycastFromTo`以及射线检测所有碰撞物体的方法`raycastAll`和`raycastAllFromTo`。
+射线检测的方法有2个，分别为射线检测第一个碰撞物体的方法`rayCast`，以及射线检测所有碰撞物体的方法`rayCastAll`。注意方法名中的 `C` 为大写。
 
 检测一个和所有的区别比较容易理解，就是碰到第一个物体后射线立即结束，和射线可穿透所有碰撞物体一直不结束，这两种区别。如图4-1所示。
 
@@ -860,15 +860,9 @@ _camera.viewportPointToRay(point, ray);
 
 （图4-1）
 
-那为什么同样的功能名称还有带FromTo和不带FromTo两种，又有什么区别呢？
+与数学对象的射线所不同的是，用于检测碰撞的物理射线是有长度的。这两个方法都使用已经创建好的射线作为参数，并通过第三个参数 `distance` 设置射线的检测长度，如果我们不设置长度，则采用默认值长度`2147483647`。
 
-与数学对象的射线所不同的是，用于检测碰撞的物理射线是有长度的，或者是需要设置世界空间的结束位置。
-
-带FromTo的是使用两个点（射线的起始位置点和结束位置点）作为参数。
-
-而不带FromTo的则是直接使用已经创建好的射线，不需要设置射线的结束位置点，但需要设置长度，如果我们不设置长度，则采用默认值长度`2147483647`。
-
-如果是不带FromTo的射线检测，我们可以沿用上个小节创建射线的示例，稍加补充一下，具体代码如下所示：
+检测所有碰撞物体的`rayCastAll`，我们可以沿用上个小节创建射线的示例，稍加补充一下，具体代码如下所示：
 
 ```typescript
 /*
@@ -897,19 +891,19 @@ if (this.outs.length !== 0) {
 */
 ```
 
-带FromTo的射线检测使用示例，具体代码如下所示：
+检测第一个碰撞物体的`rayCast`，使用示例如下所示：
 
 ```typescript
 /*
 ……省略若干代码
 */
 /*进行射线检测,检测所有碰撞的物体
-//_scene3D.physicsSimulation.raycastAllFromTo(this.from, this.to, this.outs);
+//_scene3D.physicsSimulation.rayCastAll(ray, this.outs);
 //检测所有物体的射线使用与上个示例类似
 */
 
 //进行射线检测,检测第一个碰撞物体
-_scene3D.physicsSimulation.raycastFromTo(this.from, this.to, this.out);
+_scene3D.physicsSimulation.rayCast(ray, this.out);
 //将射线碰撞到的物体设置为红色
 ((this.out.collider.owner).getComponent(Laya.MeshRenderer).sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(0.0, 1.0, 0.0, 1.0);
 /*

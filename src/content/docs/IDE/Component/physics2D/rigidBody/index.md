@@ -83,10 +83,14 @@ LayaAir引擎中的2D刚体组件类是 `Laya.RigidBody` ，继承自碰撞器�
 除了在项目设置面板中设置重力加速度，开发者也可以在代码中设置，示例代码如下：
 
 ```js
-Physics2D.I.gravity= new Vector2(0,9.8)
+// 方式一：设置全局默认重力（物理初始化前）
+Physics2DOption.gravity = new Vector2(0, 9.8);
+
+// 方式二：设置当前场景物理世界的重力
+scene.getComponent(Laya.Physics2DWorldManager).setGravity(new Vector2(0, 9.8));
 ```
 
-### 3.3 重力缩放系数 `gravity Scale`
+### 3.3 重力缩放系数 `gravityScale`
 
 除了全局的重力加速度参数设置外，刚体的重力缩放系数属性，是用于独立影响单个动态刚体重力效果的参数。
 

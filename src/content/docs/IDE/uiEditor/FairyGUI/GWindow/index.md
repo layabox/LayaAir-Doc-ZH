@@ -25,7 +25,7 @@ frame节点通常为GLabel类型，这样可以很方便的修改窗口的标题
 ```typescript
 let win = new GWindow();
 win.contentPane = ((await Laya.loader.load("Examples/windows/Window1.lh")) as Laya.Prefab).create();
-window.show();
+win.show();
 ```
 
 也可以扩展GWindow类使用：
@@ -33,7 +33,7 @@ window.show();
 ```typescript
 class MyWindow extends Laya.GWindow {
     
-    protected onInit() {
+    protected async onInit() {
         this.contentPane = ((await Laya.loader.load("Examples/windows/Window1.lh")) as Laya.Prefab).create(); 
     }
     

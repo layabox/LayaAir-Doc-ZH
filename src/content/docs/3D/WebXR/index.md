@@ -87,7 +87,7 @@ async initXR(){
   //设置近裁面
   caInfo.depthNear = this.camera.nearPlane;
   //申请XR的交互，传入VR需要的信息
-  let webXRSessionManager = await WebXRExperienceHelper.enterXRAsync("imersive-vr","local",caInfo);
+  let webXRSessionManager = await WebXRExperienceHelper.enterXRAsync("immersive-vr","local",caInfo);
   //设置WebXR摄像机
   WebXRExperienceHelper.setWebXRCamera(this.camera, webXRSessionManager);
 }
@@ -117,11 +117,11 @@ async initXR(){
   //设置近裁面
   caInfo.depthNear = this.camera.nearPlane;
   //申请XR的交互，传入VR需要的信息
-  let webXRSessionManager = await WebXRExperienceHelper.enterXRAsync("imersive-vr","local",caInfo);
+  let webXRSessionManager = await WebXRExperienceHelper.enterXRAsync("immersive-vr","local",caInfo);
   //设置WebXR摄像机
   let webXRCameraManager = WebXRExperienceHelper.setWebXRCamera(this.camera, webXRSessionManager);
   //注意，这里开始对VR进入手柄输入的控制交互
-  let webXRInput = WebXEExperienceHelper.setWebXRInput(webXRSessionManager, webXRCameraManager); 
+  let webXRInput = WebXRExperienceHelper.setWebXRInput(webXRSessionManager, webXRCameraManager); 
   this.bindMeshRender(webXRInput);
 }
 bindMeshRender(webXRInput:WebXRInputManager){

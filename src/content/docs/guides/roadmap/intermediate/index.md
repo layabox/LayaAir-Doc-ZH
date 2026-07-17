@@ -80,11 +80,11 @@ slug: "guides/roadmap/intermediate"
 
 - **建议阅读（先做必读再选读）**
   - 性能总览：[性能优化](/basics/performanceoptimization/)
-  - 指标与面板：[Stat 性能面板](/basics/performanceoptimization/stat_panel/)
+  - 指标与面板：[Stat 性能面板](/basics/performanceoptimization/stat-panel/)
   - 渲染相关：[渲染性能优化](/basics/performanceoptimization/rendering/)
   - 内存相关：[内存优化](/basics/performanceoptimization/memory/)
   - 其它技巧：[其它优化](/basics/performanceoptimization/other/)
-  - 分析方法：[Chrome Profiles](/basics/performanceoptimization/chrome_profiles/)
+  - 分析方法：[Chrome Profiles](/basics/performanceoptimization/chrome-profiles/)
 
 - **产出（建议写到项目文档里）**
   - 目标设备（低/中/高端）下的 FPS、内存、首屏时间基线

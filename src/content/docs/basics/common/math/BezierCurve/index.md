@@ -42,7 +42,7 @@ let bezier = Laya.Bezier.I;
 // getPoints(pList, inSertCount, count, out)
 // pList: 控制点坐标数组 [x0,y0, x1,y1, ...]
 // inSertCount: 每段之间插入的点数（默认5）
-// count: 每个点的维度（默认2，即xy）
+// count: 贝塞尔曲线的阶数（默认2，2表示二次曲线，3表示三次曲线）
 let controlPoints = [0,0, 100,200, 200,0];  // 3个二次贝塞尔控制点
 let points = Laya.Bezier.getPoints(controlPoints, 10, 2);
 // 返回曲线上的采样点数组

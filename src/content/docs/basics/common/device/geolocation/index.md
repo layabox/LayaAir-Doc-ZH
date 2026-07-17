@@ -24,7 +24,7 @@ slug: "basics/common/device/geolocation"
 ​	Geolocation静态属性值包含以下通用设置：
 
 - `enableHighAccuracy` —— 布尔值，如果设为true并且设备能够提供更精确地位置，则应用尽可能获取最佳结果。注意着可能导致更长的响应时间和更大的电量消耗（如开启了移动设备的GPS）。如果设置为false，将会得到更快速的响应和更少的电量消耗。默认值为false。
-- `timeout` —— 代表返回位置的最大时间（毫秒）限制。默认值是`Infinity`，意味着`getCurrentPosition()`直到位置可用时才会返回。
+- `timeout` —— 代表返回位置的最大时间（毫秒）限制。默认值是`1E10`，意味着`getCurrentPosition()`直到位置可用时才会返回。
 - `maximumAge` —— 代表可返回的可用缓存位置的最大时限。如果设置为0，意味着设备不使用缓存位置，始终尝试获取实时位置。如果设置为`Infinity`，设备必须返回缓存位置无论其寿命。默认值：0。
 
 ### 1、获取当前定位
@@ -37,19 +37,29 @@ slug: "basics/common/device/geolocation"
      * @param	onSuccess	带有唯一<code>Position</code>参数的回调处理器。
      * @param	onError		可选的。带有错误信息的回调处理器。错误代码为Geolocation.PERMISSION_DENIED、Geolocation.POSITION_UNAVAILABLE和Geolocation.TIMEOUT之一。
      */
-    static getCurrentPosition(onSuccess: Handler, onError: Handler = null): void {
-        Geolocation.navigator.geolocation.getCurrentPosition(function (pos: any): void {
-            Geolocation.position.setPosition(pos);
-            onSuccess.runWith(Geolocation.position);
-        },
-            function (error: any): void {
-                onError.runWith(error);
+    static getCurrentPosition(onSuccess: (info: GeolocationInfo) => void, onError?: (err: { code: number, message: string }) => void): void;
+    /** @deprecated */
+    static getCurrentPosition(onSuccess: Handler, onError?: Handler): void;
+    static getCurrentPosition(onSuccess: Handler | ((info: GeolocationInfo) => void), onError?: Handler | ((err: { code: number, message: string }) => void)): void {
+        PAL.device.getCurrentPosition(
+            info => {
+                if (onSuccess instanceof Handler)
+                    onSuccess.runWith(info);
+                else
+                    onSuccess(info);
+            },
+            err => {
+                if (onError instanceof Handler)
+                    onError.runWith(err);
+                else if (onError)
+                    onError(err);
             },
             {
                 enableHighAccuracy: Geolocation.enableHighAccuracy,
                 timeout: Geolocation.timeout,
                 maximumAge: Geolocation.maximumAge
-            });
+            }
+        );
     }
 ```
 
@@ -120,19 +130,29 @@ export class NewScript extends Laya.Script {
      * @param	onSuccess	带有唯一<code>Position</code>参数的回调处理器。
      * @param	onError		可选的。带有错误信息的回调处理器。错误代码为Geolocation.PERMISSION_DENIED、Geolocation.POSITION_UNAVAILABLE和Geolocation.TIMEOUT之一。
      */
-    static watchPosition(onSuccess: Handler, onError: Handler): number {
-        return Geolocation.navigator.geolocation.watchPosition(function (pos: any): void {
-            Geolocation.position.setPosition(pos);
-            onSuccess.runWith(Geolocation.position);
-        },
-            function (error: any): void {
-                onError.runWith(error);
+    static watchPosition(onSuccess: (info: GeolocationInfo) => void, onError?: (err: { code: number, message: string }) => void): number;
+    /** @deprecated */
+    static watchPosition(onSuccess: Handler, onError?: Handler): number;
+    static watchPosition(onSuccess: Handler | ((info: GeolocationInfo) => void), onError?: Handler | ((err: { code: number, message: string }) => void)): number {
+        return PAL.device.watchPosition(
+            info => {
+                if (onSuccess instanceof Handler)
+                    onSuccess.runWith(info);
+                else
+                    onSuccess(info);
+            },
+            err => {
+                if (onError instanceof Handler)
+                    onError.runWith(err);
+                else if (onError)
+                    onError(err);
             },
             {
                 enableHighAccuracy: Geolocation.enableHighAccuracy,
                 timeout: Geolocation.timeout,
                 maximumAge: Geolocation.maximumAge
-            });
+            }
+        );
     }
 
     /**
@@ -140,7 +160,7 @@ export class NewScript extends Laya.Script {
      * @param	id
      */
     static clearWatch(id: number): void {
-        Geolocation.navigator.geolocation.clearWatch(id);
+        PAL.device.clearWatchPosition(id);
     }
 ```
 

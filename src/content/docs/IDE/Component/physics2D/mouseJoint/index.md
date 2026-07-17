@@ -24,7 +24,7 @@ slug: "ide/component/physics2d/mousejoint"
 
 (动图1)
 
-## 二、最大力 `MaxForce`
+## 二、最大力 `maxForce`
 
 在鼠标关节中，核心的属性是设置最大的施加力`maxForce`，这个力用于限制鼠标关节试图将物体移向鼠标位置时所能施加的最大力量，避免力过大导致的异常行为或不自然的效果。
 

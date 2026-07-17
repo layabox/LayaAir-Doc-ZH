@@ -162,8 +162,8 @@ Material → PBRMaterial → PBRStandardMaterial
 |---|---|---|
 | Opaque | 0 | 不透明渲染 |
 | Cutout | 1 | Alpha裁剪 |
-| Transparent | 2 | 半透明渲染 |
-| Additive | 3 | 加色法混合 |
+| Fade | 2 | 透明混合，游戏中经常使用的透明 |
+| Transparent | 3 | 透明混合，物理上看似合理的透明 |
 
 ### 10.2 渲染质量（renderQuality）
 

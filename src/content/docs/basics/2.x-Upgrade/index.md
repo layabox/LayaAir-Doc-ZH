@@ -65,10 +65,10 @@ Promise.all(tasks).then((res:Array<any>)=> {
 
 ```typescript
 Laya.loader.load("1.png").then((res)=> { /* res是Texture */ });
-Laya.loader.load("1.png", Loader.Texture2D).then((res)=> { /* res是Texture2D */ });
+Laya.loader.load("1.png", Loader.TEXTURE2D).then((res)=> { /* res是Texture2D */ });
 
 Laya.loader.getRes("1.png"); //res是Texture
-Laya.loader.getRes("1.png", Loader.Texture2D); //res是Texture2D
+Laya.loader.getRes("1.png", Loader.TEXTURE2D); //res是Texture2D
 Laya.Loader.getTexture2D("1.png"); //res是Texture2D
 ```
 
@@ -86,7 +86,7 @@ Laya.loader.fetch("1.png", Laya.Loader.IMAGE).then((res)=> { /* res是HTMLImage 
 ### 1.6 使用Options。
 
 ```typescript
-Laya.loader.load(url, { group:xx, piority:1 }); //priority不限制0-5。为任意整数，数字越大优先级越高。
+Laya.loader.load(url, { group:xx, priority:1 }); //priority不限制0-5。为任意整数，数字越大优先级越高。
 ```
 
 ### 1.7 预制体/场景的问题
@@ -121,7 +121,7 @@ Laya.loader.load("1.lh").then(res=> {
 ```typescript
 class MyLoader {
     load(task:ILoadTask) {
-        return task.loader.fetch(task.url, "json", task.createCallback()).then(data=> {
+        return task.loader.fetch(task.url, "json", task.progress.createCallback()).then(data=> {
             let obj = /*解析data*/;
             return obj;
         });
@@ -129,7 +129,7 @@ class MyLoader {
 }
 ```
 
-加载类里不需要考虑是单独加载，还是是批量加载其中一个环节，因为task.createCallback可以很好的将总体进度归一化为0~1。
+加载类里不需要考虑是单独加载，还是是批量加载其中一个环节，因为task.progress.createCallback可以很好的将总体进度归一化为0~1。
 
 复杂的例子可以参考引擎里的TextureLoader/MaterialLoader/MeshLoader之类。
 

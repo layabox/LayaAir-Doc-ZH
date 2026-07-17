@@ -10,7 +10,7 @@ LayaNative不仅支持把资源打包在assets目录下，还支持把资源打�
 ### 1.1 打包资源
 在LayaAir-IDE中，构建发布时，发布为原生包，并勾选`打包资源`，不同发布平台对应的资源路径如下：
 
-**windows**: release\windows\windows_project\resource\cache\dcc2.0\
+**windows**: 勾选`导出项目`时为 release\windows\project\resource\cache\dcc2.0\，不导出项目时为 release\windows\release\resource\cache\dcc2.0\
 
 **android**: release\android\android_project\app\src\main\assets\cache\dcc2.0\
 

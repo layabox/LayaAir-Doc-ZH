@@ -46,7 +46,7 @@ slug: "released/minigame/xiaomi"
 
 **日志等级**
 
-七种日志等级，先级从高到底依次为OFF、ERROR、WARN、INFO、DEBUG、TRACE、ALL，可以方便地知道当前程序的运行状态。
+七种日志等级，先级从高到底依次为OFF、ERROR、WARN、INFO、LOG、DEBUG、TRACE，可以方便地知道当前程序的运行状态。
 
 **是否使用正式版签名**
 

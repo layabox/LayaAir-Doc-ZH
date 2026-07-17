@@ -70,9 +70,13 @@ resources资源目录和场景文件Scene.ls，小游戏由于初始包的限制
 
 **fileconfig.json**：
 
-小游戏的项目配置文件，文件里包括了小游戏项目的一些信息，如果想修改appid等信息，可以直接在这里面编辑。
+引擎生成的资源文件清单，记录了发布目录中的资源文件信息，供引擎加载资源时使用，一般不需要手动修改。
 
-> 项目参数libVersion的值一定要是game，这里一般不会出错。但是，万一出现了LayaAirIDE里发布正常，也引用了适配库，发布为小游戏后，在开发者工具里还是有报错的话，可以检查libVersion里的值是不是game。不是的话要改为game。
+**project.config.json**：
+
+小游戏的项目配置文件，微信开发者工具需要读取这个配置。文件里包括了小游戏项目的一些信息，如果想修改appid等信息，可以直接在这里面编辑。
+
+> 项目参数compileType的值一定要是game，libVersion的值默认为latest。这里一般不会出错。但是，万一出现了LayaAirIDE里发布正常，也引用了适配库，发布为小游戏后，在开发者工具里还是有报错的话，可以检查compileType里的值是不是game。不是的话要改为game。
 
 **weapp-adapter.js**：
 

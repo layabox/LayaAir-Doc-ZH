@@ -145,7 +145,7 @@ export default class CameraControll extends Laya.Script {
 
 `Far Plane`是远裁面，是指离摄像机视野方向最远的剪裁面，大于此距离值的不渲染。
 
-这两个参数也是只有使用透视投影时才有效。如动图4-3所示，我们来看看修改这两个参数的效果，
+这两个参数在透视投影与正交投影下均有效。如动图4-3所示，我们来看看修改这两个参数的效果，
 
 <img src="./img/4-3.gif" alt="4-3" style="zoom:80%;" />
 
@@ -300,7 +300,7 @@ export default class CameraControll extends Laya.Script {
 - `DepthNormals`：生成深度+法线贴图。在这个模式下，摄像机生成的深度纹理不仅携带了深度信息，同时还包含了物体表面的法线信息。
 - `DepthAndDepthNormals`：这个模式是Depth和DepthNormals的结合体。在此模式下，摄像机将同时生成包含深度信息和深度法线信息的纹理。这种类型的深度纹理不仅存储了每个像素的深度值（距离摄像机的距离），还存储了法线信息。
 
-`Depth Texture Format`：摄像机深度格式与深度纹理的默认值是DEPTH_16，随着深度广泛的使用，有的开发者会发现16位的深度已然不够用，现在增加了24位和32位深度模式的值。用于设置**depthTextureFormat**属性。
+`Depth Texture Format`：摄像机深度格式与深度纹理的默认值是DEPTH_32，也可以根据需要选择16位和24位的深度模式。用于设置**depthTextureFormat**属性。
 
 ![6-4](./img/6-4.png)
 
@@ -318,7 +318,7 @@ export default class CameraControll extends Laya.Script {
 
 ### 6.4 其它
 
-`Opaque Pass`：开启opaquePass后，会生成非透明物体贴图。在Shader中可以引入u_cameraOpaqueTexture来得到相机渲染管线的非透明图片。使用非透明物体贴图功能，可以实现玻璃折射，水面折射，热浪等效果。
+`Opaque Pass`：开启opaquePass后，会生成非透明物体贴图。在Shader中可以引入u_CameraOpaqueTexture来得到相机渲染管线的非透明图片。使用非透明物体贴图功能，可以实现玻璃折射，水面折射，热浪等效果。
 
 `Enable Blit Depth`：设置是否使用内置的深度贴图 (如果开启，只可在后期使用深度贴图，不可在渲染流程中使用)。
 
@@ -337,11 +337,12 @@ export default class CameraControll extends Laya.Script {
      * @param out  输出射线。
      */
     viewportPointToRay(point: Vector2, out: Ray): void {
+        _tempVector20.setValue(point.x * ILaya.stage.clientScaleX * Config3D.pixelRatio, point.y * ILaya.stage.clientScaleY * Config3D.pixelRatio);
         this._rayViewport.x = this.viewport.x;
         this._rayViewport.y = this.viewport.y;
-        this._rayViewport.width = ILaya.stage._width;
-        this._rayViewport.height = ILaya.stage._height;
-        Picker.calculateCursorRay(point, this._rayViewport, this._projectionMatrix, this.viewMatrix, null, out);
+        this._rayViewport.width = this.viewport.width;
+        this._rayViewport.height = this.viewport.height;
+        Picker.calculateCursorRay(_tempVector20, this._rayViewport, this._projectionMatrix, this.viewMatrix, null, out);
     }
 ```
 

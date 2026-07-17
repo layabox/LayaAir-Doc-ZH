@@ -40,9 +40,9 @@ AreaLight（区域光）可以通过空间中的两个形状之一定义区域�
 
 `Shape`：区域光的形状
 
-​	`Rect`：矩形
+​	`rectangle`：矩形
 
-​	`Elliptic`：圆形
+​	`ellipse`：圆形
 
 `Size`：区域光的尺寸，类型为 Vector2，分别控制宽度和高度（矩形）或半径（圆形）。
 

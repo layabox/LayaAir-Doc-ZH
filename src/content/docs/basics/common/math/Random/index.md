@@ -12,7 +12,7 @@ LayaAir引擎提供了 `Rand` 和 `RandX` 两种带种子的随机数生成器�
 
 | 类 | 种子 | 源码位置 | 特点 |
 |---|------|---------|------|
-| `Rand` | 32位无符号整型 | `laya/d3/math/Rand.ts` | 轻量快速 |
+| `Rand` | 32位无符号整型 | `laya/maths/Rand.ts` | 轻量快速 |
 | `RandX` | 128位数组（4个数） | `laya/d3/math/RandX.ts` | 基于xorshift算法，质量更高 |
 
 ## 二、Rand

@@ -88,9 +88,9 @@ MeshRenderer（网格渲染器）组件用于渲染3D网格模型。它继承自
 
 排序矫正值，类型为 `number`。用于调整渲染器的排序顺序，值越小越先渲染。
 
-**ratioIgnor（距离裁剪系数）**
+**visibalMin / visibalMax（可见距离范围）**
 
-基于距离和包围盒的裁剪系数，类型为 `number`。值越大越容易被裁剪。
+基于距离的裁剪范围，类型均为 `number`。只有相机与渲染器的距离大于 `visibalMin` 且小于 `visibalMax` 时才会被渲染，超出该范围会被裁剪掉。
 
 **reflectionMode（反射模式）**
 

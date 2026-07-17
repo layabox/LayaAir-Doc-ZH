@@ -243,7 +243,7 @@ class DemoScript extends Laya.Script {
      * @param self  自身的碰撞体以及所属节点对象等信息（该参数只有2D物理有，3D物理只有other）
      * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了。（该参数只有2D物理有，3D物理只有other）
      */
-     onTriggerEnter(other: Laya.PhysicsComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {
+     onTriggerEnter(other: Laya.PhysicsColliderComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {
         // 假如碰到了炸弹
         if (other.label == "bomb") {
             // 此处省略爆炸伤害的逻辑
@@ -266,7 +266,7 @@ class DemoScript extends Laya.Script {
     * @param self  自身的碰撞体以及所属节点对象等信息（该参数只有2D物理有，3D物理只有other）
     * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了（该参数只有2D物理有，3D物理只有other）
     */
-    onTriggerStay(other: Laya.PhysicsComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {
+    onTriggerStay(other: Laya.PhysicsColliderComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {
         //持续碰撞时，打印日志，尽量不使用该事件方法，如果使用不当对性能的消耗会影响较大。
         console.log("onTriggerStay====", other, self);
     }
@@ -277,7 +277,7 @@ class DemoScript extends Laya.Script {
     * @param self  自身的碰撞体以及所属节点对象等信息（该参数只有2D物理有，3D物理只有other）
     * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了（该参数只有2D物理有，3D物理只有other）
     */
-    onTriggerExit(other: Laya.PhysicsComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {   
+    onTriggerExit(other: Laya.PhysicsColliderComponent | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {   
         //模拟角色离开毒气区域，触发逃脱奖励
         if (other.label == "poison") {
             // 此处省略逃脱奖励的逻辑

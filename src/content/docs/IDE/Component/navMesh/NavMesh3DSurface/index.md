@@ -87,6 +87,6 @@ Agent配置页面中的参数用于调节适用该类型Agent的地形，而不�
 | `navMesh` | 获取当前组件的导航网格对象 |
 | `cleanAllTile()` | 清除所有导航瓦片 |
 | `rebuildTile(pos)` | 重建指定位置处的导航瓦片 |
-| `boundMin` / `boundMax` | 获取导航网格的边界范围 |
-| `findNavMeshSurface(surfaces, sprite, agentFlags)` | 静态方法，在节点层级中查找匹配指定代理标记的所有NavMeshSurface组件 |
+| `min` / `max` | 获取导航网格的边界范围 |
+| `BaseNavigationManager.findNavMeshSurface(surfaces, sprite, agentFlags)` | `BaseNavigationManager` 的静态方法，在节点层级中查找匹配指定代理标记的所有NavMeshSurface组件 |
 

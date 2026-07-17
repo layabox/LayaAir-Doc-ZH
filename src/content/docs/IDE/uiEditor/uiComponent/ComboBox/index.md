@@ -57,12 +57,12 @@ ComboBox的特有属性如下：
 | 滚动条类型 **scrollType**       | 下拉选项列表的滚动类型，只可以设置：无滚动、垂直方向滚动     |
 | 滚动条皮肤 **scrollBarSkin**    | 下拉选项列表的滚动条图像资源，只可以设置垂直滚动条皮肤       |
 | 默认选项索引 **selectedIndex**  | 表示当前选择的项的索引                                       |
-| 默认选项标签 **selectedLablel** | 按照标签文本labels，设置下拉列表默认选项值，即下拉按钮显示的选项 |
-| 默认标签 **defaultLablel**      | 未设置下拉列表选项值时（selectedIndex为-1），在下拉按钮显示框中用于提示的文本 |
+| 默认选项标签 **selectedLabel** | 按照标签文本labels，设置下拉列表默认选项值，即下拉按钮显示的选项 |
+| 默认标签 **defaultLabel**      | 未设置下拉列表选项值时（selectedIndex为-1），在下拉按钮显示框中用于提示的文本 |
 
 > 其中，labelFont、labelSize、labelBold、labelColors、labelPadding属性为下拉按钮的属性，itemSize、itemHeight、itemPadding、itemColors、visibleNum、scrollType、scrollBarSkin属性为下拉选项相关属性。
 
-使用默认的skin属性，设置stateNum为3，labels属性设置为“item0,item1,item2,item3,item4,item5,item6,item7,item8”。再将selectedIndex设置为0后，selectedLablel会变为item0，效果如图1-5所示。
+使用默认的skin属性，设置stateNum为3，labels属性设置为“item0,item1,item2,item3,item4,item5,item6,item7,item8”。再将selectedIndex设置为0后，selectedLabel会变为item0，效果如图1-5所示。
 
 <img src="./img/1-5.png" alt="1-5" style="zoom:80%;" />
 

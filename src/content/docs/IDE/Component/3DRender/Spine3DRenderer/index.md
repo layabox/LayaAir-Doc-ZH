@@ -155,7 +155,7 @@ export class NewScript extends Laya.Script {
 
 物理更新用于启用Spine的物理效果。启用后，动画的最终姿势不再完全由时间轴决定，而是会受物理效果的影响。
 
-与2D Spine不同，3D Spine的物理更新可以通过`physicsTranslate`方法来交互，支持根据给定的坐标移动物体。
+与2D Spine相同，3D Spine的物理更新可以通过`physicsTranslate`方法来交互，支持根据给定的坐标移动物体。
 
 
 ## 3、常见注意事项（必读）

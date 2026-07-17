@@ -41,7 +41,7 @@ class PoolTest {
     constructor() {
 
         //初始化引擎
-        Laya.init(1136, 640, Laya.WebGL);
+        Laya.init(1136, 640);
         //等比缩放
         Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;
         //背景颜色
@@ -151,7 +151,7 @@ Laya.loader.load(urls, Laya.Handler.create(this,this.onAssetLoaded), Laya.Handle
 
 ### 3、释放内存
 
-JavaScript运行时无法启动垃圾回收器。要确保一个对象能够被回收，需要删除对该对象的所有引用。Sprite提供的`destory()`方法会帮助设置内部引用为null。
+JavaScript运行时无法启动垃圾回收器。要确保一个对象能够被回收，需要删除对该对象的所有引用。Sprite提供的`destroy(destroyChild=true)`方法会帮助设置内部引用为null。
 
 例如，以下代码确保对象能够被作为垃圾回收：
 
@@ -204,6 +204,6 @@ function onAssetsLoaded():void
 
  当修改滤镜的某个属性或者显示对象时，内存中的两个位图都将更新以创建生成的位图，这两个位图可能会占用大量内存。此外，此过程涉及CPU计算，动态更新时将会降低性能。
 
- ColorFiter在Canvas渲染下需要计算每个像素点，而在WebGL下的GPU消耗可以忽略不计。
+ ColorFilter在Canvas渲染下需要计算每个像素点，而在WebGL下的GPU消耗可以忽略不计。
 
  最佳的做法是，尽可能使用图像创作工具创建的位图来模拟滤镜。避免在运行时中创建动态位图，可以帮助减少CPU或GPU负载。特别是一张应用了滤镜并且不会在修改的图像。

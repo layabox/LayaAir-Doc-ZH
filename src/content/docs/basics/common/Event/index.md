@@ -158,7 +158,7 @@ this.uiBtn.once(Laya.Event.CLICK, this, () => {
      * @param listener	事件侦听函数。
      * @return 此 EventDispatcher 对象。
      */
-    off(type: string, caller: any, listener: Function, onceOnly: boolean = false)
+    off(type: string, caller: any, listener?: Function, args?: any[]): EventDispatcher
 ```
 
 用于从事件分发器对象中删除侦听器：

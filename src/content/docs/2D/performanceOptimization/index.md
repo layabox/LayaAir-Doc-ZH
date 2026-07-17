@@ -20,7 +20,7 @@ slug: "2d/performanceoptimization"
 
 ### 1.2 释放内存
 
-JavaScript运行时无法启动垃圾回收器。要确保一个对象能够被回收，需要删除对该对象的所有引用。Sprite提供的`destory()`方法会帮助设置内部引用为null。
+JavaScript运行时无法启动垃圾回收器。要确保一个对象能够被回收，需要删除对该对象的所有引用。Sprite提供的`destroy()`方法会帮助设置内部引用为null。
 
 例如，以下代码确保对象能够被作为垃圾回收：
 
@@ -77,7 +77,7 @@ Laya.loader.load(assets).then(()=>{
 
 当修改滤镜的某个属性或者显示对象时，内存中的两个位图都将更新以创建生成的位图，这两个位图可能会占用大量内存。此外，此过程涉及CPU计算，动态更新时将会降低性能。
 
-ColorFiter在WebGL下的GPU消耗可以忽略不计。
+ColorFilter在WebGL下的GPU消耗可以忽略不计。
 
 最佳的做法是，尽可能使用图像创作工具创建的位图来模拟滤镜。避免在运行时中创建动态位图，可以帮助减少CPU或GPU负载。特别是一张应用了滤镜并且不会在修改的图像。
 
@@ -118,13 +118,14 @@ ColorFiter在WebGL下的GPU消耗可以忽略不计。
 
 ### 2.4 CacheAs
 
-设置cacheAs可将显示对象缓存为静态图像，当cacheAs时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。 建议把不经常变化的复杂内容，缓存为静态图像，能极大提高渲染性能，cacheAs有”none”，”normal”和”bitmap”三个值可选。
+设置cacheAs可将显示对象缓存为静态图像，当cacheAs时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。 建议把不经常变化的复杂内容，缓存为静态图像，能极大提高渲染性能，cacheAs有”none”和”bitmap”两个值可选。
 
 1. 默认为”none”，不做任何缓存。
-2. 当值为”normal”时，进行命令缓存。
-3. 当值为”bitmap”时，使用renderTarget缓存。这里需要注意的是，webGL下renderTarget缓存模式有2048大小限制，超出2048会额外增加内存开销。另外，不断重绘时开销也比较大，但是会减少drawcall，渲染性能最高。 webGL下命令缓存模式只会减少节点遍历及命令组织，不会减少drawcall，性能中等。
+2. 当值为”bitmap”时，使用renderTarget缓存。这里需要注意的是，webGL下renderTarget缓存模式有2048大小限制，超出2048会额外增加内存开销。另外，不断重绘时开销也比较大，但是会减少drawcall，渲染性能最高。
 
-设置cacheAs后，还可以设置staticCache=true以阻止自动更新缓存，同时可以手动调用reCache方法更新缓存。
+> 旧版本中的”normal”（命令缓存）已在LayaAir 3.4中移除，赋值为”normal”时等同于”none”。
+
+设置cacheAs后，可以手动调用reCache方法更新缓存。
 
 cacheAs主要通过两方面提升性能。一是减少节点遍历和顶点计算；二是减少drawCall。善用cacheAs将是引擎优化性能的利器。
 
@@ -134,7 +135,7 @@ cacheAs主要通过两方面提升性能。一是减少节点遍历和顶点计�
 class Test {
      private text:Laya.Text;
     constructor() {
-        Laya.init(550,400,Laya.WebGL);
+        Laya.init(550,400);
         Laya.Stat.show();
         var textBox=new Laya.Sprite();
         for(var i=0;i<10000;i++)
@@ -276,7 +277,7 @@ Laya.stage.addChild(sp);
 
 ```typescript
 var sp=new Laya.Sprite();
-sp.loadImage("res/apes/monkey2.png",0,0,0,0,Laya.Handler.create(this,function()
+sp.loadImage("res/apes/monkey2.png",Laya.Handler.create(this,function()
 {
     console.log(sp.width,sp.height);  
 }));
@@ -300,7 +301,7 @@ Laya.loader.load("res/apes/monkey2.png",Laya.Handler.create(this,function()
 
 使用Graphics.drawTexture并不会自动设置容器的宽高，但是可以使用Texture的宽高赋予容器。毋庸置疑，这是最高效的方式。
 
-**注：getGraphicsBounds用于获取矢量绘图宽高。**
+**注：getGraphicBounds用于获取矢量绘图宽高。**
 
 
 

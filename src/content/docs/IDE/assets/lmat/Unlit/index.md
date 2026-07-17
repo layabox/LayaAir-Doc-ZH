@@ -90,7 +90,15 @@ Material → UnlitMaterial
 | 不透明 | `RENDERMODE_OPAQUE` | 0 | 默认模式，完全不透明渲染 |
 | 透明裁剪 | `RENDERMODE_CUTOUT` | 1 | 根据Alpha阈值裁剪像素 |
 | 透明混合 | `RENDERMODE_TRANSPARENT` | 2 | 半透明渲染，支持Alpha混合 |
-| 加色法混合 | `RENDERMODE_ADDTIVE` | 3 | 加色法混合，常用于发光特效 |
+| 加色法混合 | `RENDERMODE_ADDTIVE` | 3 | 加色法混合，常用于发光特效。**不可通过 `renderMode` 设置**，详见下方说明 |
+
+> 注意：`UnlitMaterial.RENDERMODE_ADDTIVE` 常量虽然存在，但 `renderMode` 属性并不支持该值，赋值会直接抛出 `unknown renderMode: 3` 异常。要使用加色法混合，请改用 `materialRenderMode` 属性：
+>
+> ```typescript
+> mat.materialRenderMode = Laya.MaterialRenderMode.RENDERMODE_ADDTIVE;
+> ```
+>
+> `renderMode` 属性已标记为 `@deprecated`，新项目建议统一使用 `materialRenderMode`。
 
 > 提示：加色法混合模式（Additive）是不受光材质的一大特色，非常适合制作发光粒子、光圈、魔法阵等特效。在加色法模式下，材质颜色会与背景颜色叠加，产生越加越亮的效果。
 
@@ -167,7 +175,7 @@ Laya.loader.load("res/texture/glow.png").then((tex: Laya.Texture2D) => {
 });
 
 // 使用加色法混合模式，产生发光效果
-glowMat.renderMode = Laya.UnlitMaterial.RENDERMODE_ADDTIVE;
+glowMat.materialRenderMode = Laya.MaterialRenderMode.RENDERMODE_ADDTIVE;
 
 meshRenderer.sharedMaterial = glowMat;
 ```

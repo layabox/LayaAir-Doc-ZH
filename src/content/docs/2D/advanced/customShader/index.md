@@ -20,7 +20,7 @@ slug: "2d/advanced/customshader"
 
 LayaAir引擎中的Shader主要是围绕着.shader文件为核心，在引擎核心中.shader文件是Shader类对象抽象为文本化表示的结果，不同的.shader文件会产生不同的着色效果，这些.shader文件成为材质各不相同的核心因素。
 
-在项目资源窗口右键菜单栏 -> 选择创建 -> 选择着色器（如图2-1所示），有两种内置的2D Shader可选。
+在项目资源窗口右键菜单栏 -> 选择创建 -> 选择着色器（如图2-1所示），有5种内置的2D Shader可选（Particle2D、Trail2D、Spine2D、Sprite2DTexture、BaseRender2D）。
 
 ![2-1](./img/2-1.png)
 
@@ -77,12 +77,12 @@ Shader3D Start
 Shader3D End
 ```
 
-`shaderType`：Shader类型（在2D Shader中，直接设定为2）。
+`shaderType`：Shader类型（2D纹理着色器设定为`D2_TextureSV`，2D基础渲染着色器设定为`D2_BaseRenderNode2D`）。
 
 ```glsl
 Shader3D Start
 {
-	shaderType:2
+	shaderType:D2_TextureSV
 }
 Shader3D End
 ```
@@ -113,7 +113,7 @@ uniform变量的常见类型：Texture2D，Vector2，Vector4，Float，Matrix4x4
 Shader3D Start
 {
     name:Sprite2DTextureShader,
-    shaderType:2,
+    shaderType:D2_TextureSV,
     uniformMap:{
 		u_MainTex : {type: Texture2D, default: "white"},
 		u_SampleTexcoord : {type: Vector2, default:[1,1]},
@@ -138,13 +138,12 @@ Shader3D End
 
 | 变量名          | 描述       | 所属GLSL文件(高阶操作不推荐直接使用) |
 | :-------------- | :--------- | ------------------------------------ |
-| u_mmat          | 2D变换矩阵 | Sprite2DVertex.glsl                  |
+| u_NMatrix_0、u_NMatrix_1 | 2D变换矩阵 | Sprite2DVertex.glsl                  |
 | u_spriteTexture | 精灵纹理   | Sprite2DFrag.glsl                    |
-| u_color         | 颜色       | Sprite2DFrag.glsl                    |
-| u_colorAdd      | 颜色叠加   | Sprite2DFrag.glsl                    |
-| u_clipMatPos    | 裁剪位置   | Sprite2DVertex.glsl                  |
-| u_clipMatDir    | 裁剪方向   | Sprite2DVertex.glsl                  |
-| u_blurInfo      | 模糊信息   | Sprite2DFrag.glsl                    |
+| u_color         | 颜色       | SpineVertexCommon.glsl               |
+| u_clipMatPos    | 裁剪位置   | ClipVertex.glsl                      |
+| u_clipMatDir    | 裁剪方向   | ClipVertex.glsl                      |
+| u_blurInfo      | 模糊信息   | BlurEffect2D.fs                      |
 
 
 
@@ -336,7 +335,7 @@ Shader3D Start
 {
     type:Shader3D,
     name:Sprite2DTextureShader,
-    shaderType:2,
+    shaderType:D2_TextureSV,
     uniformMap:{
     },
     attributeMap: {
@@ -400,9 +399,7 @@ GLSL End
 	    v_useTex = info.useTex;
 	    v_color = info.color;
 
-	    vec4 pos;
-	    getPosition(pos);
-	    gl_Position = pos;
+	    gl_Position = getPosition(info.pos);
 
     }
 

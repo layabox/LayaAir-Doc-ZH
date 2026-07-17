@@ -43,9 +43,9 @@ LayaExt
   ├── LayaExt.sln
   └── LayaExt/
        ├──layaRuntime/      扩展的SDK
-       |     ├── include/
-       |     └── lib/
-       |          └── x64
+       |     └── x64/
+       |          ├── include/
+       |          └── lib/
        |               └── conch.lib
        ├──dllmain.cpp
        ├──exports.cpp       包含示例代码
