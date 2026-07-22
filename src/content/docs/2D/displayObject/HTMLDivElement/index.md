@@ -2,7 +2,15 @@
 title: "HTML文本"
 description: "HTML文本组件，就像使用HTML语言一样来实现UI。在LayaAir IDE中，我们可以使用HTML文本组件来实现一些比较复杂的UI效果，比如图文混排的功能，一段文字中某些文字变色的功能等等"
 slug: "2d/displayobject/htmldivelement"
+banner:
+  content: "⚠️ 本篇基于已移除的 HTMLDivElement 类，正在重写，请勿参照本篇代码开发。"
 ---
+
+:::danger[本篇已失效，待重写]
+本篇整篇基于 `HTMLDivElement` 类。**该类在 LayaAir 3.4 中已被移除**，全库检索无任何定义；`HTMLIframeElement`、`contextWidth` / `contextHeight`、`innerHTML` 等也随之失效，本篇代码**无法运行**。
+
+3.x 实现图文混排、富文本的方式是使用 `Text` 组件并设置 `html=true`（可参照官方示例 `Text_HTML.ts`）。本篇将按该方案重写，在此之前请勿参照本篇代码开发。
+:::
 
 ## 一、概述
 

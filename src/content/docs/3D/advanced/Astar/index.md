@@ -2,7 +2,15 @@
 title: "3D寻路"
 description: "本篇将讲解3D场景的寻路问题，以动图1-1为参考示例，我们来讲解3D场景中寻路和移动时需要考虑的问题"
 slug: "3d/advanced/astar"
+banner:
+  content: "⚠️ 本篇内容已过时，正在重写，请勿参照本篇代码开发。"
 ---
+
+:::danger[本篇已失效，待重写]
+本篇的核心实现依赖 `MeshTerrainSprite3D`（`createFromMeshAndHeightMap` 等）。**该类在 LayaAir 3.4 中已被移除**，全库检索无任何定义；官方示例 `AStarFindPath.ts` 中相关代码也已整体注释停用。因此本篇第三、五章的代码**无法运行**，`Laya3D.init(0,0)` 也应为 `Laya.init(0,0)`。
+
+3.x 的导航寻路请改用引擎内置的 `laya/navigation` 模块（NavMesh 导航网格 + NavAgent 导航代理），参见 IDE 导航组件相关文档。本篇将按新方案重写，在此之前请勿参照本篇代码开发。
+:::
 
 ## 一、概述
 

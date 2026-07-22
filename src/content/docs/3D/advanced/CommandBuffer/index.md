@@ -2,7 +2,21 @@
 title: "CommandBuffer文档"
 description: "CommandBuffer为渲染命令缓冲区，保存了渲染命令列表。当我们将一些渲染指令添加到CommandBuffer后，可以实现对渲染流程的控制，将这些指令在我们想要的时机进行执行。command buffer设置渲染目标或绘制给定网格，可以设置在摄像机渲染期间的不同点执行"
 slug: "3d/advanced/commandbuffer"
+banner:
+  content: "⚠️ 本篇示例为 2.x 旧代码，正在重写，请勿照抄本篇代码。"
 ---
+
+:::danger[本篇示例为 2.x 旧代码，待重写]
+本篇示例整体停留在 2.x 版本，多处 API 在 LayaAir 3.4 中已变更或移除，直接照抄**无法运行**：
+
+- `RenderTextureFormat` / `RenderTextureDepthFormat` 两个类型已移除，现为 `RenderTargetFormat`
+- `CommandBuffer.setRenderTarget()` 的清屏参数（clearColor / clearDepth）为必填
+- `CommandBuffer` 无 `clearRenderTarget` 方法，清屏已并入 `setRenderTarget` 参数
+- `setShaderData` / `setGlobalShaderData` 已拆分为 `setShaderDataTexture/Color/Vector…` 与 `setGlobalTexture/Color…` 等分类型方法
+- `new ShaderData()` 构造函数已标记为内部方法（@internal），会抛异常
+
+正确用法请参照官方示例 `CommandBuffer_BlurryGlass.ts`。本篇将参照该示例整篇重写，在此之前请勿照抄本篇代码。
+:::
 
 ### 1.简介
 
