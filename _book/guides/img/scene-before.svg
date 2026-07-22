@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#2b2e33"/>
+  <!-- 平淡地面 -->
+  <rect y="300" width="800" height="150" fill="#34373d"/>
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#3d4046" stroke-width="2"/>
+  <!-- 立方体 A（三面同色，无高光无阴影）-->
+  <g>
+    <polygon points="300,150 387,200 300,250 213,200" fill="#4c4f55"/>
+    <polygon points="213,200 300,250 300,350 213,300" fill="#45484e"/>
+    <polygon points="387,200 300,250 300,350 387,300" fill="#484b51"/>
+  </g>
+  <!-- 立方体 B -->
+  <g>
+    <polygon points="520,220 580,255 520,290 460,255" fill="#4a4d53"/>
+    <polygon points="460,255 520,290 520,360 460,325" fill="#43464c"/>
+    <polygon points="580,255 520,290 520,360 580,325" fill="#464951"/>
+  </g>
+  <!-- 球（纯色，无渐变无投影）-->
+  <circle cx="650" cy="270" r="42" fill="#50535a"/>
+  <text x="400" y="415" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="20" fill="#6b6f76" font-weight="600">无光照 · 平铺贴图 · 无阴影</text>
+</svg>

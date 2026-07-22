@@ -1,0 +1,562 @@
+{
+	"mailList": [
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题0"
+			},
+			"mailDateTime": {
+				"text": "2024-03-31 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题1"
+			},
+			"mailDateTime": {
+				"text": "2024-03-30 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题2"
+			},
+			"mailDateTime": {
+				"text": "2024-03-29 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题3"
+			},
+			"mailDateTime": {
+				"text": "2024-03-28 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题4"
+			},
+			"mailDateTime": {
+				"text": "2024-03-27 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题5"
+			},
+			"mailDateTime": {
+				"text": "2024-03-26 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题6"
+			},
+			"mailDateTime": {
+				"text": "2024-03-25 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题7"
+			},
+			"mailDateTime": {
+				"text": "2024-03-24 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题8"
+			},
+			"mailDateTime": {
+				"text": "2024-03-23 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题9"
+			},
+			"mailDateTime": {
+				"text": "2024-03-22 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题10"
+			},
+			"mailDateTime": {
+				"text": "2024-03-21 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题11"
+			},
+			"mailDateTime": {
+				"text": "2024-03-20 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题12"
+			},
+			"mailDateTime": {
+				"text": "2024-03-19 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题13"
+			},
+			"mailDateTime": {
+				"text": "2024-03-18 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题14"
+			},
+			"mailDateTime": {
+				"text": "2024-03-17 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题15"
+			},
+			"mailDateTime": {
+				"text": "2024-03-16 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题16"
+			},
+			"mailDateTime": {
+				"text": "2024-03-15 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题17"
+			},
+			"mailDateTime": {
+				"text": "2024-03-14 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题18"
+			},
+			"mailDateTime": {
+				"text": "2024-03-13 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题19"
+			},
+			"mailDateTime": {
+				"text": "2024-03-12 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题20"
+			},
+			"mailDateTime": {
+				"text": "2024-03-11 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题21"
+			},
+			"mailDateTime": {
+				"text": "2024-03-10 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题22"
+			},
+			"mailDateTime": {
+				"text": "2024-03-09 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题23"
+			},
+			"mailDateTime": {
+				"text": "2024-03-08 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题24"
+			},
+			"mailDateTime": {
+				"text": "2024-03-07 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题25"
+			},
+			"mailDateTime": {
+				"text": "2024-03-06 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题26"
+			},
+			"mailDateTime": {
+				"text": "2024-03-05 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题27"
+			},
+			"mailDateTime": {
+				"text": "2024-03-04 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题28"
+			},
+			"mailDateTime": {
+				"text": "2024-03-03 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题29"
+			},
+			"mailDateTime": {
+				"text": "2024-03-02 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		},
+		{
+			"mailTitle": {
+				"text": "这里是邮件的标题30"
+			},
+			"mailDateTime": {
+				"text": "2024-03-01 00:00"
+			},
+			"opt": {
+				"visible": false
+			},
+			"flagStatus": {
+				"skin": "resources/UI/images/comp/img_mail.png"
+			},
+			"flagBtn": {
+				"label": "标为已读",
+				"labelColors": "#000000,#000000,#000000"
+			}
+		}
+	]
+}

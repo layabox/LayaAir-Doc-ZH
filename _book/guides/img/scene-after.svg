@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="0%" r="90%">
+      <stop offset="0%" stop-color="#12433f"/>
+      <stop offset="55%" stop-color="#0d2530"/>
+      <stop offset="100%" stop-color="#0a0f18"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5ff0d8" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#5ff0d8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#123f3d"/>
+      <stop offset="100%" stop-color="#0b1a22"/>
+    </linearGradient>
+    <radialGradient id="ball" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#eafff9"/>
+      <stop offset="45%" stop-color="#2ec4b6"/>
+      <stop offset="100%" stop-color="#14655f"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#sky)"/>
+  <!-- 顶光光晕 -->
+  <ellipse cx="360" cy="90" rx="320" ry="180" fill="url(#glow)"/>
+  <!-- 反光地面 + 网格 -->
+  <rect y="300" width="800" height="150" fill="url(#floor)"/>
+  <g stroke="#1f6f68" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="330" x2="800" y2="330"/>
+    <line x1="0" y1="370" x2="800" y2="370"/>
+    <line x1="0" y1="415" x2="800" y2="415"/>
+    <line x1="120" y1="300" x2="60" y2="450"/>
+    <line x1="300" y1="300" x2="280" y2="450"/>
+    <line x1="500" y1="300" x2="520" y2="450"/>
+    <line x1="680" y1="300" x2="740" y2="450"/>
+  </g>
+  <!-- 物体投影 -->
+  <ellipse cx="300" cy="352" rx="95" ry="18" fill="#000" opacity="0.35"/>
+  <ellipse cx="520" cy="362" rx="66" ry="13" fill="#000" opacity="0.35"/>
+  <ellipse cx="650" cy="316" rx="46" ry="11" fill="#000" opacity="0.35"/>
+  <!-- 立方体 A（顶亮、右中、左暗 + 高光边）-->
+  <g>
+    <polygon points="300,150 387,200 300,250 213,200" fill="#4fe0cc"/>
+    <polygon points="213,200 300,250 300,350 213,300" fill="#12655f"/>
+    <polygon points="387,200 300,250 300,350 387,300" fill="#2ea597"/>
+    <polygon points="300,150 387,200 300,250 213,200" fill="none" stroke="#bffff2" stroke-width="1.5" opacity="0.7"/>
+  </g>
+  <!-- 立方体 B -->
+  <g>
+    <polygon points="520,220 580,255 520,290 460,255" fill="#46d0be"/>
+    <polygon points="460,255 520,290 520,360 460,325" fill="#0f5651"/>
+    <polygon points="580,255 520,290 520,360 580,325" fill="#279184"/>
+  </g>
+  <!-- 高光球 + 投影已在上 -->
+  <circle cx="650" cy="270" r="42" fill="url(#ball)"/>
+  <ellipse cx="636" cy="254" rx="14" ry="9" fill="#fff" opacity="0.6"/>
+  <text x="400" y="415" text-anchor="middle" font-family="system-ui,sans-serif"
+        font-size="20" fill="#8ff5e4" font-weight="700">烘焙光照 · 高光 · 实时阴影</text>
+</svg>
