@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<font>
+  <info face="造字工房哲黑（非商用）常规体" size="35" bold="0" italic="0" charset="" unicode="1" stretchH="100" smooth="1" aa="2" padding="0,0,0,0" spacing="1,1" outline="0"/>
+  <common lineHeight="35" base="29" scaleW="200" scaleH="200" pages="1" packed="0" alphaChnl="1" redChnl="0" greenChnl="0" blueChnl="0"/>
+  <pages>
+    <page id="0" file="gongfang_0.png" />
+  </pages>
+  <chars count="19">
+    <char id="-1" x="0" y="62" width="29" height="28" xoffset="6" yoffset="0" xadvance="41" page="0" chnl="15" />
+    <char id="51" x="83" y="62" width="20" height="23" xoffset="1" yoffset="5" xadvance="23" page="0" chnl="15" />
+    <char id="65" x="30" y="62" width="28" height="23" xoffset="0" yoffset="5" xadvance="28" page="0" chnl="15" />
+    <char id="68" x="59" y="62" width="23" height="23" xoffset="1" yoffset="5" xadvance="25" page="0" chnl="15" />
+    <char id="76" x="104" y="62" width="19" height="23" xoffset="1" yoffset="5" xadvance="20" page="0" chnl="15" />
+    <char id="97" x="149" y="62" width="21" height="15" xoffset="1" yoffset="13" xadvance="23" page="0" chnl="15" />
+    <char id="105" x="187" y="31" width="7" height="23" xoffset="1" yoffset="5" xadvance="9" page="0" chnl="15" />
+    <char id="114" x="171" y="61" width="15" height="15" xoffset="1" yoffset="13" xadvance="16" page="0" chnl="15" />
+    <char id="121" x="124" y="62" width="24" height="22" xoffset="0" yoffset="13" xadvance="25" page="0" chnl="15" />
+    <char id="20013" x="77" y="31" width="36" height="30" xoffset="2" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="20808" x="123" y="0" width="38" height="30" xoffset="1" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="22269" x="150" y="31" width="36" height="29" xoffset="2" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="24320" x="162" y="0" width="37" height="30" xoffset="2" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="24341" x="114" y="31" width="35" height="30" xoffset="3" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="25806" x="0" y="31" width="38" height="30" xoffset="1" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="26159" x="39" y="31" width="37" height="30" xoffset="2" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="28304" x="0" y="0" width="40" height="30" xoffset="0" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="30340" x="41" y="0" width="40" height="30" xoffset="0" yoffset="2" xadvance="41" page="0" chnl="15" />
+    <char id="39046" x="82" y="0" width="40" height="30" xoffset="0" yoffset="2" xadvance="41" page="0" chnl="15" />
+  </chars>
+</font>

@@ -1,0 +1,117 @@
+---
+// 视频嵌入 —— 三选一：
+//   src      本地或直链 mp4/webm，用原生 <video controls>
+//   bilibili B 站 BV 号，如 "BV1xx411c7XX"
+//   youtube  YouTube 视频 id
+// 平台视频用「点击加载」遮罩懒加载：不点就不连第三方，首屏不被拖慢、也更护隐私。
+// 统一 16:9 自适应容器，随站点明暗主题。
+interface Props {
+  src?: string;
+  bilibili?: string;
+  youtube?: string;
+  poster?: string;   // 封面图（本地 mp4 的 poster / 平台遮罩背景）
+  title?: string;    // 无障碍标题
+}
+const { src, bilibili, youtube, poster, title = '视频' } = Astro.props;
+const frameSrc = bilibili
+  ? `https://player.bilibili.com/player.html?bvid=${bilibili}&autoplay=0&high_quality=1`
+  : youtube
+  ? `https://www.youtube-nocookie.com/embed/${youtube}`
+  : '';
+---
+
+<div class="video-embed">
+  {src && (
+    <video class="ve-video" controls preload="metadata" poster={poster} playsinline>
+      <source src={src} />
+      你的浏览器不支持 video 标签。<a href={src}>下载视频</a>
+    </video>
+  )}
+
+  {frameSrc && (
+    <div class="ve-frame" data-src={frameSrc} style={poster ? `background-image:url(${poster})` : ''}>
+      <button class="ve-play" type="button" aria-label={`播放：${title}`}>
+        <svg viewBox="0 0 68 48" width="60" aria-hidden="true">
+          <path class="ve-play-bg" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55 0 34 0 34 0S13 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C13 48 34 48 34 48s21 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/>
+          <path d="M45 24 27 14v20z" fill="#fff"/>
+        </svg>
+        <span class="ve-tip">{title}</span>
+      </button>
+    </div>
+  )}
+</div>
+
+<style>
+  .video-embed {
+    margin: 1.2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-hairline);
+    background: #000;
+  }
+  .ve-video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .ve-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+  }
+  .ve-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 10, 18, 0.35);
+    pointer-events: none;    /* 封面遮罩不拦点击（点击照样冒泡到 .ve-frame）*/
+  }
+  /* 视频加载后彻底移除遮罩，否则它会盖在 iframe 上把播放器蒙成灰的、还挡住点击 */
+  .ve-frame.ve-active::after { display: none; }
+  .ve-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .ve-play {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 0;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  .ve-play-bg { fill: #d40000; opacity: 0.85; transition: opacity 0.2s; }
+  .ve-frame:hover .ve-play-bg { opacity: 1; }
+  .ve-tip { font-size: 0.85rem; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
+</style>
+
+<script>
+  function bindFrames(scope: Document | HTMLElement = document) {
+    scope.querySelectorAll<HTMLElement>('.ve-frame').forEach((frame) => {
+      if (frame.dataset.veBound === '1') return;
+      frame.dataset.veBound = '1';
+      frame.addEventListener('click', () => {
+        const url = frame.dataset.src;
+        if (!url || frame.querySelector('iframe')) return;
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+        iframe.allowFullscreen = true;
+        iframe.setAttribute('loading', 'lazy');
+        // inline style：动态创建的元素拿不到 Astro scoped CSS，必须直接写 style 才能撑满
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+        frame.querySelector('.ve-play')?.remove();
+        frame.appendChild(iframe);
+        frame.classList.add('ve-active');   // 关掉 ::after 遮罩，露出播放器
+      });
+    });
+  }
+  bindFrames();
+  document.addEventListener('astro:page-load', () => bindFrames());
+</script>

@@ -1,0 +1,161 @@
+---
+// 前后对比滑块 —— 两张图完全叠放在同一位置、同尺寸，上层图用 clip-path 裁掉右侧，
+// 露出左侧；中间一根可拖的竖直手柄，左右各一个标签。clip-path 保证两图逐像素对齐，
+// 不会有边缝。支持鼠标 / 触摸 / 键盘（←→），多实例，无刷新翻页自动重绑。
+interface Props {
+  before: string;        // 上层图（手柄左侧露出）绝对路径，如 /guides/img/a.svg
+  after: string;         // 底层图（手柄右侧露出）
+  beforeLabel?: string;
+  afterLabel?: string;
+  alt?: string;
+  start?: number;        // 初始分割位置 0–100，默认 50
+}
+const {
+  before, after,
+  beforeLabel = '之前', afterLabel = '之后',
+  alt = '前后对比图', start = 50, ratio = '16 / 9',
+} = Astro.props;
+// 用 padding-bottom 撑高（比 aspect-ratio 对 <img> 替换元素更稳，两张绝对定位图严格对齐）
+const [rw, rh] = ratio.split('/').map((s) => parseFloat(s.trim()) || 0);
+const padPct = rw && rh ? ((rh / rw) * 100).toFixed(3) : '56.25';
+---
+
+<figure class="img-compare" data-start={start} aria-label={alt} style={`padding-bottom:${padPct}%`}>
+  <img class="ic-img ic-after" src={after} alt={`${alt} · ${afterLabel}`} draggable="false" />
+  <img class="ic-img ic-before" src={before} alt={`${alt} · ${beforeLabel}`} draggable="false"
+       style={`clip-path:inset(0 ${100 - start}% 0 0)`} />
+  <span class="ic-label ic-label-before">{beforeLabel}</span>
+  <span class="ic-label ic-label-after">{afterLabel}</span>
+  <div class="ic-divider" style={`left:${start}%`}>
+    <div class="ic-handle" tabindex="0" role="slider"
+         aria-label="拖动对比" aria-valuemin="0" aria-valuemax="100" aria-valuenow={start}>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M9 6l-4 6 4 6M15 6l4 6-4 6" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .img-compare {
+    position: relative;
+    height: 0;               /* 高度由 inline 的 padding-bottom 撑起 */
+    margin: 1.2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-hairline);
+    user-select: none;
+    touch-action: pan-y;
+    line-height: 0;
+    cursor: ew-resize;
+  }
+  /* 两张图完全对称：都绝对覆盖整个容器（由 figure 的 aspect-ratio 定尺寸），
+     上层图仅靠 clip-path 裁切右侧。对称结构保证逐像素对齐，不会有边缝 */
+  .ic-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;            /* 关键：清掉 Starlight 给正文相邻元素自动加的 margin-top(否则第二张图下沉 1rem)*/
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .ic-label {
+    position: absolute;
+    top: 10px;
+    z-index: 2;
+    padding: 2px 10px;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(10, 15, 24, 0.66);
+    border-radius: 999px;
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+  }
+  .ic-label-before { left: 10px; }
+  .ic-label-after  { right: 10px; }
+  .ic-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 2px;
+    margin-left: -1px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  }
+  .ic-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #0a0f18;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    cursor: ew-resize;
+  }
+  .ic-handle:focus-visible {
+    outline: 3px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  function initCompare(root: HTMLElement) {
+    const before = root.querySelector('.ic-before') as HTMLElement | null;
+    const divider = root.querySelector('.ic-divider') as HTMLElement | null;
+    const handle = root.querySelector('.ic-handle') as HTMLElement | null;
+    if (!before || !divider || !handle) return;
+
+    const clamp = (n: number) => Math.max(0, Math.min(100, n));
+    let pct = Number(root.dataset.start ?? '50');
+
+    function apply() {
+      before!.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      divider!.style.left = pct + '%';
+      handle!.setAttribute('aria-valuenow', String(Math.round(pct)));
+    }
+
+    function fromClientX(clientX: number) {
+      const r = root.getBoundingClientRect();
+      pct = clamp(((clientX - r.left) / r.width) * 100);
+      apply();
+    }
+
+    let dragging = false;
+    root.addEventListener('pointerdown', (e: PointerEvent) => {
+      dragging = true;
+      root.setPointerCapture?.(e.pointerId);
+      fromClientX(e.clientX);
+    });
+    root.addEventListener('pointermove', (e: PointerEvent) => { if (dragging) fromClientX(e.clientX); });
+    root.addEventListener('pointerup', () => { dragging = false; });
+    root.addEventListener('pointercancel', () => { dragging = false; });
+
+    handle.addEventListener('keydown', (e: KeyboardEvent) => {
+      const step = e.shiftKey ? 10 : 2;
+      if (e.key === 'ArrowLeft') { pct = clamp(pct - step); apply(); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { pct = clamp(pct + step); apply(); e.preventDefault(); }
+    });
+
+    apply();
+    root.dataset.icBound = '1';
+  }
+
+  function initAll() {
+    document.querySelectorAll<HTMLElement>('.img-compare').forEach((el) => {
+      if (el.dataset.icBound !== '1') initCompare(el);
+    });
+  }
+
+  initAll();
+  document.addEventListener('astro:page-load', initAll);
+</script>

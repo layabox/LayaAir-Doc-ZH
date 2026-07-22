@@ -1,0 +1,135 @@
+---
+// 引擎成品嵌入 —— 把 LayaAir 项目的 HTML5 发布产物（小场景 / 小游戏）iframe 进文档。
+// 默认只显示封面 + 「运行」按钮，点击后才加载 iframe：引擎运行时较重，
+// 不点就不占资源，一页里放好几个也不会一进来就卡。带全屏 + 新窗口打开。
+interface Props {
+  src: string;         // 发布产物入口，如 /guides/demos/catch/ 或 https://…/index.html
+  title?: string;      // 作品名 / 无障碍标题
+  poster?: string;     // 封面图（不填则用深色渐变占位）
+  ratio?: string;      // 宽高比，默认 "16 / 9"，竖屏小游戏可传 "3 / 4"
+  height?: string;     // 固定高度（传了则忽略 ratio），如 "420px"
+}
+const { src, title = '引擎演示', poster, ratio = '16 / 9', height } = Astro.props;
+// 用 padding-bottom 百分比撑高度：iframe 是替换元素，在 aspect-ratio 容器里 height:100%
+// 常失效塌回默认 300×150；padding 技巧下内部 absolute 子元素能稳稳撑满。
+const [rw, rh] = ratio.split('/').map((s) => parseFloat(s.trim()) || 0);
+const padPct = rw && rh ? ((rh / rw) * 100).toFixed(3) : '56.25';
+const boxStyle = height ? `height:${height}` : `padding-bottom:${padPct}%`;
+---
+
+<div class="engine-embed">
+  <div class="ee-stage" style={boxStyle} data-src={src}>
+    <div class="ee-poster" style={poster ? `background-image:url(${poster})` : ''}>
+      <button class="ee-run" type="button" aria-label={`运行：${title}`}>
+        <span class="ee-run-icon" aria-hidden="true">▶</span>
+        <span class="ee-run-text">运行「{title}」</span>
+        <span class="ee-run-sub">点击加载引擎运行时</span>
+      </button>
+    </div>
+  </div>
+  <div class="ee-bar">
+    <span class="ee-name">🎮 {title}</span>
+    <span class="ee-actions">
+      <button class="ee-full" type="button">⛶ 全屏</button>
+      <a class="ee-open" href={src} target="_blank" rel="noopener">↗ 新窗口</a>
+    </span>
+  </div>
+</div>
+
+<style>
+  .engine-embed {
+    margin: 1.2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-hairline);
+    background: var(--sl-color-bg-sidebar);
+  }
+  .ee-stage {
+    position: relative;
+    width: 100%;
+    height: 0;               /* 高度由 inline 的 padding-bottom 撑起（或被 height 覆盖）*/
+    overflow: hidden;
+    background: radial-gradient(120% 120% at 50% 0%, #11243f, #0a0f18);
+  }
+  /* 传了固定 height 时，inline height 覆盖上面的 0，padding-bottom 不生效 */
+  .ee-stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  .ee-poster {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-size: cover;
+    background-position: center;
+  }
+  .ee-run {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+    background: rgba(10, 15, 24, 0.55);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(3px);
+    transition: transform 0.15s, background 0.15s;
+  }
+  .ee-run:hover { transform: translateY(-2px); background: rgba(28, 126, 214, 0.55); }
+  .ee-run-icon { font-size: 1.6rem; }
+  .ee-run-text { font-weight: 700; }
+  .ee-run-sub { font-size: 0.72rem; opacity: 0.8; }
+  .ee-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-2);
+    border-top: 1px solid var(--sl-color-hairline);
+  }
+  .ee-actions { display: flex; gap: 0.75rem; align-items: center; }
+  .ee-bar button, .ee-bar a {
+    color: var(--sl-color-text-accent);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+  .ee-bar button:hover, .ee-bar a:hover { text-decoration: underline; }
+</style>
+
+<script>
+  function bindEmbeds(scope: Document | HTMLElement = document) {
+    scope.querySelectorAll<HTMLElement>('.engine-embed').forEach((box) => {
+      if (box.dataset.eeBound === '1') return;
+      box.dataset.eeBound = '1';
+      const stage = box.querySelector('.ee-stage') as HTMLElement | null;
+      const runBtn = box.querySelector('.ee-run') as HTMLElement | null;
+      const fullBtn = box.querySelector('.ee-full') as HTMLElement | null;
+      if (!stage) return;
+
+      const load = () => {
+        const url = stage.dataset.src;
+        if (!url || stage.querySelector('iframe')) return;
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.allow = 'autoplay; fullscreen; gamepad; accelerometer; gyroscope';
+        iframe.allowFullscreen = true;
+        // inline style：动态创建的元素拿不到 Astro scoped CSS，必须直接写 style 才能撑满
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block';
+        stage.querySelector('.ee-poster')?.remove();
+        stage.appendChild(iframe);
+      };
+      runBtn?.addEventListener('click', load);
+      fullBtn?.addEventListener('click', () => {
+        load();
+        (stage.requestFullscreen?.() ??
+          (stage as any).webkitRequestFullscreen?.());
+      });
+    });
+  }
+  bindEmbeds();
+  document.addEventListener('astro:page-load', () => bindEmbeds());
+</script>

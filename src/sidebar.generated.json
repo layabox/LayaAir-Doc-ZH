@@ -4,6 +4,16 @@
     "link": "/"
   },
   {
+    "label": "如何使用此文档",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "文档站写作与编辑指南",
+        "link": "/guides/authoring/"
+      }
+    ]
+  },
+  {
     "label": "引擎介绍",
     "collapsed": true,
     "items": [
@@ -35,7 +45,7 @@
     "items": [
       {
         "label": "程序新手路线",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "label": "路线总览",
