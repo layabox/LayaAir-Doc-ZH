@@ -126,7 +126,7 @@ private  convertToBaiduCoord(data: any): void {
 ```java
 private onError(e: any): void {
         var errType: string;
-        if (e.code = Laya.Geolocation.PERMISSION_DENIED)
+        if (e.code == Laya.Geolocation.PERMISSION_DENIED)
             errType = "Permission Denied";
         else if (e.code == Laya.Geolocation.POSITION_UNAVAILABLE)
             errType = "Position Unavailable";
