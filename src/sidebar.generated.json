@@ -1233,7 +1233,7 @@
           },
           {
             "label": "静态碰撞器",
-            "link": "/ide/component/physics3d/staticcollider/"
+            "link": "/ide/component/physics3d/physicscollider/"
           },
           {
             "label": "角色控制器",
@@ -1524,60 +1524,6 @@
             ]
           },
           {
-            "label": "2D物理",
-            "collapsed": true,
-            "items": [
-              {
-                "label": "概述",
-                "link": "/ide/physicseditor/physics2d/"
-              },
-              {
-                "label": "刚体",
-                "link": "/ide/component/physics2d/rigidbody/"
-              },
-              {
-                "label": "静态碰撞器",
-                "link": "/ide/component/physics2d/staticcollider/"
-              },
-              {
-                "label": "距离关节",
-                "link": "/ide/component/physics2d/distancejoint/"
-              },
-              {
-                "label": "鼠标关节",
-                "link": "/ide/component/physics2d/mousejoint/"
-              },
-              {
-                "label": "焊接关节",
-                "link": "/ide/component/physics2d/weldjoint/"
-              },
-              {
-                "label": "滑轮关节",
-                "link": "/ide/component/physics2d/pulleyjoint/"
-              },
-              {
-                "label": "马达关节",
-                "link": "/ide/component/physics2d/motorjoint/"
-              },
-              {
-                "label": "旋转关节",
-                "link": "/ide/component/physics2d/revolutejoint/"
-              },
-              {
-                "label": "平移关节",
-                "link": "/ide/component/physics2d/prismaticjoint/"
-              },
-              {
-                "label": "轮子关节",
-                "link": "/ide/component/physics2d/wheeljoint/"
-              },
-              {
-                "label": "齿轮关节",
-                "link": "/ide/component/physics2d/gearjoint/"
-              }
-            ]
-          },
-          {
             "label": "多媒体",
             "collapsed": true,
             "items": [
@@ -1697,19 +1643,19 @@
               },
               {
                 "label": "方向光",
-                "link": "/ide/component/light/directionlightcom/"
+                "link": "/ide/component/3dlight/directionlight/"
               },
               {
                 "label": "点光源",
-                "link": "/ide/component/light/pointlightcom/"
+                "link": "/ide/component/3dlight/pointlight/"
               },
               {
                 "label": "聚光灯",
-                "link": "/ide/component/light/spotlightcom/"
+                "link": "/ide/component/3dlight/spotlight/"
               },
               {
                 "label": "区域光",
-                "link": "/ide/component/light/arealightcom/"
+                "link": "/ide/component/3dlight/arealight/"
               }
             ]
           },
@@ -1732,44 +1678,6 @@
               {
                 "label": "骨骼约束",
                 "link": "/ide/component/3danimation/boneconstraints/"
-              }
-            ]
-          },
-          {
-            "label": "3D物理",
-            "collapsed": true,
-            "items": [
-              {
-                "label": "概述",
-                "link": "/ide/component/physics3d/"
-              },
-              {
-                "label": "3D刚体",
-                "link": "/ide/component/physics3d/rigidbody3d/"
-              },
-              {
-                "label": "静态碰撞器",
-                "link": "/ide/component/physics3d/physicscollider/"
-              },
-              {
-                "label": "角色控制器",
-                "link": "/ide/component/physics3d/charactercontroller/"
-              },
-              {
-                "label": "固定约束",
-                "link": "/ide/component/physics3d/fixedconstraint/"
-              },
-              {
-                "label": "铰链约束",
-                "link": "/ide/component/physics3d/hingeconstraint/"
-              },
-              {
-                "label": "弹簧约束",
-                "link": "/ide/component/physics3d/springconstraint/"
-              },
-              {
-                "label": "可配置约束",
-                "link": "/ide/component/physics3d/configurableconstraint/"
               }
             ]
           },
