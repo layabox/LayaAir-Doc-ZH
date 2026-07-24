@@ -1010,6 +1010,10 @@
             "link": "/ide/assets/lmat/"
           },
           {
+            "label": "IDE材质属性",
+            "link": "/ide/materialeditor/"
+          },
+          {
             "label": "布林冯材质",
             "link": "/ide/assets/lmat/blinphong/"
           },
@@ -1628,6 +1632,10 @@
                 "link": "/ide/component/lod/"
               },
               {
+                "label": "静态合批体积",
+                "link": "/ide/component/staticbatchvolume/"
+              },
+              {
                 "label": "Spine3D渲染器",
                 "link": "/ide/component/3drender/spine3drenderer/"
               }
@@ -2157,7 +2165,7 @@
               },
               {
                 "label": "淘宝小游戏",
-                "link": "/released/minigame/taobao/tbgame/"
+                "link": "/released/minigame/tbgame/"
               },
               {
                 "label": "淘宝小部件",
@@ -2200,6 +2208,10 @@
             "link": "/released/native/network/"
           },
           {
+            "label": "关于LocalStorage",
+            "link": "/released/native/localstrorage/"
+          },
+          {
             "label": "文件系统",
             "link": "/released/native/filesystem/"
           },
@@ -2212,8 +2224,16 @@
             "link": "/released/native/platform-communication/"
           },
           {
+            "label": "反射二次开发",
+            "link": "/released/native/secondary-development/"
+          },
+          {
             "label": "嵌入字体",
             "link": "/released/native/built-in-font/"
+          },
+          {
+            "label": "zip资源更新",
+            "link": "/released/native/zipupdate/"
           },
           {
             "label": "APK扩展机制",
