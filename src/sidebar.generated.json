@@ -1,17 +1,7 @@
 [
   {
-    "label": "文档首页",
+    "label": "文档使用说明",
     "link": "/"
-  },
-  {
-    "label": "如何为本站补充文档",
-    "collapsed": true,
-    "items": [
-      {
-        "label": "文档站写作与编辑指南",
-        "link": "/guides/authoring/"
-      }
-    ]
   },
   {
     "label": "引擎介绍",

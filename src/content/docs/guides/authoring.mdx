@@ -14,7 +14,7 @@ import EngineEmbed from '../../../components/EngineEmbed.astro';
 本文介绍如何为本站撰写和编辑文档，涵盖建页、排版、嵌入富媒体（对比图、视频、引擎成品）、在线编辑，以及从写作到上线的完整流程。
 
 
-## 一、五分钟跑通第一次编辑
+## 4.2 五分钟跑通第一次编辑
 
 ```bash
 npm install        # 仅首次需要
@@ -23,7 +23,7 @@ npm run dev        # 启动本地预览（自带在线编辑器）
 
 浏览器打开终端提示的地址（通常是 `http://localhost:4321/`，端口被占用时会自动顺延到 4322），进入任意一篇文档，点击右下角的 **「编辑本页」**，在弹出的编辑框中修改内容，按 `Ctrl+S` 保存，正文即原地更新、页面不刷新。这是最快的上手路径，细节见后文各节。
 
-## 二、文档的放置与命名
+## 4.3 文档的放置与命名
 
 - 所有文档位于 **`src/content/docs/`** 下，**目录结构即 URL 结构**。
 - 扩展名 **`.md`** 或 **`.mdx`** 均可：纯文字用 `.md`；需要嵌入组件、横幅、交互演示时用 `.mdx`（本文即用 `.mdx`）。
@@ -35,7 +35,7 @@ npm run dev        # 启动本地预览（自带在线编辑器）
 | `description` | 是 | 一句话摘要，约 60–155 字，写入 `<meta description>`，用于搜索与 SEO |
 | `slug` | **强烈建议显式声明** | 页面 URL，规则见下方 |
 | `draft` | 否 | 设为 `true` 表示未完成，不进目录，正式构建时不输出该页 |
-| `banner` | 否 | 页面顶部横幅，见第四节 |
+| `banner` | 否 | 页面顶部横幅，见「4.5 MDX 扩展能力」 |
 
 :::danger[slug 命名规则（重要）]
 `slug` 只能包含 **小写字母 `a-z`、数字 `0-9`、连字符 `-`、斜杠 `/`**。
@@ -43,7 +43,7 @@ npm run dev        # 启动本地预览（自带在线编辑器）
 不要使用中文、空格、大写字母、点号。这类字符在 Windows 上看似正常，部署到 Linux 服务器后会导致断链 404，是本项目此前反复出现的问题。slug 应与文件路径保持一致，例如文件 `guides/authoring.mdx` 对应 slug `"guides/authoring"`。
 :::
 
-## 三、正文写作（Markdown 基础）
+## 4.4 正文写作（Markdown 基础）
 
 - **标题层级**：正文**不要写 `# H1`**（H1 由 `title` 自动生成）。从 `## H2` 开始，逐级递进，不要跳级。
 - **代码块**：三个反引号加小写语言名，如 `typescript`、`javascript`、`bash`。
@@ -80,11 +80,11 @@ npm run dev        # 启动本地预览（自带在线编辑器）
 
 写法是将内容置于 `:::类型[可选标题]` 与 `:::` 之间。以上四个提示框均为实时渲染效果，非截图。
 
-## 四、MDX 扩展能力
+## 4.5 MDX 扩展能力
 
 `.mdx` 相比 `.md` 多出两项能力：**frontmatter 横幅** 与 **可复用组件**。组件既包含排版件，也包含富媒体（对比滑块、视频、引擎成品嵌入）。
 
-### 4.1 顶部横幅 banner
+### 4.5.1 顶部横幅 banner
 
 在 frontmatter 中加入 `banner`，页面顶部会显示一条醒目横幅，常用于标记内容过时：
 
@@ -93,7 +93,7 @@ banner:
   content: "⚠️ 本篇内容已过时，正在重写，请勿参照本篇代码开发。"
 ```
 
-### 4.2 排版组件：能力对照表
+### 4.5.2 排版组件：能力对照表
 
 在正文开头 `import` 后即可像标签一样使用。**import 路径按文件层级计算**：位于二级目录（如 `docs/guides/xxx.mdx`）的页面统一使用 `../../../components/`，也建议将文档统一放在该层级以便记忆。现有组件如下：
 
@@ -103,11 +103,11 @@ banner:
     { feat: 'FeatureTable', target: '../../../components/FeatureTable.astro', level: 'full',
       note: '能力对照徽章表。传入 <b>rows</b>：每项 { feat, target, level, note }，level 取值为 full / part / conf / exp / no；note 支持内联 HTML。本表即由它渲染' },
     { feat: 'ImageCompare', target: '../../../components/ImageCompare.astro', level: 'full',
-      note: '前后对比滑块，拖动手柄查看差异。传入 before / after 两张图与左右标签，见 4.3' },
+      note: '前后对比滑块，拖动手柄查看差异。传入 before / after 两张图与左右标签，见 4.5.3' },
     { feat: 'VideoEmbed', target: '../../../components/VideoEmbed.astro', level: 'full',
-      note: '视频嵌入，支持本地 mp4、B 站、YouTube，见 4.4' },
+      note: '视频嵌入，支持本地 mp4、B 站、YouTube，见 4.5.4' },
     { feat: 'EngineEmbed', target: '../../../components/EngineEmbed.astro', level: 'full',
-      note: '将 LayaAir 项目的网页发布产物（小场景 / 小游戏）以 iframe 嵌入文档，点击后加载，见 4.5' },
+      note: '将 LayaAir 项目的网页发布产物（小场景 / 小游戏）以 iframe 嵌入文档，点击后加载，见 4.5.5' },
     { feat: 'LiveDemo', target: '../../../components/LiveDemo.astro', level: 'full',
       note: '内置的 Canvas 交互示范（旋转立方体 + 调速调色），无 props，用于演示交互嵌入' },
   ]}
@@ -115,7 +115,7 @@ banner:
 
 `FeatureTable` 的 `level` 对应五档支持度徽章（full 完整 / part 部分 / conf 看配置 / exp 实验 / no 不支持），图例由组件自带。
 
-### 4.3 前后对比滑块 · ImageCompare
+### 4.5.3 前后对比滑块 · ImageCompare
 
 将两张图叠放，中间为可拖动的手柄，左右各有标签，适合展示优化前后、烘焙前后、改版前后的对比。拖动下方手柄即可查看（也支持键盘 ← → 微调）：
 
@@ -136,7 +136,7 @@ import ImageCompare from '../../../components/ImageCompare.astro';
 
 两张图放在 `public/guides/img/` 下，使用**绝对路径**引用（组件 prop 不经过相对路径的自动转换）。两张图的尺寸比例应保持一致。
 
-### 4.4 视频嵌入 · VideoEmbed
+### 4.5.4 视频嵌入 · VideoEmbed
 
 三选一：本地或直链 `mp4`、B 站 `BV号`、YouTube `id`。平台视频采用点击后加载的方式，不点击则不连接第三方，可减少首屏负担并保护隐私。下方为 B 站方式的示例（点击封面加载）：
 
@@ -157,7 +157,7 @@ import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 自录教程存放于 `public/guides/img/` 并用 `src` 引用；平台视频填入编号即可。
 
-### 4.5 嵌入引擎成品 · EngineEmbed
+### 4.5.5 嵌入引擎成品 · EngineEmbed
 
 在 LayaAir 中完成一个小场景或小游戏后，将其**发布为网页版**（得到含 `index.html` 的 `web` 目录），放入 `public/` 下，即可用一行组件嵌入文档。组件默认只显示封面与「运行」按钮，**点击后才加载引擎运行时**——引擎运行时体积较大，采用按需加载，避免进入页面即占用资源，一页放置多个也不会卡顿。
 
@@ -184,7 +184,7 @@ import EngineEmbed from '../../../components/EngineEmbed.astro';
 一个发布产物通常有十几到二十几 MB，放入 `public/` 会增大仓库与构建产物的体积。若不希望资源进入仓库，也可将产物托管到外部（CDN、对象存储），组件 `src` 直接填写外链 URL 即可。
 :::
 
-### 4.6 框架自动提供的能力
+### 4.5.6 框架自动提供的能力
 
 <FeatureTable
   cols={['能力', '触发方式', '状态', '说明']}
@@ -199,11 +199,11 @@ import EngineEmbed from '../../../components/EngineEmbed.astro';
 
 以上均为框架自动提供，写作时无需额外处理。
 
-## 五、在线编辑器
+## 4.6 在线编辑器
 
 `npm run dev` 模式下，每篇文档右下角有 **「编辑本页」** 与 **「编辑目录」** 两个按钮。该编辑器**仅存在于本地预览**，`npm run build` 的正式产物中没有任何残留。
 
-### 5.1 编辑本页
+### 4.6.1 编辑本页
 
 点击「编辑本页」，右侧滑出 Markdown 面板，**输入即实时预览**（仅重绘变化的段落），`Ctrl+S` 保存且页面不刷新。
 
@@ -215,7 +215,7 @@ import EngineEmbed from '../../../components/EngineEmbed.astro';
 
 ![粘贴图片后，编辑框中自动插入按顺序编号的图片引用](./img/editor-paste-image.png)
 
-### 5.2 编辑目录
+### 4.6.2 编辑目录
 
 点击「编辑目录」，将侧边导航作为缩进文本树编辑——`Tab` / `Shift+Tab` 调整层级，`Alt+↑/↓` 移动行，改名、调序、增删条目均直接编辑文本，`Ctrl+S` 写回 `src/sidebar.generated.json`。
 
@@ -227,17 +227,17 @@ import EngineEmbed from '../../../components/EngineEmbed.astro';
 
 ![新建后的草稿页，标注为内容整理中，不进入正式构建](./img/editor-new-doc-page.png)
 
-### 5.3 其它
+### 4.6.3 其它
 
 换图撤回、垃圾回收、定位规则等更多细节见 `dev-editor/README.md`。也可使用 VS Code、Cursor、Typora 等外部编辑器直接修改文件，`dev` 会热更新。
 
-## 六、从建页到上线
+## 4.7 从建页到上线
 
 1. **建页**：
-   - **新页**（演示页、专题页等）→ 直接编写 `.mdx`，遵循第二至四节的规范。
+   - **新页**（演示页、专题页等）→ 直接编写 `.mdx`，遵循 4.3 至 4.5 节的规范。
    - **存量页**（来自旧 GitBook）→ 通过 `migrate.mjs` 重建，**不要手写**，否则会被覆盖。
 2. **写作中**：未完成的页在 frontmatter 设 `draft: true`，不进目录、不上线；完成后删除该行（并补全 `description`）即自动上线。
-3. **进入侧栏**：目录数据位于 `src/sidebar.generated.json`。最便捷的方式是使用第五节的「编辑目录」直接添加条目；也可修改 `migrate.mjs` 后重新生成。
+3. **进入侧栏**：目录数据位于 `src/sidebar.generated.json`。最便捷的方式是使用 4.6.2 节的「编辑目录」直接添加条目；也可修改 `migrate.mjs` 后重新生成。
 4. **交付前验证**（三项均需通过）：
 
    ```bash
@@ -250,7 +250,7 @@ import EngineEmbed from '../../../components/EngineEmbed.astro';
 修改过 CSS 或样式后，提醒对方 `Ctrl+Shift+R` 强制刷新（浏览器缓存旧 CSS 是常见的误报来源）。交付时提供可访问的地址，必要时附截图。
 :::
 
-## 七、常见问题
+## 4.8 常见问题
 
 - **slug / 链接断链**：中文、大写、空格、点号、下划线出现在 slug 或站内链接中，会导致 Windows 正常而 Linux 404。站内链接统一小写、结尾带 `/`。
 - **图片不显示**：图片需放在 `public/<目录>/img/`，正文用 `./img/xxx.png` 相对路径引用；本地预览图片显示异常时，运行一次 `npm run link:images`。
