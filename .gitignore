@@ -6,3 +6,10 @@ src/content/docs/**/img
 src/content/docs/**/images
 src/content/docs/**/gif
 src/content/docs/basics/index
+
+# 本地缓存 / 临时文件（勿提交）
+tmp-screenshots/
+.astro/
+.DS_Store
+Thumbs.db
+*.log
