@@ -1,0 +1,193 @@
+---
+title: "IDE 操作流程"
+description: "从零跑通一个着色器蓝图：创建资源、认识编辑器五个分区、添加节点与连线、用 Params 暴露可调参数、保存编译、在材质与代码中使用，以及蓝图函数的封装复用。"
+slug: "shader-blueprint/ide-workflow"
+---
+
+本页按实际操作顺序走一遍：**创建 → 编辑 → 暴露参数 → 编译 → 用到模型上**。
+
+## 一、创建蓝图资源
+
+在资源面板（Project）里点 **＋** 或在目录上点右键，选择：
+
+- **着色器蓝图** —— 创建 `ShaderBlueprint.bps`，一个完整的 Shader
+- **着色器蓝图函数** —— 创建 `ShaderFunction.bpsf`，可被蓝图调用的子图
+
+{/* 待补图：资源面板创建菜单，标出「着色器蓝图 / 着色器蓝图函数」两项 → ./img/create.png */}
+
+:::note[打开才会生成 Shader]
+新建出来的 `.bps` 在**未打开前不会创建对应的 Shader 文件**。双击打开它，IDE 才建立蓝图与 Shader
+的映射关系。这也是为什么发布前要确保用到的蓝图都被打开过（见[概念篇](/shader-blueprint/concepts/)）。
+:::
+
+双击 `.bps` 即可进入蓝图编辑器。
+
+## 二、编辑器分区
+
+{/* 待补图：蓝图编辑器整体截图，标注 1~5 五个分区 → ./img/panels.png */}
+
+| 分区 | 作用 |
+|---|---|
+| **图编辑区** | 主画布：摆节点、连线、框选、拖拽平移与缩放 |
+| **Params 面板** | 声明对外暴露的变量（材质面板上可调的属性），以及宏 Define |
+| **Inspector 面板** | 蓝图整体设置：材质类型、混合方式、双面、实例化、阴影投射等（详见[材质类型与终端](/shader-blueprint/terminals/)） |
+| **预览面板** | 实时预览球/模型，连线一改立刻刷新 |
+| **Pass 区** | 顶点终端与片元终端所在的区域，是整张图的最终出口 |
+
+编辑器通用操作（保存、撤销、重做、复制、粘贴、删除、全选、复位视图、编译）沿用 IDE 的全局
+快捷键设置，可在 IDE 的偏好设置里查看和修改。
+
+## 三、添加节点
+
+### 右键菜单
+
+在画布空白处点右键弹出节点菜单，菜单层级与节点的**菜单路径**一致，例如：
+
+```
+math → basic → add
+color → blend
+inputdata → vertex → uv
+```
+
+[节点手册](/shader-blueprint/nodes-input/)里每个节点都标了菜单路径，按路径找即可。
+
+### 快捷键快速生成
+
+**长按字母/数字键，再用鼠标左键点击画布位置**，即可在该处直接生成节点，不用翻菜单：
+
+| 按键 | 生成节点 | 按键 | 生成节点 |
+|---|---|---|---|
+| `1` | Float | `a` | add（加） |
+| `2` | Vector2 | `M` | minus（减） |
+| `3` | Vector3 | `m` | multiply（乘） |
+| `4` | Vector4 | `d` | divide（除） |
+| `b` | Boolean | `o` | oneMinus（1 − x） |
+| `I` | Int | `l` | mix（插值） |
+| `i` | if（三路比较分支） | `e` | pow（幂） |
+| `t` | sampler2D（2D 纹理采样） | `n` | normalize（归一化） |
+| `u` | uv1（第二套 UV） | `p` | panner（UV 流动） |
+
+:::note[几个按键被多个节点注册]
+`t`、`u`、`2`/`3`/`4` 都被不止一个节点声明为快捷键，实际生效的是节点表中**靠后注册**的那个：
+`t` → `sampler2D`（不是 Time）、`u` → `uv1`（不是 uv）；`2` 与 `4` 生成**带 `in` 输入的重载版本**，
+`3` 生成的是三分量版本。需要另一个版本时走右键菜单。
+:::
+
+## 四、连线
+
+- 从**输出端口（节点右侧）**按住拖到**输入端口（节点左侧）**即可连接。
+- 一个输入端口只能接一条线；再接一条，旧的会自动断开。一个输出端口可以分发给多个输入。
+- 端口颜色代表类型，类型兼容时才能连上，规则见[概念篇的自动类型转换表](/shader-blueprint/concepts/#自动类型转换)。
+- 输入端口没接线时，用它自己的**内联默认值**（在节点上直接编辑数字、颜色、勾选框）。
+
+{/* 待补图：一个节点的输入/输出端口特写，标出内联默认值编辑框 → ./img/ports.png */}
+
+## 五、Params：暴露可调参数
+
+Params 面板里声明的变量会变成 Shader 的 uniform，**在材质 Inspector 上显示为可调属性**，
+也可以在代码里读写。点 Params 面板的 **＋** 选择类型：
+
+| 类型 | 在材质面板上的表现 |
+|---|---|
+| Float | 数值输入框 |
+| Vector2 / Vector3 / Vector4 | 2~4 个分量输入框 |
+| Color | 取色器 |
+| Boolean | 勾选框 |
+| Mat3 / Mat4 | 矩阵（一般由代码赋值） |
+| Texture2D | 2D 贴图槽 |
+| TextureCube | 立方体贴图槽 |
+| Texture2DArray | 2D 纹理数组槽 |
+| Texture3D | 3D 纹理槽 |
+| Define | 宏开关：勾选与否走不同的编译分支，比 `if` 分支效率高 |
+
+声明后把该变量从 Params 面板拖进画布，就得到一个输出该值的节点。
+
+:::note[颜色常量与纹理资产只能从这里来]
+`Color` 常量节点和四种纹理资产节点（Texture2D / TextureCube / Texture2DArray / Texture3D）
+**不在右键菜单里**——它们代表对外暴露的变量，必须先在 Params 面板声明再拖进画布。
+右键菜单里的 `texture/` 分类只有**采样**节点，采样节点的纹理输入就接这些资产节点。
+:::
+
+:::tip[Define 比 branch 省]
+用 `Define` 做「有没有雪 / 要不要描边」这类**整体开关**，编译期就把不走的分支整段剔除，运行时零开销；
+`logic/branch` 是运行时逐像素判断，适合值随像素变化的情况。
+:::
+
+## 六、保存与编译
+
+保存蓝图后，IDE 编译出 Shader 产物。若图里有错误（类型不匹配、必填槽悬空等），控制台会输出
+`[ShaderCompile]Error`，预览球通常表现为**纯白**或不显示。
+
+:::caution[预览「看起来对」不等于装配正确]
+预览球的光照会让画面产生明暗变化，容易被误认为「数据在动、效果生效了」。判断一个节点是否
+真正起作用，要挑**光照做不出来的特征**：硬边界、UV 接缝错位、通道级的颜色反转等。
+排查时更可靠的做法是看编译出的 GLSL 里，你的节点结果究竟被赋给了哪个表面属性。
+:::
+
+## 七、用到模型上
+
+**在 IDE 里**：新建材质，在材质 Inspector 的 Shader 下拉里选中蓝图对应的 Shader，Params 声明的
+变量会出现在材质面板上；把材质赋给模型的渲染组件即可。
+
+**在代码里**：
+
+```typescript
+// 方式一：直接加载 IDE 里配置好的材质
+Laya.loader.load("res/matDissolve.lmat").then((mat: Laya.Material) => {
+    sprite.getComponent(Laya.MeshRenderer).material = mat;
+    // Params 里声明的变量，用同名 key 读写
+    mat.setFloat("u_Progress", 0.35);
+    mat.setColor("u_EdgeColor", new Laya.Color(1, 0.5, 0, 1));
+    mat.setTexture("u_NoiseMap", noiseTexture);
+});
+
+// 方式二：新建材质并指定蓝图生成的 Shader 名
+let mat = new Laya.Material();
+mat.setShaderName("MyBlueprintShader");
+```
+
+宏开关（Define 类型的 Params）用宏接口控制：
+
+```typescript
+mat.addDefine(Laya.Shader3D.getDefineByName("SNOW"));    // 打开
+mat.removeDefine(Laya.Shader3D.getDefineByName("SNOW")); // 关闭
+```
+
+:::note[属性名以 Params 里声明的名字为准]
+代码里的 key 就是 Params 面板中该变量的名字。改名会导致代码里的 `setFloat` 等调用失效，
+改完记得同步。
+:::
+
+## 八、蓝图函数（.bpsf）
+
+当一串运算要在多个蓝图里重复使用时，把它封装成蓝图函数：
+
+1. 资源面板创建 **着色器蓝图函数**，双击打开。
+2. 在画布右键 → `ShaderFunction` → **Input In**，添加输入参数，在 Inspector 里设置参数名与类型。
+3. 搭好运算逻辑，把结果接到 **Default Output Result** 节点上——**函数的返回类型由接进来的数据类型自动决定**。
+4. 保存。在任意 `.bps` 里右键 → `CustomFun` 分组下就能找到这个函数（按文件名列出），当作普通节点使用。
+
+蓝图函数内部也可以调用其他蓝图函数。
+
+:::caution[蓝图函数里没有顶点与相机数据]
+编辑 `.bpsf` 时，顶点属性（positionOS / normalOS / uv / uv1 / tangentOS / VertexColor）、
+世界空间几何（positionWS / normalWS / tangentWS / biNormalWS）和相机类节点**不会出现在菜单里**——
+函数是纯运算单元，没有顶点上下文。需要这些数据时，把它们作为**输入参数**从调用方传进来。
+:::
+
+{/* 待补图：.bpsf 编辑界面，标出 Input In 与 Default Output Result → ./img/bpsf.png */}
+
+## 九、常见问题
+
+| 现象 | 多半是什么原因 |
+|---|---|
+| 预览球纯白、没有任何效果 | 连线没接到片元终端的颜色槽上；或图里有编译错误，先看控制台 |
+| 改了节点参数但画面没变 | 编辑器内存中的图与磁盘不同步，**关掉标签页重新打开**再看 |
+| 效果在 IDE 正常、发布后 Shader 404 | 该蓝图从未被打开/预览过，没有编译产物；打开一次再重新发布 |
+| 两个数值相乘维度报错 | 多态节点不做维度广播，用 `append` / `mask` / `swizzle` 显式对齐维度 |
+| 程序化图形节点接到顶点段报错 | 这些节点用 `fwidth` 抗锯齿，只能用于片元段 |
+
+## 下一步
+
+- 决定输出成什么材质：[材质类型与终端](/shader-blueprint/terminals/)
+- 查具体节点怎么用：[节点手册](/shader-blueprint/nodes-input/)

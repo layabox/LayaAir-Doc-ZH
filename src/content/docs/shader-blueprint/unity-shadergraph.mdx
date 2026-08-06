@@ -1,0 +1,230 @@
+---
+title: "Unity ShaderGraph 对照"
+description: "面向从 Unity 迁移的用户：162 条 ShaderGraph 节点到 LayaAir 蓝图节点的逐条映射表、尚未覆盖的节点清单，以及类型推导、噪声哈希、空间语义等已知差异与规避办法。"
+slug: "shader-blueprint/unity-shadergraph"
+---
+
+LayaAir 的着色器蓝图在节点能力上已与 Unity ShaderGraph 高度对齐，并提供了
+[Unity 资源导出插件](/unity-plugin/)把 `.shadergraph` 批量转换成 `.bps`。本页给出**逐节点对照**，
+既服务于手工重建，也说明自动转换时哪些地方会有差异。
+
+:::note[对照表的来源]
+下表来自转换器内置的映射表，共 **162 条**。同一行表示：Unity 里的这个节点，在 Laya 蓝图里用
+该路径的节点实现，且自动转换时会这样映射。
+:::
+
+## 输入与坐标
+
+| Unity 节点 | LayaAir 蓝图节点 | 备注 |
+|---|---|---|
+| `PositionNode` | `inputdata/vertex/positionOS` | 按节点的 Space 设置自动选 OS / WS |
+| `NormalVectorNode` | `inputdata/vertex/normalOS` | 同上 |
+| `TangentVectorNode` | `inputdata/vertex/tangentOS` | 同上 |
+| `BitangentVectorNode` | `inputdata/geometry/biNormalWS` | |
+| `UVNode` | `inputdata/vertex/uv` | |
+| `VertexColorNode` | `inputdata/vertex/VertexColor` | |
+| `ViewDirectionNode` | `inputdata/camera/viewDirection` | |
+| `ViewVectorNode` | `inputdata/camera/viewVector` | 未归一化 |
+| `CameraNode` | `inputdata/camera/cameraPosition` | 仅取 Position 输出 |
+| `ScreenNode` | `inputdata/camera/viewport` | 含 x / y / width / height 拆分输出 |
+| `ScreenPositionNode` | `uv/screenTexcoord` | |
+| `ObjectNode` | `inputdata/object/objectPosition` | |
+| `TimeNode` | `inputdata/scene/Time` | **仅 Time 输出**，见下方差异说明 |
+| `FogNode` | `inputdata/scene/fog` | 三输出：RGBA / Color / Density |
+| `SceneColorNode` | `inputdata/scene/sceneColor` | 需相机开启不透明纹理 |
+| `SceneDepthNode` | `inputdata/scene/sceneDepth` | 需相机开启深度纹理 |
+| `MainLightDirectionNode` | `inputdata/light/mainLightDirection` | |
+| `BooleanNode` | `basic/Boolean` | |
+| `IntegerNode` | `basic/Int` | |
+| `Vector1Node` / `SliderNode` | `basic/Float` | Slider 的 min/max 仅编辑器用，转成常量 |
+| `Vector2Node` / `Vector3Node` / `Vector4Node` | `basic/Vector2` / `Vector3` / `Vector4` | |
+| `ColorNode` | `basic/Vector4` | |
+| `ConstantNode` | `inputdata/basic/constant` | PI / TAU / PHI / E / SQRT2 |
+| `BlackbodyNode` | `inputdata/basic/blackbody` | |
+| `DielectricSpecularNode` | `inputdata/pbr/dielectricSpecular` | |
+| `MetalReflectanceNode` | `inputdata/pbr/metalReflectance` | |
+
+## 纹理与 UV
+
+| Unity 节点 | LayaAir 蓝图节点 | 备注 |
+|---|---|---|
+| `SampleTexture2DNode` | `texture/sampler2D` | 含 RGBA / R / G / B / A 五路输出 |
+| `Texture2DAssetNode` | `texture/texture2D` | |
+| `SampleCubemapNode` / `SampleRawCubemapNode` | `texture/samplerCube` | |
+| `CubemapAssetNode` | `texture/textureCube` | |
+| `SampleTexture2DArrayNode` | `texture/sample2DArray` | **UV 与 Index 需手工拼成 vec3**，见差异说明 |
+| `Texture2DArrayAssetNode` | `texture/texture2DArray` | |
+| `SampleTexture3DNode` | `texture/sample3D` | |
+| `Texture3DAssetNode` | `texture/texture3D` | |
+| `NormalFromTextureNode` | `color/normalFromTexture` | |
+| `TilingAndOffsetNode` | `uv/Tiling And Offset` | |
+| `RotateNode` | `uv/rotate` | Unit 模式（弧度 / 角度）保留 |
+| `TwirlNode` | `uv/twirl` | |
+| `SpherizeNode` | `uv/spherize` | |
+| `RadialShearNode` | `uv/radialShear` | |
+| `PolarCoordinatesNode` | `uv/polarCoordinates` | |
+| `FlipbookNode` | `uv/flipbook` | InvertX / InvertY 开关保留 |
+
+## 程序化图形与噪声
+
+| Unity 节点 | LayaAir 蓝图节点 | 备注 |
+|---|---|---|
+| `EllipseNode` | `procedural/ellipse` | |
+| `RectangleNode` | `procedural/rectangle` | Fastest / Nicest 模式保留 |
+| `RoundedRectangleNode` | `procedural/roundedRectangle` | |
+| `PolygonNode` | `procedural/polygon` | |
+| `RoundedPolygonNode` | `procedural/roundedPolygon` | |
+| `CheckerboardNode` | `procedural/checkerboard` | |
+| `GradientNoiseNode` | `function/GradientNoiseFloat` | 哈希算法不同 |
+| `NoiseNode` / `SimpleNoiseNode` | `function/SimpleNoiseFloat` | 哈希算法不同 |
+| `VoronoiNode` | `function/VoronoiFloat` | 哈希算法不同 |
+
+## 数学
+
+| Unity 节点 | LayaAir 蓝图节点 |
+|---|---|
+| `AddNode` / `SubtractNode` / `MultiplyNode` / `DivideNode` | `math/basic/add` / `minus` / `multiply` / `divide` |
+| `OneMinusNode` | `math/basic/oneMinus` |
+| `AbsoluteNode` / `SignNode` | `math/common/abs` / `sign` |
+| `FloorNode` / `CeilingNode` / `FractionNode` | `math/common/floor` / `ceil` / `fract` |
+| `ModuloNode` | `math/common/mod` |
+| `MinimumNode` / `MaximumNode` | `math/common/min` / `max` |
+| `ClampNode` / `SaturateNode` | `math/common/clamp` |
+| `LerpNode` | `math/common/mix` |
+| `StepNode` / `SmoothstepNode` | `math/common/step` / `smoothstep` |
+| `NegateNode` | `math/advanced/negate` |
+| `PosterizeNode` | `math/advanced/posterize` |
+| `ReciprocalNode` / `ReciprocalSquareRootNode` | `math/advanced/reciprocal` / `reciprocalSqrt` |
+| `RoundNode` / `TruncateNode` | `math/round/round` / `truncate` |
+| `PowerNode` / `SquareRootNode` | `math/exponential/pow` / `sqrt` |
+| `ExponentialNode` / `LogNode` | `math/exponential/exp` / `log` |
+| `SineNode` / `CosineNode` / `TangentNode` | `math/trigonometry/sin` / `cos` / `tan` |
+| `ArcsineNode` / `ArccosineNode` / `ArctangentNode` | `math/trigonometry/asin` / `acos` / `atan` |
+| `Arctangent2Node` | `math/trigonometry/atan2` |
+| `DegreesToRadiansNode` / `RadiansToDegreesNode` | `math/trigonometry/radians` / `degrees` |
+| `HyperbolicSineNode` / `HyperbolicCosineNode` / `HyperbolicTangentNode` | `math/trigonometry/hyperbolicSine` / `hyperbolicCosine` / `hyperbolicTangent` |
+| `LengthNode` / `DistanceNode` | `math/geometric/length` / `distance` |
+| `DotProductNode` / `CrossProductNode` | `math/geometric/dot` / `cross` |
+| `NormalizeNode` | `math/geometric/normalize` |
+| `ReflectionNode` | `math/geometric/reflect` |
+| `RefractNode` | `math/vector/refract` |
+| `ProjectionNode` / `RejectionNode` | `math/vector/projection` / `rejection` |
+| `SphereMaskNode` | `math/vector/sphereMask` |
+| `RotateAboutAxisNode` | `math/vector/rotateAboutAxis` |
+| `InverseLerpNode` | `math/interpolation/inverseLerp` |
+| `RemapNode` | `math/range/remap` |
+| `RandomRangeNode` | `math/range/randomRange` |
+| `SawtoothWaveNode` / `SquareWaveNode` / `TriangleWaveNode` / `NoiseSineWaveNode` | `math/wave/` 同名节点 |
+| `FresnelNode` / `FresnelEffectNode` | `math/effect/fresnel` |
+| `CombineNode` | `math/expression/append` |
+| `DDXNode` / `DDYNode` / `DDXYNode` | `math/derivative/DDX` / `DDY` / `DDXY` |
+| `MatrixTransposeNode` / `MatrixDeterminantNode` | `math/matrix/matrixTranspose` / `matrixDeterminant` |
+| `MatrixSplitNode` / `MatrixConstructionNode` | `math/matrix/matrixSplit` / `matrixConstruction` |
+| `TransformNode` / `TransformationMatrixNode` | `math/matrix/transform` / `transformationMatrix` |
+
+## 逻辑与通道
+
+| Unity 节点 | LayaAir 蓝图节点 | 备注 |
+|---|---|---|
+| `AndNode` / `OrNode` / `NandNode` / `NotNode` | `logic/and` / `or` / `nand` / `not` | |
+| `AllNode` / `AnyNode` | `logic/all` / `any` | |
+| `BranchNode` / `BranchOnInputConnectionNode` | `logic/branch` | |
+| `ComparisonNode` | `logic/comparison` | 六种比较模式保留 |
+| `IsNanNode` / `IsInfiniteNode` | `logic/isNaN` / `isInfinite` | |
+| `SwizzleNode` | `channel/swizzle` | |
+| `FlipNode` / `ChannelMaskNode` | `channel/flip` / `channelMask` | |
+| `SplitNode` | 转换器特殊处理 | 拆成分量后直接接下游 |
+
+## 颜色与艺术效果
+
+| Unity 节点 | LayaAir 蓝图节点 | 备注 |
+|---|---|---|
+| `BlendNode` | `color/blend` | 22 种模式逐一对齐 |
+| `SaturationNode` / `HueNode` / `ContrastNode` | `color/saturation` / `hue` / `contrast` | |
+| `WhiteBalanceNode` | `color/whiteBalance` | |
+| `ReplaceColorNode` / `ColorMaskNode` | `color/replaceColor` / `colorMask` | |
+| `InvertColorsNode` | `color/invertColors` | |
+| `ColorspaceConversionNode` | `color/colorspaceConversion` | 9 种组合 |
+| `ChannelMixerNode` | `color/channelMixer` | |
+| `FadeTransitionNode` | `color/fadeTransition` | |
+| `NormalBlendNode` | `color/normalBlend` | Default / Reoriented |
+| `NormalStrengthNode` | `function/normalScale` | |
+| `NormalUnpackNode` | `color/normalUnpack` | |
+| `NormalReconstructZNode` | `color/normalReconstructZ` | |
+| `NormalFromHeightNode` | `color/normalFromHeight` | |
+| `DitherNode` | `utility/dither` | |
+
+## 走 custom 兜底的节点
+
+以下 Unity 节点没有一一对应的 Laya 原生节点，转换时生成 `function/custom` 内嵌 GLSL。
+功能可用，但在蓝图里表现为一个代码块而不是可视化节点：
+
+| Unity 节点 | 说明 |
+|---|---|
+| `CustomFunctionNode` | Unity 侧本来就是自定义代码，直译过来是正确做法 |
+| `GradientNode` / `SampleGradient` | 渐变数据在编译期已知，转换器把采样内联展开成 `mix` 链 |
+| `TriplanarNode` | 三平面映射 |
+| `KeywordNode` | 关键字分支 |
+| `IsFrontFaceNode` | Laya 有 `logic/isFrontFace`，但输出类型语义不同，暂走 custom |
+
+## 尚未覆盖的节点
+
+以下 Unity 节点目前没有映射，自动转换时会被跳过。手工重建时需要用其他方式实现：
+
+| Unity 节点 | 情况 | 替代方案 |
+|---|---|---|
+| `SamplerStateNode` | Laya 无独立采样器状态概念 | 采样器设置在纹理资源的导入设置里配置 |
+| `ParallaxOcclusionMappingNode` | 需要在循环中反复采样纹理，**受蓝图框架限制无法实现** | 用 `uv/parallax` 单步视差近似 |
+| `ParallaxMappingNode` | 语义不匹配（Unity 内部采高度图并自动算切线视线；Laya 取显式标量与视线） | 用 `uv/parallax`，自己接高度与视线 |
+| `SplitTextureTransformNode` | 拆纹理的 tiling / offset 元数据 | 自己用 Params 传入 tiling / offset |
+| `Texture2DPropertiesNode` | 纹理尺寸等元数据未暴露 | 用 Params 传入尺寸常量 |
+| `CalculateLevelOfDetailTexture2DNode` | 纹理 LOD 查询未暴露 | — |
+| `GatherTexture2DNode` | 需要 ES 3.1 的 gather | 用四次相邻采样手工模拟 |
+| `SceneDepthDifferenceNode` | 需要位置输入 | 用 `sceneDepth` 自己相减 |
+| `EyeIndexNode` | VR 眼索引 | — |
+| `SubGraphNode` | 转换器不展开 Unity 子图 | 在 Laya 侧用[蓝图函数 `.bpsf`](/shader-blueprint/ide-workflow/#八蓝图函数bpsf)重建 |
+
+## 已知语义差异
+
+即使节点已映射，下面这些地方两边行为不完全一致，迁移后需要检查：
+
+### 没有动态维度推导
+
+Unity 大量节点是「动态维度向量」，会自动为不同维度的输入做广播。**Laya 的多态节点只能锁定一种类型**，
+所有输入被统一到同一维度。Unity 图里依赖隐式广播的地方，转过来需要显式用 `append` / `mask` /
+`swizzle` 对齐维度。这是两边最主要的结构性差异。
+
+### TimeNode 只有一路输出
+
+Unity 的 Time 节点有 Time / Sine Time / Cosine Time / Delta Time / Smooth Delta 五路输出；
+Laya 的 `Time` 是**单个标量**。转换时只取 Time，其余输出会退化。需要 Sine Time 请自己接 `sin`；
+Delta Time 类需要引擎逐帧增量，目前无对应。
+
+### 空间语义
+
+Unity 的 `Position` / `Normal Vector` / `Tangent Vector` 带 Space 选项（Object / View / World /
+Tangent / AbsoluteWorld）。转换器会读取该设置并选择 Laya 的 OS / WS 版本；但 **View 与 Tangent
+空间没有直接对应**，会回落并给出告警。用到这两个空间时请手工用 `math/matrix/transform` 或
+`TBNMatrix` 补上。
+
+### 纹理数组的 Index
+
+Unity 的 `SampleTexture2DArray` 是 UV(vec2) + Index(float) 两个输入；Laya 的 `sample2DArray`
+是单个 Coord(vec3)。转换后 **Index 会丢失**，需要手工用 `append` 拼成 `vec3(uv, layer)` 再接进去。
+
+### 噪声图案不同
+
+三个噪声节点的整体特征一致，但哈希算法不同，**逐像素图案不会一样**。依赖噪声精确图案的效果
+（如特定形状的溶解边缘）迁移后需要重新调 Scale 与阈值。
+
+### 其他细项
+
+- **矩阵主序**：Unity（HLSL）行主序、Laya（GLSL）列主序。手工重建矩阵时注意按列填。
+- **法线贴图绿通道**：Unity 用 DirectX 约定，选 Laya 的 `sampler2DNormal(DX)` 才一致。
+- **`transform` 的 Normal 模式**按 Direction 近似，非均匀缩放物体上不精确。
+- **`ObjectNode`** 在开启 GPU 实例化时取不到逐实例数据。
+
+## 相关文档
+
+- [Unity 资源导出插件 · 自定义 Shader 导出](/unity-plugin/custom-shader/) —— 批量转换 `.shadergraph` 的操作流程
+- [节点手册](/shader-blueprint/nodes-input/) —— 映射目标节点的详细参数

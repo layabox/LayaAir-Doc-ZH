@@ -1,0 +1,70 @@
+---
+title: "着色器蓝图文档集"
+description: "LayaAir 3.x 着色器蓝图（Shader Blueprint）的完整功能文档，涵盖概念、IDE 操作流程、终端与渲染设置、全部内置节点手册，以及与 Unity ShaderGraph 的逐节点对照，供美术与程序查阅。"
+slug: "shader-blueprint"
+---
+
+import FeatureTable from '../../../components/FeatureTable.astro';
+
+着色器蓝图（Shader Blueprint）让开发者用连线的方式构建 Shader，不写一行 GLSL 也能做出完整的
+PBR、Unlit、Blinnphong 材质效果。本文档集是着色器蓝图的**完整功能说明**：从概念认知，到 IDE
+里的每一步操作，到每个节点的输入输出与模式，再到从 Unity ShaderGraph 迁移时的逐节点对照。
+
+## 阅读顺序
+
+| 文档 | 内容 | 适合谁 |
+|---|---|---|
+| [概念篇](/shader-blueprint/concepts/) | 蓝图是什么、两种资源、编译管线、类型系统与连线规则、端口颜色 | 第一次接触，先建立认知 |
+| [IDE 操作流程](/shader-blueprint/ide-workflow/) | 创建 `.bps`、编辑器分区、加节点连线、Params 变量、快捷键、材质使用、蓝图函数 | 想立刻上手做一个 Shader |
+| [材质类型与终端](/shader-blueprint/terminals/) | PBR / Blinnphong / Unlit / Particle 四种终端的**每一个输入槽**，以及渲染状态、附加 Pass、开关 | 配置输出与渲染方式时查 |
+| [节点手册 · 输入与坐标](/shader-blueprint/nodes-input/) | 常量、顶点与几何、相机、场景、光照、物体、UV、纹理、程序化图形 | 搭图时查数据来源节点 |
+| [节点手册 · 数学与逻辑](/shader-blueprint/nodes-math/) | 四则、常用函数、指数、三角、几何、波形、矩阵、通道、逻辑、导数 | 搭表达式网络时查 |
+| [节点手册 · 颜色与艺术效果](/shader-blueprint/nodes-color/) | 色彩空间、色相饱和度、混合模式、法线处理、噪声、抖动、自定义函数 | 调颜色与做效果时查 |
+| [Unity ShaderGraph 对照](/shader-blueprint/unity-shadergraph/) | 162 条 Unity 节点 → Laya 节点映射表、未覆盖清单、已知语义差异 | 从 Unity 迁移资产的用户 |
+
+## 能力概览
+
+蓝图右键菜单当前提供 **186 个节点**，分为 12 个一级分类（另有一批供节点内部调用的隐藏实现节点，
+以及只能从 Params 面板添加的颜色与纹理资产节点）。下表是各分类的覆盖情况：
+
+<FeatureTable cols={['节点分类', '菜单路径', '覆盖度', '说明']} rows={[
+  { feat: '常量与向量', target: 'basic/', level: 'full',
+    note: 'Boolean / Int / Float / Vector2~4 / mat2~4，共 12 项（Vector2~4 各有「带 in 输入」的重载）。<b>Color 常量从 Params 面板添加</b>' },
+  { feat: '顶点与几何数据', target: 'inputdata/vertex、inputdata/geometry', level: 'full',
+    note: '对象空间 positionOS / normalOS / tangentOS / uv / uv1 / VertexColor，世界空间 positionWS / normalWS / tangentWS / biNormalWS / TBNMatrix' },
+  { feat: '相机与屏幕', target: 'inputdata/camera', level: 'full',
+    note: '位置、朝向、Up、近远裁剪面、viewport（含宽高）、viewVector' },
+  { feat: '场景数据', target: 'inputdata/scene', level: 'conf',
+    note: 'Time / fog 直接可用；<b>sceneDepth、sceneColor 需相机开启深度纹理 / 不透明纹理</b>，否则采到默认值' },
+  { feat: '光照与物体', target: 'inputdata/light、inputdata/object', level: 'part',
+    note: 'mainLightDirection / mainLightColor 在 PBR + 有方向光时取真值，Unlit 走 fallback；objectPosition / objectScale 在 GPU 实例化下不准（实例矩阵是顶点属性）' },
+  { feat: '数学运算', target: 'math/', level: 'full',
+    note: '76 个节点：四则、common、指数、三角与双曲、几何、波形、取整、重映射、向量投影、矩阵、导数 DDX/DDY/DDXY' },
+  { feat: '逻辑与分支', target: 'logic/、math/if、math/forLoop', level: 'full',
+    note: 'and / or / nand / not / branch / comparison（6 种比较）/ all / any / isNaN / isInfinite / isFrontFace' },
+  { feat: '通道操作', target: 'channel/、math/expression', level: 'full',
+    note: 'flip / swizzle（任意重排）/ channelMask / mask / append 组合分量' },
+  { feat: 'UV 变换', target: 'uv/', level: 'full',
+    note: 'Tiling And Offset / panner / rotate / twirl / spherize / radialShear / polarCoordinates / flipbook / parallax / 屏幕 UV' },
+  { feat: '纹理采样', target: 'texture/', level: 'full',
+    note: '2D、法线（DX / OpenGL 两种）、Cubemap、Texture2DArray、Texture3D 五类采样节点；<b>纹理资产本身从 Params 面板声明</b>' },
+  { feat: '程序化图形', target: 'procedural/', level: 'full',
+    note: 'ellipse / rectangle / roundedRectangle / polygon / roundedPolygon / checkerboard，边缘用 fwidth 抗锯齿' },
+  { feat: '颜色与艺术效果', target: 'color/、utility/', level: 'full',
+    note: '色彩空间转换、色相 / 饱和度 / 对比度 / 白平衡、22 种混合模式、法线处理五件套、通道混合、dither' },
+  { feat: '噪声', target: 'function/', level: 'part',
+    note: 'GradientNoise / SimpleNoise / Voronoi 可用；<b>Unity 的 Hash Type 选项无对应</b>，固定用一种哈希' },
+  { feat: '自定义与扩展', target: 'function/custom、.bpsf', level: 'full',
+    note: '内嵌 GLSL 代码节点；蓝图函数 <code>.bpsf</code> 可封装子图并在多个蓝图间复用' },
+]} />
+
+:::tip[想快速定位一个节点]
+节点手册按**菜单路径**排序，与蓝图编辑器右键菜单的层级完全一致。知道节点名时，直接在对应手册页用
+浏览器 Ctrl+F 搜节点名即可；知道 Unity 里叫什么时，先查 [Unity 对照表](/shader-blueprint/unity-shadergraph/)。
+:::
+
+## 相关文档
+
+- [程序蓝图](/ide/shaderblueprint/blueprint/) —— 用连线写脚本组件的蓝图（与着色器蓝图是两套独立功能）
+- [VFX Graph 教学文档集](/vfx-graph/) —— GPU 粒子特效；其 ShaderGraph 输出可直接使用着色器蓝图产出的 Shader
+- [Unity 资源导出插件](/unity-plugin/) —— 把 Unity 的 `.shadergraph` 批量转成 `.bps`
