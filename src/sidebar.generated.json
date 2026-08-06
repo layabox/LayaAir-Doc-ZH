@@ -150,24 +150,6 @@
         ]
       },
       {
-        "label": "游戏入门实例",
-        "collapsed": true,
-        "items": [
-          {
-            "label": "概述",
-            "link": "/basics/ide/gamedevelopment/"
-          },
-          {
-            "label": "一个2D入门游戏",
-            "link": "/2d/advanced/2dgame/"
-          },
-          {
-            "label": "一个3D入门游戏",
-            "link": "/3d/advanced/3dgame/"
-          }
-        ]
-      },
-      {
         "label": "IDE快捷键与鼠标交互操作大全",
         "link": "/basics/ide/shortcutkeycombinations/"
       },
