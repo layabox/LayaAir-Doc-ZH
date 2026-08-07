@@ -167,8 +167,7 @@ slug: "guides/roadmap/migration"
 
 - **建议阅读**
   - Unity：[疑似问题清单](/unity-plugin/known-issues/)
-  - 性能：[性能优化](/basics/performanceoptimization/)
-  - 纹理：[VIP纹理优化说明](/basics/performanceoptimization/vip-texture/)（若从 Unity 批量导出纹理）
+  - 性能：[2D 性能优化](/2d/performanceoptimization/)与[3D 性能优化](/3d/advanced/performanceoptimization/)
 
 - **产出**
   - 迁移验收 Checklist（显示、动画、物理、UI、性能各一项）

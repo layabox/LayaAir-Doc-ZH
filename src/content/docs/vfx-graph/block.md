@@ -2,6 +2,8 @@
 title: "属性详解 · Block（块 / 行为单元）"
 description: "按类别详解 VFX Graph 全部 Block 行为单元的参数：Spawn、Attribute、Position、Velocity、Force、Collision、Kill、Orient、Output、GPUEvent 与自定义块，配置粒子行为时逐项查阅。"
 slug: "vfx-graph/block"
+banner:
+  content: "🚧 本文正在 review 与补图中，参数说明可先行查阅。"
 ---
 
 > Block 是堆在 Context 里的「行为单元」，**唯一能写粒子属性的元素**，在 Context 内从上到下顺序执行。本篇按类别详解每个 Block 的参数。

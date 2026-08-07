@@ -11,6 +11,8 @@ import devEditor from './dev-editor/integration.mjs';
 // 相对图片路径（本地 Markdown 预览用）→ 站内绝对路径（public）
 import { remarkDocImages } from './tools/remark-doc-images.mjs';
 
+const SITE_BASE = '/3.x/doc';
+
 // —— 未完成文档的目录裁剪 ——
 // 两类页面不进正式版目录：
 //   1. draft: true —— 空文档/占位文档且无其他文档链接，正式构建时 Starlight 直接不输出该页；
@@ -31,7 +33,7 @@ function collectHiddenLinks() {
         if (!fm) continue;
         if (!/^draft:\s*true/m.test(fm[1]) && !/^pagefind:\s*false/m.test(fm[1])) continue;
         const slug = fm[1].match(/^slug:\s*"([^"]*)"/m);
-        if (slug) hidden.add('/' + (slug[1] ? slug[1] + '/' : ''));
+        if (slug) hidden.add(('/' + (slug[1] ? slug[1] + '/' : '')).toLowerCase());
       }
     }
   };
@@ -67,19 +69,43 @@ function rehypeLazyImages() {
   };
 }
 
+// 最终 HTML AST 阶段统一补部署子目录，覆盖 Markdown 链接和 Starlight MDX 组件链接。
+function rehypeBaseUrls() {
+  const keys = ['href', 'src', 'poster', 'dataSrc'];
+  return (tree) => {
+    const walk = (node) => {
+      if (node.properties) {
+        for (const key of keys) {
+          const value = node.properties[key];
+          if (typeof value === 'string' && value.startsWith('/') && !value.startsWith('//')) {
+            if (value !== SITE_BASE && !value.startsWith(SITE_BASE + '/')) {
+              node.properties[key] = SITE_BASE + value;
+            }
+          }
+        }
+      }
+      if (node.children) node.children.forEach(walk);
+    };
+    walk(tree);
+  };
+}
+
 // LayaAir 引擎文档 — Astro + Starlight
 // 外壳（导航/搜索/版本/主题）全部由本框架统一提供；
 // 内容只需写正文（MDX/HTML 友好），AI 可直接生成。
 export default defineConfig({
   site: 'https://www.layaair.com',
+  // 正式站部署在域名的子目录中。Astro 会据此为构建资源和站内路由添加前缀。
+  base: SITE_BASE,
   // 构建输出目录与旧版 GitBook 保持一致
   outDir: './_book',
   // 预取：鼠标移到链接上即提前加载目标页，点击瞬间显示（配合无刷新切换）
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   // 站外链接自动新标签打开 + 安全 rel；图片相对路径在 remark 阶段转绝对（见 remark-doc-images）
   markdown: {
-    remarkPlugins: [remarkDocImages],
+    remarkPlugins: [[remarkDocImages, { base: SITE_BASE }]],
     rehypePlugins: [
+      rehypeBaseUrls,
       [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
       rehypeLazyImages,
     ],
@@ -95,6 +121,7 @@ export default defineConfig({
       },
       // logo 配置已被下方 SiteTitle 组件覆写取代（完整品牌图 + 「文档」二字），此处仅作回退
       logo: { src: './src/assets/layabox-logo.svg', alt: 'LayaAir' },
+      // Starlight 会自动为 favicon 添加 Astro 的 base。
       favicon: '/favicon-32.ico',
       customCss: ['./src/styles/custom.css'],
       // 页脚显示本文最近更新时间（优先 frontmatter.lastUpdated，否则取该文件 Git 最近提交时间）

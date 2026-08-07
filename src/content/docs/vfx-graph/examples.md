@@ -29,14 +29,14 @@ slug: "vfx-graph/examples"
 
 | 功能点 | 示例 | 预期效果 | 文档 |
 |---|---|---|---|
-| Constant Rate | `VfxGraph.vfx` | 每秒稳定冒出固定数量粒子 | [Spawn](/vfx-graph/context/#1-spawn-生成) |
+| Constant Rate | `VfxGraph.vfx` | 每秒稳定冒出固定数量粒子 | [Spawn](/vfx-graph/context/#1-spawn--生成节奏) |
 | Single Burst | `VfxSample_Burst.vfx` | 一次性爆发一团粒子后停止 | [Spawn](/vfx-graph/block/#1-spawn-生成) |
 | Loop Burst | `VfxSample_LoopBurst.vfx` | 周期性反复爆发 | 同上 |
 | Fountain（连续喷射） | `VfxSample_Fountain.vfx` | 持续喷泉状粒子流 | 同上 |
 | PreWarm（预热） | `VfxSample_PreWarm.vfx` | 场景一加载粒子就已是「演过一段」的状态 | [图级属性](/vfx-graph/graph-and-components/#1-图级属性graph-settings) |
 | Spawn Over Distance | `VfxSample_SpawnOverDistance.vfx` | 发射器移动才生成粒子（足迹/拖尾） | [Spawn](/vfx-graph/block/#spawn-over-distance按移动距离生成) |
 | Custom Spawner（脚本驱动） | `LearningTemplates/vfx/CustomSpawnerTest.vfx` + `src/CustomSpawnerDemo.ts` | 点击屏幕喷一团 30 颗，无点击 0 颗 | [CustomSpawn](/vfx-graph/code/#7-自定义-spawn-回调脚本驱动生成数量) |
-| Capacity（容量上限） | `LearningTemplates/vfx/CapacityCount.vfx` | 活粒子数被 Capacity 限制不再增长 | [Initialize](/vfx-graph/context/#2-initialize-诞生初始化) |
+| Capacity（容量上限） | `LearningTemplates/vfx/CapacityCount.vfx` | 活粒子数被 Capacity 限制不再增长 | [Initialize](/vfx-graph/context/#2-initialize--诞生初始化) |
 
 ---
 

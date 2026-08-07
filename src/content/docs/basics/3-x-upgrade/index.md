@@ -1,6 +1,7 @@
 ---
 title: "3.x引擎项目升级说明"
 slug: "basics/3-x-upgrade"
+pagefind: false
 
 ---
 

@@ -6,7 +6,7 @@ slug: "ide/component/physics3d/charactercontroller"
 
 > Author : Charley
 
-在LayaAir3引擎中，角色控制器的类为 **CharacterController**，继承自 PhysicsColliderComponent。本文档介绍角色控制器的碰撞形状、专有属性和运动控制方法。关于角色控制器的概念说明，请参考[《3D物理组件》总览](/ide/component/physics3d/#13-角色控制器)。
+在LayaAir3引擎中，角色控制器的类为 **CharacterController**，继承自 PhysicsColliderComponent。本文档介绍角色控制器的碰撞形状、专有属性和运动控制方法。
 
 ## 1、碰撞形状相关
 

@@ -44,19 +44,37 @@ import { DOC_VERSION } from '../constants/doc-version';
         n = n.parentElement;
       }
     }
-    /** 把当前文档滚到侧栏可视区偏上约 30% 处，并写回 sessionStorage 的 scroll */
+    /**
+     * 当前项已在可视区时保持侧栏原位；仅在不可见时做最小距离滚动。
+     * 这样点击可见目录项换页后，侧栏不会为了把它放到固定的 30% 位置而跳动。
+     */
     function scrollToCurrent() {
       const pane = scroller();
       if (!pane) return false;
       const current = currentEl(pane);
       if (!current) return false;
       openAncestors(current, pane);
-      const offset =
-        current.getBoundingClientRect().top -
-        pane.getBoundingClientRect().top +
-        pane.scrollTop;
-      const top = Math.max(0, offset - pane.clientHeight * 0.3);
-      pane.scrollTop = top;
+      const preserved = Number(window.__layaSidebarClickScrollTop);
+      let top;
+
+      if (Number.isFinite(preserved)) {
+        // ClientRouter 换页会重建侧栏 DOM。优先恢复点击瞬间的位置，避免深层目录跳动。
+        top = preserved;
+      } else {
+        const paneRect = pane.getBoundingClientRect();
+        const currentRect = current.getBoundingClientRect();
+        const padding = 12;
+        top = pane.scrollTop;
+
+        if (currentRect.top < paneRect.top + padding) {
+          top += currentRect.top - paneRect.top - padding;
+        } else if (currentRect.bottom > paneRect.bottom - padding) {
+          top += currentRect.bottom - paneRect.bottom + padding;
+        }
+      }
+
+      top = Math.max(0, top);
+      if (Math.abs(top - pane.scrollTop) >= 1) pane.scrollTop = top;
       // 同步 sessionStorage，避免之后 pageHide 又把「错误的旧位置」存回去、下一次刷新再还原
       try {
         const key = 'sl-sidebar-state';
@@ -128,6 +146,7 @@ import { DOC_VERSION } from '../constants/doc-version';
       const go = (e: Event) => {
         e.preventDefault();
         e.stopPropagation(); // 阻止冒泡到 summary，避免顺带展开/收缩
+        preserveSidebarPosition();
         navigate(href);
       };
       label.addEventListener('click', go);
@@ -147,9 +166,26 @@ import { DOC_VERSION } from '../constants/doc-version';
   }
 
   type ScrollFn = () => boolean;
+  type SidebarWindow = Window & {
+    __layaScrollSidebarToCurrent?: ScrollFn;
+    __layaSidebarClickScrollTop?: number;
+  };
+
+  function preserveSidebarPosition() {
+    const pane = document.getElementById('starlight__sidebar');
+    if (pane) (window as SidebarWindow).__layaSidebarClickScrollTop = pane.scrollTop;
+  }
+
+  // 在导航开始、侧栏 DOM 被 ClientRouter 替换之前记录精确滚动位置。
+  document.addEventListener('pointerdown', (e) => {
+    const target = e.target as Element | null;
+    if (target?.closest?.('#starlight__sidebar a[href], #starlight__sidebar .group-label-clickable')) {
+      preserveSidebarPosition();
+    }
+  });
+
   function scrollSidebarToCurrent() {
-    const fn = (window as Window & { __layaScrollSidebarToCurrent?: ScrollFn })
-      .__layaScrollSidebarToCurrent;
+    const fn = (window as SidebarWindow).__layaScrollSidebarToCurrent;
     if (typeof fn === 'function') {
       fn();
       // enhance 改 DOM 后布局延迟一帧再滚一次
@@ -183,6 +219,10 @@ import { DOC_VERSION } from '../constants/doc-version';
     // 短延迟再校正：覆盖 font/layout/ClientRouter 换页后的滞后测量
     setTimeout(scrollSidebarToCurrent, 0);
     setTimeout(scrollSidebarToCurrent, 50);
+    // 等本轮 DOM/layout 校正完成后再清除，下一次非侧栏导航仍可按当前项自动定位。
+    setTimeout(() => {
+      delete (window as SidebarWindow).__layaSidebarClickScrollTop;
+    }, 150);
   }
 
   // 首屏 + 每次 ClientRouter 换页后都重新接（换页会重建侧栏 DOM；

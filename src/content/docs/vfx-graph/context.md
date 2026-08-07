@@ -2,6 +2,8 @@
 title: "属性详解 · Context（上下文）"
 description: "逐一详解 VFX Graph 每个 Context 节点的属性参数：Spawn 生成节奏、Initialize 初始化、Update 每帧更新，以及 Billboard、Mesh、Trail、Distortion 等十种 Output 渲染形态的公共与专有参数。"
 slug: "vfx-graph/context"
+banner:
+  content: "🚧 本文正在 review 与补图中，参数说明可先行查阅。"
 ---
 
 > 本篇详解每个 Context 节点属性面板里的**每一个参数**。Context 是生命周期阶段容器，用 flow 串成 `Event → Spawn → Initialize → Update → Output` 流水线。

@@ -7,7 +7,7 @@
     "link:images": "node tools/link-doc-images.mjs",
     "postinstall": "node tools/link-doc-images.mjs",
     "dev": "node tools/link-doc-images.mjs && astro dev",
-    "build": "astro build && node tools/add-lazy.mjs",
+    "build": "astro build && node tools/add-lazy.mjs && node tools/version-pagefind.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

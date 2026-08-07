@@ -59,7 +59,7 @@ slug: "3d/advanced/unity"
 | **.png**       | PNG格式的纹理图片文件。                                      |
 | **.hdr**       | 全景天空盒需要的HDR格式图片文件                              |
 
-> 完整的产物类型（含 2D 图集、`.cubemap`、运行时脚本等）见[整体导出流程](/unity-plugin/overview/#四产物文件类型)。
+> 完整的产物类型（含 2D 图集、`.cubemap`、运行时脚本等）见[整体导出流程](/unity-plugin/overview/#-产物文件类型)。
 
 ## 四、导出后的加载显示
 

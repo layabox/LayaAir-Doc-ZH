@@ -10,9 +10,10 @@
 // 比 CSS filter 反色更准：绿色不会变闷。两张图 CSS 按主题切换显示。
 import logo from '../assets/layaair3-logo.png';
 import logoDark from '../assets/layaair3-logo-dark.png';
+const homeUrl = import.meta.env.BASE_URL;
 ---
 
-<a href="/" class="site-title laya-brand sl-flex">
+<a href={homeUrl} class="site-title laya-brand sl-flex">
   <img src={logo.src} alt="LayaAir3" class="laya-brand-logo laya-brand-light" />
   <img src={logoDark.src} alt="LayaAir3" class="laya-brand-logo laya-brand-dark" />
   <span class="laya-brand-doc">文档</span>

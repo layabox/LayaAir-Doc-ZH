@@ -52,7 +52,7 @@ slug: "guides/roadmap/intermediate"
   - [项目启动入口说明](/basics/ide/entry/)
   - [实体组件系统（ECS）](/basics/common/component/)
   - [DevTools调试工具](/basics/devtools/)
-  - [帧调试器面板](/basics/ide/framedebugger/)
+  - [DevTools 调试工具](/basics/devtools/)
 
 - **产出（建议做完）**
   - 制定一套脚本组织规范：模块分层、命名、事件与生命周期使用约定
@@ -79,12 +79,9 @@ slug: "guides/roadmap/intermediate"
 **目标**：建立“可量化”的性能优化闭环：采样 → 定位 → 改动 → 验证，避免盲改。
 
 - **建议阅读（先做必读再选读）**
-  - 性能总览：[性能优化](/basics/performanceoptimization/)
-  - 指标与面板：[Stat 性能面板](/basics/performanceoptimization/stat-panel/)
-  - 渲染相关：[渲染性能优化](/basics/performanceoptimization/rendering/)
-  - 内存相关：[内存优化](/basics/performanceoptimization/memory/)
-  - 其它技巧：[其它优化](/basics/performanceoptimization/other/)
-  - 分析方法：[Chrome Profiles](/basics/performanceoptimization/chrome-profiles/)
+  - 2D 性能：[2D 性能优化](/2d/performanceoptimization/)
+  - 3D 性能：[3D 渲染性能优化](/3d/advanced/performanceoptimization/)
+  - 分析方法：[DevTools 调试工具](/basics/devtools/)
 
 - **产出（建议写到项目文档里）**
   - 目标设备（低/中/高端）下的 FPS、内存、首屏时间基线

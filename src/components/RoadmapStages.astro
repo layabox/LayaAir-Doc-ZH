@@ -1,4 +1,6 @@
 ---
+import { withSiteBase } from '../utils/site-url';
+
 /**
  * 学习路线阶段列表 —— 用于「程序新手路线」总览页。
  * 展示编号、时长、摘要与跳转链接，形成清晰的进度地图。
@@ -25,7 +27,7 @@ const { stages } = Astro.props;
       <div class="rm-rail" aria-hidden="true">
         <span class="rm-dot">{s.step}</span>
       </div>
-      <a class="rm-card" href={s.href}>
+      <a class="rm-card" href={withSiteBase(s.href)}>
         <div class="rm-card-top">
           <h3 class="rm-title">{s.title}</h3>
           <span class="rm-time">{s.time}</span>

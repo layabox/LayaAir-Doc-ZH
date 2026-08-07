@@ -2,6 +2,9 @@
 title: "多人联机游戏应用"
 description: "结合AI，创建一个Node.js多人联机游戏应用，使用WebSocket进行实时通信。"
 slug: "basics/common/network/multiplayergame"
+pagefind: false
+banner:
+  content: "🚧 本文正在编辑中，完整的多人联机游戏实战内容仍在编写。"
 ---
 
 结合AI，创建一个Node.js多人联机游戏应用，使用WebSocket进行实时通信。

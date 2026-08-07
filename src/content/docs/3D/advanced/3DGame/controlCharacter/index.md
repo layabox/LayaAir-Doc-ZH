@@ -2,6 +2,7 @@
 title: "3D角色的控制"
 description: "一个3D角色的控制脚本，包括移动、旋转、跳跃等功能。"
 slug: "3d/advanced/3dgame/controlcharacter"
+draft: true
 ---
 
 一个3D角色的控制脚本，包括移动、旋转、跳跃等功能。

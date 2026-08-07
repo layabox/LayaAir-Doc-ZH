@@ -12,7 +12,10 @@ interface Props {
   poster?: string;   // 封面图（本地 mp4 的 poster / 平台遮罩背景）
   title?: string;    // 无障碍标题
 }
+import { withSiteBase } from '../utils/site-url';
 const { src, bilibili, youtube, poster, title = '视频' } = Astro.props;
+const srcUrl = withSiteBase(src);
+const posterUrl = withSiteBase(poster);
 const frameSrc = bilibili
   ? `https://player.bilibili.com/player.html?bvid=${bilibili}&autoplay=0&high_quality=1`
   : youtube
@@ -21,15 +24,15 @@ const frameSrc = bilibili
 ---
 
 <div class="video-embed">
-  {src && (
-    <video class="ve-video" controls preload="metadata" poster={poster} playsinline>
-      <source src={src} />
-      你的浏览器不支持 video 标签。<a href={src}>下载视频</a>
+  {srcUrl && (
+    <video class="ve-video" controls preload="metadata" poster={posterUrl} playsinline>
+      <source src={srcUrl} />
+      你的浏览器不支持 video 标签。<a href={srcUrl}>下载视频</a>
     </video>
   )}
 
   {frameSrc && (
-    <div class="ve-frame" data-src={frameSrc} style={poster ? `background-image:url(${poster})` : ''}>
+    <div class="ve-frame" data-src={frameSrc} style={posterUrl ? `background-image:url(${posterUrl})` : ''}>
       <button class="ve-play" type="button" aria-label={`播放：${title}`}>
         <svg viewBox="0 0 68 48" width="60" aria-hidden="true">
           <path class="ve-play-bg" d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55 0 34 0 34 0S13 0 7.5 1.7a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C13 48 34 48 34 48s21 0 26.5-1.7a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z"/>

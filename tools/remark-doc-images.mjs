@@ -4,14 +4,23 @@
  */
 import { pageDirFromFilePath, toSiteAbsolute } from './lib/doc-images.mjs';
 
-function rewriteHtmlSrc(html, pageDir) {
-	return html.replace(/(\bsrc\s*=\s*["'])([^"']+)(["'])/gi, (_, a, src, c) => {
-		if (!/\.(png|jpe?g|gif|webp|svg|bmp)(\?|#|$)/i.test(src)) return a + src + c;
-		return a + toSiteAbsolute(src, pageDir) + c;
+function withBase(url, base) {
+	if (!url || !url.startsWith('/') || url.startsWith('//')) return url;
+	if (!base || url === base || url.startsWith(base + '/')) return url;
+	return base + url;
+}
+
+function rewriteHtmlUrls(html, pageDir, base) {
+	return html.replace(/(\b(?:href|src|poster)\s*=\s*["'])([^"']+)(["'])/gi, (_, a, url, c) => {
+		const isImage = /\.(png|jpe?g|gif|webp|svg|bmp)(\?|#|$)/i.test(url);
+		const resolved = isImage ? toSiteAbsolute(url, pageDir) : url;
+		return a + withBase(resolved, base) + c;
 	});
 }
 
-export function remarkDocImages() {
+export function remarkDocImages({ base = '' } = {}) {
+	base = ('/' + base).replace(/\/{2,}/g, '/').replace(/\/$/, '');
+	if (base === '/') base = '';
 	return (tree, file) => {
 		const filePath = file.path || file.history?.[0] || '';
 		const pageDir = pageDirFromFilePath(filePath);
@@ -20,19 +29,27 @@ export function remarkDocImages() {
 		const walk = (node) => {
 			if (!node || typeof node !== 'object') return;
 			if (node.type === 'image' && typeof node.url === 'string') {
-				node.url = toSiteAbsolute(node.url, pageDir);
+				node.url = withBase(toSiteAbsolute(node.url, pageDir), base);
+			} else if (
+				(node.type === 'link' || node.type === 'definition') &&
+				typeof node.url === 'string'
+			) {
+				node.url = withBase(node.url, base);
 			} else if (node.type === 'html' && typeof node.value === 'string') {
-				node.value = rewriteHtmlSrc(node.value, pageDir);
+				node.value = rewriteHtmlUrls(node.value, pageDir, base);
 			} else if (node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') {
-				// MDX <img src="./img/x" />
-				if (node.name === 'img' && Array.isArray(node.attributes)) {
+				if (Array.isArray(node.attributes)) {
 					for (const attr of node.attributes) {
 						if (
 							attr?.type === 'mdxJsxAttribute' &&
-							attr.name === 'src' &&
+							['href', 'src', 'poster', 'before', 'after'].includes(attr.name) &&
 							typeof attr.value === 'string'
 						) {
-							attr.value = toSiteAbsolute(attr.value, pageDir);
+							const isImageAttr =
+								attr.name !== 'href' &&
+								/\.(png|jpe?g|gif|webp|svg|bmp)(\?|#|$)/i.test(attr.value);
+							const resolved = isImageAttr ? toSiteAbsolute(attr.value, pageDir) : attr.value;
+							attr.value = withBase(resolved, base);
 						}
 					}
 				}

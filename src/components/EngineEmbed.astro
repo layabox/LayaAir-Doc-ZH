@@ -9,7 +9,10 @@ interface Props {
   ratio?: string;      // 宽高比，默认 "16 / 9"，竖屏小游戏可传 "3 / 4"
   height?: string;     // 固定高度（传了则忽略 ratio），如 "420px"
 }
+import { withSiteBase } from '../utils/site-url';
 const { src, title = '引擎演示', poster, ratio = '16 / 9', height } = Astro.props;
+const srcUrl = withSiteBase(src);
+const posterUrl = withSiteBase(poster);
 // 用 padding-bottom 百分比撑高度：iframe 是替换元素，在 aspect-ratio 容器里 height:100%
 // 常失效塌回默认 300×150；padding 技巧下内部 absolute 子元素能稳稳撑满。
 const [rw, rh] = ratio.split('/').map((s) => parseFloat(s.trim()) || 0);
@@ -18,8 +21,8 @@ const boxStyle = height ? `height:${height}` : `padding-bottom:${padPct}%`;
 ---
 
 <div class="engine-embed">
-  <div class="ee-stage" style={boxStyle} data-src={src}>
-    <div class="ee-poster" style={poster ? `background-image:url(${poster})` : ''}>
+  <div class="ee-stage" style={boxStyle} data-src={srcUrl}>
+    <div class="ee-poster" style={posterUrl ? `background-image:url(${posterUrl})` : ''}>
       <button class="ee-run" type="button" aria-label={`运行：${title}`}>
         <span class="ee-run-icon" aria-hidden="true">▶</span>
         <span class="ee-run-text">运行「{title}」</span>
@@ -31,7 +34,7 @@ const boxStyle = height ? `height:${height}` : `padding-bottom:${padPct}%`;
     <span class="ee-name">🎮 {title}</span>
     <span class="ee-actions">
       <button class="ee-full" type="button">⛶ 全屏</button>
-      <a class="ee-open" href={src} target="_blank" rel="noopener">↗ 新窗口</a>
+      <a class="ee-open" href={srcUrl} target="_blank" rel="noopener">↗ 新窗口</a>
     </span>
   </div>
 </div>

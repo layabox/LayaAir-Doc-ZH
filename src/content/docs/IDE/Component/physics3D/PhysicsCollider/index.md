@@ -6,7 +6,7 @@ slug: "ide/component/physics3d/physicscollider"
 
 > Author : Charley
 
-在LayaAir3引擎中，静态碰撞器的类为 **PhysicsCollider**，继承自 PhysicsColliderComponent。本文档介绍静态碰撞器的专有属性。关于静态碰撞器的概念说明，请参考[《3D物理组件》总览](/ide/component/physics3d/#12-静态碰撞器)。
+在LayaAir3引擎中，静态碰撞器的类为 **PhysicsCollider**，继承自 PhysicsColliderComponent。本文档介绍静态碰撞器的专有属性。
 
 ## 1、碰撞器基类属性
 

@@ -10,19 +10,22 @@ interface Props {
   alt?: string;
   start?: number;        // 初始分割位置 0–100，默认 50
 }
+import { withSiteBase } from '../utils/site-url';
 const {
   before, after,
   beforeLabel = '之前', afterLabel = '之后',
   alt = '前后对比图', start = 50, ratio = '16 / 9',
 } = Astro.props;
+const beforeUrl = withSiteBase(before);
+const afterUrl = withSiteBase(after);
 // 用 padding-bottom 撑高（比 aspect-ratio 对 <img> 替换元素更稳，两张绝对定位图严格对齐）
 const [rw, rh] = ratio.split('/').map((s) => parseFloat(s.trim()) || 0);
 const padPct = rw && rh ? ((rh / rw) * 100).toFixed(3) : '56.25';
 ---
 
 <figure class="img-compare" data-start={start} aria-label={alt} style={`padding-bottom:${padPct}%`}>
-  <img class="ic-img ic-after" src={after} alt={`${alt} · ${afterLabel}`} draggable="false" />
-  <img class="ic-img ic-before" src={before} alt={`${alt} · ${beforeLabel}`} draggable="false"
+  <img class="ic-img ic-after" src={afterUrl} alt={`${alt} · ${afterLabel}`} draggable="false" />
+  <img class="ic-img ic-before" src={beforeUrl} alt={`${alt} · ${beforeLabel}`} draggable="false"
        style={`clip-path:inset(0 ${100 - start}% 0 0)`} />
   <span class="ic-label ic-label-before">{beforeLabel}</span>
   <span class="ic-label ic-label-after">{afterLabel}</span>
