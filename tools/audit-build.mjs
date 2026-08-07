@@ -68,6 +68,31 @@ const idCache = new Map();
 const failures = [];
 let references = 0;
 
+const redirectFile = path.join(DIST, '.htaccess');
+const redirects = new Map();
+if (fs.existsSync(redirectFile)) {
+  for (const line of fs.readFileSync(redirectFile, 'utf8').split(/\r?\n/)) {
+    const match = line.match(/^Redirect\s+301\s+(\S+)\s+(\S+)$/);
+    if (match) redirects.set(match[1], match[2]);
+  }
+}
+for (const rel of exactFiles.keys()) {
+  if (!rel.endsWith('/index.html')) continue;
+  const dir = rel.slice(0, -'/index.html'.length);
+  if (dir === dir.toLowerCase()) continue;
+  const target = `${BASE}/${dir}/`;
+  const source = target.toLowerCase();
+  if (redirects.get(source) !== target) {
+    failures.push({ type: 'missing-lowercase-redirect', fromFile: redirectFile, raw: source, kind: 'redirect' });
+  }
+}
+for (const [source, target] of redirects) {
+  const resolved = resolveTarget(new URL(target, ORIGIN).pathname);
+  if (!resolved?.file) {
+    failures.push({ type: 'invalid-redirect-target', fromFile: redirectFile, raw: `${source} -> ${target}`, kind: 'redirect' });
+  }
+}
+
 function idsFor(file) {
   if (!idCache.has(file)) {
     const html = fs.readFileSync(file, 'utf8');
