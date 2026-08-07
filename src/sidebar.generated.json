@@ -82,7 +82,7 @@
         "link": "/guides/roadmap/intermediate/"
       },
       {
-        "label": "美术路线",
+        "label": "游戏美术学习路线",
         "link": "/guides/roadmap/artist/"
       },
       {
@@ -166,6 +166,10 @@
           {
             "label": "概述",
             "link": "/basics/ide/gamedevelopment/"
+          },
+          {
+            "label": "新手的第一个2D游戏",
+            "link": "/guides/first-2d-game/"
           },
           {
             "label": "一个2D入门游戏",

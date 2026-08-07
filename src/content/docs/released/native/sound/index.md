@@ -2,6 +2,7 @@
 title: "关于声音"
 description: "在LayaNative中，声音分为背景音乐、音效两种模式。"
 slug: "released/native/sound"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 在LayaNative中，声音分为背景音乐、音效两种模式。

@@ -4,6 +4,7 @@ description: "HTML文本组件，就像使用HTML语言一样来实现UI。在La
 slug: "2d/displayobject/htmldivelement"
 banner:
   content: "⚠️ 本篇基于已移除的 HTMLDivElement 类，正在重写，请勿参照本篇代码开发。"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 :::danger[本篇已失效，待重写]

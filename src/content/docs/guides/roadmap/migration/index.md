@@ -137,7 +137,7 @@ slug: "guides/roadmap/migration"
 
 - **建议阅读**
   - [实体组件系统（ECS）](/basics/common/component/)
-  - [自定义脚本组件](/basics/ide/script/)
+  - [组件装饰器说明](/ide/customcomponent/decorators/)
   - [资源加载](/basics/common/loader/)
   - [事件管理](/basics/common/event/)
   - [场景管理](/basics/common/scene/)

@@ -2,6 +2,7 @@
 title: "readme"
 description: "纹理是指物体表面的纹路样式和细腻程度等外观效果。在计算机图形学中，常用于描述三维模型表面图案的二维图形。"
 slug: "basics/performanceoptimization/vip-texture"
+draft: true   # 废弃：自2025-03-11导入起从未进入导航，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ## 纹理压缩功能介绍与使用说明

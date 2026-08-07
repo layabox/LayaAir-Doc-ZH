@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文档修复彩色复审页</title>
+<style>
+  body{font-family:"Microsoft YaHei",system-ui,sans-serif;margin:0;padding:24px;background:#fafafa;color:#222;line-height:1.7}
+  h1{font-size:20px}
+  .meta{color:#666;font-size:13px;margin-bottom:16px}
+  .legend span{display:inline-block;margin-right:16px;font-size:13px}
+  details{background:#fff;border:1px solid #ddd;border-radius:8px;margin:12px 0;overflow:hidden}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;font-family:Consolas,monospace;font-size:13px;background:#f0f4f8}
+  .file{padding:8px 16px 14px;overflow-x:auto}
+  .hunk{color:#999;font-size:12px;margin:10px 0 4px;border-top:1px dashed #ddd;padding-top:8px}
+  .ln{font-size:14px;white-space:pre-wrap;word-break:break-all;font-family:Consolas,"Microsoft YaHei",monospace}
+  del{background:#ffe5e5;color:#b30000;text-decoration:line-through}
+  ins{background:#e0edff;color:#0044cc;text-decoration:none;font-weight:600}
+  @media (prefers-color-scheme: dark){
+    body{background:#181a1f;color:#ddd}
+    details{background:#20232a;border-color:#333}
+    summary{background:#262b33}
+    del{background:#4a1f1f;color:#ff8a8a}
+    ins{background:#1d3557;color:#8ab4ff}
+    .hunk{border-color:#333}
+  }
+</style></head><body>
+<h1>LayaAir 文档修复 — 彩色复审页</h1>
+<div class="meta">共 83 个文件被修改。<span style="color:#b30000">红色删除线 = 修改前的原文</span>,<span style="color:#0044cc;font-weight:600">蓝色加粗 = 修改后的新文字</span>,黑色为未改动的上下文。与《文档审查错误清单.md》逐条对应。</div>
+<details open><summary>src/content/docs/2D/TiledMap/index.md</summary><div class="file">
+<div class="hunk">…… 第 441 行附近 ……</div>
+<div class="ln"><span>##### 缓存区块的具体设置方法</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>缓存区块的设置需要在 </span><del>`createMap`（创建地图）的时候设置。设置第四个参数 `gridSize`，示例如下：</del><ins>`createMap`（创建地图）的时候设置。`gridSize` 是 `createMap` 的第五个参数（第四个参数是视口扩充区域 `viewRectPadding`，这里传 `null`），示例如下：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>//为第二个参数创建Rectangle实例，视口区域</span></div>
+<div class="ln"><span>var viewRect:Laya.Rectangle = new Laya.Rectangle(0, 0, Laya.Browser.width, Laya.Browser.height);</span></div>
+<div class="ln"><del>//为第四个参数gridSize创建一个512*512大小的Point对象实例</del><ins>//为第五个参数gridSize创建一个512*512大小的Point对象实例</ins><span></span></div>
+<div class="ln"><span>var gridSize:Laya.Point = new Laya.Point(512, 512);</span></div>
+<div class="ln"><span>//创建TiledMap地图</span></div>
+</div></details>
+<details open><summary>src/content/docs/2D/advanced/customShader/index.md</summary><div class="file">
+<div class="hunk">…… 第 137 行附近 ……</div>
+<div class="ln"><span>&gt; 注意：其余引擎涉及到的uniform变量可以在LayaAir引擎源码中的xx.glsl文件中找到。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>| 变量名                     | 描述       | 所属GLSL文件(高阶操作不推荐直接使用) |</span></div>
+<div class="ln"><span>| </span><del>:--------------</del><ins>:-------------------------</ins><span> | :--------- | ------------------------------------ |</span></div>
+<div class="ln"><span>| </span><del>u_mmat</del><ins>u_NMatrix_0、u_NMatrix_1</ins><span>   | 2D变换矩阵 | Sprite2DVertex.glsl                  |</span></div>
+<div class="ln"><span>| u_spriteTexture            | 精灵纹理   | Sprite2DFrag.glsl                    |</span></div>
+<div class="ln"><span>|</span><del>u_color         | 颜色       | Sprite2DFrag.glsl                    |</del></div>
+<div class="ln"><del>| u_colorAdd      | 颜色叠加   | Sprite2DFrag.glsl                    |</del></div>
+<div class="ln"><del>|</del><span> u_clipMatPos               | 裁剪位置   | Sprite2DVertex.glsl                  |</span></div>
+<div class="ln"><span>| u_clipMatDir               | 裁剪方向   | Sprite2DVertex.glsl                  |</span></div>
+<div class="ln"><span>| u_blurInfo                 | 模糊信息   | </span><del>Sprite2DFrag.glsl</del><ins>BlurEffect2D.fs</ins><span>                      |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 399 行附近 ……</div>
+<div class="ln"><span>	    v_color = info.color;</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>	    vec4 </span><del>pos;</del></div>
+<div class="ln"><del>	    getPosition(pos);</del><ins>pos = getPosition(info.pos);</ins><span></span></div>
+<div class="ln"><span>	    gl_Position = pos;</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/2D/advanced/useText/index.md</summary><div class="file">
+<div class="hunk">…… 第 71 行附近 ……</div>
+<div class="ln"><span>     * @param textAlign 文本对齐方式，可选值："left"，"center"，"right"。</span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    fillText(text: </span><del>string | WordText,</del><ins>string,</ins><span> x: number, y: number, font: string, color: string, textAlign: string): FillTextCmd {</span></div>
+<div class="ln"><span>        return this.addCmd(FillTextCmd.create(text, x, y, font, color, textAlign, 0, ""));</span></div>
+<div class="ln"><span>    }</span></div>
+</div></details>
+<details open><summary>src/content/docs/2D/displayObject/HTMLDivElement/index.md</summary><div class="file">
+<div class="hunk">…… 第 67 行附近 ……</div>
+<div class="ln"><span>可以看到，LayaBox文字使用了 Bold 粗体，字体大小是50像素，Arial字体，字体颜色是红色，并且LayaBox是一个带有下划线的文字链接形式</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><span>## 三、代码中使用</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><ins>在 3.x 中，旧版的</ins><span> `Laya.HTMLDivElement` </span><del>类位于laya.html类库中。HTML图文类，用于显示html内容</del><ins>类（以及 `laya.html` 中基于 DOM 的富文本类）已被移除。现在通过 `Text` 组件的 HTML 富文本渲染能力来实现图文混排：将 `Text` 的 `html` 属性设置为 `true`，再把带有 HTML 标签的字符串赋值给 `text` 属性即可。</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>```typescript</del></div>
+<div class="ln"><del>/**</del></div>
+<div class="ln"><del> * HTML图文类，用于显示html内容</del></div>
+<div class="ln"><del> *</del></div>
+<div class="ln"><del> * 支持的标签如下:</del></div>
+<div class="ln"><del> * a:链接标签，点击后会派发"link"事件 比如:&lt;a href='alink'&gt;a&lt;/a&gt;</del></div>
+<div class="ln"><del> * div:div容器标签，比如:&lt;div&gt;abc&lt;/div&gt;</del></div>
+<div class="ln"><del> * span:行内元素标签，比如:&lt;span style='color:#ff0000'&gt;abc&lt;/span&gt;</del></div>
+<div class="ln"><del> * p:行元素标签，p标签会自动换行，div不会，比如:&lt;p&gt;abc&lt;/p&gt;</del></div>
+<div class="ln"><del> * img:图片标签，比如:&lt;img src='/2D/displayObject/HTMLDivElement/res/boy.png'&gt;&lt;/img&gt;</del></div>
+<div class="ln"><del> * br:换行标签，比如:&lt;div&gt;abc&lt;br/&gt;def&lt;/div&gt;</del></div>
+<div class="ln"><del> * style:样式标签，比如:&lt;div style='width:130px;height:50px;color:#ff0000'&gt;abc&lt;/div&gt;</del></div>
+<div class="ln"><del> * link:外链样式标签，可以加载一个css文件来当style使用，比如:&lt;link type='text/css' href='html/test.css'/&gt;</del></div>
+<div class="ln"><del> *</del></div>
+<div class="ln"><del> * style支持的属性如下:</del></div>
+<div class="ln"><del> * italic:true|false;					是否是斜体</del></div>
+<div class="ln"><del> * bold:true|false;						是否是粗体</del></div>
+<div class="ln"><del> * letter-spacing:10px;					字间距</del></div>
+<div class="ln"><del> * font-family:宋体; 					   字体</del></div>
+<div class="ln"><del> * font-size:20px;						字体大小</del></div>
+<div class="ln"><del> * font-weight:bold:none;				字体是否是粗体，功能同bold</del></div>
+<div class="ln"><del> * color:#ff0000;						字体颜色</del></div>
+<div class="ln"><del> * stroke:2px;							字体描边宽度</del></div>
+<div class="ln"><del> * strokeColor:#ff0000;					字体描边颜色</del></div>
+<div class="ln"><del> * padding:10px 10px 20px 20px;			边缘的距离</del></div>
+<div class="ln"><del> * vertical-align:top|bottom|middle;	垂直对齐方式</del></div>
+<div class="ln"><del> * align:left|right|center;				水平对齐方式</del></div>
+<div class="ln"><del> * line-height:20px;					行高</del></div>
+<div class="ln"><del> * background-color:#ff0000;			背景颜色</del></div>
+<div class="ln"><del> * border-color:#ff0000;				边框颜色</del></div>
+<div class="ln"><del> * width:100px;							对象宽度</del></div>
+<div class="ln"><del> * height:100px;						对象高度</del></div>
+<div class="ln"><del> *</del></div>
+<div class="ln"><del> * 示例用法：</del></div>
+<div class="ln"><del> * var div:HTMLDivElement=new HTMLDivElement();</del></div>
+<div class="ln"><del> * div.innerHTML = "&lt;link type='text/css' href='html/test.css'/&gt;&lt;a href='alink'&gt;a&lt;/a&gt;&lt;div style='width:130px;height:50px;color:#ff0000'&gt;div&lt;/div&gt;&lt;br/&gt;&lt;span style='font-weight:bold;color:#ffffff;font-size:30px;stroke:2px;italic:true;'&gt;span&lt;/span&gt;&lt;span style='letter-spacing:5px'&gt;span2&lt;/span&gt;&lt;p&gt;p&lt;/p&gt;&lt;img src='/2D/displayObject/HTMLDivElement/res/boy.png'&gt;&lt;/img&gt;";</del></div>
+<div class="ln"><del> */</del></div>
+<div class="ln"><del> export class HTMLDivElement extends Sprite {</del></div>
+<div class="ln"><del>```</del><ins>`Text` 的 HTML 模式支持的常用标签如下：</ins></div>
+<div class="ln"><ins>- `&lt;b&gt;`：粗体，例如 `&lt;b&gt;abc&lt;/b&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;i&gt;`：斜体，例如 `&lt;i&gt;abc&lt;/i&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;u&gt;`：下划线，例如 `&lt;u&gt;abc&lt;/u&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;strike&gt;`：删除线，例如 `&lt;strike&gt;abc&lt;/strike&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;font&gt;`：字体标签，可设置 `size`（字号）、`color`（颜色）、`stroke`（描边宽度）、`strokecolor`（描边颜色）属性，例如 `&lt;font size='30' color='#ff0000'&gt;abc&lt;/font&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;br/&gt;`：换行标签</ins></div>
+<div class="ln"><ins>- `&lt;img&gt;`：图片标签，例如 `&lt;img src='res/boy.png'/&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;a&gt;`：链接标签，点击后会派发 `Event.LINK` 事件，事件回调携带 `href` 属性的值，例如 `&lt;a href='alink'&gt;a&lt;/a&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;p&gt;`：段落标签，可设置 `align`（对齐方式）属性，例如 `&lt;p align='center'&gt;abc&lt;/p&gt;`</ins></div>
+<div class="ln"><ins>- `&lt;div&gt;`：块容器标签，会自动换行</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>下面我们通过一些示例代码来看看运行效果：</span></div>
+<div class="hunk">…… 第 88 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.1 </span><del>同一个文本中设置Bold、Font、FontSize、Color、下划线</del><ins>同一个文本中设置粗体、字号、颜色、下划线</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**【注意：目前不支持斜体、描边、span标签内嵌的方式】**</del><ins>**【注意：HTML 模式通过 `&lt;font&gt;`、`&lt;b&gt;`、`&lt;i&gt;`、`&lt;u&gt;` 等标签设置样式，不再支持旧版 `&lt;span style='...'&gt;` 的 CSS 写法】**</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>示例如下：</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var </span><del>div:Laya.HTMLDivElement</del><ins>text:Laya.Text</ins><span> = new </span><del>Laya.HTMLDivElement();</del></div>
+<div class="ln"><del>div.innerHTML="&lt;span style='font-weight:bold;" +</del></div>
+<div class="ln"><del>"font:24px Arial' " +</del></div>
+<div class="ln"><del>"color='red' " +</del></div>
+<div class="ln"><del>"href='https://ask.layabox.com'&gt;" +</del></div>
+<div class="ln"><del>"LayaBox&lt;/span&gt;&lt;span&gt;欢迎你的加入&lt;/span&gt;";</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>Laya.stage.addChild(div);</del><ins>Laya.Text();</ins></div>
+<div class="ln"><ins>text.html = true;</ins></div>
+<div class="ln"><ins>text.text = "&lt;font size='24' color='#ff0000'&gt;&lt;b&gt;&lt;u&gt;LayaBox&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;欢迎你的加入";</ins></div>
+<div class="ln"><ins>Laya.stage.addChild(text);</ins></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 107 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.2 </span><del>**同一个文本中设置字体、颜色不同**</del><ins>**同一个文本中设置字号、颜色不同**</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>示例如下：</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var </span><del>htmlD:HTMLDivElement</del><ins>text:Laya.Text</ins><span> = new </span><del>HTMLDivElement();</del></div>
+<div class="ln"><del>Laya.stage.addChild(htmlD);</del></div>
+<div class="ln"><del>htmlD.innerHTML</del><ins>Laya.Text();</ins></div>
+<div class="ln"><ins>Laya.stage.addChild(text);</ins></div>
+<div class="ln"><ins>text.html = true;</ins></div>
+<div class="ln"><ins>text.text</ins><span> = "&lt;font </span><del>style='fontSize:30'</del><ins>size='30'</ins><span> color='#67fc2c'&gt;测试&lt;/font&gt;&lt;font </span><del>style='fontSize:20'&gt;html组件&lt;/font&gt;";</del><ins>size='20'&gt;html组件&lt;/font&gt;";</ins></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 124 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.3 </span><del>**获取html文本的实际宽高（contextWidth、contextHeight）**</del><ins>**获取html文本的实际宽高（textWidth、textHeight）**</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>示例如下：</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var </span><del>htmlDiv:HTMLDivElement=new HTMLDivElement();</del><ins>text:Laya.Text = new Laya.Text();</ins></div>
+<div class="ln"><ins>text.html = true;</ins></div>
+<div class="ln"><span>var html:string = </span><del>"&lt;span color='#e3d26a'&gt;使用&lt;/span&gt;";</del><ins>"&lt;font color='#e3d26a'&gt;使用&lt;/font&gt;";</ins></div>
+<div class="ln"><span>html += </span><del>"&lt;span style='color:#FFFFFF;font-weight:bold'&gt;HTMLDivElement&lt;/span&gt;";</del><ins>"&lt;font color='#FFFFFF'&gt;&lt;b&gt;Text&lt;/b&gt;&lt;/font&gt;";</ins></div>
+<div class="ln"><span>html += </span><del>"&lt;span color='#6ad2e3'&gt;创建的&lt;/span&gt;&lt;br/&gt;";</del><ins>"&lt;font color='#6ad2e3'&gt;创建的&lt;/font&gt;&lt;br/&gt;";</ins></div>
+<div class="ln"><span>html += </span><del>"&lt;span color='#d26ae3'&gt;HTML文本&lt;/span&gt;";</del></div>
+<div class="ln"><del>htmlDiv.innerHTML</del><ins>"&lt;font color='#d26ae3'&gt;HTML文本&lt;/font&gt;";</ins></div>
+<div class="ln"><ins>text.text</ins><span> = html;</span></div>
+<div class="ln"><del>htmlDiv.pos(50,200);</del></div>
+<div class="ln"><del>console.log("文本的实际宽度为"+htmlDiv.contextWidth,"文本的实际高度为"+htmlDiv.contextHeight)</del></div>
+<div class="ln"><del>Laya.stage.addChild(htmlDiv);</del><ins>text.pos(50,200);</ins></div>
+<div class="ln"><ins>console.log("文本的实际宽度为"+text.textWidth,"文本的实际高度为"+text.textHeight)</ins></div>
+<div class="ln"><ins>Laya.stage.addChild(text);</ins></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 145 行附近 ……</div>
+<div class="ln"><span>&lt;img src="/2D/displayObject/HTMLDivElement/img/3-3.png" alt="image-20230103180840626" style="zoom:50%;" /&gt; </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>运行输出：文本的实际宽度为158.677734375 文本的实际高度为24</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 153 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var </span><del>html3:HTMLDivElement=new HTMLDivElement();</del></div>
+<div class="ln"><del>html3.style.lineHeight=30;</del></div>
+<div class="ln"><del>html3.style.width=300;</del></div>
+<div class="ln"><del>html3.style.align="center";</del></div>
+<div class="ln"><del>html3.innerHTML="&lt;br/&gt;&lt;span&gt;  测试水平居中对齐&lt;/span&gt;";</del></div>
+<div class="ln"><del>Laya.stage.addChild(html3);</del><ins>text:Laya.Text = new Laya.Text();</ins></div>
+<div class="ln"><ins>text.html = true;</ins></div>
+<div class="ln"><ins>text.leading = 30;</ins></div>
+<div class="ln"><ins>text.width = 300;</ins></div>
+<div class="ln"><ins>text.align = "center";</ins></div>
+<div class="ln"><ins>text.text = "&lt;br/&gt;&lt;font&gt;  测试水平居中对齐&lt;/font&gt;";</ins></div>
+<div class="ln"><ins>Laya.stage.addChild(text);</ins></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 173 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var </span><del>div:HTMLDivElement=new HTMLDivElement();</del></div>
+<div class="ln"><del>div.innerHTML="&lt;span href='http://ask.layabox.com/'&gt;LayaBox欢迎你的加入！&lt;/span&gt;";</del></div>
+<div class="ln"><del>div.on(Laya.Event.LINK,this,(data:any)=&gt;{</del><ins>text:Laya.Text = new Laya.Text();</ins></div>
+<div class="ln"><ins>text.html = true;</ins></div>
+<div class="ln"><ins>text.text = "&lt;a href='http://ask.layabox.com/'&gt;LayaBox欢迎你的加入！&lt;/a&gt;";</ins></div>
+<div class="ln"><ins>text.on(Laya.Event.LINK,this,(data:any)=&gt;{</ins></div>
+<div class="ln"><span>	Laya.Browser.window.location.href=data;</span></div>
+<div class="ln"><span>});</span></div>
+<div class="ln"><del>Laya.stage.addChild(div);</del><ins>Laya.stage.addChild(text);</ins></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 190 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.6 </span><del>实现html页面跳转</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>示例如下：</del><ins>内嵌网页（HTMLIframeElement 已移除）</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>```typescript</del></div>
+<div class="ln"><del>var iHtml:HTMLIframeElement = new HTMLIframeElement();</del></div>
+<div class="ln"><del>Laya.stage.addChild(iHtml);</del></div>
+<div class="ln"><del>iHtml.href="test.html";</del></div>
+<div class="ln"><del>```</del><ins>旧版用于内嵌网页的 `HTMLIframeElement` 类已在 3.x 中移除，引擎没有内置的替代能力。如果确实需要在页面中内嵌网页，可以直接创建原生的 `iframe` DOM 元素来实现，具体用法请参考[《LayaAir和原生Dom》](/2d/dom/)一节中 iframe 的介绍。</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>运行效果：</del></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>&lt;img src="/2D/displayObject/HTMLDivElement/img/3-6.png" alt="image-20230103180840626" style="zoom:50%;" /&gt; </del></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.7 </span><del>为HtmlDivElement设置行间距，leading属性，注意，必须设置valign=’middle’</del><ins>为 Text 设置行间距（leading 属性），注意需要设置 valign='middle'</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>示例如下：</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var </span><del>t:HTMLDivElement</del><ins>text:Laya.Text</ins><span> = new </span><del>HTMLDivElement;</del></div>
+<div class="ln"><del>Laya.stage.addChild(t);</del></div>
+<div class="ln"><del>t.style.valign</del><ins>Laya.Text();</ins></div>
+<div class="ln"><ins>text.html = true;</ins></div>
+<div class="ln"><ins>Laya.stage.addChild(text);</ins></div>
+<div class="ln"><ins>text.valign</ins><span> = "middle";</span></div>
+<div class="ln"><del>t.size(60,</del><ins>text.size(60,</ins><span> 120);</span></div>
+<div class="ln"><del>t.style.wordWrap</del><ins>text.wordWrap</ins><span> = true;</span></div>
+<div class="ln"><del>t.style.leading</del><ins>text.leading</ins><span> = 10;</span></div>
+<div class="ln"><del>t.innerHTML</del><ins>text.text</ins><span> = "akshfkjashfkjhakshjdfhkasjdfhsaf";</span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 217 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.8 </span><del>解决IOS手机上英文字母偏下的问题（在style样式中加垂直向上对齐valign:top属性）</del><ins>解决iOS手机上英文字母偏下的问题（将 Text 的 valign 设置为 top）</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>示例如下：</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var </span><del>html:HTMLDivElement=new HTMLDivElement();</del></div>
+<div class="ln"><del>html.innerHTML = "&lt;span style='color:#ffffff;valign:top;'&gt;朋友abc11''31ABC朋友&lt;/span&gt;&lt;span href='http://www.baidu.com' target='_blank'&gt;百度&lt;/span&gt;";</del></div>
+<div class="ln"><del>Laya.stage.addChild(html);</del><ins>text:Laya.Text = new Laya.Text();</ins></div>
+<div class="ln"><ins>text.html = true;</ins></div>
+<div class="ln"><ins>text.valign = "top";</ins></div>
+<div class="ln"><ins>text.text = "&lt;font color='#ffffff'&gt;朋友abc11''31ABC朋友&lt;/font&gt;&lt;a href='http://www.baidu.com'&gt;百度&lt;/a&gt;";</ins></div>
+<div class="ln"><ins>Laya.stage.addChild(text);</ins></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 232 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&lt;img src="/2D/displayObject/HTMLDivElement/img/3-8.png" alt="image-20230103180840626" style="zoom:50%;" /&gt; </span></div>
+<div class="ln"><del></del></div>
+</div></details>
+<details open><summary>src/content/docs/2D/dom/index.md</summary><div class="file">
+<div class="hunk">…… 第 57 行附近 ……</div>
+<div class="ln"><span>    '&lt;/svg&gt;';</span></div>
+<div class="ln"><span>var sp: Laya.Sprite = new Laya.Sprite();</span></div>
+<div class="ln"><del>sp.loadImage(data, 0, 0, 200, 200);</del><ins>sp.loadImage(data);</ins></div>
+<div class="ln"><span>Laya.stage.addChild(sp);</span></div>
+<div class="ln"><span>```</span></div>
+<div class="hunk">…… 第 179 行附近 ……</div>
+<div class="ln"><span>更多的资料可以参考这里:https://github.com/mdn/webaudio-examples 这里的链接是mdn给出的声音和视频的例子。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>LayaAir关于摄像头也有相应的封装，下面我们来看下用法。</del><ins>LayaAir通过 `Laya.Media` 对摄像头、麦克风的采集做了封装。需要注意的是，`Laya.Media.getMedia` 采集成功后回调返回的是原生的 `MediaStream` 媒体流对象（而不是地址字符串）。3.x 已经移除了旧版的 `Laya.Video` 类，因此这里将媒体流绑定到原生 video 元素的 `srcObject` 上进行显示，用法如下。</ins></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>class Main {</span></div>
+<div class="ln"><span>    private </span><del>video:Laya.Video;</del><ins>video:any;</ins></div>
+<div class="ln"><span>    constructor() {</span></div>
+<div class="ln"><span>        //初始化引擎</span></div>
+<div class="hunk">…… 第 213 行附近 ……</div>
+<div class="ln"><span>        tex.size(Laya.stage.width,Laya.stage.height);</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span>    </span><ins>//getMedia成功回调的参数是MediaStream媒体流对象，而不是地址字符串</ins></div>
+<div class="ln"><span>    private </span><del>onSuccess(url:string):void{</del><ins>onSuccess(stream:MediaStream):void{</ins></div>
+<div class="ln"><ins>        //3.x已移除Laya.Video类，实时媒体流需绑定到原生video元素的srcObject上显示</ins></div>
+<div class="ln"><span>        this.video = </span><del>new Laya.Video(Laya.stage.width,Laya.stage.height);</del></div>
+<div class="ln"><del>        this.video.load(url);</del></div>
+<div class="ln"><del>        Laya.stage.addChild(this.video);</del><ins>Laya.Browser.document.createElement("video");</ins></div>
+<div class="ln"><ins>        this.video.srcObject = stream;</ins></div>
+<div class="ln"><ins>        this.video.autoplay = true;</ins></div>
+<div class="ln"><ins>        this.video.style.position = "absolute";</ins></div>
+<div class="ln"><ins>        this.video.style.zIndex = 100;</ins></div>
+<div class="ln"><ins>        Laya.Browser.document.body.appendChild(this.video);</ins></div>
+<div class="ln"><ins>        this.video.play();</ins></div>
+<div class="ln"><span>        Laya.stage.on("click",this,this.onStageClick);</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span>    private </span><del>onerror(error:Error):void{</del><ins>onError(error:Error):void{</ins></div>
+<div class="ln"><span>        alert(error.message);</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="hunk">…… 第 257 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>class Main {</span></div>
+<div class="ln"><del>    private video:Laya.Video;</del></div>
+<div class="ln"><span>    constructor() {</span></div>
+<div class="ln"><span>        //初始化引擎</span></div>
+<div class="hunk">…… 第 277 行附近 ……</div>
+<div class="ln"><span>            {</span></div>
+<div class="ln"><span>                var sp:Laya.Sprite = new Laya.Sprite();</span></div>
+<div class="ln"><span>                </span><del>sp.loadImage(fileReader.result,0,0,300,300);</del><ins>sp.loadImage(fileReader.result);</ins></div>
+<div class="ln"><span>                Laya.stage.addChild(sp);</span></div>
+<div class="ln"><span>            }</span></div>
+<div class="hunk">…… 第 303 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>class Main {</span></div>
+<div class="ln"><del>    private video:Laya.Video;</del></div>
+<div class="ln"><span>    constructor() {</span></div>
+<div class="ln"><span>        //初始化引擎</span></div>
+<div class="hunk">…… 第 334 行附近 ……</div>
+<div class="ln"><span>            {</span></div>
+<div class="ln"><span>                var sp:Laya.Sprite = new Laya.Sprite();</span></div>
+<div class="ln"><span>                </span><del>sp.loadImage(fileReader.result,0,0,100,100);</del><ins>sp.loadImage(fileReader.result);</ins></div>
+<div class="ln"><span>                Laya.stage.addChild(sp);</span></div>
+<div class="ln"><span>            }</span></div>
+<div class="hunk">…… 第 363 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>class Main {</span></div>
+<div class="ln"><del>    private video:Laya.Video;</del></div>
+<div class="ln"><span>    constructor() {</span></div>
+<div class="ln"><span>        //初始化引擎</span></div>
+<div class="hunk">…… 第 424 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>class Main {</span></div>
+<div class="ln"><del>    private video:Laya.Video;</del></div>
+<div class="ln"><span>    constructor() {</span></div>
+<div class="ln"><span>        //初始化引擎</span></div>
+</div></details>
+<details open><summary>src/content/docs/2D/performanceOptimization/index.md</summary><div class="file">
+<div class="hunk">…… 第 78 行附近 ……</div>
+<div class="ln"><span>当修改滤镜的某个属性或者显示对象时，内存中的两个位图都将更新以创建生成的位图，这两个位图可能会占用大量内存。此外，此过程涉及CPU计算，动态更新时将会降低性能。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>ColorFiter在WebGL下的GPU消耗可以忽略不计。</del><ins>ColorFilter在WebGL下的GPU消耗可以忽略不计。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>最佳的做法是，尽可能使用图像创作工具创建的位图来模拟滤镜。避免在运行时中创建动态位图，可以帮助减少CPU或GPU负载。特别是一张应用了滤镜并且不会在修改的图像。</span></div>
+<div class="hunk">…… 第 119 行附近 ……</div>
+<div class="ln"><span>### 2.4 CacheAs</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>设置cacheAs可将显示对象缓存为静态图像，当cacheAs时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。 </span><del>建议把不经常变化的复杂内容，缓存为静态图像，能极大提高渲染性能，cacheAs有”none”，”normal”和”bitmap”三个值可选。</del><ins>建议把不经常变化的复杂内容，缓存为静态图像，能极大提高渲染性能，cacheAs有”none”和”bitmap”两个值可选。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>1. 默认为”none”，不做任何缓存。</span></div>
+<div class="ln"><span>2.</span><del>当值为”normal”时，进行命令缓存。</del></div>
+<div class="ln"><del>3.</del><span> 当值为”bitmap”时，使用renderTarget缓存。这里需要注意的是，webGL下renderTarget缓存模式有2048大小限制，超出2048会额外增加内存开销。另外，不断重绘时开销也比较大，但是会减少drawcall，渲染性能最高。</span><del>webGL下命令缓存模式只会减少节点遍历及命令组织，不会减少drawcall，性能中等。</del><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>设置cacheAs后，还可以设置staticCache=true以阻止自动更新缓存，同时可以手动调用reCache方法更新缓存。</del><ins>设置cacheAs后，子对象发生变化时会自动重新缓存，也可以手动调用reCache方法更新缓存。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>cacheAs主要通过两方面提升性能。一是减少节点遍历和顶点计算；二是减少drawCall。善用cacheAs将是引擎优化性能的利器。</span></div>
+<div class="hunk">…… 第 134 行附近 ……</div>
+<div class="ln"><span>     private text:Laya.Text;</span></div>
+<div class="ln"><span>    constructor() {</span></div>
+<div class="ln"><span>        </span><del>Laya.init(550,400,Laya.WebGL);</del><ins>Laya.init(550,400);</ins><span></span></div>
+<div class="ln"><span>        Laya.Stat.show();</span></div>
+<div class="ln"><span>        var textBox=new Laya.Sprite();</span></div>
+<div class="hunk">…… 第 276 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var sp=new Laya.Sprite();</span></div>
+<div class="ln"><del>sp.loadImage("res/apes/monkey2.png",0,0,0,0,Laya.Handler.create(this,function()</del><ins>sp.loadImage("res/apes/monkey2.png",Laya.Handler.create(this,function()</ins><span></span></div>
+<div class="ln"><span>{</span></div>
+<div class="ln"><span>    console.log(sp.width,sp.height);  </span></div>
+<div class="hunk">…… 第 300 行附近 ……</div>
+<div class="ln"><span>使用Graphics.drawTexture并不会自动设置容器的宽高，但是可以使用Texture的宽高赋予容器。毋庸置疑，这是最高效的方式。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**注：getGraphicsBounds用于获取矢量绘图宽高。**</del><ins>**注：getGraphicBounds用于获取矢量绘图宽高。**</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/Camera/index.md</summary><div class="file">
+<div class="hunk">…… 第 319 行附近 ……</div>
+<div class="ln"><span>### 6.4 其它</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>`Opaque </span><del>Pass`：开启opaquePass后，会生成非透明物体贴图。在Shader中可以引入u_cameraOpaqueTexture来得到相机渲染管线的非透明图片。使用非透明物体贴图功能，可以实现玻璃折射，水面折射，热浪等效果。</del><ins>Pass`：开启opaquePass后，会生成非透明物体贴图。在Shader中可以引入u_CameraOpaqueTexture来得到相机渲染管线的非透明图片。使用非透明物体贴图功能，可以实现玻璃折射，水面折射，热浪等效果。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>`Enable Blit Depth`：设置是否使用内置的深度贴图 (如果开启，只可在后期使用深度贴图，不可在渲染流程中使用)。</span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/Sprite3D/index.md</summary><div class="file">
+<div class="hunk">…… 第 338 行附近 ……</div>
+<div class="ln"><span>//设置盒子的碰撞形状</span></div>
+<div class="ln"><span>rigidBody.colliderShape = boxShape; </span></div>
+<div class="ln"><del>//使用重力</del></div>
+<div class="ln"><del>rigidBody.overrideGravity = true;</del></div>
+<div class="ln"><span>//重力为向下-10</span></div>
+<div class="ln"><span>rigidBody.gravity = new Laya.Vector3(0,-10,0);</span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/WebXR/index.md</summary><div class="file">
+<div class="hunk">…… 第 88 行附近 ……</div>
+<div class="ln"><span>  caInfo.depthNear = this.camera.nearPlane;</span></div>
+<div class="ln"><span>  //申请XR的交互，传入VR需要的信息</span></div>
+<div class="ln"><span>  let webXRSessionManager = await </span><del>WebXRExperienceHelper.enterXRAsync("imersive-vr","local",caInfo);</del><ins>WebXRExperienceHelper.enterXRAsync("immersive-vr","local",caInfo);</ins><span></span></div>
+<div class="ln"><span>  //设置WebXR摄像机</span></div>
+<div class="ln"><span>  WebXRExperienceHelper.setWebXRCamera(this.camera, webXRSessionManager);</span></div>
+<div class="hunk">…… 第 118 行附近 ……</div>
+<div class="ln"><span>  caInfo.depthNear = this.camera.nearPlane;</span></div>
+<div class="ln"><span>  //申请XR的交互，传入VR需要的信息</span></div>
+<div class="ln"><span>  let webXRSessionManager = await </span><del>WebXRExperienceHelper.enterXRAsync("imersive-vr","local",caInfo);</del><ins>WebXRExperienceHelper.enterXRAsync("immersive-vr","local",caInfo);</ins><span></span></div>
+<div class="ln"><span>  //设置WebXR摄像机</span></div>
+<div class="ln"><span>  let webXRCameraManager = WebXRExperienceHelper.setWebXRCamera(this.camera, webXRSessionManager);</span></div>
+<div class="ln"><span>  //注意，这里开始对VR进入手柄输入的控制交互</span></div>
+<div class="ln"><span>  let webXRInput = </span><del>WebXEExperienceHelper.setWebXRInput(webXRSessionManager,</del><ins>WebXRExperienceHelper.setWebXRInput(webXRSessionManager,</ins><span> webXRCameraManager); </span></div>
+<div class="ln"><span>  this.bindMeshRender(webXRInput);</span></div>
+<div class="ln"><span>}</span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/advanced/Astar/index.md</summary><div class="file">
+<div class="hunk">…… 第 5 行附近 ……</div>
+<div class="ln"><span>---</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><ins>:::caution[版本兼容性提示]</ins></div>
+<div class="ln"><ins>本教程依赖的 `MeshTerrainSprite3D` 类已在 LayaAir 3.x 中移除，文中与地形高度图相关的代码在当前版本已不可用，该部分教程待重写。文中的 A* 寻路算法部分（基于第三方 javascript-astar 库）与寻路思路仍可参考。</ins></div>
+<div class="ln"><ins>:::</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## 一、概述</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/advanced/CommandBuffer/index.md</summary><div class="file">
+<div class="hunk">…… 第 18 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>var buf:CommandBuffer = new </span><del>CommandBuffer();buf.setRenderTarget(renderTexture);buf.drawRender(renders[i],materials[i],0);</del><ins>CommandBuffer();buf.setRenderTarget(renderTexture,true,false);buf.drawRender(renders[i],materials[i],0);</ins><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 42 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><del>setShaderData//设置shader数据，可以设置shader中的texture vector number等 setGlobalShaderData//设置全局数据，可以用于所有的shaderblitScreenQuad//通过全屏四边形将源纹理渲染到目标渲染纹理指令。blitScreenQuadByMaterial//通过全屏四边形将源纹理渲染到目标渲染纹理指令setRenderTarget//设置指令渲染目标，调用后，所有的渲染都会渲染到方法绑定的图片上clearRenderTarget//清理绑定的渲染纹理drawMesh//渲染一个MeshdrawRender//渲染一个Render</del><ins>setShaderDataTexture/setShaderDataColor/setShaderDataVector/setShaderDataVector3/setShaderDataVector2/setShaderDataNumber/setShaderDataInt/setShaderDataMatrix//按类型设置shader数据（纹理、颜色、向量、浮点数、整型、矩阵等） setGlobalTexture/setGlobalColor/setGlobalVector/setGlobalVector3/setGlobalVector2/setGlobalNumber/setGlobalInt/setGlobalMatrix//按类型设置全局数据，可以用于所有的shaderblitScreenQuad//通过全屏四边形将源纹理渲染到目标渲染纹理指令。blitScreenQuadByMaterial//通过全屏四边形将源纹理渲染到目标渲染纹理指令setRenderTarget//设置指令渲染目标并按参数清屏，调用后，所有的渲染都会渲染到方法绑定的图片上drawMesh//渲染一个MeshdrawRender//渲染一个Render</ins><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 70 行附近 ……</div>
+<div class="ln"><span>    var viewPort:Viewport = camera.viewport;</span></div>
+<div class="ln"><span>     //创建新的RenderTexture</span></div>
+<div class="ln"><span>    var renderTexture = </span><del>RenderTexture.createFromPool(viewPort.width,viewPort.height,RenderTextureFormat.R8G8B8,RenderTextureDepthFormat.DEPTHSTENCIL_NONE);</del><ins>RenderTexture.createFromPool(viewPort.width,viewPort.height,RenderTargetFormat.R8G8B8,RenderTargetFormat.None);</ins><span></span></div>
+<div class="ln"><span>    this.texture = renderTexture; </span></div>
+<div class="ln"><span>    //将当前渲染的结果拷贝到创建好的RenderTexture</span></div>
+<div class="hunk">…… 第 87 行附近 ……</div>
+<div class="ln"><span>    shaderValue.setVector(BlurEffect.SHADERVALUE_TEXELSIZE,texSize);</span></div>
+<div class="ln"><span>    //创建降采样RenderTexture1</span></div>
+<div class="ln"><span>    var downRenderTexture = </span><del>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTextureFormat.R8G8B8,RenderTextureDepthFormat.DEPTHSTENCIL_NONE);</del><ins>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTargetFormat.R8G8B8,RenderTargetFormat.None);</ins><span></span></div>
+<div class="ln"><span>    //降采样命令流</span></div>
+<div class="ln"><span>    buf.blitScreenTriangle(renderTexture,downRenderTexture,null,shader,shaderValue,0);</span></div>
+<div class="ln"><span>    //创建降采样RenderTexture2</span></div>
+<div class="ln"><span>    var blurTexture:RenderTexture = </span><del>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTextureFormat.R8G8B8,RenderTextureDepthFormat.DEPTHSTENCIL_NONE);</del><ins>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTargetFormat.R8G8B8,RenderTargetFormat.None);</ins><span></span></div>
+<div class="ln"><span>    blurTexture.filterMode = FilterMode.Bilinear;</span></div>
+<div class="ln"><span>    //Horizontal blur</span></div>
+<div class="hunk">…… 第 134 行附近 ……</div>
+<div class="ln"><span>    //创建和屏幕一样大的Rendertexture</span></div>
+<div class="ln"><span>    var viewPort:Viewport = camera.viewport;</span></div>
+<div class="ln"><span>    var renderTexture = </span><del>RenderTexture.createFromPool(viewPort.width,viewPort.height,RenderTextureFormat.R8G8B8A8,RenderTextureDepthFormat.DEPTHSTENCIL_NONE);</del></div>
+<div class="ln"><del>    //将RenderTexture设置为渲染目标</del></div>
+<div class="ln"><del>    buf.setRenderTarget(renderTexture);</del></div>
+<div class="ln"><del>    //清楚渲染目标的颜色为黑色，不清理深度</del></div>
+<div class="ln"><del>    buf.clearRenderTarget(true,false,new Vector4(0,0,0,0));</del><ins>RenderTexture.createFromPool(viewPort.width,viewPort.height,RenderTargetFormat.R8G8B8A8,RenderTargetFormat.None);</ins></div>
+<div class="ln"><ins>    //将RenderTexture设置为渲染目标，并清除颜色为黑色，不清理深度</ins></div>
+<div class="ln"><ins>    buf.setRenderTarget(renderTexture,true,false);</ins><span></span></div>
+<div class="ln"><span>    //将传入的Render渲染到纹理上</span></div>
+<div class="ln"><span>    for(var i = 0,n = renders.length;i&lt;n;i++){</span></div>
+<div class="hunk">…… 第 142 行附近 ……</div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span>    //创建新的RenderTexture</span></div>
+<div class="ln"><span>     var subRendertexture = </span><del>RenderTexture.createFromPool(viewPort.width,viewPort.height,RenderTextureFormat.R8G8B8A8,RenderTextureDepthFormat.DEPTHSTENCIL_NONE);</del><ins>RenderTexture.createFromPool(viewPort.width,viewPort.height,RenderTargetFormat.R8G8B8A8,RenderTargetFormat.None);</ins><span></span></div>
+<div class="ln"><span>    //将renderTexture的结果复制到subRenderTexture</span></div>
+<div class="ln"><span>     buf.blitScreenQuad(renderTexture,subRendertexture);</span></div>
+<div class="hunk">…… 第 153 行附近 ……</div>
+<div class="ln"><span>    var blurMaterial:BlurMaterial = new BlurMaterial(texSize,1);</span></div>
+<div class="ln"><span>    //创建降采样RenderTexture1</span></div>
+<div class="ln"><span>     var downRenderTexture = </span><del>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTextureFormat.R8G8B8,RenderTextureDepthFormat.DEPTHSTENCIL_NONE);</del><ins>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTargetFormat.R8G8B8,RenderTargetFormat.None);</ins><span></span></div>
+<div class="ln"><span>    //降采样 使用blurMaterial材质的0SubShader将Rendertexture渲染到DownRendertexture</span></div>
+<div class="ln"><span>     buf.blitScreenQuadByMaterial(renderTexture,downRenderTexture,null,blurMaterial,0);</span></div>
+<div class="ln"><span>     //创建降采样RenderTexture2</span></div>
+<div class="ln"><span>    var blurTexture:RenderTexture = </span><del>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTextureFormat.R8G8B8,RenderTextureDepthFormat.DEPTHSTENCIL_NONE);</del><ins>RenderTexture.createFromPool(downSampleWidth,downSampleheigh,RenderTargetFormat.R8G8B8,RenderTargetFormat.None);</ins><span></span></div>
+<div class="ln"><span>    blurTexture.filterMode = FilterMode.Bilinear;</span></div>
+<div class="ln"><span>    //Horizontal blur 使用blurMaterial材质的1SubShader</span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/advanced/Unity/index.md</summary><div class="file">
+<div class="hunk">…… 第 590 行附近 ……</div>
+<div class="ln"><span>| **.lh**        | 预设文件，选择导出`预设Sprite3D`类别时生成的文件类型。相对于`.ls`后缀的场景文件，会缺少环境光、环境反射、场景雾效等等与场景渲染相关的信息。 |</span></div>
+<div class="ln"><span>| **.lm**        | 模型数据文件，通常是FBX格式的转换而成。                      |</span></div>
+<div class="ln"><span>| **.lmat**      | 材质数据文件，是在unity中为模型设置的材质信息。加载`.ls`或`.lh`文件时会自动加载.lmat文件来产生材质。可以使用 </span><del>BaseMaterial</del><ins>Material</ins><span> 类来加载。 |</span></div>
+<div class="ln"><span>| **.lani**      | 动画数据文件，如果模型上有动画，导出后将生成的动画配置文件，其中包含了动画帧数据。加载可以使用 AnimationClip 类来加载。 |</span></div>
+<div class="ln"><span>| **.jpg**       | JPEG格式的纹理图片文件。                                     |</span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/advanced/customShader/index.md</summary><div class="file">
+<div class="hunk">…… 第 323 行附近 ……</div>
+<div class="ln"><span>| 骨骼权重                   | VertexMesh.MESH_BLENDWEIGHT0       |</span></div>
+<div class="ln"><span>| 骨骼索引                   | VertexMesh.MESH_BLENDINDICES0      |</span></div>
+<div class="ln"><del>| MVP矩阵                    | VertexMesh.MESH_MVPMATRIX_ROW0     |</del></div>
+<div class="ln"><span>| 世界矩阵                   | VertexMesh.MESH_WORLDMATRIX_ROW0   |</span></div>
+<div class="ln"><span>| 顶点色                     | VertexMesh.MESH_COLOR0             |</span></div>
+</div></details>
+<details open><summary>src/content/docs/3D/displayObject/index.md</summary><div class="file">
+<div class="hunk">…… 第 119 行附近 ……</div>
+<div class="ln"><span>/**</span></div>
+<div class="ln"><span>* 创建Box网格。</span></div>
+<div class="ln"><span>* @param long </span><del>半径</del><ins>立方体的长度，默认值为1。</ins><span></span></div>
+<div class="ln"><span>* @param height </span><del>垂直层数</del><ins>立方体的高度，默认值为1。</ins><span></span></div>
+<div class="ln"><span>* @param width </span><del>水平层数</del><ins>立方体的宽度，默认值为1。</ins><span></span></div>
+<div class="ln"><span>* @return</span></div>
+<div class="ln"><span>*/</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/2D/2DAnimation/FrameAnimation/index.md</summary><div class="file">
+<div class="hunk">…… 第 34 行附近 ……</div>
+<div class="ln"><span>`Images`：图片路径数组。当不使用图集时，可以手动指定一组图片路径作为动画帧。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>`AutoPlay`：是否在组件激活后自动播放动画，默认为 </span><del>`false`。</del><ins>`true`。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>`Loop`：是否循环播放，默认为 `true`。</span></div>
+<div class="hunk">…… 第 187 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>### 5.4 重置节点状态</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>```typescript</del></div>
+<div class="ln"><del>// 重置节点，使节点恢复到动画之前的状态</del></div>
+<div class="ln"><del>frameAni.resetNodes();</del></div>
+<div class="ln"><del>```</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><span>## 六、其它属性</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/2D/2DRender/Line2DRender/index.md</summary><div class="file">
+<div class="hunk">…… 第 46 行附近 ……</div>
+<div class="ln"><span>| 线段宽度(lineWidth)                 | 线段的宽度，以像素为单位；线段的宽度不会随着节点的缩放而变化。 |</span></div>
+<div class="ln"><span>| 线段颜色(color)                     | 线段的颜色，与渲染纹理和材质共同决定线段最终的显示效果。     |</span></div>
+<div class="ln"><span>| </span><del>是否启用虚线模式(enableDashedModle)</del><ins>是否启用虚线模式(enableDashedMode)</ins><span>  | 启用此属性后，线段会变为虚线。                               |</span></div>
+<div class="ln"><span>| 虚线长度(dashedLength)              | 启用虚线模式后可以设置的属性，此属性决定了虚线每一个循环的长度。 |</span></div>
+<div class="ln"><span>| 虚线间隔的百分比(dashedPercent)     | 虚线中非空白区域占线段长度的百分比。                         |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/2D/2DRender/Trail2DRender/index.md</summary><div class="file">
+<div class="hunk">…… 第 41 行附近 ……</div>
+<div class="ln"><span>| 拖尾颜色(color)             | 设置拖尾的颜色，会与拖尾的渐变色混合叠加形成最终颜色         |</span></div>
+<div class="ln"><span>| 拖尾渐变色(colorGradient)   | 设置拖尾的渐变色，会与拖尾的颜色混合叠加形成最终颜色         |</span></div>
+<div class="ln"><span>| 纹理模式(textureMode)       | </span><del>控制纹理应如何应用于拖尾。有平铺(Stretch)和拉伸(Tile)两种模式</del><ins>控制纹理应如何应用于拖尾。有拉伸(Stretch)和平铺(Tile)两种模式</ins><span> |</span></div>
+<div class="ln"><span>| 纹理(texture)               | 应用于拖尾的纹理，具体效果受纹理模式(textureMode)的影响。    |</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/3DAnimation/ChainsIK/index.md</summary><div class="file">
+<div class="hunk">…… 第 61 行附近 ……</div>
+<div class="ln"><span>`FixEnd`： 是否固定末端的父关节。勾选后倒数第二关节不参与计算。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>`alignWithTarget`：末端朝向对其模式。</del><ins>`alignTarget`：末端朝向对其模式。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>​	`no`：不对齐，进位置跟随。</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/Media/VideoPlayer/index.md</summary><div class="file">
+<div class="hunk">…… 第 120 行附近 ……</div>
+<div class="ln"><span>videoPlayer.pause();</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>// </span><del>恢复播放</del></div>
+<div class="ln"><del>videoPlayer.resume();</del><ins>恢复播放（暂停后继续播放同样使用 play）</ins></div>
+<div class="ln"><ins>videoPlayer.play();</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>// 跳转到指定时间（秒）</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/Mesh/MeshRenderer/index.md</summary><div class="file">
+<div class="hunk">…… 第 89 行附近 ……</div>
+<div class="ln"><span>排序矫正值，类型为 `number`。用于调整渲染器的排序顺序，值越小越先渲染。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**ratioIgnor（距离裁剪系数）**</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>基于距离和包围盒的裁剪系数，类型为 `number`。值越大越容易被裁剪。</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><span>**reflectionMode（反射模式）**</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/navMesh/NavAgent/index.md</summary><div class="file">
+<div class="hunk">…… 第 98 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>// </span><del>设置代理的世界坐标位置</del></div>
+<div class="ln"><del>agent.setPosition(new</del><ins>代理的位置由其所属节点的变换决定，通过设置节点的世界坐标来放置代理</ins></div>
+<div class="ln"><ins>agent.owner.transform.position = new</ins><span> Laya.Vector3(0, 0, </span><del>0));</del><ins>0);</ins><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/navMesh/NavMesh3DSurface/index.md</summary><div class="file">
+<div class="hunk">…… 第 88 行附近 ……</div>
+<div class="ln"><span>| `cleanAllTile()` | 清除所有导航瓦片 |</span></div>
+<div class="ln"><span>| `rebuildTile(pos)` | 重建指定位置处的导航瓦片 |</span></div>
+<div class="ln"><span>| </span><del>`boundMin`</del><ins>`min`</ins><span> / </span><del>`boundMax`</del><ins>`max`</ins><span> | 获取导航网格的边界范围 |</span></div>
+<div class="ln"><span>| </span><del>`findNavMeshSurface(surfaces,</del><ins>`BaseNavigationManager.findNavMeshSurface(surfaces,</ins><span> sprite, agentFlags)` | </span><del>静态方法，在节点层级中查找匹配指定代理标记的所有NavMeshSurface组件</del><ins>`BaseNavigationManager` 的静态方法，在节点层级中查找匹配指定代理标记的所有NavMeshSurface组件</ins><span> |</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/navMesh/NavMeshModifileSurface/index.md</summary><div class="file">
+<div class="hunk">…… 第 11 行附近 ……</div>
+<div class="ln"><span>`NavMeshModifileSurface`（动态导航表面）是LayaAir 3D导航系统中用于动态修改导航网格的组件。与静态导航表面（NavMeshSurface）不同，动态导航表面的导航网格会跟随其所在节点的移动而更新，使得游戏场景能够更加动态和交互。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>该组件继承自`NavModifleBase`，是动态节点基类的子类。在LayaAir-IDE的属性面板中，该组件显示为`动态导航表面`。</del><ins>该组件继承自`BaseNav3DModifle`，是动态节点基类的子类。在LayaAir-IDE的属性面板中，该组件显示为`动态导航表面`。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&gt; 关于3D寻路的整体介绍，请参考[3D寻路](/ide/component/navmesh/)。</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/navMesh/NavMeshObstacles/index.md</summary><div class="file">
+<div class="hunk">…… 第 11 行附近 ……</div>
+<div class="ln"><span>`NavMeshObstacles`（导航障碍物）是LayaAir 3D导航系统中用于表示寻路过程中障碍物的组件。通过在场景中放置障碍物对象，设置障碍物的类型与形状，可以影响导航网格的生成和寻路计算。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>该组件继承自`NavModifleBase`，是动态节点基类的子类。障碍物的导航数据可以动态添加到NavMeshSurface类的节点下面，形成场景路径的动态变化。在LayaAir-IDE的属性面板中，该组件显示为`导航障碍物`。</del><ins>该组件继承自`BaseNav3DModifle`，是动态节点基类的子类。障碍物的导航数据可以动态添加到NavMeshSurface类的节点下面，形成场景路径的动态变化。在LayaAir-IDE的属性面板中，该组件显示为`导航障碍物`。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&gt; 关于3D寻路的整体介绍，请参考[3D寻路](/ide/component/navmesh/)。</span></div>
+<div class="hunk">…… 第 25 行附近 ……</div>
+<div class="ln"><span>| 代理类型 `agentType` | 指定该障碍物适用的代理类型，需与所属静态导航表面的代理类型匹配 |</span></div>
+<div class="ln"><span>| 区域标记 `areaFlag` | 标记该障碍物的区域类型，影响代理对该区域的寻路代价 |</span></div>
+<div class="ln"><span>| 类型 `meshType` | </span><del>障碍物的形状类型，支持`BOX`（盒子）和`CAPSULE`（胶囊体）两种</del><ins>障碍物的形状类型，支持`BOX`（盒子）和`CYLINDER`（圆柱体）两种</ins><span> |</span></div>
+<div class="ln"><span>| 中心点 `center` | 障碍物的中心位置偏移（Vector3） |</span></div>
+<div class="ln"><span>| 数据 `datas` | 烘焙生成的导航网格数据（TextResource类型）。烘焙后自动填充 |</span></div>
+<div class="hunk">…… 第 37 行附近 ……</div>
+<div class="ln"><span>| 大小 `size` | 盒子的宽度、高度、长度（Vector3）。通过这些值可以调整盒子的体积大小，来匹配障碍物的尺寸 |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 2.3 </span><del>CAPSULE类型属性</del><ins>CYLINDER类型属性</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>当`meshType`设置为`CAPSULE`时，可设置以下属性：</del><ins>当`meshType`设置为`CYLINDER`时，可设置以下属性：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>| 属性 | 说明 |</span></div>
+<div class="ln"><span>| --- | --- |</span></div>
+<div class="ln"><span>| 高度 `height` | </span><del>胶囊体的高度</del><ins>圆柱体的高度</ins><span> |</span></div>
+<div class="ln"><span>| 半径 `radius` | </span><del>胶囊体的底面半径</del><ins>圆柱体的底面半径</ins><span> |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 52 行附近 ……</div>
+<div class="ln"><span>### 3.1 基本用法</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>在需要作为障碍物的节点上添加`导航障碍物`组件，选择合适的形状类型（BOX或CAPSULE），并调整中心点和大小参数使其匹配实际模型的尺寸。</del><ins>在需要作为障碍物的节点上添加`导航障碍物`组件，选择合适的形状类型（BOX或CYLINDER），并调整中心点和大小参数使其匹配实际模型的尺寸。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>使用步骤：</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>1. 在障碍物节点上添加`导航障碍物`组件。</span></div>
+<div class="ln"><span>2. </span><del>选择`meshType`为`BOX`或`CAPSULE`。</del><ins>选择`meshType`为`BOX`或`CYLINDER`。</ins><span></span></div>
+<div class="ln"><span>3. 调整`center`和`size`/`height`/`radius`参数。</span></div>
+<div class="ln"><span>4. 将障碍物节点放在拥有`静态导航表面`组件的节点的子节点下。</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/navMesh/index.md</summary><div class="file">
+<div class="hunk">…… 第 197 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 2.2 </span><del>动态节点的基类(NavModifleBase)</del><ins>动态节点的基类(BaseNav3DModifle)</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>有时，场景中需要一些动态节点，如移动的地板、临时添加的障碍物等。这些就需要导航网格随着节点的变化而变化，`动态导航表面`和`导航障碍物`两个组件可以实现此功能。它们都继承自动态节点基类NavModifleBase，它的数据可以动态添加到NavMeshSurface类的节点下面，形成场景路径的动态变化。下面分别对其两个子类进行介绍。</del><ins>有时，场景中需要一些动态节点，如移动的地板、临时添加的障碍物等。这些就需要导航网格随着节点的变化而变化，`动态导航表面`和`导航障碍物`两个组件可以实现此功能。它们都继承自动态节点基类BaseNav3DModifle，它的数据可以动态添加到NavMeshSurface类的节点下面，形成场景路径的动态变化。下面分别对其两个子类进行介绍。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>#### 2.2.1 动态导航表面(Nav Mesh Modifier Surface)</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/physics2D/rigidBody/index.md</summary><div class="file">
+<div class="hunk">…… 第 84 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```js</span></div>
+<div class="ln"><del>Physics2D.I.gravity= new Vector2(0,9.8)</del><ins>// 通过场景获取 2D 物理世界管理器，再调用 setGravity 设置全局重力</ins></div>
+<div class="ln"><ins>const physics2DManager = this.owner.scene.getComponentElementManager(Laya.Physics2DWorldManager.__managerName);</ins></div>
+<div class="ln"><ins>physics2DManager.setGravity(new Laya.Vector2(0, 9.8));</ins><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/physics3D/CharacterController/index.md</summary><div class="file">
+<div class="hunk">…… 第 255 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 4.5 判断是否在地面</span><del>isGrounded() /</del><span> isOnGround()</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>该方法用于判断角色是否站在地面上，返回布尔值。这是角色控制中非常常用的方法，可以用来控制跳跃逻辑（例如只有在地面上才能跳跃）或切换行走/下落动画。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>&gt; `isGrounded()` 和 `isOnGround()` 功能相同，都可以使用。</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><span>代码设置示例如下：</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 276 行附近 ……</div>
+<div class="ln"><span>            case Laya.Keyboard.SPACE:</span></div>
+<div class="ln"><span>                // 只有在地面上时才能跳跃</span></div>
+<div class="ln"><span>                if </span><del>(this.characterController.isGrounded())</del><ins>(this.characterController.isOnGround())</ins><span> {</span></div>
+<div class="ln"><span>                    this.characterController.jump(new Laya.Vector3(0, 5, 0));</span></div>
+<div class="ln"><span>                }</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/physics3D/ConfigurableConstraint/index.md</summary><div class="file">
+<div class="hunk">…… 第 134 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>        // 锁定X和Z方向的平移，Y方向设为受限运动</span></div>
+<div class="ln"><span>        constraint.XMotion = </span><del>Laya.D6Axis.Locked;</del><ins>Laya.D6Axis.eLOCKED;</ins><span></span></div>
+<div class="ln"><span>        constraint.ZMotion = </span><del>Laya.D6Axis.Locked;</del><ins>Laya.D6Axis.eLOCKED;</ins><span></span></div>
+<div class="ln"><span>        constraint.YMotion = </span><del>Laya.D6Axis.Limited;</del><ins>Laya.D6Axis.eLIMITED;</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>        // 设置Y方向的距离限制</span></div>
+<div class="hunk">…… 第 144 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>        // 锁定所有旋转</span></div>
+<div class="ln"><span>        constraint.angularXMotion = </span><del>Laya.D6Axis.Locked;</del><ins>Laya.D6Axis.eLOCKED;</ins><span></span></div>
+<div class="ln"><span>        constraint.angularYMotion = </span><del>Laya.D6Axis.Locked;</del><ins>Laya.D6Axis.eLOCKED;</ins><span></span></div>
+<div class="ln"><span>        constraint.angularZMotion = </span><del>Laya.D6Axis.Locked;</del><ins>Laya.D6Axis.eLOCKED;</ins><span></span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span>}</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/Component/physics3D/Rigidbody3D/index.md</summary><div class="file">
+<div class="hunk">…… 第 239 行附近 ……</div>
+<div class="ln"><span>弹力组合模式用于定义两个碰撞体之间的恢复系数如何组合计算。与摩擦力组合模式类似，该属性决定了碰撞双方的弹力的组合计算方式。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 1.11 </span><del>CCD连续碰撞检测阈值 ccdMotionThreshold</del><ins>CCD启动位移阈值 ccdThreshold</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>用于连续碰撞检测（CCD）的速度阈值。当物体移动速度超过该值时，物理引擎会启用连续碰撞检测，防止快速移动的物体（例如子弹）穿透其他物体。值为0表示禁用CCD。</del><ins>用于连续碰撞检测（CCD）的位移阈值。当物体在单个物理步内的位移超过该值时，物理引擎会启用连续碰撞检测，防止快速移动的物体（例如子弹）穿透其他物体。该属性是全局物理配置项，位于 `PhysicsSettings` 中（通过 `Scene3D.physicsSettings.ccdThreshold` 设置），并非刚体组件的独立属性。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 1.12 </span><del>CCD扫描球半径 ccdSweptSphereRadius</del><ins>CCD扫掠球半径 ccdSphereRadius</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>获取或设置用于连续碰撞检测（CCD）的扫描球半径。该半径定义了CCD检测时使用的球体大小，配合ccdMotionThreshold一起使用以实现精确的连续碰撞检测。</del><ins>用于连续碰撞检测（CCD）的扫掠球半径。该半径用于近似物体在单步运动路径上的体积，配合 `ccdThreshold` 一起使用以实现精确的连续碰撞检测。该属性同样是全局物理配置项，位于 `PhysicsSettings` 中（通过 `Scene3D.physicsSettings.ccdSphereRadius` 设置）。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## 2、3D刚体属性</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/assets/TileSet/index.md</summary><div class="file">
+<div class="hunk">…… 第 217 行附近 ……</div>
+<div class="ln"><span>![2-5-2](/IDE/assets/TileSet/img/2-5-2.png)</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**`Flip_h`**：垂直翻转。</del><ins>**`Flip_h`**：水平翻转。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**`Flip_v`**：水平翻转。</del><ins>**`Flip_v`**：垂直翻转。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>**`Transpose`**：沿对角线镜像翻转。</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/assets/lmat/PBR/index.md</summary><div class="file">
+<div class="hunk">…… 第 211 行附近 ……</div>
+<div class="ln"><span>| 渲染模式 | 值 | 说明 |</span></div>
+<div class="ln"><span>|---|---|---|</span></div>
+<div class="ln"><span>| Opaque | 0 | </span><del>不透明渲染，默认模式，性能最优</del><ins>不透明渲染模式</ins><span> |</span></div>
+<div class="ln"><span>| Cutout | 1 | </span><del>Alpha裁剪，根据Alpha阈值决定像素是否可见</del><ins>裁剪透明渲染模式</ins><span> |</span></div>
+<div class="ln"><span>| </span><del>Transparent</del><ins>Fade</ins><span> | 2 | </span><del>半透明渲染，支持Alpha混合</del><ins>透明混合，游戏中经常使用的透明</ins><span> |</span></div>
+<div class="ln"><span>| </span><del>Additive</del><ins>Transparent</ins><span> | 3 | </span><del>加色法混合渲染</del><ins>透明混合，物理上看似合理的透明</ins><span> |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 10.1 渲染质量（renderQuality）</span></div>
+<div class="hunk">…… 第 253 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>// 设置渲染模式为不透明</span></div>
+<div class="ln"><span>pbrMat.renderMode = </span><del>Laya.PBRMaterial.RENDERMODE_OPAQUE;</del><ins>Laya.PBRRenderMode.Opaque;</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>// 应用到模型</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/assets/lmat/Unlit/index.md</summary><div class="file">
+<div class="hunk">…… 第 168 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>// 使用加色法混合模式，产生发光效果</span></div>
+<div class="ln"><del>glowMat.renderMode</del><ins>glowMat.materialRenderMode</ins><span> = </span><del>Laya.UnlitMaterial.RENDERMODE_ADDTIVE;</del><ins>Laya.MaterialRenderMode.RENDERMODE_ADDTIVE;</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>meshRenderer.sharedMaterial = glowMat;</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/assets/lmat/glTFPBR/index.md</summary><div class="file">
+<div class="hunk">…… 第 161 行附近 ……</div>
+<div class="ln"><span>| 渲染模式 | 值 | 说明 |</span></div>
+<div class="ln"><span>|---|---|---|</span></div>
+<div class="ln"><span>| Opaque | 0 | </span><del>不透明渲染</del><ins>不透明渲染模式</ins><span> |</span></div>
+<div class="ln"><span>| Cutout | 1 | </span><del>Alpha裁剪</del><ins>裁剪透明渲染模式</ins><span> |</span></div>
+<div class="ln"><span>| </span><del>Transparent</del><ins>Fade</ins><span> | 2 | </span><del>半透明渲染</del><ins>透明混合，游戏中经常使用的透明</ins><span> |</span></div>
+<div class="ln"><span>| </span><del>Additive</del><ins>Transparent</ins><span> | 3 | </span><del>加色法混合</del><ins>透明混合，物理上看似合理的透明</ins><span> |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 10.2 渲染质量（renderQuality）</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/customComponent/system/index.md</summary><div class="file">
+<div class="hunk">…… 第 244 行附近 ……</div>
+<div class="ln"><span>     * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了。（该参数只有2D物理有，3D物理只有other）</span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>     onTriggerEnter(other: </span><del>Laya.PhysicsComponent</del><ins>Laya.PhysicsColliderComponent</ins><span> | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {</span></div>
+<div class="ln"><span>        // 假如碰到了炸弹</span></div>
+<div class="ln"><span>        if (other.label == "bomb") {</span></div>
+<div class="hunk">…… 第 267 行附近 ……</div>
+<div class="ln"><span>    * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了（该参数只有2D物理有，3D物理只有other）</span></div>
+<div class="ln"><span>    */</span></div>
+<div class="ln"><span>    onTriggerStay(other: </span><del>Laya.PhysicsComponent</del><ins>Laya.PhysicsColliderComponent</ins><span> | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {</span></div>
+<div class="ln"><span>        //持续碰撞时，打印日志，尽量不使用该事件方法，如果使用不当对性能的消耗会影响较大。</span></div>
+<div class="ln"><span>        console.log("onTriggerStay====", other, self);</span></div>
+<div class="hunk">…… 第 278 行附近 ……</div>
+<div class="ln"><span>    * @param contact  物理引擎携带的碰撞信息b2Contact，开发者可以通过查询b2Contact对象来获取两个刚体碰撞有关的详细信息。但是通常用不上，other和self中已存在常规需要的信用，足够用了（该参数只有2D物理有，3D物理只有other）</span></div>
+<div class="ln"><span>    */</span></div>
+<div class="ln"><span>    onTriggerExit(other: </span><del>Laya.PhysicsComponent</del><ins>Laya.PhysicsColliderComponent</ins><span> | Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {   </span></div>
+<div class="ln"><span>        //模拟角色离开毒气区域，触发逃脱奖励</span></div>
+<div class="ln"><span>        if (other.label == "poison") {</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/physicsEditor/physics3D/index.md</summary><div class="file">
+<div class="hunk">…… 第 251 行附近 ……</div>
+<div class="ln"><span>角色控制器类`CharacterController`常用于对第一人称和第三人称游戏角色的控制，可以方便的控制角色的跳跃、跳跃速度、降落速度、行走、等。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>由于角色控制器继承于`PhysicsComponent`，也具有碰撞器的特性，可以添加三维碰撞形状，产生碰撞的反馈，因此也称为角色碰撞器，属于碰撞器之一。</del><ins>由于角色控制器继承于`PhysicsColliderComponent`，也具有碰撞器的特性，可以添加三维碰撞形状，产生碰撞的反馈，因此也称为角色碰撞器，属于碰撞器之一。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>与静态碰撞器和刚体碰撞器都继承自物理触发器组件`PhysicsTriggerComponent`不同，角色控制器直接继承于物理组件的父类`PhysicsComponent`。所以，角色控制器是无法设置为触发器的。但是，角色碰撞器与触发器进行接触，仍然可以激活触发器的生命周期方法。</del><ins>静态碰撞器、刚体碰撞器和角色控制器都继承自物理碰撞器组件`PhysicsColliderComponent`。不过，角色控制器无法设置为触发器。但是，角色碰撞器与触发器进行接触，仍然可以激活触发器的生命周期方法。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>  &lt;img src="/IDE/physicsEditor/physics3D/img/2-5.png" alt="img" style="zoom:43%;" /&gt; </span></div>
+<div class="hunk">…… 第 686 行附近 ……</div>
+<div class="ln"><span>当我们产生复杂的碰撞需求时，例如，想碰哪个，不碰哪个。这时候就需要进行分组，并指定可以与哪个碰撞组进行碰撞。另外，设置碰撞组过滤，还会优化性能。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>各种碰撞器从物理组件父类`PhysicsComponent`那里继承了collisionGroup与canCollideWith属性，用以实现碰撞分组和指定碰撞组。</del><ins>各种碰撞器从物理碰撞器组件父类`PhysicsColliderComponent`那里继承了collisionGroup与canCollideWith属性，用以实现碰撞分组和指定碰撞组。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>##### 2.5.1 碰撞组 collisionGroup</span></div>
+<div class="hunk">…… 第 851 行附近 ……</div>
+<div class="ln"><span>#### 4.3 使用物理射线</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>在LayaAir </span><del>3D中实现射线检测是使用物理模拟器类`PhysicsSimulation`。</del><ins>3D中实现射线检测是使用场景的物理管理器 `scene.physicsSimulation`，其类型为接口 `IPhysicsManager`。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>射线检测的方法有4个，分别为射线检测第一个碰撞物体的方法`raycast` 和 `raycastFromTo`以及射线检测所有碰撞物体的方法`raycastAll`和`raycastAllFromTo`。</del><ins>射线检测的方法有2个，分别为射线检测第一个碰撞物体的方法`rayCast`以及射线检测所有碰撞物体的方法`rayCastAll`。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>检测一个和所有的区别比较容易理解，就是碰到第一个物体后射线立即结束，和射线可穿透所有碰撞物体一直不结束，这两种区别。如图4-1所示。</span></div>
+<div class="hunk">…… 第 861 行附近 ……</div>
+<div class="ln"><span>（图4-1）</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>那为什么同样的功能名称还有带FromTo和不带FromTo两种，又有什么区别呢？</del><ins>那么物理射线与数学对象的射线又有什么区别呢？</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>与数学对象的射线所不同的是，用于检测碰撞的物理射线是有长度的，或者是需要设置世界空间的结束位置。</del><ins>与数学对象的射线所不同的是，用于检测碰撞的物理射线是有长度的。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>带FromTo的是使用两个点（射线的起始位置点和结束位置点）作为参数。</del><ins>`rayCast` 与 `rayCastAll` 都是直接使用已经创建好的射线（由起点和方向构造），并通过 `distance` 参数设置射线的最大长度，如果我们不设置长度，则采用默认值长度`2147483647`。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>而不带FromTo的则是直接使用已经创建好的射线，不需要设置射线的结束位置点，但需要设置长度，如果我们不设置长度，则采用默认值长度`2147483647`。</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>如果是不带FromTo的射线检测，我们可以沿用上个小节创建射线的示例，稍加补充一下，具体代码如下所示：</del><ins>检测所有碰撞物体的射线检测，我们可以沿用上个小节创建射线的示例，稍加补充一下，具体代码如下所示：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="hunk">…… 第 896 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>带FromTo的射线检测使用示例，具体代码如下所示：</del><ins>检测第一个碰撞物体的射线检测使用示例，具体代码如下所示：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="hunk">…… 第 902 行附近 ……</div>
+<div class="ln"><span>……省略若干代码</span></div>
+<div class="ln"><span>*/</span></div>
+<div class="ln"><ins>//通过起点和方向构造一条射线</ins></div>
+<div class="ln"><ins>let ray = new Laya.Ray(new Laya.Vector3(0, 0, 0), new Laya.Vector3(0, 0, -1));</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>/*进行射线检测,检测所有碰撞的物体</span></div>
+<div class="ln"><del>//_scene3D.physicsSimulation.raycastAllFromTo(this.from, this.to,</del><ins>//_scene3D.physicsSimulation.rayCastAll(ray,</ins><span> this.outs);</span></div>
+<div class="ln"><span>//检测所有物体的射线使用与上个示例类似</span></div>
+<div class="ln"><span>*/</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>//进行射线检测,检测第一个碰撞物体</span></div>
+<div class="ln"><del>_scene3D.physicsSimulation.raycastFromTo(this.from, this.to,</del><ins>_scene3D.physicsSimulation.rayCast(ray,</ins><span> this.out);</span></div>
+<div class="ln"><span>//将射线碰撞到的物体设置为红色</span></div>
+<div class="ln"><span>((this.out.collider.owner).getComponent(Laya.MeshRenderer).sharedMaterial as Laya.BlinnPhongMaterial).albedoColor = new Laya.Color(0.0, 1.0, 0.0, 1.0);</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/Area2D/index.md</summary><div class="file">
+<div class="hunk">…… 第 21 行附近 ……</div>
+<div class="ln"><span>2D区域的主要作用是定义和管理2D相机所覆盖的区域，通过精确控制相机，能够为玩家呈现丰富和动态的视觉效果。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>每个2D区域只允许存在一个2D主相机，如图1-2所示。该相机的配置直接影响区域的视觉输出。为了保证相机功能的正确实施，相机节点必须置于对应2D区域的子节点中，否则会报错。</del><ins>每个2D区域只允许存在一个2D主相机，如图1-2所示。该相机的配置直接影响区域的视觉输出。为了保证相机功能的正确实施，相机节点必须置于对应2D区域的子节点中，否则相机将不会生效。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>![](/IDE/uiEditor/Area2D/img/1-2.png) </span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/Dialog/index.md</summary><div class="file">
+<div class="hunk">…… 第 29 行附近 ……</div>
+<div class="ln"><span>| 属性                             | 功能                                                         |</span></div>
+<div class="ln"><span>| -------------------------------- | ------------------------------------------------------------ |</span></div>
+<div class="ln"><span>| 自动销毁 </span><del>**autoDestoryAtClosed**</del><ins>**autoDestroyAtClosed**</ins><span> | 弹窗视图被关闭后，是否自动销毁（销毁节点和使用到的资源），默认为false，此属性由场景类继承而来。 |</span></div>
+<div class="ln"><span>| 拖动区域 **dragArea**            | 拖动区域（格式：x,y,width,height），默认值为"0,0,0,0"        |</span></div>
+<div class="ln"><span>| 模式窗口 **isModal**             | 是否是模式窗口，默认为false。为模式窗口时，点击弹窗空白处，可自动关闭该弹窗 |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/FairyGUI/GList/index.md</summary><div class="file">
+<div class="hunk">…… 第 41 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>aList.addChild(obj);</span></div>
+<div class="ln"><del>aList.RemoveChildrenToPool();</del><ins>aList.removeChildrenToPool();</ins><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 94 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>// 回调函数的第一个参数就是当前被点击的对象</span></div>
+<div class="ln"><span>function onClickItem(item: </span><del>GObject):</del><ins>GButton):</ins><span> void {</span></div>
+<div class="ln"><span>    console.log("点击了对象：" + item.title);</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 102 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>从上面的代码可以看出，事件回调里都可以方便的获得当前点击的对象。如果要获得索引，那么可以使用GetChildIndex。注意，item类型必须是按钮，即GButton，才可以触发ClickItem事件。</del><ins>从上面的代码可以看出，事件回调里都可以方便的获得当前点击的对象。如果要获得索引，那么可以使用getChildIndex。注意，item类型必须是按钮，即GButton，才可以触发ClickItem事件。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 二、 虚拟列表</span></div>
+<div class="hunk">…… 第 142 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><del>//这里要注意，因为我们要立即访问新滚动位置的对象，所以第二个参数scrollItToView不能为true，即不使用动画效果</del></div>
+<div class="ln"><del>aList.scrollToView(500);</del><ins>//这里要注意，因为我们要立即访问新滚动位置的对象，所以第二个参数ani不能为true，即不使用动画效果</ins></div>
+<div class="ln"><ins>aList.scroller.scrollTo(500, false);</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>//转换到显示对象索引</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/FairyGUI/GPanel/index.md</summary><div class="file">
+<div class="hunk">…… 第 11 行附近 ……</div>
+<div class="ln"><span>- `Layout` 参考布局容器</span></div>
+<div class="ln"><span>- `Clipping` 是否开启剪裁。开启后，超出容器尺寸的内容将会被隐藏。</span></div>
+<div class="ln"><span>- `Selection` </span><del>参考[Selection支持](/ide/uieditor/fairygui/scroller/)</del><ins>参考[Selection支持](/ide/uieditor/fairygui/selection/)</ins><span></span></div>
+<div class="ln"><span>- `Scroller` </span><del>参考[滚动支持](/ide/uieditor/fairygui/selection/)</del><ins>参考[滚动支持](/ide/uieditor/fairygui/scroller/)</ins><span></span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/FairyGUI/GTextInput/index.md</summary><div class="file">
+<div class="hunk">…… 第 1 行附近 ……</div>
+<div class="ln"><span>---</span></div>
+<div class="ln"><span>title: </span><del>"文本 （GTextField）"</del><ins>"输入文本（GTextInput）"</ins></div>
+<div class="ln"><span>description: "Author: 谷主"</span></div>
+<div class="ln"><span>slug: "ide/uieditor/fairygui/gtextinput"</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/FairyGUI/GWindow/index.md</summary><div class="file">
+<div class="hunk">…… 第 26 行附近 ……</div>
+<div class="ln"><span>let win = new GWindow();</span></div>
+<div class="ln"><span>win.contentPane = ((await Laya.loader.load("Examples/windows/Window1.lh")) as Laya.Prefab).create();</span></div>
+<div class="ln"><del>window.show();</del><ins>win.show();</ins><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 34 行附近 ……</div>
+<div class="ln"><span>class MyWindow extends Laya.GWindow {</span></div>
+<div class="ln"><span>    </span></div>
+<div class="ln"><span>    protected </span><ins>async</ins><span> onInit() {</span></div>
+<div class="ln"><span>        this.contentPane = ((await Laya.loader.load("Examples/windows/Window1.lh")) as Laya.Prefab).create(); </span></div>
+<div class="ln"><span>    }</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/FairyGUI/layout/index.md</summary><div class="file">
+<div class="hunk">…… 第 53 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>//需要手动设置脏状态</span></div>
+<div class="ln"><del>aBox.layout.stretchParams.push(new</del><ins>aBox.layout.stretchParamsX.push(new</ins><span> StretchParam().setRatio(0.5));</span></div>
+<div class="ln"><span>aBox.setLayoutChangedFlag();</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/FairyGUI/scroller/index.md</summary><div class="file">
+<div class="hunk">…… 第 49 行附近 ……</div>
+<div class="ln"><span>  - `viewWidth` `viewHeight` 视口宽度和高度。</span></div>
+<div class="ln"><span>  - `contentWidth` `contentHeight` 内容高度和宽度。</span></div>
+<div class="ln"><span>  - `percX` `percY` </span><del>`SetPercX` `SetPercY`</del><ins>`setPercX` `setPercY`</ins><span> 获得或设置滚动的位置，以百分比来计算，取值范围是0-1。如果希望滚动条从当前值到设置值有一个动态变化的过程，可以使用Set方法，它们提供了一个是否使用缓动的参数。</span></div>
+<div class="ln"><span>  - `posX` `posY` </span><del>`SetPosX` `SetPosY`</del><ins>`setPosX` `setPosY`</ins><span> 获得或设置滚动的位置，以绝对像素值来计算。取值范围是0-最大滚动距离。垂直最大滚动距离=（内容高度-视口高度），水平最大滚动距离=（内容宽度-视口宽度）。如果希望滚动条从当前值到设置值有一个动态变化的过程，可以使用Set方法，它们提供了一个是否使用缓动的参数。</span></div>
+<div class="ln"><span>  - `pageX` p`ageY` `pageX` `pageY` 如果滚动设置为页面模式，那么可以通过这些方法设置或者获得当前的页面索引。如果要获得页面数量，可以用contentWidth/viewWidth或者contentHeight/viewHeight。</span></div>
+<div class="ln"><span>  - `scrollLeft` `scrollRight` `scrollUp` `scrollDown` 向指定方向滚动N*step。例如，如果step=20，那么scrollLeft(1)表示向左滚动20像素，scrollLeft(2)表示向左滚动40像素。注意：如果滚动属性设置了贴近元件，例如元件大小为41像素，则需要滚动距离超过20像素，才能真正发生滚动，那么如果调用scrollLeft(1)，在step=20的情况下，会导致看不到任何效果。 如果滚动设置为页面模式，那这几个API也有“翻一页”的作用。</span></div>
+<div class="ln"><span>  - </span><del>`scrollToView`</del><ins>`scrollTo`</ins><span> 调整滚动位置，使指定的元件出现在视口内。</span></div>
+<div class="ln"><span>  - `step` 这个值是指滚动“一格”的距离。这个距离有三个用途：a）scrollUp/scrollDown/scrollLeft/scrollRight； b）点击滚动条的箭头按钮； c）鼠标滚轮，鼠标滚轮滚一次的距离是step*2。</span></div>
+<div class="ln"><span>  - `cancelDragging` 当滚动面板处于拖拽滚动状态或即将进入拖拽状态时，可以调用此方法停止或禁止本次拖拽。</span></div>
+<div class="hunk">…… 第 60 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><del>aPanel.scroller.on(Laya.UIEvent.Scroll,</del><ins>aPanel.on(Laya.UIEvent.Scroll,</ins><span> ()=&gt; {} );</span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/FairyGUI/selection/index.md</summary><div class="file">
+<div class="hunk">…… 第 7 行附近 ……</div>
+<div class="ln"><span>Author: 谷主</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>GPanel以及它的派生类（GList、GTree）都提供了选择（Selection）功能，当孩子节点的类型为GButton，并且它的模式是单选按钮时，就会参与到这个功能。</del><ins>GPanel以及它的派生类（GList、GTree）都提供了选择（Selection）功能，当孩子节点的类型为GButton，且它的模式不是普通模式（Common）时（即为Check多选或Radio单选模式），就会参与到这个功能。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 一、编辑器操作</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/graphics/index.md</summary><div class="file">
+<div class="hunk">…… 第 202 行附近 ……</div>
+<div class="ln"><span>     * @returns </span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    drawRoundRect(x: number, y: number, width: number, height: number, lt: number, rt: number, lb: number, rb: number, fillColor: any, lineColor: any = null, lineWidth: number = 1, percent?: </span><del>boolean)</del><ins>boolean, minNum?: number, segPixel?: number)</ins><span> {</span></div>
+<div class="ln"><span>        return this.addCmd(DrawRoundRectCmd.create(x, y, width, height, lt, rt, lb, rb, fillColor, lineColor, lineWidth, </span><del>percent));</del><ins>percent, minNum, segPixel));</ins><span></span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span>```</span></div>
+<div class="hunk">…… 第 359 行附近 ……</div>
+<div class="ln"><span>     * @param lineColor	（可选）边框颜色，或者填充绘图的渐变对象。</span></div>
+<div class="ln"><span>     * @param lineWidth	（可选）边框宽度。</span></div>
+<div class="ln"><span>     </span><ins>* @param percent	（可选）位置和大小是否是百分比值。</ins><span></span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    drawCircle(x: number, y: number, radius: number, fillColor: any, lineColor: any = null, lineWidth: number = </span><del>1):</del><ins>1, percent?: boolean):</ins><span> DrawCircleCmd {</span></div>
+<div class="ln"><span>        return this.addCmd(DrawCircleCmd.create(x, y, radius, fillColor, lineColor, </span><del>lineWidth));</del><ins>lineWidth, percent));</ins><span></span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span>```</span></div>
+<div class="hunk">…… 第 877 行附近 ……</div>
+<div class="ln"><span>     * @param textAlign 文本对齐方式，可选值："left"，"center"，"right"。</span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    fillText(text: </span><del>string | WordText,</del><ins>string,</ins><span> x: number, y: number, font: string, color: string, textAlign: string): FillTextCmd {</span></div>
+<div class="ln"><span>        return this.addCmd(FillTextCmd.create(text, x, y, font, color, textAlign, 0, ""));</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="hunk">…… 第 940 行附近 ……</div>
+<div class="ln"><span>     * @param offset	（可选）贴图纹理偏移</span></div>
+<div class="ln"><span>     * @param color	 	 （可选）颜色</span></div>
+<div class="ln"><span>     </span><ins>* @param percent	（可选）是否使用百分比。默认为false。</ins><span></span></div>
+<div class="ln"><span>     *</span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    fillTexture(texture: Texture, x: number, y: number, width: number = 0, height: number = 0, type: string = "repeat", offset: Point | null = null, color: string = </span><del>null):</del><ins>null, percent: boolean = false):</ins><span> FillTextureCmd | null {</span></div>
+<div class="ln"><span>        if (texture &amp;&amp; texture.bitmap)</span></div>
+<div class="ln"><span>            return this.addCmd(FillTextureCmd.create(texture, x, y, width, height, type, offset || Point.EMPTY, </span><del>color));</del><ins>color, percent));</ins><span></span></div>
+<div class="ln"><span>        else</span></div>
+<div class="ln"><span>            return null;</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/ColorPicker/index.md</summary><div class="file">
+<div class="hunk">…… 第 32 行附近 ……</div>
+<div class="ln"><span>| ------------------------------ | ---------------------------------------------------- |</span></div>
+<div class="ln"><span>| 默认背景颜色 **bgColor**       | 取色器面板背景颜色                                   |</span></div>
+<div class="ln"><span>| </span><del>取色框背景色</del><ins>取色框边框色</ins><span> **borderColor**   | 取色器面板边框颜色                                   |</span></div>
+<div class="ln"><span>| </span><del>取色框边框色</del><ins>输入框背景色</ins><span> **inputBgColor**  | 取色器面板文本框的背景颜色                           |</span></div>
+<div class="ln"><span>| </span><del>输入框背景色</del><ins>输入框文本颜色</ins><span> **inputColor**  | 取色器面板文本框中，文本字体的颜色                   |</span></div>
+<div class="ln"><span>| </span><del>输入框文本色</del><ins>当前选中颜色</ins><span> **selectedColor** | ColorPicker当前所选择的颜色                          |</span></div>
+<div class="ln"><span>| 纹理 **skin**                  | 组件的皮肤纹理资源，运行时会根据选取的颜色而发生变化 |</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/ComboBox/index.md</summary><div class="file">
+<div class="hunk">…… 第 58 行附近 ……</div>
+<div class="ln"><span>| 滚动条皮肤 **scrollBarSkin**    | 下拉选项列表的滚动条图像资源，只可以设置垂直滚动条皮肤       |</span></div>
+<div class="ln"><span>| 默认选项索引 **selectedIndex**  | 表示当前选择的项的索引                                       |</span></div>
+<div class="ln"><span>| 默认选项标签 </span><del>**selectedLablel**</del><ins>**selectedLabel**</ins><span>  | 按照标签文本labels，设置下拉列表默认选项值，即下拉按钮显示的选项 |</span></div>
+<div class="ln"><span>| 默认标签 </span><del>**defaultLablel**</del><ins>**defaultLabel**</ins><span>       | 未设置下拉列表选项值时（selectedIndex为-1），在下拉按钮显示框中用于提示的文本 |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&gt; 其中，labelFont、labelSize、labelBold、labelColors、labelPadding属性为下拉按钮的属性，itemSize、itemHeight、itemPadding、itemColors、visibleNum、scrollType、scrollBarSkin属性为下拉选项相关属性。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>使用默认的skin属性，设置stateNum为3，labels属性设置为“item0,item1,item2,item3,item4,item5,item6,item7,item8”。再将selectedIndex设置为0后，selectedLablel会变为item0，效果如图1-5所示。</del><ins>使用默认的skin属性，设置stateNum为3，labels属性设置为“item0,item1,item2,item3,item4,item5,item6,item7,item8”。再将selectedIndex设置为0后，selectedLabel会变为item0，效果如图1-5所示。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&lt;img src="/IDE/uiEditor/uiComponent/ComboBox/img/1-5.png" alt="1-5" style="zoom:80%;" /&gt;</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/FontClip/index.md</summary><div class="file">
+<div class="hunk">…… 第 40 行附近 ……</div>
+<div class="ln"><span>| 九宫格 **sizeGrid**    | 位图的有效缩放网格数据（九宫格信息）：上边距、右边距、下边距、左边距、是否重复填充。 |</span></div>
+<div class="ln"><span>| 布局方向 **direction** | 位图内容排列方向，共有两个选项。horizontal：水平方向排列，vertical：垂直方向排列。切换后以下两个属性也会随之切换 |</span></div>
+<div class="ln"><span>| 水平间距 </span><del>**spacex**</del><ins>**spaceX**</ins><span>    | X方向项间隔，以像素为单位。**仅在布局方向开启水平方向是有效。** |</span></div>
+<div class="ln"><span>| 垂直间距 </span><del>**spacey**</del><ins>**spaceY**</ins><span>    | Y方向项间隔，以像素为单位。**仅在布局方向开启垂直方向是有效。** |</span></div>
+<div class="ln"><span>| 水平对齐方式 **align** | 水平对齐方式，共有三种方式。left：居左对齐，center：居中对齐，right：居右对齐。 |</span></div>
+<div class="ln"><span>| 切片字符表 **sheet**   | 位图内容范围，位图内容在有换行时需要在换行的位置添加空格。   |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/HBox/index.md</summary><div class="file">
+<div class="hunk">…… 第 33 行附近 ……</div>
+<div class="ln"><span>| 背景色 **bgColor**            | 背景颜色，勾选后可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 水平间距 **space**            | 子对象之间的水平间隔，以像素为单位。                         |</span></div>
+<div class="ln"><span>| 对齐模式 **align**            | </span><del>布局元素的垂直对齐，共有四个选项。none：不进行垂直对齐，left：居顶垂直对齐，center：居中垂直对齐，right：居底垂直对齐，默认为none。</del><ins>布局元素的垂直对齐，共有四个选项。none：不进行垂直对齐，top：居顶对齐，middle：居中对齐，bottom：居底对齐，默认为none。</ins><span> |</span></div>
+<div class="ln"><span>| 跳过隐藏节点 **skipHidden**   | 默认为false，勾选后排列时自动跳过隐藏的节点。                |</span></div>
+<div class="ln"><span>| 自动宽高模式 **autoSizeMode** | 根据选项自动调整宽高，共有三个选项。none：无自适应模式，both：宽高自适应模式，width：宽度自适应模式。 |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/Label/index.md</summary><div class="file">
+<div class="hunk">…… 第 42 行附近 ……</div>
+<div class="ln"><span>| 子项对齐 **Align ltems**        | 子项对齐，图文混排时图片和文字的对齐方式，分别是top（居顶对齐）、middle（居中对齐）、bottom（居底对齐） |</span></div>
+<div class="ln"><span>| 背景颜色 **bgColor**            | 背景颜色，勾选后可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 文本边框颜色 </span><del>**bordercolor**</del><ins>**borderColor**</ins><span>    | 文本边框颜色，勾选后可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 文本超出设置 **overflow**       | 文本溢出处理，共有五种模式。visible（可见）：默认模式，不进行任何裁切。hidden（隐藏）：不显示超出文本域的字符。scroll（滚动）：不显示文本域外的字符像素，并且支持scroll接口。shrink（自动收缩）：超出文本域时，文本整体缩小以适应文本框。ellipsis（显示省略号）：超出文本域时，文本被截断，并且文本最后显示省略号 |</span></div>
+<div class="ln"><span>| 自动换行 **wordWrap**           | 是否自动换行，布尔值选项，默认为`false`，选择`true`可以开启自动换行 |</span></div>
+<div class="ln"><span>| 段落行间距 **leading**          | 垂直行间距，当开启自动换行时，文本内容多行时有效。间距以像素为单位，输入正整数即可 |</span></div>
+<div class="ln"><span>| 边距 **padding**                | 文本边距，以像素为单位，由4个整数值组成。“U”表示距上边框的距离、”R“表示距右边框的距离、”D“表示距下边框的距离、”L”表示距左边框的距离 |</span></div>
+<div class="ln"><span>| 下划线颜色 </span><del>**underlinecolor**</del><ins>**underlineColor**</ins><span>   | 下划线颜色，可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 描边宽度 **stroke**             | 描边宽度，范围为0~100                                        |</span></div>
+<div class="ln"><span>| 描边颜色 **strokeColor**        | 文本的描边颜色，可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/Radio/index.md</summary><div class="file">
+<div class="hunk">…… 第 43 行附近 ……</div>
+<div class="ln"><span>| 标签描边宽度 **labelStroke**       | 文本标签的描边宽度，以像素为单位。默认值为0，表示不描边      |</span></div>
+<div class="ln"><span>| 标签描边颜色  **labelStrokeColor** | 文本标签描边的颜色，以字符串表示，默认值为#000000（黑色）    |</span></div>
+<div class="ln"><span>| 标签状态描边色 </span><del>**strokecolors**</del><ins>**strokeColors**</ins><span>    | 勾选后，可以根据状态设置文本的描边颜色。分三种状态进行设置：鼠标在元素释放时（up）、鼠标移动到元素时（over），鼠标按下时（down），三种状态可以设置不同的描边颜色 |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>Radio继承于Button，是一个单选框组件。相对于按钮组件，单选框组件的特性是，点中之后不会恢复状态，如动图1-3所示。</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/Tab/index.md</summary><div class="file">
+<div class="hunk">…… 第 49 行附近 ……</div>
+<div class="ln"><span>| 间隔 **space**                    | 各标签之间的间隔，以像素为单位                               |</span></div>
+<div class="ln"><span>| 排列方向 **direction**            | 导航标签的排列方向。有vertical（垂直排列）和horizontal（水平排列）两种 |</span></div>
+<div class="ln"><span>| 选中项索引 **selectedIndex**      | </span><del>选择索引，默认为0。设置后，导航标签会保持选中状态。索引数量会根据labels数量（标签数量）动态改变</del><ins>选择索引，默认为-1（不选择任何选项）。设置后，导航标签会保持选中状态。索引数量会根据labels数量（标签数量）动态改变</ins><span> |</span></div>
+<div class="ln"><span>| 标签字体 **labelFont**            | 文本标签的字体                                               |</span></div>
+<div class="ln"><span>| 标签字体大小 **labelSize**        | 文本标签的字体大小                                           |</span></div>
+<div class="hunk">…… 第 55 行附近 ……</div>
+<div class="ln"><span>| 标签文本颜色 **labelColors**      | 鼠标在鼠标移出（up）、鼠标悬停（over），鼠标按下（down）时，各个状态下的文本标签颜色 |</span></div>
+<div class="ln"><span>| 标签描边宽度 **labelStroke**      | 文本标签的描边宽度，以像素为单位。默认值为0，表示不描边      |</span></div>
+<div class="ln"><span>| 标签描边颜色 **labelStrokeColor** | </span><del>文本标签描边的颜色，以字符串表示，默认值为#ffffff（白色）描边宽度大于0时有效</del><ins>文本标签描边的颜色，以字符串表示，默认值为#000000（黑色），描边宽度大于0时有效</ins><span> |</span></div>
+<div class="ln"><span>| 标签边距  **labelPadding**        | 文本标签的边距。格式：上边距、右边距、下边距、左边距         |</span></div>
+<div class="ln"><span>| 标签水平对齐                      | 文本标签的水平对齐方式，分别为左，居中，右                   |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/TextArea/index.md</summary><div class="file">
+<div class="hunk">…… 第 35 行附近 ……</div>
+<div class="ln"><span>| 属性                            | 功能说明                                                     |</span></div>
+<div class="ln"><span>| ------------------------------- | ------------------------------------------------------------ |</span></div>
+<div class="ln"><span>| 垂直滚动皮肤 </span><del>**vscrollbarskin**</del><ins>**vScrollBarSkin**</ins><span> | 添加垂直滚动条皮肤                                           |</span></div>
+<div class="ln"><span>| </span><del>水平滚动皮肤**hscrollbarskin**</del><ins>水平滚动皮肤**hScrollBarSkin**</ins><span>  | 添加水平滚动条皮肤                                           |</span></div>
+<div class="ln"><span>| 滚动条类型 </span><del>**scrolltype**</del><ins>**scrollType**</ins><span>       | 文本域的滚动类型，需要配合对应的滚动条皮肤使用。共有四种类型：none：无滚动（默认），horizontal：水平方向滚动，vertical：垂直方向滚动，both：水平与垂直都滚动 |</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>TextArea是一个用于多行的文本域，相较于TextInput的区别是它可以添加垂直滚动条皮肤和水平滚动条皮肤。水平方向滚动效果如动图1-3所示，垂直方向滚动效果如动图1-4所示。</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/TextInput/index.md</summary><div class="file">
+<div class="hunk">…… 第 34 行附近 ……</div>
+<div class="ln"><span>| 子项对齐 **align**              | 对齐方式，水平对齐(align)分别是left（居左对齐）、center（居中对齐）、right（居右对齐）;垂直对齐(valign)分别是top（居顶对齐）、middle（居中对齐）、bottom（居底对齐） |</span></div>
+<div class="ln"><span>| 背景颜色 **bgColor**            | 背景颜色，勾选后可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 文本框颜色 </span><del>**bordercolor**</del><ins>**borderColor**</ins><span>      | 文本边框颜色，勾选后可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 文本超出设置 **overflow**       | 文本溢出处理，共有五种模式。visible（可见）：不进行任何裁切。hidden（隐藏）：不显示超出文本域的字符。scroll（滚动）：默认模式，不显示文本域外的字符像素，并且支持scroll接口。shrink（自动收缩）：超出文本域时，文本整体缩小以适应文本框。ellipsis（显示省略号）：超出文本域时，文本被截断，并且文本最后显示省略号 |</span></div>
+<div class="ln"><span>| 自动换行 **wordWrap**           | 是否自动换行，布尔值选项，默认为`false`，选择`true`可以开启自动换行 |</span></div>
+<div class="ln"><span>| 段落行间距 **leading**          | 垂直行间距，当开启自动换行时，文本内容多行时有效。间距以像素为单位，输入正整数即可 |</span></div>
+<div class="ln"><span>| 边距 **padding**                | 文本边距，以像素为单位，由4个整数值组成。“U”表示距上边框的距离、”R“表示距右边框的距离、”D“表示距下边框的距离、”L”表示距左边框的距离 |</span></div>
+<div class="ln"><span>| 下划线颜色 </span><del>**underlinecolor**</del><ins>**underlineColor**</ins><span>   | 下划线颜色，可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 描边宽度 **stroke**             | 描边宽度，范围为0~100                                        |</span></div>
+<div class="ln"><span>| 描边颜色 **strokeColor**        | 文本的描边颜色，可以直接输入颜色值，例如：`#ffffff`，也可以点击输入条右侧的拾色器选取颜色 |</span></div>
+<div class="ln"><span>| 纹理 **skin**                   | 设置皮肤，选择对应的图像资源即可。代码中表示皮肤的地址，以字符串表示 |</span></div>
+<div class="ln"><span>| 九宫格 **sizeGrid**             | 背景图的有效缩放网格数据。数据格式："上边距，右边距，下边距，左边距，是否重复填充（值为0：不重复填充，1：重复填充）"，以逗号分隔。例如："4,4,4,4,1" |</span></div>
+<div class="ln"><span>| 类型 **type**                   | </span><del>输入框类型，共有十三种类型：text、password、email、url、number、range、date、month、week、time、dateime、dateime—local、search。效果等同HTML的[input](https://www.w3school.com.cn/html/html_form_input_types.asp)</del><ins>输入框类型，共有十三种类型：text、password、email、url、number、range、date、month、week、time、datetime、datetime-local、search。效果等同HTML的[input](https://www.w3school.com.cn/html/html_form_input_types.asp)</ins><span> |</span></div>
+<div class="ln"><span>| 字符数量限制 </span><del>**maxchars**</del><ins>**maxChars**</ins><span>       | 最大字符数，默认为100000。设置字符数量限制时，小于等于0的值将会限制字符数量为100000 |</span></div>
+<div class="ln"><span>| 限制输入的字符 **restrict**     | 限制输入的字符，在TextInput里只能输入这些。不建议开启，适用于简单的文本，不支持反斜杠 |</span></div>
+<div class="ln"><span>| 提示符 **prompt**               | 输入前的提示文本                                             |</span></div>
+<div class="ln"><span>| 提示符颜色 </span><del>**promptcolor**</del><ins>**promptColor**</ins><span>      | 提示文本的颜色                                               |</span></div>
+<div class="ln"><span>| 可编辑 **editable**             | 设置可编辑状态，默认为true                                   |</span></div>
+<div class="ln"><span>| 多行输入 **multiline**          | 是否是文本域，值为true表示当前是文本域，可多行输入，否则不是文本域。默认为false |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/VSlider/index.md</summary><div class="file">
+<div class="hunk">…… 第 54 行附近 ……</div>
+<div class="ln"><span>| 显示进度条 **showProgress**     | 是否显示进度条。默认为false，如果存在进度条资源`vslider$progress.png`，则可以勾选该项 |</span></div>
+<div class="ln"><span>| 纹理 **skin**                   | 滑动条的底图资源                                             |</span></div>
+<div class="ln"><span>| 九宫格 </span><del>**skinGrid**</del><ins>**sizeGrid**</ins><span>             | 滑动条底图资源的有效缩放网格数据（九宫格数据）               |</span></div>
+<div class="ln"><span>| 刻度变动单位 **tick**           | 滑动条刻度值的最小单位。每次拖动滑块value值改变的量，默认值为1 |</span></div>
+<div class="ln"><span>| 当前刻度值 **value**            | 当前所在刻度，即滑块目前所处的数值，应当等于max或min，或是它们之间的值 |</span></div>
+</div></details>
+<details open><summary>src/content/docs/IDE/uiEditor/uiComponent/index.md</summary><div class="file">
+<div class="hunk">…… 第 96 行附近 ……</div>
+<div class="ln"><span>this.xx.top = 0;</span></div>
+<div class="ln"><span>this.xx.bottom = 0;</span></div>
+<div class="ln"><del>this.xx.CenterX</del><ins>this.xx.centerX</ins><span> = 0;</span></div>
+<div class="ln"><del>this.xx.CenterY</del><ins>this.xx.centerY</ins><span> = 0;</span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/2.x-Upgrade/index.md</summary><div class="file">
+<div class="hunk">…… 第 66 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>Laya.loader.load("1.png").then((res)=&gt; { /* res是Texture */ });</span></div>
+<div class="ln"><span>Laya.loader.load("1.png", </span><del>Loader.Texture2D).then((res)=&gt;</del><ins>Loader.TEXTURE2D).then((res)=&gt;</ins><span> { /* res是Texture2D */ });</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>Laya.loader.getRes("1.png"); //res是Texture</span></div>
+<div class="ln"><span>Laya.loader.getRes("1.png", </span><del>Loader.Texture2D);</del><ins>Loader.TEXTURE2D);</ins><span> //res是Texture2D</span></div>
+<div class="ln"><span>Laya.Loader.getTexture2D("1.png"); //res是Texture2D</span></div>
+<div class="ln"><span>```</span></div>
+<div class="hunk">…… 第 87 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>Laya.loader.load(url, { group:xx, </span><del>piority:1</del><ins>priority:1</ins><span> }); //priority不限制0-5。为任意整数，数字越大优先级越高。</span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 122 行附近 ……</div>
+<div class="ln"><span>class MyLoader {</span></div>
+<div class="ln"><span>    load(task:ILoadTask) {</span></div>
+<div class="ln"><span>        return task.loader.fetch(task.url, "json", </span><del>task.createCallback()).then(data=&gt;</del><ins>task.progress.createCallback()).then(data=&gt;</ins><span> {</span></div>
+<div class="ln"><span>            let obj = /*解析data*/;</span></div>
+<div class="ln"><span>            return obj;</span></div>
+<div class="hunk">…… 第 130 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>加载类里不需要考虑是单独加载，还是是批量加载其中一个环节，因为task.createCallback可以很好的将总体进度归一化为0~1。</del><ins>加载类里不需要考虑是单独加载，还是是批量加载其中一个环节，因为task.progress.createCallback可以很好的将总体进度归一化为0~1。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>复杂的例子可以参考引擎里的TextureLoader/MaterialLoader/MeshLoader之类。</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/IDE/Script/index.md</summary><div class="file">
+<div class="hunk">…… 第 56 行附近 ……</div>
+<div class="ln"><span>     * 开始碰撞时执行</span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    onTriggerEnter?(other: </span><del>PhysicsComponent</del><ins>PhysicsColliderComponent</ins><span> | ColliderBase, self?: ColliderBase, contact?: any): void;</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    /**</span></div>
+<div class="ln"><span>     * 持续碰撞时执行</span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    onTriggerStay?(other: </span><del>PhysicsComponent</del><ins>PhysicsColliderComponent</ins><span> | ColliderBase, self?: ColliderBase, contact?: any): void;</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    /**</span></div>
+<div class="ln"><span>     * 结束碰撞时执行</span></div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>    onTriggerExit?(other: </span><del>PhysicsComponent</del><ins>PhysicsColliderComponent</ins><span> | ColliderBase, self?: ColliderBase, contact?: any): void;</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    /**</span></div>
+<div class="hunk">…… 第 236 行附近 ……</div>
+<div class="ln"><span>## 参考代码</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>代码实现了自定义脚本的暴露属性的标识符，生命周期方法onStart()和事件mouseDown()的实现</del><ins>代码实现了自定义脚本的暴露属性的标识符，生命周期方法onStart()和事件onMouseDown()的实现</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&lt;img src="/basics/IDE/Script/images/4.png" alt="image-20221031205632806" style="zoom: 25%;" /&gt; </span></div>
+<div class="hunk">…… 第 321 行附近 ……</div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    </span><del>mouseDown(e:</del><ins>onMouseDown(e:</ins><span> Event): void {</span></div>
+<div class="ln"><span>        this.hideAll();           </span></div>
+<div class="ln"><span>    }</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/IDE/entrance/index.md</summary><div class="file">
+<div class="hunk">…… 第 45 行附近 ……</div>
+<div class="ln"><span>（图5）</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>点击Scene2D节点，可以在Inspector里看到Runtime，拖入一个代码Main.ts，保存场景后，会在同级目录下生产Main_gen.ts</del><ins>点击Scene2D节点，可以在Inspector里看到Runtime，拖入一个代码Main.ts，保存场景后，会在同级目录下生产Main.generated.ts</ins><span> 文件，此文件为当前节点的生产类，不可修改。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&lt;img src="/basics/IDE/entrance/images/6.png" alt="image-20221102173139912" style="zoom:33%;" /&gt; </span></div>
+<div class="hunk">…… 第 57 行附近 ……</div>
+<div class="ln"><span>（图7）</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>Main_gen.ts会再次生产，多了一个img属性，此时Main.ts代码中可以直接使用img属性，如图8。</del><ins>Main.generated.ts会再次生产，多了一个img属性，此时Main.ts代码中可以直接使用img属性，如图8。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&lt;img src="/basics/IDE/entrance/images/8.png" alt="image-20221102173659012" style="zoom:50%;" /&gt; </span></div>
+<div class="hunk">…… 第 92 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span>import { MainBase } from </span><del>"./Main_gen";</del><ins>"./Main.generated";</ins><span></span></div>
+<div class="ln"><span>const { regClass, property } = Laya;</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/PerformanceOptimization/CPU/index.md</summary><div class="file">
+<div class="hunk">…… 第 94 行附近 ……</div>
+<div class="ln"><span>使用Graphics.drawTexture并不会自动设置容器的宽高，但是可以使用Texture的宽高赋予容器。毋庸置疑，这是最高效的方式。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**注：getGraphicsBounds用于获取矢量绘图宽高。**</del><ins>**注：getGraphicBounds用于获取矢量绘图宽高。**</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### **四、根据活动状态改变帧频**</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/PerformanceOptimization/cacheAs/index.md</summary><div class="file">
+<div class="hunk">…… 第 14 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## </span><del>1、cacheAs为normal的缓存优化</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>当我们使用cacheAs时，将cacheAs设置为“normal”模式，DrawCall未变，GPUMemory和TextureMemory下降了4M和3M多如图2所示。</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>![图2](/basics/PerformanceOptimization/cacheAs/img/2.png) &lt;br /&gt; (图2)</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>**Tips**：</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>当cacheAs属性值为"normal"时，Canvas下进行画布缓存，webgl模式下进行命令缓存。该模式性能优化中等，它能减少每帧渲染的节点数，但不会减少DrawCall数。</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>## 2、cacheAs为bitmap的缓存优化</del><ins>1、cacheAs为bitmap的缓存优化</ins><span> </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>当我们使用cacheAs时，并将cacheAs设置为“bitmap”模式。DrawCall降到了4，只是修改了一个配置，性能上比不用cacheAs优化了1倍以上。效果如图3所示。</span></div>
+<div class="hunk">…… 第 30 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## </span><del>3、如何选择缓存优化</del><ins>2、如何选择缓存优化</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.1 CPU的考量</span></div>
+<div class="hunk">…… 第 38 行附近 ……</div>
+<div class="ln"><span>最需要注意的是UI是否会频繁的刷新，如果很频繁，CPU的损耗会很大，因为缓存位图时子对象一旦发生改变，那么引擎会自动重新缓存位图，缓存位图的过程会消耗CPU。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>那么选择使用cacheAs的normal还是bitmap模式，或者不使用cacheAs，我们需要对内存的增加与CPU消耗作为重点考量因素。</del><ins>那么是否使用cacheAs的bitmap模式，我们需要把内存的增加与CPU消耗作为重点考量因素。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 44 行附近 ……</div>
+<div class="ln"><span>### 3.2 测试是否频繁重绘</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>LayaAir引擎提供的DebugPanel调试工具可以帮助大家查看游戏重绘区，在代码中增加`DebugPanel.init();` 方法 ，编译运行项目后，浏览器中会出现调试窗口，如图4所示。</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>![图3](/basics/PerformanceOptimization/cacheAs/img/4.png) &lt;br /&gt; (图4)</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>我们勾选“`显示当前cache重绘`”选项或“`显示所有重绘区域`”。如果UI进行重绘了，重绘区域会显示出绿色框线，绿色框的左上角显示了重绘次数与重绘时间，性能统计工具的Sprite、DrawCall等也会发生改变。</del><ins>判断显示对象是否频繁重绘，可以在代码中调用 `Laya.Stat.show();` 打开性能统计面板，编译运行项目后，浏览器中会出现统计窗口，观察其中的 Canvas 统计信息。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>在没有鼠标操作的情况下，如果绿色线框频繁出现，说明**UI在频繁的重绘，那么最好不要用bitmap缓存模式，normal模式可以酌情考虑**。当然，还可以把UI进行分层管理，频繁更新的为一层（不使用cacheAs），不频繁更新的为一层（使用cacheAs），这种方法也能提高性能。</del><ins>Canvas 统计项反映了每帧缓存重绘的情况，如果该数值持续变化，性能统计工具的 Sprite、DrawCall 等也会随之改变，说明 **UI 在频繁的重绘，那么最好不要用 bitmap 缓存模式**。当然，还可以把UI进行分层管理，频繁更新的为一层（不使用cacheAs），不频繁更新的为一层（使用cacheAs），这种方法也能提高性能。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 55 行附近 ……</div>
+<div class="ln"><span>对于一些低端机来说，CPU与内存不高，如果为了提高渲染性能使用了cacheAs，有可能就会出现问题。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>这时开发者们就需要做取舍了，选择要性能还是要游戏机型的广度，或者取中。如果选择适应更多的低端机型，那么需要反复去测试，是否使用cacheAs，还要对比normal与bitmap模式哪种更适合，在优化性能的情况下尽量减少CPU和内存损耗。</del><ins>这时开发者们就需要做取舍了，选择要性能还是要游戏机型的广度，或者取中。如果选择适应更多的低端机型，那么需要反复去测试是否使用cacheAs，在优化性能的情况下尽量减少CPU和内存损耗。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## </span><del>4、什么情况下不能使用cacheAs</del><ins>3、什么情况下不能使用cacheAs</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 4.1 对象非常简单时不能使用</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/PerformanceOptimization/memory/index.md</summary><div class="file">
+<div class="hunk">…… 第 42 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>        //初始化引擎</span></div>
+<div class="ln"><span>        Laya.init(1136, </span><del>640, Laya.WebGL);</del><ins>640);</ins><span></span></div>
+<div class="ln"><span>        //等比缩放</span></div>
+<div class="ln"><span>        Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;</span></div>
+<div class="hunk">…… 第 205 行附近 ……</div>
+<div class="ln"><span> 当修改滤镜的某个属性或者显示对象时，内存中的两个位图都将更新以创建生成的位图，这两个位图可能会占用大量内存。此外，此过程涉及CPU计算，动态更新时将会降低性能。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span> </span><del>ColorFiter在Canvas渲染下需要计算每个像素点，而在WebGL下的GPU消耗可以忽略不计。</del><ins>ColorFilter在Canvas渲染下需要计算每个像素点，而在WebGL下的GPU消耗可以忽略不计。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span> 最佳的做法是，尽可能使用图像创作工具创建的位图来模拟滤镜。避免在运行时中创建动态位图，可以帮助减少CPU或GPU负载。特别是一张应用了滤镜并且不会在修改的图像。</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/PerformanceOptimization/mouse/index.md</summary><div class="file">
+<div class="hunk">…… 第 207 行附近 ……</div>
+<div class="ln"><span>    constructor() { super(); }</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    </span><del>onClick(e:</del><ins>onMouseClick(e:</ins><span> Laya.Event): void {</span></div>
+<div class="ln"><span>        console.log("点击脚本所属的节点对象时触发");</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    </span><del>onDoubleClick(e:</del><ins>onMouseDoubleClick(e:</ins><span> Laya.Event): void {</span></div>
+<div class="ln"><span>        console.log("双击脚本所属的节点对象时触发");</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="hunk">…… 第 234 行附近 ……</div>
+<div class="ln"><span>        console.log("鼠标离开脚本所属的节点对象时触发");</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><ins>}</ins></div>
+<div class="ln"><ins>```</ins></div>
+<div class="ln"><ins></ins></div>
+<div class="ln"><ins>通过上面的示例代码可以看出，在脚本的鼠标事件生命周期里，直接按需使用即可，无需再侦听（因为引擎已做侦听，这些事件生命周期方法，就是相应鼠标事件的侦听回调方法）。</ins></div>
+<div class="ln"><ins></ins></div>
+<div class="ln"><ins>需要注意的是，脚本组件提供的是针对**自身节点对象**的鼠标生命周期方法（`onMouseClick`、`onMouseDoubleClick`、`onMouseDown`、`onMouseUp`、`onMouseMove`、`onMouseOver`、`onMouseOut` 等），引擎并不提供 `onStage*` 之类的舞台级鼠标生命周期方法。如果需要侦听整个舞台（stage）上的鼠标事件，可以在脚本中通过 `Laya.stage.on` 主动侦听：</ins></div>
+<div class="ln"><ins></ins></div>
+<div class="ln"><ins>```typescript</ins></div>
+<div class="ln"><ins>export default class StageMouseTest extends Laya.Script {</ins></div>
+<div class="ln"><ins>    onAwake(): void {</ins></div>
+<div class="ln"><ins>        Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onStageMouseDown);</ins></div>
+<div class="ln"><ins>        Laya.stage.on(Laya.Event.MOUSE_UP, this, this.onStageMouseUp);</ins></div>
+<div class="ln"><ins>        Laya.stage.on(Laya.Event.CLICK, this, this.onStageClick);</ins></div>
+<div class="ln"><ins>        Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onStageMouseMove);</ins></div>
+<div class="ln"><ins>    }</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    </span><ins>private</ins><span> onStageMouseDown(e: Laya.Event): void {</span></div>
+<div class="ln"><span>        console.log("鼠标在stage（舞台）上按下时触发");</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    </span><ins>private</ins><span> onStageMouseUp(e: Laya.Event): void {</span></div>
+<div class="ln"><span>        console.log("鼠标在stage（舞台）上抬起时触发");</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    </span><ins>private</ins><span> onStageClick(e: Laya.Event): void {</span></div>
+<div class="ln"><span>        console.log("鼠标在stage（舞台）上点击时触发");</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>    </span><ins>private</ins><span> onStageMouseMove(e: Laya.Event): void {</span></div>
+<div class="ln"><span>        console.log("鼠标在stage（舞台）上移动时触发");</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="hunk">…… 第 268 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>通过上面的示例代码可以看出，在脚本的鼠标事件生命周期里，直接按需使用即可，无需再侦听（因为引擎已做侦听，这些事件生命周期方法，就是相应鼠标事件的侦听回调方法）。</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><span>#### 1.3 鼠标事件的关闭与开启:mouseEnabled</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 443 行附近 ……</div>
+<div class="ln"><span>     */</span></div>
+<div class="ln"><span>  setPivot(touches: Array&lt;any&gt;): Laya.Point {</span></div>
+<div class="ln"><span>    let Point0: Laya.Point = this._owner.globalToLocal(new </span><del>Laya.Point(touches[0].stageX, touches[0].stageY));</del><ins>Laya.Point(touches[0].pos.x, touches[0].pos.y));</ins><span></span></div>
+<div class="ln"><span>    let Point1: Laya.Point = this._owner.globalToLocal(new </span><del>Laya.Point(touches[1].stageX, touches[1].stageY));</del><ins>Laya.Point(touches[1].pos.x, touches[1].pos.y));</ins><span></span></div>
+<div class="ln"><span>    return new Laya.Point((Point0.x + Point1.x) / 2, (Point0.y + Point1.y) / 2);</span></div>
+<div class="ln"><span>  }</span></div>
+<div class="hunk">…… 第 454 行附近 ……</div>
+<div class="ln"><span>    if (touches &amp;&amp; touches.length &gt; 1) {</span></div>
+<div class="ln"><span>      //计算距离</span></div>
+<div class="ln"><span>      let dx: number = </span><del>touches[0].stageX</del><ins>touches[0].pos.x</ins><span> - </span><del>touches[1].stageX;</del><ins>touches[1].pos.x;</ins><span></span></div>
+<div class="ln"><span>      let dy: number = </span><del>touches[0].stageY</del><ins>touches[0].pos.y</ins><span> - </span><del>touches[1].stageY;</del><ins>touches[1].pos.y;</ins><span></span></div>
+<div class="ln"><span>      distance = Math.sqrt(dx * dx + dy * dy);</span></div>
+<div class="ln"><span>    }</span></div>
+<div class="hunk">…… 第 949 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>脚本组件的鼠标事件生命周期方法共7个，示例代码如下：</del><ins>脚本组件的鼠标事件生命周期方法共6个，示例代码如下：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>export default class Script3DTest extends Laya.Script3D {</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>    onMouseEnter(): void {</del></div>
+<div class="ln"><del>        console.log("onMouseEnter:鼠标移动时,鼠标进入脚本所属的3D对象时触发，只在刚进入的时候触发一次");</del></div>
+<div class="ln"><del>    }</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><span>    onMouseOver(): void {</span></div>
+<div class="ln"><span>        </span><del>console.log("onMouseOver:鼠标在脚本所属的3D对象时触发,每帧都在触发");</del><ins>console.log("onMouseOver:鼠标进入脚本所属的3D对象时触发");</ins><span></span></div>
+<div class="ln"><span>    }</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 1025 行附近 ……</div>
+<div class="ln"><span>因此，多点触控通常不需要使用3D物理检测，所以我们可以使用3D脚本也可以使用2D脚本。这里我们基于3D脚本以及3D的API进行介绍。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>Input3D类里的获得触摸点数量方法为`touchCount()`，获得触摸点的方法为`getTouch()`。</del><ins>获取触摸点数量与触摸点信息，可以使用静态类 `Laya.InputManager`。触摸点数量为静态属性 `Laya.InputManager.touchCount`，当前所有触摸点信息数组为静态属性 `Laya.InputManager.touches`（数组中每个元素都包含位置属性 `pos`），也可以通过 `Laya.InputManager.getTouchPos(touchId)` 获取指定触摸点的位置。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>示例代码如下：</span></div>
+<div class="hunk">…… 第 1033 行附近 ……</div>
+<div class="ln"><span>onUpdate(): void {</span></div>
+<div class="ln"><span>  //获取触摸点数量</span></div>
+<div class="ln"><span>  var touchCount: number = </span><del>this._scene.input.touchCount();</del><ins>Laya.InputManager.touchCount;</ins><span></span></div>
+<div class="ln"><span>  if (touchCount&gt;1) {</span></div>
+<div class="ln"><span>    </span><del>//获取前两个触摸点数据</del><ins>//获取前两个触摸点信息</ins><span></span></div>
+<div class="ln"><span>    var </span><del>touch: Touch</del><ins>touch</ins><span> = </span><del>this._scene.input.getTouch(0);</del><ins>Laya.InputManager.touches[0];</ins><span></span></div>
+<div class="ln"><span>    var </span><del>touch2: Touch</del><ins>touch2</ins><span> = </span><del>this._scene.input.getTouch(1);</del><ins>Laya.InputManager.touches[1];</ins><span></span></div>
+<div class="ln"><span>    //是否为刚按下时的第一次触摸</span></div>
+<div class="ln"><span>    if (this.twoFirst) {</span></div>
+<div class="ln"><span>      //获取触碰点的位置</span></div>
+<div class="ln"><span>      this.disVector1.x = </span><del>touch.position.x</del><ins>touch.pos.x</ins><span> - </span><del>touch2.position.x;</del><ins>touch2.pos.x;</ins><span></span></div>
+<div class="ln"><span>      this.disVector1.y = </span><del>touch.position.y</del><ins>touch.pos.y</ins><span> - </span><del>touch2.position.y;</del><ins>touch2.pos.y;</ins><span></span></div>
+<div class="ln"><span>      this.distance = Vector2.scalarLength(this.disVector1);</span></div>
+<div class="ln"><span>      this.twoFirst = false;</span></div>
+<div class="ln"><span>    } else {</span></div>
+<div class="ln"><span>      this.disVector2.x = </span><del>touch.position.x</del><ins>touch.pos.x</ins><span> - </span><del>touch2.position.x;</del><ins>touch2.pos.x;</ins><span></span></div>
+<div class="ln"><span>      this.disVector2.y = </span><del>touch.position.y</del><ins>touch.pos.y</ins><span> - </span><del>touch2.position.y;</del><ins>touch2.pos.y;</ins><span></span></div>
+<div class="ln"><span>      var distance2: number = Vector2.scalarLength(this.disVector2);</span></div>
+<div class="ln"><span>      //根据手势扩张移动的距离,设置z轴的变换，造成近大远小的透视效果。</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/PerformanceOptimization/rendering/index.md</summary><div class="file">
+<div class="hunk">…… 第 38 行附近 ……</div>
+<div class="ln"><span>### **四、关于cacheAs**</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>设置cacheAs可将显示对象缓存为静态图像，当cacheAs时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。 </span><del>建议把不经常变化的复杂内容，缓存为静态图像，能极大提高渲染性能，cacheAs有”none”，”normal”和”bitmap”三个值可选。</del><ins>建议把不经常变化的复杂内容，缓存为静态图像，能极大提高渲染性能，cacheAs有”none”和”bitmap”两个值可选。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>1. 默认为”none”，不做任何缓存。</span></div>
+<div class="ln"><span>2.</span><del>当值为”normal”时，Canvas下进行画布缓存，webgl模式下进行命令缓存。</del></div>
+<div class="ln"><del>3.</del><span> 当值为”bitmap”时，Canvas下进行依然是画布缓存，webGL模式下使用renderTarget缓存。这里需要注意的是，webGL下renderTarget缓存模式有2048大小限制，超出2048会额外增加内存开销。另外，不断重绘时开销也比较大，但是会减少drawcall，渲染性能最高。</span><del>webGL下命令缓存模式只会减少节点遍历及命令组织，不会减少drawcall，性能中等。</del><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>设置cacheAs后，还可以设置staticCache=true以阻止自动更新缓存，同时可以手动调用reCache方法更新缓存。</del><ins>设置cacheAs后，子对象发生变化会自动重新缓存，也可以手动调用reCache方法更新缓存。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span> cacheAs主要通过两方面提升性能。一是减少节点遍历和顶点计算；二是减少drawCall。善用cacheAs将是引擎优化性能的利器。</span></div>
+<div class="hunk">…… 第 53 行附近 ……</div>
+<div class="ln"><span>     private text:Laya.Text;</span></div>
+<div class="ln"><span>    constructor() {</span></div>
+<div class="ln"><span>        </span><del>Laya.init(550,400,Laya.WebGL);</del><ins>Laya.init(550, 400);</ins><span></span></div>
+<div class="ln"><span>        Laya.Stat.show();</span></div>
+<div class="ln"><span>        var textBox=new Laya.Sprite();</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/WebGPU/ComputeShader/index.md</summary><div class="file">
+<div class="hunk">…… 第 371 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>let uniformMap = Laya.LayaGL.renderDeviceFactory.createGlobalUniformMap("ComputeShaderName");</span></div>
+<div class="ln"><del>uniformMap.addShaderUniform(Laya.Shader3D.propertyNameToID("u_Image",</del><ins>uniformMap.addShaderUniform(Laya.Shader3D.propertyNameToID("u_Image"),</ins><span> "u_Image", Laya.ShaderDataType.StorageTexture2D, {format: "rgba8", access: "writeonly"});</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>let computeShader = Laya.ComputeShader.createComputeShader(`ComputeShaderName`, ComputeCode, [uniformMap]);</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/common/Tween/index.md</summary><div class="file">
+<div class="hunk">…… 第 337 行附近 ……</div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><span>        //创建缓动，并为缓动添加名称</span></div>
+<div class="ln"><span>		</span><ins>let tween =</ins><span> Laya.Tween.create(aSprite).name("first").duration(1000).to("x", 100)</span></div>
+<div class="ln"><span>            .chain().duration(2000).to("y", 100);</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>		</span><del>//根据名称找到缓动</del><ins>//根据名称找到缓动（findTweener 是缓动实例的方法）</ins><span></span></div>
+<div class="ln"><span>        let tweener = </span><del>Laya.Tween.findTweener("first");</del><ins>tween.findTweener("first");</ins><span></span></div>
+<div class="ln"><span>        if (tweener != null) //需要判空，因为如果这段缓动已经执行完毕，会返回null</span></div>
+<div class="ln"><span>            tweener.kill(); //会终止这段缓动，并立刻执行下一段</span></div>
+<div class="hunk">…… 第 375 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>这种情况下，就需要分离颜色通道，针对每个通道进行计算；引擎中内置的插值函数`Laya.Tween.sperateChannel`可以实现这个需求。</del><ins>这种情况下，就需要分离颜色通道，针对每个通道进行计算；引擎中内置的插值函数`Laya.Tween.seperateChannel`可以实现这个需求。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/common/adaptScreen/index.md</summary><div class="file">
+<div class="hunk">…… 第 191 行附近 ……</div>
+<div class="ln"><span>**需要注意的是，**</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>引擎提供了`Laya.stage.useRetinalCanvas`用于控制是否采用高清分辨率的画布。默认并不开启，一旦开启后，就会采用直接修改画布宽高的方式，让画布直接获得最大的高清画布分辨率。</del><ins>引擎提供了`Laya.Config.useRetinalCanvas`用于控制是否采用高清分辨率的画布。默认并不开启，一旦开启后，就会采用直接修改画布宽高的方式，让画布直接获得最大的高清画布分辨率。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 1.9 舞台宽高</span></div>
+<div class="hunk">…… 第 199 行附近 ……</div>
+<div class="ln"><span>**默认情况下，stage宽高会等于画布的宽高。**</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>但是，如果开发者启用了`Laya.stage.useRetinalCanvas`，那画布就会采用</del><ins>但是，如果开发者启用了`Laya.Config.useRetinalCanvas`，那画布就会采用</ins><span> **缩放后** 的 高清分辨率。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>而stage的宽高，还是开发者未启用`Laya.stage.useRetinalCanvas`时的画布缩放前宽高。</del><ins>而stage的宽高，还是开发者未启用`Laya.Config.useRetinalCanvas`时的画布缩放前宽高。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>引擎的节点对象都是在stage上进行添加与控制的，在stage范围内，可以控制显示、进行事件监听，碰撞检测等，所以对stage宽高的适配还是非常重要的。</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/common/math/BezierCurve/index.md</summary><div class="file">
+<div class="hunk">…… 第 9 行附近 ……</div>
+<div class="ln"><span>## 一、概述</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>引擎通过单例 `Laya.Bezier.I` 访问实例方法，或使用</del><ins>`Bezier` 类只提供两个静态方法：`getPoints` 用于采样曲线上的点序列，`getRate` 用于缓动插值。二者均通过</ins><span> `Laya.Bezier` </span><del>的静态方法。</del><ins>直接调用，无需实例化。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>- **二次贝塞尔**：3个控制点（起点、控制点、终点）</span></div>
+<div class="ln"><span>- **三次贝塞尔**：4个控制点（起点、控制点1、控制点2、终点）</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## </span><del>二、二次贝塞尔曲线</del><ins>二、获取曲线点序列 getPoints</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>![图2-1](/basics/common/math/BezierCurve/img/2-1.png)</span></div>
+<div class="hunk">…… 第 20 行附近 ……</div>
+<div class="ln"><span>（图2-1）</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>`getPoint2(t, rst)` 计算二次贝塞尔曲线上 t（0~1）处的点。使用前需通过 `insertPoints` 设置控制点。</del><ins>`getPoints(pList, inSertCount, count, out)` 在贝塞尔曲线上采样一系列点，返回 `[x0,y0, x1,y1, ...]` 形式的坐标数组。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>```typescript</del></div>
+<div class="ln"><del>let bezier = Laya.Bezier.I;</del></div>
+<div class="ln"><del>// 通过 insertPoints 设置控制点并获取点序列</del></div>
+<div class="ln"><del>```</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>## 三、三次贝塞尔曲线</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>![图3-1](/basics/common/math/BezierCurve/img/3-1.png)</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>（图3-1）</del><ins>- `pList`：控制点坐标数组 `[x0,y0, x1,y1, ...]`</ins></div>
+<div class="ln"><ins>- `inSertCount`：每段曲线之间插入的点数（默认5）</ins></div>
+<div class="ln"><ins>- `count`：贝塞尔曲线的阶数，`2` 表示二次曲线、`3` 表示三次曲线（默认2）</ins></div>
+<div class="ln"><ins>- `out`：可选，用于接收结果的数组</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>`getPoint3(t, rst)` 计算三次贝塞尔曲线上 t（0~1）处的点。</del><ins>### 2.1 二次贝塞尔曲线</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>## 四、获取曲线点序列</del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>### 4.1 静态方法 getPoints</del><ins>二次贝塞尔曲线由3个控制点构成，调用时 `count` 传 `2`：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><del>// getPoints(pList, inSertCount, count, out)</del></div>
+<div class="ln"><del>// pList: 控制点坐标数组 [x0,y0, x1,y1, ...]</del></div>
+<div class="ln"><del>// inSertCount: 每段之间插入的点数（默认5）</del></div>
+<div class="ln"><del>// count: 每个点的维度（默认2，即xy）</del></div>
+<div class="ln"><span>let controlPoints = [0,0, 100,200, 200,0];  // 3个二次贝塞尔控制点</span></div>
+<div class="ln"><span>let points = Laya.Bezier.getPoints(controlPoints, 10, 2);</span></div>
+<div class="hunk">…… 第 37 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### </span><del>4.2 实例方法 getBezierPoints</del><ins>2.2 三次贝塞尔曲线</ins></div>
+<div class="ln"><ins></ins></div>
+<div class="ln"><ins>![图3-1](/basics/common/math/BezierCurve/img/3-1.png)</ins></div>
+<div class="ln"><ins></ins></div>
+<div class="ln"><ins>（图3-1）</ins></div>
+<div class="ln"><ins></ins></div>
+<div class="ln"><ins>三次贝塞尔曲线由4个控制点构成，调用时 `count` 传 `3`：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```typescript</span></div>
+<div class="ln"><del>let bezier = Laya.Bezier.I;</del></div>
+<div class="ln"><span>let controlPoints = [0,0, 50,200, 150,200, 200,0];  // 4个三次贝塞尔控制点</span></div>
+<div class="ln"><span>let points = </span><del>bezier.getBezierPoints(controlPoints,</del><ins>Laya.Bezier.getPoints(controlPoints,</ins><span> 10, </span><del>2);</del><ins>3);</ins><span></span></div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## </span><del>五、缓动插值</del><ins>三、缓动插值</ins><span> getRate</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>![图5-1](/basics/common/math/BezierCurve/img/5-1.png)</span></div>
+<div class="hunk">…… 第 76 行附近 ……</div>
+<div class="ln"><span>```</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>## </span><del>六、应用示例</del><ins>四、应用示例</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 6.1 自定义缓动动画</span></div>
+</div></details>
+<details open><summary>src/content/docs/basics/common/math/Random/index.md</summary><div class="file">
+<div class="hunk">…… 第 13 行附近 ……</div>
+<div class="ln"><span>| 类 | 种子 | 源码位置 | 特点 |</span></div>
+<div class="ln"><span>|---|------|---------|------|</span></div>
+<div class="ln"><span>| `Rand` | 32位无符号整型 | </span><del>`laya/d3/math/Rand.ts`</del><ins>`laya/maths/Rand.ts`</ins><span> | 轻量快速 |</span></div>
+<div class="ln"><span>| `RandX` | 128位数组（4个数） | `laya/d3/math/RandX.ts` | 基于xorshift算法，质量更高 |</span></div>
+<div class="ln"><span></span></div>
+</div></details>
+<details open><summary>src/content/docs/released/Android/debug/index.md</summary><div class="file">
+<div class="hunk">…… 第 36 行附近 ……</div>
+<div class="ln"><span>使用Android Studio打开构建后的工程。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>打开`android_studio/app/src/main/assets/config.ini`，修改`JSDebugMode`的值,设置需要的调试模式。如图2-1所示，</del><ins>打开`android_project/app/src/main/assets/config.ini`，修改`JSDebugMode`的值,设置需要的调试模式。如图2-1所示，</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>![2-1](/released/Android/debug/img/2-1.png)</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/Poki/index.md</summary><div class="file">
+<div class="hunk">…… 第 15 行附近 ……</div>
+<div class="ln"><span>发布界面中的配置文件`File Extension`等，以及`Common`的配置可以参考[Web配置](/released/web/)与[发布通用配置](/released/generalsetting/)。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>发布后在项目根目录/release目录下会新增Poki目录，包含项目的发布内容。</del><ins>发布后在项目根目录/release目录下会新增poki目录，包含项目的发布内容。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>![1-2](/released/Poki/img/1-2.png)</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/Windows/extension/index.md</summary><div class="file">
+<div class="hunk">…… 第 44 行附近 ……</div>
+<div class="ln"><span>  └── LayaExt/</span></div>
+<div class="ln"><span>       ├──layaRuntime/      扩展的SDK</span></div>
+<div class="ln"><span>       |     </span><ins>└── x64/</ins></div>
+<div class="ln"><ins>       |</ins><span>          ├── include/</span></div>
+<div class="ln"><span>       |          └── lib/</span><del>|          └── x64</del><span></span></div>
+<div class="ln"><span>       |               └── conch.lib</span></div>
+<div class="ln"><span>       ├──dllmain.cpp</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/iOS/index.md</summary><div class="file">
+<div class="hunk">…… 第 161 行附近 ……</div>
+<div class="ln"><span>构建完成之后，可以通过直接在项目中修改代码来切换单机版和网络版。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>项目目录下的 resource/scripts/index.js </span><del>脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.js`。</del><ins>脚本，最后会执行 `loadApp` 函数来加载首页地址并启动游戏。脚本中通过 `var appUrl = '...';` 定义了默认的首页地址，实际加载的地址为 `conch.presetUrl || appUrl`：优先使用 Runtime 预置的地址 `conch.presetUrl`（如扫码调试时传入的地址），当其为空时，回退到脚本中定义的默认 `appUrl`。因此，修改脚本中 `appUrl` 的值即可切换加载地址。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>例如，一开始是网络版，地址为：</del><ins>网络版直接从服务器加载首页地址，例如：</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span> </span><del>`loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.js");`</del><ins>`var appUrl = 'http://10.10.20.19:7788/index.js';`</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>要改成单机版的话，修改这里：</del><ins>单机版（打包资源版本）则依赖 LayaDCC 机制：资源经 layadcc 打包到 resource/cache 目录后，脚本中的 DCC 客户端会拦截对应请求并从本地缓存中加载，无需再从网络请求。</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>`loadUrl(conch.presetUrl||"http://stand.alone.version/runtime.json");`  </del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>反之亦然。</del><span>&gt; </span><del>一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[LayaDCC工具](/released/native/layadcc-tool/)。</del><ins>一旦修改了首页地址，原来打包的资源就可能失效。这时候，需要手动删除 cache 目录下内容，重新用 layadcc 来生成打包资源，参见[LayaDCC工具](/released/native/layadcc-tool/)。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 3.3 资源</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/miniGame/OPPO/index.md</summary><div class="file">
+<div class="hunk">…… 第 221 行附近 ……</div>
+<div class="ln"><span>另一方案，使我们可以采用手动模式，把rpk包，复制到**手机存储的games目录下**，如果没有games目录则自己手工创建一下。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>rpk包位于项目的release/OPPOgame/dist</del><ins>rpk包位于项目的release/oppogame/dist</ins><span> 目录下。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span> 将发布生成的rpk文件，复制到手机存储的games目录下，如图3-8所示。</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/miniGame/alipaygame/index.md</summary><div class="file">
+<div class="hunk">…… 第 65 行附近 ……</div>
+<div class="ln"><span>小游戏的配置文件，开发者工具和客户端需要读取这个配置，完成相关界面渲染和属性设置。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**microgame-adapter.js与my-adapter.js**:</del><ins>**my-adapter.js**:</ins><span> </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>支付宝小游戏适配库文件，用于适配支付宝小游戏。</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/miniGame/byteDance/index.md</summary><div class="file">
+<div class="hunk">…… 第 69 行附近 ……</div>
+<div class="ln"><span>小游戏的配置文件，开发者工具和客户端需要读取这个配置，完成相关界面渲染和属性设置。比如屏幕的横竖屏方向。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**projectconfig.json**：</del><ins>**project.config.json**：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>小游戏的项目配置文件，文件里包括了小游戏项目的一些信息，如果想修改appid等信息，可以直接在这里面编辑。</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/miniGame/wechat/index.md</summary><div class="file">
+<div class="hunk">…… 第 69 行附近 ……</div>
+<div class="ln"><span>小游戏的配置文件，开发者工具和客户端需要读取这个配置，完成相关界面渲染和属性设置。比如屏幕的横竖屏方向，状态栏的显示、小游戏分包等，都是在这里配置。具体如何配置，以及参数的使用，可以查看[微信小游戏的开发文档](https://mp.weixin.qq.com/debug/wxagame/dev/index.html?t=2018115)。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>**fileconfig.json**：</del><ins>**project.config.json**：</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>小游戏的项目配置文件，文件里包括了小游戏项目的一些信息，如果想修改appid等信息，可以直接在这里面编辑。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><ins>**fileconfig.json**：</ins></div>
+<div class="ln"><ins></ins></div>
+<div class="ln"><ins>由IDE发布时自动生成的资源文件清单（分包描述文件），记录了小游戏各资源文件的列表与版本信息，供引擎按需加载，通常不需要手动修改。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&gt; 项目参数libVersion的值一定要是game，这里一般不会出错。但是，万一出现了LayaAirIDE里发布正常，也引用了适配库，发布为小游戏后，在开发者工具里还是有报错的话，可以检查libVersion里的值是不是game。不是的话要改为game。</span></div>
+<div class="ln"><span></span></div>
+<div class="hunk">…… 第 285 行附近 ……</div>
+<div class="ln"><span>### 5.1 开放数据域</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>首先，如图5-1所示，在层级面板中，向Scene2D中添加一个OpenDataContexView组件，即可激活开放数据域的显示（此时并没有排行榜的效果显示，需要发布后才能看到），组件的大小就是好友排行榜面板的大小。</del><ins>首先，如图5-1所示，在层级面板中，向Scene2D中添加一个OpenDataContextView组件，即可激活开放数据域的显示（此时并没有排行榜的效果显示，需要发布后才能看到），组件的大小就是好友排行榜面板的大小。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&lt;img src="/released/miniGame/wechat/img/5-1.png" alt="5-1" style="zoom:67%;" /&gt;</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/miniGame/xiaomi/index.md</summary><div class="file">
+<div class="hunk">…… 第 47 行附近 ……</div>
+<div class="ln"><span>**日志等级**</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>七种日志等级，先级从高到底依次为OFF、ERROR、WARN、INFO、DEBUG、TRACE、ALL，可以方便地知道当前程序的运行状态。</del><ins>七种日志等级，优先级从高到低依次为OFF、ERROR、WARN、INFO、LOG、DEBUG、TRACE，可以方便地知道当前程序的运行状态。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>**是否使用正式版签名**</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/native/LayaDcc_Tool/index.md</summary><div class="file">
+<div class="hunk">…… 第 315 行附近 ……</div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>```javascript</span></div>
+<div class="ln"><span>var appUrl = </span><del>"http://stand.alone.version/index.js";</del><ins>"http://layabox.com/layanative3.0/demo/index.js";</ins><span></span></div>
+<div class="ln"><span>var dccHead = "http://10.10.20.26:6666/head.json";</span></div>
+<div class="ln"><span>var dccUrl = null;</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/native/Other_settings/index.md</summary><div class="file">
+<div class="hunk">…… 第 85 行附近 ……</div>
+<div class="ln"><span>| getAvalidMem()       | 获得可用的内存            | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |</span></div>
+<div class="ln"><span>| getNetworkType()     | 获得网络状态             | 返回int值，NET_NO = 0;NET_WIFI = 1;NET_2G = 2;NET_3G = 3;NET_4G = 4;NET_UNKNOWN=5 |                                  |</span></div>
+<div class="ln"><span>| getRuntimeVersion()  | 获得Runtime的版本       | </span><del>返回值是一个字符串，类似ios-conch5-0.9.2、android-conch5-0.9</del><ins>返回值是一个字符串，格式为ios-conch6-release-&amp;lt;版本号&amp;gt;、android-conch6-release-&amp;lt;版本号&amp;gt;</ins><span> |                                  |</span></div>
+<div class="ln"><span>| getAppVersion()      | 获得iOS-App的版本号      | 返回字符串 1.1                                | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |</span></div>
+<div class="ln"><span>| getAppLocalVersion() | 获得iOS-App的Local版本号 | 返回字符串1.2                                 | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/native/build/index.md</summary><div class="file">
+<div class="hunk">…… 第 197 行附近 ……</div>
+<div class="ln"><span>**iOS 项目**</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>iOS项目构建完成后，项目目录下的 resource/scripts/index.js </span><del>脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.js`。</del><ins>脚本，最后会执行 `loadApp` 函数来加载首页地址并启动游戏。脚本中通过 `var appUrl = '...';` 定义了默认的首页地址，实际加载的地址为 `conch.presetUrl || appUrl`：优先使用 Runtime 预置的地址 `conch.presetUrl`（如扫码调试时传入的地址），当其为空时，回退到脚本中定义的默认 `appUrl`。因此，修改脚本中 `appUrl` 的值即可切换加载地址。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>例如，一开始是网络版，地址为：</del><ins>网络版直接从服务器加载首页地址，例如：</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span> </span><del>`loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.js");`</del><ins>`var appUrl = 'http://10.10.20.19:7788/index.js';`</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>要改成单机版的话，修改这里：</del><ins>单机版（打包资源版本）则依赖 LayaDCC 机制：资源经 layadcc 打包到 resource/cache 目录后，脚本中的 DCC 客户端会拦截对应请求并从本地缓存中加载，无需再从网络请求。</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>`loadUrl(conch.presetUrl||"http://stand.alone.version/runtime.json");`  </del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>反之亦然。</del><span>&gt; </span><del>一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[LayaDCC工具](/released/native/layadcc-tool/)。</del><ins>一旦修改了首页地址，原来打包的资源就可能失效。这时候，需要手动删除 cache 目录下内容，重新用 layadcc 来生成打包资源，参见[LayaDCC工具](/released/native/layadcc-tool/)。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 4.3 资源</span></div>
+</div></details>
+<details open><summary>src/content/docs/released/native/build_Tool/index.md</summary><div class="file">
+<div class="hunk">…… 第 186 行附近 ……</div>
+<div class="ln"><span>**iOS 项目**</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>iOS项目构建完成后，项目目录下的 resource/scripts/index.js </span><del>脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.js`。</del><ins>脚本，最后会执行 `loadApp` 函数来加载首页地址并启动游戏。脚本中通过 `var appUrl = '...';` 定义了默认的首页地址，实际加载的地址为 `conch.presetUrl || appUrl`：优先使用 Runtime 预置的地址 `conch.presetUrl`（如扫码调试时传入的地址），当其为空时，回退到脚本中定义的默认 `appUrl`。因此，修改脚本中 `appUrl` 的值即可切换加载地址。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>例如，一开始是网络版，地址为：</del><ins>网络版直接从服务器加载首页地址，例如：</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span> </span><del>`loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.js");`</del><ins>`var appUrl = 'http://10.10.20.19:7788/index.js';`</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>要改成单机版的话，修改这里：</del><ins>单机版（打包资源版本）则依赖 LayaDCC 机制：资源经 layadcc 打包到 resource/cache 目录后，脚本中的 DCC 客户端会拦截对应请求并从本地缓存中加载，无需再从网络请求。</ins><span>  </span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><del>`loadUrl(conch.presetUrl||"http://stand.alone.version/runtime.json");`  </del></div>
+<div class="ln"><del></del></div>
+<div class="ln"><del>反之亦然。</del><span>&gt; </span><del>一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[LayaDCC工具](/released/native/layadcc-tool/)。</del><ins>一旦修改了首页地址，原来打包的资源就可能失效。这时候，需要手动删除 cache 目录下内容，重新用 layadcc 来生成打包资源，参见[LayaDCC工具](/released/native/layadcc-tool/)。</ins><span></span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>### 4.3 资源</span></div>
+</div></details>
+<details open><summary>src/content/docs/vfx-graph/graph-and-components.md</summary><div class="file">
+<div class="hunk">…… 第 125 行附近 ……</div>
+<div class="ln"><span>- **编辑保留 HDR**：编辑器内部是 LDR 编辑，但**未改动的色标/颜色**在提交时会按位置匹配**还原完整 HDR 强度**，只有被你实际改过的项才落为 LDR。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>&gt; </span><del>运行时这些覆盖值在加载后自动通过 `setPropertyFloat/Vec*/Texture/Gradient` 应用；代码侧也可直接调用</del><ins>运行时这些覆盖值在加载后自动应用：数值类属性经 `setPropertyFloat/Vec2/Vec3/Vec4` 写入，纹理与渐变类属性则在加载时直接写入粒子系统的材质数据（shaderData）；代码侧也可直接调用上述</ins><span> API </span><del>改写（见</del><ins>改写数值属性（见</ins><span> [代码篇](/vfx-graph/code/)）。</span></div>
+<div class="ln"><span></span></div>
+<div class="ln"><span>---</span></div>
+</div></details>
+</body></html>

@@ -2,6 +2,7 @@
 title: "VScode本地调试"
 description: "通常我们可以使用Chrome的DevTools来断点调试，但是如果想在vsCode中直接对项目源码断点调试。我们可以通过本篇文档了解如何在vscode中直接调试。"
 slug: "basics/vscode"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 通常我们可以使用Chrome的DevTools来断点调试，但是如果想在vsCode中直接对项目源码断点调试。我们可以通过本篇文档了解如何在vscode中直接调试。

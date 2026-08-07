@@ -2,6 +2,7 @@
 title: "图形渲染性能"
 description: "在对Canvas优化时，我们需要注意，在以下场合不要使用cacheAs："
 slug: "basics/performanceoptimization/rendering"
+draft: true   # 废弃：自2025-03-11导入起从未进入导航，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ### **一、优化Sprite**

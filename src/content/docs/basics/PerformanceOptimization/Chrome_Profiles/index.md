@@ -2,6 +2,7 @@
 title: "使用chrome的性能分析器"
 description: "​ 选中 Record JavaScript CPU Profile，点击 Start 按钮或左上角的实心圆点，这个时候Chrome 就会开始记录当前网页的方法的执行。如图1-1所示。"
 slug: "basics/performanceoptimization/chrome-profiles"
+draft: true   # 废弃：自2025-03-11导入起从未进入导航，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 >  性能分析器（Profiles）是 chrome 开发者工具的一部分，可以通过在页面右键选择审查元素或在谷歌浏览器页面按F12 打开 chrome 开发者工具。然后点击 Profiles 切换至性能分析器（Profiles）面板。

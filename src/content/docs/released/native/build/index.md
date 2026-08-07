@@ -2,6 +2,7 @@
 title: "LayaAir Native应用构建基础说明"
 description: "从LayaAir3.2版本开始， LayaAir Native支持各系统平台的自动打包，"
 slug: "released/native/build"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 从LayaAir3.2版本开始， LayaAir Native支持各系统平台的自动打包，

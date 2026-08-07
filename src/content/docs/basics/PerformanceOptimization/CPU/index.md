@@ -2,6 +2,7 @@
 title: "减少CPU使用量"
 description: "JavaScript中任何对象都是动态的，你可以任意地添加属性。然而，在大量的属性里查找某属性可能很耗时。如果需要频繁使用某个属性值，可以使用局部变量来保存它："
 slug: "basics/performanceoptimization/cpu"
+draft: true   # 废弃：自2025-03-11导入起从未进入导航，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ### **一、减少动态属性查找**

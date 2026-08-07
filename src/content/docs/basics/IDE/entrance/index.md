@@ -2,6 +2,7 @@
 title: "入口"
 description: "在使用LayaAir2.0中，只能使用Main类来作为项目的入口，并使用如下方式启动，设置参数配置："
 slug: "basics/ide/entrance"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ## 默认入口

@@ -2,6 +2,7 @@
 title: "3D动画的导入与使用"
 description: "在LayaAir中只能制作比较简单的动画，要想要复杂的动画，比如人物跑步的动画，那就要在外部的软件中制作并且导入到LayaAir中使用。通常我们需要使用3dMax软件制作模型和动画，并导出为Fbx格式文件，下面将介绍如何导入3D模型及动画"
 slug: "basics/ide/importinganimations"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ## LayaAir目前支持导入的3D动画
