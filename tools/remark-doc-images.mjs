@@ -23,7 +23,10 @@ export function remarkDocImages({ base = '' } = {}) {
 	if (base === '/') base = '';
 	return (tree, file) => {
 		const filePath = file.path || file.history?.[0] || '';
-		const pageDir = pageDirFromFilePath(filePath);
+		const sourcePageDir = pageDirFromFilePath(filePath);
+		// 部署到 Linux/Tengine 时路径区分大小写。公开资源目录统一为小写，
+		// 文件名仍保留原始大小写。
+		const pageDir = sourcePageDir == null ? null : sourcePageDir.toLowerCase();
 		if (pageDir == null) return;
 
 		const walk = (node) => {

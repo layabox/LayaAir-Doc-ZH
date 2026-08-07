@@ -7,7 +7,7 @@
     "link:images": "node tools/link-doc-images.mjs",
     "postinstall": "node tools/link-doc-images.mjs",
     "dev": "node tools/link-doc-images.mjs && astro dev",
-    "build": "astro build && node tools/add-lazy.mjs && node tools/canonicalize-build-routes.mjs && node tools/generate-route-redirects.mjs && node tools/version-pagefind.mjs",
+    "build": "node tools/clean-build.mjs && astro build && node tools/normalize-build-routes.mjs && node tools/add-lazy.mjs && node tools/canonicalize-build-routes.mjs && node tools/version-pagefind.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
