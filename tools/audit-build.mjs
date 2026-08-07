@@ -15,6 +15,17 @@ function walk(dir, out = []) {
   return out;
 }
 
+const distFiles = walk(DIST);
+const exactFiles = new Map();
+const foldedFiles = new Map();
+for (const file of distFiles) {
+  const rel = path.relative(DIST, file).replace(/\\/g, '/');
+  exactFiles.set(rel, file);
+  const folded = rel.toLocaleLowerCase('en-US');
+  if (!foldedFiles.has(folded)) foldedFiles.set(folded, []);
+  foldedFiles.get(folded).push({ rel, file });
+}
+
 function pageUrl(file) {
   const rel = path.relative(DIST, file).replace(/\\/g, '/');
   if (rel === 'index.html') return `${ORIGIN}${BASE}/`;
@@ -22,20 +33,34 @@ function pageUrl(file) {
   return `${ORIGIN}${BASE}/${rel}`;
 }
 
-function resolveTarget(pathname) {
+function resolveTarget(pathname, allowCaseMismatch = false) {
   let decoded;
   try { decoded = decodeURIComponent(pathname); } catch { return null; }
   if (decoded !== BASE && !decoded.startsWith(BASE + '/')) return { outsideBase: true };
   const rel = decoded.slice(BASE.length).replace(/^\/+/, '');
-  if (!rel) return { file: path.join(DIST, 'index.html') };
-  const exact = path.join(DIST, ...rel.split('/'));
-  const candidates = [exact, exact + '.html', path.join(exact, 'index.html')];
-  return { file: candidates.find((f) => fs.existsSync(f) && fs.statSync(f).isFile()) };
+  if (!rel) return { file: exactFiles.get('index.html') };
+  const candidates = [rel, rel + '.html', `${rel.replace(/\/$/, '')}/index.html`];
+  for (const candidate of candidates) {
+    const file = exactFiles.get(candidate);
+    if (file) return { file };
+  }
+  for (const candidate of candidates) {
+    const matches = foldedFiles.get(candidate.toLocaleLowerCase('en-US'));
+    if (matches?.length === 1) {
+      return {
+        file: allowCaseMismatch ? matches[0].file : undefined,
+        caseMismatch: true,
+        expected: candidate,
+        actual: matches[0].rel,
+      };
+    }
+  }
+  return {};
 }
 
 const sitemap = fs.readFileSync(path.join(DIST, 'sitemap-0.xml'), 'utf8');
 const sourceFiles = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
-  .map((match) => resolveTarget(new URL(match[1]).pathname)?.file)
+  .map((match) => resolveTarget(new URL(match[1]).pathname, true)?.file)
   .filter(Boolean);
 const notFoundPage = path.join(DIST, '404.html');
 if (fs.existsSync(notFoundPage)) sourceFiles.push(notFoundPage);
@@ -64,6 +89,10 @@ function check(raw, fromFile, baseUrl, kind) {
   const target = resolveTarget(url.pathname);
   if (target?.outsideBase) {
     failures.push({ type: 'outside-base', fromFile, raw, kind });
+    return;
+  }
+  if (target?.caseMismatch) {
+    failures.push({ type: 'case-mismatch', fromFile, raw, kind, actual: target.actual });
     return;
   }
   if (!target?.file) {
