@@ -4,8 +4,6 @@ description: "本篇文档仅适用3.0以前的旧版引擎开发者，熟悉一
 slug: "basics/2-x-upgrade"
 ---
 
-> Author：谷主  && Charley
-
 :::note
 本篇文档仅适用3.0以前的旧版引擎开发者，熟悉一些项目差异，后续还会进一步进行总结。
 :::

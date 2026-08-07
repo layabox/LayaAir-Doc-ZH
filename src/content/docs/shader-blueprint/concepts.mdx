@@ -1,0 +1,166 @@
+---
+title: "概念篇"
+description: "介绍着色器蓝图的定位与工作原理：两种蓝图资源的区别、从节点图到 GLSL 的编译管线、可用的数据类型与自动转换规则、端口颜色约定，以及与手写 Shader 的能力边界。"
+slug: "shader-blueprint/concepts"
+---
+
+## 着色器蓝图是什么
+
+着色器蓝图是 LayaAir IDE 内置的**可视化 Shader 构建工具**。你在画布上摆放节点、把输出端口连到
+输入端口，IDE 把这张图翻译成 GLSL 代码并编译成引擎可用的 Shader 资源。
+
+它解决的问题是：
+
+- **不写 GLSL 也能做材质**。美术可以自己调出溶解、扫光、流动、菲涅尔边缘光等效果，不必每次都找程序改 Shader。
+- **所见即所得**。编辑器自带预览球，连线一改预览立刻更新，不用来回切换编译、运行、看效果。
+- **复用与传播**。图比代码更容易读懂和改造，一个效果做好后可以复制节点、派生变体。
+
+蓝图不是「Shader 的简化版」——它生成的是**完整的标准 Shader**，走引擎正常的渲染管线，支持
+PBR 光照、阴影投射、深度法线 Pass、GPU 实例化、反射探针，与手写 Shader 在渲染能力上没有代差。
+
+:::note[与「程序蓝图」的区别]
+LayaAir 有两套同名为「蓝图」的功能：**程序蓝图**（`.bp`）用连线写**脚本逻辑**，替代 TypeScript 组件；
+**着色器蓝图**（`.bps`）用连线写**着色器**。两者的编辑器长得像，但节点体系、运行方式完全不同。
+本文档只讲着色器蓝图，程序蓝图见[《程序蓝图》](/ide/shaderblueprint/blueprint/)。
+:::
+
+## 两种蓝图资源
+
+| 资源 | 扩展名 | 作用 | 有终端节点吗 |
+|---|---|---|---|
+| 着色器蓝图 | `.bps` | 一个完整的 Shader，可以被材质选用 | 有：顶点终端 + 片元终端 |
+| 着色器蓝图函数 | `.bpsf` | 一段可复用的运算子图，被 `.bps` 当作节点调用 | 没有，用 Input In / Output 定义参数与返回值 |
+
+`.bps` 是最终产物：打开它时 IDE 会创建对应的 Shader 文件，完成蓝图与 Shader 的映射。
+`.bpsf` 则像一个自定义函数——把常用的一串运算封装起来，在多个蓝图里当作单个节点重复使用，
+改一次全部生效。
+
+## 从节点图到 Shader
+
+蓝图的编译链路是：
+
+```
+.bps 节点图
+  → ShaderBuild 解析（拓扑排序 / 类型推导 / 常量折叠）
+  → 生成 GLSL 顶点与片元代码
+  → 编译成 .shader 产物（写入工程 library/）
+  → 材质引用该 Shader → 场景渲染
+```
+
+有三件事值得先知道：
+
+**① 只有「能到达终端」的节点会被编译。** 编译器从片元终端和顶点终端反向遍历，摘出所有对最终
+输出有贡献的节点。悬在一边没接线的节点不产生任何代码，也不消耗性能——可以放心留着做备选方案。
+
+**② 蓝图产出的是 GLSL ES 3.00 代码。** 这意味着 `dFdx` / `dFdy` / `fwidth` 导数函数、
+`sampler2DArray` / `sampler3D` 采样、`inverse()`、`transpose()` 等特性在蓝图里都可以直接使用
+（WebGL1 环境下由引擎补 `GL_OES_standard_derivatives` 扩展）。
+
+**③ 编译是按需触发的。** 一个蓝图只有在 IDE 里被打开预览过、或被场景中的材质实际用到时，才会
+产出编译结果。
+
+:::caution[发布前先打开一遍蓝图]
+如果一个 `.bps` 从未在 IDE 中打开过，工程的 `library/` 里就没有它的编译产物；把工程发布出去后
+运行时按路径找 Shader 会得到 404。**发布前确认每个用到的蓝图都被打开或预览过至少一次。**
+:::
+
+## 数据类型
+
+蓝图端口使用的类型与 GLSL 一致：
+
+| 类别 | 类型 |
+|---|---|
+| 标量 | `bool`、`int`、`float` |
+| 向量 | `vec2`、`vec3`、`vec4`、`color`（等价于 vec4，但在 IDE 里用取色器编辑） |
+| 矩阵 | `mat2`、`mat3`、`mat4` |
+| 采样器 | `sampler2D`、`samplerCube`、`sampler2DArray`、`sampler3D` |
+| 特殊 | `any`（自适应，见下）、`define`（宏开关） |
+
+### 多态节点
+
+大量节点的端口类型不是固定的一种，而是**一组候选**。例如 `math/basic/add` 的两个输入都声明为
+`float / int / vec2 / vec3 / vec4 / mat2 / mat3 / mat4`——接什么类型进来，节点就按什么类型工作，
+输出类型随之确定。手册里这类端口标记为「动态」并列出候选集。
+
+:::caution[没有动态维度推导]
+一个多态节点在一次使用中**只能锁定一种类型**：编译器按已连线的输入推导出统一类型后，其余输入
+会被转换到同一类型。它不会像某些引擎那样为「vec3 与 float 相乘」自动做逐分量广播的维度推导。
+若两路输入维度不同且不在下面的自动转换表内，需要自己用 `append`、`mask`、`swizzle` 显式对齐维度。
+:::
+
+### 自动类型转换
+
+连线时，若两端类型不同但在下表关系内，IDE 允许连接并自动插入转换：
+
+| 源类型 | 可直接连到 |
+|---|---|
+| `float` | `int`、`bool`、`vec2`、`vec3`、`vec4`、`color` |
+| `vec2` | `float`、`vec3`、`vec4`、`color` |
+| `vec3` | `float`、`vec4`、`color` |
+| `vec4` | `float`、`color` |
+| `int` | `bool`、`color`、`float` |
+| `any` | 任意类型 |
+
+关系是双向的（表里出现过的组合，反向连也成立）。**升维补 0、降维取前几个分量**是默认行为；
+需要精确控制取哪些分量时，用 `channel/swizzle` 或 `math/expression/mask`。表外的组合（例如
+`mat3` 连 `vec3`）会被拒绝，端口不会高亮。
+
+### 端口颜色
+
+编辑器用端口颜色区分类型，连线前扫一眼颜色就能判断能不能接：
+
+| 颜色 | 类型 |
+|---|---|
+| 浅蓝 | `float` / number |
+| 绿 | `vec2` |
+| 黄 | `vec3` |
+| 粉 | `vec4` / `color` |
+| 蓝 | `mat2` / `mat3` / `mat4` |
+| 紫 | `bool` |
+| 红 | `sampler2D` / `sampler2DArray` / `sampler3D` / 数组 |
+| 深蓝 | `samplerCube` |
+| 灰 | `int` / `string` / `any` |
+
+## 节点分类总览
+
+右键菜单的一级分类如下（括号内为该分类的节点数，合计 186 个）：
+
+| 菜单 | 内容 | 详见 |
+|---|---|---|
+| `basic` (12) | 常量与向量构造 | [输入与坐标](/shader-blueprint/nodes-input/) |
+| `inputdata` (32) | 顶点、几何、相机、场景、光照、物体、PBR 常数 | [输入与坐标](/shader-blueprint/nodes-input/) |
+| `uv` (11) | UV 变换 | [输入与坐标](/shader-blueprint/nodes-input/) |
+| `texture` (6) | 纹理采样 | [输入与坐标](/shader-blueprint/nodes-input/) |
+| `procedural` (6) | 程序化图形遮罩 | [输入与坐标](/shader-blueprint/nodes-input/) |
+| `math` (76) | 全部数学运算，含矩阵与导数 | [数学与逻辑](/shader-blueprint/nodes-math/) |
+| `logic` (11) | 布尔运算与分支 | [数学与逻辑](/shader-blueprint/nodes-math/) |
+| `channel` (3) | 分量翻转、重排、遮罩 | [数学与逻辑](/shader-blueprint/nodes-math/) |
+| `color` (19) | 色彩空间、色相饱和度、混合、法线处理 | [颜色与艺术效果](/shader-blueprint/nodes-color/) |
+| `function` (8) | 噪声、自定义 GLSL、兼容节点 | [颜色与艺术效果](/shader-blueprint/nodes-color/) |
+| `utility` (1) | dither 抖动 | [颜色与艺术效果](/shader-blueprint/nodes-color/) |
+| `debug` (1) | 调试直出颜色 | [颜色与艺术效果](/shader-blueprint/nodes-color/) |
+
+除了菜单里的节点，还有两类不在菜单中：
+
+- **Params 面板添加的节点**：Color 常量、Texture2D / TextureCube / Texture2DArray / Texture3D
+  纹理资产、Define 宏。它们代表对外暴露的变量，只能在 Params 面板声明后拖进画布。
+- **隐藏的内部实现节点**：噪声哈希、色彩空间换算、UV 旋转等被其他节点内部调用的函数。
+  它们参与编译但不出现在菜单里。
+
+## 能力边界
+
+蓝图能做的事很多，但有几处限制来自框架本身，遇到时不必怀疑是自己搭错了：
+
+- **采样器不能作为自定义函数的参数。** 蓝图的纹理采样只能是「单次内联采样」。需要在循环里反复
+  采同一张纹理的算法（典型如视差遮蔽映射 POM）无法用节点搭出来，只能走 `function/custom` 内嵌
+  GLSL 或改用其他思路。
+- **顶点段不能用导数。** `DDX` / `DDY` / `DDXY` 以及依赖 `fwidth` 抗锯齿的程序化图形节点只在
+  片元着色器有意义，接到顶点终端一侧会被拒绝。
+- **切线空间变换暂缺。** `math/matrix/transform` 支持 Object / World / View / Clip /
+  AbsoluteWorld 之间互转，但不含 Tangent 空间（需要 TBN 矩阵）。需要时用 `inputdata/geometry/TBNMatrix`
+  自己乘。
+
+## 下一步
+
+概念清楚了就可以动手：[IDE 操作流程](/shader-blueprint/ide-workflow/) 从创建第一个 `.bps` 讲到
+把它用到材质上。

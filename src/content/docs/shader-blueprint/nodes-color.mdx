@@ -1,0 +1,191 @@
+---
+title: "节点手册 · 颜色与艺术效果"
+description: "着色器蓝图颜色处理类节点的完整参考：色彩空间转换、色相饱和度对比度与白平衡、22 种图层混合模式、法线处理六件套、通道混合、噪声与抖动，以及自定义 GLSL 代码节点。"
+slug: "shader-blueprint/nodes-color"
+---
+
+本页收录**处理颜色与做视觉效果**的节点：`color` 19 个、`function` 8 个、`utility` 1 个、
+`debug` 1 个。
+
+## 色彩空间转换
+
+菜单：`color`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `GammaToLinear` | gamma (vec3/vec4) | 同型 | 伽马空间转线性空间 |
+| `LinearToGamma` | linear (vec3/vec4) | 同型 | 线性空间转伽马空间 |
+| `colorspaceConversion` | In (vec3) | vec3 | 在 RGB / Linear / HSV 之间转换 |
+
+`colorspaceConversion` 有 **From** 和 **To** 两个下拉，各可取 `RGB`、`Linear`、`HSV`，共 9 种组合。
+
+:::tip[想改色相就转到 HSV]
+转到 HSV 后，x 分量是色相、y 是饱和度、z 是明度。改完再转回 RGB，比在 RGB 空间硬调更可控。
+若只是整体旋转色相，直接用下面的 `hue` 节点更省事。
+:::
+
+## 颜色调整
+
+菜单：`color`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `saturation` | In (vec3)、Saturation (默认 1) | vec3 | 饱和度。0 = 灰度，1 = 原样，>1 = 增艳 |
+| `hue` | In (vec3)、Offset (默认 0) | vec3 | 色相旋转。**Range 模式**：`Degrees`（0~360）/ `Normalized`（0~1） |
+| `contrast` | In (vec3)、Contrast (默认 1) | vec3 | 对比度，绕 sRGB 中灰 `pow(0.5, 2.2)` 缩放 |
+| `whiteBalance` | In (vec3)、Temperature (0)、Tint (0) | vec3 | 白平衡：Temperature 冷暖、Tint 绿品偏移 |
+| `replaceColor` | In、From、To、Range (0)、Fuzziness (0) | vec3 | 把接近 From 的颜色替换成 To，Range 是容差、Fuzziness 是过渡软度 |
+| `colorMask` | In、MaskColor、Range (0)、Fuzziness (0) | float | 生成「哪些像素接近 MaskColor」的遮罩 |
+| `invertColors` | In (动态) | 动态 | 反相。**R / G / B / A 四个勾选框**决定反哪几个通道 |
+| `channelMixer` | In (vec3)、OutRed、OutGreen、OutBlue (vec3) | vec3 | 通道混合：每个输出通道由三个输入通道加权得到 |
+| `fadeTransition` | NoiseValue (0.5)、FadeValue (0.5)、FadeContrast (1) | float | 溶解过渡遮罩：把噪声图 + 进度值变成带对比度控制的过渡遮罩 |
+
+:::note[白色对 hue 无效]
+纯白、纯黑的饱和度为 0，色相旋转对它们**完全没有作用**。用白色纹理测试 `hue` 节点会得到「没反应」的
+错误结论，测试请用彩色输入。
+:::
+
+## blend —— 22 种图层混合
+
+菜单：`color` → `blend`
+
+| 输入 | 类型 | 默认 | 说明 |
+|---|---|---|---|
+| Base | 动态 (float~vec4) | — | 底层颜色 |
+| Blend | 动态 (float~vec4) | — | 混合层颜色 |
+| Opacity | float | 1 | 混合强度。结果 = `mix(Base, 混合结果, Opacity)` |
+
+模式与公式（`Base` 记作 A、`Blend` 记作 B）：
+
+| 分组 | 模式 | 公式 |
+|---|---|---|
+| **变暗** | `Darken` | `min(A, B)` |
+| | `Multiply` | `A × B` |
+| | `LinearBurn` | `A + B − 1` |
+| | `Burn` | `1 − (1 − B) / A` |
+| **变亮** | `Lighten` | `max(A, B)` |
+| | `Screen` | `1 − (1 − A)(1 − B)` |
+| | `LinearDodge` | `A + B` |
+| | `Dodge` | `A / (1 − B)` |
+| **对比** | `Overlay` | A ≤ 0.5 时 `2AB`，否则 `1 − 2(1−A)(1−B)` |
+| | `HardLight` | 同 Overlay 但以 B 判断分支 |
+| | `SoftLight` | 柔和版叠加，边缘更平滑 |
+| | `VividLight` | 按 A 分支的加深/减淡组合，对比最强烈 |
+| | `LinearLight` | 按 B 分支的线性加深/减淡 |
+| | `LinearLightAddSub` | `B + 2A − 1` |
+| | `PinLight` | 按 B 分支取 max / min，产生硬边替换 |
+| | `HardMix` | `step(1 − A, B)`，结果只有 0 或 1，纯色块化 |
+| **差值** | `Difference` | `abs(B − A)` |
+| | `Exclusion` | `A + B − 2AB` |
+| | `Negation` | `1 − abs(1 − A − B)` |
+| | `Subtract` | `A − B` |
+| | `Divide` | `A / B` |
+| **替换** | `Overwrite` | 直接用 B，配合 Opacity 做整体淡入淡出 |
+
+:::tip[验证 blend 模式是否真的生效]
+挑一组「结果既不等于 Base 也不等于 Blend，且不同通道走不同分支」的测试色。例如 HardLight
+用 Base (0.8, 0.2, 0.2) + Blend (0.3, 0.6, 0.9)，正确结果是一个通道被压暗、两个通道被提亮；
+若塌成 Multiply 则会得到整体偏暗的红色。
+:::
+
+## 法线处理
+
+菜单：`color`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `normalUnpack` | In (vec4) | vec3 | 把 0~1 的贴图值解码成 −1~1 的法线：`normalize(In.xyz × 2 − 1)` |
+| `normalStrength` | In (vec3)、Strength (1) | vec3 | 调节法线强度，0 = 平面，>1 = 夸大凹凸 |
+| `normalBlend` | A、B (vec3) | vec3 | 混合两张法线。**Mode**：`Default`（简单叠加）/ `Reoriented`（重定向，更正确） |
+| `normalReconstructZ` | In (vec2) | vec3 | 由 XY 推算 Z 分量，用于只存两通道的压缩法线贴图 |
+| `normalFromHeight` | In (float)、Strength (1) | vec3 | 由高度值用屏幕导数生成切线空间法线 |
+| `normalFromTexture` | Tex (sampler2D)、UV、Offset (0.005)、Strength (8) | vec3 | 由高度贴图三点差分生成法线，Offset 是采样间距 |
+
+:::caution[normalFromHeight 依赖导数，只能在片元段用]
+它内部用 `dFdx` / `dFdy`，与 [导数节点](/shader-blueprint/nodes-math/#mathderivative--屏幕空间导数)同样限制。
+需要顶点段的法线扰动请改用 `normalFromTexture` 之外的显式算法。
+:::
+
+## utility —— 抖动
+
+| 节点 | 菜单 | 输入 | 输出 | 说明 |
+|---|---|---|---|---|
+| `dither` | `utility` | In (动态) | 动态 | 4×4 Bayer 有序抖动。配合 alpha 裁剪做「渐隐但不半透」的溶解、LOD 淡出 |
+
+## 噪声
+
+菜单：`function`。噪声是溶解、流动、扰动效果的基础。
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `GradientNoiseFloat` | UVInfo (vec2)、Scale | float | 梯度噪声（Perlin 风格），自然平滑，最常用 |
+| `SimpleNoiseFloat` | texcoord (vec2)、Scale | float | 值噪声的多倍频叠加，颗粒感更强 |
+| `VoronoiFloat` | UVInfo (vec2)、AngleOffset、CellDensity | float | 沃罗诺伊细胞噪声，做龟裂、鳞片、细胞纹理 |
+
+:::note[没有 Hash Type 选项]
+Unity 的噪声节点可以切换哈希算法，Laya 侧固定使用一种哈希。同一套 UV 与 Scale 下，两边噪声的
+**整体特征相似但逐像素图案不同**，从 Unity 迁移时需要重新微调 Scale 与阈值。
+:::
+
+## 通用工具
+
+菜单：`function`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `custom` | 由用户定义 | any | **自定义 GLSL 代码节点**，见下 |
+| `switch` | true、false (动态)、value (bool) | 动态 | 按布尔值二选一，等价于 `logic/branch` |
+| `normalScale` | normal (vec3)、scale (float) | vec3 | 法线强度缩放 |
+| `ContrastFloat` | In (vec3)、Contrast | vec3 | 对比度（等价于 `color/contrast`，为兼容保留） |
+| `RemapVec4` | In (vec4)、InMinMax、OutMinMax | vec4 | vec4 版重映射（等价于 `math/range/remap`，为兼容保留） |
+
+### custom —— 自定义 GLSL
+
+当某个效果用节点搭起来太绕、或需要循环等节点做不到的结构时，用 `custom` 直接写 GLSL：
+
+| 属性 | 说明 |
+|---|---|
+| `code` | GLSL 代码正文（不含函数名与参数列表，只写函数体） |
+| `inputList` | 输入参数的名字与类型 |
+| `outType` | 返回值类型 |
+| `outputList` | 输出参数 |
+| `defines` | 需要的宏 |
+| `includes` | 需要引入的 GLSL 头文件 |
+
+:::caution[custom 里也不能把采样器当函数参数]
+蓝图编译器不接受 `sampler2D` 作为自定义函数的形参。需要在 `custom` 里采样纹理时，把采样结果
+先在图上采好、以 vec4 形式传进去。
+:::
+
+## 隐藏的内部实现节点
+
+还有一批节点是**其他节点的实现细节**：它们参与编译、会在生成的 GLSL 里看到，但**不出现在右键菜单**，
+也无法手工放置。列在这里是为了让你在读编译产物时知道这些函数从哪来：
+
+| 隐藏节点 | 被谁使用 |
+|---|---|
+| `colorSRGBToLinear`、`colorLinearToSRGB`、`colorRGBToHSV`、`colorHSVToRGB` | `colorspaceConversion` |
+| `colorHueShift` | `hue` |
+| `uvRotateRadians` | `uv/rotate` |
+| `rotateAboutAxisRad` | `math/vector/rotateAboutAxis` |
+| `shapeRectangleFastest`、`shapeRectangleNicest` | `procedural/rectangle` |
+| `gradientNoise`、`gradientNoise_dir` | `GradientNoiseFloat` |
+| `noise_randomValue`、`noise_interpolate`、`valueNoise` | `SimpleNoiseFloat` |
+| `voronoi_noise_randomVector` | `VoronoiFloat` |
+| `residue` | 噪声哈希的取模运算 |
+| `parallaxOffset1Step` | `uv/parallax` |
+
+## debug
+
+| 节点 | 菜单 | 输入 | 说明 |
+|---|---|---|---|
+| `debug` | `debug` | color (vec4) | 把任意中间结果直接输出成颜色，用来「看一眼这条线上现在是什么值」 |
+
+:::tip[排查图的标准做法]
+怀疑某条链路出问题时，把它接到 `debug` 或直接接到终端的颜色槽上单独看。遮罩类（float）建议先
+`append` 成三通道再看，避免被当成灰度误判。
+:::
+
+## 下一步
+
+- 从 Unity 迁移资产：[Unity ShaderGraph 对照](/shader-blueprint/unity-shadergraph/)

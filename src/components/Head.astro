@@ -44,18 +44,10 @@ import { ClientRouter } from 'astro:transitions';
     link.setAttribute('aria-current', 'true');
   });
 
-  // 修复：ClientRouter 无刷新换页时，整页 DOM（含左侧导航）被整体替换重建，
-  // 导致侧栏滚动位置每次都被重置回顶部 —— 在长目录里点开一项后，侧栏跳回顶端，
-  // 无法接着点下一项，阅读被打断。
-  // 解决：在换页生命周期里保存/恢复侧栏滚动容器 .sidebar-pane 的 scrollTop，让侧栏保持原位。
-  let savedSidebarScroll = 0;
-  document.addEventListener('astro:before-swap', () => {
-    const pane = document.querySelector('.sidebar-pane');
-    if (pane) savedSidebarScroll = pane.scrollTop;
-  });
+  // 侧栏「当前文档」定位由 VersionSidebar 的 scrollSidebarToCurrent 负责
+  // （整页进入、刷新、ClientRouter 换页后均滚到 a[aria-current=page] / .group-label-current）。
+  // 这里只在换页时重新落地阅读偏好（data-theme / 字号等）。
   document.addEventListener('astro:after-swap', () => {
-    const pane = document.querySelector('.sidebar-pane');
-    if (pane) pane.scrollTop = savedSidebarScroll;
     // 换页后新页 <html> 是构建时静态版，运行时设置的 data-theme / laya-sepia 等会丢失，
     // 这里在「绘制前」重新落地阅读偏好，避免背景色被重置（白/夜/护眼）。
     applyReaderPrefs();

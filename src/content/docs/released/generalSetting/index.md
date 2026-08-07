@@ -56,6 +56,8 @@ Liunx是指发布到 《[Liunx平台](/released/linux/)》，直接运行于Liun
 
 `淘宝小游戏`是指发布为已适配《[淘宝小游戏](/released/minigame/tbgame/)》的项目工程。
 
+`华为小游戏`是指发布为已适配《[华为小游戏](/released/minigame/huawei/)》的项目工程。
+
 > 本篇主要介绍通用的发布设置，各发布平台可以点击以上链接查看文档。
 
 ### 1.2 发布任务与操作

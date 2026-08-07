@@ -9,6 +9,7 @@ head:
       content: noindex
 ---
 
-:::note[内容整理中]
-本章节在原文档目录中已规划，但正文尚未提供。内容补充后会自动替换此占位页。
+:::note[本章节已迁移]
+着色器蓝图的完整文档已迁移到 **[着色器蓝图文档集](/shader-blueprint/)**，
+入口页见[《着色器蓝图》](/ide/assets/blueprint/shaderblueprint/)。
 :::

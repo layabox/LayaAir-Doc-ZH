@@ -1,1 +1,0 @@
-console.log('subpackage prefab loaded');

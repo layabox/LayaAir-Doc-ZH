@@ -1,0 +1,271 @@
+---
+title: "节点手册 · 数学与逻辑"
+description: "着色器蓝图运算类节点的完整参考：四则与常用函数、指数三角与双曲、几何与向量运算、取整与重映射、波形、矩阵与空间变换、导数、分量操作，以及布尔逻辑与分支节点。"
+slug: "shader-blueprint/nodes-math"
+---
+
+本页收录**做运算**的节点：`math` 76 个、`logic` 11 个、`channel` 3 个，共 90 个。
+「动态」表示多态端口，实际类型由连线推导；这类节点的所有输入会被统一到同一类型
+（见[概念篇](/shader-blueprint/concepts/#多态节点)）。
+
+## math/basic —— 四则运算
+
+菜单：`math` → `basic`。输入输出均为动态，候选：float / int / vec2 / vec3 / vec4 / mat2 / mat3 / mat4。
+
+| 节点 | 说明 | 快捷键 |
+|---|---|---|
+| `add` | 相加 | `a` |
+| `minus` | 相减 | `M` |
+| `multiply` | 相乘。**矩阵与向量相乘也用它** | `m` |
+| `divide` | 相除 | `d` |
+| `oneMinus` | `1 − x`，反相。做遮罩取反最常用 | `o` |
+
+## math/common —— 常用函数
+
+菜单：`math` → `common`
+
+| 节点 | 输入 | 说明 |
+|---|---|---|
+| `abs` | 动态 | 绝对值 |
+| `sign` | 动态 | 符号：正 1、负 −1、零 0 |
+| `floor` | 动态 | 向下取整 |
+| `ceil` | 动态 | 向上取整 |
+| `fract` | 动态 | 取小数部分。做无限平铺、循环动画的基础 |
+| `mod` | 动态 × 2 | 取模求余 |
+| `min` | 动态 × 2 | 取较小值 |
+| `max` | 动态 × 2 | 取较大值 |
+| `clamp` | 值、min、max（默认 max = 1） | 限制在区间内。min=0、max=1 即等价于 saturate |
+| `mix` | A、B、Alpha | 线性插值：`A×(1−Alpha) + B×Alpha`。快捷键 `l` |
+| `step` | edge、值 | 值 ≥ edge 时为 1，否则 0。产生硬边 |
+| `smoothstep` | edge0、edge1、值 | 在两个边界间平滑过渡（S 曲线），产生软边 |
+
+:::tip[step 与 smoothstep 的取舍]
+需要**明确分界**（卡通描边、硬遮罩）用 `step`；需要**柔和过渡**（辉光边缘、渐隐）用 `smoothstep`。
+两者输入顺序都是「先边界后值」，接反会得到反向结果。
+:::
+
+## math/advanced —— 进阶运算
+
+菜单：`math` → `advanced`
+
+| 节点 | 输入 | 说明 |
+|---|---|---|
+| `negate` | 动态 | 取负：`−In` |
+| `posterize` | In、Steps（默认 4） | 色阶量化：`floor(In × Steps) / Steps`，做卡通分层、像素风 |
+| `reciprocal` | In（默认 1） | 倒数：`1 / In` |
+| `reciprocalSqrt` | In（默认 1） | 平方根的倒数：`inversesqrt(In)` |
+
+## math/round —— 取整
+
+菜单：`math` → `round`
+
+| 节点 | 说明 |
+|---|---|
+| `round` | 四舍五入：`floor(In + 0.5)` |
+| `truncate` | 向零取整：`sign(In) × floor(abs(In))` |
+
+## math/exponential —— 指数与对数
+
+菜单：`math` → `exponential`。全部为动态输入输出。
+
+| 节点 | 说明 |
+|---|---|
+| `pow` | 幂：`A 的 B 次方`。快捷键 `e` |
+| `sqrt` | 平方根 |
+| `inversesqrt` | 平方根倒数 |
+| `exp` | e 的 x 次方 |
+| `log` | 自然对数 |
+| `exp2` | 2 的 x 次方 |
+| `log2` | 以 2 为底的对数 |
+
+## math/trigonometry —— 三角与双曲
+
+菜单：`math` → `trigonometry`
+
+| 节点 | 输入 | 说明 |
+|---|---|---|
+| `radians` | 动态 | 角度转弧度 |
+| `degrees` | 动态 | 弧度转角度 |
+| `sin` / `cos` / `tan` | 动态 | 正弦 / 余弦 / 正切（输入为弧度） |
+| `asin` / `acos` / `atan` | 动态 | 反正弦 / 反余弦 / 反正切 |
+| `atan2` | y、x (float) | 两参数反正切，返回完整象限的角度 |
+| `hyperbolicSine` | 动态 | 双曲正弦：`(eˣ − e⁻ˣ) / 2` |
+| `hyperbolicCosine` | 动态 | 双曲余弦：`(eˣ + e⁻ˣ) / 2` |
+| `hyperbolicTangent` | 动态 | 双曲正切 |
+
+:::tip[做周期动画]
+`Time` → `multiply`（调速度）→ `sin` → `remap`（把 −1~1 映到需要的区间），是脉冲、呼吸灯、
+上下浮动效果的标准组合。
+:::
+
+## math/geometric —— 几何运算
+
+菜单：`math` → `geometric`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `length` | 动态 | float | 向量长度 |
+| `distance` | 动态 × 2 | float | 两点距离 |
+| `dot` | 动态 × 2 | float | 点积。判断朝向一致性、算光照强度 |
+| `cross` | vec3 × 2 | vec3 | 叉积。求垂直于两向量的方向 |
+| `normalize` | 动态 | 动态 | 归一化为单位长度。快捷键 `n` |
+| `faceforward` | N、I、Nref | 动态 | 让 N 朝向与 I 相反的一侧 |
+| `reflect` | I（入射）、N（法线） | 动态 | 反射向量，做反射采样 |
+| `refract` | I、N、eta | 动态 | GLSL 内置折射，eta 为折射率之比 |
+
+## math/vector —— 向量工具
+
+菜单：`math` → `vector`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `projection` | A、B | 动态 | A 在 B 上的投影分量：`B × dot(A,B) / dot(B,B)` |
+| `rejection` | A、B | 动态 | A 垂直于 B 的分量：`A − projection(A,B)` |
+| `sphereMask` | Coords、Center、Radius (0.1)、Hardness (0.8) | float | 球形/圆形遮罩：离中心越近值越大，Hardness 控制边缘硬度 |
+| `rotateAboutAxis` | In、Axis (默认 0,1,0)、Rotation | vec3 | 绕任意轴旋转向量。**Unit 模式**：Radians / Degrees |
+| `refract` | Incident、Normal、IORSource (1)、IORMedium (1.5) | Refracted (vec3) + Intensity (float) | 完整折射：双输出，Intensity 是透射强度（Schlick 近似），全反射时为 0 |
+
+`refract` 的 **Mode**：
+
+| 模式 | 行为 |
+|---|---|
+| `Safe` | 始终返回折射向量（超过临界角时结果被钳制） |
+| `CriticalAngle` | 超过临界角时改为返回**反射**向量，物理上更正确 |
+
+:::note[两个 refract 不一样]
+`math/geometric/refract` 是 GLSL 内置函数（单输出、参数是 eta 比值）；`math/vector/refract`
+是完整的折射节点（双输出、分别给入射侧与介质侧折射率、带模式）。做玻璃、水面用后者。
+:::
+
+## math/interpolation 与 math/range —— 插值与重映射
+
+| 节点 | 菜单 | 输入 | 说明 |
+|---|---|---|---|
+| `inverseLerp` | `math/interpolation` | A (0)、B (1)、T | `mix` 的逆运算：求 T 在 A~B 区间中的归一化位置 |
+| `remap` | `math/range` | In、InMinMax (−1,1)、OutMinMax (0,1) | 区间重映射，把一个范围的值线性映射到另一个范围 |
+| `randomRange` | `math/range` | Seed (vec2)、Min (0)、Max (1) | 由二维种子生成 Min~Max 的伪随机数 |
+
+## math/wave —— 波形
+
+菜单：`math` → `wave`。全部动态输入输出，周期为 1。
+
+| 节点 | 说明 |
+|---|---|
+| `sawtoothWave` | 锯齿波，输出 −1~1 |
+| `squareWave` | 方波，输出 −1 或 1 |
+| `triangleWave` | 三角波，输出 −1~1 |
+| `noiseSineWave` | 带噪声的正弦波，MinMax（默认 −0.5,0.5）控制噪声幅度 |
+
+## math/effect —— 效果
+
+| 节点 | 菜单 | 输入 | 输出 | 说明 |
+|---|---|---|---|---|
+| `fresnel` | `math/effect` | normal、viewDir、power | float | 菲涅尔：`pow(1 − dot(normal, viewDir), power)`。边缘光、能量护盾、水面反射强度 |
+
+## math/expression —— 分量组合
+
+菜单：`math` → `expression`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `append` | 动态 × 2 | 动态 | 把两个值拼成更高维向量，如 float + float → vec2 |
+| `mask` | vec2 / vec3 / vec4 | 动态 | 按 **R / G / B / A 四个勾选框**取出若干分量，输出维度 = 勾选数量 |
+
+## math/matrix —— 矩阵与空间变换
+
+菜单：`math` → `matrix`。矩阵按**列主序**存储。
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `matrixTranspose` | In (mat2/3/4) | 同型矩阵 | 转置 |
+| `matrixDeterminant` | In (mat2/3/4) | float | 行列式 |
+| `matrixSplit` | In (mat2/3/4) | M0 / M1 / M2 / M3 | 把矩阵拆成向量。**Axis**：Row（按行）/ Column（按列） |
+| `matrixConstruction` | M0~M3 (vec4) | 4x4 / 3x3 / 2x2 三个输出 | 由四个向量组装矩阵，三种尺寸同时给出。**Axis**：Row / Column |
+| `transformationMatrix` | — | mat4 | 取引擎内置变换矩阵 |
+| `transform` | In (vec3) | vec3 | 在坐标空间之间变换 |
+
+`transformationMatrix` 的 **Matrix** 选项：`Model`、`View`、`Projection`、`ViewProjection`、`ModelView`。
+
+`transform` 的选项：
+
+| 选项 | 可选值 | 说明 |
+|---|---|---|
+| From / To | Object / World / View / Clip / AbsoluteWorld | 源空间与目标空间 |
+| Type | Position / Direction / Normal | Position 按点变换（含平移），Direction 与 Normal 按方向变换（忽略平移） |
+
+:::caution[transform 的两点限制]
+不支持 **Tangent 空间**（需要 TBN 矩阵，请改用 `inputdata/geometry/TBNMatrix` 手动相乘）；
+`Normal` 目前按 Direction 近似处理，**在非均匀缩放的物体上不精确**。
+:::
+
+## math/derivative —— 屏幕空间导数
+
+菜单：`math` → `derivative`。全部动态输入输出。
+
+| 节点 | 说明 |
+|---|---|
+| `DDX` | 相邻像素在屏幕 X 方向的变化量 |
+| `DDY` | 相邻像素在屏幕 Y 方向的变化量 |
+| `DDXY` | `abs(DDX) + abs(DDY)`，即 `fwidth`。做与屏幕像素大小无关的抗锯齿边缘 |
+
+:::caution[导数节点只能用于片元段]
+导数依赖相邻像素，顶点着色器里没有这个概念。这三个节点接到顶点终端一侧无效。
+:::
+
+## math 顶层 —— 流程控制
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `if` | A、B、`A>B`、`A<B`、`A==B` | 动态 | 比较 A 与 B，按结果输出三个分支之一。快捷键 `i` |
+| `forLoop` | fistIndex (int)、lastIndex (int)、body | completed、index (int) | 从 fistIndex 循环到 lastIndex，每次迭代把 body 的值写入结果 |
+
+:::caution[forLoop 是覆盖式赋值，不是累加]
+循环体每次迭代会**覆盖**结果变量，循环结束后 `completed` 输出的是**最后一次迭代的值**。
+`index` 输出当前迭代序号，供 body 子图使用——只有 body 依赖 `index` 时循环才有意义。
+需要累加求和，得自己在 body 里构造依赖 index 的表达式。
+:::
+
+## logic —— 布尔逻辑与分支
+
+菜单：`logic`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `and` | A、B (bool) | bool | 与 |
+| `or` | A、B (bool) | bool | 或 |
+| `nand` | A、B (bool) | bool | 与非 |
+| `not` | In (bool) | bool | 非 |
+| `branch` | Predicate (bool)、True、False | 动态 | 按条件二选一。**输出维度跟随 True / False 的类型** |
+| `comparison` | A、B (float) | bool | 数值比较，模式见下 |
+| `all` | In (动态) | bool | 所有分量都非 0 时为 true |
+| `any` | In (动态) | bool | 任一分量非 0 时为 true |
+| `isNaN` | In (float) | bool | 是否为 NaN |
+| `isInfinite` | In (float) | bool | 是否为无穷大 |
+| `isFrontFace` | — | bool | 当前像素是否属于正面。双面材质里区分正反面用 |
+
+`comparison` 的 **Comparison** 模式：`Equal`、`NotEqual`、`Less`、`LessOrEqual`、`Greater`、`GreaterOrEqual`。
+
+:::tip[branch 与 Define 的区别]
+`branch` 是**逐像素**运行时判断，两个分支的计算都会执行；开关型的全局差异（有/无雪、开/关描边）
+用 Params 里的 **Define 宏**更省——编译期就把不走的分支整段剔除。
+:::
+
+## channel —— 分量操作
+
+菜单：`channel`。三个节点都是动态输入输出，用**勾选框或字符串**而不是连线来配置。
+
+| 节点 | 配置 | 说明 |
+|---|---|---|
+| `flip` | R / G / B / A 勾选框 | 勾中的分量取反（`x → −x`） |
+| `channelMask` | R / G / B / A 勾选框 | 未勾中的分量清零，保留勾中的分量（维度不变） |
+| `swizzle` | Mask 字符串 | 任意重排/重复分量，例如 `xxy`、`wzyx`、`rgb` |
+
+:::note[swizzle 与 mask 的区别]
+`math/expression/mask` 只能**按顺序取子集**（输出维度 = 勾选数）；`channel/swizzle` 能**重排和重复**
+分量（如 `xxx` 把 R 广播到三个通道），输出维度 = mask 字符串长度。需要交换 RGB 顺序时只能用 swizzle。
+:::
+
+## 下一步
+
+- 调颜色、混合、法线处理：[节点手册 · 颜色与艺术效果](/shader-blueprint/nodes-color/)
+- 从 Unity 迁移：[Unity ShaderGraph 对照](/shader-blueprint/unity-shadergraph/)

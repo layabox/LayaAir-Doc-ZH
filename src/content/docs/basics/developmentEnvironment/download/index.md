@@ -1,85 +1,107 @@
 ---
 title: "搭建开发环境"
-description: "在熟悉开发环境之前，请开发者们准备好相关的工具环境"
+description: "下载安装 LayaAir IDE，并准备 Node.js、TypeScript、浏览器与 VS Code 等基础工具环境"
+lastUpdated: 2026-07-31
 slug: "basics/developmentenvironment/download"
 ---
 
-> Author: Charley
 
 在熟悉开发环境之前，请开发者们准备好相关的工具环境~
 
-## 一、下载并安装LayaAir IDE
 
-IDE内集成了引擎，直接下载IDE即可。
+
+## 一、下载并安装 LayaAir IDE
+
+IDE 内已集成引擎，直接下载 IDE 即可，无需单独下载引擎库。
 
 下载地址：https://layaair.com/#/engineDownload
 
+打开下载页后（请先将官网切换为中文界面），在左侧版本列表中选择需要的版本（一般选择最新正式版即可），然后点击页面中的 **立即下载** 按钮下载安装包，如图 1-1 所示（红色框标出的位置）。
+
+![图1-1](./img/1-1.png)
+
+（图 1-1）
+
+下载完成后，按系统提示完成安装即可。
 
 
-## 二、搭建TS开发环境
 
-LayaAir 3.0只支持TypeScript语言开发，所以TypeScript的安装环境还是要准备好。
+## 二、搭建 TS 开发环境
 
-### 2.1 下载并安装Node.js
+LayaAir 3.x 使用 TypeScript 进行开发，因此需要准备好 Node.js 与 TypeScript 编译环境。
 
-#### 2.1.1 检查是否已安装node.js环境
+### 2.1 下载并安装 Node.js
 
-使用TypeScript开发需要Node.js环境，如果没有安装过的，请前往官方下载(建议LTS版本)。
+#### 2.1.1 检查是否已安装 Node.js 环境
 
-在安装前，如果不确定是否有现成的环境，可以先确认一下node环境是否已安装，打开命令行工具（windows是cmd），输入指令 `npm -h`
+使用 TypeScript 开发需要 Node.js 环境。如果不确定本机是否已安装，可先打开命令行工具（Windows 可使用 `cmd` 或 PowerShell），输入：
 
-```typescript
+```
 npm -h
 ```
 
-按回车键后，如果能看到npm的命令说明、版本号，以及安装路径等信息，如图1-1所示（类似信息即可），那说明已经安装过了，如果不影响使用，可以跳过下载和安装node环境的步骤。
+按回车后，如果能看到 npm 的命令说明、版本号以及安装路径等信息，如图 2-1 所示（类似信息即可），说明已经安装过了。如果不影响使用，可跳过下载和安装 Node.js 的步骤。
 
-![图1-1](./img/1-1.png) 
+也可以使用更简洁的方式检查：
 
-(图1-1)
+```
+node -v
+npm -v
+```
 
-#### 2.1.2 Node.js官网下载并安装
+若能正常输出版本号，同样说明环境可用。
 
-如果没有安装环境，而直接前往node官网下载安装即可，推荐LTS版本，如图1-2所示，URL地址为：https://nodejs.org/en/
+![图2-1](./img/2-1.png)
 
-![图1-2](./img/1-2.png) 
+（图 2-1）
 
-（图1-2）
+#### 2.1.2 Node.js 官网下载并安装
 
-图1-2仅作为参照使用，打开链接直接下载LTS版本即可。
+如果尚未安装，请前往 Node.js 官网下载，**推荐选择 LTS（长期支持）版本**。下载地址：
 
-> 注意：默认链接打开的是window(x64)，非64位的电脑，可以点击Other Downloads，下载对应的版本即可。
+https://nodejs.org/zh-cn/download
 
-下载完成后，找到刚刚下载的Node.js安装包，一步一步的安装即可，安装完全时界面如图1-3所示。
+官网页面上方可通过下拉项切换安装方式，并确认版本为 **LTS**。对大多数 Windows 开发者，更建议直接使用页面下方的安装包下载入口：确认系统为 **Windows**、架构为 **x64** 后，点击 **Windows 安装程序(.msi)**，如图 2-2 所示（红色框标出的位置）。
 
-![图1-3](./img/1-3.png)
-（图1-3）
+![图2-2](./img/2-2.png)
 
-安装完成之后，可以按2.1小节介绍的方式，在命令行下输入 `npm -h` 检查一下安装状态。
+（图 2-2）
 
-### 2.2 安装TSC
+图 2-2 仅作参照。版本号会随官网更新变化，请始终选择带 **LTS** 标记的版本；非 x64 电脑可在架构下拉中切换后再下载。
 
-Node环境没问题后，就可以使用npm来安装TypeScript编译环境了。
+下载完成后，运行安装包并按向导一步步完成安装。安装完成时界面如图 2-3 所示，点击 **Finish** 退出即可。
 
-#### 2.2.1 命令行安装typescript
+![图2-3](./img/2-3.png)
 
-直接在命令行工具里输入指令“`npm install -g typescript`”，按回车键，如图2-1所示，即可开始下载并进行TypeScript环境的安装，此时一定要保持网络的畅通。
+（图 2-3）
+
+安装完成后，建议重新打开一个新的命令行窗口，再按 2.1.1 的方式执行 `npm -h`（或 `node -v` / `npm -v`）确认安装成功。
+
+### 2.2 安装 TSC
+
+Node.js 环境就绪后，即可使用 npm 安装 TypeScript 编译器（tsc）。
+
+#### 2.2.1 命令行安装 TypeScript
+
+在命令行中输入以下指令并回车，如图 2-4 所示。安装过程中请保持网络畅通。
 
 ```
 npm install -g typescript
 ```
 
-![图2-1](./img/2-1.png) 
+![图2-4](./img/2-4.png)
 
-（图2-1）
+（图 2-4）
 
-开发者如果安装时遇到图2-2的情况，通常是缓存冲突导致。（没遇到的直接跳过本步骤。）
+安装成功后，通常会看到类似 `added 1 package in Xs` 的提示。
 
-![图2-2](./img/2-2.png) 
+如果安装时出现图 2-5 这类 JSON 解析 / 缓存相关错误，多半是 npm 缓存异常导致（未遇到可直接跳过本小节）。
 
-（图2-2）
+![图2-5](./img/2-5.png)
 
-这时候，可以使用缓存清理命令 `npm cache clean --force`，回车执行该命令，重新输入安装指令即可。
+（图 2-5）
+
+此时可先清理缓存，再重新执行安装命令：
 
 ```
 npm cache clean --force
@@ -87,47 +109,59 @@ npm cache clean --force
 
 :::tip[Tips]
 
-如果没有翻墙，npm可能会安装不太顺利，此时，建议执行`npm cache clean --force` 把npm缓存清掉。
+国内网络环境下，npm 官方源有时会较慢或不稳定。可先执行 `npm cache clean --force` 清理缓存，再改用国内镜像安装，例如：
 
-然后使用cnpm来安装。
+```
+npm install -g typescript --registry=https://registry.npmmirror.com
+```
+
+也可以先将 npm 默认源切换为镜像后再安装：
+
+```
+npm config set registry https://registry.npmmirror.com
+npm install -g typescript
+```
+
 :::
 
-当我们看到 “`All packages installed `”这些字样的时候，可以确认完成了 TypeScript 环境的安装，如图2-3所示，关闭命令行工具即可。
+使用镜像安装成功后的效果如图 2-6 所示（同样会出现 `added … package` 一类提示）。
 
-![图2-3](./img/2-3.png)   
-（图2-3）
+![图2-6](./img/2-6.png)
 
-图3-1中tsc目录中就是我们TypeScript编译环境的安装目录，有了这个，LayaAirIDE里就能通过这个Compiler将TypeScript编译成为JavaScript。
+（图 2-6）
 
-#### 2.2.2 检查TypeScript编译环境版本
+安装完成后，本机即可使用 TypeScript Compiler（tsc）将 TypeScript 编译为 JavaScript，供 LayaAir IDE 与工程构建流程使用。
 
-在命令行输入“tsc -v” 命令可查看当前TypeScript编译的版本，如图2-4所示。
+#### 2.2.2 检查 TypeScript 编译环境版本
+
+在命令行输入以下命令，可查看当前 TypeScript 编译器版本，如图 2-7 所示。
 
 ```
 tsc -v
 ```
 
-![图2-4](./img/2-4.png)  
+![图2-7](./img/2-7.png)
 
-（图2-4）
+（图 2-7）
 
-如果显示出版本号，说明TypeScript Compiler（tsc）安装成功。
+如果能正常显示出版本号，说明 TypeScript Compiler（tsc）安装成功。
+
+
 
 ## 三、安装浏览器
 
-推荐采用Chromium内核的浏览器作为LayaAir运行与调试环境，例如windows自带的Edge浏览器或谷歌的chrome浏览器。
+推荐采用 Chromium 内核浏览器作为 LayaAir 的运行与调试环境，例如 Windows 自带的 Edge，或 Google Chrome。
 
-chrome官网下载地址：
+Chrome 官网下载地址：
 
 https://www.google.cn/intl/zh-CN/chrome/
 
 
 
-## 四、下载安装VSCode
+## 四、下载安装 VS Code
 
-VSCode是一个应用广泛的编码工具，也是LayaAir引擎推荐的编码工具。
+VS Code 是应用广泛的编码工具，也是 LayaAir 引擎推荐的编码工具。
 
-VSCode官网下载地址：
+VS Code 官网下载地址：
 
 https://code.visualstudio.com/Download
-

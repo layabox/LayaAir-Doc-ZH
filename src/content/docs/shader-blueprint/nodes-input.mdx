@@ -1,0 +1,275 @@
+---
+title: "节点手册 · 输入与坐标"
+description: "着色器蓝图数据来源类节点的完整参考：常量与向量构造、顶点与世界空间几何数据、相机与屏幕、场景与光照、物体信息、PBR 物理常数、UV 变换、纹理采样与程序化图形遮罩。"
+slug: "shader-blueprint/nodes-input"
+---
+
+本页收录**给图提供数据**的节点：常量、几何、相机、场景、UV、纹理、程序化图形，共 67 个。
+表格中的「动态」表示端口是多态的，实际类型由连线推导（见[概念篇](/shader-blueprint/concepts/#多态节点)）。
+
+## basic —— 常量与向量构造
+
+菜单：`basic`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `Boolean` | boolean (bool，默认 true) | bool | 布尔常量。快捷键 `b` |
+| `Int` | int (int) | int | 整数常量。快捷键 `I` |
+| `Float` | x (float) | float | 浮点常量。快捷键 `1` |
+| `Vector2` | x, y (float) | vec2 | 由两个标量组成 vec2 |
+| `Vector2`（带 in） | in (vec2)、x, y (float) | vec2 | 可整体接入一个 vec2，也可逐分量给值。快捷键 `2` |
+| `Vector3` | x, y, z (float) | vec3 | 由三个标量组成 vec3 |
+| `Vector3`（带 in） | in (vec3)、x, y, z (float) | vec3 | 同上。快捷键 `3` |
+| `Vector4` | x, y, z, w (float) | vec4 | 由四个标量组成 vec4 |
+| `Vector4`（带 in） | in (vec4)、x, y, z, w (float) | vec4 | 同上。快捷键 `4` |
+| `mat2` | h1, h2 (vec2) | mat2 | 两个 vec2 各作一列构成 2×2 矩阵 |
+| `mat3` | h1, h2, h3 (vec3，默认单位阵) | mat3 | 三个 vec3 各作一列构成 3×3 矩阵 |
+| `mat4` | h1~h4 (vec4，默认单位阵) | mat4 | 四个 vec4 各作一列构成 4×4 矩阵 |
+
+:::note[带 in 的重载：in 与分量二选一]
+`Vector2/3/4` 有两个版本。带 `in` 的那个允许你整体接入一个向量**或**逐分量给值——**两者互斥**：
+接上 `in` 会自动断开分量上的连线，反过来接分量也会断开 `in`。快捷键 `2`、`4` 生成带 `in` 的版本，
+`3` 生成三分量版本。
+:::
+
+:::note[Color 常量不在这个菜单里]
+颜色常量节点要在 **Params 面板**声明一个 `Color` 变量再拖进画布——它同时也是材质上可调的属性。
+需要图内写死的颜色时，用 `Vector4` 也可以，只是 IDE 里没有取色器。
+:::
+
+## inputdata/vertex —— 顶点属性
+
+菜单：`inputdata` → `vertex`。这些是模型自带的顶点数据，均在**对象空间**。
+
+| 节点 | 输出 | 说明 |
+|---|---|---|
+| `positionOS` | vec3 | 对象空间顶点位置 |
+| `normalOS` | vec3 | 对象空间法线 |
+| `tangentOS` | vec4 | 对象空间切线，w 分量存副切线方向 |
+| `uv` | vec2 | 第一套 UV |
+| `uv1` | vec2 | 第二套 UV（常用于光照贴图）。快捷键 `u` |
+| `VertexColor` | color | 顶点色。常被用来存遮罩、随机数等每顶点数据 |
+
+## inputdata/geometry —— 世界空间几何
+
+菜单：`inputdata` → `geometry`
+
+| 节点 | 输出 | 说明 |
+|---|---|---|
+| `positionWS` | vec3 | 世界空间顶点位置。做世界坐标映射的三平面贴图、高度渐变常用 |
+| `normalWS` | vec3 | 世界空间法线，光照计算的基础 |
+| `tangentWS` | vec3 | 世界空间切线 |
+| `biNormalWS` | vec3 | 世界空间副切线 |
+| `TBNMatrix` | mat3 | 切线→世界空间变换矩阵。把法线贴图采样值转到世界空间时使用 |
+
+## inputdata/camera —— 相机与屏幕
+
+菜单：`inputdata` → `camera`
+
+| 节点 | 输出 | 说明 |
+|---|---|---|
+| `viewDirection` | vec3 | 视线方向（从表面指向相机） |
+| `viewVector` | vec3 | 相机位置减表面位置，**未归一化**，保留了距离信息 |
+| `cameraPosition` | vec3 | 相机的世界坐标 |
+| `cameraDirection` | vec3 | 相机 forward 方向 |
+| `cameraUp` | vec3 | 相机 up 方向 |
+| `cameraNear` | float | 近裁剪面距离 |
+| `cameraFar` | float | 远裁剪面距离 |
+| `viewport` | vec4 + x / y / width / height | 视口。第一个输出是打包的 vec4，其余四个是拆开的分量 |
+
+:::tip[菲涅尔边缘光]
+`normalWS` 与 `viewDirection` 接进 `math/effect/fresnel`，调 power 即可得到边缘发亮的效果，
+是最常用的组合之一。
+:::
+
+## inputdata/scene —— 场景数据
+
+菜单：`inputdata` → `scene`
+
+| 节点 | 输出 | 说明 |
+|---|---|---|
+| `Time` | float | 运行时间（秒）。驱动一切动画的源头 |
+| `fog` | RGBA (vec4) + Color (vec3) + Density (float) | 场景雾。Color 是雾色，Density 是当前像素的雾浓度 |
+| `sceneDepth` | float | 场景深度（Linear01）。做软粒子、水岸交界的关键 |
+| `sceneColor` | vec3 | 屏幕上已渲染的不透明颜色，做扭曲折射效果 |
+
+:::caution[sceneDepth / sceneColor 需要相机开启对应纹理]
+`sceneDepth` 依赖相机的**深度纹理**、`sceneColor` 依赖相机的**不透明纹理**。相机没开时节点仍能
+编译，但采到的是默认值（表现为恒定色）。这是渲染管线的配置开关，不是蓝图的问题。
+:::
+
+## inputdata/light —— 光照
+
+菜单：`inputdata` → `light`
+
+| 节点 | 输出 | 说明 |
+|---|---|---|
+| `mainLightDirection` | vec3 | 主方向光的方向 |
+| `mainLightColor` | vec3 | 主方向光的颜色 |
+
+:::note[仅在 PBR + 有方向光时是真值]
+这两个节点在**材质类型为 PBR 且场景中存在方向光**时取真实光照数据；Unlit 材质或场景没有方向光时
+会走内置的兜底值（能正常编译，但不代表真实光照）。
+:::
+
+## inputdata/object —— 物体信息
+
+菜单：`inputdata` → `object`
+
+| 节点 | 输出 | 说明 |
+|---|---|---|
+| `world matrix` | mat4 | 物体的世界变换矩阵 |
+| `objectPosition` | vec3 | 物体轴心的世界坐标。做「按物体位置偏移随机数」时常用 |
+| `objectScale` | vec3 | 物体的缩放 |
+
+:::caution[GPU 实例化下取不到准确值]
+`objectPosition` / `objectScale` 读的是统一的世界矩阵。开启 `enableInstancing` 后，每个实例的
+矩阵是顶点属性，片元段读不到——此时这两个节点对同批实例返回相同结果。需要逐实例数据时关掉实例化，
+或改用顶点色等通道传值。
+:::
+
+## inputdata/basic —— 数学与物理常量
+
+菜单：`inputdata` → `basic`
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `constant` | — | float | 数学常量，用下拉选择 |
+| `blackbody` | Temperature (float，默认 512) | vec3 | 黑体辐射颜色：按开尔文温度算出对应的光色，做烛火、熔岩、灯丝 |
+
+`constant` 的可选值：
+
+| 选项 | 值 | 含义 |
+|---|---|---|
+| `PI` | 3.1415926 | 圆周率 |
+| `TAU` | 6.28318530 | 2π |
+| `PHI` | 1.618034 | 黄金比例 |
+| `E` | 2.718282 | 自然常数 |
+| `SQRT2` | 1.414214 | √2 |
+
+## inputdata/pbr —— PBR 物理常数
+
+菜单：`inputdata` → `pbr`
+
+### dielectricSpecular
+
+绝缘体（非金属）的镜面反射率 F0，接到 PBR 终端的 `Specular` 槽。
+
+| 输入 | 类型 | 默认 | 说明 |
+|---|---|---|---|
+| Range | float | 0.5 | 仅 `Common` 模式使用 |
+| IOR | float | 1 | 仅 `Custom` 模式使用 |
+
+| Material 模式 | 结果 |
+|---|---|
+| `Common` | `mix(0.034, 0.048, Range)` —— 常见绝缘体区间 |
+| `RustedMetal` | 0.030 |
+| `Water` | 0.020 |
+| `Ice` | 0.018 |
+| `Glass` | 0.040 |
+| `Custom` | 由 IOR 换算：`(IOR−1)² / (IOR+1)²` |
+
+### metalReflectance
+
+金属的反射率 F0（vec3，带颜色）。接到 PBR 终端的 `BaseColor`（金属的基础色即其 F0）。
+
+| Material | F0 (R, G, B) |
+|---|---|
+| `Iron` | 0.560, 0.570, 0.580 |
+| `Silver` | 0.972, 0.960, 0.915 |
+| `Aluminium` | 0.913, 0.921, 0.925 |
+| `Gold` | 1.000, 0.766, 0.336 |
+| `Copper` | 0.955, 0.637, 0.538 |
+| `Chromium` | 0.550, 0.556, 0.554 |
+| `Nickel` | 0.660, 0.609, 0.526 |
+| `Titanium` | 0.542, 0.497, 0.449 |
+| `Cobalt` | 0.662, 0.655, 0.634 |
+| `Platinum` | 0.672, 0.637, 0.585 |
+
+## uv —— UV 变换
+
+菜单：`uv`。所有 UV 节点的 `uv` 输入不接线时默认取第一套 UV。
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `screenTexcoord` | — | vec2 | 屏幕空间 UV，做全屏效果、屏幕扭曲 |
+| `Tiling And Offset` | uv、tiling (vec2，默认 1,1)、offset (vec2) | vec2 | `uv × tiling + offset`，最常用的 UV 缩放平移 |
+| `transformUV` | texcoord (vec2)、tilingOffset (vec4) | vec2 | 同上，但缩放平移打包在一个 vec4 里 |
+| `panner` | uv、time (float)、speed (vec2) | vec2 | UV 匀速流动，做河流、瀑布、扫光。**内部固定使用引擎时间**，见下方说明。快捷键 `p` |
+| `rotate` | uv、Center (vec2，默认 0.5,0.5)、Rotation (float) | vec2 | 绕中心旋转 UV。**Unit 模式**：Radians / Degrees |
+| `twirl` | uv、Center、Strength (float，默认 10)、Offset (vec2) | vec2 | 漩涡扭曲，越靠外旋转角越大 |
+| `spherize` | uv、Center、Strength (vec2，默认 10,10)、Offset | vec2 | 球面凸透镜变形 |
+| `radialShear` | uv、Center、Strength (vec2，默认 10,10)、Offset | vec2 | 径向剪切，产生涡流状拉扯 |
+| `polarCoordinates` | uv、Center、RadialScale (float)、LengthScale (float) | vec2 | 直角坐标转极坐标，做雷达扫描、圆形进度、放射条纹 |
+| `flipbook` | uv、Width、Height、Tile (float)、InvertX (bool)、InvertY (bool，默认 true) | vec2 | 序列帧：把图集按 Width×Height 切格，Tile 选第几格 |
+| `parallax` | uv、h (float)、parallaxScale (float)、viewDir (vec3) | vec2 | 单步视差偏移，用高度图伪造凹凸的立体感 |
+
+:::caution[panner 的 time 输入不起作用]
+`panner` 生成的代码里直接引用引擎的 `u_Time`，**不使用 `time` 输入槽的值**。想用自定义时间
+（暂停、倒放、按材质属性调速）控制流动，请改用 `Tiling And Offset`：把自己的时间值乘上速度后接到
+它的 offset 上。
+:::
+
+:::tip[序列帧动画怎么接]
+`Time` → `multiply`（乘播放速度）→ `flipbook` 的 Tile，再把 flipbook 的输出接给 `sampler2D` 的 UV。
+Width / Height 填图集的列数与行数。
+:::
+
+## texture —— 纹理
+
+菜单：`texture`。采样节点在指定坐标处取纹理值，纹理本身由**资产节点**提供。
+
+### 采样节点
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `sampler2D` | path (sampler2D)、UV (vec2) | vec4 | 标准 2D 纹理采样。快捷键 `t` |
+| `sampler2DNormal(OpenGL)` | path、UV | vec3 | 采样法线贴图，**OpenGL 约定**（绿通道朝上） |
+| `sampler2DNormal(DX)` | path、UV | vec3 | 采样法线贴图，**DirectX 约定**（绿通道朝下） |
+| `samplerCube` | path (samplerCube)、position (vec3) | vec4 | 立方体贴图采样，输入是方向向量而非 UV |
+| `sample2DArray` | Tex (sampler2DArray)、Coord (vec3) | vec4 | 纹理数组采样，Coord = `vec3(u, v, 层索引)` |
+| `sample3D` | Tex (sampler3D)、Coord (vec3) | vec4 | 3D 纹理采样，Coord = `vec3(u, v, w)` |
+
+### 资产节点（从 Params 面板添加）
+
+资产节点把一张纹理资源引入图中，再接给采样节点的纹理输入；一张纹理可以被多个采样节点复用。
+**它们不在右键菜单里**——在 Params 面板点 ＋ 选择对应类型声明后，拖进画布即可。
+
+| 节点 | 输出 | Params 类型 | 说明 |
+|---|---|---|---|
+| `texture2D` | sampler2D | Texture2D | 2D 纹理资产 |
+| `textureCube` | samplerCube | TextureCube | 立方体贴图资产。**defaultColor**：white / black / gray |
+| `texture2DArray` | sampler2DArray | Texture2DArray | 纹理数组资产。**defaultColor**：white / black / gray |
+| `texture3D` | sampler3D | Texture3D | 3D 纹理资产。**defaultColor**：white / black / gray |
+
+`defaultColor` 决定材质上没有指定纹理时采到的颜色，避免出现未初始化的采样结果。
+
+:::note[法线贴图选哪个]
+两个法线采样节点的差别只在绿通道方向。贴图来自 Unity / Unreal 等 DirectX 系工具链时用 `(DX)`，
+来自 Blender / Substance 默认导出时通常用 `(OpenGL)`。**接错的表现是凹凸方向反过来**，
+在斜射光下最明显。
+:::
+
+## procedural —— 程序化图形
+
+菜单：`procedural`。用数学算出遮罩，不吃贴图，无限分辨率。输入 `uv` 默认取第一套 UV，
+输出为 0~1 的遮罩（`checkerboard` 除外）。边缘均用 `fwidth` 做抗锯齿。
+
+| 节点 | 输入 | 输出 | 说明 |
+|---|---|---|---|
+| `ellipse` | uv、Width (0.5)、Height (0.5) | float | 椭圆遮罩，内部为 1 |
+| `rectangle` | uv、Width (0.5)、Height (0.5) | float | 矩形遮罩。**Clamp 模式**：`Fastest`（硬边、最省）/ `Nicest`（抗锯齿） |
+| `roundedRectangle` | uv、Width、Height、Radius (0.1) | float | 圆角矩形遮罩 |
+| `polygon` | uv、Sides (6)、Width、Height | float | 正多边形遮罩，Sides 为边数 |
+| `roundedPolygon` | uv、Width、Height、Sides (5)、Roundness (0.3) | float | 圆角正多边形遮罩 |
+| `checkerboard` | uv、ColorA、ColorB、Frequency (vec2) | vec3 | 棋盘格，Frequency 控制格子密度 |
+
+:::caution[球面预览会让图案严重变形]
+程序化图形是**平面 UV 图案**。在预览球上看，五边形、棋盘格都会被球面 UV 拉扯变形，甚至看不出
+原本的形状。判断节点是否正确，应看「有没有出现清晰硬边」，要看标准形状请用平面片预览。
+:::
+
+## 下一步
+
+- 拿到数据后做运算：[节点手册 · 数学与逻辑](/shader-blueprint/nodes-math/)
+- 调颜色与做效果：[节点手册 · 颜色与艺术效果](/shader-blueprint/nodes-color/)

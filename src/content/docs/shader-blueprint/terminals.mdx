@@ -1,0 +1,231 @@
+---
+title: "材质类型与终端"
+description: "详解着色器蓝图的输出端：四种材质类型对应的片元终端每一个输入槽、顶点终端、五种混合方式、渲染状态与模板测试的完整选项，以及阴影投射与深度法线等附加 Pass 的启用方式。"
+slug: "shader-blueprint/terminals"
+---
+
+**终端节点**是整张图的出口——顶点终端决定几何形变，片元终端决定像素颜色与表面属性。选哪一套
+终端由蓝图 Inspector 里的**材质类型**决定。
+
+## 四种材质类型
+
+在蓝图 Inspector 的 `materialType` 下拉里选择：
+
+| 材质类型 | 光照 | 适用场景 |
+|---|---|---|
+| **PBR** | 完整基于物理的光照 | 绝大多数写实材质：角色、场景、道具 |
+| **Blinnphong** | 传统经验光照模型 | 低配设备、风格化、需要显式控制高光颜色 |
+| **Unlit** | 无光照 | 特效、UI、自发光物体、贴图直出 |
+| **Particle** | 粒子专用 | 粒子系统的渲染材质 |
+
+:::caution[切换材质类型会更换终端节点]
+不同材质类型用的是**不同的片元终端**，输入槽不一样。中途切换类型，原终端上的连线不会自动迁移到
+新终端，需要重新接一遍。**动手前先确定材质类型。**
+:::
+
+## 顶点终端
+
+所有材质类型共用同一个顶点终端，用来做顶点动画（风吹草动、水面起伏、膨胀溶解等）。
+
+| 输入槽 | 类型 | 说明 |
+|---|---|---|
+| `positionOS` | vec3 | 对象空间顶点位置。不接线时用模型原始位置 |
+| `normalOS` | vec3 | 对象空间法线 |
+| `tangentOS` | vec4 | 对象空间切线（接线后自动启用 `CUSTOM_TANGENT` 宏） |
+
+## 片元终端的公共槽
+
+所有片元终端都在**最上方**带一个由基类注入的槽：
+
+| 输入槽 | 类型 | 说明 |
+|---|---|---|
+| `alphaTest` | float | 透明裁剪阈值。**需要在 Inspector 勾选 `alpha test` 才可用**，否则该槽为禁用状态 |
+
+## PBR 终端
+
+当前版本的 PBR 终端提供 **21 个输入槽**（加上公共的 `alphaTest` 共 22 个），能力覆盖清漆、
+绒感、各向异性、透射、彩虹色等高级材质特性。
+
+### 基础表面属性
+
+| 输入槽 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| `NormalTS` | vec3 | (0,0,1) | 切线空间法线。接法线贴图采样结果；不接则用模型法线 |
+| `BaseColor` | vec3 | (1,1,1) | 基础色（反照率），不含光照 |
+| `Metallic` | float | 0 | 金属度。0 = 绝缘体，1 = 纯金属，现实材质多为两端值 |
+| `Specular` | float | 0.5 | 绝缘体的镜面反射强度 |
+| `SpecularColor` | vec3 | (1,1,1) | 镜面反射颜色 |
+| `Smoothness` | float | 0 | 光滑度。越大高光越锐利集中，越小越模糊粗糙 |
+| `Occlusion` | float | 1 | 环境光遮蔽。压暗缝隙与凹陷处的环境光，增强体积感 |
+| `Opacity` | float | 1 | 不透明度。需材质混合方式为 TRANSPARENT 一类才生效 |
+
+### 自发光
+
+| 输入槽 | 类型 | 默认值 | 启用宏 | 说明 |
+|---|---|---|---|---|
+| `EmissionColor` | vec3 | 未接线时移除 | `EMISSION` | 自发光颜色。**接线才会启用 EMISSION 宏**，HDR 辉光效果依赖它 |
+
+:::tip[做辉光效果必须接自发光槽]
+如果希望物体在 Bloom 后处理下发光，颜色必须走 `EmissionColor`（且值可超过 1 表示 HDR）。
+只把亮色接到 `BaseColor` 是不会发光的。
+:::
+
+### 各向异性
+
+拉丝金属、丝绸、头发的方向性高光。**需要在材质上启用 anisotropy 特性**，否则两个槽为禁用状态。
+
+| 输入槽 | 类型 | 默认值 | 启用宏 | 说明 |
+|---|---|---|---|---|
+| `Anisotropy` | float | 0 | `ANISOTROPIC` | 各向异性强度，正负号决定高光沿切线还是副切线方向拉伸 |
+| `AnisotropyRotation` | float | 0 | — | 各向异性方向的旋转 |
+
+### 清漆（Clear Coat）
+
+车漆、上光木料、漆面等「基础材质外覆盖一层透明漆」的双层结构。**需启用 clear coat 特性**。
+
+| 输入槽 | 类型 | 默认值 | 启用宏 | 说明 |
+|---|---|---|---|---|
+| `ClearCoat` | float | 0 | `CLEARCOAT` | 清漆层强度，0 = 无清漆 |
+| `ClearCoatRoughness` | float | 0 | `CLEARCOAT` | 清漆层粗糙度 |
+| `ClearCoatNormalTS` | vec3 | 未接线时移除 | `CLEARCOAT_NORMAL` | 清漆层独立法线（如漆面橘皮纹理） |
+
+### 绒感（Sheen）
+
+天鹅绒、绒布、丝绒的边缘柔光。**需启用 sheen 特性**。
+
+| 输入槽 | 类型 | 默认值 | 启用宏 | 说明 |
+|---|---|---|---|---|
+| `SheenColor` | vec3 | (0,0,0) | `SHEEN` | 绒感颜色，黑色 = 无绒感 |
+| `ShenRoughness` | float | 0 | `SHEEN` | 绒感粗糙度 |
+
+### 折射与透射
+
+| 输入槽 | 类型 | 默认值 | 启用宏 | 说明 |
+|---|---|---|---|---|
+| `IOR` | float | 未接线时移除 | `IOR` | 折射率。玻璃约 1.5、水约 1.33 |
+| `Transmission` | float | 0 | `TRANSMISSION` | 透射强度，做玻璃、宝石、半透皮肤。**需启用 transmission 特性** |
+
+### 彩虹色（Iridescence）
+
+肥皂泡、油膜、甲虫壳的薄膜干涉色。**需启用 iridescence 特性**。
+
+| 输入槽 | 类型 | 默认值 | 启用宏 | 说明 |
+|---|---|---|---|---|
+| `Iridescence` | float | 0 | `IRIDESCENCE` | 彩虹色强度 |
+| `IridescenceIOR` | float | 1.3 | `IRIDESCENCE` | 薄膜折射率 |
+| `IridescenceThickness` | float | 400 | `IRIDESCENCE` | 薄膜厚度（纳米），决定呈现哪一段干涉色 |
+
+:::note[旧版 PBR 终端]
+更早创建的蓝图可能使用 8 槽的旧版 PBR 终端：`NormalTS` / `AlbedoColor` / `metallic` /
+`smoothness` / `occlusion` / `Emission` / `Anisotropy` / `alpha`。旧资源继续按旧版编译，不受影响；
+新建蓝图默认用上面的新版。注意旧版叫 `AlbedoColor`，新版改名为 `BaseColor`。
+:::
+
+## Blinnphong 终端
+
+| 输入槽 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| `NormalTS` | vec3 | (0,0,1) | 切线空间法线 |
+| `DiffuseColor` | vec3 | (1,1,1) | 漫反射颜色（不受高光影响的底色） |
+| `SpecularColor` | vec3 | (0.5,0.5,0.5) | 高光颜色 |
+| `Shininess` | float | 0.0781 | 表面光滑度，值越大高光越集中 |
+| `Gloss` | vec3 | (0,0,0) | 高光强度分布，一般接高光贴图 |
+| `Alpha` | float | 1 | 不透明度 |
+
+## Unlit 终端
+
+| 输入槽 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| `NormalTS` | vec3 | (0,0,1) | 切线空间法线（Unlit 无光照，一般不接） |
+| `Color` | vec3 | (1,1,1) | 最终颜色，直接输出不参与光照计算 |
+| `Alpha` | float | 1 | 不透明度 |
+
+:::caution[Unlit 的颜色要接 `Color` 而不是第一个槽]
+`NormalTS` 排在 `Color` 前面。把颜色误接到第一个槽上，画面会保持默认白色且不报错——这是 Unlit
+蓝图最常见的「白模」原因。判断方法：看编译产物里赋值落在 `surface.color` 还是 `surface.normalTS`。
+:::
+
+## Particle 终端
+
+| 输入槽 | 类型 | 说明 |
+|---|---|---|
+| `color` | vec4 | 粒子最终颜色（含 alpha） |
+
+## 混合方式
+
+Inspector 的 `blendModes` 决定材质如何与背景合成：
+
+| 模式 | 公式 / 行为 |
+|---|---|
+| **OPAQUE**（不透明） | 最终颜色 = 来源颜色，直接覆盖背景 |
+| **CUTOUT**（镂空） | Alpha 大于阈值则输出来源颜色，否则**丢弃该像素**。做树叶、铁丝网 |
+| **TRANSPARENT**（半透明） | 来源颜色 × 不透明度 + 目标颜色 ×（1 − 不透明度） |
+| **ADDTIVE**（加色混合） | 最终颜色 = 来源颜色 + 目标颜色。做光效、火焰、能量 |
+| **ALPHABLENDED**（透明混合） | `SrcAlpha × SrcColor + (1 − SrcAlpha) × DstColor`，SrcAlpha 通常来自纹理 alpha |
+
+## 其他 Inspector 开关
+
+| 选项 | 默认 | 作用 |
+|---|---|---|
+| `enableInstancing` | 开 | 允许 GPU 实例化合批。**开启后 `objectPosition` / `objectScale` 节点取不到准确值** |
+| `supportReflectionProbe` | 开 | 参与反射探针采样 |
+| `supportVFX` | 关 | 额外产出一份 `VFX_<shaderName>` 变体，可被 VFX Graph 的 ShaderGraph 输出当作自定义 Shader 使用 |
+| `twoSided` | 关 | 双面渲染（不剔除背面）。做布料、树叶、单面片 |
+| `shadowCaster` | — | 追加 ShadowCaster Pass，物体才能投射阴影 |
+| `depthNormal` | — | 追加 DepthNormal Pass，输出场景法线信息，部分后处理依赖它 |
+| `alpha test` | 关 | 启用透明裁剪。开启后片元终端的 `alphaTest` 槽变为可用，alpha 低于阈值的像素直接 `discard` |
+| `scene fog` | 关 | 启用场景雾效，按屏幕空间深度把雾色混入最终颜色 |
+| `statefirst` | 关 | 打开后展开下方 `renderState`，用手工渲染状态覆盖混合方式的默认设置 |
+
+:::tip[什么时候需要 shadowCaster]
+只要这个材质的物体需要在别的物体上投下阴影，就要勾 `shadowCaster`。**顶点动画的物体尤其注意**——
+阴影 Pass 会走同一套顶点形变，否则会出现「模型在动、影子不动」。
+:::
+
+## 高级渲染状态
+
+勾选 `statefirst` 后可逐项手工指定渲染状态，留空表示沿用混合方式的默认值。
+
+### 剔除与混合
+
+| 选项 | 可选值 |
+|---|---|
+| `cull` | Back / Front / Off |
+| `blend` | Disable / All（RGB 与 Alpha 统一）/ Seperate（RGB 与 Alpha 分开设置） |
+| `srcBlend`、`dstBlend` | 混合因子，`blend = All` 时生效 |
+| `srcBlendRGB`、`dstBlendRGB`、`srcBlendAlpha`、`dstBlendAlpha` | 混合因子，`blend = Seperate` 时生效 |
+| `blendEquation`、`blendEquationRGB`、`blendEquationAlpha` | Add / Subtract / Reverse_substract / Min / Max |
+
+**混合因子可选值**：Zero、One、SourceColor、OneMinusSourceColor、DestinationColor、
+OneMinusDestinationColor、SourceAlpha、OneMinusSourceAlpha、DestinationAlpha、
+OneMinusDestinationAlpha、SourceAlphaSaturate、BlendColor、OneMinusBlendColor。
+
+### 深度与模板
+
+| 选项 | 可选值 |
+|---|---|
+| `depthTest` | Never / Less / Equal / LessEqual / Greater / NotEqual / GreaterEqual / Always / Off |
+| `depthWrite` | true / false |
+| `stencilRef` | 模板参考值（数值） |
+| `stencilTest` | 同 `depthTest` 的比较函数集合 |
+| `stencilWrite` | true / false |
+| `stencilFail`、`stencilZFail`、`stencilZPass` | Keep / Zero / Replace / IncrementSaturate / DecrementSaturate / Invert / IncrementWrap / DecrementWrap |
+
+## 附加 Pass
+
+除了主渲染 Pass，蓝图还会按需产出：
+
+| Pass | 触发条件 | 用途 |
+|---|---|---|
+| **ShadowCaster** | 勾选 `shadowCaster` | 阴影深度写入 |
+| **DepthNormal** | 勾选 `depthNormal` | 深度 + 法线输出，供后处理使用 |
+| **META（烘焙）** | PBR / Blinnphong 材质类型自动附带 | 光照烘焙时提供反照率、法线、自发光、金属度、粗糙度 |
+
+:::note[alpha test 与 scene fog 是勾选框，不是节点]
+这两项在内部虽然由 `effect` 分类的节点实现，但**不出现在右键菜单里**——它们注册为蓝图的全局属性，
+在 Inspector 上表现为勾选框。想做透明裁剪，勾 `alpha test` 而不是去菜单里找节点。
+:::
+
+## 下一步
+
+终端定了，接下来就是往里接数据：[节点手册 · 输入与坐标](/shader-blueprint/nodes-input/)。

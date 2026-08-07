@@ -2,6 +2,8 @@
 // 覆写 Starlight 侧栏：
 //  1) 顶部加「引擎版本切换器」(3.0–3.4)
 //  2) 让「有概述/总览子项的父级分组」标题可点击跳到其概述页（恢复老 GitBook「点目录即看内容」的体验）
+//  3) 整页进入/刷新/换页后，将当前文档滚入左侧导航首屏（与正文对应）
+//     注意：Starlight 会用 sessionStorage 恢复侧栏旧 scrollTop，必须在其后覆盖为当前页位置
 import Default from '@astrojs/starlight/components/Sidebar.astro';
 import { DOC_VERSION } from '../constants/doc-version';
 ---
@@ -18,6 +20,72 @@ import { DOC_VERSION } from '../constants/doc-version';
 </div>
 
 <Default><slot /></Default>
+
+{/* is:inline：紧接在 Sidebar 内部 Starlight 的 scroll 恢复脚本之后执行，
+    立刻用「当前文档」覆盖 sessionStorage 恢复出来的旧滚动位置（避免首屏闪错/仍停在旧处） */}
+<script is:inline aria-hidden="true">
+  (() => {
+    /** @returns {HTMLElement | null} */
+    function scroller() {
+      return document.getElementById('starlight__sidebar');
+    }
+    /** @returns {HTMLElement | null} */
+    function currentEl(root) {
+      return (
+        root.querySelector('a[aria-current="page"]') ||
+        root.querySelector('.group-label-current')
+      );
+    }
+    /** 展开当前项的祖先 details（session 恢复可能把含当前页的分组关掉） */
+    function openAncestors(el, root) {
+      let n = el.parentElement;
+      while (n && n !== root) {
+        if (n instanceof HTMLDetailsElement) n.open = true;
+        n = n.parentElement;
+      }
+    }
+    /** 把当前文档滚到侧栏可视区偏上约 30% 处，并写回 sessionStorage 的 scroll */
+    function scrollToCurrent() {
+      const pane = scroller();
+      if (!pane) return false;
+      const current = currentEl(pane);
+      if (!current) return false;
+      openAncestors(current, pane);
+      const offset =
+        current.getBoundingClientRect().top -
+        pane.getBoundingClientRect().top +
+        pane.scrollTop;
+      const top = Math.max(0, offset - pane.clientHeight * 0.3);
+      pane.scrollTop = top;
+      // 同步 sessionStorage，避免之后 pageHide 又把「错误的旧位置」存回去、下一次刷新再还原
+      try {
+        const key = 'sl-sidebar-state';
+        const raw = sessionStorage.getItem(key);
+        if (raw) {
+          const state = JSON.parse(raw);
+          if (state && typeof state === 'object') {
+            state.scroll = top;
+            sessionStorage.setItem(key, JSON.stringify(state));
+          }
+        }
+      } catch (_) {}
+      // 清除 Starlight 可能尚未消费的恢复值
+      try {
+        delete window._starlightScrollRestore;
+      } catch (_) {}
+      return true;
+    }
+    // 立刻执行（本脚本在 SidebarPersister 的 restore 脚本之后）
+    scrollToCurrent();
+    // 布局/字体/details 变化后再校正一两次（刷新场景更稳）
+    requestAnimationFrame(() => {
+      scrollToCurrent();
+      requestAnimationFrame(scrollToCurrent);
+    });
+    // 暴露给后面的增强脚本与 ClientRouter page-load 复用
+    window.__layaScrollSidebarToCurrent = scrollToCurrent;
+  })();
+</script>
 
 <script>
   import { navigate } from 'astro:transitions/client';
@@ -78,9 +146,53 @@ import { DOC_VERSION } from '../constants/doc-version';
     });
   }
 
-  // 首屏 + 每次 ClientRouter 换页后都重新接（换页会重建侧栏 DOM）
-  enhanceGroupLinks();
-  document.addEventListener('astro:page-load', enhanceGroupLinks);
+  type ScrollFn = () => boolean;
+  function scrollSidebarToCurrent() {
+    const fn = (window as Window & { __layaScrollSidebarToCurrent?: ScrollFn })
+      .__layaScrollSidebarToCurrent;
+    if (typeof fn === 'function') {
+      fn();
+      // enhance 改 DOM 后布局延迟一帧再滚一次
+      requestAnimationFrame(() => {
+        fn();
+        requestAnimationFrame(fn);
+      });
+      return;
+    }
+    // 回退：inline 脚本尚未注入时（极少见）
+    const pane = document.getElementById('starlight__sidebar');
+    if (!pane) return;
+    const current =
+      pane.querySelector<HTMLElement>('a[aria-current="page"]') ||
+      pane.querySelector<HTMLElement>('.group-label-current');
+    if (!current) return;
+    let n: HTMLElement | null = current.parentElement;
+    while (n && n !== pane) {
+      if (n instanceof HTMLDetailsElement) n.open = true;
+      n = n.parentElement;
+    }
+    const offset =
+      current.getBoundingClientRect().top - pane.getBoundingClientRect().top + pane.scrollTop;
+    pane.scrollTop = Math.max(0, offset - pane.clientHeight * 0.3);
+  }
+
+  function onSidebarReady() {
+    enhanceGroupLinks();
+    // enhance 可能把「概述」选中态转到 .group-label-current，必须之后再定位
+    scrollSidebarToCurrent();
+    // 短延迟再校正：覆盖 font/layout/ClientRouter 换页后的滞后测量
+    setTimeout(scrollSidebarToCurrent, 0);
+    setTimeout(scrollSidebarToCurrent, 50);
+  }
+
+  // 首屏 + 每次 ClientRouter 换页后都重新接（换页会重建侧栏 DOM；
+  // 但 is:inline 会随 HTML 再执行一次定义 __layaScrollSidebarToCurrent）
+  onSidebarReady();
+  document.addEventListener('astro:page-load', onSidebarReady);
+  // bfcache 回退时也要重新定位
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) onSidebarReady();
+  });
 </script>
 
 <style is:global>
