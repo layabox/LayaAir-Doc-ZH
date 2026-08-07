@@ -2,6 +2,7 @@
 title: "鼠标交互的使用与优化"
 description: "无论是PC端的鼠标交互还是移动端的触摸交互，我们暂且都泛称为鼠标交互。这是游戏引擎实现人机交互的基础。本文从LayaAir引擎鼠标交互的基础使用开始（包括2D与3D），到进阶级的使用，进行全面介绍，希望对使用LayaAir的新老朋友都有所帮助。"
 slug: "basics/performanceoptimization/mouse"
+draft: true   # 废弃：自2025-03-11导入起从未进入导航，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 > Author: charley           Data:  2022-04-14

@@ -2,6 +2,7 @@
 title: "Unity资源导出插件-导出粒子"
 description: "为实现快速将Unity粒子导出到LayaAir-IDE中，Unity资源导出插件支持了从Unity中导出粒子系统。但是，LayaAir自带的粒子系统与Unity的架构不一样，不支持Unity导出后的粒子，所以Unity导出的粒子资源只能在CPU粒子系统中使用。"
 slug: "ide/layapackage/enterprise/cpuparticle/unitycpupartical"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ## 一、介绍

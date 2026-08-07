@@ -1,0 +1,154 @@
+---
+title: "游戏美术学习路线"
+description: "写给美术与技术美术的 LayaAir3 学习路线：七个阶段，从认路、定规范、UI 生产、动画表现到质感、特效与上线验收，把站内已有的功能文档串成一条能走完的路。"
+slug: "guides/roadmap/artist"
+lastUpdated: 2026-08-03
+---
+
+## 一. 前言
+
+你好，做美术的朋友。
+
+我猜你一定听过一些类似的话
+
+我们想要的草，是那种没有草的感觉的草。
+
+辛苦做完的特效，程序看一眼说：这个太贵了，砍掉一半。
+
+项目美术风格，我们换一版吧，从卡通换到写实吧，最后又换回卡通了。
+
+这三件事其实都不是审美问题，是**流程问题**。
+
+这系列的教程要教你的不是写代码——那是程序的事。是怎么让你做的东西**在引擎里活下来**：导进去不走样、跑起来不掉帧、交出去程序能直接接、上线前不被砍。
+
+> 完美不是无以复加，而是无可删减。
+>
+> —— 安托万·德·圣埃克苏佩里
+
+好了，我的主美朋友，我们准备开始吧
+
+## 二. 这条路线怎么用
+
+有件事先说清楚，免得你白读。
+
+**功能怎么用，站里已经写好了。** 想学 Shader，有[一篇学会自定义Shader](/3d/advanced/customshader/)；想学粒子，有[3D粒子编辑器](/ide/particleeditor3d/)；材质、FairyGUI、动画编辑器、Unity 导出插件，都有成篇的详解。这条路线不重写它们，只负责在你该读的时候，把它们准确送到你面前。
+
+**这条路线中，功能文档不会讲的那部分**：规范怎么定、DCC 那边怎么导、效果怎么验收、性能预算怎么分。这些事没有「哪个按钮」可讲，但返工基本都是从这儿来的。
+
+**每个阶段都得交得出东西。** 不是「看起来差不多了」，是有具体产出。下面每个阶段末尾我相信你手里都会多点什么。
+
+以下是系列的大纲，如果你已经等不及了，那我们立刻开始吧 {链接占位}
+
+## 三. 七个阶段
+
+
+| 阶段 | 主题 | 建议时长 | 做完你会有 |
+|---|---|---|---|
+| 0 | 先认认路 | 0.5 天 | 一次完整的「导入 → 进场景 → 调参数 → 预览」 |
+| 1 | 把规范定下来 | 0.5～1 周 | 一份团队能直接照着用的资源规范 + 一个标准资源包 |
+| 2 | UI 生产线 | 1 周 | 一套换皮肤不用改结构的 UI 页面 |
+| 3 | 让它动起来 | 0.5～1 周 | 一个动画状态机 + 一份给程序看的命名切片规范 |
+| 4 | 质感从哪来 | 1～2 周 | 一个 LookDev 模板 + 一张材质贴图通道对照表 |
+| 5 | 特效与 Shader | 0.5～1 周 | 一组带性能标注的标准化特效资产 |
+| 6 | 上线前的那道关 | 长期 | 一份美术验收清单 + 多端效果与性能对比记录 |
+
+### 阶段 0：先认认路
+
+**要弄明白的**：一个资源从硬盘上的文件，到在场景里显示出来，中间经过了哪些地方。这条链路清楚了，后面出问题才知道该从哪一环查起。
+
+**读这些**：[IDE主要模块概述](/basics/ide/gui/)、[项目资源面板](/basics/ide/assets/)、[层级面板](/basics/ide/hierarchy/)、[属性设置面板](/basics/ide/inspector/)、[3D场景编辑的基础交互](/ide/sceneeditor/basic/)
+
+**做完你会有**：一次不用问人就能走完的「导入资源 → 放进场景 → 调属性 → 预览运行」。
+
+### 阶段 1：把规范定下来
+
+**要弄明白的**：命名、目录、尺寸档位、图集怎么分组、纹理压成什么格式。这些事定得越早越省事——晚定一周，后面就多返工一个月。
+
+**读这些**：[项目工程目录说明](/basics/ide/projecfolders/)、[资源管理模块](/ide/assets/)、[纹理资源](/ide/assets/texture/)、[纹理压缩](/ide/uieditor/texturecompress/)、[自动图集配置](/ide/assets/atlascfg/)、[预制体模块](/ide/assets/prefab/)、[模型导入设置](/ide/assets/model/)
+
+**资源是从 Unity 或 Cocos 搬过来的**，先看这几篇：[Unity资源导出插件](/3d/advanced/unity/)、[导出能力一览](/unity-plugin/)、[Cocos资源导出插件](/basics/developmentenvironment/cocostolayaair/)
+
+**做完你会有**：一份能直接进版本管理的资源规范，外加一个含纹理、预制体、图集配置的标准资源包——新人进组照着抄就行。
+
+### 阶段 2：UI 生产线
+
+**要弄明白的**：LayaAir 有两套 UI，经典 UI 和 FairyGUI 同构的新 UI。先搞清你的项目用哪套，再练到「换一套皮肤不用重搭结构」。
+
+**读这些**：[UI编辑器基础交互](/ide/uieditor/basic/)、[UI组件基础使用与构成](/ide/uieditor/uicomponent/)、[FairyGUI架构的新UI系统](/ide/uieditor/fairygui/)、[关联系统](/ide/uieditor/fairygui/relation/)、[弹窗视图组件（Dialog）](/ide/uieditor/dialog/)、[UI小部件](/ide/uieditor/widgets/)、[2D区域](/ide/uieditor/area2d/)
+
+**做完你会有**：一套可复用的 UI 页面——主界面、弹窗、带滚动的列表，其中至少一个页面做到换皮不改结构。
+
+### 阶段 3：让它动起来
+
+**要弄明白的**：静态资源变成能演出的内容，靠的是「状态 — 动作 — 过渡」这套思路。会摆关键帧只是起点，能设计状态机才算过关。
+
+**读这些**：[动画编辑器](/ide/animationeditor/)、[时间轴动画编辑详解](/ide/animationeditor/timelinegui/)、[动画状态机详解](/ide/animationeditor/anicontroller/)、[动画烘焙详解](/ide/animationeditor/anibake/)、[骨骼动画](/ide/uieditor/uicomponent/skeleton/)、[2D动画节点](/2d/displayobject/animation/)、[3D模型与动画的导入使用](/3d/usemodel/)
+
+**能省一大截时间的插件**：[Spine动画烘焙插件](/ide/layapackage/enterprise/spinebake/)、[3D骨骼动作烘焙插件](/ide/layapackage/layabox/bakeanimation/)
+
+**做完你会有**：一个至少含待机、播放、过渡的动画状态机，和一份程序照着就能调用的命名切片规范。
+
+### 阶段 4：质感从哪来
+
+**要弄明白的**：同一个模型，在别人手里就是有质感，在你手里就是塑料味——差别在光照、材质参数和贴图通道这三样怎么配。这个阶段的目标是：看到一个效果，你能说清它是被哪几个参数决定的。
+
+**读这些**：[3D场景环境设置](/ide/sceneeditor/environment/)、[3D灯光与阴影](/3d/light/)、[材质资源](/ide/assets/lmat/)、[基于物理的渲染材质(PBR)](/ide/assets/lmat/pbr/)、[基于物理渲染材质(glTF)](/ide/assets/lmat/gltfpbr/)、[布林冯材质](/ide/assets/lmat/blinphong/)、[不受光材质](/ide/assets/lmat/unlit/)、[立方体贴图](/ide/assets/cubemap/)
+
+**做完你会有**：一个可复用的 LookDev 模板（光照 + 后处理 + 材质参数预设），和一张「材质球对应哪些贴图通道」的对照表。
+
+### 阶段 5：特效与 Shader
+
+**要弄明白的**：特效最容易做出「好看但跑不动」的东西。这个阶段要一边学工具，一边建立成本意识——每个效果都该知道自己值多少帧。
+
+**粒子与拖尾**：[2D粒子编辑器](/ide/particleeditor2d/)、[3D粒子编辑器](/ide/particleeditor3d/)、[粒子材质](/ide/assets/lmat/particleshuriken/)、[2D拖尾渲染器](/ide/component/2d/2drender/trail2drender/)、[拖尾渲染器（TrailRenderer）](/ide/component/3drender/trailrenderer/)、[CPU粒子系统](/ide/layapackage/enterprise/cpuparticle/)
+
+**从 Unity 搬特效过来**：[VFX Graph 教学文档集](/vfx-graph/)、[IDE 操作流程](/vfx-graph/ide-workflow/)、[粒子系统导出](/unity-plugin/particle/)
+
+**Shader 与后处理**：[一篇学会自定义Shader](/3d/advanced/customshader/)、[自定义2D着色器](/2d/advanced/customshader/)、[Shader蓝图](/ide/assets/blueprint/shaderblueprint/)、[蓝图编辑模块](/ide/shaderblueprint/)、[2D后期处理](/ide/uieditor/postprocess/)、[3D后处理](/3d/advanced/postprocessing/)
+
+:::tip[不会写代码也能做 Shader]
+[Shader蓝图](/ide/assets/blueprint/shaderblueprint/) 是连线式的可视化编辑，思路跟 Unity Shader Graph、Blender 的节点材质是一样的。美术从这儿入门，比啃 GLSL 快得多。
+:::
+
+**做完你会有**：一组标准化特效资产——每个都标好了命名、可调参数、适用场景和性能等级，另外还有一个蓝图驱动的小效果。
+
+### 阶段 6：上线前的那道关
+
+**要弄明白的**：效果和性能永远在打架。这个阶段的本事是：在被砍之前，自己先知道哪儿该砍。
+
+**读这些**：[2D性能优化](/2d/performanceoptimization/)、[3D性能优化](/3d/advanced/performanceoptimization/)、[纹理压缩](/ide/uieditor/texturecompress/)、[LOD减面工具插件](/ide/layapackage/layabox/lod/)、[性能分析插件](/ide/layapackage/enterprise/performanceanalysis/)、[智能资源管理插件](/ide/layapackage/enterprise/addressable/)、[Web发布](/released/web/)、[小游戏发布](/released/minigame/)
+
+**做完你会有**：一份美术验收清单（分辨率适配、纹理压缩、粒子预算、DrawCall 与内存阈值），和至少两个目标平台上的效果一致性、性能对比记录。
+
+## 四. 按工种速查
+
+已经上手了，只想直奔自己那摊事的，从这儿进：
+
+| 你是做什么的 | 常用入口 |
+|---|---|
+| 2D / UI 美术 | [UI编辑器基础交互](/ide/uieditor/basic/) · [新UI系统](/ide/uieditor/fairygui/) · [自动图集配置](/ide/assets/atlascfg/) · [纹理压缩](/ide/uieditor/texturecompress/) |
+| 3D 场景美术 | [3D场景环境设置](/ide/sceneeditor/environment/) · [3D灯光与阴影](/3d/light/) · [PBR材质](/ide/assets/lmat/pbr/) · [模型导入设置](/ide/assets/model/) |
+| 角色 / 动画 | [动画编辑器](/ide/animationeditor/) · [动画状态机](/ide/animationeditor/anicontroller/) · [骨骼动画](/ide/uieditor/uicomponent/skeleton/) · [动画烘焙](/ide/animationeditor/anibake/) |
+| 特效 / TA | [3D粒子编辑器](/ide/particleeditor3d/) · [Shader蓝图](/ide/assets/blueprint/shaderblueprint/) · [VFX Graph 文档集](/vfx-graph/) · [3D后处理](/3d/advanced/postprocessing/) |
+| 从 Unity 转过来 | [Unity转LayaAir差异说明](/basics/unitytolayaair/) · [导出能力一览](/unity-plugin/) · [材质与Shader导出](/unity-plugin/material-shader/) · [Unity/Cocos迁移路线](/guides/roadmap/migration/) |
+
+## 五. 这条路线接下来会补什么
+
+上面那些链接管的是「功能怎么用」。下面这些是功能文档不会讲、但你在项目里天天撞见的问题，会作为独立篇目陆续补上：
+
+| 计划篇目 | 补的是什么 | 对应阶段 |
+|---|---|---|
+| 美术资源规范模板 | 命名、目录、尺寸档位、图集分组、压缩策略到底怎么定，附一份改改就能用的模板 | 1 |
+| 从 DCC 到引擎的交接 | Blender / Maya / 3ds Max 那边的导出设置，单位与轴向、材质对应，以及「导进来就不对」的排查顺序 | 1 |
+| UI 出图与切图规范 | 九宫拉伸、图集分组、字体字号档位、多分辨率下该出多大的图 | 2 |
+| 角色动画交付规范 | 动作命名、切片、根运动、烘焙的取舍，以及给程序的调用约定 | 3 |
+| LookDev 与效果验收 | 标准看板怎么搭、参数怎么记录、换台设备效果就变时先查什么 | 4 |
+| 特效性能预算 | 粒子数量、overdraw、后处理开销怎么分级，什么时候该老老实实换成序列帧 | 5 |
+| 美术验收清单 | 按平台给出贴图尺寸、DrawCall、内存的阈值，上线前一条条核 | 6 |
+
+:::note
+篇目按优先级陆续上线，标题和拆分可能微调。侧栏里能看到的，就是已经写好的。
+:::
+
+
+

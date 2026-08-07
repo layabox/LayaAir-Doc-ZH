@@ -2,6 +2,7 @@
 title: "实战操作"
 description: "本章节中我们以一个示例项目为基础，为开发者演示智能资源管理插件的使用流程。请注意，在阅读此文前，建议先阅读使用说明文档。"
 slug: "ide/layapackage/enterprise/addressable/apply"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 本章节中我们以一个示例项目为基础，为开发者演示智能资源管理插件的使用流程。请注意，在阅读此文前，建议先阅读[使用说明](/ide/layapackage/enterprise/addressable/instruction/)文档。

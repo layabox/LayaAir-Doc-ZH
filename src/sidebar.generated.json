@@ -1,7 +1,17 @@
 [
   {
-    "label": "文档使用说明",
+    "label": "文档首页",
     "link": "/"
+  },
+  {
+    "label": "如何为本站补充文档",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "文档站写作与编辑指南",
+        "link": "/guides/authoring/"
+      }
+    ]
   },
   {
     "label": "引擎介绍",
@@ -72,7 +82,7 @@
         "link": "/guides/roadmap/intermediate/"
       },
       {
-        "label": "美术路线",
+        "label": "游戏美术学习路线",
         "link": "/guides/roadmap/artist/"
       },
       {
@@ -146,6 +156,28 @@
           {
             "label": "DevTools调试工具",
             "link": "/basics/devtools/"
+          }
+        ]
+      },
+      {
+        "label": "游戏入门实例",
+        "collapsed": true,
+        "items": [
+          {
+            "label": "概述",
+            "link": "/basics/ide/gamedevelopment/"
+          },
+          {
+            "label": "新手的第一个2D游戏",
+            "link": "/guides/first-2d-game/"
+          },
+          {
+            "label": "一个2D入门游戏",
+            "link": "/2d/advanced/2dgame/"
+          },
+          {
+            "label": "一个3D入门游戏",
+            "link": "/3d/advanced/3dgame/"
           }
         ]
       },
@@ -1274,44 +1306,6 @@
         "link": "/ide/assets/blueprint/shaderblueprint/"
       },
       {
-        "label": "着色器蓝图详解",
-        "collapsed": true,
-        "items": [
-          {
-            "label": "文档集总览",
-            "link": "/shader-blueprint/"
-          },
-          {
-            "label": "概念篇",
-            "link": "/shader-blueprint/concepts/"
-          },
-          {
-            "label": "IDE 操作流程",
-            "link": "/shader-blueprint/ide-workflow/"
-          },
-          {
-            "label": "材质类型与终端",
-            "link": "/shader-blueprint/terminals/"
-          },
-          {
-            "label": "节点手册 · 输入与坐标",
-            "link": "/shader-blueprint/nodes-input/"
-          },
-          {
-            "label": "节点手册 · 数学与逻辑",
-            "link": "/shader-blueprint/nodes-math/"
-          },
-          {
-            "label": "节点手册 · 颜色与艺术效果",
-            "link": "/shader-blueprint/nodes-color/"
-          },
-          {
-            "label": "Unity ShaderGraph 对照",
-            "link": "/shader-blueprint/unity-shadergraph/"
-          }
-        ]
-      },
-      {
         "label": "蓝图函数",
         "link": "/ide/assets/blueprint/shaderfunction/"
       },
@@ -2186,10 +2180,6 @@
                 "link": "/released/minigame/taobao/tbprogram/"
               }
             ]
-          },
-          {
-            "label": "华为小游戏",
-            "link": "/released/minigame/huawei/"
           }
         ]
       },

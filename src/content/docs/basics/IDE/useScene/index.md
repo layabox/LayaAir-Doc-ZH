@@ -2,6 +2,7 @@
 title: "场景的管理"
 description: "Laya.Scene 场景类，负责场景创建，加载，销毁等功能"
 slug: "basics/ide/usescene"
+draft: true   # 废弃：自导入起从未进入导航且零入链，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 `Laya.Scene` 场景类，负责场景创建，加载，销毁等功能

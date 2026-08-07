@@ -2,6 +2,7 @@
 title: "其它优化策略"
 description: "由于粒子属于矢量绘制，大量使用粒子对CPU压力大，在移动平台Canvas模式下，尽量不用粒子；"
 slug: "basics/performanceoptimization/other"
+draft: true   # 废弃：自2025-03-11导入起从未进入导航，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ### 1、减少粒子的使用数量

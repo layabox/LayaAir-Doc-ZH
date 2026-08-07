@@ -2,6 +2,7 @@
 title: "内存优化方式"
 description: "对象池优化是游戏开发中非常重要的优化方式，也是影响游戏性能的重要因素之一。"
 slug: "basics/performanceoptimization/memory"
+draft: true   # 废弃：自2025-03-11导入起从未进入导航，内容已过时，暂不对外输出（删除本行即可恢复）
 ---
 
 ### 1、通过对象池优化内存
