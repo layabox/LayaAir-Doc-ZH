@@ -1,1 +1,0 @@
-console.log('subpackage atlas loaded');

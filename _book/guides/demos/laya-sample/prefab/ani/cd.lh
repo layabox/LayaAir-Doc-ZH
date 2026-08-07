@@ -1,1 +1,0 @@
-{"_$ver":1,"_$id":"uzxo3v63cz","_$type":"Box","name":"DefaultNode","width":96,"height":96,"_$comp":[{"_$type":"Animator2D","controller":{"_$uuid":"../../resources/ani/cd.mcc","_$type":"AnimationController2D"},"controllerLayers":[]}],"_$child":[{"_$id":"g8bb5skj","_$type":"Image","name":"Image","width":96,"height":96,"skin":"resources/UI/images/cd/2.png"}]}
