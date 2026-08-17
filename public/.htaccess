@@ -1,0 +1,10 @@
+# HTML 必须每次校验：部署后哈希 CSS 文件名会变，若 HTML 被长期缓存就会加载已删除的旧样式（看起来没样式，刷新才好）。
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # _astro 资源带内容哈希，可长期缓存
+  <If "%{REQUEST_URI} =~ m#/_astro/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+</IfModule>

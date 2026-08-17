@@ -9,6 +9,62 @@ import { ClientRouter } from 'astro:transitions';
 <Default><slot /></Default>
 <ClientRouter />
 
+{/* ClientRouter 换页时，相对地址必须按「站点根」解析，不能按当前栏目路径。
+    否则 ./ _astro/x.css 会变成 /3.x/doc/ide/_astro/x.css（文件并不在那里）。 */}
+<script is:inline>
+  (function () {
+    var ATTRS = ['href', 'src', 'poster', 'data-src'];
+    function skip(v) {
+      return !v || /^(?:[a-z][a-z0-9+.-]*:|\/\/|#|data:|blob:)/i.test(v);
+    }
+    function siteRoot(url) {
+      var u = url instanceof URL ? url : new URL(url, location.href);
+      var prefix = '/' + ['3.x', 'doc'].join('/');
+      var p = u.pathname;
+      if (p === prefix || p.indexOf(prefix + '/') === 0) return u.origin + prefix + '/';
+      return u.origin + '/';
+    }
+    function absolutize(doc, pageUrl) {
+      if (!doc || !pageUrl) return;
+      var base = siteRoot(pageUrl);
+      var nodes = doc.querySelectorAll('[href],[src],[poster],[srcset],[data-src]');
+      for (var i = 0; i < nodes.length; i++) {
+        var el = nodes[i];
+        for (var j = 0; j < ATTRS.length; j++) {
+          var raw = el.getAttribute(ATTRS[j]);
+          if (skip(raw) || raw.charAt(0) === '/') continue;
+          try { el.setAttribute(ATTRS[j], new URL(raw, base).href); } catch (e) {}
+        }
+        var ss = el.getAttribute('srcset');
+        if (!ss) continue;
+        el.setAttribute('srcset', ss.split(',').map(function (part) {
+          var bits = part.trim().split(/\s+/, 2);
+          if (skip(bits[0]) || bits[0].charAt(0) === '/') return part.trim();
+          try { bits[0] = new URL(bits[0], base).href; } catch (e) {}
+          return bits.join(' ');
+        }).join(', '));
+      }
+    }
+    document.addEventListener('astro:before-preparation', function (e) {
+      var orig = DOMParser.prototype.parseFromString;
+      DOMParser.prototype.parseFromString = function (str, type) {
+        var doc = orig.call(this, str, type);
+        if (String(type).indexOf('html') !== -1) absolutize(doc, e.to);
+        return doc;
+      };
+      var loader = e.loader;
+      e.loader = async function () {
+        try { await loader.call(this); }
+        finally { DOMParser.prototype.parseFromString = orig; }
+        absolutize(e.newDocument, e.to);
+      };
+    });
+    document.addEventListener('astro:before-swap', function (e) {
+      absolutize(e.newDocument, e.to);
+    });
+  })();
+</script>
+
 {/* 阅读偏好早应用：在首屏绘制前读 localStorage 并落到 <html>，避免折叠/字号/主题闪烁 */}
 <script is:inline>
   (function () {

@@ -1,26 +1,22 @@
 /**
- * 把 _book 里写死的 /3.x/doc/... 改成相对路径（JS 则改为运行时推站点根）。
+ * 把 _book 里写死的 /3.x/doc/... 改成相对站点根（./_astro/xxx.css），
+ * 并在每个 HTML 的 <head> 开头写入 <base href="站点根">。
  *
- * 原因：Astro 构建必须带 base=/3.x/doc，线上才能挂到该子目录；
- * 但本地用 anywhere 把 _book 当站点根打开时，绝对路径会去请求 /3.x/doc/...，
- * 而 _book 之外的文件在本地和服务器上都不存在。
+ * 线上 pathname 以 /3.x/doc 开头 → base = https://layaair.com/3.x/doc/
+ * 本地 anywhere 以 _book 为根 → base = http://127.0.0.1:PORT/
  *
- * 相对路径在两种部署下都能解析到 _book 内部：
- *   本地 anywhere：http://127.0.0.1:PORT/released/minigame/  + ../../_astro/x.css
- *   线上子目录：  https://www.layaair.com/3.x/doc/released/minigame/ + ../../_astro/x.css
- *
- * canonical / og:url / sitemap 仍是 https://www.layaair.com/3.x/doc/...，不改。
+ * 这样 CSS 永远是 /3.x/doc/_astro/...，不会变成 /3.x/doc/ide/_astro/...
+ * canonical / og:url / sitemap 仍是完整 https 地址，不改。
  */
 import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST = path.resolve(import.meta.dirname, '..', '_book');
 const BASE = '/3.x/doc';
-const TEXT_EXT = new Set(['.html', '.js', '.css', '.svg', '.xml', '.json', '.mjs']);
+const TEXT_EXT = new Set(['.html', '.js', '.mjs']);
 const SKIP_DIR = new Set(['pagefind', 'pagefind-v4']);
 const PORTABLE_BASE_MARK = 'data-laya-portable-base';
 const RUNTIME_ROOT = '(new URL("../",import.meta.url).pathname.replace(/\\/?$/,"/"))';
-// 前缀拆开写，避免二次扫描时被当成 /3.x/doc 资源路径改写。
 const PORTABLE_BASE_SCRIPT = `<script ${PORTABLE_BASE_MARK}>(function(){var prefix="/"+["3.x","doc"].join("/");var p=location.pathname;var b=(p===prefix||p.indexOf(prefix+"/")===0)?prefix+"/":"/";document.write('<base href="'+location.origin+b+'">');})();</script>`;
 
 function walk(dir, out = []) {
@@ -34,26 +30,17 @@ function walk(dir, out = []) {
   return out;
 }
 
-/** /3.x/doc/foo/bar/?q#h → 相对 fromDir 的路径。fromDir 为 '' 表示站点根。 */
-function toRelative(fromDir, absUrl) {
+/** /3.x/doc/foo/bar/?q#h → ./foo/bar/?q#h */
+function stripBase(absUrl) {
   const parsed = absUrl.match(/^([^?#]*)([?][^#]*)?(#.*)?$/);
   const pathname = parsed?.[1] || absUrl;
   const search = parsed?.[2] || '';
   const hash = parsed?.[3] || '';
   if (pathname !== BASE && !pathname.startsWith(BASE + '/')) return absUrl;
-
-  const hadTrailingSlash = pathname === BASE || pathname.endsWith('/');
-  const rest = pathname.slice(BASE.length).replace(/^\/+|\/+$/g, '');
-  const from = fromDir || '.';
-  const to = rest || '.';
-  let rel = path.posix.relative(from, to);
-  if (rel === '' || rel === '.') {
-    rel = hadTrailingSlash ? './' : '.';
-  } else {
-    if (hadTrailingSlash && !rel.endsWith('/')) rel += '/';
-    if (!rel.startsWith('.')) rel = `./${rel}`;
-  }
-  return rel + search + hash;
+  let rest = pathname.slice(BASE.length).replace(/^\/+/, '');
+  if (!rest) rest = './';
+  else if (!rest.startsWith('.')) rest = `./${rest}`;
+  return rest + search + hash;
 }
 
 function isHostPrefixed(text, offset) {
@@ -61,20 +48,26 @@ function isHostPrefixed(text, offset) {
   return /https?:\/\/[^\s"'<>]*$/.test(before);
 }
 
-function rewriteAbsolute(text, fromDir) {
+function rewriteHtml(text, pagePath) {
   const held = [];
-  const withoutPortable = text.replace(
+  let html = text.replace(
     /<script[^>]*data-laya-portable-base[^>]*>[\s\S]*?<\/script>/gi,
     (block) => {
       held.push(block);
       return `\0LAYA_PORTABLE_${held.length - 1}\0`;
     },
   );
-  const rewritten = withoutPortable.replace(/\/3\.x\/doc(?:\/[^\s"'<>)]*)?/g, (match, offset) => {
-    if (isHostPrefixed(withoutPortable, offset)) return match;
-    return toRelative(fromDir, match);
+
+  html = html.replace(/\/3\.x\/doc(?:\/[^\s"'<>)]*)?/g, (match, offset) => {
+    if (isHostPrefixed(html, offset)) return match;
+    return stripBase(match);
   });
-  return rewritten.replace(/\0LAYA_PORTABLE_(\d+)\0/g, (_, i) => held[Number(i)]);
+
+  const hashPrefix = pagePath ? `${pagePath.replace(/\/?$/, '/')}` : './';
+  html = html.replace(/\bhref=(["'])#([^"']*)\1/g, (_, q, hash) => `href=${q}${hashPrefix}#${hash}${q}`);
+
+  html = html.replace(/\0LAYA_PORTABLE_(\d+)\0/g, (_, i) => held[Number(i)]);
+  return injectPortableBase(html);
 }
 
 function rewriteAstroJs(text) {
@@ -88,17 +81,18 @@ function rewriteAstroJs(text) {
   return out;
 }
 
-function inject404Base(html) {
+function injectPortableBase(html) {
   if (/<script[^>]*data-laya-portable-base/i.test(html)) {
     return html.replace(/<script[^>]*data-laya-portable-base[^>]*>[\s\S]*?<\/script>/i, PORTABLE_BASE_SCRIPT);
   }
   return html.replace(/<head[^>]*>/i, (open) => open + PORTABLE_BASE_SCRIPT);
 }
 
-function fromDirOf(file) {
+function pagePathOf(file) {
   const rel = path.relative(DIST, file).replace(/\\/g, '/');
-  const dir = rel.replace(/\/[^/]+$/, '');
-  return dir === rel ? '' : dir;
+  if (rel.toLowerCase() === 'index.html') return '';
+  if (rel.toLowerCase().endsWith('/index.html')) return rel.slice(0, -'index.html'.length);
+  return rel;
 }
 
 function isAstroChunk(file) {
@@ -108,18 +102,16 @@ function isAstroChunk(file) {
 
 function selfCheck() {
   const cases = [
-    ['released/minigame', '/3.x/doc/_astro/a.css', '../../_astro/a.css'],
-    ['released/minigame', '/3.x/doc/', '../../'],
-    ['released/minigame', '/3.x/doc', '../../'],
-    ['released/minigame', '/3.x/doc/released/android/', '../android/'],
-    ['', '/3.x/doc/_astro/a.css', './_astro/a.css'],
-    ['', '/3.x/doc/', './'],
-    ['vfx-graph/operator', '/3.x/doc/vfx-graph/code/#x', '../code/#x'],
+    ['/3.x/doc/_astro/a.css', './_astro/a.css'],
+    ['/3.x/doc/', './'],
+    ['/3.x/doc', './'],
+    ['/3.x/doc/ide/', './ide/'],
+    ['/3.x/doc/ide/component/#x', './ide/component/#x'],
   ];
-  for (const [from, abs, expected] of cases) {
-    const got = toRelative(from, abs);
+  for (const [abs, expected] of cases) {
+    const got = stripBase(abs);
     if (got !== expected) {
-      throw new Error(`relativize self-check failed: ${from} + ${abs} => ${got} (expected ${expected})`);
+      throw new Error(`relativize self-check failed: ${abs} => ${got} (expected ${expected})`);
     }
   }
 }
@@ -139,26 +131,21 @@ let jsFiles = 0;
 for (const file of files) {
   const before = fs.readFileSync(file, 'utf8');
   let after = before;
-  const rel = path.relative(DIST, file).replace(/\\/g, '/');
 
   if (isAstroChunk(file)) {
     after = rewriteAstroJs(after);
-  } else {
-    after = rewriteAbsolute(after, fromDirOf(file));
-  }
-
-  if (rel.toLowerCase() === '404.html') {
-    after = inject404Base(after);
+  } else if (file.toLowerCase().endsWith('.html')) {
+    after = rewriteHtml(after, pagePathOf(file));
   }
 
   if (after !== before) {
     fs.writeFileSync(file, after);
     changedFiles++;
-    if (rel.endsWith('.html')) htmlFiles++;
-    if (rel.endsWith('.js') || rel.endsWith('.mjs')) jsFiles++;
+    if (file.toLowerCase().endsWith('.html')) htmlFiles++;
+    if (/\.m?js$/i.test(file)) jsFiles++;
   }
 }
 
 console.log(
-  `relativize-build-urls: 已改写 ${changedFiles} 个文件（HTML ${htmlFiles}，JS ${jsFiles}），_book 可独立于 /3.x/doc 前缀运行。`,
+  `relativize-build-urls: 已改写 ${changedFiles} 个文件（HTML ${htmlFiles}，JS ${jsFiles}），资源一律相对站点根 + <base>。`,
 );
