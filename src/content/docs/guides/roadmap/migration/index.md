@@ -98,7 +98,7 @@ slug: "guides/roadmap/migration"
   1. 在 Unity 安装导出插件，先导出**一个小场景**或**单个预制体**
   2. 将产物导入 LayaAir 工程 `assets` 对应目录
   3. 在 IDE 打开 `.ls` / `.lh`，检查节点树、材质、动画是否正常
-  4. 对照 [Unity 导出能力一览](/showcase/unity-export/) 了解支持边界
+  4. 对照 [Unity 导出插件 · 能力一览](/unity-plugin/) 了解支持边界
 
 - **产出**
   - 一个“黄金样例场景”：迁移成功、可预览、问题已记录

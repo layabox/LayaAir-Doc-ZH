@@ -9,10 +9,9 @@
 ## 1. 放哪 / 怎么命名
 
 - 文件目录：`src/content/docs/`，扩展名一律 **`.mdx`**（要嵌组件/动效；纯文字也用 mdx，统一）。
-- 建议放二级目录，便于管理与固定 import 深度，例如：
-  - 演示/能力页 → `src/content/docs/showcase/xxx.mdx`
-  - 专题页 → `src/content/docs/topics/xxx.mdx`
-- 文件名用**英文小写 + 连字符**（与 slug 同形），如 `unity-export.mdx`、`live-demo.mdx`。
+- 建议放二级目录，便于管理与固定 import 深度，例如专题页 → `src/content/docs/topics/xxx.mdx`。
+- 不要再建独立的「框架能力演示」类目或 `showcase/` 目录：能力对照表、引擎嵌入等写法已写在 [文档使用说明](src/content/docs/docs-home.mdx) 第 4 节。
+- 文件名用**英文小写 + 连字符**（与 slug 同形），如 `material-shader.mdx`。
 
 ---
 
@@ -22,7 +21,7 @@
 ---
 title: "页面标题（可中文）"
 description: "一句话摘要，60–155 字，进 <meta description>，利于搜索/SEO"
-slug: "showcase/unity-export"
+slug: "unity-plugin/material-shader"
 ---
 ```
 
@@ -31,7 +30,7 @@ slug: "showcase/unity-export"
 - **`slug`**：**必填且必须显式写**。规则：
   - 只能含 **小写字母 a-z、数字 0-9、连字符 `-`、斜杠 `/`**。
   - 不要中文、空格、大写、点号——否则 Windows 上看着正常，**Linux 上线会断链**（这是本项目踩过的头号坑）。
-  - slug 与文件路径保持同形（文件 `showcase/unity-export.mdx` → slug `showcase/unity-export`）。
+  - slug 与文件路径保持同形（文件 `unity-plugin/material-shader.mdx` → slug `unity-plugin/material-shader`）。
 - 占位/草稿页若不想进搜索，加 `pagefind: false`。
 
 ---
@@ -87,15 +86,9 @@ import FeatureTable from '../../../components/FeatureTable.astro';
 - `cols`（可选）：四列表头，默认 `['功能','LayaAir 目标','支持度','说明']`。
 - 组件自带图例，不用自己写图例。
 
-### 4.2 LiveDemo —— 可交互 Canvas 演示
+### 4.2 EngineEmbed —— 嵌入 LayaAir 成品
 
-```mdx
-import LiveDemo from '../../../components/LiveDemo.astro';
-
-<LiveDemo />
-```
-- **无 props**，是一个固定的「旋转线框立方体 + 调速/调色/暂停」交互示范。
-- 用途：证明文档页可嵌真实交互。要做**别的**交互演示时，照它的写法新建组件（注意 `astro:page-load` 重初始化、`astro:before-swap` 取消 rAF 的生命周期处理，别造内存泄漏）。
+文档中的可交互演示使用 `EngineEmbed`，嵌入真实的 LayaAir 网页发布产物。写法与落地步骤见 `src/content/docs/docs-home.mdx` 第 4.5.5 节。不要用与引擎无关的通用 Canvas 动画充当演示页。
 
 ### 4.3 VersionSidebar —— 版本切换器
 - 这是**侧栏覆写组件**，已全局接入，**不在正文里 import**。仅作说明：版本下拉（3.0–3.4）在侧栏顶部。
@@ -104,18 +97,10 @@ import LiveDemo from '../../../components/LiveDemo.astro';
 
 ## 5. 让页面进侧栏
 
-页面建好后只能直达 URL，侧栏入口要手动挂。当前做法：在 `migrate.mjs` 末尾这段追加条目（showcase 两页就是这么挂的）：
+页面建好后只能直达 URL，侧栏入口要手动挂。当前做法：在本地预览中用「编辑目录」改 `src/sidebar.generated.json`，或直接编辑该文件。
 
-```js
-finalSidebar.push({
-  label: '框架能力演示', collapsed: true, items: [
-    { label: 'Unity 导出能力一览', link: '/showcase/unity-export/' },
-    { label: '可交互演示（动效）', link: '/showcase/live-demo/' },
-    // ← 新页加在这里：{ label: '中文标签', link: '/你的slug/' }
-  ],
-});
-```
-> 注意 `link` 是带前后斜杠的 URL（`/slug/`），不是文件路径。改完需重跑 `node migrate.mjs` 重新生成 `sidebar.generated.json`。
+- 写作、建页、上线流程以 [文档使用说明](src/content/docs/docs-home.mdx) 第 4 节为准，不要另开「如何为本站补充文档」一类重复入口。
+- 注意 `link` 是带前后斜杠的 URL（`/slug/`），不是文件路径。
 
 ---
 
@@ -152,7 +137,7 @@ slug（只用 a-z 0-9 - / ，与文件路径同形，禁止中文/空格/大写/
 【组件】（二级目录页用 ../../../components/ 路径 import）
 - 能力对照表用 FeatureTable，传 rows：{ feat, target, level, note }，
   level 只能取 full|part|conf|exp|no，note 可含内联 HTML。表头默认即可。
-- 需要交互演示示范用 <LiveDemo />（无 props）。
+- 需要在文档中嵌入可运行的 LayaAir 场景时用 EngineEmbed（见文档使用说明 4.5.5）。
 
 【主题】配色已是 logo 青绿，别引入蓝色；正文段距用 Starlight 默认（紧凑）。
 

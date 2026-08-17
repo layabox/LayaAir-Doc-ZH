@@ -146,10 +146,11 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			if (!import.meta.env.DEV) {
 				const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
 				onIdle(async () => {
-					// 使用版本化目录，避免新版文档上线后浏览器继续复用旧的
-					// pagefind-entry.json，造成页面已更新但搜索结果仍停留在旧索引。
-					const bundlePath =
-						import.meta.env.BASE_URL.replace(/\/$/, '') + '/pagefind-v4/';
+					// 站点根由本模块 URL 推导，而不是写死 /3.x/doc：
+					// 本地 anywhere 把 _book 当根目录时是「/」，线上挂到子目录时是「/3.x/doc/」。
+					// 使用版本化目录 pagefind-v4，避免新版上线后浏览器继续复用旧的 pagefind-entry.json。
+					const siteRoot = new URL('../', import.meta.url).pathname.replace(/\/?$/, '/');
+					const bundlePath = `${siteRoot}pagefind-v4/`;
 					// 记录用户原始搜索词，供全文匹配重排使用
 					let rawSearchTerm = '';
 
@@ -158,7 +159,7 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 					new PagefindUI({
 						...pagefindUserConfig,
 						element: '#starlight__search',
-						baseUrl: import.meta.env.BASE_URL,
+						baseUrl: siteRoot,
 						bundlePath,
 						showImages: false,
 						translations,
