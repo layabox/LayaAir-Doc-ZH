@@ -9,8 +9,7 @@ import { ClientRouter } from 'astro:transitions';
 <Default><slot /></Default>
 <ClientRouter />
 
-{/* ClientRouter 换页时，相对地址必须按「站点根」解析，不能按当前栏目路径。
-    否则 ./ _astro/x.css 会变成 /3.x/doc/ide/_astro/x.css（文件并不在那里）。 */}
+{/* ClientRouter 换页时，相对地址按当前 URL 里的 /doc/ 推站点根（/3.x/doc/、/3.4/doc/ 都能对上）。 */}
 <script is:inline>
   (function () {
     var ATTRS = ['href', 'src', 'poster', 'data-src'];
@@ -19,10 +18,8 @@ import { ClientRouter } from 'astro:transitions';
     }
     function siteRoot(url) {
       var u = url instanceof URL ? url : new URL(url, location.href);
-      var prefix = '/' + ['3.x', 'doc'].join('/');
-      var p = u.pathname;
-      if (p === prefix || p.indexOf(prefix + '/') === 0) return u.origin + prefix + '/';
-      return u.origin + '/';
+      var m = u.pathname.match(/^(.*?\/doc)(?=\/|$)/);
+      return u.origin + (m ? m[1] + '/' : '/');
     }
     function absolutize(doc, pageUrl) {
       if (!doc || !pageUrl) return;

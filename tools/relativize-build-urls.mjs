@@ -1,11 +1,8 @@
 /**
- * 把 _book 里写死的 /3.x/doc/... 改成相对站点根（./_astro/xxx.css），
- * 并在每个 HTML 的 <head> 开头写入 <base href="站点根">。
+ * 把构建产物里写死的 Astro base（/3.x/doc/...）改成相对站点根（./_astro/xxx.css），
+ * 并在每个 HTML 的 <head> 开头按「当前 URL 里的 /doc/」动态写入 <base>。
  *
- * 线上 pathname 以 /3.x/doc 开头 → base = https://layaair.com/3.x/doc/
- * 本地 anywhere 以 _book 为根 → base = http://127.0.0.1:PORT/
- *
- * 这样 CSS 永远是 /3.x/doc/_astro/...，不会变成 /3.x/doc/ide/_astro/...
+ * 同一套 _book 可挂到 /3.x/doc/、/3.4/doc/，或本地 anywhere（_book 即根，无 /doc 则为 /）。
  * canonical / og:url / sitemap 仍是完整 https 地址，不改。
  */
 import fs from 'node:fs';
@@ -17,7 +14,7 @@ const TEXT_EXT = new Set(['.html', '.js', '.mjs']);
 const SKIP_DIR = new Set(['pagefind', 'pagefind-v4']);
 const PORTABLE_BASE_MARK = 'data-laya-portable-base';
 const RUNTIME_ROOT = '(new URL("../",import.meta.url).pathname.replace(/\\/?$/,"/"))';
-const PORTABLE_BASE_SCRIPT = `<script ${PORTABLE_BASE_MARK}>(function(){var prefix="/"+["3.x","doc"].join("/");var p=location.pathname;var b=(p===prefix||p.indexOf(prefix+"/")===0)?prefix+"/":"/";document.write('<base href="'+location.origin+b+'">');})();</script>`;
+const PORTABLE_BASE_SCRIPT = `<script ${PORTABLE_BASE_MARK}>(function(){var m=location.pathname.match(/^(.*?\\/doc)(?=\\/|$)/);var b=m?m[1]+"/":"/";document.write('<base href="'+location.origin+b+'">');})();</script>`;
 
 function walk(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

@@ -96,8 +96,8 @@ function rehypeBaseUrls() {
 export default defineConfig({
   site: 'https://www.layaair.com',
   // 正式站部署在域名的子目录中。Astro 会据此为构建资源和站内路由添加前缀。
-  // 构建末尾 relativize-build-urls.mjs 再改成相对路径，保证 _book 可独立运行
-  //（本地 anywhere 以 _book 为根，线上把 _book 挂到 /3.x/doc/，两套都能解析）。
+  // 构建末尾 relativize-build-urls.mjs 再改成相对路径 + 运行时 <base>，
+  // 同一套 _book 可挂到 /3.x/doc/、/3.4/doc/，或本地 anywhere。
   base: SITE_BASE,
   // 构建输出目录与旧版 GitBook 保持一致
   outDir: './_book',
