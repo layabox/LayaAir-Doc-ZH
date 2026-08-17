@@ -510,10 +510,6 @@
         "link": "/2d/animation/"
       },
       {
-        "label": "2D相机",
-        "link": "/ide/uieditor/area2d/camera2d/"
-      },
-      {
         "label": "2D粒子",
         "link": "/ide/particleeditor2d/"
       },
@@ -1690,10 +1686,6 @@
               {
                 "label": "IK链",
                 "link": "/ide/component/3danimation/chainsik/"
-              },
-              {
-                "label": "骨骼约束",
-                "link": "/ide/component/3danimation/boneconstraints/"
               }
             ]
           },
@@ -2158,6 +2150,14 @@
           {
             "label": "小米快游戏",
             "link": "/released/minigame/xiaomi/"
+          },
+          {
+            "label": "华为小游戏",
+            "link": "/released/minigame/huawei/"
+          },
+          {
+            "label": "哔哩哔哩小游戏",
+            "link": "/released/minigame/bilibili/"
           },
           {
             "label": "支付宝小游戏",
