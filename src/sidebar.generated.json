@@ -2142,6 +2142,10 @@
             "link": "/released/minigame/huawei/"
           },
           {
+            "label": "哔哩哔哩小游戏",
+            "link": "/released/minigame/bilibili/"
+          },
+          {
             "label": "支付宝小游戏",
             "link": "/released/minigame/alipaygame/"
           },
