@@ -158,9 +158,17 @@
 
     // 粘贴 / 拖入图片 → 上传到本页 public 图片目录，光标处插入引用
     ui.ta.addEventListener('paste', (e) => {
-      const files = [...(e.clipboardData?.items || [])]
-        .filter((i) => i.type.startsWith('image/'))
-        .map((i) => i.getAsFile()).filter(Boolean);
+      const isImageFile = (f) => f && (
+        (f.type || '').startsWith('image/') || /\.(png|jpe?g|gif|webp)$/i.test(f.name || '')
+      );
+      // 截图通常位于 items；Windows 资源管理器复制的图片文件可能只出现在 files，
+      // 并且部分 Chromium 版本不会给本地文件填写 MIME 类型，因此还要按扩展名识别。
+      const itemFiles = [...(e.clipboardData?.items || [])]
+        .map((i) => i.kind === 'file' ? i.getAsFile() : null)
+        .filter(isImageFile);
+      const directFiles = [...(e.clipboardData?.files || [])].filter(isImageFile);
+      const files = [...new Map([...itemFiles, ...directFiles]
+        .map((f) => [`${f.name}:${f.size}:${f.lastModified}`, f])).values()];
       if (files.length) { e.preventDefault(); uploadImages(files); }
     });
     // 双击/划选文字 → 预览定位并高亮
@@ -404,6 +412,9 @@
 
   // 实时预览：渲染当前编辑内容并替换正文区域，不写盘、不触发整页刷新
   let previewSeq = 0;
+  // 删除引用后重新粘贴会复用原文件名。记录本会话刚写入的图片，
+  // 每次实时预览补上缓存戳，避免浏览器沿用同 URL 的旧图或 404 缓存。
+  const freshImageUrls = new Map();
   async function livePreview() {
     if (!ui || !ui.panel.classList.contains('open')) return;
     const target = document.querySelector('.sl-markdown-content');
@@ -419,6 +430,7 @@
       const j = await r.json();
       if (seq !== previewSeq) return; // 只应用最新一次
       patchPreview(target, j.html);
+      for (const [url, stamp] of freshImageUrls) bustImgCache(url, stamp);
       ui.previewed = true;
       if (ui.ta.value !== ui.disk) setStatus('实时预览中（未保存，Ctrl+S 落盘）');
     } catch {}
@@ -498,13 +510,23 @@
         });
         const j = await r.json();
         if (!r.ok) throw new Error(j.error || r.status);
-        // 用 execCommand 插入以进入原生撤销栈——「撤回」/Ctrl+Z 可以退掉这次插入
+        // 不依赖已废弃的 execCommand：新版 Chromium 可能返回 false，导致图片已经上传、
+        // 但 Markdown 引用没有进入编辑框。setRangeText 可稳定替换选区并保留光标位置。
         ui.ta.focus();
-        document.execCommand('insertText', false, `![](${j.url})`);
+        const insertion = `![](${j.url})`;
+        const start = ui.ta.selectionStart;
+        const end = ui.ta.selectionEnd;
+        ui.ta.setRangeText(insertion, start, end, 'end');
+        ui.ta.dispatchEvent(new InputEvent('input', {
+          bubbles: true,
+          inputType: 'insertFromPaste',
+          data: insertion,
+        }));
         const siteUrl = j.siteUrl || toSiteImgUrl(j.url);
+        freshImageUrls.set(siteUrl, Date.now());
         if (j.replaced) {
           // 原地换图:正文 URL 可能是相对路径,预览里是绝对路径——刷缓存用 siteUrl
-          bustImgCache(siteUrl);
+          bustImgCache(siteUrl, freshImageUrls.get(siteUrl));
           const rname = j.url.split('/').pop();
           ui.replaced.add(rname);
           // 入换图动作栈。必须在 insertText 之后压栈——insertText 触发的 input 事件
@@ -584,29 +606,20 @@
   }
 
   // 同 URL 换图后强制浏览器重取图片（仅预览显示用，markdown 里的 URL 保持干净）
-  function bustImgCache(url) {
+  function bustImgCache(url, stamp = Date.now()) {
     document.querySelectorAll('.sl-markdown-content img').forEach((im) => {
-      if (im.getAttribute('src')?.split('?')[0] === url) im.src = url + '?t=' + Date.now();
+      if (im.getAttribute('src')?.split('?')[0] === url) im.src = url + '?t=' + stamp;
     });
   }
 
-  // 增量更新正文：只替换真正变化的顶层块，未动的段落（含图片）原封不动，消除整块重建的闪烁。
-  // 渲染是确定性的，逐块比对 outerHTML，找出公共前缀/后缀，仅替换中间差异区。
+  // 更新正文预览。这里刻意使用一次性 replaceChildren，而不再手工复用顶层节点：
+  // 连续删除/插入图片时，旧算法的公共前后缀可能保留已经失效的 img 节点，
+  // 造成 Markdown 引用和文件都存在、预览却同时丢图。完整替换以正确性优先，
+  // 替换后 livePreview 会对本会话新上传的图片统一补缓存戳。
   function patchPreview(target, html) {
     const tpl = document.createElement('template');
     tpl.innerHTML = html;
-    const oldC = [...target.childNodes];
-    const newC = [...tpl.content.childNodes];
-    const eq = (a, b) => a.nodeType === b.nodeType &&
-      (a.nodeType === 1 ? a.outerHTML === b.outerHTML : a.nodeValue === b.nodeValue);
-    let p = 0;
-    while (p < oldC.length && p < newC.length && eq(oldC[p], newC[p])) p++;
-    let so = oldC.length, sn = newC.length;
-    while (so > p && sn > p && eq(oldC[so - 1], newC[sn - 1])) { so--; sn--; }
-    if (p === so && p === sn) return; // 完全相同
-    for (let i = p; i < so; i++) target.removeChild(oldC[i]);
-    const ref = so < oldC.length ? oldC[so] : null;
-    for (let i = p; i < sn; i++) target.insertBefore(newC[i], ref);
+    target.replaceChildren(tpl.content.cloneNode(true));
   }
 
   // 双击/选中编辑器文字 → 预览滚动到对应位置并高亮。

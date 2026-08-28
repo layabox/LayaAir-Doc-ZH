@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test:dev-editor": "node --test dev-editor/integration.test.mjs",
     "link:images": "node tools/link-doc-images.mjs",
     "postinstall": "node tools/link-doc-images.mjs",
     "dev": "node tools/link-doc-images.mjs && astro dev",

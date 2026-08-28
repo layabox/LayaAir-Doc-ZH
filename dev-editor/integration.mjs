@@ -52,7 +52,7 @@ export default function devEditor() {
         // 编辑器保存目录后 dev server 自动重启,新目录立即生效
         addWatchFile(sidebarFile);
         injectScript('page', fs.readFileSync(path.join(here, 'client.js'), 'utf8'));
-        updateConfig({ vite: { plugins: [apiPlugin(docsDir, publicDir, sidebarFile)] } });
+        updateConfig({ vite: { plugins: [apiPlugin(docsDir, publicDir, sidebarFile, config.base)] } });
       },
     },
   };
@@ -82,7 +82,7 @@ function recentSaveActive() {
   return recentSaves.size > 0;
 }
 
-function apiPlugin(docsDir, publicDir, sidebarFile) {
+function apiPlugin(docsDir, publicDir, sidebarFile, siteBase) {
   return {
     name: 'dev-editor-api',
     configureServer(server) {
@@ -97,7 +97,7 @@ function apiPlugin(docsDir, publicDir, sidebarFile) {
         };
       }
       server.middlewares.use('/__dev-editor', (req, res) => {
-        handle(req, res, docsDir, publicDir, sidebarFile).catch((err) => {
+        handle(req, res, docsDir, publicDir, sidebarFile, siteBase).catch((err) => {
           send(res, 500, { error: String(err) });
         });
       });
@@ -105,7 +105,7 @@ function apiPlugin(docsDir, publicDir, sidebarFile) {
   };
 }
 
-async function handle(req, res, docsDir, publicDir, sidebarFile) {
+async function handle(req, res, docsDir, publicDir, sidebarFile, siteBase) {
   const url = new URL(req.url, 'http://localhost');
   if (req.method === 'GET' && url.pathname === '/sidebar') {
     // 目录(侧边栏) → 面板可编辑的缩进文本
@@ -130,7 +130,7 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     return;
   }
   if (req.method === 'GET' && url.pathname === '/load') {
-    const file = resolveDocFile(docsDir, url.searchParams.get('pathname') || '/');
+    const file = resolveDocFile(docsDir, url.searchParams.get('pathname') || '/', siteBase);
     if (!file) return send(res, 404, { error: 'not a markdown page' });
     return send(res, 200, {
       file: path.relative(docsDir, file).split(path.sep).join('/'),
@@ -141,8 +141,12 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     const body = JSON.parse(await readBody(req));
     if (typeof body.content !== 'string') return send(res, 400, { error: 'invalid content' });
     // body.file 相对 docs（如 2D/dom/index.md），用于把 ./img/x 转成站内绝对路径
-    const pageDir = body.file ? pageDirFromFilePath(String(body.file).replace(/\\/g, '/')) : '';
-    return send(res, 200, { html: await renderPreview(body.content, pageDir || '') });
+    // 正式 remarkDocImages 会把文档资源路由统一为小写；编辑预览必须完全一致，
+    // 否则源目录 miniGame 与 public 目录 minigame 这类大小写差异会生成 404 图片地址。
+    const pageDir = body.file
+      ? (pageDirFromFilePath(String(body.file).replace(/\\/g, '/')) || '').toLowerCase()
+      : '';
+    return send(res, 200, { html: await renderPreview(body.content, pageDir || '', siteBase) });
   }
   if (req.method === 'POST' && url.pathname === '/upload') {
     const body = JSON.parse(await readBody(req));
@@ -156,7 +160,7 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     if (!extM) return send(res, 400, { error: 'invalid image name' });
     if (typeof body.data !== 'string') return send(res, 400, { error: 'invalid data' });
     const ext = extM[0].toLowerCase();
-    const relDir = path.relative(docsDir, path.dirname(docAbs)).split(path.sep).join('/');
+    const relDir = path.relative(docsDir, path.dirname(docAbs)).split(path.sep).join('/').toLowerCase();
     const imgDir = path.join(publicDir, relDir, 'img');
     fs.mkdirSync(imgDir, { recursive: true });
     ensureImgLink(docsDir, publicDir, relDir);
@@ -168,7 +172,8 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     const caret = Number.isFinite(body.caret) ? body.caret : content.length;
     // 正文落盘用相对路径，站点/预览再转绝对（兼顾本地 Markdown 预览）
     const relUrlPrefix = './img/';
-    const sitePrefix = '/' + (relDir ? relDir + '/' : '') + 'img/';
+    const basePrefix = ('/' + String(siteBase || '').replace(/^\/+|\/+$/g, '')).replace(/^\/$/, '');
+    const sitePrefix = basePrefix + '/' + (relDir ? relDir + '/' : '') + 'img/';
     const refs = collectImgRefs(content, relDir);
     // 换图模式：客户端检测到选区是一条图片引用时传来 replaceUrl → 沿用原名原地覆盖，
     // 不产生新序号、不进会话回收名单（历史图刻意不追踪）
@@ -218,7 +223,7 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     if (!docAbs.startsWith(docsDir + path.sep) || !fs.existsSync(docAbs)) {
       return send(res, 400, { error: 'invalid file' });
     }
-    const relDir = path.relative(docsDir, path.dirname(docAbs)).split(path.sep).join('/');
+    const relDir = path.relative(docsDir, path.dirname(docAbs)).split(path.sep).join('/').toLowerCase();
     const imgDir = path.join(publicDir, relDir, 'img');
     const bak = replaceBackups.get(docAbs);
     if (url.pathname === '/restore') {
@@ -265,7 +270,7 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
     const removed = [];
     const uploads = sessionUploads.get(abs);
     if (uploads) {
-      const relDir = path.relative(docsDir, path.dirname(abs)).split(path.sep).join('/');
+      const relDir = path.relative(docsDir, path.dirname(abs)).split(path.sep).join('/').toLowerCase();
       for (const name of [...uploads]) {
         if (contentRefsImg(body.content, relDir, name)) continue;
         try { fs.unlinkSync(path.join(publicDir, relDir, 'img', name)); } catch {}
@@ -283,9 +288,13 @@ async function handle(req, res, docsDir, publicDir, sidebarFile) {
 function slugifySeg(s) {
   return s.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '').replace(/-+/g, '-');
 }
-function resolveDocFile(docsDir, pathname) {
+export function resolveDocFile(docsDir, pathname, siteBase = '/') {
   let p;
   try { p = decodeURIComponent(pathname); } catch { return null; }
+  // 浏览器 pathname 包含 Astro 的部署前缀（如 /3.x/doc/），源文档目录不包含。
+  // 先移除前缀，否则会把 3.x/doc 误当成文档分类，导致页面只显示“编辑目录”。
+  const base = ('/' + String(siteBase || '/').replace(/^\/+|\/+$/g, '')).replace(/^\/$/, '');
+  if (base && (p === base || p.startsWith(base + '/'))) p = p.slice(base.length) || '/';
   const segs = p.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
   let dir = docsDir;
   for (let i = 0; i < segs.length; i++) {
@@ -358,12 +367,15 @@ const ASIDE_LABEL = { note: '注意', tip: '提示', caution: '警告', danger: 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /** 预览前把相对图片路径改成站内绝对路径（markdown-remark 管线不含我们的 remark 插件） */
-function rewritePreviewImages(md, pageDir) {
+function rewritePreviewImages(md, pageDir, siteBase = '') {
   if (pageDir == null) return md;
+  const base = ('/' + String(siteBase || '').replace(/^\/+|\/+$/g, '')).replace(/^\/$/, '');
   const convert = (url) => {
     // 只动图片，避免把相对文档链接误改成 /pageDir/...
     if (!/\.(png|jpe?g|gif|webp|svg|bmp)(\?|#|$)/i.test(url)) return url;
-    return toSiteAbsolute(url, pageDir);
+    const absolute = toSiteAbsolute(url, pageDir);
+    if (!base || !absolute.startsWith('/') || absolute === base || absolute.startsWith(base + '/')) return absolute;
+    return base + absolute;
   };
   let out = md.replace(
     /(!?\[[^\]]*\]\()([^)\s]+)(\))/g,
@@ -376,11 +388,12 @@ function rewritePreviewImages(md, pageDir) {
   return out;
 }
 
-async function renderPreview(content, pageDir = '') {
+async function renderPreview(content, pageDir = '', siteBase = '') {
   const proc = await getProcessor();
   const body = rewritePreviewImages(
     content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, ''),
     pageDir,
+    siteBase,
   );
   // 按顶层 :::type[标题] … ::: 切段，提示块内层 markdown 单独渲染后包壳
   const lines = body.split('\n');
