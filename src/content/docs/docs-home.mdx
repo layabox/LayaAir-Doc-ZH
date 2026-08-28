@@ -75,6 +75,8 @@ LayaAir 文档是开源的，开发者可以：
 
 如果您不熟悉 GitHub 的提交流程，也可直接联系官方客服反馈问题，我们会尽快进行修改。
 
+为本站新增、修改文档的完整流程（建页、排版、嵌入引擎成品、在线编辑、上线检查）见本节后续各小节，无需另开独立页面。
+
 💬 客服微信：**LayaAir_Engine**
 
 ![扫一扫添加官方客服微信](./basics/index/wechat-service.jpg)
@@ -115,7 +117,7 @@ npm run dev        # 启动本地预览（自带在线编辑器）
 :::danger[slug 命名规则（重要）]
 `slug` 只能包含 **小写字母 `a-z`、数字 `0-9`、连字符 `-`、斜杠 `/`**。
 
-不要使用中文、空格、大写字母、点号。这类字符在 Windows 上看似正常，部署到 Linux 服务器后会导致断链 404，是本项目此前反复出现的问题。slug 应与文件路径保持一致，例如文件 `guides/authoring.mdx` 对应 slug `"guides/authoring"`。
+不要使用中文、空格、大写字母、点号。这类字符在 Windows 上看似正常，部署到 Linux 服务器后会导致断链 404，是本项目此前反复出现的问题。slug 应与文件路径保持一致，例如文件 `unity-plugin/index.mdx` 对应 slug `"unity-plugin"`。
 :::
 
 ### 4.4 正文写作（Markdown 基础）
@@ -183,8 +185,6 @@ banner:
       note: '视频嵌入，支持本地 mp4、B 站、YouTube，见 4.5.4' },
     { feat: 'EngineEmbed', target: '../../../components/EngineEmbed.astro', level: 'full',
       note: '将 LayaAir 项目的网页发布产物（小场景 / 小游戏）以 iframe 嵌入文档，点击后加载，见 4.5.5' },
-    { feat: 'LiveDemo', target: '../../../components/LiveDemo.astro', level: 'full',
-      note: '内置的 Canvas 交互示范（旋转立方体 + 调速调色），无 props，用于演示交互嵌入' },
   ]}
 />
 
@@ -234,7 +234,7 @@ import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 #### 4.5.5 嵌入引擎成品 · EngineEmbed
 
-在 LayaAir 中完成一个小场景或小游戏后，将其**发布为网页版**（得到含 `index.html` 的 `web` 目录），放入 `public/` 下，即可用一行组件嵌入文档。组件默认只显示封面与「运行」按钮，**点击后才加载引擎运行时**——引擎运行时体积较大，采用按需加载，避免进入页面即占用资源，一页放置多个也不会卡顿。
+文档中的可交互演示，应嵌入真实的 LayaAir 网页发布产物。在 LayaAir 中完成一个小场景或小游戏后，将其**发布为网页版**（得到含 `index.html` 的 `web` 目录），放入 `public/` 下，即可用一行组件嵌入文档。组件默认只显示封面与「运行」按钮，**点击后才加载引擎运行时**——引擎运行时体积较大，采用按需加载，避免进入页面即占用资源，一页放置多个也不会卡顿。
 
 下方为一个真实 LayaAir 项目在文档中运行，点击「运行」加载，右下角可全屏或在新窗口打开：
 

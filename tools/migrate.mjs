@@ -237,12 +237,6 @@ const fixHome = (items) => items.map((it) => {
   return it;
 });
 const finalSidebar = fixHome(sidebar);
-finalSidebar.push({
-  label: '框架能力演示', collapsed: true, items: [
-    { label: 'Unity 导出能力一览', link: '/showcase/unity-export/' },
-    { label: '可交互演示（动效）', link: '/showcase/live-demo/' },
-  ],
-});
 // VFX Graph 教学文档集（路线 B 新增页，源自 LayaVFXSample/docs/vfx-graph，手写非迁移）
 // 作为「VFX粒子插件」挂到「IDE插件 → 官方插件」子分组下，与 LOD/骨骼烘焙插件并列。
 const vfxPluginGroup = {

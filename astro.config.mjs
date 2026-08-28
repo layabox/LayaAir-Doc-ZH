@@ -96,9 +96,17 @@ function rehypeBaseUrls() {
 export default defineConfig({
   site: 'https://www.layaair.com',
   // 正式站部署在域名的子目录中。Astro 会据此为构建资源和站内路由添加前缀。
+  // 构建末尾 relativize-build-urls.mjs 再改成相对路径 + 运行时 <base>，
+  // 同一套 _book 可挂到 /3.x/doc/、/3.4/doc/，或本地 anywhere。
   base: SITE_BASE,
   // 构建输出目录与旧版 GitBook 保持一致
   outDir: './_book',
+  vite: {
+    server: {
+      // _book 是构建产物，dev 监视它会锁住目录，Windows 下次 build 重命名/删除就会 EPERM
+      watch: { ignored: ['**/_book/**'] },
+    },
+  },
   // 预取：鼠标移到链接上即提前加载目标页，点击瞬间显示（配合无刷新切换）
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   // 站外链接自动新标签打开 + 安全 rel；图片相对路径在 remark 阶段转绝对（见 remark-doc-images）

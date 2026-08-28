@@ -22,6 +22,27 @@ function belongsToRoute(rel) {
   return routeDirs.some((route) => route === folded || route.startsWith(`${folded}/`));
 }
 
+function sleepSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+function renameWithRetry(from, to) {
+  let lastErr;
+  for (let i = 0; i < 12; i++) {
+    try {
+      fs.renameSync(from, to);
+      return;
+    } catch (err) {
+      lastErr = err;
+      if (!err || !['EPERM', 'EBUSY', 'EACCES'].includes(err.code)) throw err;
+      sleepSync(200 * (i + 1));
+    }
+  }
+  throw new Error(
+    `无法重命名 ${from} -> ${to}（${lastErr?.code}）。请先停掉 npm run dev / anywhere，关掉资源管理器里打开的 _book 文件夹，再 npm run build。`,
+  );
+}
+
 let renamed = 0;
 function normalize(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -33,8 +54,8 @@ function normalize(dir) {
     if (entry.name !== lowerName) {
       const temporary = path.join(dir, `.__route_case_${process.pid}_${renamed}`);
       const target = path.join(dir, lowerName);
-      fs.renameSync(current, temporary);
-      fs.renameSync(temporary, target);
+      renameWithRetry(current, temporary);
+      renameWithRetry(temporary, target);
       current = target;
       renamed++;
     }

@@ -1,21 +1,7 @@
 [
   {
-    "label": "新版文档系统上线公告",
-    "link": "/"
-  },
-  {
     "label": "文档首页",
     "link": "/docs/"
-  },
-  {
-    "label": "如何为本站补充文档",
-    "collapsed": true,
-    "items": [
-      {
-        "label": "文档站写作与编辑指南",
-        "link": "/guides/authoring/"
-      }
-    ]
   },
   {
     "label": "引擎介绍",
@@ -2314,20 +2300,6 @@
       {
         "label": "Linux构建",
         "link": "/released/linux/"
-      }
-    ]
-  },
-  {
-    "label": "框架能力演示",
-    "collapsed": true,
-    "items": [
-      {
-        "label": "Unity 导出能力一览",
-        "link": "/showcase/unity-export/"
-      },
-      {
-        "label": "可交互演示（动效）",
-        "link": "/showcase/live-demo/"
       }
     ]
   }
