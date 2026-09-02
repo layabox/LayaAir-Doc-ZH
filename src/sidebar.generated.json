@@ -2218,6 +2218,10 @@
             "link": "/released/native/platform-communication/"
           },
           {
+            "label": "LayaNative扩展插件开发",
+            "link": "/released/native/extension/"
+          },
+          {
             "label": "反射二次开发",
             "link": "/released/native/secondary-development/"
           },
@@ -2246,10 +2250,6 @@
           {
             "label": "概述",
             "link": "/released/windows/"
-          },
-          {
-            "label": "Windows扩展",
-            "link": "/released/windows/extension/"
           },
           {
             "label": "Steam扩展实例",

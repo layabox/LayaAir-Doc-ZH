@@ -1,393 +1,384 @@
 ---
-title: "Steam扩展实例"
-description: "LayaAir支持增加自定义的Windows扩展，用户可以通过LayaNative提供的扩展工具，通过生成动态链接库的形式，将Steam官方提供的扩展功能集成到用LayaAir开发的游戏中，以便在游戏上架Steam商店后使用这些功能。"
+title: "LayaSteam 插件实例（Windows）"
+description: "LayaNative 3.4.1 起提供面向 Windows、Android、iOS、Linux 与鸿蒙的跨平台 Extension 机制；本文以 Windows 版 LayaSteam 为例，说明 Steamworks 封装、插件发布及 Overlay 与排行榜验证流程。"
 slug: "released/windows/steam"
 ---
 
-## 一、概述
+## 一、示例范围与插件平台
 
-LayaAir支持增加自定义的Windows扩展，用户可以通过LayaNative提供的扩展工具，通过生成动态链接库的形式，将Steam官方提供的扩展[功能](https://partner.steamgames.com/doc/features)集成到用LayaAir开发的游戏中，以便在游戏上架Steam商店后使用这些功能。
+从 LayaAir 3.4.1 开始，LayaNative 提供[跨平台扩展插件机制](/released/native/extension/)。插件通过统一的 Extension API 注册 JSVM 接口，平台工程负责生成并装载对应形态的原生库。
 
-对接Steam的扩展功能需要使用Steam官方提供的[Steamworks API](https://partner.steamgames.com/doc/api)，通过访问此 API 提供的基础系统，可以充分利用Steam中的所有扩展功能，包括用户打开 Steam 叠加界面时暂停游戏、邀请好友、允许玩家解锁 Steam 成就等。
+| 目标平台 | 常见插件形态 |
+| --- | --- |
+| Windows | `.dll` 动态库 |
+| Android | 按 ABI 编译的 `.so` 动态库 |
+| iOS | 静态库或编入 Xcode 工程的源码 |
+| Linux | `.so` 动态库 |
+| 鸿蒙 | 按 ABI 编译的 `.so` 动态库 |
 
-在集成Steam扩展前，开发者需要准备以下内容：
+:::note[本例的范围]
+LayaNative Extension 不是 Windows 专用。本例只交付和验证 Windows 版 `LayaSteam`，因此使用 Steamworks SDK 的 Win64 库、Windows DLL 和桌面 Steam 客户端。其他平台需要换用 Steamworks 对应平台的库、编译配置和打包方式。
+:::
 
-- 阅读[Windows扩展](/released/windows/extension/)文档，集成Steam扩展功能需要使用LayaNative扩展工具，安装步骤都在此文档中。
-- 在[SteamWorks](https://partner.steamgames.com/)中创建开发者账号，填写信息、付款并等待审核通过。账号审核后，在主面板上创建一个[应用程序](https://partner.steamgames.com/doc/store/application)，获取到应用的AppID。
-- 下载[Steamworks SDK](https://partner.steamgames.com/downloads/steamworks_sdk.zip)并解压缩，将Steamworks API头文件夹 `public/steam` 复制到LayaNative扩展工具中（本文使用的SDK版本为steamworks_sdk_161）。
+本例只保留 Steam 初始化、用户信息、Overlay、Rich Presence 和排行榜：
 
+- `steam_native.dll`：实现 LayaNative Extension，并导出 `laya_extension_init`。
+- `laya_steam.layaext.json`：声明扩展名称、API 版本和 Windows 库路径。
+- `steam_api64.dll`：Steamworks SDK 的 64 位可再发行运行库。
+- `globalThis.laya_steam`：TypeScript 使用的扩展对象。
+- `SteamAPI_RunCallbacks()`：每帧驱动 Overlay、排行榜等异步回调。
 
+:::caution[隐私与发布配置]
+本文中的 AppID、账号名和 SteamID 均为占位符或脱敏内容。Steam Web API Key、发布账号、邮箱和认证信息不得写入项目、日志或截图；本地测试用 `steam_appid.txt` 也不要提交或上传到 Depot。
+:::
 
-## 二、初始化
+## 二、准备环境
 
-在使用Steam扩展功能前，必须先进行初始化。这样就可设置全局状态，并填入可以通过与此接口名称匹配的全局函数访问的接口指针。可以通过调用 [SteamAPI_Init](https://partner.steamgames.com/doc/api/steam_api#SteamAPI_Init) 函数完成初始化。 
+1. 阅读 [LayaNative 扩展插件开发](/released/native/extension/)，了解 manifest、入口宏、平台库形态与线程规则。
+2. 在 [Steamworks](https://partner.steamgames.com/) 创建应用，并取得自己的 AppID。
+3. 从 Steamworks 后台下载 [Steamworks SDK](https://partner.steamgames.com/downloads/steamworks_sdk.zip)。完整 SDK 受 Steamworks 许可约束，不要提交到示例项目。
+4. 安装 Visual Studio 的 C++ 桌面开发组件，并准备支持新 Extension API 的 LayaNative 3.4.1 Windows SDK 与客户端。
+5. 测试时启动桌面 Steam，并登录具有该应用许可的账号。
 
-> 注意：**必须**调用此函数并返回成功，才能访问任何 [Steamworks 接口](https://partner.steamgames.com/doc/sdk/api#steamworks_interfaces)。
+本文示例只编译 `Release|x64`；这是示例实现范围，不是 LayaNative Extension 的平台限制。
 
-在初始化时，需要注意以下几点：
+## 三、项目结构与发布约定
 
-- 初始化时，Steam客户端需要运行起来，并使用SteamWorks中的开发者账号登录。
-- Steamworks API 需要得到游戏的 AppID 才会初始化。使用LayaAir构建发布Windows项目后，在可执行文件（.exe）旁创建名为 `steam_appid.txt` 的文本文件，其中只包含 AppID，不含有任何其他内容。
+TypeScript、C++ 源码和 Windows 发布模板都放在 LayaPro 项目内：
 
-### 2.1 封装初始化功能
+```text
+LayaSteamProject/
+├─ build-templates/windows/release/
+│  ├─ config.ini
+│  ├─ laya_steam.layaext.json
+│  ├─ steam_native.dll
+│  └─ steam_api64.dll
+├─ native/LayaSteam/
+│  ├─ LayaSteam.vcxproj
+│  ├─ SteamBinding.cpp
+│  ├─ SteamBridge.cpp
+│  └─ SteamBridge.h
+├─ src/plugins/layasteam/LayaSteam.ts
+├─ src/Main.ts
+└─ settings/BuildSettings.json
+```
 
-在LayaNative扩展工具中，可以添加一个SteamManager类，并通过如下代码，调用Steam SDK中的接口，进行初始化，
+LayaPro 发布 Windows 时会把 `build-templates/windows` 合并到发布目标，所以 `release/` 子目录中的 manifest 和 DLL 最终与 exe 同目录。新 Extension API 不需要把 DLL 作为 Laya 资产导入，也不再使用 `assets/plugins`、DLL `.meta`、`release/extensions/` 或 `$DLL_PATHS`。
 
-```c
-bool SteamManager::Initialize()
+`config.ini` 必须开启扩展加载：
+
+```ini
+[common]
+GraphicsAPI=WebGL
+LoadExtension=true
+
+[Render]
+VSync=true
+```
+
+manifest 使用扩展名 `.layaext.json`：
+
+```json
 {
-    // 是否进行过初始化
-    if (m_bInitialized)
-    {
-        return true;
-    }
+  "extension": {
+    "name": "laya_steam",
+    "version": "1.0.0",
+    "api_version": 1,
+    "description": "LayaSteam Windows extension sample"
+  },
+  "libraries": {
+    "windows.x86_64": "steam_native.dll"
+  },
+  "dependencies": []
+}
+```
 
-    SteamErrMsg msg;    
+运行时扫描 manifest，按当前平台加载库，再把扩展对象挂到 `globalThis[extension.name]`，因此本例的 TypeScript 对象名为 `globalThis.laya_steam`。
 
-    if (SteamAPI_InitEx(&msg) != ESteamAPIInitResult::k_ESteamAPIInitResult_OK)
-    {
-        // Steam初始化失败, 请确保Steam客户端正在运行
+## 四、编写 Windows Native 插件
+
+### 4.1 初始化 Steam 并驱动回调
+
+```cpp
+#include <steam/steam_api.h>
+
+bool SteamBridge::restart(uint32_t appId) {
+    return SteamAPI_RestartAppIfNecessary(appId);
+}
+
+bool SteamBridge::init() {
+    SteamErrMsg message{};
+    if (SteamAPI_InitEx(&message) != k_ESteamAPIInitResult_OK)
+        return false;
+
+    if (!SteamUser() || !SteamFriends() || !SteamUtils() || !SteamUserStats()) {
+        SteamAPI_Shutdown();
         return false;
     }
+    initialized_ = true;
+    return true;
+}
 
-    m_bInitialized = true;
-    
+void SteamBridge::update() {
+    if (initialized_) SteamAPI_RunCallbacks();
+}
+
+void SteamBridge::shutdown() {
+    if (initialized_) SteamAPI_Shutdown();
+    initialized_ = false;
+}
+```
+
+Overlay 不要做成只能调用一次的状态。每次点击都直接调用 Steam API：
+
+```cpp
+bool SteamBridge::openOverlay(const std::string& dialog) {
+    if (!initialized_ || !SteamUtils()->IsOverlayEnabled()) return false;
+    SteamFriends()->ActivateGameOverlay(dialog.c_str());
     return true;
 }
 ```
 
-然后在exports.cpp中，实现Steam初始化`Initialize`的接口封装，
+排行榜接口是异步的。`FindOrCreateLeaderboard`、`UploadLeaderboardScore` 和 `DownloadLeaderboardEntries` 返回后，通过 `CCallResult` 接收结果；TypeScript 每帧调用 `update()` 才会触发回调。
 
-```c
-jsvm_value jsInitializeSteam(jsvm_env env, jsvm_callback_info info) {
-    bool success = SteamManager::GetInstance()->Initialize();
-    printf("init steam!!!");
-    jsvm_value result;
-    JSVM_CALL_CHECK(jsvm_create_int32(env, success ? 1 : 0, &result));
-    return result;
-}
-```
+### 4.2 注册 Extension 入口
 
-最后，在`LayaExtInit`函数中，导出初始化功能，使得JavaScript代码可以调用这些原生功能。
+插件包含 `<extension/LayaExtension.h>`，在 `LAYA_EXT_EVENT_INIT` 中把函数注册到 `iface->get_exports()`：
 
-```c
-extern "C" {
-    LAYAEXTAPI void LayaExtInit(jsvm_env env, jsvm_value exp) {
-        ...
-        // 注册Steam初始化函数
-        jsvm_value fnInitSteam;
-        jsvm_create_function(env, "initializeSteam", SIZE_MAX, jsInitializeSteam, nullptr, &fnInitSteam);
-        jsvm_set_named_property(env, exp, "initializeSteam", fnInitSteam);
+```cpp
+#include <extension/LayaExtension.h>
+#include <jsvm/JSVM.h>
+
+struct Export {
+    const char* name;
+    jsvm_callback callback;
+};
+
+constexpr Export exports[] = {
+    {"restartAppIfNecessary", restart},
+    {"init", init},
+    {"shutdown", shutdown},
+    {"update", update},
+    {"getStatus", status},
+    {"isOverlayEnabled", overlayEnabled},
+    {"getSteamId", steamId},
+    {"getPersonaName", personaName},
+    {"activateGameOverlay", openOverlay},
+    {"setRichPresence", setPresence},
+    {"findOrCreateLeaderboard", findLeaderboard},
+    {"uploadLeaderboardScore", uploadScore},
+    {"downloadLeaderboardEntries", downloadScores},
+    {"getLeaderboardState", leaderboard},
+};
+
+int onEvent(LayaExtEventType event,
+            const LayaExtensionInterface* iface, void*) {
+    if (event == LAYA_EXT_EVENT_DEINIT) {
+        SteamBridge::instance().shutdown();
+        return 0;
     }
+    if (event != LAYA_EXT_EVENT_INIT || !iface) return 0;
+
+    jsvm_env env = iface->get_env();
+    jsvm_value target = iface->get_exports();
+    if (!env || !target) return -1;
+
+    for (const auto& item : exports) {
+        jsvm_value function;
+        if (jsvm_create_function(env, item.name, JSVM_AUTO_LENGTH,
+                item.callback, nullptr, &function) != jsvm_ok)
+            return -1;
+        if (jsvm_set_named_property(env, target, item.name, function) != jsvm_ok)
+            return -1;
+    }
+    return 0;
 }
+
+int extensionInit(const LayaExtensionInterface*, LayaExtensionInitInfo* info) {
+    if (!info) return -1;
+    info->api_version = LAYA_EXTENSION_API_VERSION;
+    info->name = "laya_steam";
+    info->version = "1.0.0";
+    info->on_event = onEvent;
+    info->user_data = nullptr;
+    return 0;
+}
+
+LAYA_EXTENSION_ENTRY(extensionInit)
+LAYA_EXTENSION_ENTRY_NAMED(laya_steam, extensionInit)
 ```
 
+Windows DLL 至少应导出 `laya_extension_init`。具名宏还会导出 `laya_extension_init_laya_steam`，便于静态或具名加载场景使用。不要再导出旧兼容入口 `LayaExtInit`。
 
+### 4.3 编译 Windows DLL
 
-### 2.2 生成动态链接库
+最小工程需要：
 
-> 生成动态链接库与其使用的方法可以参考[Windows扩展](/released/windows/extension/)文档。
+- 包含目录：LayaNative SDK 的 `include`、Steamworks SDK 的 `public`。
+- 库目录：LayaNative SDK 的 `lib`、Steamworks SDK 的 `redistributable_bin/win64`。
+- 链接库：`conch.lib`、`steam_api64.lib`。
+- C++ 运行库：`/MT`，平台为 `x64`。
 
-生成的动态链接库`steam_demo.dll`如图2-1所示，
+```powershell
+$env:LAYANATIVE_SDK_ROOT = "D:\path\to\LayaNativeSDK\Runtime\x64\release"
+$env:STEAMWORKS_SDK_ROOT = "D:\path\to\steamworks_sdk\sdk"
 
-![2-1](./img/2-1.png)
+msbuild .\native\LayaSteam\LayaSteam.vcxproj `
+  /p:Configuration=Release /p:Platform=x64
+```
 
-（图2-1）
+示例工程把编译产物直接输出到 `build-templates/windows/release/`，并复制 Steamworks 可再发行库。不要提交 `build/`、`.vs/`、`.obj`、`.lib`、`.exp`、`.pdb` 或完整 Steamworks SDK。
 
-还需要一个`steam_api64.dll`，可以在[Steamworks SDK](https://partner.steamgames.com/downloads/steamworks_sdk.zip)的`redistributable_bin/win64`目录下找到。
+## 五、在 TypeScript 中调用
 
-最后，将这两个dll导入到LayaAir-IDE中的游戏项目即可。
+### 5.1 唯一插件入口
 
-
-
-### 2.3 完成初始化
-
-在LayaAir-IDE中，新建一个`extlib.ts`脚本，添加如下代码，设置初始化Steam的接口，
+业务代码不直接关心 DLL 路径，只读取 manifest 声明的全局对象：
 
 ```typescript
-interface IExtendLib {
-    // 初始化Steam
-    initializeSteam(): number;  // 返回1表示成功，0表示失败
+export interface SteamNative {
+    restartAppIfNecessary(appId: number): boolean;
+    init(): boolean;
+    shutdown(): void;
+    update(): void;
+    getStatus(): { initialized: boolean; appId: number; lastError: string };
+    isOverlayEnabled(): boolean;
+    getSteamId(): string;
+    getPersonaName(): string;
+    activateGameOverlay(dialog: string): boolean;
+    setRichPresence(key: string, value: string): boolean;
+    findOrCreateLeaderboard(name: string): boolean;
+    uploadLeaderboardScore(score: number, keepBest?: boolean): boolean;
+    downloadLeaderboardEntries(first: number, last: number): boolean;
+    getLeaderboardState(): LeaderboardState;
 }
 
-export const extendLib: IExtendLib = Laya.importNative("steam_demo.dll");
+export class LayaSteam {
+    static load(): SteamNative {
+        if (!Laya.LayaEnv.isConch)
+            throw new Error("LayaSteam only runs in a LayaNative Windows build");
+
+        const plugin = (globalThis as any).laya_steam as SteamNative | undefined;
+        if (!plugin) throw new Error("laya_steam extension is not loaded");
+        return plugin;
+    }
+}
 ```
 
-然后在Scene2D上新建一个组件脚本，当点击按钮时，完成初始化。
+Web 预览没有 Native 环境，应显示提示信息，不要在浏览器中调用插件。
+
+### 5.2 初始化与排行榜流程
+
+仓库公开示例保留 `APP_ID = 0`。发布前替换为自己的 AppID；只有大于 `0` 时才调用 `restartAppIfNecessary()`：
 
 ```typescript
-import { extendLib } from "./extlib";
+private static readonly APP_ID = 0;
+private steam!: SteamNative;
+private phase = "idle";
 
-const { regClass, property } = Laya;
+onStart(): void {
+    if (!Laya.LayaEnv.isConch) return;
 
-@regClass()
-export class NewScript extends Laya.Script {
-
-    @property({type: Laya.Button})
-    public initBtn: Laya.Button;
-
-    onEnable(): void {
-        this.initBtn.on(Laya.Event.CLICK, this.onInit);
+    this.steam = LayaSteam.load();
+    if (Main.APP_ID > 0 && this.steam.restartAppIfNecessary(Main.APP_ID)) {
+        (window as any).conch.exit();
+        return;
     }
+    if (!this.steam.init())
+        throw new Error(this.steam.getStatus().lastError);
 
-    onInit() {
-        alert(extendLib.initializeSteam());
+    this.steam.setRichPresence("status", "Playing LayaSteamProject");
+    this.steam.findOrCreateLeaderboard("LayaNative_Sample_Score");
+    this.phase = "finding";
+    Laya.timer.frameLoop(1, this, this.onFrame);
+}
+
+private onFrame(): void {
+    this.steam.update();
+    const board = this.steam.getLeaderboardState();
+
+    if (this.phase === "finding" && board.ready && !board.findPending) {
+        this.steam.uploadLeaderboardScore(1000, true);
+        this.phase = "uploading";
+    } else if (this.phase === "uploading" && !board.uploadPending) {
+        this.steam.downloadLeaderboardEntries(1, 10);
+        this.phase = "downloading";
+    } else if (this.phase === "downloading" && !board.downloadPending) {
+        this.phase = "done";
     }
+}
 
+onDestroy(): void {
+    Laya.timer.clearAll(this);
+    this.steam?.shutdown();
 }
 ```
 
-构建发布Windows后，需要在exe的同级目录下，新建一个`steam_appid.txt` 文件，其中只包含 AppID。
+### 5.3 重复打开 Overlay
 
-![2-2](./img/2-2.png)
-
-（图2-2）
-
-在Steam客户端登录的前提下，双击可执行文件，如果返回值为“1”，如图2-3所示，则表示初始化成功。
-
-![2-3](./img/2-3.png)
-
-（图2-3）
-
-初始化成功后，就可以继续使用Steam的更多扩展了。
-
-
-
-## 三、成就
-
-[成就](https://partner.steamgames.com/doc/features/achievements/ach_guide)可以用来鼓励并奖励玩家在游戏中的互动和取得的里程碑。成就通常用来记录游戏中的击杀数、里程数、开箱数或其它常见行为。解锁后，这些成就将会在玩家窗口的角落弹出，并会在该玩家的成就页面上标示。
-
-### 3.1 设定游戏的成就
-
-首先需要在后端的 Steamworks 应用程序管理的[成就配置](https://partner.steamgames.com/apps/achievements/)页面进行设置。这里给出一个成就列表的示例，如图3-1所示，
-
-![3-1](./img/3-1.png)
-
-（图3-1）
-
-这里的“API名称”，在成就功能相关接口中，会作为参数用到（可以理解为此游戏成就的ID）。
-
-
-
-### 3.2 获取数据与建立回调
-
-在设置成就前，需要先初始化，并且处理初始调用`RequestStats` 的回调，因此，需要在初始化的方法中，加入处理该回调的过程。代码如下所示，
-
-```c
-bool SteamManager::Initialize()
-{
-    // 初始化的代码
-    ......
-    
-    // 请求用户统计数据
-    CSteamID userID = SteamUser()->GetSteamID(); // 获取用户ID
-    SteamUserStats()->RequestUserStats(userID);
-
-    // 重置成就，可用于测试时使用
-    // SteamUserStats()->ResetAllStats(true);
-
-    return true;
-}
-```
-
-> [官方文档](https://partner.steamgames.com/doc/features/achievements/ach_guide)中，处理`RequestStats`给出的是[RequestCurrentStats](https://partner.steamgames.com/doc/api/ISteamUserStats#RequestCurrentStats)函数，但在steamworks_sdk_161中该接口已经被注释掉了，因此采用[RequestUserStats](https://partner.steamgames.com/doc/api/ISteamUserStats#RequestUserStats)进行处理。
-
-除了获取用户数据，还需要建立一个[回调](https://partner.steamgames.com/doc/sdk/api#callbacks)，用于通知Steam现在的成就状态，代码如下，
-
-```c
-void SteamManager::SteamCallback()
-{
-    // 每帧调用
-    if (m_bInitialized)
-    {
-        SteamAPI_RunCallbacks();
-    }
-}
-```
-
-
-
-### 3.3 封装成就功能
-
-在SteamManager类中，添加如下代码，调用Steam SDK中的接口实现成就功能，参数`achievementID`就是图3-1中的“API名称”，
-
-```c
-bool SteamManager::SetAchievement(const char* achievementID)
-{
-    if (!m_bInitialized || !SteamUserStats())
-    {
-        // Steam未初始化或统计接口不可用
-        return false;
-    }
-
-    if (!SteamUser()->BLoggedOn())
-    {
-        // Steam用户未登录
-        return false;
-    }
-
-    // 检查成就是否已解锁
-    bool alreadyAchieved = false;
-    if (SteamUserStats()->GetAchievement(achievementID, &alreadyAchieved))
-    {
-        if (alreadyAchieved)
-        {
-            printf("成就已经解锁: %s\n", achievementID);
-            return false;
-        }
-    }
-
-    bool result = SteamUserStats()->SetAchievement(achievementID);
-    if (result)
-    {
-        // 立即存储更新
-        return SteamUserStats()->StoreStats();
-    }
-    return false;
-}
-```
-
-然后在exports.cpp中，封装`SteamCallback`和`SetAchievement`，代码如下，
-
-```c
-jsvm_value jsSteamCallback(jsvm_env env, jsvm_callback_info info) {
-    SteamManager::GetInstance()->SteamCallback();
-    jsvm_value result;
-    JSVM_CALL_CHECK(jsvm_create_int32(env, 1, &result));
-    return result;
-}
-
-jsvm_value jsSetAchievement(jsvm_env env, jsvm_callback_info info) {
-    size_t argc = 1;
-    jsvm_value args[1];
-    jsvm_value _this;
-    JSVM_CALL_CHECK(jsvm_get_cb_info(env, info, &argc, args, &_this, nullptr));
-
-    char achievementID[256];
-    size_t idLen = 0;
-    JSVM_CALL_CHECK(jsvm_get_value_string_utf8(env, args[0], achievementID, sizeof(achievementID), &idLen));
-
-    bool success = SteamManager::GetInstance()->SetAchievement(achievementID);
-    jsvm_value result;
-    JSVM_CALL_CHECK(jsvm_create_int32(env, success ? 1 : 0, &result));
-    return result;
-}
-```
-
-最后，在`LayaExtInit`函数中，导出初始化功能，使得JavaScript代码可以调用这些原生功能。
-
-```c
-extern "C" {
-    LAYAEXTAPI void LayaExtInit(jsvm_env env, jsvm_value exp) {
-        // 注册Steam相关函数
-        ......
-
-        // 注册成就相关函数
-        jsvm_value fnSetAchievement;
-        jsvm_create_function(env, "setAchievement", SIZE_MAX, jsSetAchievement, nullptr, &fnSetAchievement);
-        jsvm_set_named_property(env, exp, "setAchievement", fnSetAchievement);
-
-        jsvm_value fnSteamCallback;
-        jsvm_create_function(env, "steamCallback", SIZE_MAX, jsSteamCallback, nullptr, &fnSteamCallback);
-        jsvm_set_named_property(env, exp, "steamCallback", fnSteamCallback);
-    }
-}
-```
-
-
-
-### 3.4 设定成就
-
-生成动态链接库并导入到LayaAir-IDE后，在`extlib.ts`脚本中，添加如下代码，编辑设置Steam成就的接口，
+每次点击都调用 `activateGameOverlay("friends")`，不要设置永久的一次性标记，也不要在首次点击后移除事件：
 
 ```typescript
-interface IExtendLib {
-    // 初始化Steam
-    initializeSteam(): number;  // 返回1表示成功，0表示失败
-    
-    // 设置（解锁）某个成就
-    setAchievement(achievementID: string): number;  // 返回1表示成功，0表示失败
-
-    steamCallback(): number;  // Steam回调函数，返回1表示成功，0表示失败
-}
-
-export const extendLib: IExtendLib = Laya.importNative("steam_demo.dll");
+button.on(Laya.Event.MOUSE_DOWN, this, () => {
+    if (!this.steam.activateGameOverlay("friends"))
+        console.warn(this.steam.getStatus().lastError);
+});
 ```
 
-然后在Scene2D上新建一个组件脚本，当点击按钮时，完成初始化，再点击按钮，设置指定成就。
+UI 和日志应对用户信息主动脱敏：
 
 ```typescript
-import { extendLib } from "./extlib";
-
-const { regClass, property } = Laya;
-
-@regClass()
-export class NewScript extends Laya.Script {
-
-    @property({type: Laya.Button})
-    public initBtn: Laya.Button;
-
-    @property({type: Laya.Button})
-    public setAchieve: Laya.Button;
-
-    onEnable(): void {
-        this.initBtn.on(Laya.Event.CLICK, this.onInit);
-        this.setAchieve.on(Laya.Event.CLICK, this.achievememtsettings);
-    }
-
-    // 每帧执行
-    onUpdate(): void {
-        extendLib.steamCallback();
-    }
-
-    onInit() {
-        alert(extendLib.initializeSteam());
-    }
-
-    achievememtsettings(): void {
-        if (extendLib.initializeSteam()) {
-            // 解锁成就
-            extendLib.setAchievement("NEW_ACHIEVEMENT_1_0");
-        }
-    }
+function mask(value: string, head = 1, tail = 1): string {
+    if (value.length <= head + tail) return "***";
+    return `${value.slice(0, head)}***${value.slice(-tail)}`;
 }
 ```
 
-> NEW_ACHIEVEMENT_1_0 是图3-1中的“API名称”。
+## 六、使用 LayaPro 发布
 
+在 LayaPro 中打开项目，发布平台选择 Windows。本例固定使用 WebGL。发布完成后，关键文件应与 exe 同目录：
 
+```text
+release/
+├─ LayaSteamProject.exe
+├─ config.ini
+├─ laya_steam.layaext.json
+├─ steam_native.dll
+├─ steam_api64.dll
+└─ ...
+```
 
-### 3.5 效果展示
+确认 `config.ini` 中仍有 `LoadExtension=true`。同时确认所用 Windows 客户端来自 LayaNative 3.4.1 或更高版本并包含新 ExtensionManager；仅支持旧 `LayaExtInit`/`Laya.importNative` 的兼容客户端不能加载本例。
 
-最终的运行效果如动图3-2所示，先初始化，再解锁成就，
+本地直接启动时，可在 exe 同目录创建只包含 AppID 的 `steam_appid.txt`。该文件仅用于本地开发，不要提交或上传到 Steam Depot。正式验证 Overlay 时，在 Steamworks 中把启动项指向发布的 exe，并通过桌面 Steam 客户端启动。
 
-<img src="./img/3-2.gif" alt="3-2" style="zoom:67%;" />
+## 七、验证结果
 
-（动图3-2）
+示例启动后，绿色方块持续旋转，状态面板显示 Steam 初始化、Overlay 和排行榜状态；图中用户信息已经脱敏：
 
-点击完成成就按钮后，桌面会显示弹框，如图3-3所示，
+![LayaSteam 示例运行结果](./img/layasteam-running.png)
 
-![3-3](./img/3-3.png)
+点击 `OPEN STEAM FRIENDS` 后打开 Steam Overlay。点击“返回游戏”后再次点击同一按钮，Overlay 仍能重新打开：
 
-（图3-3）
+![Steam Overlay 已由 LayaSteam 打开](./img/layasteam-overlay.png)
 
-在成就完成前，Steam客户端显示的状态如图3-4所示，
+完整验证至少包括：
 
-![3-4](./img/3-4.png)
+1. DLL 导出 `laya_extension_init`，发布目录存在 manifest，且 `LoadExtension=true`。
+2. `init()` 成功，UI 和日志不暴露完整账号名、SteamID 或私有测试配置。
+3. `Overlay: ready`，好友 Overlay 可以打开、返回、再次打开。
+4. 排行榜完成查找、上传、下载，点击上传按钮后分数增加。
+5. 退出场景时执行 `shutdown()`，程序无崩溃。
 
-（图3-4）
+## 八、常见问题
 
-解锁成就后，状态如图3-5所示，
-
-![3-5](./img/3-5.png)
-
-（图3-5）
-
-
-
-
-
-
-
-
-
+| 现象 | 检查项 |
+| --- | --- |
+| `laya_steam extension is not loaded` | 检查 `LoadExtension=true`、manifest 与 DLL 是否在 exe 同目录，并确认客户端支持 3.4.1 新 Extension API。 |
+| DLL 没有加载 | 用 `dumpbin /exports steam_native.dll` 确认存在 `laya_extension_init`，并检查 `steam_api64.dll` 是否同目录。 |
+| `SteamAPI_InitEx failed` | 确认桌面 Steam 已运行、账号拥有应用许可、AppID 正确，并检查 `steam_api64.dll`。 |
+| AppID 不一致 | `restartAppIfNecessary()` 的参数、`steam_appid.txt` 和 Steam 启动应用必须一致。 |
+| `Overlay: waiting` | 必须通过 Steam 客户端启动，且用户和游戏的 Steam Overlay 设置均已开启。Overlay 可能延迟数秒就绪。 |
+| 第一次能打开，返回后不能再打开 | 每次点击都调用 `ActivateGameOverlay`，不要使用一次性状态，同时每帧执行 `SteamAPI_RunCallbacks()`。 |
+| 排行榜一直 pending | 检查是否每帧调用 `update()`，并确认 `CCallResult` 生命周期覆盖异步请求。 |
+| Windows 运行时报渲染上下文错误 | 检查发布配置和客户端版本是否匹配；本例使用 `windows.renderMode: "webgl"`。 |
