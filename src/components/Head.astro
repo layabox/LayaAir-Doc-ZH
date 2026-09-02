@@ -58,6 +58,17 @@ import { ClientRouter } from 'astro:transitions';
     });
     document.addEventListener('astro:before-swap', function (e) {
       absolutize(e.newDocument, e.to);
+      // ClientRouter 会替换 <html>。把当前已生效的阅读主题提前复制到新文档，
+      // 避免首屏为浅色、点进另一页后又回到构建默认深色，或切换瞬间闪白。
+      var current = document.documentElement;
+      var next = e.newDocument.documentElement;
+      var theme = current.getAttribute('data-theme');
+      if (theme) next.setAttribute('data-theme', theme);
+      next.classList.toggle('laya-sepia', current.classList.contains('laya-sepia'));
+      next.classList.toggle('laya-serif', current.classList.contains('laya-serif'));
+      next.classList.toggle('laya-sb-collapsed', current.classList.contains('laya-sb-collapsed'));
+      var scale = current.style.getPropertyValue('--laya-font-scale');
+      if (scale) next.style.setProperty('--laya-font-scale', scale);
     });
   })();
 </script>
@@ -72,6 +83,12 @@ import { ClientRouter } from 'astro:transitions';
       if (s) d.style.setProperty('--laya-font-scale', s);
       if (ls.getItem('laya-font-family') === 'serif') d.classList.add('laya-serif');
       var rt = ls.getItem('laya-reader-theme');
+      // 兼容此前只由 Starlight 写入的主题偏好，避免两套存储键得出不同结果。
+      if (!rt) {
+        var st = ls.getItem('starlight-theme');
+        if (st === 'dark') rt = 'night';
+        else if (st === 'light') rt = 'white';
+      }
       if (rt === 'sepia') d.classList.add('laya-sepia');
       // 恢复明暗：white/sepia 建立在 light，night 建立在 dark（与 Starlight 的 data-theme 对齐）
       if (rt === 'night') d.setAttribute('data-theme', 'dark');
@@ -122,7 +139,12 @@ import { ClientRouter } from 'astro:transitions';
     const s = ls.get('laya-font-scale');
     if (s) d.style.setProperty('--laya-font-scale', s);
     d.classList.toggle('laya-serif', ls.get('laya-font-family') === 'serif');
-    const rt = ls.get('laya-reader-theme'); // white | sepia | night
+    let rt = ls.get('laya-reader-theme'); // white | sepia | night
+    if (!rt) {
+      const st = ls.get('starlight-theme');
+      if (st === 'dark') rt = 'night';
+      else if (st === 'light') rt = 'white';
+    }
     d.classList.toggle('laya-sepia', rt === 'sepia');
     // 恢复明暗：换页(ClientRouter)后新页 <html> 是静态版、丢了运行时的 data-theme，这里按偏好补回
     if (rt === 'night') d.dataset.theme = 'dark';

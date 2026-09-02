@@ -91,15 +91,21 @@ button:active,
   }
 }
 
-/* —— 页面切换：无刷新 SPA 导航 + 零过场动画 —— */
-/* ClientRouter 负责"不整页重新加载"，这里把浏览器原生的淡入淡出过渡全部抹掉，*/
-/* 让切换瞬间完成，不再有被动画拖一下的"慢"感。 */
-::view-transition-group(*),
-::view-transition-image-pair(*),
-::view-transition-old(*),
-::view-transition-new(*) {
-  animation: none !important;
-  mix-blend-mode: normal !important;
+/* —— 页面切换：侧栏持久化，正文做短促淡入淡出 —— */
+/* 时间控制在 140ms 内，既避免整页硬闪，也不会产生拖沓感。 */
+::view-transition-old(root) {
+  animation: 80ms ease-out both laya-page-out;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: 140ms ease-out both laya-page-in;
+  mix-blend-mode: normal;
+}
+@keyframes laya-page-out {
+  to { opacity: 0; }
+}
+@keyframes laya-page-in {
+  from { opacity: 0; }
 }
 
 

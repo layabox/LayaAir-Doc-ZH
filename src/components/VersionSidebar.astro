@@ -8,18 +8,20 @@ import Default from '@astrojs/starlight/components/Sidebar.astro';
 import { DOC_VERSION } from '../constants/doc-version';
 ---
 
-<div class="version-switch">
-  <label for="laya-version-select">引擎版本</label>
-  <select id="laya-version-select" data-version-switch>
-    <option value="">v{DOC_VERSION}（当前）</option>
-    <option value="https://www.layaair.com/3.3/doc/">v3.3</option>
-    <option value="https://www.layaair.com/3.2/doc/">v3.2</option>
-    <option value="https://www.layaair.com/3.1/doc/">v3.1</option>
-    <option value="https://www.layaair.com/3.0/doc/">v3.0</option>
-  </select>
-</div>
+<div class="laya-sidebar-persist" transition:persist="laya-sidebar">
+  <div class="version-switch">
+    <label for="laya-version-select">引擎版本</label>
+    <select id="laya-version-select" data-version-switch>
+      <option value="">v{DOC_VERSION}（当前）</option>
+      <option value="https://www.layaair.com/3.3/doc/">v3.3</option>
+      <option value="https://www.layaair.com/3.2/doc/">v3.2</option>
+      <option value="https://www.layaair.com/3.1/doc/">v3.1</option>
+      <option value="https://www.layaair.com/3.0/doc/">v3.0</option>
+    </select>
+  </div>
 
-<Default><slot /></Default>
+  <Default><slot /></Default>
+</div>
 
 {/* is:inline：紧接在 Sidebar 内部 Starlight 的 scroll 恢复脚本之后执行，
     立刻用「当前文档」覆盖 sessionStorage 恢复出来的旧滚动位置（避免首屏闪错/仍停在旧处） */}
@@ -140,6 +142,7 @@ import { DOC_VERSION } from '../constants/doc-version';
       const isCurrent = firstA.getAttribute('aria-current') === 'page';
 
       label.dataset.groupLink = '1';
+      label.dataset.groupHref = href;
       label.classList.add('group-label-clickable');
       label.setAttribute('role', 'link');
       label.setAttribute('tabindex', '0');
@@ -212,8 +215,52 @@ import { DOC_VERSION } from '../constants/doc-version';
     pane.scrollTop = Math.max(0, offset - pane.clientHeight * 0.3);
   }
 
+  // 侧栏 DOM 在 ClientRouter 换页时保持不变，避免整棵目录重建、闪烁和折叠状态丢失。
+  // 新页面加载完成后只同步选中项，滚动位置和用户展开的分组原样保留。
+  function syncCurrentState() {
+    const pane = document.getElementById('starlight__sidebar');
+    if (!pane) return;
+    const normalize = (value: string) => {
+      try {
+        return new URL(value, location.href).pathname
+          .replace(/\/index\.html$/i, '/')
+          .replace(/\/+$/, '/')
+          .toLowerCase();
+      } catch {
+        return '';
+      }
+    };
+    const currentPath = normalize(location.href);
+    pane.querySelectorAll('a[aria-current="page"]').forEach((link) => link.removeAttribute('aria-current'));
+    pane.querySelectorAll('.group-label-current').forEach((label) => label.classList.remove('group-label-current'));
+
+    let current: HTMLElement | null = null;
+    for (const link of pane.querySelectorAll<HTMLAnchorElement>('a[href]')) {
+      if (normalize(link.href) === currentPath) {
+        link.setAttribute('aria-current', 'page');
+        current = link;
+        break;
+      }
+    }
+    if (!current) {
+      for (const label of pane.querySelectorAll<HTMLElement>('[data-group-href]')) {
+        if (normalize(label.dataset.groupHref || '') === currentPath) {
+          label.classList.add('group-label-current');
+          current = label;
+          break;
+        }
+      }
+    }
+    let node = current?.parentElement || null;
+    while (node && node !== pane) {
+      if (node instanceof HTMLDetailsElement) node.open = true;
+      node = node.parentElement;
+    }
+  }
+
   function onSidebarReady() {
     enhanceGroupLinks();
+    syncCurrentState();
     // enhance 可能把「概述」选中态转到 .group-label-current，必须之后再定位
     scrollSidebarToCurrent();
     // 短延迟再校正：覆盖 font/layout/ClientRouter 换页后的滞后测量
@@ -236,6 +283,7 @@ import { DOC_VERSION } from '../constants/doc-version';
 </script>
 
 <style is:global>
+  .laya-sidebar-persist { display: contents; }
   /* 消除「同级色差」：Starlight 里分组标题恒为 .large（白/粗/大），而嵌套层普通链接为灰/常规/小，
      同一层级（如官方插件下的 VFX粒子插件 vs LOD减面插件）外观不一致。
      这里把「嵌套层的分组标题」对齐到同级普通链接的字号/字重/颜色；顶层分组标题(.top-level)保持不变；

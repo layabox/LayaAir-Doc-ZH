@@ -3,8 +3,6 @@ title: "LayaNative 扩展插件开发"
 description: "LayaNative 跨平台扩展插件的开发、配置与调试"
 ---
 
-# LayaNative 扩展插件开发
-
 从LayaAir3.4.1版本开始，支持跨平台扩展插件开发机制，原有的 Windows 专用扩展机制不再支持。
 LayaNative 扩展插件用于把原生能力封装成 JavaScript 可以调用的接口。插件可以直接使用 JSVM API 注册函数、类和属性，也可以通过 LayaNative 提供的 `LayaExtensionInterface` 访问运行时环境、日志和跨线程回调能力。
 
