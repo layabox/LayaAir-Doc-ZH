@@ -136,7 +136,10 @@ function check(raw, fromFile, baseUrl, kind) {
 for (let sourceIndex = 0; sourceIndex < sourceFiles.length; sourceIndex++) {
   const file = sourceFiles[sourceIndex];
   const text = fs.readFileSync(file, 'utf8');
-  const baseUrl = pageUrl(file);
+  // relativize-build-urls.mjs 会让 HTML 中的相对地址统一依赖文档站根
+  // <base>（/3.x/doc/），而不是依赖当前页面目录。CSS 文件里的 url()
+  // 仍按 CSS 文件自身地址解析。
+  const baseUrl = /\.html$/i.test(file) ? `${ORIGIN}${BASE}/` : pageUrl(file);
   if (/\.html$/i.test(file)) {
     const markup = text
       .replace(/<script\b[\s\S]*?<\/script>/gi, '')

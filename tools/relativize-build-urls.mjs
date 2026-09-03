@@ -45,6 +45,12 @@ function isHostPrefixed(text, offset) {
   return /https?:\/\/[^\s"'<>]*$/.test(before);
 }
 
+function hashPrefixFor(pagePath) {
+  if (!pagePath) return './';
+  // 目录路由需要结尾斜杠；404.html 这类真实文件不能变成 404.html/。
+  return /\.html?$/i.test(pagePath) ? pagePath : pagePath.replace(/\/?$/, '/');
+}
+
 function rewriteHtml(text, pagePath) {
   const held = [];
   let html = text.replace(
@@ -60,7 +66,7 @@ function rewriteHtml(text, pagePath) {
     return stripBase(match);
   });
 
-  const hashPrefix = pagePath ? `${pagePath.replace(/\/?$/, '/')}` : './';
+  const hashPrefix = hashPrefixFor(pagePath);
   html = html.replace(/\bhref=(["'])#([^"']*)\1/g, (_, q, hash) => `href=${q}${hashPrefix}#${hash}${q}`);
 
   html = html.replace(/\0LAYA_PORTABLE_(\d+)\0/g, (_, i) => held[Number(i)]);
@@ -109,6 +115,17 @@ function selfCheck() {
     const got = stripBase(abs);
     if (got !== expected) {
       throw new Error(`relativize self-check failed: ${abs} => ${got} (expected ${expected})`);
+    }
+  }
+  const hashCases = [
+    ['', './'],
+    ['ide/component/', 'ide/component/'],
+    ['404.html', '404.html'],
+  ];
+  for (const [pagePath, expected] of hashCases) {
+    const got = hashPrefixFor(pagePath);
+    if (got !== expected) {
+      throw new Error(`relativize hash self-check failed: ${pagePath} => ${got} (expected ${expected})`);
     }
   }
 }
