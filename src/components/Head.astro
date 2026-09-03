@@ -21,6 +21,15 @@ import { ClientRouter } from 'astro:transitions';
       var m = u.pathname.match(/^(.*?\/doc)(?=\/|$)/);
       return u.origin + (m ? m[1] + '/' : '/');
     }
+    function ensureBase(doc, pageUrl) {
+      if (!doc || !doc.head || !pageUrl) return;
+      var base = doc.head.querySelector('base');
+      if (!base) {
+        base = doc.createElement('base');
+        doc.head.insertBefore(base, doc.head.firstChild);
+      }
+      base.setAttribute('href', siteRoot(pageUrl));
+    }
     function absolutize(doc, pageUrl) {
       if (!doc || !pageUrl) return;
       var base = siteRoot(pageUrl);
@@ -57,6 +66,9 @@ import { ClientRouter } from 'astro:transitions';
       };
     });
     document.addEventListener('astro:before-swap', function (e) {
+      // 构建产物靠运行时 <base> 把 ./... 解释为文档站根目录。ClientRouter
+      // 解析新页面时不会执行 document.write 脚本，因此换页前必须显式补回。
+      ensureBase(e.newDocument, e.to);
       absolutize(e.newDocument, e.to);
       // ClientRouter 会替换 <html>。把当前已生效的阅读主题提前复制到新文档，
       // 避免首屏为浅色、点进另一页后又回到构建默认深色，或切换瞬间闪白。
