@@ -139,13 +139,47 @@ for (let sourceIndex = 0; sourceIndex < sourceFiles.length; sourceIndex++) {
   // relativize-build-urls.mjs 会让 HTML 中的相对地址统一依赖文档站根
   // <base>（/3.x/doc/），而不是依赖当前页面目录。CSS 文件里的 url()
   // 仍按 CSS 文件自身地址解析。
-  const baseUrl = /\.html$/i.test(file) ? `${ORIGIN}${BASE}/` : pageUrl(file);
+  let baseUrl = pageUrl(file);
   if (/\.html$/i.test(file)) {
+    const portableBase = text.match(/<base\b[^>]*data-laya-portable-base[^>]*>/i)?.[0];
+    if (!portableBase) {
+      failures.push({ type: 'missing-portable-base', fromFile: file, raw: '<base>', kind: 'runtime-base' });
+    } else {
+      const href = portableBase.match(/\bhref=["']([^"']+)["']/i)?.[1];
+      try {
+        const resolvedBase = new URL(href, pageUrl(file));
+        baseUrl = resolvedBase.href;
+        if (resolvedBase.origin !== ORIGIN || resolvedBase.pathname !== `${BASE}/`) {
+          failures.push({ type: 'invalid-portable-base', fromFile: file, raw: href || '<missing href>', kind: 'runtime-base' });
+        }
+      } catch {
+        failures.push({ type: 'invalid-portable-base', fromFile: file, raw: href || '<missing href>', kind: 'runtime-base' });
+      }
+      const beforeBase = text.slice(0, text.indexOf(portableBase));
+      if (/\b(?:href|src|poster|srcset|data-src)=["']/i.test(beforeBase)) {
+        failures.push({ type: 'late-portable-base', fromFile: file, raw: portableBase, kind: 'runtime-base' });
+      }
+    }
+    if (/<script[^>]*data-laya-portable-base/i.test(text)) {
+      failures.push({ type: 'dynamic-portable-base', fromFile: file, raw: '<script data-laya-portable-base>', kind: 'runtime-base' });
+    }
+    if (!text.includes('data-laya-router-base')) {
+      failures.push({ type: 'missing-router-base-repair', fromFile: file, raw: 'ClientRouter', kind: 'runtime-base' });
+    }
+    for (const meta of text.matchAll(/<meta\b[^>]*>/gi)) {
+      if (!/\bhttp-equiv=["']Content-Security-Policy["']/i.test(meta[0])) continue;
+      const content = meta[0].match(/\bcontent=["']([^"']*)["']/i)?.[1] || '';
+      if (/(?:^|;)\s*referrer\s*(?:=|\s)/i.test(content)) {
+        failures.push({ type: 'invalid-csp-referrer-directive', fromFile: file, raw: content, kind: 'csp' });
+      }
+    }
     const markup = text
       .replace(/<script\b[\s\S]*?<\/script>/gi, '')
       .replace(/<style\b[\s\S]*?<\/style>/gi, '')
       .replace(/<!--([\s\S]*?)-->/g, '');
     for (const tag of markup.matchAll(/<[^>]+>/g)) {
+      // <base href> 本身相对页面 URL 解析；其余地址才按生效后的 base URL 解析。
+      if (/^<base\b/i.test(tag[0])) continue;
       for (const match of tag[0].matchAll(/\b(href|src|poster|data-src)=["']([^"']+)["']/gi)) {
         check(match[2], file, baseUrl, match[1].toLowerCase());
         let url;

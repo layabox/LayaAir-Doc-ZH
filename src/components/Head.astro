@@ -29,6 +29,7 @@ import { ClientRouter } from 'astro:transitions';
         doc.head.insertBefore(base, doc.head.firstChild);
       }
       base.setAttribute('href', siteRoot(pageUrl));
+      base.setAttribute('data-laya-router-base', '');
     }
     function absolutize(doc, pageUrl) {
       if (!doc || !pageUrl) return;
@@ -82,6 +83,18 @@ import { ClientRouter } from 'astro:transitions';
       var scale = current.style.getPropertyValue('--laya-font-scale');
       if (scale) next.style.setProperty('--laya-font-scale', scale);
     });
+    function stabilizeLiveDocument() {
+      // Sidebar 使用 transition:persist，换页后保留的是旧 DOM。把当前文档里的
+      // 相对链接落成站点根绝对地址，即使浏览器稍后重排 <head> 也不会重复拼目录。
+      ensureBase(document, location.href);
+      absolutize(document, location.href);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', stabilizeLiveDocument, { once: true });
+    } else {
+      stabilizeLiveDocument();
+    }
+    document.addEventListener('astro:after-swap', stabilizeLiveDocument);
   })();
 </script>
 

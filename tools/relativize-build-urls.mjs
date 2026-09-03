@@ -1,6 +1,7 @@
 /**
  * 把构建产物里写死的 Astro base（/3.x/doc/...）改成相对站点根（./_astro/xxx.css），
- * 并在每个 HTML 的 <head> 开头按「当前 URL 里的 /doc/」动态写入 <base>。
+ * 并在每个 HTML 的 <head> 开头写入按页面深度计算的静态 <base>。静态标签先于
+ * 脚本和样式出现，浏览器预加载扫描器不会再把 ./_astro 解析到当前章节目录。
  *
  * 同一套 _book 可挂到 /3.x/doc/、/3.4/doc/，或本地 anywhere（_book 即根，无 /doc 则为 /）。
  * canonical / og:url / sitemap 仍是完整 https 地址，不改。
@@ -14,7 +15,6 @@ const TEXT_EXT = new Set(['.html', '.js', '.mjs']);
 const SKIP_DIR = new Set(['pagefind', 'pagefind-v4']);
 const PORTABLE_BASE_MARK = 'data-laya-portable-base';
 const RUNTIME_ROOT = '(new URL("../",import.meta.url).pathname.replace(/\\/?$/,"/"))';
-const PORTABLE_BASE_SCRIPT = `<script ${PORTABLE_BASE_MARK}>(function(){var m=location.pathname.match(/^(.*?\\/doc)(?=\\/|$)/);var b=m?m[1]+"/":"/";document.write('<base href="'+location.origin+b+'">');})();</script>`;
 
 function walk(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -51,13 +51,29 @@ function hashPrefixFor(pagePath) {
   return /\.html?$/i.test(pagePath) ? pagePath : pagePath.replace(/\/?$/, '/');
 }
 
+function relativeBaseFor(pagePath) {
+  const directory = !pagePath
+    ? ''
+    : pagePath.endsWith('/')
+      ? pagePath.replace(/\/+$/, '')
+      : path.posix.dirname(pagePath);
+  const depth = directory && directory !== '.'
+    ? directory.split('/').filter(Boolean).length
+    : 0;
+  return depth ? '../'.repeat(depth) : './';
+}
+
+function portableBaseTag(pagePath) {
+  return `<base ${PORTABLE_BASE_MARK} href="${relativeBaseFor(pagePath)}">`;
+}
+
 function rewriteHtml(text, pagePath) {
-  const held = [];
+  let hadPortableBase = false;
   let html = text.replace(
-    /<script[^>]*data-laya-portable-base[^>]*>[\s\S]*?<\/script>/gi,
-    (block) => {
-      held.push(block);
-      return `\0LAYA_PORTABLE_${held.length - 1}\0`;
+    /(?:<script[^>]*data-laya-portable-base[^>]*>[\s\S]*?<\/script>|<base[^>]*data-laya-portable-base[^>]*>)/gi,
+    () => {
+      hadPortableBase = true;
+      return '\0LAYA_PORTABLE_BASE\0';
     },
   );
 
@@ -69,8 +85,16 @@ function rewriteHtml(text, pagePath) {
   const hashPrefix = hashPrefixFor(pagePath);
   html = html.replace(/\bhref=(["'])#([^"']*)\1/g, (_, q, hash) => `href=${q}${hashPrefix}#${hash}${q}`);
 
-  html = html.replace(/\0LAYA_PORTABLE_(\d+)\0/g, (_, i) => held[Number(i)]);
-  return injectPortableBase(html);
+  const baseTag = portableBaseTag(pagePath);
+  if (hadPortableBase) {
+    let emitted = false;
+    return html.replace(/\0LAYA_PORTABLE_BASE\0/g, () => {
+      if (emitted) return '';
+      emitted = true;
+      return baseTag;
+    });
+  }
+  return html.replace(/<head[^>]*>/i, (open) => open + baseTag);
 }
 
 function rewriteAstroJs(text) {
@@ -82,13 +106,6 @@ function rewriteAstroJs(text) {
     out = out.replaceAll('"/3.x/doc"', `${RUNTIME_ROOT}.replace(/\\/$/,"")`);
   }
   return out;
-}
-
-function injectPortableBase(html) {
-  if (/<script[^>]*data-laya-portable-base/i.test(html)) {
-    return html.replace(/<script[^>]*data-laya-portable-base[^>]*>[\s\S]*?<\/script>/i, PORTABLE_BASE_SCRIPT);
-  }
-  return html.replace(/<head[^>]*>/i, (open) => open + PORTABLE_BASE_SCRIPT);
 }
 
 function pagePathOf(file) {
@@ -126,6 +143,19 @@ function selfCheck() {
     const got = hashPrefixFor(pagePath);
     if (got !== expected) {
       throw new Error(`relativize hash self-check failed: ${pagePath} => ${got} (expected ${expected})`);
+    }
+  }
+  const baseCases = [
+    ['', './'],
+    ['404.html', './'],
+    ['ide/component/', '../../'],
+    ['basics/common/network/http/', '../../../../'],
+    ['guides/demos/a/page.html', '../../../'],
+  ];
+  for (const [pagePath, expected] of baseCases) {
+    const got = relativeBaseFor(pagePath);
+    if (got !== expected) {
+      throw new Error(`relativize base self-check failed: ${pagePath} => ${got} (expected ${expected})`);
     }
   }
 }
