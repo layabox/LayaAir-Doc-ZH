@@ -19,7 +19,13 @@ import { ClientRouter } from 'astro:transitions';
     function siteRoot(url) {
       var u = url instanceof URL ? url : new URL(url, location.href);
       var m = u.pathname.match(/^(.*?\/doc)(?=\/|$)/);
-      return u.origin + (m ? m[1] + '/' : '/');
+      if (m) return u.origin + m[1] + '/';
+      // 本地 anywhere：无 /doc/ 段，静态 <base> 已把站点根指到 _book 目录。
+      try {
+        var rooted = new URL('./', document.baseURI || u.href);
+        return rooted.origin + rooted.pathname;
+      } catch (e) {}
+      return u.origin + '/';
     }
     function ensureBase(doc, pageUrl) {
       if (!doc || !doc.head || !pageUrl) return;
@@ -50,6 +56,12 @@ import { ClientRouter } from 'astro:transitions';
           try { bits[0] = new URL(bits[0], base).href; } catch (e) {}
           return bits.join(' ');
         }).join(', '));
+      }
+      var groups = doc.querySelectorAll('[data-group-href]');
+      for (var g = 0; g < groups.length; g++) {
+        var groupHref = groups[g].getAttribute('data-group-href');
+        if (!groupHref || skip(groupHref) || groupHref.charAt(0) === '/') continue;
+        try { groups[g].setAttribute('data-group-href', new URL(groupHref, base).href); } catch (e) {}
       }
     }
     document.addEventListener('astro:before-preparation', function (e) {
@@ -89,11 +101,18 @@ import { ClientRouter } from 'astro:transitions';
       ensureBase(document, location.href);
       absolutize(document, location.href);
     }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', stabilizeLiveDocument, { once: true });
-    } else {
+    function scheduleStabilize() {
       stabilizeLiveDocument();
+      // 须晚于 type=module 的侧栏脚本：它们在 DOMContentLoaded 前就可能读取原始 href。
+      setTimeout(stabilizeLiveDocument, 0);
+      requestAnimationFrame(stabilizeLiveDocument);
     }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', scheduleStabilize, { once: true });
+    } else {
+      scheduleStabilize();
+    }
+    document.addEventListener('astro:page-load', scheduleStabilize);
     document.addEventListener('astro:after-swap', stabilizeLiveDocument);
   })();
 </script>

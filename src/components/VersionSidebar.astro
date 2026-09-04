@@ -136,7 +136,9 @@ import { DOC_VERSION } from '../constants/doc-version';
       const firstA = firstLi?.querySelector<HTMLAnchorElement>(':scope > a[href]');
       if (!firstLi || !firstA) return;
       const text = (firstA.textContent || '').trim();
-      const href = firstA.getAttribute('href');
+      // 必须用浏览器解析后的 href（尊重 <base>）。getAttribute + location.href
+      // 会把 ./foo/ 拼到当前章节目录下，部署到 /3.x/doc/ 深层页时路径会错。
+      const href = firstA.href;
       if (!href || !(text === '概述' || /总览/.test(text))) return;
 
       const isCurrent = firstA.getAttribute('aria-current') === 'page';
@@ -222,7 +224,7 @@ import { DOC_VERSION } from '../constants/doc-version';
     if (!pane) return;
     const normalize = (value: string) => {
       try {
-        return new URL(value, location.href).pathname
+        return new URL(value, document.baseURI).pathname
           .replace(/\/index\.html$/i, '/')
           .replace(/\/+$/, '/')
           .toLowerCase();
