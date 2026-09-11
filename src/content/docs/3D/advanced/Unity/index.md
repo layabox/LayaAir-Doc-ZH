@@ -8,11 +8,9 @@ slug: "3d/advanced/unity"
 
 采用Unity插件方案的主要原因，主要是为了支持开发者在Unity资源商城中购买的资源可以无感的迁移到LayaAir IDE中进行相关的开发工作，Unity资源商城拥有一定数量的精美且高质量的美术资源，采用Unity资源导出插件能将这些精美的美术资源迁移到LayaAir引擎的IDE中进行开发，对一些小而美的项目来说无疑是一种无形的帮助，更可以让有Unity经验的优质开发者可以更低学习成本进入HTML5和小游戏产业中来。
 
-插件的下载地址：https://github.com/layabox/LayaAir3.0UnityPlugin/releases
+插件的下载地址：https://github.com/layabox/LayaAir3.0UnityPlugin
 
-![1-1](./img/1-1.png)
 
-（图1-1）
 
 > 开发者下载最新版的插件即可。安装与导入步骤见[安装与导出窗口介绍](/unity-plugin/install/)。
 

@@ -12,9 +12,9 @@ slug: "basics/developmentenvironment/cocostolayaair"
 
 ## 二、使用基础
 
-插件下载地址：https://github.com/layabox/CocosMigrationPlugin/releases
+插件下载地址：https://github.com/layabox/CocosMigrationPlugin
 
-![2-1](./img/2-1.png)
+
 
 环境要求：
 
@@ -27,6 +27,8 @@ Cocos 版本：已知支持 Cocos Creator 3.x 系列，理论上也支持2.x系�
 ## 三、使用方法
 
 1.下载资源包，并通过IDE的导入资源包功能将插件导入到项目中。具体流程可以参考[包管理器与资源包导入说明](/ide/layapackage/pluginimport/)中的第二节。
+
+![](./img/1.png)
 
 2.导入资源包后，主菜单会新增一个选项：`迁移Cocos / 迁移Cocos项目资源`
 
