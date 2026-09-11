@@ -288,7 +288,7 @@
 <p>从LayaAir3.2版本开始，支持自动打包成apk或ipa。而对于资深的开发者，如果更习惯使用传统的开发环境来打安装包，也保留了发布为原生包工程的方案。</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="二构建发布">二、构建发布</h2><a class="sl-anchor-link" href="released/native/build-tool/#二构建发布"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “二、构建发布”</span></a></div>
 <p>使用LayaAir-IDE发布项目，开发者首先在文件菜单中，打开“构建发布”选项，如图2-1所示，</p>
-<img loading="lazy" decoding="async" src="./released/native/build_tool/img/2-1.png" alt="2-1" style="zoom:80%;">
+<img loading="lazy" decoding="async" src="./released/native/build_Tool/img/2-1.png" alt="2-1" style="zoom:80%;">
 <p>（图2-1）</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="21-参数">2.1 参数</h3><a class="sl-anchor-link" href="released/native/build-tool/#21-参数"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.1 参数”</span></a></div>
 <ul>
@@ -374,7 +374,7 @@
 <p><code dir="auto">纹理源文件</code>：可以不勾选“始终包含纹理源文件”，如果勾选，则即使图片使用了压缩格式，仍然把源文件（png/jpg)打包。目的是遇到不支持压缩格式的系统时，fallback到源文件。</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="22-下载模块">2.2 下载模块</h3><a class="sl-anchor-link" href="released/native/build-tool/#22-下载模块"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2.2 下载模块”</span></a></div>
 <p>设置好参数后，如果是第一次构建Android/iOS，会先下载模块，如图2-2所示，</p>
-<p><img src="./released/native/build_tool/img/2-2.png" alt="2-2" loading="lazy" decoding="async"></p>
+<p><img src="./released/native/build_Tool/img/2-2.png" alt="2-2" loading="lazy" decoding="async"></p>
 <p>（图2-2）</p>
 <p>目标平台选择iOS或者Android，由于构建工具需的库文件比较大，因此并没有直接包含在LayaAirIDE中，在第一次使用这个工具的时候，会先下载相应的支持模块。</p>
 <blockquote>
@@ -385,10 +385,10 @@
 <p>如果是iOS，则会直接生成ipa包。</p>
 </blockquote>
 <p>如图3-1所示，如果不勾选<code dir="auto">导出Android Studio项目</code>，则导出的项目会直接生成apk包。</p>
-<p><img src="./released/native/build_tool/img/3-1.png" alt="3-1" loading="lazy" decoding="async"></p>
+<p><img src="./released/native/build_Tool/img/3-1.png" alt="3-1" loading="lazy" decoding="async"></p>
 <p>（图3-1）</p>
 <p>图3-1的导出方式是一个纯单机版的应用，导出后的目录如图3-2所示，直接将apk包安装到手机即可。但是，这样的纯单机版应用无法实现资源动态更新，当资源发生变化时，必须更新APP。</p>
-<p><img src="./released/native/build_tool/img/3-2.png" alt="3-2" loading="lazy" decoding="async"></p>
+<p><img src="./released/native/build_Tool/img/3-2.png" alt="3-2" loading="lazy" decoding="async"></p>
 <p>（图3-2）</p>
 <p>如果是联网包，则需要填写<code dir="auto">资源服务器URL</code>，填写后可以不勾选<code dir="auto">打包资源</code>。发布后需要将resource目录放在服务器中，地址就是发布时填写的url，这样发布的应用就会从服务器加载资源。</p>
 <p>如果填写了<code dir="auto">资源服务器URL</code>，并且勾选了<code dir="auto">打包资源</code>，那么最终发布的就是一个带资源的联网包。apk中本身包含了资源，但是相比于纯单机的应用，它可以通过DCC更新资源。</p>

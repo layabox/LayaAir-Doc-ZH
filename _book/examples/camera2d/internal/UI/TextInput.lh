@@ -1,0 +1,1 @@
+{"_$ver":1,"_$id":"uvkec0jl","_$type":"GTextInput","name":"Root","width":128,"height":40,"background":{"_$type":"Draw9GridTextureCmd","texture":{"_$uuid":"images/textinput_bg.png","_$type":"Texture"}},"text":"text","fontSize":20,"padding":[2,6,2,6]}
